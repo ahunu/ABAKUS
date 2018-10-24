@@ -1,0 +1,814 @@
+/*!
+ *  Material Design Iconic Font by Sergey Kupletsky (@zavoloklom) - http://zavoloklom.github.io/material-design-iconic-font/
+ *  License - http://zavoloklom.github.io/material-design-iconic-font/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+li {
+    padding: 0; margin: 0
+}
+
+.ui-radio, .ui-checkbox, .sui-li-divider {
+    padding: 0
+}
+
+input {
+    padding:0em; 
+    margin:0em;
+    width: 100%;
+    background:Gainsboro;
+    font-weight:bold;
+}
+
+@media print {
+    @page { margin: 0.5cm; } 
+    .noprint, .noprint * { display: none !important;}
+    .page-break	{ display: block; page-break-before: always; }
+    .XXL{font-size: calc(1.45vw + 17px);}
+    .XL {font-size: calc(1.33vw + 15px);}
+    .L3 {font-size: calc(1.25vw + 14px);}
+    .L2 {font-size: calc(1.17vw + 13px);}
+    .L, input, .ui-btn, .ui-radio, .ui-checkbox {font-size: calc(1.1vw + 12px) !important;}
+    .M2 {font-size: calc(0.96vw + 11px);}
+    .M, .nicEdit-main {font-size: calc(0.92vw + 10px);}
+    .S3 {font-size: calc(0.91vw + 9px);}
+    .S2 {font-size: calc(0.90vw + 8px);}
+    .S {font-size: calc(0.89vw + 7px);}
+    .XS {font-size: calc(0.88vw + 6px);}
+    .XXS {font-size: calc(0.87vw + 5px);}
+}       
+
+.iconJQM::after {
+    background-size: 32px !important;
+    width: 38px !important;
+    height: 38px !important;
+    margin-top: -0.72em;     
+}
+
+@media only screen and (orientation : portrait)  and (max-width: 450px) {
+
+    .cLinks { width: 100% !important }
+    .cRechts { display: none !important }
+
+    #dPC { display: none !important }
+    .cTablet { display: none !important }
+    .cSmartphone { display: block !important }
+
+    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.5vw + 4px) !important;} /* index Runden/Cups */
+    .ui-btn {padding: .22em .2em !important;}
+    
+    .XXL {font-size: calc(3.9vw + 35px) !important;} /* Abakus Balken */
+    .XL {font-size: calc(2.7vw + 22px) !important;}
+    .L3 {font-size: calc(2.8vw + 25px) !important;}  /* Vorhand */
+    .L3 {font-size: 8vw !important;}  /* Vorhand */
+    .L2 {font-size: 7.2vw !important;}  /* Vorhand */
+    .L {font-size: 6.44vw !important;}
+    .M3, .nicEdit-main {font-size: 5.9vw !important;} /* RundenStatistik Navbar */
+    .M2 {font-size: 5.6vw !important;}
+    .M  {font-size: 5.33vw !important;}
+    .S2 {font-size: 5.2vw !important;}
+    .S  {font-size: 4.9vw !important;}
+    .XS {font-size: 4.8vw !important;}
+
+    .LL3 {font-size: 8.5vw !important;}  /* Spiele und Punkte */
+    .LL2 {font-size: 8vw !important;}
+
+    .i {    /* Edit */
+        display: inline-block;   
+        font: normal normal normal 6.9vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconL {   /* Edit */
+        display: inline-block;   
+        font: normal normal normal 11vw 'Material-Design-Iconic-Font';
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconXL {   /* Edit */
+        display: inline-block;   
+        font: normal normal normal 12vw 'Material-Design-Iconic-Font';
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iSpinner {
+        display: inline-block;
+        font: normal normal normal calc(3vw + 12px) 'Material-Design-Iconic-Font';
+        font-size: 8vw;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-animation: zmdi-spin-reverse 1.5s infinite linear;
+        animation: zmdi-spin-reverse 1.5s infinite linear;  
+    }
+    .iBtn {
+        background-color: rgba(0, 0, 0, 0.07);
+        padding: .1em .1em;
+        border: solid 0.05em #9e9e9e;
+        border-radius: 5px;  
+    }
+    .iDisk {
+        border-radius: 1em;
+        background-color: rgba(0, 0, 0, 0.33);
+        color: white;
+    }
+    .iOval {
+        border-radius: 0.3em;
+        background-color: rgba(0, 0, 0, 0.133);  
+    }
+}       
+
+@media only screen and (orientation : portrait)  and (min-width: 450.000001px) {
+
+    .cLinks { width: 100% !important }
+    .cRechts { display: none !important }
+
+    #dPC { display: none !important }
+    .cTablet { display: block !important }
+    .cSmartphone { display: none !important }
+
+    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(1.25vw + 20px) !important;}
+    .ui-btn {padding: .5vh .2em !important;}
+
+    .XXL {font-size: calc(1vw + 50px) !important;} /* Abakus Balken */
+    .XL {font-size: calc(1.38vw + 26px) !important;} /* Zur Statistik, Ein neuer Tisch, Die nächsten Turniere */
+    .L3 {font-size: calc(1.34vw + 24px) !important;}
+    .L2 {font-size: calc(1.30vw + 22px) !important;}
+    .L  {font-size: calc(1.25vw + 20px) !important;}
+    .M3, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
+    .M2, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
+    .M, .nicEdit-main {font-size: calc(0.95vw + 16px) !important;}
+    .S2 {font-size: calc(0.93vw + 14px) !important;}
+    .S  {font-size: calc(0.91vw + 12px) !important;}
+    .XS {font-size: calc(0.90vw + 10px) !important;}
+
+    .LL3 {font-size: calc(3vw + 20px) !important;}   /* Buttons 4er und 5er Tische */
+    .LL2 {font-size: calc(1.5vw + 20px) !important;} /* Buttons 6er Tische */
+
+    .i {    /* Edit */
+        display: inline-block;   
+        font: normal normal normal 4.9vw 'Material-Design-Iconic-Font';  /* Statistik Menüicons */
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconL {   /* Edit */
+        display: inline-block;   
+        font: normal normal normal 8vw 'Material-Design-Iconic-Font';
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconXL {   /* Edit */
+        display: inline-block;   
+        font: normal normal normal 9vw 'Material-Design-Iconic-Font';
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iSpinner {
+        display: inline-block;
+        font: normal normal normal calc(1vw + 22px) 'Material-Design-Iconic-Font';
+        font-size: 8vw;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-animation: zmdi-spin-reverse 1.5s infinite linear;
+        animation: zmdi-spin-reverse 1.5s infinite linear;  
+    }
+    .iBtn {
+        background-color: rgba(0, 0, 0, 0.07);
+        padding: .1em .1em;
+        border: solid 0.05em #9e9e9e;
+        border-radius: 5px;  
+    }
+    .iDisk {
+        border-radius: 1em;
+        background-color: rgba(0, 0, 0, 0.33);
+        color: white;
+    }
+    .iOval {
+        border-radius: 0.3em;
+        background-color: rgba(0, 0, 0, 0.133);  
+    }
+}
+
+@media only screen and (orientation : landscape)  {
+
+    .cLinks { width: 28% !important}
+    .cRechts { display: block !important }
+
+    #dPC { display: block !important }
+    .cTablet { display: none !important }
+    .cSmartphone { display: none !important }
+
+    #pMenu, #hMenu { display: block !important }
+    #pCup, #pCupFooter, #pTisch, hMix { display: none !important }
+
+    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(0.97vw + 12px) !important;}
+
+    .ui-btn {padding: .1em !important;}
+
+    .XXL {font-size: calc(1.1vw + 44px) !important;}  /* Abakus Balken */
+    .XL {font-size: calc(1.1vw + 15px) !important;}   /* Zur Statistik, Zur Anmeldung, Nächstes Turnier */
+    .L3 {font-size: calc(1.05vw + 14px) !important;}
+    .L2 {font-size: calc(1.01vw + 13px) !important;}
+    .L  {font-size: calc(0.97vw + 12px) !important;}
+    .M2, .Sbtn {font-size: calc(0.93vw + 11px) !important;}
+    .M, .nicEdit-main {font-size: calc(0.90vw + 10px) !important;}
+    .S2 {font-size: calc(0.89vw + 9px) !important;}
+    .S  {font-size: calc(0.88vw + 8px) !important;}
+    .XS {font-size: calc(0.87vw + 7px) !important;}
+    .XXS{font-size: calc(0.87vw + 6px) !important;}
+
+    .LL3 {font-size: calc(1.1vw + 20px) !important;}  /* Buttons 4er und 5er Tische */
+    .LL2 {font-size: calc(1vw + 20px) !important;}    /* Buttons 6er Tische */
+
+    .i {    /* Edit */
+        display: inline-block;   
+        font: normal normal normal calc(1.2vw + 10px) 'Material-Design-Iconic-Font';  /* Statistik Menüicons */
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconL {   /* Edit */
+        display: inline-block;   
+        font: normal normal normal calc(2.3vw + 12px) 'Material-Design-Iconic-Font';
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconXL {   /* Edit */
+        display: inline-block;   
+        font: normal normal normal calc(2.8vw + 14px) 'Material-Design-Iconic-Font';
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iSpinner {
+        display: inline-block;
+        font: normal normal normal calc(1vw + 12px) 'Material-Design-Iconic-Font';
+        font-size: 3vw;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-animation: zmdi-spin-reverse 1.5s infinite linear;
+        animation: zmdi-spin-reverse 1.5s infinite linear;  
+    }
+    .iBtn {
+        background-color: rgba(0, 0, 0, 0.07);
+        padding: .1em .1em;
+        border: solid 0.05em #9e9e9e;
+        border-radius: 5px;  
+    }
+    .iDisk {
+        border-radius: 1em;
+        background-color: rgba(0, 0, 0, 0.33);
+        color: white;
+    }
+    .iOval {
+        border-radius: 0.3em;
+        background-color: rgba(0, 0, 0, 0.133);  
+    }
+
+}       
+
+/* stack all grids below 40em (640px) */
+@media all and (max-width: 100em) {
+    .st-breakpoint .ui-block-a,
+    .st-breakpoint .ui-block-b,
+    .st-breakpoint .ui-block-c {
+        width: 100%;
+        float: none;
+    }
+}
+
+.zmdi-help:before {
+    content: '\f1f6';
+}
+.zmdi-hc-rotate-90 {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+} 
+.zmdi-hc-rotate-45 {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+} 
+.zmdi-toll:before {
+    content: '\f1e0';
+}
+.zmdi-caret-up-circle:before {
+    content: '\f2f7';
+}
+.zmdi-gamepad:before {
+    content: '\f298';
+}
+.zmdi-comment-text:before {
+    content: '\f263';
+}
+.zmdi-graphic-eq:before {
+    content: '\f387';
+}
+.zmdi-home:before {
+    content: '\f175';
+}
+.zmdi-close-circle-o:before {
+    content: '\f134';
+}
+.zmdi-minus-circle:before {
+    content: '\f271';
+}
+.zmdi-plus-circle:before {
+    content: '\f276';
+}
+.zmdi-black-nib:before {
+    content: '\2712';
+}
+
+.zmdi-dot-circle:before {
+    content: '\f26f';
+}
+.zmdi-minus-circle-outline:before {
+    content: '\f270';
+}
+.zmdi-plus-circle-o:before {
+    content: '\f275';
+}
+.zmdi-view-module:before {
+    content: '\f321';
+}
+.zmdi-shild-check:before {
+    content: '\f1c7';
+}
+.zmdi-smartphone:before {
+    content: '\f2fc';
+}
+.zmdi-play:before {
+    content: '\f3aa';
+}
+.zmdi-globe-alt:before {
+    content: '\f171';
+}
+.zmdi-format-list-numbered:before {
+    content: '\f248';
+}
+.zmdi-collection-item:before {
+    content: '\f14b';
+}
+.zmdi-collection-item-1:before {
+    content: '\f141';
+}
+.zmdi-collection-item-2:before {
+    content: '\f142';
+}
+.zmdi-collection-item-3:before {
+    content: '\f143';
+}
+.zmdi-collection-item-4:before {
+    content: '\f144';
+}
+.zmdi-collection-item-5:before {
+    content: '\f145';
+}
+.zmdi-collection-item-6:before {
+    content: '\f146';
+}
+.zmdi-collection-item-7:before {
+    content: '\f147';
+}
+.zmdi-collection-item-8:before {
+    content: '\f148';
+}
+.zmdi-collection-item-9:before {
+    content: '\f14a';
+}
+.zmdi-collection-item-99:before {
+    content: '\f149';
+}
+.zmdi-collection-text:before {
+    content: '\f150';
+}
+.zmdi-mood:before {
+    content: '\f214';
+}
+.zmdi-receipt:before {
+    content: '\f1b4';
+}
+
+.BG {
+    background-color: #888;
+    background-image: linear-gradient(transparent 0%, #ddd 100%),
+        linear-gradient(transparent 20%, #888 55%);
+    background-size: 100% 10px;
+}
+
+@font-face {
+    font-family: 'Material-Design-Iconic-Font';
+    src: url('../fonts/Material-Design-Iconic-Font.woff2?v=2.2.0') format('woff2'), url('../fonts/Material-Design-Iconic-Font.woff?v=2.2.0') format('woff'), url('../fonts/Material-Design-Iconic-Font.ttf?v=2.2.0') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ui-state-hover {
+    border: 4px dashed #222;
+    background: #bbb;
+    font-weight: normal;
+}
+
+@-webkit-keyframes zmdi-spin-reverse {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(-359deg);
+        transform: rotate(-359deg);
+    }
+}
+@keyframes zmdi-spin-reverse {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(-359deg);
+        transform: rotate(-359deg);
+    }
+}
+
+.zmdi-hc-rotate-180 {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.zmdi-cards:before {
+    content: '\f188'; 
+}
+.zmdi-refresh-sync:before {
+    content: '\f1b8';
+}
+.zmdi-delete:before {
+    content: '\f154';
+}
+.zmdi-download:before {
+    content: '\f220';
+}
+.zmdi-help:before {
+    content: '\f1f6';
+}
+.zmdi-info-outline:before {
+    content: '\f1f7';
+}
+.zmdi-info:before {
+    content: '\f1f8';
+}
+.zmdi-settings:before {
+    content: '\f1c6';
+}
+.zmdi-circle:before {
+    content: '\f26d';
+}
+.zmdi-volume-off:before {
+    content: '\f3bb';
+}
+.zmdi-volume-up:before {
+    content: '\f3bc';
+}
+.zmdi-format-list-bulleted:before {
+    content: '\f247';
+}
+.zmdi-calendar-note:before {
+    content: '\f331';
+}
+.zmdi-account:before {
+    content: '\f207';
+}
+.zmdi-view-headline:before {
+    content: '\f31e';
+}
+.zmdi-star:before {
+    content: '\f27d';
+}
+.zmdi-equalizer:before {
+    content: '\f39e';
+}
+.zmdi-edit:before { 
+    content: '\f158';
+}
+.zmdi-plus:before {
+    content: '\f278';
+}
+.zmdi-invert-colors:before {
+    content: '\f182';
+}
+.zmdi-minus:before {
+    content: '\f273';
+}
+.zmdi-Tisch:before {
+    content: '\f366';
+}
+.zmdi-swap-vertical-circle:before {
+    content: '\f30b';
+}
+.zmdi-alert-circle-o:before {
+    content: '\f1f0';
+}
+.zmdi-minus-circle-outline:before {
+    content: '\f270';
+}
+.zmdi-menu:before {
+    content: '\f197';
+}
+.zmdi-format-align-justify:before {
+    content: '\f23a';
+}
+.zmdi-print:before {
+    content: '\f1b0';
+}
+.zmdi-wrench:before {
+    content: '\f1ed';
+}
+.zmdi-search:before {
+    content: '\f1c3';
+}
+
+.header { color:#fff; background-color:#666; padding:.1em; position:fixed; top:0; width:100% }
+.footer { position: fixed; bottom: 0; width: 100%; }
+
+.Link {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #0000bb;
+}
+
+.nb6 {
+    width: 16.666666% !important;
+    clear: none !important;
+}
+.nb0 {
+    width: 0% !important;
+    clear: none !important;
+}
+.nb04 {
+    width: 4% !important;
+    clear: none !important;
+}
+.nb08 {
+    width: 8% !important;
+    clear: none !important;
+}
+.nb11 {
+    width: 11% !important;
+    clear: none !important;
+}
+.nb12 {
+    width: 12% !important;
+    clear: none !important;
+}
+.nb13 {
+    width: 13% !important;
+    clear: none !important;
+}
+.nb16 {
+    width: 16% !important;
+    clear: none !important;
+}
+.nb18 {
+    width: 18% !important;
+    clear: none !important;
+}
+.nb23 {
+    width: 23% !important;
+    clear: none !important;
+}
+.nb24 {
+    width: 24% !important;
+    clear: none !important;
+}
+.nb25 {
+    width: 25% !important;
+    clear: none !important;
+}
+.nb26 {
+    width: 26% !important;
+    clear: none !important;
+}
+.nb27 {
+    width: 27% !important;
+    clear: none !important;
+}
+.nb28 {
+    width: 28% !important;
+    clear: none !important;
+}
+.nb29 {
+    width: 29% !important;
+    clear: none !important;
+}
+.nb37 {
+    width: 37.5% !important;
+    clear: none !important;
+}
+.nb44 {
+    width: 44% !important;
+    clear: none !important;
+}
+.nb48 {
+    width: 48% !important;
+    clear: none !important;
+}
+.nb50 {
+    width: 50% !important;
+    clear: none !important;
+}
+.nb52 {
+    width: 52% !important;
+    clear: none !important;
+}
+.nb74 {
+    width: 74% !important;
+    clear: none !important;
+}
+.nb75 {
+    width: 75% !important;
+    clear: none !important;
+}
+.nb76 {
+    width: 76% !important;
+    clear: none !important;
+}
+/*.cAktiv {
+    color: #FEFEFE;
+    background: #38d;
+}*/
+.bgVorhandAlt {
+    color: #ff8800;
+}
+.bgVorhand {
+    color: #efdf99 !important;
+}
+.cInaktiv {
+    color: #D3D3D3;
+}
+.cGrau {
+    color: #707070;
+}
+.cGruen {
+    color: #008000;
+}
+.cBlau {
+    color: #0000bb;
+}
+.cHellrot {
+    color: #dd6666;
+}
+.cRot {
+    color: #dd1111;
+}
+.cBraun {
+    color: #A52A2A;
+}
+.cDunkelgrau {
+    color: #555555;
+}
+.cSchwarz {
+    color: #111111;
+}
+.fGruen {color: #228822 !important}
+.fBlau {color: #222288 !important}
+.cHRC {color: #00994d !important}
+.cRTC {color: #0000bb !important}
+.cSWC {color: #8600b3 !important}
+.cSTC {color: #cc6600 !important}
+.cTTC {color: #111111 !important}
+.cWTC {color: #ef0000 !important}
+.cSST {color: #8b7355 !important}
+.cDIV {color: #777777 !important}
+.cPassiv {color: #222 !important}
+.cAktiv {color: #dd1111 !important}
+.bBeige {
+    background: #ffa;
+}
+.bBeige2 {
+    background: #eeb;
+}
+.bVorhand {
+    background: #efdf99;
+}
+.bHell {
+    background: #dfdfdf;
+}
+.bSehrHell {
+    background: #efefef;
+}
+.bGrau {
+    background: #c0c0c0;
+}
+.B {
+    font-weight: bold;
+}
+.N {
+    font-weight: normal;
+}
+.C {
+    text-align: center;
+}
+.R {
+    text-align: right;
+}
+
+i.noprint:hover {
+    cursor: pointer;
+    color: #1066aa;
+    font-weight: bold;
+}
+.P:hover {
+    cursor: pointer;
+    color: #0000bb;          /* violett: #bb0088 */
+    text-decoration: underline;
+    zoom: 102%;
+}
+i.P:hover {
+    cursor: pointer;
+    color: #1066aa;
+    text-decoration: none;
+    zoom: 103%;
+}
+.W {
+    white-space: nowrap;
+}
+
+th,td {
+    padding:.03em !important;
+    margin: 0em !important;
+}
+.TL {
+    text-align: left !important;
+    padding:.03em !important;
+}
+.TC {
+    text-align: center !important;
+    padding:.03em !important;
+}
+.TR {
+    text-align: right !important;
+    padding:.03em !important;
+}
+
+.U {
+    text-decoration: underline;
+}
+.LT {
+    text-decoration: line-through;
+}
+
+.ui-table-columntoggle-btn {
+    display: none !important;
+}
+
+input[type="number"] {
+    text-align: center;
+}
+
+textarea {
+    background:Gainsboro;
+}
+.nicEdit-main {
+    background-color:Gainsboro;
+    text-align: left
+}
+
+.BOX {
+    background: #f5f5f5;
+    border: 1px solid #DDD;
+    box-shadow: 3px 3px 0px rgba(0,0,0, .2);
+}
+
+.Sbtn {
+    padding: 0.5vh 0.1em !important;
+    margin: 1vh !important;
+}
+
+li, .K {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.k { /* button Geschichte, Anekdoten, Zidate */
+    padding: .1em 0 !important;
+    margin: 0.4em 0 !important;
+}

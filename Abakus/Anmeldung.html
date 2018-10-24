@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script src="../js/jquery/jquery.min.js"></script>
+ <!--       <script src="../js/jquery-ui/jquery-ui.min.js"></script>
+        <script src="../js/jquery-ui/TouchPunch.min.js"></script> -->
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <script src="../js/jBox/jBox.min.js"></script>
+        <link  href="../js/jBox/jBox.css" rel="stylesheet" />
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link   rel="stylesheet"      href="../js/css/Abakus.css" />
+        <script src="sortNachTischen.js" type="text/javascript"></script>
+        <script src="Anmeldung.js"   type="text/javascript"></script>
+    </head>
+    <body>
+        <div data-role="header" id=header data-position="fixed" style="padding:0em; margin:0em; position: fixed; top: 0; width: 100%;">
+            <ul data-role=listview id=dHeader sonclick="$.mobile.silentScroll(0);$('#dLegende').toggle('show');">
+                <li data-icon=false> <a>
+                        <img src='../Icons/MeinTisch.png' id=logo />
+                        <div id="dCanvas" height='110'>
+                        </div></a>
+                </li>
+            </ul>
+            <form onsubmit="event.preventDefault(); return onSubmitCode()" id='fCode' style="padding:0" hidden>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a" style="width:28%">
+                        <span class='S'>
+                            <br>
+                        </span>
+                        <span class='XL B'>&nbsp;&nbsp;Code:
+                        </span>
+                    </div>
+                    <div class="ui-block-b" style="width:40%">
+                        <input id="ptCode" type="number" pattern="\d*" data-role="none" autofocus>
+                    </div>
+                    <div class="ui-block-b C" style="width:32%">
+                        <input type="submit" data-theme="e" value="&nbsp;&nbsp;OK&nbsp;&nbsp;">
+                    </div>
+                </div> &nbsp;&nbsp;
+                <span id='ptMeld' class='L B cRot' hidden>
+                </span>
+            </form>
+        </div>
+        <div id="dHeaderEquivalent"></div>
+        <div id='dLegende' style='margin:0.5em' class='L N' hidden>
+            <span id=tWaehle><b>4rer-, 5er oder 6er-Tisch?</b>
+                <br>W&auml;hle dann
+            </span> einen Stammspieler oder suche eine Spieler aus der Spielerdatei und <b>ziehe</b> diesen an den gew&uuml;nschten Platz.
+            <br>
+            <br> <b>Willst du einen neuen Spieler anlegen</b>, dann gehe auf <b>[Spieler suchen]</b>, gebe Name und Ort des Spieler ein und dr&uuml;cke <b>[finden]</b>.
+            <br> Wenn kein Spieler mit gleichen Namen und Ort gefunden wurde, erscheint die Taste <b>[neuen Spieler erstellen]</b>.
+            <br> Der Rest versteht sich von selbst.
+            <br>
+            <br> Befinden sich alle Spieler
+            <br> am vorgesehenen Platz?
+            <br>Dann dr&uuml;cke <b>[OK]</b>.
+        </div>
+        <div id=dRumpf>
+            <br><br>
+            <div id=dRunden hidden>
+                <br>
+                <div class="ui-grid-b">
+                    <div class="ui-block-a" style="width:37%">
+                        <div data-role="navbar">
+                            <ul>
+                                <li>
+                                    <a id=noActive1 onClick="setTimeout(function () {
+                                                $('#noActive1').removeClass('ui-btn-active');
+                                            });" data-theme="d">Runde</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ui-block-b" style="width:40%">
+                        <div data-role="navbar">
+                            <ul>
+                                <li>
+                                    <a id=bRunde1 onClick="setRunde(1);">1</a>
+                                </li>
+                                <li>
+                                    <a id=bRunde2 onClick="setRunde(2);">2</a>
+                                </li>
+                                <li>
+                                    <a id=bRunde3 onClick="setRunde(3);">3</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ui-block-c" style="width:23%">
+                    </div>
+                </div>
+                <div id=dNachtrag style="padding:8px,0px" class="B M cRot">
+                </div>
+                <br>
+            </div>
+
+            <div class="ui-grid-a" id="dTische">
+                <div class="ui-block-a" style="width:66%">
+                    <div data-role="navbar">
+                        <ul>
+                            <li>
+                                <a id=b4er onClick="setTisch(4);">4er</a>
+                            </li>
+                            <li>
+                                <a id=b5er onClick="setTisch(5);">5er</a>
+                            </li>
+                            <li>
+                                <a id=b6er onClick="setTisch(6);">6er</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ui-block-b" style="width:34%">
+                    <div data-role="navbar">
+                        <ul>
+                            <li>
+                                <a id=noActive2 onClick="setTimeout(function () {
+                                            $('#noActive2').removeClass('ui-btn-active');
+                                        });" data-theme="d">Tisch</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id=dRumpf2><br>
+            </div>
+            <div>
+                <div data-role="navbar" id=nbSelRed class="ui-disabled" hidden>
+                    <ul>
+                        <li>
+                            <a onclick="showStatuszeile(true);
+                                    $('#Stammspieler').show();
+                                    $('#SpielerSuchen').hide();
+                                    $('#Tische').hide();
+                                    scrollToRumpf2();">Stamm-
+                                <br>spieler</a>
+                        </li>
+                        <li>
+                            <a onclick="showStatuszeile(true);
+                                    $('#Stammspieler').hide();
+                                    $('#SpielerSuchen').show();
+                                    $('#Tische').hide();
+                                    scrollToRumpf2();">Spieler
+                                <br>suchen</a>
+                        </li>
+                    </ul>
+                </div>
+                <div data-role="navbar" id=nbSelAll class="ui-disabled" hidden>
+                    <ul>
+                        <li>
+                            <a onclick="showStatuszeile(true);
+                                    $('#Stammspieler').show();
+                                    $('#SpielerSuchen').hide();
+                                    $('#Tische').hide();
+                                    scrollToRumpf2();">Stamm-
+                                <br>spieler</a>
+                        </li>
+                        <li>
+                            <a onclick="showStatuszeile(true);
+                                    $('#Stammspieler').hide();
+                                    $('#SpielerSuchen').show();
+                                    $('#Tische').hide();
+                                    scrollToRumpf2();">Spieler
+                                <br>suchen</a>
+                        </li>
+                        <li>
+                            <a onclick="showStatuszeile(true);
+                                    $('#Stammspieler').hide();
+                                    $('#SpielerSuchen').hide();
+                                    $('#Tische').show();
+                                    scrollToRumpf2();" id=bTische class=ui-disabled>Tische
+                                <br>&nbsp;</a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div id=Stammspieler hidden>
+                    <div data-role=navbar>
+                        <ul>
+                            <li>
+                                <a onClick="$('.alle').hide();$('.zuletzt').show();" class=ui-btn-active>zuletzt</a>
+                            </li>
+                            <li>
+                                <a onClick="$('.alle').hide();$('.le6Mon').show();"><div style="white-space:nowrap;" >le. 6 Mon.</div></a>
+                            </li>
+                            <li>
+                                <a onClick="$('.alle').show()">alle</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="ui-grid-a BG">
+                        <div class="ui-block-a" style="width:90%">
+                            <ul id="lvStammSP" data-role="listview" class='XL N'>
+                        </div>
+                        <div class="ui-block-b" style="width:10%">
+                        </div>
+                    </div>
+                </div>
+                <div id="SpielerSuchen" hidden>
+                    <div style='padding: 0 15px'>
+                        <form onSubmit="event.preventDefault();return onSubmitFinden(false)" class="ui-field-contain" id=divTSPgefunden style="margin:0;padding:0;">
+                            <input id="I_NR"    data-role="none" placeholder="Nummer:"   type="number" pattern="\d*">
+                            <input id="I_NNAME" data-role="none" placeholder="Nachname:" type="text">
+                            <input id="I_VNAME" data-role="none" placeholder="Vorname:"  type="text">
+                            <input id="I_ORT"   data-role="none" placeholder="Ort, Straße:" type="text">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">
+                                    <input type="button" onclick="B_Clear()" value="clear">
+                                </div>
+                                <div class="ui-block-b">
+                                    <input type="submit" data-theme="e" id=B_Finden value="finden">
+                                </div>
+                            </div>
+                            <div class="ui-grid-solo" id="D_NeuerSpieler" hidden>
+                                <div class="ui-block-a">
+                                    <input type="button" id="B_NeuerSpieler" data-theme="e" onclick="onSubmitFinden(true)" value="neuen&nbsp;Spieler&nbsp;erstellen">
+                                </div>
+                            </div>
+                        </form>
+                        <span id="fMeldung"  class="XL B">Wer soll gefunden werden?
+                        </span>
+                    </div>
+                    <div class="ui-grid-a BG">
+                        <div class="ui-block-a" style="width:90%">
+                            <ul id="lvGefunden" data-role="listview">
+                            </ul>
+                        </div>
+                        <div class="ui-block-b" style="width:10%">
+                        </div>
+                    </div>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                </div>
+                <div id=Tische hidden>
+                    <div class="ui-grid-a BG">
+                        <div class="ui-block-a" style="width:90%">
+                            <ul id="lvTische" data-role="listview" class='L N'>
+                            </ul>
+                        </div>
+                        <div class="ui-block-b" style="width:10%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="onExit" id=Footer data-role="footer" data-position="fixed" style="position: fixed; bottom: 0; width: 100%;">
+            <span id="tStatuszeile"  class="L" style="padding:.1em;white-space:nowrap;">
+            </span>
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li>
+                        <a data-icon=arrow-l class=iconJQM onClick="history.go(LS.I ? -1 : -2);">&nbsp;&nbsp;&nbsp;&nbsp;zur&uuml;ck</a>
+                    </li>
+                    <li>
+                        <a data-icon=check   class=iconJQM onClick="onOK()" id=bOK data-theme="e">&nbsp;&nbsp;&nbsp;OK</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

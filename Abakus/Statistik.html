@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link  href="../Icons/icon-36-ldpi.png" rel="shortcut icon" />
+        <link  href="../themes/ThemeABCDE.min.css" rel="stylesheet" />
+        <link  href="../themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+        <link  href="../js/jquery.mobile/jquery.mobile.min.css" rel="stylesheet" />
+        <script src="../js/jquery/jquery.min.js"></script>
+        <script src="../js/firebase/firebase.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <script src="../js/jBox/jBox.min.js"></script>
+        <link  href="../js/jBox/jBox.css" rel="stylesheet" />
+        <script src="../js/jBox/Meldungen.js"></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css"      rel="stylesheet" />
+        <style>
+            #iFilter {
+                background-image: url('../Icons/Search.png');
+                background-repeat: no-repeat;
+                padding: 2px 20px 2px 40px;
+            }
+        </style>
+        <script src="statFunktionen.js"  ></script>
+        <script src="Statistik.js"       ></script>
+        <script src="statDiagramm.js"    ></script>
+        <script src="statGauge.js"       ></script>
+        <script src="statShow.js"        ></script>
+        <script src="statPosAnmeld.js"   ></script>
+        <script src="statPosDiv.js"      ></script>
+        <script src="statPosCup.js"      ></script>
+        <script src="statPosCupD60.js"   ></script>
+        <script src="statPosDivPCtur.js" ></script>
+        <script src="statDetails.js"     ></script>
+        <script src="loadSTAT.js"        ></script>
+        <script src="sortNachTischen.js" ></script>
+        <script src="../js/highcharts/highcharts.js"></script>
+        <script src="../js/highcharts/highcharts-3d.js"></script>
+        <script src="../js/highcharts/highcharts-more.js"></script>
+        <script src="../js/highcharts/solid-gauge.js"></script>
+        <script src="../js/highcharts/funnel.js"></script>
+    </head>
+    <body onclick="event.stopImmediatePropagation()">
+        <div id=stMain>
+        </div>
+        <br> &nbsp;&nbsp;&nbsp;
+        <span class=S>&copy; 2015-
+            <span id="tJJJJ">2099
+            </span> by Leo Luger
+        </span>
+        <div id=stFooter class="noprint" hidden>
+            <br>
+            <div class="ui-grid-a">
+                <div class="ui-block-a" style="width:44%;">
+                    <div class="ui-grid-a ui-btn" onClick="historyBack();">
+                        <div class="ui-block-a" style="width:25%;padding:4px 0px 0px 0px">
+                            <img src='../Icons/icon-48-mdpi.png' height="40" width="40" style="margin:-15px"/>
+                        </div>
+                        <div class="ui-block-b" style="width:75%;padding:8px 0px 8px 0px">
+                            <div class=M>Abakus
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-block-b" style="width:56%;">
+                    <div class="ui-grid-a ui-btn" id=bMeinTisch onClick="history.back();">
+                        <div class="ui-block-a" style="width:25%;padding:4px 0px 0px 0px">
+                            <img src='../Icons/MeinTisch.png' id=iMeinTisch height="42" width="42" style="margin:-15px"/>
+                        </div>
+                        <div class="ui-block-b" style="width:75%;padding:8px 0px 8px 0px">
+                            <div class=M id=tMeinTisch>Mein Tisch
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src='../Icons/Statistik.png'   id=imgStatistik hidden/>
+        <img src='../Icons/icon-64.png'     id=imgSkuess hidden/>
+    </body>
+</html>

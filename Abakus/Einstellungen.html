@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script type="text/javascript" src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css" rel="stylesheet" />
+        <script src="Einstellungen.js"></script>
+    </head>
+    <body onclick="event.stopPropagation();">
+        <div data-role="page">
+            <div data-role="header" data-position="fixed" style="padding:0em; margin:0em;">
+                <div class="ui-grid-a" onClick="$('#dLegende').toggle('show');">
+                    <div class="ui-block-a" style="width:68px;">
+                        <img src='../Icons/Optionen.png' id=logo  style="margin-left:8px;margin-bottom:-10px;height:64px; width:64px;" alt="Abakus"/>
+                    </div>
+                    <div class="ui-block-b">
+                        <div id=hTitel1 style="width:auto; text-align:left; margin-left:12px; font-size: 31px; margin-top:-2px; font-style: italic;">Abakus</div>
+                        <div id=hTitel2 style="width:auto; text-align:left; margin-left:12px; font-size: 28px; margin-top:-8px; font-weight: normal;">Einstellungen</div>
+                    </div>
+                </div>
+                <div id='dLegende' style='margin:0.5em' class='M N' onClick="$('#dLegende').toggle('show');" hidden> Hier kannst du <b><i>Abakus</i></b> deinen Anforderungen entsprechend anpassen.
+                </div>
+                <div data-role="navbar" id=nbHilfeEingabe class=onExit>
+                    <ul>
+                        <li>
+                            <a onclick="$('.hilfe').show().css('width', '100%');$('.daten').css('width', '0%');">Hilfe</a>
+                        </li>
+                        <li>
+                            <a onclick="$('.hilfe').hide().css('width', '0%');$('.daten').css('width', '100%');" id=bEingabe>Eingabe</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="main" class="onExit">
+                <br>
+                <div class="L B C">Pers&ouml;nliche VIP's:
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a hilfe" style="text-align:center;">
+                        <br>
+                        <span class='M'>Um wichtige Spieler auf der Statistik schnell finden zu k&ouml;nnen, werden diese so
+                            <span style="background-color:#ddb">&nbsp;markiert&nbsp;
+                            </span>.
+                        </span>
+                    </div>
+                    <div class="ui-block-b daten" style="text-align:center;">
+                        <input type=text id=iFREUNDE>
+                        <div style='text-align:left'>z.B.: <b>3343, 4823, 3493, ...</b>
+                        </div>
+                    </div>
+                </div>
+                <div id=bLayout>
+                    <hr>
+                    <div class="L B C">Layout der Cup- und Turnierwertungen:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe" style="text-align:center;">
+                            <span class='M'>Soll auf der Cup- und der Turnierwertung
+                                <br>die Spielernummer anzeigen werden?
+                            </span>
+                        </div>
+                        <div class="ui-block-b daten" style="text-align:center;">
+                            <fieldset data-role=controlgroup data-mini=true data-theme="a">
+                                <label class=btn>
+                                    <input type='checkbox' id=iSpielerNrww>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spielernummer anzeigen
+                                </label>
+                            </fieldset>
+                            <form>
+                                <label>
+                                    <input type='checkbox' id=iSpielerNr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spielernummer anzeigen
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="L B C">Layout der privaten Runden:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe" style="text-align:center;">
+                            <br>
+                            <br>
+                            <span class='M'>F&uuml;r Smartphones und Tablets eine Kolonne, f&uuml;r Laptop und PC 3 oder 4 Kolonnen.
+                            </span>
+                        </div>
+                        <div class="ui-block-b daten" style="text-align:center;">
+                            <fieldset data-role="controlgroup" data-mini="true" class='Radio'>
+                                <input type="radio" name="AnzSpalten" id="AnzSpalten1" value=1>
+                                <label for="AnzSpalten1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 Kolonne
+                                </label>
+                                <input type="radio" name="AnzSpalten" id="AnzSpalten2" value=2>
+                                <label for="AnzSpalten2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 Kolonnen *
+                                </label>
+                                <input type="radio" name="AnzSpalten" id="AnzSpalten3" value=3>
+                                <label for="AnzSpalten3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 Kolonnen
+                                </label>
+                                <input type="radio" name="AnzSpalten" id="AnzSpalten4" value=4>
+                                <label for="AnzSpalten4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 Kolonnen
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="L B C">Nach der Eingabe:
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a hilfe" style="text-align:center;">
+                        <br>
+                        <span class='M'>Soll nach der Eingabe eines Spiels die Grafik oder der Schreibzettel gezeigt werden?
+                        </span>
+                    </div>
+                    <div class="ui-block-b daten" style="text-align:center;">
+                        <fieldset data-role="controlgroup" data-mini="true" class='Radio'>
+                            <input type="radio" name="Schreibzettel" id="Schreibzettelfalse" value="false">
+                            <label for="Schreibzettelfalse">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grafik anzeigen *
+                            </label>
+                            <input type="radio" name="Schreibzettel" id="Schreibzetteltrue" value="true">
+                            <label for="Schreibzetteltrue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schreibzettel&nbsp;anzeigen
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+                <hr>
+
+                <hr>
+                <div class="L B C">*) Defaultwerte wiederherstellen:
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a hilfe" style="text-align:center;">
+                        <br>
+                        <span class='M'>Hier kannst du mit einem Klick die mit '*' markierten Defaultwerte wiederherstellen.
+                        </span>
+                    </div>
+                    <div class="ui-block-b daten" sstyle="text-align:center;">
+                        <a class="ui-btn ui-btn-inline ui-corner-all Sbtn" id="bDefaults">&nbsp;&nbsp;&nbsp;&nbsp;Defaultwerte&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                </div>
+                <br>
+
+                <p>
+            </div>
+            <div data-role="footer" data-position="fixed" class=onExit style="position: fixed; bottom: 0; width: 100%;">
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a data-icon=delete class=iconJQM onClick="history.back();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abbrechen</a>
+                        </li>
+                        <li>
+                            <a data-icon=check  class=iconJQM id="bSpeichern" data-theme="e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speichern</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

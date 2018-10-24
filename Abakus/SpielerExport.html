@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/firebase/firebase.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css"      rel="stylesheet" />
+        <script src="../js/FileSaver/FileSaver.min.js"></script>
+        <script src="loadSPIELER.js"></script>
+        <script src="SpielerExport.js"></script>
+    </head>
+    <body onclick="event.stopImmediatePropagation();">
+        <div id=dHeader data-role="header" data-position="fixed" style="padding:0em; margin:0em;">
+            <div class="ui-grid-c" onClick="$('#dLegende').toggle('show');">
+                <div class="ui-block-a" style="width:1vw;"></div>
+                <div class="ui-block-b C" style="width:70px;margin-bottom:-8px">
+                    <img src='../Icons/Tools.png' id=logo height="70" width="70"/>
+                </div>
+                <div class="ui-block-c" style="width:1.5vw;"></div>
+                <div class="ui-block-d" style="width:auto">
+                    <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px; margin-top:-2px; font-style: italic;">ABAKUS die Tarock-App</div>
+                    <div id=hTitel2 style="width:auto; text-align:left; font-size: 28px; margin-top:-8px; font-weight: normal;">Spieler exportieren / downloaden</div>
+                </div>
+            </div>
+        </div>
+        <div id='dLegende' onClick="$('#dLegende').toggle('show');" style='margin:1em; text-align: left;' class='M N' hidden>
+            <b>Hinweis:</b>
+            Das Downloadfile ist zwecks Datenausdausch an Karl Haas<br>
+            <b>karl.haas@aon.at</b> zu senden.
+        </div>
+        <div id='main'>
+            <br>
+            <br>
+            <br>
+            <div class="ui-grid-b">
+                <div class="ui-block-a" style="width:25%;">
+                </div>
+                <div class="ui-block-b" style="width:50%;">
+                    <button type="button" data-theme="e" onclick="downloadSpieler(false)" class="ui-disabled" id="bDownloadFuerKarlHaas">Neue und ge&auml;nderte Spieler downloaden.
+                        <br>
+                        <span class="N">Downloadfile f&uuml;r Karl Haas erstellen.
+                        </span>
+                    </button>
+                    <button type="button" data-theme="e" onclick="downloadSpieler(true)">Alle <span id="tAktiveSpieler">aktiven Spieler</span> downloaden.
+                    </button>
+                    <br>
+                    <br>
+                    <div id=tMeldung class='M'>
+                    </div>
+                </div>
+                <div class="ui-block-c" style="width:25%;">
+                </div>
+            </div>
+            <div data-role="footer" id="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a data-icon=arrow-l class=iconJQM onClick="history.go(-1);">zur&uuml;ck</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

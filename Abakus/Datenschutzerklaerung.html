@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css" rel="stylesheet" />
+        <script src="Datenschutzerklaerung.js"></script>
+    </head>
+    <body>
+        <div data-role="page">
+            <div data-role="header" class="ui-btn K" data-position="fixed" style="padding:0em; margin:0em;">
+                <div class="ui-grid-a" onClick="$('#dLegende').toggle('show');">
+                    <div class="ui-block-a" style="width:68px;">
+                        <img src='../Icons/icon-64.png' id=logo  style="margin-left:8px;margin-bottom:-10px;height:64px; width:64px;" alt="Abakus"/>
+                    </div>
+                    <div class="ui-block-b">
+                        <div id=hTitel1 style="width:auto; text-align:left; margin-left:12px; font-size: 31px; margin-top:-2px; font-style: italic;">Abakus</div>
+                        <div id=hTitel2 style="width:auto; text-align:left; margin-left:12px; font-size: 28px; margin-top:-8px; font-weight: normal;">Datenschutzerklärung</div>
+                    </div>
+                </div>
+                <div id='dLegende' onClick="$('#dLegende').toggle('show');" style='margin:1em; text-align: left;' class='M N' hidden>
+                    <b>Achtung:</b> Beachte, dass Änderungen, die du hier machst auf anderen Geräten spätestens nach 48 Stunden<br>
+                    oder nach dem drücken von <b>[ Initialisieren ]</b> verfügbar werden.
+                </div>
+            </div>
+            <div data-role="content" class="onExit M">
+
+                <br><b>Grundsätzliches:</b><br>
+                ABAKUS die königliche Tarock-App ist die Plattform auf der
+                der Wiener Zeitung Tarockcup, der Steirische Tarockcup
+                sowie diverse Wirtshaus- und private Runden betrieben werden.
+
+                <br><br><b>Cookies:</b><br>
+                Um sich nicht bei jedem Aufruf der App registrieren zu müssen
+                und um nicht bei jedem Aufruf alle Daten neu aus der Datenbank
+                laden zu müssen, werden diverse Daten lokal im Local Storage (in Cookies) zwischengespeichert.
+                Weder die Betreiber der einzelnen Runden/Cups noch der Betreiber der
+                App haben Zugriff auf diese Daten.
+
+                <br><br><b>Google Analytics:</b><br>
+                Es erfolgt keine weitergabe von Daten an Google Analytics oder an andere Datendienste.
+
+                <br><br><b>Persönliche Daten:</b><br>
+                Die dem Österreich-Finale angeschlossenen Tarockcups erheben und speichern gemeinschaftlich
+                persönliche Daten wie Anschrift, Geburtsdatum, Telefonnummer und Email-Adresse.
+                Diese Daten werden vom Österreich-Finale und den ihm angeschlossenen Tarockcups
+                gemeinschaftlich für Tarockzwecke genutzt. Es erfolgt keine Weitergabe der Daten an Dritte.
+
+                <br><br><b>Statistische Daten:</b><br>
+                Von allen Runden, Turnieren und Cups werden umfangreiche Statistiken geführt.
+                Auf diesen Listen werden außer Spielernummer, Vorname, Nachname und Wohnort
+                keine Spielerdaten veröffentlicht.
+                Mit Ausnahme der privaten Runden sind alle Statistiken öffentlich einsehbar.
+
+                <br><br><b>Deine Rechte:</b><br>
+                Auf Wunsch kannst du vor jedem Cupturnier und zwischen den einzelnen Runden die von dir gespeicherten Daten einsehen.
+                Laut Artikel 16 DSGVO hast du das Recht, eine Korrektur oder Ergänzung der dich betreffenden Daten zu verlangen.
+                Weiters kannst du nach Artikel 17 DSGVO verlangen, dass deine Daten unverzüglich gelöscht werden.
+                Alternativ kannst du nach Artikel 18 DSGVO eine Einschränkung der Verarbeitung deiner Daten verlangen.
+
+                <br><br><b>Widerrufsrecht:</b><br>
+                Laut Artikel 7 Absatz 3 DSGVO kannst du eine bereits erteilte Zustimmumg jederzeit widerrufen.
+
+                <br><br><b>Beschwerderecht:</b><br>
+                Ferner hast du gemäß Artikel 77 DSGVO das Recht, eine Beschwerde bei der zuständigen Aufsichtsbehörde einzureichen.
+
+                <br><br><b>Wirtshaus- und private Runden:</b><br>
+                Weder vom Betreiber der App noch von Betreibern der Wirtshaus- und privaten Runden
+                werden persönliche Daten gesammelt oder gespeichert.
+
+                <br><br>
+
+                <button id="bSpeichern" data-theme="e" onclick="fIchStimmeZu();">Ich stimme zu.</button>
+                <button id="bSpeichern" data-theme="e" onclick="fIchStimmeNichtZu();">Ich stimme nicht zu.<br><span class="N">Alle lokalen Daten löschen<br>und die App beenden.</span></button>
+
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/firebase/firebase.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <script src="loadSTAT.js" ></script>
+        <script src="../js/nicEdit/nicEdit.js"></script>
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css" rel="stylesheet" />
+        <script src="ParameterAendern.js"></script>
+    </head>
+    <body conclick="event.stopImmediatePropagation();">
+        <div data-role="page">
+            <div data-role="header" class="ui-btn K" data-position="fixed" style="padding:0em; margin:0em;">
+                <div class="ui-grid-a" onClick="$('#dLegende').toggle('show');">
+                    <div class="ui-block-a" style="width:68px;">
+                        <img src='../Icons/Tools.png' id=logo  style="margin-left:8px;margin-bottom:-10px;height:64px; width:64px;" alt="Abakus"/>
+                    </div>
+                    <div class="ui-block-b">
+                        <div id=hTitel1 style="width:auto; text-align:left; margin-left:12px; font-size: 31px; margin-top:-2px; font-style: italic;">ABAKUS die Tarock-App</div>
+                        <div id=hTitel2 style="width:auto; text-align:left; margin-left:12px; font-size: 28px; margin-top:-8px; font-weight: normal;">Parameter ändern</div>
+                    </div>
+                </div>
+                <div id='dLegende' onClick="$('#dLegende').toggle('show');" style='margin:1em; text-align: left;' class='M N' hidden>
+                    <b>Achtung:</b> Beachte, dass Änderungen, die du hier machst auf anderen Geräten spätestens nach 48 Stunden<br>
+                    oder nach dem drücken von <b>[ Initialisieren ]</b> verfügbar werden.
+                </div>
+            </div>
+            <div data-role="main" class="onExit">
+                <div data-role="navbar" id=nbHilfeEingabe>
+                    <ul>
+                        <li>
+                            <a class=btn onclick="$('.hilfe').show().css('width', '100%');$('.daten').css('width', '0%');">Hilfe</a>
+                        </li>
+                        <li>
+                            <a class=btn onclick="$('.hilfe').hide().css('width', '0%');$('.daten').css('width', '100%');" id=bEingabe>Eingabe</a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <div class="L B C">Beschreibung:
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a hilfe M" style="text-align:center;">
+                        <br>Wo wird gespielt?
+                        <br>Wann wird gespielt?
+                        <br>Wer ist der Ansprechpartner?
+                        <br>Wie kann man ihn erreichen?
+                    </div>
+                    <div class="ui-block-b daten" style="text-align:center;">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:20%;">
+                            </div>
+                            <div class="ui-block-b L" style="width:80%;"  onclick="event.stopImmediatePropagation();">
+                                <form id=fTEXT1>
+                                    <textarea id="iTEXT1" style="width: 100%; text-align:justify">
+                                    </textarea>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dCup">
+                    <hr>
+                    <div class="L B C">Regeln:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe" style="text-align:center;">
+                            <br>
+                            <span class='M'>Nach welchen Regeln wird gespielt?
+                            </span>
+                            <br>
+                            <br>
+                            <span class='M'>Gibt es nach Trischaken und nach einem 'Fensterbrettl'
+                                <br>eine doppelte Runde?
+                            </span>
+                            <br>
+                            <br>
+                            <span class='M'>Gelten abweichende Tarife?
+                            </span>
+                        </div>
+                        <div class="ui-block-b daten">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a" style="width:20%;">
+                                </div>
+                                <div class="ui-block-b" style="width:80%;">
+                                    <fieldset data-role=controlgroup data-type=horizontal data-mini=true data-theme="a">
+                                        <label for=iR_WR    class=btn  >&nbsp;&nbsp;Wr.&nbsp;&nbsp;</label>
+                                        <input  id=iR_WR    type=radio name=iREGELN value="Wr.">
+                                        <label for=iR_OOE   class=btn  >&nbsp;&nbsp;Oö.&nbsp;&nbsp;</label>
+                                        <input  id=iR_OOE   type=radio name=iREGELN value="Ooe.">
+                                        <label for=iR_TI    class=btn  >&nbsp;&nbsp;Tir.&nbsp;&nbsp;</label>
+                                        <input  id=iR_TI    type=radio name=iREGELN value="Ti.">
+                                    </fieldset>
+                                    <fieldset data-role=controlgroup data-mini=true data-theme="a">
+                                        <label class=btn>
+                                            <input type='checkbox' id=iDOPRUNDEN onclick="CUPS.DOPPELTERUNDEN[I] = !CUPS.DOPPELTERUNDEN[I];">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doppelte&nbsp;Runden
+                                        </label>
+                                        <label class=btn>
+                                            <input type='checkbox' id=iABWTARIFE onclick="iABWTARIFEonClick()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abweichende&nbsp;Tarife
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=dABWTARIFE>
+                        <div class="ui-grid-a">
+                            <div class="L C">Abweichende Tarife - <b>Spiele:</b>
+                            </div>
+                            <div class="ui-block-a hilfe" style="text-align:center;">
+                                <br>
+                                <span class='M'>0 bedeutet dass dieses Spiel nicht gespielt wird.
+                                    <br>Der Solorufer hat immer den doppelten Tarif des Rufers.
+                                    <br>Der Solodreier den doppelten Tarif des 3ers.
+                                </span>
+                            </div>
+                            <div class="ui-block-b daten">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a" style="width:20%;">
+                                    </div>
+                                    <div class="ui-block-b" style="width:80%;padding:0;margin:0;">
+                                        <div class="ui-grid-b" style="padding:0;margin:0;">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Rufer:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF1" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b" style="padding:0;margin:0;">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> 6er:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF2" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> 3er:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF3" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Farben-3er:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF4" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Farbensolo:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF5" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Trischaken:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF6" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Pi/Zwiccolo:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF7" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Bettler:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF8" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Pi/Zwi.&nbsp;overt:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF9" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Bettler&nbsp;overt:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF10" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="L C">Abweichende Tarife - <b>Pr&auml;mien:</b>
+                            </div>
+                            <div class="L C">(jeweils still)
+                            </div>
+                            <div class="ui-block-a hilfe" style="text-align:center;">
+                                <br>
+                                <span class='M'>0 bedeutet dass diese Pr&auml;mie nicht gerechnet wird.
+                                    <br>Angesagt wird die Pr&auml;mie immer doppelt gerechnet.
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>Bei Valat bedeutet 0 dass das Spiel mal 4,
+                                    <br>und bei einen angesagten Valat mal 8 gerechnet wird.
+                                    <br>Ansonst ist der Valat eine Fixpr&auml;mie zum angegebenen Wert.
+                                </span>
+                            </div>
+                            <div class="ui-block-b daten">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a" style="width:20%;">
+                                    </div>
+                                    <div class="ui-block-b" style="width:80%;">
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Pagat:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF11" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Uhu:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF12" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Kakadu:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF13" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Quapil:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF14" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b" hidden>
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> V:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF15" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Trull:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF16" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Vier&nbsp;K&ouml;nige:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF17" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> K&ouml;nig&nbsp;ultimo:
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF18" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-c">
+                                            <div class="ui-block-a" style="width:25%;margin-top:.2em;">
+                                                <input id="iTARIF20T" type="text" data-role="none" placeholder="?">
+                                            </div>
+                                            <div class="ui-block-b L" style="width:30%;margin-top:.2em;">&nbsp;:
+                                            </div>
+                                            <div class="ui-block-c"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF20" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-c">
+                                            <div class="ui-block-a" style="width:25%;margin-top:.2em;">
+                                                <input id="iTARIF21T" type="text" data-role="none" placeholder="?">
+                                            </div>
+                                            <div class="ui-block-b L" style="width:30%;margin-top:.2em;">&nbsp;:
+                                            </div>
+                                            <div class="ui-block-c"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF21" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                        <div class="ui-grid-b">
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Valat: (0=*4)
+                                            </div>
+                                            <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                                <input id="iTARIF19" type="number" pattern="\d*" min=0 max=50 data-role="none">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="L B C">Berechtigungen:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe M" style="text-align:center;">
+                            <br>Für jeden Spieler der einen Tisch eingeben können soll, muss die Spielernummer vierstellig eingegeben werden.
+                            <br>Für Manfred Doppler also 0919.
+                            <br>Als Gedankenstütze können der Spielernummer die Initialen vorangestellt werden.
+                            <br>Ein Stern bedeutet, dass alle Spieler, die sich registriert haben, einen Tisch eingeben können.
+                        </div>
+                        <div class="ui-block-b daten" style="text-align:center;">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a" style="width:20%;">
+                                </div>
+                                <div class="ui-block-b" style="width:80%;">
+                                    <div class="ui-field-contain">
+                                        <div class="L" style="text-align: left">Parameter ändern:</div>
+                                        <input  id="iBEREadmin" type="text" class="ui-disabled"  data-role="none" placeholder="Administratorrechte:">
+                                        <br><br>
+                                        <div class="L" style="text-align: left">Tische eingeben:</div>
+                                        <input  id="iBEREschreiben" type="text"  data-role="none" placeholder="Lesen und schreiben:">
+                                        <div class="L" style="text-align: left">z.B.: MD0919,MM3244...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="L B C">Wann wird gespielt:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe M" style="text-align:center;">
+                            <br>Um die Daten vor Fehleingaben zu schützen, ist das Erfassen neuer Tische außerhalb der markierten Zeiten nicht m&ouml;glich.
+                        </div>
+                        <div class="ui-block-b daten">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a" style="width:20%;">
+                                </div>
+                                <div class="ui-block-b" style="width:80%;">
+                                    <fieldset data-role=controlgroup data-mini=true data-theme="a">
+                                        <label for=iMO >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Montag </label>
+                                        <input  id=iMO type=checkbox name=iSPIELTAGE>
+                                        <label for=iDI >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dienstag </label>
+                                        <input  id=iDI type=checkbox name=iSPIELTAGE>
+                                        <label for=iMI >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mittwoch </label>
+                                        <input  id=iMI type=checkbox name=iSPIELTAGE>
+                                        <label for=iDO >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donnerstag </label>
+                                        <input  id=iDO type=checkbox name=iSPIELTAGE>
+                                        <label for=iFR >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Freitag </label>
+                                        <input  id=iFR type=checkbox name=iSPIELTAGE>
+                                        <label for=iSA >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Samstag </label>
+                                        <input  id=iSA type=checkbox name=iSPIELTAGE>
+                                        <label for=iSO >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sonntag </label>
+                                        <input  id=iSO type=checkbox name=iSPIELTAGE>
+                                    </fieldset>
+
+                                    <fieldset data-role=controlgroup data-mini=true data-theme="a" id=fsWoche hidden>
+                                        <label for=iW1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Woche </label>
+                                        <input  id=iW1 type=checkbox name=iWOCHEN>
+                                        <label for=iW2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Woche </label>
+                                        <input  id=iW2 type=checkbox name=iWOCHEN>
+                                        <label for=iW3 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Woche </label>
+                                        <input  id=iW3 type=checkbox name=iWOCHEN>
+                                        <label for=iW4 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Woche </label>
+                                        <input  id=iW4 type=checkbox name=iWOCHEN>
+                                        <label for=iW5 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Woche </label>
+                                        <input  id=iW5 type=checkbox name=iWOCHEN>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="ui-block-a L" style="width:20%;margin-top:.8em;text-align:right;"> ab&nbsp;&nbsp;
+                            </div>
+                            <div class="ui-block-b" style="width:25%;margin-top:1em;">
+                                <input id="iSPIELEAB" type="number" pattern="\d*" min=0 max=24 data-role="none">
+                            </div>
+                            <div class="ui-block-c L" style="width:55%;margin-top:.8em;"> &nbsp;&nbsp;Uhr
+                            </div>
+                            <div class="ui-block-a" style="width:20%;">
+                            </div>
+                            <div class="ui-block-b" style="width:80%;">
+                                <fieldset data-role=controlgroup data-mini=true data-theme="a">
+                                    <label for=iANMELDERF >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mit Anmeldung
+                                    </label>
+                                    <input  id=iANMELDERF type=checkbox onclick="iANMELDERFonClick()">
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-a" id=dANMELDERF hidden>
+                        <div class="L B C">N&auml;chster Termin:
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a hilfe M" style="text-align:center;">
+                                <br>Wann wird das n&auml;chste mal gespielt?
+                            </div>
+                            <div class="ui-block-b daten">
+                                <div class="ui-grid-b">
+                                    <div class="ui-block-a L" style="width:20%;margin-top:.6em;text-align:right;"> am&nbsp;&nbsp;
+                                    </div>
+                                    <div class="ui-block-b C" style="width:60%;">
+                                        <input type="date" data-clear-btn="false" class='C' id="iNEXTTERMIN">
+                                    </div>
+                                    <div class="ui-block-c L" style="width:20%;margin-top:.8em;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="L B C">Schreibweise des Namens:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe M" style="text-align:center;">
+                            <br>Wie soll in den Statistiken der Name der Spieler geschrieben werden?
+                        </div>
+                        <div class="ui-block-b daten" style="text-align:center;">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a" style="width:20%;">
+                                </div>
+                                <div class="ui-block-b" style="width:80%;text-align:center;">
+                                    <fieldset data-role=controlgroup data-mini='true' data-theme="a">
+                                        <input type=radio name=iSWNAME id=iSWNAMEV  value=0 >
+                                        <label class=btn for=iSWNAMEV >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vorname </label>
+                                        <input type=radio name=iSWNAME id=iSWNAMEVN value=1>
+                                        <label class=btn for=iSWNAMEVN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vorname&nbsp;Nachname </label>
+                                        <input type=radio name=iSWNAME id=iSWNAMENV value=2>
+                                        <label class=btn for=iSWNAMENV>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nachname&nbsp;Vorname </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="L B C">L&auml;nge des 2. Namensteils:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe M" style="text-align:center;"> Wieviele Stellen des 2. Namensteil sollen am PC angezeigt werden?
+                            <br>Bei 0 wird der 2. Namensteil in voller L&auml;nge gezeigt.
+                            <br>Am Handy werden maximal drei Stellen angezeigt.
+                        </div>
+                        <div class="ui-block-b daten">
+                            <br>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a" style="width:20%;">
+                                </div>
+                                <div class="ui-block-b" style="width:25%;text-align:center;">
+                                    <input id="iNAME2LEN" type="number" pattern="\d*" min=0 max=3 data-role="none">
+                                </div>
+                                <div class="ui-block-c L"> &nbsp;&nbsp;Zeichen
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="L B C" hidden>Spieler anzeigen:
+                    </div>
+                    <div class="ui-grid-a" hidden>
+                        <div class="ui-block-a hilfe M" style="text-align:center;">
+                            <br>Gelegenheitsspieler welche weniger als den angegebenen Prozentsatz der Spiele gespielt haben werden auf den reduzierten Listen nicht angezeigt.
+                            <br>Auf den vollst&auml;ndigen Listen werden immer alle Spieler gelistet.
+                        </div>
+                        <div class="ui-block-b daten">
+                            <div class="L C">Gesamtwertung:
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a L" style="width:20%;text-align:right;"> Ab&nbsp;&nbsp;
+                                </div>
+                                <div class="ui-block-b" style="width:25%;">
+                                    <input id="iDISPAB0" type="number" pattern="\d*" data-role="none" min=0 max=100>
+                                </div>
+                                <div class="ui-block-c L" style="width:55%;"> &nbsp;&nbsp;% der Spiele
+                                </div>
+                            </div>
+                            <div class="L C">Cupwertung:
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a L" style="width:20%;margin-top:.8em;text-align:right;"> Ab&nbsp;&nbsp;
+                                </div>
+                                <div class="ui-block-b" style="width:25%;text-align:center;">
+                                    <input id="iDISPAB1" type="number" pattern="\d*" data-role="none" min=0 max=100>
+                                </div>
+                                <div class="ui-block-c L" style="width:55%;margin-top:.8em;">&nbsp;&nbsp;% der Spiele
+                                </div>
+                            </div>
+                            <div class="L C">Turnier/Tageswertung:
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a L" style="width:20%;margin-top:.8em;text-align:right;"> Ab&nbsp;&nbsp;
+                                </div>
+                                <div class="ui-block-b" style="width:25%;text-align:center;">
+                                    <input id="iDISPAB3" type="number" pattern="\d*" data-role="none" min=0 max=100>
+                                </div>
+                                <div class="ui-block-c L" style="width:55%;margin-top:.8em;"> &nbsp;&nbsp;% der Spiele
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="L B C">D60-Cuppunkte voll rechnen:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe M">
+                            <div style="margin-left:11px;margin-right:11px;text-align:justify">
+                                Bei Spielern, welche mindestens den angegebenen Prozentsatz der Spiele gespielt haben, sind die D60-Cuppunkte mit den D60-Punkten ident.
+                                Fehlen einem Spieler zum Beispiel 19 % auf den geforderten Prozentsatz, so werden zur Berechnung der D60-Cuppunkte von den D60-Punkten nur 81 Prozent angerechnet.
+                                0 bedeutet, dass von den D60-Punkten nichts abgezogen wird.
+                                Die Prozentsätze beziehen sich auf den jeweiligen Zeitraum
+                            </div>
+                        </div>
+                        <div class="ui-block-b daten">
+                            <div class="L C">D60-Gesamtwertung:
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a L" style="width:20%;text-align:right;"> Ab&nbsp;&nbsp;
+                                </div>
+                                <div class="ui-block-b" style="width:25%;text-align:center;">
+                                    <input id="iVOLLAB0" type="number" pattern="\d*" data-role="none" min=0 max=100>
+                                </div>
+                                <div class="ui-block-c L" style="width:55%;"> &nbsp;&nbsp;% der Spiele
+                                </div>
+                            </div>
+                            <div class="L C">D60-Cup-/Jahreswertung:
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a L" style="width:20%;text-align:right;"> Ab&nbsp;&nbsp;
+                                </div>
+                                <div class="ui-block-b" style="width:25%;text-align:center;">
+                                    <input id="iVOLLAB1" type="number" pattern="\d*" data-role="none" min=0 max=100>
+                                </div>
+                                <div class="ui-block-c L" style="width:55%;"> &nbsp;&nbsp;% der Spiele
+                                </div>
+                            </div>
+                            <div class="L C">D60-Turnier-/Tageswertung:
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a L" style="width:20%;text-align:right;"> Ab&nbsp;&nbsp;
+                                </div>
+                                <div class="ui-block-b" style="width:25%;text-align:center;">
+                                    <input id="iVOLLAB3" type="number" pattern="\d*" data-role="none" min=0 max=100>
+                                </div>
+                                <div class="ui-block-c L" style="width:55%;">&nbsp;&nbsp;% der Spiele
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="L B C">Spiele je Runde:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe M" style="text-align:center;"> Wieviele Spiele werden je Runde gespielt?
+                            <br>0 bedeute beliebig viele Spiele.
+                        </div>
+                        <div class="ui-block-b daten">
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a L" style="width:20%;text-align:center;">
+                                </div>
+                                <div class="ui-block-b" style="width:25%;text-align:center;">
+                                    <input id="iSPJERUNDE" type="number" pattern="\d*" data-role="none" min=0 max=100>
+                                </div>
+                                <div class="ui-block-c L" style="width:55%;"> &nbsp;&nbsp;Spiele.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=bTurnierDaten>
+                        <hr>
+                        <div class="L B C">Turnierdaten:
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a hilfe M" style="text-align:center;">
+                                <br>ABAKUS unterst&uuml;tzt drei Arten von Turnieren:
+                                <br>Traditionelle Turniere, Mannschaftsturniere und Spontanturniere.
+                            </div>
+                            <div class="ui-block-b daten">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a L" style="width:20%;margin-top:.4em;text-align:right;">Typ:&nbsp;&nbsp;
+                                    </div>
+                                    <div class="ui-block-b L B" id=tTYP style="width:80%;margin-top:.4em;">
+                                    </div>
+                                </div>
+                                <div id=TurnierDaten>
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a L" style="width:20%;margin-top:.4em;text-align:right;"> Code:&nbsp;&nbsp;
+                                        </div>
+                                        <div class="ui-block-b L B" id=tTURCODE style="width:80%;margin-top:.4em;">
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a L" style="width:20%;margin-top:.4em;text-align:right;"> Runde:&nbsp;&nbsp;
+                                        </div>
+                                        <div class="ui-block-b L B" id=tTURRUNDE style="width:80%;margin-top:.4em;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="ui-body ui-body-c L">
+                        <div id=bLoeschen hidden>
+                            <br>
+                            <span class='cRot B' xstyle='color:red' id=tLoeschen>Die Statistik welcher Runde, welches Cups soll gel&ouml;scht werden?
+                            </span>
+                            <label for="iCupLoeschen"  class="ui-hidden-accessible">:
+                            </label>
+                            <input  id="iCupLoeschen"  type="text"  placeholder="Cupname:" class=B>
+                        </div>
+                        <br>
+                        <fieldset data-role=controlgroup data-mini=true data-theme="b">
+                            <label for=cbCupLoeschen class=btn  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statistik l&ouml;schen
+                            </label>
+                            <input  id=cbCupLoeschen type=checkbox>
+                        </fieldset>
+                        <br>
+                        <span class=B style='color:red'>ACHTUNG !!!
+                        </span>
+                        <br>
+                        <br> Nach dem Aktivieren von <strong>[&nbsp;&check;&nbsp;Statistik&nbsp;l&ouml;schen&nbsp;]</strong>, einer Sicherheitsabfrage und <strong>[&nbsp;speichern&nbsp;]</strong> werden die statistischen Daten von
+                        <span id="tNAME2" class='B'>
+                        </span> gel&ouml;scht.
+                        <br>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" class=onExit>
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a data-icon=delete class="iconJQM" onClick="history.back();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abbrechen</a>
+                        </li>
+                        <li>
+                            <a data-icon=check  class="iconJQM" onClick="onSubmit();" data-theme="e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speichern</a>
+                        </li>
+                    </ul>
+                </div>
+                <div data-role="navbar" id=dKopieren hidden>
+                    <ul>
+                        <li>
+                            <button data-theme="e" onClick="rundeKopieren()">Cup/Runde kopieren
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

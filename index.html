@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="apple-touch-icon" href="Icons/icon-96-xhdpi.png" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link  href='Icons/icon-36-ldpi.png'                 rel='shortcut icon' />
+        <link  href='themes/ThemeABCDE.min.css'              rel='stylesheet' />
+        <link  href='themes/jquery.mobile.icons.min.css'     rel='stylesheet' />
+        <link  href='js/jquery.mobile/jquery.mobile.min.css' rel='stylesheet' />
+        <script src='js/jquery/jquery.min.js'></script>
+        <script src='js/firebase/firebase.js'></script>
+        <script type='text/javascript'>
+            LS = new Object();
+            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+            if (LS) { // nicht beim allerersten Aufruf
+                if (window.location.href.indexOf('?') > 0) { // Quickstart
+                    CUPS = new Object();
+                    CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+                    if (LS !== null
+                            && CUPS !== null) {
+                        var hRef = window.location.href.replace(/\%20|_| /g, '').toUpperCase();
+                        if (hRef.indexOf('ST.TAROCKCUP') > 0 || hRef.indexOf('WR.TAROCKCUP') > 0 || hRef.indexOf('STADLTAROCK') > 0) {
+                            window.location.replace('Statistik/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
+                        }
+                        var iRef = 0;
+                        for (var ii = CUPS.NAME.length; ii > 0; ii--) {
+                            if (CUPS.NAME[ii]) {
+                                iRef = hRef.indexOf(CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').toUpperCase());
+                                if (iRef > 0) {
+                                    hRef = hRef.substr(iRef);
+                                }
+                                if (hRef === CUPS.NAME[ii].replace(/\%20|_| /g, '').toUpperCase()) {
+                                    if (CUPS.BEREadmin[ii].indexOf(LS.ME) >= 0
+                                            || CUPS.BEREschreiben[ii].indexOf('*') >= 0
+                                            || CUPS.BEREschreiben[ii].indexOf(LS.ME) >= 0) {
+                                        if (CUPS.TYP[ii] === 'CUP' || CUPS.TYP[ii] === 'MT') {
+                                            window.location.replace('Statistik/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
+                                        } else {
+                                            window.location.replace('Abakus/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
+                                        }
+                                    } else {
+                                        showEinenFehler(ii, 'Berechtigung fehlt!');
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            $(document).bind('mobileinit', function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src='js/jquery.mobile/jquery.mobile.min.js'></script>
+        <link  href="js/jBox/jBox.css"     rel="stylesheet"/>
+        <script src="js/jBox/jBox.min.js"  ></script>
+        <script src='js/jBox/Meldungen.js' ></script>
+        <script src='Abakus/funcTisch.js'  ></script>
+        <script src='Abakus/funcTurnier.js'></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus</title>
+        <link  href='js/css/Abakus.css'    rel='stylesheet'/>
+        <style>
+            #imgShake:hover {
+                /* Start the shake animation and make the animation last for 0.5 seconds */
+                animation: shake 0.5s;
+                /* When the animation is finished, start again */
+                animation-iteration-count: infinite;
+            }
+            @keyframes shake {
+                0% { transform: translate(1px, 1px) rotate(0deg); }
+                10% { transform: translate(-1px, -2px) rotate(-1deg); }
+                20% { transform: translate(-3px, 0px) rotate(1deg); }
+                30% { transform: translate(3px, 2px) rotate(0deg); }
+                40% { transform: translate(1px, -1px) rotate(1deg); }
+                50% { transform: translate(-1px, 2px) rotate(-1deg); }
+                60% { transform: translate(-3px, 1px) rotate(0deg); }
+                70% { transform: translate(3px, 1px) rotate(-1deg); }
+                80% { transform: translate(-1px, -1px) rotate(1deg); }
+                90% { transform: translate(1px, 2px) rotate(0deg); }
+                100% { transform: translate(1px, -2px) rotate(-1deg); }
+            }
+        </style>
+        <script src='Abakus.js'            ></script>
+        <script src='Abakus/Funktionen.js' ></script>
+        <script src='Abakus/loadCUPS.js'   ></script>
+        <script src='Abakus/loadSTAT.js'   ></script>
+        <script src='Statistik/loadTURNIER.js'></script>
+        <script src='Abakus/AaVersion.js'  ></script>
+        <script src='Abakus/Texte.js'      ></script>
+    </head>
+    <body onclick="event.stopImmediatePropagation();">
+
+        <div id=dCopyright class="cRechts" onclick='showLogo();' style="width:72%;position: absolute; bottom: 0; left: 28%" hidden>
+            <font face="Segoe Print" color="#0000bb"><i><div id='tWeisheit' class='C B L2'></div></i></font>
+            <br><br>
+            <div id='tWeiser' class='M C'></div>
+            <br><br><br>
+            <div class="ui-grid-a XS">
+                <div class="ui-block-a">
+                    &nbsp;&nbsp;<b><i>Abakus</i></b> die k&ouml;nigliche Tarock-App
+                </div>
+                <div class="ui-block-b" style="text-align:right;">
+                    &copy; 2015-<span id="tJJJJ">2099</span> by Leo Luger&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-grid-a">
+
+            <div class="ui-block-a noprint cLinks" style="width:28%;">
+
+                <div>
+                    <ul data-role=listview>
+                        <li data-icon=false>
+                            <a onclick="$('#dLegende').toggle('show');" style="padding:.0em" class="K">
+                                <div id="hMenu">
+                                    <div class="ui-grid-a" id="dPC">
+                                        <div class="ui-block-a" style="width:7vw; text-align:center;">
+                                            <img src='Icons/icon-96-xhdpi.png' style="margin-top:0.5vw;margin-bottom:-1vw;margin-left:.2vw;height:6.7vw; width:6.7vw;" id="imgShake" alt="Abakus"/>
+                                        </div>
+                                        <div class="ui-block-b" style="padding:0;margin:0;">
+                                            <div style='font-size:3.3vw;margin-top:-.2vw;margin-left:3.4vw'><b><i>Abakus</i></b></div>
+                                            <div style='font-size:2vw;margin-top:-1vw;margin-left:3.4vw' class="N">die königliche</div>
+                                            <div style='font-size:2vw;margin-top:-.6vw;margin-left:3.4vw' class="N">Tarock&nbsp;&nbsp;-&nbsp;&nbsp;App</div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-a cTablet">
+                                        <div class="ui-block-a" style="width:7vw; text-align:center;">
+                                            <img src='Icons/icon-96-xhdpi.png' style="margin-top:.1vw;margin-bottom:-1vw;margin-left:.2vw;height:14vw; width:14vw;" alt="Abakus"/>
+                                        </div>
+                                        <div class="ui-block-b" style="padding:0;margin:0;">
+                                            <div style='font-size:6.5vw;margin-top:-1vw;margin-left:30vw'><b><i>Abakus</i></b></div>
+                                            <div style='font-size:4vw;margin-top:-2vw;margin-left:30vw' class="N">die königliche</div>
+                                            <div style='font-size:4vw;margin-top:-1vw;margin-left:30vw' class="N">Tarock&nbsp;&nbsp;-&nbsp;&nbsp;App</div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-a cSmartphone">
+                                        <div class="ui-block-a" style="width:17vw;">
+                                            <img src='Icons/icon-96-xhdpi.png' style="margin-top:1.1vw;margin-bottom:-1vw;margin-left:1vw;height:18vw; width:18vw;" alt="Abakus"/>
+                                        </div>
+                                        <div class="ui-block-b" style="padding:0;margin:0;">
+                                            <div style='font-size:9.3vw;margin-top:-1vw;margin-left:20vw'><b><i>Abakus</i></b></div>
+                                            <div style='font-size:5.5vw;margin-top:-3vw;margin-left:20vw' class="N">die königliche</div>
+                                            <div style='font-size:5.5vw;margin-top:-2vw;margin-left:20vw' class="N">Tarock&nbsp;&nbsp;-&nbsp;&nbsp;App</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="hMix" hidden>
+                                    <div class="ui-grid-a cTablet">
+                                        <div class="ui-block-a" style="width:7vw; text-align:center;">
+                                            <img class="hfHeaderIcon" src='Icons/Tools.png' style="margin-top:.1vw;margin-bottom:-1vw;margin-left:2vw;height:13vw; width:13vw;" alt="Abakus"/>
+                                        </div>
+                                        <div class="ui-block-b" style="padding:0;margin:0;">
+                                            <div class=hfHeaderZeile1 style="width:auto; margin-left:12vw; font-size: 5.5vw; margin-top:-1px; font-style: italic;">ABAKUS die Tarock-App</div>
+                                            <div class=hfHeaderZeile2 style="width:auto; margin-left:12vw; font-size: 5.5vw; margin-top:-4px; font-weight: normal;">Meinem Tisch</div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-grid-a cSmartphone">
+                                        <div class="ui-block-a" style="width:7vw; text-align:center;">
+                                            <img class="hfHeaderIcon" src='Icons/Farben.png' style="margin-top:.8vw;margin-bottom:-1vw;margin-left:.2vw;height:16.8vw; width:16.8vw;" alt="Abakus"/>
+                                        </div>
+                                        <div class="ui-block-b" style="padding:0;margin:0;">
+                                            <div class=hfHeaderZeile1 style="width:auto; margin-left:12vw; font-size: 8vw; margin-top:-1px; font-style: italic;">ABAKUS die Tarock-App</div>
+                                            <div class=hfHeaderZeile2 style="width:auto; margin-left:12vw; font-size: 8vw; margin-top:-4px; font-weight: normal;">Meinem Tisch</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div id='dLegende' style='word-wrap: break-word; font-weight:normal;padding:.0em; margin:0em; zoom:90%' onclick="$('#dLegende').hide();" class=M hidden>
+                        <br>
+                        <ul data-role="listview" data-split-icon="info" >
+                            <li data-role="list-divider" data-theme="d" >&nbsp;&nbsp;Farbenlehre:
+                            </li>
+                            <li data-icon=false>
+                                <a style="padding:.0em">&nbsp;
+                                    <span class="cHRC">
+                                        <span class=N>HRC:&nbsp;&nbsp;
+                                        </span>
+                                        Hausruckviertler Tarockcup
+                                    </span></a>
+                            </li>
+                            <li data-icon=false>
+                                <a style="padding:.0em">&nbsp;
+                                    <span class="cRTC">
+                                        <span class=N>RTC:&nbsp;&nbsp;
+                                        </span>
+                                        Raiffeisen Tarockcup Austria
+                                    </span></a>
+                            </li>
+                            <li data-icon=false>
+                                <a style="padding:.0em">&nbsp;
+                                    <span class="cSWC">
+                                        <span class=N>SWC:&nbsp;&nbsp;
+                                        </span>
+                                        Sauwald Tarockcup
+                                    </span></a>
+                            </li>
+                            <li data-icon=false>
+                                <a style="padding:.0em">&nbsp;
+                                    <span class="cSTC">
+                                        <span class=N>STC:&nbsp;&nbsp;
+                                        </span>
+                                        Steirischer Tarockcup
+                                    </span></a>
+                            </li>
+                            <li data-icon=false>
+                                <a style="padding:.0em">&nbsp;
+                                    <span class="cTTC">
+                                        <span class=N>TTC:&nbsp;&nbsp;
+                                        </span>
+                                        Tiroler Tarockcup
+                                    </span></a>
+                            </li>
+                            <li data-icon=false>
+                                <a style="padding:.0em">&nbsp;
+                                    <span class="cWTC">
+                                        <span class=N>WTC:&nbsp;&nbsp;
+                                        </span>
+                                        Wiener Zeitung Tarockcup
+                                    </span></a>
+                            </li>
+                            <li data-icon=false>
+                                <a style="padding:.0em">&nbsp;
+                                    <span class="cDIV">
+                                        <span class=N>DIV:&nbsp;&nbsp;&nbsp;
+                                        </span>
+                                        Diverse Turniere
+                                    </span></a>
+                            </li>
+                        </ul>
+                        <br> &nbsp;&nbsp;&nbsp;Ich w&uuml;nsche Dir gute Karten
+                        <br> &nbsp;&nbsp;&nbsp;und viel Spass mit der App.
+                        <br> &nbsp;&nbsp;&nbsp;<i>Leo Luger</i>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+
+                <div id=pContent class='onExit' style="height: 24.2vh; position:relative; overflow-y: auto;">
+
+                    <div id=pMenu class='S'>
+                        <div id=bZuMeinemTisch onClick="showCup(LS.I);" hidden>
+                            <div class="ui-grid-a ui-btn k">
+                                <div class="ui-block-a" style="text-align:left;width:66px;">
+                                    <img src='Icons/MeinTisch.png' height="56" width="56"/>
+                                </div>
+                                <div class="ui-block-b" style="text-align:left">
+                                    <div class=L>
+                                        <div id=tZuMeinemTisch>Zu meinem Tisch
+                                        </div>
+                                        <div class='M N' id=tCupName>Es wurde alles gespeichert
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <fieldset>
+                                <span id="dTermine"></span>
+                                <span id="dMeineRundenCups"></span>
+                                <span id="dRundenCups"></span>
+                            </fieldset>
+                        </div>
+                        <div id="dFooter" hidden>
+                            <div class="ui-content">
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k ui-btn-f" id="bGeschichte"   onclick="showText('Geschichte')">&nbsp;
+                                    <i class="i zmdi-receipt"></i>&nbsp;&nbsp;Geschichte&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k ui-btn-f" id="bAnekdoten"  onclick="showText('Anekdoten')">&nbsp;
+                                    <i class="i zmdi-mood"></i>&nbsp;&nbsp;Anekdoten&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k ui-btn-f" id="bZitate"   onclick="showLogo()">&nbsp;
+                                    <i class="i zmdi-graphic-eq zmdi-hc-rotate-90"></i>&nbsp;&nbsp;Zitate&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k"          id="bEtikette"  onclick="showText('Etikette')">&nbsp;
+                                    <i class="i zmdi-mood"></i>&nbsp;&nbsp;Etikette&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bLinks  onclick="showText('Links')">&nbsp;
+                                    <i class="i zmdi-globe-alt"></i>&nbsp;&nbsp;Links&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bTippsUndTricks" onclick="showText('TippsUndTricks')">&nbsp;
+                                    <i class="i zmdi-info-outline"></i>&nbsp;&nbsp;Tipps & Tricks&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bInitialisieren" onclick="initCUPSdelAllSTAT();">&nbsp;
+                                    <i class="i zmdi-star"></i>&nbsp;&nbsp;Initialisieren&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bRegistrieren onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/Registrieren.html';">&nbsp;
+                                    <i class="i zmdi-account"></i>&nbsp;&nbsp;Registrieren&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bFindSpieler  onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/Spieler.html';">&nbsp;
+                                    <i class="i zmdi-account"></i>&nbsp;&nbsp;Spieler&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k"                  onclick="showLOG();">&nbsp;
+                                    <i class="i zmdi-view-headline"></i>&nbsp;&nbsp;Log&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k"                  onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/Einstellungen.html'">&nbsp;
+                                    <i class="i zmdi-format-list-bulleted"></i>&nbsp;&nbsp;Einstellungen&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k"                  onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/Datenschutzerklaerung.html'">&nbsp;
+                                    <i class="i zmdi-shild-check"></i>&nbsp;&nbsp;Datenschutzerklärung&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bAdminTools   onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/AdminTools.html'">&nbsp;
+                                    <i class="i zmdi-wrench"></i>&nbsp;&nbsp;Administrator Tools&nbsp;</a>
+                            </div>
+                            <div id=tLOG style="margin:0 20px 0;" hidden>
+                            </div>
+                            <br>
+                            <div class="ui-body ui-body-c S C"  style="padding:10px;">
+                                <b><i>Abakus</i></b> Version <span id=tVersion></span><br>
+                                &copy; 2015-<span id="tJJJJ2">2099</span> by Leo Luger<br>
+                                &#9993;&nbsp;&nbsp;Luger.Leo@gmail.com<br>
+                                <span id="tSpieler"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div id=pCup hidden>
+
+                        <div style="margin:.0em 10px;padding:.0em">
+                            <div id=hfText  class=M>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="ui-grid-a ui-btn" onClick="hrefStatistik();">
+                            <div class="ui-block-a" style="width:10%; text-align:center;">
+                                <img src='Icons/Statistik.png' style="margin-top:0.5vw;margin-bottom:-0.5vw;margin-left:.2vw;height:11vw; width:11vw;" alt="Cup/Runde"/>
+                            </div>
+                            <div class="ui-block-b" style="width:90%; text-align:center;padding:0;margin:0;">
+                                <div class="L">Zur Statistik</div>
+                                <div class="M N">Punktelisten, Diagramme, etc.</div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="ui-grid-a ui-btn" onClick="neuerTisch();">
+                            <div class="ui-block-a" style="width:10%; text-align:center;">
+                                <img src='Icons/MeinTisch.png' style="margin-top:0.5vw;margin-bottom:-0.5vw;margin-left:.2vw;height:11vw; width:11vw;" alt="Cup/Runde"/>
+                            </div>
+                            <div class="ui-block-b" style="width:90%; text-align:center;padding:0;margin:0;">
+                                <div class="L">Ein neuer Tisch</div>
+                                <div class="M N">Vivat Valat!</div>
+                            </div>
+                        </div>
+                        <br>
+                        <span id=cupButtons style="margin-left:1.5em"></span>
+
+                        <div data-role="navbar" data-iconpos="left">
+                            <div class="ui-grid-solo">
+                                <div class="ui-block-a" sstyle="width:44%;">
+                                    <div class="ui-grid-a ui-btn" onClick="showHF(1)">
+                                        <div class="ui-block-a" style="width:25%;padding:4px 0px 0px 0px">
+                                            <img src='Icons/icon-48-mdpi.png' height="40" width="40" style="margin:-15px"/>
+                                        </div>
+                                        <div class="ui-block-b" style="width:75%;padding:8px 0px 8px 0px">
+                                            <div class=M>Abakus
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div id=pTisch hidden>
+                        <div id=pSpiele>
+                            <table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='M ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >
+                                <thead>
+                                    <tr class='ui-bar-d'>
+                                        <th>&nbsp;Spieler
+                                        </th>
+                                        <th class=TC>Punkte&nbsp;
+                                        </th>
+                                    </tr>
+                                <tbody>
+                                </tbody>
+                            </table>        &nbsp;
+                            <span id="tGespielt" class='M'>
+                            </span>
+                        </div>
+                        <br>
+                        <ul data-role="listview" data-split-icon="info" data-ll-inset="true">
+                            <li>
+                                <a id="bWeiter" style="padding:1em" onclick="Weiterspielen();">Weiterspielen</a>
+                                <a onclick="$('#hWeiter').toggle('show');">Hilfe</a>
+                                <div id='hWeiter' style='margin:1em;' class='M' hidden>Mit <strong>'Weiterspielen'</strong> wird der Tisch dort fortgesetzt, wo er zuvor unterbrochen wurde.
+                                </div>
+                            </li>
+                            <li>
+                                <a id="bSpieler" style="padding:.1em" onclick="window.location.href = 'Abakus/Anmeldung.html';">Spieler anmelden</a>
+                                <a onclick="$('#hSpieler').toggle('show');">Hilfe</a>
+                                <div id='hSpieler' style='margin:1em;' class='M' hidden>Mit <strong>'Spieler anmelden'</strong> kannst du einen f&uuml;nften oder sechsten Spieler eintragen sowie Anmeldungen korrigieren.
+                                </div>
+                            </li>
+                            <li>
+                                <a id="bSpeichern" style="padding:.1em" onclick="window.location.href = 'Abakus/TischSpeichern.html';">Tisch speichern</a>
+                                <a onclick="$('#hSpeichern').toggle('show');">Hilfe</a>
+                                <div id='hSpeichern' style='margin:1em;' class='M' hidden>Erst mit <strong>'Tisch speichern'</strong> werden deine Daten in den verschiedenen Statistiken ber&uuml;cksichtigt.
+                                </div>
+                                <div id='hFehler' style='margin:1em;' class='M cRot' hidden>Der/die Name(n) der Spieler
+                                    <br>f&uuml;nf und/oder sechs fehlen.
+                                    <br><strong>Bitte die Spieler erg&auml;nzen.</strong>
+                                </div>
+                            </li>
+                            <li>
+                                <a onClick="neuerTisch(true);" style="padding:.1em" >Neuer Tisch</a>
+                                <a onclick="$('#hNeueRunde').toggle('show');">Hilfe</a>
+                                <div id='hNeueRunde' style='margin:1em;' class='M' hidden>Einen <strong>neuen Tisch</strong> kannst du erst beginnen, wenn du den alten Tisch zuvor gespeichert oder gel&ouml;scht hast.
+                                    <br>
+                                    <br><strong>Vivat Valat !</strong>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <span id=tischButtons style="margin-left:1.5em"></span>
+
+                        <div data-role="navbar" data-iconpos="left">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a" sstyle="width:44%;">
+                                    <div class="ui-grid-a ui-btn" onClick="showHF(1)">
+                                        <div class="ui-block-a" style="width:25%;padding:4px 0px 0px 0px">
+                                            <img src='Icons/icon-48-mdpi.png' height="40" width="40" style="margin:-15px"/>
+                                        </div>
+                                        <div class="ui-block-b" style="width:75%;padding:8px 0px 8px 0px">
+                                            <div class=M>Abakus
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui-block-b" sstyle="width:44%;">
+                                    <div class="ui-grid-a ui-btn" onClick="hrefStatistik();">
+                                        <div class="ui-block-a" style="width:25%;padding:4px 0px 0px 0px">
+                                            <img src='Icons/Statistik.png' height="40" width="40" style="margin:-15px"/>
+                                        </div>
+                                        <div class="ui-block-b" style="width:75%;padding:8px 0px 8px 0px">
+                                            <div class=M>Statistik
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="ui-block-b cRechts" id="dRechts" style="width:72%;padding:0;margin:0;">
+                <div id="dPrint">
+                    <div id=qfHeader class='cRechts fixHeader'>
+                        <div onclick='event.stopPropagation();'>
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a" id=qfHeaderLinks style="width:7vw; text-align:center;">
+                                    <img id=qfHeaderIcon src='Icons/Statistik.png'  style="margin-top:1vw;height:6vw; width:6vw;" alt="Abakus"/>
+                                </div>
+                                <div class="ui-block-b" style="width:auto;padding:0;margin:0;">
+                                    <div id="qfHeaderZeile1" style="width:100%;margin-top:-1vw;font-size:4vw;white-space:nowrap;font-style:italic;"></div>
+                                    <div id="qfHeaderZeile2" class="L" style="margin-top:-.8vw;margin-left:.2vw"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id=dRumpf class="cRechts">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div id=pOptFont hidden>
+            <table id=fTable data-role='table' data-mode='columntoggle' class='ui-responsive' data-column-btn-text=''>
+                <tbody>
+                    <tr style="background-color:white;color:white">
+                        <td style="margin:0;padding:0;border:0;white-space:nowrap;" nowrap><div id="fText1">Row1:</div></td>
+                        <td style="margin:0;padding:0;border:0;white-space:nowrap;">Row2: und etwas mehr Text</td>
+                        <td style="margin:0;padding:0;border:0;white-space:nowrap;">Row3: und etwas mehr Text</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div data-role="popup" data-history="false" id="pSTARTSTOP" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="XL ui-corner-all onExit" data-position-to="#dText">
+            <div data-role="header" id=ssTitel data-theme="d" class="ui-corner-top" style="text-align:center">CupName
+            </div>
+            <div style='margin:0.5em;' data-theme="a">
+                <span id=ssText data-theme="d" class="ui-corner-top" style="text-align:center">Starten / Speichern ?
+                </span>
+                <div class="ui-grid-b">
+                    <div class="ui-block-a XL" style="width:100px;margin-top:.2em;">Code:
+                    </div>
+                    <div class="ui-block-b"    style="width:100px;text-align:center;">
+                        <input id="iTURCODE" type="number" pattern="\d*" min=1 max=9999 data-role="none">
+                    </div>
+                </div>
+                <div id='ssMELD' class='XL B cRot'>
+                </div>
+            </div>
+            <div data-role="footer" data-theme="a">
+                <div data-role="navbar">
+                    <ul>
+                        <li>
+                            <button type="button" data-rel=back data-theme="d" onclick="$('#pSTARTSTOP').popup('close');">nein
+                            </button>
+                        </li>
+                        <li>
+                            <button type="submit" data-rel=back data-theme="e" onclick="onStartStop()">ja
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="popup" data-history=false id="pTISCHSPEICHERN" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="XL ui-corner-all">
+            <div data-role="header" data-theme="d" class="ui-corner-top" style="text-align:center" id=tsNeuerTischTurnier>Neuer Tisch
+            </div>
+            <div style='margin:0.5em;' data-theme="a" class=L>
+                <span id=tsTitel data-theme="d" class="L B cRot" hidden>Meine Runde:
+                </span>
+                <span id=tsText  data-theme="d" class="M B cRot">Es wurden # Spiele gespielt.
+                </span>
+                <br>Willst du
+                <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='Weiterspielen();'>weiterspielen</a>,
+                <br>die
+                <a data-theme=e data-role='button' data-inline='true' data-mini='true' onclick='$("#pTISCHSPEICHERN").popup("close").show(replaceTischSpeichern);'>Spiele speichern</a>,
+                <br>die
+                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleLoeschen onclick='$("#pTISCHSPEICHERN").popup("close").show(neuerTisch);'>Spiele l&ouml;schen
+                    <br>und neuen Tisch</a>,
+                <br>oder
+                <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='$("#pTISCHSPEICHERN").popup("close");'>abbrechen</a>?
+            </div>
+        </div>
+
+    </body>
+</html>

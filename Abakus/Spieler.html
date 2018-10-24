@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <script src="loadSPIELER.js"></script>
+
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css"    rel="stylesheet" />
+        <script src="Spieler.js"       ></script>
+    </head>
+    <body onclick="event.stopImmediatePropagation();">
+        <div data-role="header" id="dHeader" class="ui-btn K" data-position="fixed" style="padding:0em; margin:0em;">
+            <div class="ui-grid-c" onClick="$('#dLegende').toggle('show');">
+                <div class="ui-block-a" style="width:1vw;"></div>
+                <div class="ui-block-b C" style="width:70px;margin-bottom:-8px">
+                    <img src='../Icons/SpielerAendern.png' id=logo height="70" width="70"/>
+                </div>
+                <div class="ui-block-c" style="width:1.5vw;"></div>
+                <div class="ui-block-d" style="width:auto">
+                    <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px; margin-top:-2px; font-style: italic;">Abakus</div>
+                    <div id=hTitel2 style="width:auto; text-align:left; font-size: 28px; margin-top:-8px; font-weight: normal;">Spieler suchen</div>
+                </div>
+            </div>
+            <div id='dLegende' onClick="$('#dLegende').toggle('show');" style='margin:1em; text-align: left;' class='M N' hidden>
+                <b>Achtung:</b><br>
+                Damit auch die in den letzten 24 Stunden angelegten / geänderten Spieler angezeigt werden,<br>
+                musst du auf der Haupseite einmal auf <span class="ui-btn ui-corner-all K">&nbsp;Initialisieren&nbsp</span> klicken.
+            </div>
+        </div>
+        <div id='main'>
+            <div class="ui-grid-b">
+                <div class="ui-block-a" id=ui-block-a>
+                </div>
+                <div class="ui-block-b" id=ui-block-b>
+                    <form onsubmit="event.preventDefault(); return onFinden();" style="padding:0">
+                        <div id="SpielerSuchen">
+                            <br>
+                            <div style='padding: 0 15px'>
+                                <div class="ui-field-contain" style="margin:0;padding:0;">
+                                    <input id="F_NR"    data-role="none" placeholder="Nummer:"   type="number" pattern="\d*">
+                                    <input id="F_NNAME" data-role="none" placeholder="Nachname:" type="text">
+                                    <input id="F_VNAME" data-role="none" placeholder="Vorname:"  type="text">
+                                    <input id="F_ORT"   data-role="none" placeholder="Ort:"      type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <input type="button" onclick="B_Clear()" value="clear">
+                            </div>
+                            <div class="ui-block-b">
+                                <input type="submit" xonclick="onFinden()" data-theme="e" value="finden">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ui-block-c">
+                </div>
+            </div>
+            <p id="fMeldung" class="L2" style="padding:0 0.5em">
+            </p>
+            <div id=dListe class="L K">
+            </div>
+            <div data-role="footer" id="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a data-icon=arrow-l class="iconJQM" onClick="history.go(-1);">&nbsp;&nbsp;&nbsp;&nbsp;zur&uumlck</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

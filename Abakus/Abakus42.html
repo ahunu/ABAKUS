@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data:; media-src 'self' https://code.responsivevoice.org/getvoice.php" />
+        <link  href="../Icons/icon-36-ldpi.png" rel="shortcut icon" />
+        <link  href="../themes/ThemeABCDE.min.css" rel="stylesheet" />
+        <link  href="../themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+        <link  href="../js/jquery.mobile/jquery.mobile.min.css" rel="stylesheet" />
+        <script src="../js/jquery/jquery.min.js"></script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <script src="../js/highcharts/highcharts.js"></script>
+        <script src="../js/highcharts/highcharts-3d.js"></script>
+        <script src="../js/highcharts/highcharts-more.js"></script>
+        <script src="../js/highcharts/solid-gauge.js"></script>
+        <script src="../js/highcharts/funnel.js"></script>
+        <script src="../js/jBox/jBox.min.js"></script>
+        <link  href="../js/jBox/jBox.css" rel="stylesheet" />
+        <script src="../js/responsiveVoice/responsiveVoice.js"></script>
+        <script type="text/javascript">
+            LS = new Object();
+            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+            if (LS.AnzSpieler === 4 && LS.JeSeite === "1") {
+                window.location.replace('Abakus41.html?');
+            }
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css" rel="stylesheet" />
+        <style>
+            .ui-btn {padding: .44vh 0 !important;}
+        </style>
+        <script src="AbakusPS.js"></script>
+        <script src="AbakusFS.js"></script>
+        <script src="AbakusNS.js"></script>
+        <script src="Abakus.js"></script>
+        <script src="AbakusXS.js"></script>
+        <script src="Display42.js"></script>
+        <script src="DispFunktionen.js"></script>
+        <script src="Auswertungen.js"></script>
+        <script src="statGauge.js"></script>
+    </head>
+    <body>
+        <div data-role="header"  data-position="fixed" id="header">
+            <div id="GR" hidden>
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li class='nb6'>
+                            <a data-role="button" class="K" data-theme="d" id='nbMeinTisch' onclick="window.history.back();">
+                                <img src="../Icons/MeinTisch.png" style="position: absolute; top: 1px; left: 3.3vw;margin:0 0 0 -11px; height:9vh;"/>
+                                <i class="iconXL zmdi-minus cInaktiv"></i></a>
+                        </li>
+                        <li class='nb6'>
+                            <a data-role="button" class="K" data-theme="d" id='nbTarife'  onclick="showCanvas('Tarife');">
+                                <i id=iTarif class="iconXL"></i></a>
+                        </li>
+                        <li class='nb6'>
+                            <a data-role="button" class="K" data-theme="d" id='nbAudio'   onclick="AnsagenAendern();">
+                                <i id=iAudio class="iconXL"></i></a>
+                        </li>
+                        <li class='nb6'>
+                            <a data-role="button" class="K" data-theme="d" id='nbOptions' onclick="window.location.href = 'Vorhand.html';">
+                                <i id=iOptions class="iconXL zmdi-settings"></i></a>
+                        </li>
+                        <li class='nb6'>
+                            <a data-role="button" class="K" data-theme="d" id='nbHelp'    onclick="showCanvas('Hilfe');">
+                                <i class="iconXL zmdi-help"></i></a>
+                        </li>
+                        <li class='nb6'>
+                            <a data-role="button" class="K" data-theme="d" id='nbKorr'    onclick="window.location.replace('Edit42.html?' + aktPos);">
+                                <img style="position: absolute; top: 5px; left: 4vw;margin:0 0 0 -8px; height:8vh;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVGhD7Zo7TsQwFEWnAxbABvj/VgQ1BRIlBVTUNBQI9kELlLRAQ8Gv44/YAgjuLZ4UWXaIn58dI+VIpxkJZ46wPU5mRgMDA1UxBtfhMbyA53AfLsB/wzy8gz8ev+EOrJ4l+AF9EU33YLV0jRCrjImNEKuK0UaIVcSkRoi9xlhFiL3EWEeIRWNyRYhFYnJHiFljSkWI29AcHjtKRtAvuAzNmIJP0Hex3B5BE6bhI/RdpIQ8OSfTdwS9h0nMQt90+vS8ltMTqGYOPkN30Gs4CXcbr+V2A6rg7vQC3QElQigRcwvHYTS8DX2F7oBuhJAz5h1yekfDiDfoDhiKEHLE8H0swmj4R5oIwTKG70P1gIILm/9Gd8CuEYJFDKe1KmICcp92B4yNEFJiuMFwo1GxCd0BtRGCJoZbPWeGmjPYHPAGpkQIMTH80FXtTk0eYHPQVWhFlxgef3gMSuYSNgc+hJa0xZhFEB6R3QtsQSs4TX3bOqcTbw3MWIF8FuteyCKGEdw43LG51at3pzZ4O+lejKbEhCK4O2V9Gs8bffeiVBMTiuCaMJ1OISxiQhFcE2YLuwspMW0RM7A4mpi2NZH8YZdCTEwogmenpGOHFV1iQhE8xWbZYrWEYg7gGvR9T6i+n8hNKMan+s6uFF1i+IlddYTAr5R9xxnKpx1VrYm/4ANlHjSvINfHKeRzJ/44YGBgoApGo1+f4/OBDCGbMAAAAABJRU5ErkJggg=="/>
+                                <i class="iconXL zmdi-minus cInaktiv"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <canvas id="bchart" onclick="showCanvas();">Sorry, Dein Browser kann keine Canvas anzeigen !
+                </canvas>
+            </div>
+            <div id="SPIELER" hidden>
+                <!-- SPIELER -->
+                <div data-role="navbar" style="padding:1px">
+                    <ul>
+                        <li>
+                            <a class=LL3 id="ss4">ss4</a>
+                        </li>
+                        <li>
+                            <a class=LL3 id="ss3">ss3</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /navbar -->
+                <div data-role="navbar" style="padding:1px">
+                    <ul>
+                        <li>
+                            <a class=LL3 id="ss1">ss1</a>
+                        </li>
+                        <li>
+                            <a class=LL3 id="ss2">ss2</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /navbar -->
+                <div style="font-size:3px;background-color:DimGray;">&nbsp;
+                </div>
+            </div>
+            <!-- /SPIELER -->
+            <div data-role="navbar" id='nbSpiel' style="margin:1px">
+                <ul>
+                    <li class="nb24" id="dKontra"><a onClick="setKontra()" class="cKontra LL3" >Kontra</a></li>
+                    <li class="nb52" id="dName"><a onClick="showSpiele()" id="gName" class="LL3">Wähle ein Spiel</a></li>
+                    <li class="nb24"><a id="gWert" class="LL3">?</a></li>
+                </ul>
+            </div>
+            <div data-role="navbar" id='nbSpiele' hidden>
+                <ul>
+                    <li class='nb76 cPS'><a class=LL3 onClick="setGame('Rufer', 1)">Rufer</a></li>
+                    <li class='nb24 cPS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d1"  >0</div></li>
+                    <li class='nb76 cPS'><a class=LL3 onClick="setGame('Solorufer', 2)">Solorufer</a></li>
+                    <li class='nb24 cPS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d1_2"  >0</div></li>
+                    <li class='nb76 cPS'><a class=LL3 onClick="setGame('Sechser', 8)">Sechser</a></li>
+                    <li class='nb24 cPS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d8"  >0</div></li>
+                    <li class='nb76 cPS'><a class=LL3 onClick="setGame('Dreier', 9)">Dreier</a></li>
+                    <li class='nb24 cPS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d9"  >0</div></li>
+                    <li class='nb76 cPS cTIROL'><a class=LL3 onClick="setGame('Einer', 9, 1)">Einer</a></li>
+                    <li class='nb24 cPS ui-nobtn cTIROL'><div class="ui-nobtn LL3 N C" id="d9_1"  >0</div></li>
+                    <li class='nb76 cPS'><a class=LL3 onClick="setGame('Solodreier', 10)">Solodreier</a></li>
+                    <li class='nb24 cPS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d10"  >0</div></li>
+
+                    <li class='nb76 cFS'><a class=LL3 onClick="setGame('Farbendreier', 11)">Farbendreier</a></li>
+                    <li class='nb24 cFS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d11"  >0</div></li>
+                    <li class='nb76 cFS cTIROL'><a class=LL3 onClick="setGame('Farbeneiner', 11, 1)">Farbeneiner</a></li>
+                    <li class='nb24 cFS ui-nobtn cTIROL'><div class="ui-nobtn LL3 N C" id="d11_1"  >0</div></li>
+                    <li class='nb76 cFS'><a class=LL3 onClick="setGame('Farbensolo', 12)">Farbensolo</a></li>
+                    <li class='nb24 cFS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d12"  >0</div></li>
+
+                    <li class='nb76 cNS'><a class=LL3 onClick="setGame('Trischaken', 13)">Trischaken</a></li>
+                    <li class='nb24 cNS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d13"  >0</div></li>
+                    <li class='nb76 cNS'><a class=LL3 onClick="setGame('Piccolo/Zwiccolo', 14)">Piccolo/Zwiccolo</a></li>
+                    <li class='nb24 cNS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d14"  >0</div></li>
+                    <li class='nb76 cNS'><a class=LL3 onClick="setGame('Bettler', 15)">Bettler</a></li>
+                    <li class='nb24 cNS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d15"  >0</div></li>
+                    <li class='nb76 cNS cTIROL'><a class=LL3 onClick="setGame('Picc. semi-ouvert', 16, -2)">Picc. semi-ouvert</a></li>
+                    <li class='nb24 cNS ui-nobtn cTIROL'><div class="ui-nobtn LL3 N C" id="d16_2"  >0</div></li>
+                    <li class='nb76 cNS cTIROL'><a class=LL3 onClick="setGame('Bett. semi-ouvert', 17, -2)">Bett. semi-ouvert</a></li>
+                    <li class='nb24 cNS ui-nobtn cTIROL'><div class="ui-nobtn LL3 N C" id="d17_2"  >0</div></li>
+                    <li class='nb76 cNS'><a class=LL3 onClick="setGame('Pic./Zwi. ouvert', 16)">Pic./Zwi. ouvert</a></li>
+                    <li class='nb24 cNS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d16"  >0</div></li>
+                    <li class='nb76 cNS cEGGBE'><a class=LL3 onClick="setGame('Bettelplauderer', 17, -11)">Bettelplauderer</a></li>
+                    <li class='nb24 cNS ui-nobtn cEGGBE'><div class="ui-nobtn LL3 N C" id="d17_11"  >0</div></li>
+                    <li class='nb76 cNS'><a class=LL3 onClick="setGame('Bettler ouvert', 17)">Bettler ouvert</a></li>
+                    <li class='nb24 cNS ui-nobtn'><div class="ui-nobtn LL3 N C" id="d17"  >0</div></li>
+                </ul>
+            </div>
+            <div id="nbWerte" hidden>
+                <div id="PS" hidden>
+                    <!-- POSITIVSPIELE -->
+                    <div data-role="navbar" style="margin:1px">
+                        <ul>
+                            <li class="nb24"><a id="P1"  class="LL3">I</a></li>
+                            <li class="nb24"><a id="P1e" class="LL3">0</a></li>
+                            <li class="nb28"><a id="P7"  class="LL3">Ultimo</a></li>
+                            <li class="nb24"><a id="P7e" class="LL3">0</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="navbar" style="margin:1px">
+                        <ul>
+                            <li class="nb24"><a id="P2"  class="LL3">II</a></li>
+                            <li class="nb24"><a id="P2e" class="LL3">0</a></li>
+                            <li class="nb28"><a id="P5"  class="LL3">Trull</a></li>
+                            <li class="nb24"><a id="P5e" class="LL3">0</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="navbar" style="margin:1px">
+                        <ul>
+                            <li class="nb24"><a id="P3"  class="LL3">III</a></li>
+                            <li class="nb24"><a id="P3e" class="LL3">0</a></li>
+                            <li class="nb28"><a id="P6"  class="LL3">4 Kini</a></li>
+                            <li class="nb24"><a id="P6e" class="LL3">0</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="navbar" style="margin:1px">
+                        <ul>
+                            <li class="nb24"><a id="P4"  class="LL3">IIII</a></li>
+                            <li class="nb24"><a id="P4e" class="LL3">0</a></li>
+                            <li class="nb28 cTARIF20"><a id="P8"  class="LL3">Abs.</a></li>
+                            <li class="nb24 cTARIF20"><a id="P8e" class="LL3">0</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="navbar" style="margin:1px">
+                        <ul>
+                            <li class="nb48 cNoTARIF21"><a onClick="setKontra()" class="cKontra LL3" >Kontra</a></li>
+                            <li class="nb24 cTARIF21"><a id="P9"  class="LL3">Xy</a></li>
+                            <li class="nb24 cTARIF21"><a id="P9e" class="LL3">0</a></li>
+                            <li class="nb28"><a id="PValat"  class="LL3">Valat</a></li>
+                            <li class="nb24"><a id="PValate" class="LL3">0</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- POSITIVSPIELE -->
+                <div id="FS" hidden>
+                    <!-- FARBSPIELE -->
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div data-role="navbar" style="margin:1px">
+                                <ul>
+                                    <li class='cTARIF20'><a id="F2"  class="LL3">Abs.</a></li>
+                                    <li class='cTARIF20'><a id="F2e" class="LL3">0</a></li>
+                                </ul>
+                            </div>
+                            <div data-role="navbar" style="margin:1px">
+                                <ul>
+                                    <li class='cTARIF21'><a id="F3"  class="LL3">Xy</a></li>
+                                    <li class='cTARIF21'><a id="F3e" class="LL3">0</a></li>
+                                </ul>
+                            </div>
+                            <div data-role="navbar" style="margin-right:1px">
+                                <ul>
+                                    <li><a class="cKontra LL3" onClick="setKontra()" style="margin:1px">Kontra</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div data-role="navbar" style="margin:1px">
+                                <ul>
+                                    <li class="nb52"><a id="F1"  class="LL3">4 Kini</a></li>
+                                    <li class="nb48"><a id="F1e" class="LL3">0</a></li>
+                                </ul>
+                            </div>
+                            <div data-role="navbar" style="margin:1px">
+                                <ul>
+                                    <li class="nb52"><a id="FValat"  class="LL3">Valat</a></li>
+                                    <li class="nb48"><a id="FValate" class="LL3">0</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <!-- FARBSPIELE -->
+                <div id ='NS' hidden>
+                    <!-- NEGATIVSPIELE -->
+                    <div data-role="navbar" style="padding:1px">
+                        <ul>
+                            <li><a id="Nx2" class="LL3">x 2</a></li>
+                            <li><a id="Nx4" class="LL3">x 4</a></li>
+                        </ul>
+                    </div>
+                    <br>
+                </div>
+                <!-- NEGATIVSPIELE -->
+                <div id=SPIELEallg hidden>
+                    <div class="ui-grid-a M2">
+                        <div class="ui-block-a" style="width:11%;color:red;text-align:left;">&nbsp;
+                            <span id="tLinks">
+                            </span>
+                        </div>
+                        <div class="ui-block-b" style="width:89%;color:red;text-align:right;">
+                            <span id="tRechts">
+                            </span>&nbsp;
+                        </div>
+                    </div>
+                    <div data-role="navbar">
+                        <ul>
+                            <li>
+                                <a id="bEnter" data-theme="e" class="ui-disabled XXL">?</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <!-- /header -->
+        <div id="LI" hidden>
+            <div id="LIste">
+            </div>
+            <div style="font-size:18px;font-weight: normal;text-align:center">
+                &mdash;&mdash; &copy; 2015-2018 by Leo Luger &mdash;&mdash;
+            </div>
+            <br>
+        </div>
+        <div data-role="footer" data-id="sameFooter" data-position="fixed" id="NB" style="position: fixed; bottom: 0; width: 100%;">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li class='nb6'       >
+                        <a data-role="button" class="K" data-theme="d" id='nbLI' onclick="showSeite('LI');">
+                            <i class="iconXL zmdi-equalizer"></i></a>
+                    </li>
+                    <li class='nb6 NBedit'>
+                        <a data-role="button" class="K" data-theme="d" id='nbED' onclick="location.replace('Edit42.html');">
+                            <i class="iconXL zmdi-edit"></i></a>
+                    </li>
+                    <li class='nb6 NBedit'>
+                        <a data-role="button" class="K" data-theme="d" id='nbPS' onclick="showSeite('PS');">
+                            <i class="iconXL zmdi-plus"></i></a>
+                    </li>
+                    <li class='nb6 NBedit'>
+                        <a data-role="button" class="K" data-theme="d" id='nbFS' onclick="showSeite('FS');">
+                            <i class="iconXL zmdi-invert-colors"></i></a>
+                    </li>
+                    <li class='nb6 NBedit'>
+                        <a data-role="button" class="K" data-theme="d" id='nbNS' onclick="showSeite('NS');">
+                            <i class="iconXL zmdi-minus"></i></a>
+                    </li>
+                    <li class='nb6'       >
+                        <a data-role="button" class="K" data-theme="d" id='nbGR' onclick="showSeite('GR');">
+                            <i class="iconXL zmdi-gamepad"><b></b></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

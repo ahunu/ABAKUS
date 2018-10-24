@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css" rel="stylesheet" />
+        <script src="Texte.js"></script>
+        <script src="Text.js"></script>
+    </head>
+    <body onclick='showNextZitat();' >
+        <div data-role="header" class="ui-btn K" data-position="fixed" style="padding:0em; margin:0em;">
+            <div class="ui-grid-c">
+                <div class="ui-block-a" style="width:1vw;"></div>
+                <div class="ui-block-b C" style="width:70px;margin-bottom:-8px">
+                    <img src='../Icons/DieGeschichte.png' id=logo height="70" width="70"/>
+                </div>
+                <div class="ui-block-c" style="width:1.5vw;"></div>
+                <div class="ui-block-d" style="width:auto"><i>
+                        <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px;margin-top:-2px;">Abakus</div></i>
+                    <div id=hTitel2 class='N I' style="width:auto; text-align:left; font-size: 28px;margin-top:-8px">???</div>
+                </div>
+            </div>
+        </div>
+        <div class='onExit'>
+            <div id="dRumpf" style='background-image: url("../Icons/Background.png"); background-size: 75%; background-position: center 3em; background-repeat: no-repeat;' >
+            </div>
+            <div data-role="footer" id="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <div class="ui-grid-a ui-btn K" onClick="event.stopImmediatePropagation();history.back();">
+                                <div class="ui-block-a" style="width:25%">
+                                    <img src='../Icons/icon-36-ldpi.png' style="margin-top:5px"/>
+                                </div>
+                                <div class="ui-block-b" style="width:75%;font-size:24px;margin-top:8px">
+                                    Abakus&nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

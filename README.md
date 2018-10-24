@@ -1,1 +1,4 @@
-# ABAKUS
+ABAKUS
+======
+
+ABAKUS der königliche Punkterechner

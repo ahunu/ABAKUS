@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/firebase/firebase.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css"    rel="stylesheet" />
+        <script src="TischSpeichern.js" ></script>
+        <script src="AaVersion.js"      ></script>
+        <script src="loadSTAT.js"       ></script>
+        <script src="../Statistik/loadTURNIER.js"></script>
+    </head>
+    <body>
+        <div data-role="header" class="ui-btn K W" data-position="fixed" style="padding:0em; margin:0em;">
+            <div class="ui-grid-a" onClick="$('#dLegende').toggle('show');">
+                <div class="ui-block-a" style="width:68px;">
+                    <img src='../Icons/Save.png' id=logo  style="margin-left:8px;margin-bottom:-10px;height:64px; width:64px;" alt="Abakus"/>
+                </div>
+                <div class="ui-block-b">
+                    <div id=hTitel1 style="width:auto; text-align:left; margin-left:12px; font-size: 31px; margin-top:-2px; font-style: italic;">ABAKUS die Tarock-App</div>
+                    <div id=hTitel2 style="width:auto; text-align:left; margin-left:12px; font-size: 28px; margin-top:-8px; font-weight: normal;">Tisch speichern</div>
+                </div>
+            </div>
+            <div id='dLegende' onClick="$('#dLegende').toggle('show');" style='margin:1em; text-align: left;' class='M N' hidden>
+                <b>Achtung:</b> Da Änderungen zum Teil nicht r&uuml;ckg&auml;ngig gemacht werden k&ouml;nnen,<br>
+                ist ein konzentriertes Arbeiten angebracht.
+            </div>
+        </div>
+        <div id=main>
+            <div id=pSpiele> &nbsp;
+                <span id="tCupName" class='L B'>
+                </span>
+                <table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='L ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >
+                    <thead>
+                        <tr class='ui-bar-d'>
+                            <th>&nbsp;Spieler
+                            </th>
+                            <th class=TR>Punkte&nbsp;
+                            </th>
+                        </tr>
+                    <tbody>
+                    </tbody>
+                </table> &nbsp;
+                <span id="tGespielt" class='L'>
+                </span>
+            </div>
+            <div id=hSpeichern style='margin:0.5em;'>
+            </div>
+            <br>
+            <div class="ui-body ui-body-c"  style="padding:0">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a" style="padding:0 8px">
+                        <button onClick="history.go(-1);" data-theme="a">zur&uuml;ck
+                        </button>
+                    </div>
+                    <div class="ui-block-b" style="padding:0 8px">
+                        <button id="bSpeichern" data-theme="e">speichern
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id=tLOG>
+            </div>
+            <br>
+        </div>
+    </body>
+</html>

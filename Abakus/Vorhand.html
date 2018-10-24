@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <script type="text/javascript" src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css" rel="stylesheet" />
+        <style>
+            .LL3 {font-size: calc(5.5vw + 7px) !important;}  /* Spiele und Punkte */
+            .LL2 {font-size: calc(1.3vw + 22px) !important;}
+        </style>
+        <script src="Vorhand.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body onclick="event.stopPropagation();">
+        <div data-role="page">
+            <div id="header" data-role="header" data-position="fixed" style="padding:0em; margin:0em;">
+                <div id="dTisch41" hidden>
+                    <!-- Tisch 41 -->
+                    <div         id=SP341 nowrap class="ui-bar ui-bar-a SP3 LL3 C" style="padding:.0em;">?
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div id=SP441 nowrap class="ui-bar ui-bar-a SP4 LL3 C" style="padding:.0em;">?
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div id=SP241 nowrap class="ui-bar ui-bar-a SP2 LL3 C" style="padding:.0em;">?
+                            </div>
+                        </div>
+                    </div>
+                    <div         id=SP141 nowrap class="ui-bar ui-bar-a SP1 LL3 C" style="padding:.0em;">?
+                    </div>
+                </div>
+                <!-- /Tisch 41 -->
+                <div id="dTisch42" hidden>
+                    <!-- Tisch 42 -->
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div id=SP442 nowrap class="ui-bar ui-bar-a SP4 LL3 C" style="padding:.0em;">?
+                            </div>
+                            <div id=SP142 nowrap class="ui-bar ui-bar-a SP1 LL3 C" style="padding:.0em;">?
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div id=SP342 nowrap class="ui-bar ui-bar-a SP3 LL3 C" style="padding:.0em;">?
+                            </div>
+                            <div id=SP242 nowrap class="ui-bar ui-bar-a SP2 LL3 C" style="padding:.0em;">?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Tisch 42 -->
+                <div id="dTisch5" hidden>
+                    <!-- Tisch 5 -->
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div id=SP45 nowrap class="ui-bar ui-bar-a SP4 LL3 C SPx56" style="padding:.0em;">?
+                            </div>
+                            <div id=SP55 nowrap class="ui-bar ui-bar-a SP5 LL3 C SPx56" style="padding:.0em;">?
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div id=SP35 nowrap class="ui-bar ui-bar-a SP3 LL3 C SPx56" style="padding:.0em;">?
+                            </div>
+                            <div id=SP25 nowrap class="ui-bar ui-bar-a SP2 LL3 C SPx56" style="padding:.0em;">?
+                            </div>
+                        </div>
+                    </div>
+                    <div         id=SP15 nowrap class="ui-bar ui-bar-a SP1 LL3 C SPx56" style="padding:.0em;">?
+                    </div>
+                </div>
+                <!-- /Tisch 5 -->
+                <div id="dTisch6" hidden>
+                    <!-- Tisch 6 -->
+                    <div         id=SP46 nowrap class="ui-bar ui-bar-a SP4 LL2 C SPx56" style="padding:.0em;">?
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div id=SP56 nowrap class="ui-bar ui-bar-a SP5 LL2 C SPx56" style="padding:.0em;">?
+                            </div>
+                            <div id=SP66 nowrap class="ui-bar ui-bar-a SP6 LL2 C SPx56" style="padding:.0em;">?
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div id=SP36 nowrap class="ui-bar ui-bar-a SP3 LL2 C SPx56" style="padding:.0em;">?
+                            </div>
+                            <div id=SP26 nowrap class="ui-bar ui-bar-a SP2 LL2 C SPx56" style="padding:.0em;">?
+                            </div>
+                        </div>
+                    </div>
+                    <div         id=SP16 nowrap class="ui-bar ui-bar-a SP1 LL2 C SPx56" style="padding:.0em;">?
+                    </div>
+                </div>
+                <!-- /Tisch 6 -->
+            </div>
+            <div id="dHeaderEquivalent"></div>
+            <br>
+            <div style="padding:0em; margin:0em;">
+                <ul data-role=listview id=lv>
+                    <li data-icon=false>
+                        <a onclick="$('#dLegende').toggle('show');" style="padding:.0em">
+
+
+
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a" style="width:68px;">
+                                    <img src='../Icons/Gear.png' id=logo  style="margin-left:8px;margin-bottom:-10px;height:64px; width:64px;" alt="Abakus"/>
+                                </div>
+                                <div class="ui-block-b">
+                                    <div id=hTitel1 style="width:auto; text-align:left; margin-left:12px; font-size: 31px; margin-top:-2px; font-style: italic;">ABAKUS die Tarock-App</div>
+                                    <div id=hTitel2 style="width:auto; text-align:left; margin-left:12px; font-size: 28px; margin-top:-8px; font-weight: normal;">Tischoptionen
+                                        <i title="Den Hilfetext anzeigen." class="i zmdi-info-outline noprint" style="position: absolute; top: 33px; right: 11px; font-size: 33px; cursor: pointer;"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </a>
+                    </li>
+                </ul>
+                <div id='dLegende' style='margin:1em' class='M' onclick="$('#dLegende').toggle('show');" hidden>Durch tippen auf einen Spieler kannst du diesem die
+                    <span class="ui-bar-f ui-corner-all M">&nbsp;Vorhand&nbsp;</span> zuweisen.<br>
+                    Auf 5er- und 6er-Tischen kannst du Spieler mit einer Wischbewegeung solange
+                    <span class="ui-bar-d ui-corner-all M">&nbsp;pausieren&nbsp;</span>
+                    lassen, bis du sie mit einer weiteren Wischbewegung wieder aktivierst.
+                    <br>
+                </div>
+            </div>
+            <div data-role="main" class="onExit" style='padding:0.8em;'>
+                <span class="M2" id=tVorhand>
+                </span>
+                <br>
+                <span class="M2" id=tPausiert>
+                </span>
+                <div class="ui-grid-a ui-responsive">
+                    <div class="ui-block-a">
+                    </div>
+                    <div class="ui-block-b">
+                        <fieldset data-role="controlgroup" id='fs4' hidden>
+                            <p style="font-size:25px; margin:0 0 0 0; padding: -5 -5 -5 -5; font-weight:bold;">Sitzposition:</p>
+                            <input type="radio" name="JeSeite" id="JeSeite1" value="1" onclick="event.preventDefault();showTisch('1');">
+                            <label for="JeSeite1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 je Seite
+                            </label>
+                            <input type="radio" name="JeSeite" id="JeSeite2" value="2" onclick="event.preventDefault();showTisch('2');">
+                            <label for="JeSeite2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 gegen&uuml;ber
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+                <!-- /responsive grid-a -->
+                <div class="ui-grid-a ui-responsive">
+                    <div class="ui-block-a">
+                    </div>
+                    <div class="ui-block-b">
+                        <div id="dDoppelt">
+                            <div class="ui-field-contain">
+                                <label for="nDoppelt"  style="font-size:25px;"><b>Anzahl doppelte Spiele:</b>
+                                </label>
+                                <input type="number" pattern="\d*" id="nDoppelt" name="nDoppelt" size="2" pattern="[0-9]" min="0" max="99" data-inline="true" style="font-size:24px; margin: 2px; padding: 2px; font-weight:bold;" value="">
+                            </div>
+                            <div style="text-align:right;">
+                                <br>
+                                <a id="bDoppelt"  data-role="button" data-inline="true">&nbsp;Doppelte Runde&nbsp;</a>
+                            </div>
+                        </div>
+                        <div style="text-align:right;">
+                            <br>
+                            <br>
+                            <a class="iconJQM ui-btn ui-btn-inline ui-icon-bullets ui-btn-icon-left ui-corner-all" onclick="window.location.href = 'Einstellungen.html'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Einstellungen&nbsp;</a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div data-role="footer" data-position="fixed" style="position: fixed; bottom: 0; width: 100%;" class="onExit">
+                <span class="L2 B cRot" id="tFehler" hidden>Fehler:
+                </span>
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a data-icon=arrow-l class=iconJQM onClick="Deactivate(this);history.back();">&nbsp;&nbsp;&nbsp;&nbsp;zur&uuml;ck</a>
+                        </li>
+                        <li>
+                            <a data-icon=check   class=iconJQM onclick="onOK();" data-theme="e">&nbsp;&nbsp;&nbsp;OK</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

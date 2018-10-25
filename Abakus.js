@@ -4,6 +4,7 @@
 var PC = false;
 var DB = new Object();
 var FB = undefined;
+var sHash = '';
 var time2Check = false;
 var AnmeldungGestartet = false;
 var iTURCODE = 0;
@@ -148,6 +149,7 @@ function initSeite1() {
 function showHF(pSeite) {
     $('#hMenu,#hMix,#pMenu,#pCup,#pTisch').hide();
     if (!pSeite || pSeite === 1) {
+        sHash = '';
         $('#hMenu,#pMenu').show();
     } else if (pSeite === 2) {
         $('#hMix,#pTisch').show();
@@ -520,6 +522,7 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
             hrefStatistik();
             return;
         }
+        window.location.href = "#MeinTisch";
     }
 
     writeCanvas(I);
@@ -1231,10 +1234,10 @@ $(document).ready(function () {
     }
 
     initExtraButtons();
-        if (window.location.href.toUpperCase().indexOf('?VIPS') > 0) {
-            LS.tempVIPs = window.location.href.substr(window.location.href.toUpperCase().indexOf('?VIPS'));
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
+    if (window.location.href.toUpperCase().indexOf('?VIPS') > 0) {
+        LS.tempVIPs = window.location.href.substr(window.location.href.toUpperCase().indexOf('?VIPS'));
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
@@ -1356,4 +1359,17 @@ window.onpageshow = function (event) {
 };
 window.onbeforeunload = function (e) {
     $('.onExit').addClass('ui-disabled');
-}
+};
+window.onhashchange = function () {
+    if (!QUERFORMAT()) {
+        if (window.location.hash) {
+            sHash = window.location.hash;
+        } else if (sHash) {
+            $('#hMenu,#hMix,#pMenu,#pCup,#pTisch').hide();
+            $('#hMenu,#pMenu').show();
+            sHash = '';
+        } else {
+            history.back();
+        }
+    }
+};

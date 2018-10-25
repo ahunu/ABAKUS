@@ -6,6 +6,8 @@
         version     = "870">     <!-- ABAKUS -->
 
     <name>ABAKUS</name>
+    
+    <!-- ACHTUNG Die config.xml muss auf _Standard und _Tablet geändert werden. -->
 
     <description>
         ABAKUS die koenigliche Tarock-App.

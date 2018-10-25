@@ -860,9 +860,6 @@ function optFont() {
     'use strict';
     setTimeout(function () {
         var pWidth = $(window).innerWidth();
-        if (PC) {
-            pWidth -= 12; // Scrollleiste abziehen
-        }
         if (($('#L0P1').width()) === pWidth) {
             return;
         } else if (($('#L0P1').width()) < pWidth) {
@@ -896,5 +893,5 @@ function optFont() {
                 return;
             }
         }
-    }, 0);
+    });
 }

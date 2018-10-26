@@ -28,9 +28,9 @@ function onRegistrieren() {
     'use strict';
     $.mobile.activePage.focus();
     myJTip.close();
-    var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     var iCNRn = parseInt($("#iCNR").val());
-    var iVNN = $("#iVNN").val().toUpperCase();
+    var iVNN = $("#iVNN").val();
     if (!iCNRn) {
         iCNRn = 0;
     }
@@ -87,11 +87,15 @@ function onRegistrieren() {
         }
     }
 
-
-
-    if (!xMEFpo && iCNRn === 0) {
-        if (iVNN.length < 7 || iVNN.indexOf(' ') < 3 || iVNN.length - iVNN.indexOf(' ') < 4) {
-            einFehler('#iVNN', 'Wenn du keine Spielernummer hast,<br>kannst du dich alternativ mit<br>deinen Namen registrieren.');
+    if (iCNRn === 0) {
+        if (iVNN.length === 0) {
+            einFehler('#iVNN', 'Wenn du keine Spielernummer hast,<br>kannst du dich alternativ mit<br>deinem Namen registrieren.');
+            return;
+        }
+        if (iVNN.indexOf(' ') < 0
+                || iVNN.indexOf(',') < 0
+                || iVNN.indexOf(' ') > iVNN.indexOf(',')) {
+            einFehler('#iVNN', 'Du musst "Familienname Vorname, Ort" eingeben.');
             return;
         }
     }
@@ -107,14 +111,9 @@ function onRegistrieren() {
     if (iCNRn) {
         i = i + iCNRn;
     } else {
-        i = i + abc.indexOf(iVNN.substr(0, 1));
-        i = i + abc.indexOf(iVNN.substr(1, 1));
-        i = i + abc.indexOf(iVNN.substr(2, 1));
-        i = i + abc.indexOf(iVNN.substr(3, 1));
-        i = i + abc.indexOf(iVNN.substr(4, 1));
-        i = i + abc.indexOf(iVNN.substr(5, 1));
-        i = i + abc.indexOf(iVNN.substr(6, 1));
-        i = i + abc.indexOf(iVNN.substr(iVNN.indexOf(' ') + 1, 1));
+        for (var ind in iVNN) {
+            i = i + abc.indexOf(iVNN[ind]);
+        }
     }
     i = (i * 17) % 10000;
     if (i <= 1001) {
@@ -149,7 +148,9 @@ function onRegistrieren() {
                 LS.ME = '' + iCNRn;
             }
         } else if (iVNN.length >= 7) {
+            LS.MEname = LS.MEname.substr(0, LS.MEname.indexOf(','));
             LS.ME = $("#iVNN").val();
+            LS.ME = LS.ME.replace(/  /g, ' ').replace(/, /g, '__').replace(/,/g, '__').replace(/ /g, '_');
             LS.ME = LS.ME.replace(/Ä/g, 'Ae').replace(/Ü/g, 'Ue').replace(/Ö/g, 'Oe').replace(/\.|\-/g, ' ');
             LS.ME = LS.ME.replace(/ä/g, 'ae').replace(/ü/g, 'ue').replace(/ö/g, 'oe').replace(/  /g, ' ').replace(/ /g, '_');
         } else {

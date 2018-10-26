@@ -67,15 +67,20 @@ function hrefStatistik(pParameter) {
     if (!pParameter) {
         pParameter = '';
     }
-    if (CUPS.TYP[I] === 'PR' && !CUPS.MEZULETZT[I]) {
-        loadSTAT(I, 'Statistik wird geladen.', false, hrefStatistikPR);
-    } else {
+    if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0
+            || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0
+            || CUPS.TYP[I] !== 'PR'
+            || CUPS.TYP[I] === 'PR' && CUPS.MEZULETZT[I] && (
+            (CUPS.MEZULETZT[I] + (100 * 86400000) < Date.now() && CUPS.NAME[I].substr(0, 4) === 'Bei ')
+            || (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()))) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
             window.location.href = "Statistik/Statistik.html";
         } else {
             window.location.href = "Abakus/Statistik.html" + pParameter;
         }
+    } else {
+        loadSTAT(I, 'Statistik wird geladen.', false, hrefStatistikPR);
     }
 }
 
@@ -106,17 +111,19 @@ function hrefStatistikPR() {
     }
 
     hideEinenMoment();
-    if (CUPS.MEZULETZT[I] === 0) {
-        meldKeineBerechtigung(0);
-    } else if (CUPS.MEZULETZT[I] + (100 * 86400000) < Date.now() && CUPS.NAME[I].substr(0, 4) === 'Bei ') {
-        meldKeineBerechtigung(100);
-    } else if (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()) {
-        meldKeineBerechtigung(365);
-    } else {
+
+    if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
-            window.location.href = "Statistik/Statistik.html";
+        window.location.href = "Abakus/Statistik.html";
+    } else {
+        if (CUPS.MEZULETZT[I] === 0) {
+            meldKeineBerechtigung(0);
+        } else if (CUPS.MEZULETZT[I] + (100 * 86400000) < Date.now() && CUPS.NAME[I].substr(0, 4) === 'Bei ') {
+            meldKeineBerechtigung(100);
+        } else if (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()) {
+            meldKeineBerechtigung(365);
         } else {
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             window.location.href = "Abakus/Statistik.html";
         }
     }
@@ -655,7 +662,6 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                                 )
                         : ''
                         )
-
 
                 + '</div><div class="ui-block-b M" style="width:50%;text-align:justify;">'
                 + hVorschub + getCupText()
@@ -1372,4 +1378,5 @@ window.onhashchange = function () {
             history.back();
         }
     }
-};
+}
+;

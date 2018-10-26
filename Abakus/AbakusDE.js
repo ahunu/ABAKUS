@@ -1,3 +1,4 @@
+
 /* global H, LS, DS, xKorr, xStorno, xManu, xNeu, iSPIEL, iDiverse, iTrischaker, mFensterbrett */
 
 function anaPunkte() {

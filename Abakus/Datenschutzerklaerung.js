@@ -8,7 +8,10 @@ function fIchStimmeNichtZu() {
     $('.onExit').addClass('ui-disabled');
     localStorage.clear();
     setTimeout(function () {
-        history.go(-2);
+//        history.go(-2);
+
+        window.close();
+        opener.window.focus();
     }, 200);
 }
 

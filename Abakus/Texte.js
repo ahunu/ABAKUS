@@ -148,7 +148,7 @@ function getZitat() {
 
     var iZitat = stLastZitat;
     do {
-        iZitat = Date.now() % 42;
+        iZitat = Date.now() % 53;
     } while (iZitat === stLastZitat);
 
     stLastZitat = iZitat;
@@ -328,46 +328,47 @@ function getZitat() {
         return ['Man muss sein Glück teilen,'
                     + '<br>um es zu multiplizieren.',
             'Marie von Ebner-Eschenbach, <span style="white-space: nowrap">1830-1916, österr. Schriftstellerin</span>'];
-    } else if (iZitat === 42) {
-        return ['Der Mensch ist nur da'
-                    + '<br>ganz Mensch, wo er spielt.',
-            'Friedrich von Schiller, 1759-1805, dt.&nbsp;Arzt,&nbsp;Dichter&nbsp;und&nbsp;Philosoph'];
-    } else if (iZitat === 42) {
-        return ['Wer aufhört zu spielen,'
-                    + '<br>kann nicht mehr gewinnen.',
-            'Unbekannt'];
-    } else if (iZitat === 42) {
-        return ['Es spielen sich eher zehn arm '
-                    + 'als&nbsp;einer&nbsp;reich.',
-            'Christoph Lehmann, 1579-1639, dt. Schriftsteller'];
-    } else if (iZitat === 42) {
-        return ['Es spielen sich eher zehn arm '
-                    + 'als&nbsp;einer&nbsp;reich.',
-            'Christoph Lehmann, 1579-1639, dt. Schriftsteller'];
-    } else if (iZitat === 42) {
-        return ['Es spielen sich eher zehn arm '
-                    + 'als&nbsp;einer&nbsp;reich.',
-            'Christoph Lehmann, 1579-1639, dt. Schriftsteller'];
-    } else if (iZitat === 42) {
-        return ['Es spielen sich eher zehn arm '
-                    + 'als&nbsp;einer&nbsp;reich.',
-            'Christoph Lehmann, 1579-1639, dt. Schriftsteller'];
-    } else if (iZitat === 42) {
-        return ['Es spielen sich eher zehn arm '
-                    + 'als&nbsp;einer&nbsp;reich.',
-            'Christoph Lehmann, 1579-1639, dt. Schriftsteller'];
-    } else if (iZitat === 42) {
-        return ['Es spielen sich eher zehn arm '
-                    + 'als&nbsp;einer&nbsp;reich.',
-            'Christoph Lehmann, 1579-1639, dt. Schriftsteller'];
-    } else if (iZitat === 42) {
-        return ['Es spielen sich eher zehn arm '
-                    + 'als&nbsp;einer&nbsp;reich.',
-            'Christoph Lehmann, 1579-1639, dt. Schriftsteller'];
-    } else if (iZitat === 42) {
-        return ['Das Maß der Selbstüberschätzung verhält  '
-                    + 'sich kongurent zur Empfindlichkeit.',
-            'Esther Kleppen, 1965-, Autorin'];
+    } else if (iZitat === 43) {
+        return ['Fußball ist wie Schach.'
+                    + '<br>Nur ohne Würfel.',
+            'Jan Böhmermann, 1981-, dt. Satiriker'];
+    } else if (iZitat === 44) {
+        return ['Wir müssen gewinnen.'
+                    + '<br>Alles andere ist primär.',
+            'Hans Krankl, 1953-, österr. Fußballlegende'];
+    } else if (iZitat === 45) {
+        return ['Wir haben keine Chance -'
+                    + '<br>und die müssen wir nützen.',
+            'Hans Krankl, 1953-, österr. Fußballlegende'];
+    } else if (iZitat === 46) {
+        return ['Kein Alkohol'
+                    + '<br>ist auch keine Lösung.',
+            'Campino alias Andreas Frege, 1962-&nbsp;dt.&nbsp;Sänger'];
+    } else if (iZitat === 47) {
+        return ["Ich könnt' weinen,"
+                    + "<br>was aus mir hätt' werden können.",
+            'Günther Nenning, 1921-2006, österr.&nbsp;Querdenker'];
+    } else if (iZitat === 48) {
+        return ['Es macht keinen Sinn,'
+                    + '<br>mit Männern zu streiten -'
+                    + '<br>sie haben ja doch immer unrecht',
+            'Zsa Zsa Gabor, 1934-1998, ung.&nbsp;amerik.&nbsp;Schauspielerin'];
+    } else if (iZitat === 49) {
+        return ['Frauen sind da um geliebt, '
+                    + '<br>nicht um verstanden zu werden.',
+            'Oscar Wilde, 1854-1900, irischer Schriftsteller'];
+    } else if (iZitat === 50) {
+        return ['Ich bereue nichts im Leben, '
+                    + '<br>außer dem, was ich nicht getan habe.',
+            'Coco Chanel, 1883-1971, franz. Desingnerin'];
+    } else if (iZitat === 51) {
+        return ["Hint' noch is' a jeder a Prophet.",
+            'Johann Nepomuk Nestroy, 1801-1862,<br>österr. Dramatiker, Schauspieler und Opernsänger'];
+    } else if (iZitat === 52) {
+        return ['Männer haben keine Geduld.'
+                    + '<br>Darum haben sie auch den'
+                    + '<br>Reißverschluss erfunden.',
+            'Senta Berger, 1941-, österr.dt. Schauspielerin'];
     }
 }
 

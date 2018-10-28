@@ -454,6 +454,7 @@ function setFont() {
             $('#mTable').css('font-size', stFont + 'vw').show(optFont);
         }
     }
+    $('#dOver').hide();
 }
 
 function optFont() {

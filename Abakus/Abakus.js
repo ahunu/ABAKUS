@@ -84,11 +84,25 @@ function initGames() {
     }
 
     $('#d1').text(LS.Tarif[1]);
-    if (LS.I === 37) { // Eggenberger Runde
-        $('#d1_2').text(3);
+
+    if (LS.Regeln !== 'Ti.') {
+        $('.cTIROL').remove();
     } else {
-        $('#d1_2').text(LS.Tarif[1] * 2);
+        $('.cNoTIROL').remove();
+        $('#P6,#F1').text('4 Könige');
     }
+    if (LS.I !== 37) {  // Eggenberger Runde
+        $('#d1_2').text(LS.Tarif[1] * 2);
+        $('.cEGGBE').remove();
+    } else {
+        $('#d1_2').text(3);
+        $('.cNoEGGBE').remove();
+    }
+    if (LS.I === 23) {  // Cafe Rathaus
+        $('#P8').text('Taro.');
+        $('#F1').text('Trull');
+    }
+
     $('#d8').text(LS.Tarif[8]);
     $('#d9').text(LS.Tarif[9]);
     $('#d9_1').text(LS.Tarif[9] + 1);
@@ -101,25 +115,12 @@ function initGames() {
     $('#d13').text(LS.Tarif[13]);
     $('#d14').text(LS.Tarif[14]);
     $('#d15').text(LS.Tarif[15]);
+    $('#d15_4').text(LS.Tarif[15] + 4);
     $('#d16_2').text(LS.Tarif[16] - 2);
     $('#d16').text(LS.Tarif[16]);
     $('#d17_2').text(LS.Tarif[17] - 2);
     $('#d17_11').text(LS.Tarif[17] - 11);
     $('#d17').text(LS.Tarif[17]);
-
-    if (LS.Regeln !== 'Ti.') {
-        $('.cTIROL').remove();
-    } else {
-        $('.cNoTIROL').remove();
-        $('#P6,#F1').text('4 Könige');
-    }
-    if (LS.I !== 37) {  // Eggenberger Runde
-        $('.cEGGBE').remove();
-    }
-    if (LS.I === 23) {  // Cafe Rathaus
-        $('#P8').text('Taro.');
-        $('#F1').text('Trull');
-    }
 
     if (!LS.Tarif[pPagat]) {
         $('#P1,#P1e').remove();
@@ -1601,7 +1602,7 @@ $(document).ready(function (e) {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

@@ -169,7 +169,7 @@ function showPlatzierungen(pSort) {
                 + '<input type="radio" name="iSORT" id="iSORT" value="Name"        onClick="showPlatzierungen(\'Name\')"' + (pSort === 'Name' ? ' checked="checked"' : '') + '>'
                 + '<label for="iSORT" class="XS K">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name</label>'
                 + '<input type="radio" name="iSORT" id="iSORT2" value="Stockerl"   onClick="showPlatzierungen(\'Stockerl\')"' + (pSort === 'Stockerl' ? ' checked="checked"' : '') + '>'
-                + '<label for="iSORT2" class="XS K">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beste Platzierung</label>'
+                + '<label for="iSORT2" class="XS K">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beste&nbsp;Platzierung</label>'
                 + (CUPS.TYP[stCup] !== 'MT'
                         ? '<input type="radio" name="iSORT" id="iSORT3" value="Cuppunkte"  onClick="showPlatzierungen(\'Cuppunkte\')"' + (pSort === 'Cuppunkte' ? ' checked="checked"' : '') + '>'
                         + '<label for="iSORT3" class="XS K">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cuppunkte</label>'
@@ -191,7 +191,7 @@ function showPlatzierungen(pSort) {
         html = '<div class="parent" style="margin-top: -0px; height: ' + hx + 'px;"><table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
                 + '<thead>'
                 + '<tr ' + (QUERFORMAT() ? "id=L0P1" : "") + ' class=bHell>'
-                + '<th class="TL" sclass="fixedCol' + (QUERFORMAT() ? 'Quer' : 'Hoch') + ' bHell">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sortiert nach:<br><br><br><br></th>'
+                + '<th class="TL">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sortiert nach:<br><br><br><br></th>'
                 + '<th class="rotate bottom">1.&nbsp;2.&nbsp;3.<br>beste<br>Platz.</th>'
                 + (CUPS.TYP[stCup] !== 'MT' ? '<th class="rotate bottom">Cup-<br>punkte</th>' : '')
                 + (QUERFORMAT() || true ? html : '')
@@ -208,7 +208,7 @@ function showPlatzierungen(pSort) {
             setFont();
             $("#mTable").tableHeadFixer({"left": 1});
             $("#mTable tr:even").css('background-color', '#efefef');
-            $("#dOver").attr('style', "width:200px;position: absolute; top: 100px; left: 29vw;").show();
+            $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
         } else {
             $('#sideDetails').hide();
             $('#dContent').append(html + "<br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span>");

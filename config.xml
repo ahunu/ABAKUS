@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.phonegap.ABAKUSst" 
-        versionCode = "871"
-        version     = "871">     <!-- ABAKUS -->
+        id          = "com.phonegap.ABAKUS" 
+        versionCode = "872"
+        version     = "872">     <!-- ABAKUS -->
 
     <name>ABAKUS</name>
     
@@ -27,6 +27,7 @@
     <preference name="splashscreen"      value="Icons/AbakusSplash.png" />
     <preference name="permissions"       value="none"      />
     <preference name="phonegap-version"  value="cli-7.1.0" />
+    <preference name="orientation"       value="portrait"  />
     <preference name="target-device"     value="universal" />
     <preference name="fullscreen"        value="false"     /> 
 

@@ -156,8 +156,10 @@ function initSeite1() {
 function showHF(pSeite) {
     $('#hMenu,#hMix,#pMenu,#pCup,#pTisch').hide();
     if (!pSeite || pSeite === 1) {
-        sHash = '';
         $('#hMenu,#pMenu').show();
+        if (sHash) {
+            history.back();
+        }
     } else if (pSeite === 2) {
         $('#hMix,#pTisch').show();
     } else if (pSeite === 3) {
@@ -810,44 +812,72 @@ function getClass(i) {
     if (i === LS.I) {
         return 'cAktiv';
     }
-    if (CUPS.TYP[i] === 'PR' && LS.ME === 'NOBODY') {
-        return 'ui-disabled';
-    }
+//    if (CUPS.TYP[i] === 'PR' && LS.ME === 'NOBODY') {
+//        return 'ui-disabled';
+//    }
 
     var cReturn = '';
-    if (CUPS.BEREadmin[i].indexOf('3425') >= 0 || CUPS.BEREadmin[i].indexOf('3244') >= 0) { // Markus Mair
-        if (CUPS.TYP[i] === 'WR'
-                || CUPS.TYP[i] === 'FC'
-                || CUPS.TYP[i] === 'TC'
-                || CUPS.TYP[i] === 'PR' && (CUPS.MEZULETZT[i] + (365 * 86400000) > Date.now())) { // 365 Tage
-            if (CUPS.SPIELTAGE[i][(new Date()).getDay()] === 'J') {
-                cReturn = 'fGruen';
-                if (CUPS.TURNIER[i] && (CUPS.WOCHEN[i][parseInt((new Date().getDate() - 1) / 7)] !== 'J')) {
-                    cReturn = '';
-                }
+//    if (CUPS.BEREadmin[i].indexOf('3425') >= 0 || CUPS.BEREadmin[i].indexOf('3244') >= 0) { // Markus Mair
+    if (CUPS.TYP[i] === 'WR'
+            || CUPS.TYP[i] === 'FC'
+            || CUPS.TYP[i] === 'TC'
+            || CUPS.TYP[i] === 'PR' && (CUPS.MEZULETZT[i] + (365 * 86400000) > Date.now())) { // 365 Tage
+        if (CUPS.SPIELTAGE[i][(new Date()).getDay()] === 'J') {
+            cReturn = 'fGruen';
+            if (CUPS.TURNIER[i] && (CUPS.WOCHEN[i][parseInt((new Date().getDate() - 1) / 7)] !== 'J')) {
+                cReturn = '';
             }
-            if (CUPS.NEXTTERMIN[i]) {
-                if (CUPS.NEXTTERMIN[i] > new Date().valueOf()) {
-                    cReturn = '';
-                }
-                if (new Date(CUPS.NEXTTERMIN[i]).toDateString() === new Date().toDateString()) {
-                    cReturn = 'fGruen';
-                }
+        }
+        if (CUPS.NEXTTERMIN[i]) {
+            if (CUPS.NEXTTERMIN[i] > new Date().valueOf()) {
+                cReturn = '';
+            }
+            if (new Date(CUPS.NEXTTERMIN[i]).toDateString() === new Date().toDateString()) {
+                cReturn = 'fGruen';
+            }
+        }
+    }
+//    }
+    return cReturn;
+}
+
+function getClassMeinTermin(i) {
+
+    if (i === LS.I) {
+        return 'cAktiv';
+    }
+    var cReturn = 'cDIV';
+    if (CUPS.TYP[i] === 'WR'
+            || CUPS.TYP[i] === 'FC'
+            || CUPS.TYP[i] === 'TC'
+            || CUPS.TYP[i] === 'PR' && (CUPS.MEZULETZT[i] + (365 * 86400000) > Date.now())) { // 365 Tage
+        if (CUPS.SPIELTAGE[i][(new Date()).getDay()] === 'J') {
+            cReturn = 'fGruen';
+            if (CUPS.TURNIER[i] && (CUPS.WOCHEN[i][parseInt((new Date().getDate() - 1) / 7)] !== 'J')) {
+                cReturn = 'cDIV';
+            }
+        }
+        if (CUPS.NEXTTERMIN[i]) {
+            if (CUPS.NEXTTERMIN[i] > new Date().valueOf()) {
+                cReturn = 'cDIV';
+            }
+            if (new Date(CUPS.NEXTTERMIN[i]).toDateString() === new Date().toDateString()) {
+                cReturn = 'fGruen';
             }
         }
     }
     return cReturn;
 }
 
-function getTerminBarZeile(pCup, pTermin) {
+function getMeinTerminBarZeile(pCup) {
     if (typeof CUPS.MEANGEMELDET[pCup] === 'number') {
         if (CUPS.MEANGEMELDET[pCup] > Date.now()) {
-            return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClass(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cGruen">angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
+            return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cGruen">angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
         } else {
-            return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClass(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cRot">' + (QUERFORMAT() ? 'nicht angemeldet' : 'nicht angemeldet') + '<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
+            return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cRot">nicht angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
         }
     }
-    return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClass(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cRot"><br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
+    return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S">???<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
 }
 
 function whenCUPSloaded() {
@@ -883,7 +913,9 @@ function whenCUPSloaded() {
 
     for (var iii = 5; iii < CUPS.ANMELDERF.length; iii++) {
         if (CUPS.ANMELDERF[iii]) {
-            if (CUPS.MEZULETZT[iii] + (200 * 86400000) > Date.now()) { // 200 Tage
+            if (CUPS.MEZULETZT[iii] + (200 * 86400000) > Date.now() // 200 Tage
+                    || CUPS.BEREadmin[iii].indexOf(LS.ME) >= 0
+                    || CUPS.BEREschreiben[iii].indexOf(LS.ME) >= 0) {
                 CUPS.NEXTTERMIN[iii] = getNextTermin(iii);
                 TERMINE[TERMINE.length] = {
                     DATUM: myDateString(CUPS.NEXTTERMIN[iii]),
@@ -996,13 +1028,13 @@ function whenCUPSloaded() {
                 var iii = TERMINE[termin].CUP;
                 nPersTermine++;
                 if (QUERFORMAT()) {
-                    hTemp = '<li data-icon=false>' + getTerminBarZeile(iii) + '</li>';
+                    hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                 } else {
                     if (CUPS.TYP[iii] === 'PR'
                             || !CUPS.TEXT1[iii]) {
-                        hTemp = '<li data-icon=false>' + getTerminBarZeile(iii) + '</li>';
+                        hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                     } else {
-                        hTemp = '<li data-icon=false>' + getTerminBarZeile(iii) + '<a onclick="toggleShow(\'#hToggleTE' + iii + '\');">Hilfe</a></li>'
+                        hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#hToggleTE' + iii + '\');">Hilfe</a></li>'
                                 + '<div id="hToggleTE' + iii + '" class="M TGL" style=margin-left:10px; hidden>'
                                 + (CUPS.TEXT1[iii] ? CUPS.TEXT1[iii] + '<br>' : '')
                                 + '</div>';
@@ -1378,5 +1410,4 @@ window.onhashchange = function () {
             history.back();
         }
     }
-}
-;
+};

@@ -464,9 +464,9 @@ function optFont() {
         if (PC) {
             pWidth -= 12; // Scrollleiste abziehen
         }
-        if (($('#mTable').width()) === pWidth) {
+        if (($('#L0P1').width()) === pWidth) {
             return;
-        } else if (($('#mTable').width()) < pWidth) {
+        } else if (($('#L0P1').width()) < pWidth) {
             if (stFontPlus === 0) {
                 stFontPlus = 0.1;
                 stFont += stFontPlus;

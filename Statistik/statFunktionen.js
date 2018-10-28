@@ -424,94 +424,6 @@ function showIcons(pIcons) {
     }
 }
 
-function setFont() {
-    'use strict';
-    if (QUERFORMAT()) {
-        setTimeout(function () {
-            $('.QUER').show();
-        }, 200);
-    } else {
-        if (jbHome && jbHome.isOpen) {
-            jbHome.close();
-        }
-        if (jbArchiv && jbArchiv.isOpen) {
-            jbArchiv.close();
-        }
-    }
-
-    if ($('#mTable').length) { // if exists
-        stFont = 5;
-        stFontPlus = 0;
-        if (QUERFORMAT()) {
-            if ($(window).innerWidth() < 1360) {        // Mein 15 Zoll Laptop: 1344
-                $('#mTable').css('font-size', '1.5vw');
-            } else if ($(window).innerWidth() < 1560) { // Mein 28 Zöller: 1536
-                $('#mTable').css('font-size', '1.4vw');
-            } else {
-                $('#mTable').css('font-size', '1.16vw'); // 4K, etc.
-            }
-        } else {
-            $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-        }
-    }
-    $('#dOver').hide();
-}
-
-function optFont() {
-    'use strict';
-    setTimeout(function () {
-        var pWidth = $(window).innerWidth();
-        if (PC) {
-            pWidth -= 12; // Scrollleiste abziehen
-        }
-        if (($('#L0P1').width()) === pWidth) {
-            return;
-        } else if (($('#L0P1').width()) < pWidth) {
-            if (stFontPlus === 0) {
-                stFontPlus = 0.1;
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else if (stFontPlus === 0.1) {
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else {
-                stFont += -0.05;
-                $('#mTable').css('font-size', stFont + 'vw');
-                return;
-            }
-        } else {
-            if (stFontPlus === 0) {
-                stFontPlus = -0.1;
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else if (stFontPlus === -0.1) {
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else {
-                stFont += 0.05;
-                $('#mTable').css('font-size', stFont + 'vw');
-                return;
-            }
-        }
-    });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 function writeCanvas(pTitel) {
     var hTitel = CUPS.NAME[stCup];
     if (QUERFORMAT()) {
@@ -579,4 +491,80 @@ function writeCanvas(pTitel) {
             document.title = CUPS.NAME[stCup] + ' - ' + pTitel.replace('  ', ' ').replace('/', '-');
         }
     }
+}
+
+function setFont() {
+    'use strict';
+    if (QUERFORMAT()) {
+        setTimeout(function () {
+            $('.QUER').show();
+        }, 200);
+    } else {
+        if (jbHome && jbHome.isOpen) {
+            jbHome.close();
+        }
+        if (jbArchiv && jbArchiv.isOpen) {
+            jbArchiv.close();
+        }
+    }
+    $('#dOver').hide();
+
+    if ($('#mTable').length) { // if exists
+        stFont = 4.5;
+        stFontPlus = 0;
+        if (QUERFORMAT()) {
+            if ($(window).innerWidth() < 1360) {        // Mein 15 Zoll Laptop: 1344
+                $('#mTable').css('font-size', '1.5vw');
+            } else if ($(window).innerWidth() < 1560) { // Mein 28 Zöller: 1536
+                $('#mTable').css('font-size', '1.4vw');
+            } else {
+                $('#mTable').css('font-size', '1.16vw'); // 4K, etc.
+            }
+        } else {
+            $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+        }
+    }
+}
+
+function optFont() {
+    'use strict';
+    setTimeout(function () {
+        var pWidth = $(window).innerWidth();
+        if (PC) {
+            pWidth -= 12; // Scrollleiste abziehen
+        }
+        if (($('#L0P1').width()) === pWidth) {
+            return;
+        } else if (($('#L0P1').width()) < pWidth) {
+            if (stFontPlus === 0) {
+                stFontPlus = 0.1;
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else if (stFontPlus === 0.1) {
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else {
+                stFont += -0.05;
+                $('#mTable').css('font-size', stFont + 'vw');
+                return;
+            }
+        } else {
+            if (stFontPlus === 0) {
+                stFontPlus = -0.1;
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else if (stFontPlus === -0.1) {
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else {
+                stFont += 0.05;
+                $('#mTable').css('font-size', stFont + 'vw');
+                return;
+            }
+        }
+    });
 }

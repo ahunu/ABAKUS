@@ -290,142 +290,138 @@ function loadSTATold(I, pCallback) {
                         }
                         return;
                     }
-                    if (STAT.S[iSTAT].NR.indexOf(' ') > 0) {  // entfernen nachdem Statistiksätze gelöscht
-                        STAT.S.splice(iSTAT, 1);
-                    } else {
-                        if (hZuletztGespielt < new Date(STAT.S[iSTAT].TIMESTAMP).valueOf()) {
-                            hZuletztGespielt = new Date(STAT.S[iSTAT].TIMESTAMP).valueOf();
-                        }
-                        if (STAT.S[iSTAT].NR === LS.ME) {
-                            STAT.TEILNEHMER = true;
-                            hMEZULETZT = new Date(STAT.S[iSTAT].TIMESTAMP).valueOf();
-                        }
-                        STAT.S[iSTAT].TIMESTAMP = new Date(new Date(STAT.S[iSTAT].TIMESTAMP).getTime() + 60000 * new Date(STAT.S[iSTAT].TIMESTAMP).getTimezoneOffset());
+                    if (hZuletztGespielt < new Date(STAT.S[iSTAT].TIMESTAMP).valueOf()) {
+                        hZuletztGespielt = new Date(STAT.S[iSTAT].TIMESTAMP).valueOf();
+                    }
+                    if (STAT.S[iSTAT].NR === LS.ME) {
+                        STAT.TEILNEHMER = true;
+                        hMEZULETZT = new Date(STAT.S[iSTAT].TIMESTAMP).valueOf();
+                    }
+                    STAT.S[iSTAT].TIMESTAMP = new Date(new Date(STAT.S[iSTAT].TIMESTAMP).getTime() + 60000 * new Date(STAT.S[iSTAT].TIMESTAMP).getTimezoneOffset());
 
-                        if (typeof STAT.S[iSTAT].STERNE === 'undefined') {
-                            STAT.S[iSTAT].STERNE = '';
+                    if (typeof STAT.S[iSTAT].STERNE === 'undefined') {
+                        STAT.S[iSTAT].STERNE = '';
+                    }
+
+                    if (CUPS.TURNIER[I]) {
+                        if (typeof STAT.S[iSTAT].PUNKTERx === 'undefined') {
+                            STAT.S[iSTAT].PUNKTERx = [];
                         }
-
-                        if (CUPS.TURNIER[I]) {
-                            if (typeof STAT.S[iSTAT].PUNKTERx === 'undefined') {
-                                STAT.S[iSTAT].PUNKTERx = [];
-                            }
-                            if (typeof STAT.S[iSTAT].SCHREIBER === 'undefined') {
-                                STAT.S[iSTAT].SCHREIBER = [];
-                            }
-                            if (typeof STAT.S[iSTAT].CUPPUNKTE === 'undefined') {
-                                STAT.S[iSTAT].CUPPUNKTE = [, [], []];
-                            }
-                            if (typeof STAT.S[iSTAT].STOCKERL === 'undefined') {
-                                STAT.S[iSTAT].STOCKERL = ['-', '-', '-', '-'];
-                            }
-                            for (var iii = 0; iii < STAT.S[iSTAT].SPIELE.length; iii++) {
-                                if (STAT.S[iSTAT].SPIELE[iii] && !STAT.S[iSTAT].STOCKERL[iii]) {
-                                    STAT.S[iSTAT].STOCKERL[iii] = '-';
-                                }
-                            }
-
-                            if (STAT.S[iSTAT].CUPPUNKTE) {
-                                if (!STAT.S[iSTAT].CUPPUNKTE[1]) {
-                                    STAT.S[iSTAT].CUPPUNKTE[1] = [];
-                                }
-                                if (!STAT.S[iSTAT].CUPPUNKTE[2]) {
-                                    STAT.S[iSTAT].CUPPUNKTE[2] = [];
-                                }
-                            } else {
-                                STAT.S[iSTAT].CUPPUNKTE = [, [], []];
-                            }
-                            if (STAT.S[iSTAT].PUNKTERx.length > 0) {
-                                STAT.TURSPIELER++;
-                                if (STAT.TURRUNDE) {
-                                    if (STAT.TURRUNDE === 1 && STAT.S[iSTAT].SCHREIBER[0]
-                                            || STAT.TURRUNDE === 2 && STAT.S[iSTAT].SCHREIBER[1]
-                                            || STAT.TURRUNDE === 3 && STAT.S[iSTAT].SCHREIBER[2]) {
-                                        STAT.TURGESPIELT++;
-                                    }
-                                }
+                        if (typeof STAT.S[iSTAT].SCHREIBER === 'undefined') {
+                            STAT.S[iSTAT].SCHREIBER = [];
+                        }
+                        if (typeof STAT.S[iSTAT].CUPPUNKTE === 'undefined') {
+                            STAT.S[iSTAT].CUPPUNKTE = [, [], []];
+                        }
+                        if (typeof STAT.S[iSTAT].STOCKERL === 'undefined') {
+                            STAT.S[iSTAT].STOCKERL = ['-', '-', '-', '-'];
+                        }
+                        for (var iii = 0; iii < STAT.S[iSTAT].SPIELE.length; iii++) {
+                            if (STAT.S[iSTAT].SPIELE[iii] && !STAT.S[iSTAT].STOCKERL[iii]) {
+                                STAT.S[iSTAT].STOCKERL[iii] = '-';
                             }
                         }
 
-                        if (new Date(STAT.S[iSTAT].TIMESTAMP).getFullYear() !== (new Date().getFullYear())) {
-                            if (new Date(STAT.S[iSTAT].TIMESTAMP).getFullYear() === (new Date().getFullYear() - 1)) {
-                                // 0 = Gesamt, 1 = laufendes Jahr, 2 = Vorjahr, 3 = Turnier
-                                STAT.S[iSTAT].PUNKTE[2] = STAT.S[iSTAT].PUNKTE[1];
-                                STAT.S[iSTAT].SPIELE[2] = STAT.S[iSTAT].SPIELE[1];
-                                if (CUPS.TURNIER[I] !== 'PC') {
-                                    STAT.S[iSTAT].ANZSPIELE[2] = STAT.S[iSTAT].ANZSPIELE[1];
-                                    STAT.S[iSTAT].ANZGEWONNEN[2] = STAT.S[iSTAT].ANZGEWONNEN[1];
-                                    STAT.S[iSTAT].PKTGEWONNEN[2] = STAT.S[iSTAT].PKTGEWONNEN[1];
-                                }
-                                if (CUPS.TURNIER[I]) {
-                                    STAT.S[iSTAT].STOCKERL[2] = STAT.S[iSTAT].STOCKERL[1];
-                                    STAT.S[iSTAT].CUPPUNKTE[2] = STAT.S[iSTAT].CUPPUNKTE[1];
-                                }
-                            } else {
-                                // 0 = Gesamt, 1 = laufendes Jahr, 2 = Vorjahr, 3 = Turnier
-                                STAT.S[iSTAT].PUNKTE[2] = 0;
-                                STAT.S[iSTAT].SPIELE[2] = 0;
-                                if (CUPS.TURNIER[I] !== 'PC') {
-                                    STAT.S[iSTAT].ANZSPIELE[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                    STAT.S[iSTAT].ANZGEWONNEN[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                    STAT.S[iSTAT].PKTGEWONNEN[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                }
-                                if (CUPS.TURNIER[I]) {
-                                    STAT.S[iSTAT].STOCKERL[2] = '';
-                                    STAT.S[iSTAT].CUPPUNKTE[2] = [];
-                                }
-                            }
-                            STAT.S[iSTAT].PUNKTE[1] = 0;
-                            STAT.S[iSTAT].SPIELE[1] = 0;
-                            if (CUPS.TURNIER[I] !== 'PC') {
-                                STAT.S[iSTAT].ANZSPIELE[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                STAT.S[iSTAT].ANZGEWONNEN[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                STAT.S[iSTAT].PKTGEWONNEN[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                            }
-                            if (CUPS.TURNIER[I]) {
-                                STAT.S[iSTAT].STOCKERL[1] = '';
+                        if (STAT.S[iSTAT].CUPPUNKTE) {
+                            if (!STAT.S[iSTAT].CUPPUNKTE[1]) {
                                 STAT.S[iSTAT].CUPPUNKTE[1] = [];
                             }
+                            if (!STAT.S[iSTAT].CUPPUNKTE[2]) {
+                                STAT.S[iSTAT].CUPPUNKTE[2] = [];
+                            }
+                        } else {
+                            STAT.S[iSTAT].CUPPUNKTE = [, [], []];
                         }
+                        if (STAT.S[iSTAT].PUNKTERx.length > 0) {
+                            STAT.TURSPIELER++;
+                            if (STAT.TURRUNDE) {
+                                if (STAT.TURRUNDE === 1 && STAT.S[iSTAT].SCHREIBER[0]
+                                        || STAT.TURRUNDE === 2 && STAT.S[iSTAT].SCHREIBER[1]
+                                        || STAT.TURRUNDE === 3 && STAT.S[iSTAT].SCHREIBER[2]) {
+                                    STAT.TURGESPIELT++;
+                                }
+                            }
+                        }
+                    }
 
-                        if (new Date(STAT.S[iSTAT].TIMESTAMP).getFullYear() !== new Date(STAT.ZULETZT).getFullYear()
-                                || new Date(STAT.S[iSTAT].TIMESTAMP).getMonth() !== new Date(STAT.ZULETZT).getMonth()
-                                || new Date(STAT.S[iSTAT].TIMESTAMP).getDate() !== new Date(STAT.ZULETZT).getDate()) {
-                            STAT.S[iSTAT].PUNKTE[3] = 0;
-                            STAT.S[iSTAT].SPIELE[3] = 0;
+                    if (new Date(STAT.S[iSTAT].TIMESTAMP).getFullYear() !== (new Date().getFullYear())) {
+                        if (new Date(STAT.S[iSTAT].TIMESTAMP).getFullYear() === (new Date().getFullYear() - 1)) {
+                            // 0 = Gesamt, 1 = laufendes Jahr, 2 = Vorjahr, 3 = Turnier
+                            STAT.S[iSTAT].PUNKTE[2] = STAT.S[iSTAT].PUNKTE[1];
+                            STAT.S[iSTAT].SPIELE[2] = STAT.S[iSTAT].SPIELE[1];
                             if (CUPS.TURNIER[I] !== 'PC') {
-                                STAT.S[iSTAT].ANZSPIELE[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                STAT.S[iSTAT].ANZGEWONNEN[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                STAT.S[iSTAT].PKTGEWONNEN[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].ANZSPIELE[2] = STAT.S[iSTAT].ANZSPIELE[1];
+                                STAT.S[iSTAT].ANZGEWONNEN[2] = STAT.S[iSTAT].ANZGEWONNEN[1];
+                                STAT.S[iSTAT].PKTGEWONNEN[2] = STAT.S[iSTAT].PKTGEWONNEN[1];
                             }
                             if (CUPS.TURNIER[I]) {
-                                STAT.S[iSTAT].STOCKERL[3] = '';
-                                STAT.S[iSTAT].CUPPUNKTE[3] = [];
+                                STAT.S[iSTAT].STOCKERL[2] = STAT.S[iSTAT].STOCKERL[1];
+                                STAT.S[iSTAT].CUPPUNKTE[2] = STAT.S[iSTAT].CUPPUNKTE[1];
+                            }
+                        } else {
+                            // 0 = Gesamt, 1 = laufendes Jahr, 2 = Vorjahr, 3 = Turnier
+                            STAT.S[iSTAT].PUNKTE[2] = 0;
+                            STAT.S[iSTAT].SPIELE[2] = 0;
+                            if (CUPS.TURNIER[I] !== 'PC') {
+                                STAT.S[iSTAT].ANZSPIELE[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].ANZGEWONNEN[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].PKTGEWONNEN[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                            }
+                            if (CUPS.TURNIER[I]) {
+                                STAT.S[iSTAT].STOCKERL[2] = '';
+                                STAT.S[iSTAT].CUPPUNKTE[2] = [];
                             }
                         }
-
+                        STAT.S[iSTAT].PUNKTE[1] = 0;
+                        STAT.S[iSTAT].SPIELE[1] = 0;
+                        if (CUPS.TURNIER[I] !== 'PC') {
+                            STAT.S[iSTAT].ANZSPIELE[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                            STAT.S[iSTAT].ANZGEWONNEN[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                            STAT.S[iSTAT].PKTGEWONNEN[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                        }
                         if (CUPS.TURNIER[I]) {
-                            if (STAT.S[iSTAT].PUNKTERx.length === 0) {
-                                STAT.S[iSTAT].PUNKTE   [3] = 0;
-                                STAT.S[iSTAT].SPIELE   [3] = 0;
-                                STAT.S[iSTAT].STOCKERL [3] = '-';
-                                if (CUPS.TURNIER[I] === 'Handy') {
-                                    STAT.S[iSTAT].ANZSPIELE   [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                    STAT.S[iSTAT].ANZGEWONNEN [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                    STAT.S[iSTAT].PKTGEWONNEN [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                }
+                            STAT.S[iSTAT].STOCKERL[1] = '';
+                            STAT.S[iSTAT].CUPPUNKTE[1] = [];
+                        }
+                    }
+
+                    if (new Date(STAT.S[iSTAT].TIMESTAMP).getFullYear() !== new Date(STAT.ZULETZT).getFullYear()
+                            || new Date(STAT.S[iSTAT].TIMESTAMP).getMonth() !== new Date(STAT.ZULETZT).getMonth()
+                            || new Date(STAT.S[iSTAT].TIMESTAMP).getDate() !== new Date(STAT.ZULETZT).getDate()) {
+                        STAT.S[iSTAT].PUNKTE[3] = 0;
+                        STAT.S[iSTAT].SPIELE[3] = 0;
+                        if (CUPS.TURNIER[I] !== 'PC') {
+                            STAT.S[iSTAT].ANZSPIELE[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                            STAT.S[iSTAT].ANZGEWONNEN[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                            STAT.S[iSTAT].PKTGEWONNEN[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                        }
+                        if (CUPS.TURNIER[I]) {
+                            STAT.S[iSTAT].STOCKERL[3] = '';
+                            STAT.S[iSTAT].CUPPUNKTE[3] = [];
+                        }
+                    }
+
+                    if (CUPS.TURNIER[I]) {
+                        if (STAT.S[iSTAT].PUNKTERx.length === 0) {
+                            STAT.S[iSTAT].PUNKTE   [3] = 0;
+                            STAT.S[iSTAT].SPIELE   [3] = 0;
+                            STAT.S[iSTAT].STOCKERL [3] = '-';
+                            if (CUPS.TURNIER[I] === 'Handy') {
+                                STAT.S[iSTAT].ANZSPIELE   [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].ANZGEWONNEN [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].PKTGEWONNEN [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                             }
                         }
+                    }
 
-                        for (var i = 0; i <= 3; i++) {
-                            akku0000rec(i, I, iSTAT);
-                        }
+                    for (var i = 0; i <= 3; i++) {
+                        akku0000rec(i, I, iSTAT);
+                    }
 
-                        for (var iii = 0; iii < STAT.S[iSTAT].SPIELE.length; iii++) {
-                            if (STAT.S[iSTAT].SPIELE[iii]) {
-                                if (STAT.MAXSPIELE[iii] < STAT.S[iSTAT].SPIELE[iii] || !STAT.MAXSPIELE[iii]) {
-                                    STAT.MAXSPIELE[iii] = STAT.S[iSTAT].SPIELE[iii];
-                                }
+                    for (var iii = 0; iii < STAT.S[iSTAT].SPIELE.length; iii++) {
+                        if (STAT.S[iSTAT].SPIELE[iii]) {
+                            if (STAT.MAXSPIELE[iii] < STAT.S[iSTAT].SPIELE[iii] || !STAT.MAXSPIELE[iii]) {
+                                STAT.MAXSPIELE[iii] = STAT.S[iSTAT].SPIELE[iii];
                             }
                         }
                     }

@@ -11,7 +11,6 @@ var time2Check = false;
 var AnmeldungGestartet = false;
 var iTURCODE = 0;
 
-var aPfad = '';
 var iPfad = '../Icons/';
 var rPfad = '../';
 var mTischTurnier = '';

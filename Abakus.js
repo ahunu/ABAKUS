@@ -14,7 +14,6 @@ var STAT = new Object();
 var I = 0;
 var hShowCup = 0;
 var hShowCupText = false;
-var aPfad = 'Abakus/';
 var iPfad = 'Icons/';
 var rPfad = '';
 var mTischTurnier = '';
@@ -812,9 +811,9 @@ function getClass(i) {
     if (i === LS.I) {
         return 'cAktiv';
     }
-//    if (CUPS.TYP[i] === 'PR' && LS.ME === 'NOBODY') {
-//        return 'ui-disabled';
-//    }
+    if (CUPS.TYP[i] === 'PR' && LS.ME === 'NOBODY') {
+        return 'ui-disabled'; // Muss sein, sonst können alle privaten Runden angesehen werden
+    }
 
     var cReturn = '';
 //    if (CUPS.BEREadmin[i].indexOf('3425') >= 0 || CUPS.BEREadmin[i].indexOf('3244') >= 0) { // Markus Mair
@@ -1279,7 +1278,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
@@ -1325,10 +1324,12 @@ $(document).ready(function () {
 
     listVersion();
     $('#tJJJJ,#tJJJJ2').text(new Date().getFullYear());
-    if (LS.ME !== 'NOBODY') {
-        $('#tSpieler').html('Registriert f&uuml;r Spieler ' + LS.ME + '<br>' + LS.MEname + '.');
-    } else {
+    if (LS.ME === 'NOBODY') {
         $('#tSpieler').html('Noch nicht registriert.');
+    } else if (LS.ME.length === 4) {
+        $('#tSpieler').html('Registriert für Spieler ' + LS.ME + '<br>' + LS.MEname + '.');
+    } else {
+        $('#tSpieler').html('Registriert für Spieler<br>' + LS.MEname + '.');
     }
 
     setTimeout(function () {

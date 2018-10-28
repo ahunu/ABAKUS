@@ -1,5 +1,5 @@
 
-/* global LS, CUPS, aPfad, I, iPfad, hHeute, STAT, mTischTurnier, PC, QUERFORMAT() */
+/* global LS, CUPS, I, iPfad, hHeute, STAT, mTischTurnier, PC, QUERFORMAT() */
 
 function neuerTisch(pPruefen) {
     'use strict';
@@ -131,15 +131,19 @@ function neuerTisch(pPruefen) {
 
             LS.ShowCups = I;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            if (!QUERFORMAT()) {
-                window.location.href = "../_Turnier/TU_1_Anmeldung.html?init";
+            if (window.location.hash) {
+                window.location.replace('_Turnier/TU_1_Anmeldung.html?init');
             } else {
-                window.location.href = "_Turnier/TU_1_Anmeldung.html?init";
+                window.location.href = '_Turnier/TU_1_Anmeldung.html?init';
             }
         } else if (!CUPS.TURNIER[I] && (CUPS.TYP[I] === 'PR' || I === 1) && localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3))) {
             LS.LoadCups = I * -1; // - = neuer Tisch
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            window.location.href = aPfad + 'Anmeldung.html';
+            if (window.location.hash) {
+                window.location.replace('Abakus/Anmeldung.html');
+            } else {
+                window.location.href = 'Abakus/Anmeldung.html';
+            }
         } else {
             time2Check = true;
             if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
@@ -252,7 +256,11 @@ function hrefParameterAendern() {
     'use strict';
     LS.ShowCups = I;
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-    window.location.href = aPfad + 'ParameterAendern.html';
+    if (window.location.hash) {
+        window.location.replace('Abakus/ParameterAendern.html');
+    } else {
+        window.location.href = 'Abakus/ParameterAendern.html';
+    }
 }
 
 function checkNeuerTisch() {
@@ -556,7 +564,11 @@ function checkNeuerTisch() {
     var NEXT = new Object();
     NEXT.Seite = 'GR';
     localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
-    window.location.href = aPfad + 'Abakus' + LS.AnzSpieler + LS.JeSeite + '.html';
+    if (window.location.hash) {
+        window.location.replace('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
+    } else {
+        window.location.href = 'Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html';
+    }
 }
 
 function blert(pNR, pVNAME, pNNAME, pORT, pSTERNE) {
@@ -804,7 +816,11 @@ function whenSTATloaded() {
     LS.LoadCups = I * -1; // - = neuer Tisch
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     setTimeout(function () {
-        window.location.href = aPfad + 'Anmeldung.html';
+        if (window.location.hash) {
+            window.location.replace('Abakus/Anmeldung.html');
+        } else {
+            window.location.href = 'Abakus/Anmeldung.html';
+        }
     });
 }
 
@@ -817,7 +833,11 @@ function Weiterspielen() {
     var NEXT = new Object();
     NEXT.Seite = 'GR';
     localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
-    window.location.href = aPfad + 'Abakus' + LS.AnzSpieler + LS.JeSeite + '.html';
+    if (window.location.hash) {
+        window.location.replace('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
+    } else {
+        window.location.href = 'Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html';
+    }
 }
 
 function replaceTischSpeichern() {

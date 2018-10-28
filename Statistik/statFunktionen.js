@@ -510,7 +510,7 @@ function setFont() {
     $('#dOver').hide();
 
     if ($('#mTable').length) { // if exists
-        stFont = 4.5;
+        stFont = 4.444;
         stFontPlus = 0;
         if (QUERFORMAT()) {
             if ($(window).innerWidth() < 1360) {        // Mein 15 Zoll Laptop: 1344
@@ -528,43 +528,82 @@ function setFont() {
 
 function optFont() {
     'use strict';
-    setTimeout(function () {
-        var pWidth = $(window).innerWidth();
-        if (PC) {
-            pWidth -= 12; // Scrollleiste abziehen
+    if (LS.ME === '34s25') {
+        if (stFont === 4.444) {
+            alert($('#L0P1').html()+',  '+$('#L0P1').width()+'px < ? ' + $(window).innerWidth() +'px.');
         }
-        if (($('#L0P1').width()) === pWidth) {
-            return;
-        } else if (($('#L0P1').width()) < pWidth) {
+        setTimeout(function () {
+            var pWidth = $(window).innerWidth();
             if (stFontPlus === 0) {
-                stFontPlus = 0.1;
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else if (stFontPlus === 0.1) {
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
+                if (($('#L0P1').width()) < pWidth) {
+                    stFontPlus = 0.5;
+                    stFont -= 0.5; // Damit der Font beim Wechsel der List nicht größer wird.
+                } else if (($('#L0P1').width()) > pWidth) {
+                    stFontPlus = -0.5;
+                } else {
+                    return;
+                }
             } else {
-                stFont += -0.05;
-                $('#mTable').css('font-size', stFont + 'vw');
-                return;
+                if (stFontPlus > 0 && stFont >= LS.Font[3] + LS.SchriftG - 5
+                        || stFontPlus < 0 && stFont <= 10) {
+                    return;
+                }
             }
-        } else {
-            if (stFontPlus === 0) {
-                stFontPlus = -0.1;
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else if (stFontPlus === -0.1) {
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
+
+            if ($('#L0P1').width() < pWidth && stFontPlus < 0
+                    || $('#L0P1').width() > pWidth && stFontPlus > 0 && stFont > LS.Font[1] + LS.SchriftG - 5) {
+                if ($('#L0P1').width() > pWidth) {
+                    stFont -= 0.5;
+                    $('#mTable').css('font-size', stFont + 'px');
+                }
             } else {
-                stFont += 0.05;
-                $('#mTable').css('font-size', stFont + 'vw');
-                return;
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'px').show(optFont);
             }
-        }
-    });
+        });
+    } else {
+        setTimeout(function () {
+            var pWidth = $(window).innerWidth();
+            if (PC) {
+                pWidth -= 12; // Scrollleiste abziehen
+            }
+            if (($('#L0P1').width()) === pWidth) {
+                return;
+            } else if (($('#L0P1').width()) < pWidth) {
+                if (stFontPlus === 0) {
+                    stFontPlus = 0.1;
+                    stFont += stFontPlus;
+                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                    return;
+                } else if (stFontPlus === 0.1) {
+                    stFont += stFontPlus;
+                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                    return;
+                } else {
+                    stFont += -0.05;
+                    $('#mTable').css('font-size', stFont + 'vw');
+                    return;
+                }
+            } else {
+                if (stFontPlus === 0) {
+                    stFontPlus = -0.1;
+                    stFont += stFontPlus;
+                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                    return;
+                } else if (stFontPlus === -0.1) {
+                    stFont += stFontPlus;
+                    if (stFont <= 4.4) {
+                        return;
+                    }
+                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                    return;
+                } else {
+                    stFont += 0.05;
+                    $('#mTable').css('font-size', stFont + 'vw');
+                    return;
+                }
+            }
+        });
+
+    }
 }

@@ -150,9 +150,9 @@ function onRegistrieren() {
         } else if (iVNN.length >= 7) {
             LS.MEname = LS.MEname.substr(0, LS.MEname.indexOf(','));
             LS.ME = $("#iVNN").val();
-            LS.ME = LS.ME.replace(/  /g, ' ').replace(/, /g, '__').replace(/,/g, '__').replace(/ /g, '_');
+            LS.ME = LS.ME.replace(/ /, '_').replace(/,/, '_').replace(/_ /, '_');
             LS.ME = LS.ME.replace(/Ä/g, 'Ae').replace(/Ü/g, 'Ue').replace(/Ö/g, 'Oe').replace(/\.|\-/g, ' ');
-            LS.ME = LS.ME.replace(/ä/g, 'ae').replace(/ü/g, 'ue').replace(/ö/g, 'oe').replace(/  /g, ' ').replace(/ /g, '_');
+            LS.ME = LS.ME.replace(/ä/g, 'ae').replace(/ü/g, 'ue').replace(/ö/g, 'oe').replace(/  /g, ' ').replace(/ /g, 'ˆ');
         } else {
             LS.ME = 'NOBODY';
             LS.MEname = 'Nicht registriert';

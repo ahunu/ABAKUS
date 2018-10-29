@@ -1967,7 +1967,7 @@ $(document).ready(function (e) {
         }
     };
 
-    if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM')) {
+    if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') < 0) {
         $(":mobile-pagecontainer").pagecontainer("load", "Edit" + LS.AnzSpieler + LS.JeSeite + ".html");
     }
 

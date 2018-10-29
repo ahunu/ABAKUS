@@ -1,11 +1,4 @@
 
-// Bei einer LahmeEnte-Version wird
-// in Anmeldung.js   const LahmeEnte auf true gesetzt und
-// in Anmeldung.html werden die Bibliotheken
-// jquery-ui.min.js und TouchPunch.min.js nicht eingebunden.
-
-var LahmeEnte = true;
-
 var PC = false;
 
 var LS = new Object();
@@ -312,7 +305,7 @@ function dropSpieler() {
         if ($('#SpielerSuchen').is(':visible')) {
             scrollToRumpf2();
         }
-        if (LahmeEnte && spID) {
+        if (spID) {
             $('#' + spID).removeClass('ui-btn-f');
             showStatuszeile(true);
             spID = '';
@@ -497,18 +490,6 @@ function setTisch(pTisch) {
         }
     }
 
-    if (!LahmeEnte) {
-        $("#SP1,#SP2,#SP3,#SP4,#SP5,#SP6")
-                .droppable({
-                    classes: {
-                        "ui-droppable-hover": "ui-state-hover"
-                    },
-                    drop: function () {
-                        spDrop = parseInt($(this)[0].id[2]);
-                        dropSpieler();
-                    }
-                });
-    }
     showStatuszeile(true);
     if (LS.Vorhand) {
         $('#SP' + LS.Vorhand).removeClass('ui-bar-a').addClass('ui-bar-f');
@@ -705,10 +686,6 @@ function onOK() {
     localStorage.setItem('Abakus.DS', JSON.stringify(DS));
 
     if (!CUPS.TURNIER[LS.I] || CUPS.TYP[LS.I] === 'CUP' || CUPS.TYP[LS.I] === 'MT') {
-        if (LahmeEnte) {
-//          window.location.replace('Vorhand.html?Init');
-//          return;
-        }
         var NEXT = new Object();
         NEXT.Seite = 'GR';
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
@@ -743,12 +720,10 @@ function onclickSpieler(pSpieler) {
 
     myJTip.close();
 
-    if (LahmeEnte) {
-        if (spID) {
-            spDrop = pSpieler;
-            dropSpieler();
-            return;
-        }
+    if (spID) {
+        spDrop = pSpieler;
+        dropSpieler();
+        return;
     }
 
     if (LS.Vorhand) {
@@ -1104,48 +1079,22 @@ function listStammspieler() {
         }
     }
 
-    if (LahmeEnte) {
-        $(".STAMMSP").click(function () {
-            if (spID) {
-                $('#' + spID).removeClass('ui-btn-f');
+    $(".STAMMSP").click(function () {
+        if (spID) {
+            $('#' + spID).removeClass('ui-btn-f');
+        }
+        spPFX = 'TS';
+        spID = $(this)[0].id; // TS3425
+        spKEY = spID.substr(2);
+        $('#' + spID).addClass('ui-btn-f');
+        for (var ii = 0; ii < STAT.S.length; ii++) {
+            if (STAT.S[ii].NR === spKEY) {
+                spDrag = ii;
+                break;
             }
-            spPFX = 'TS';
-            spID = $(this)[0].id; // TS3425
-            spKEY = spID.substr(2);
-            $('#' + spID).addClass('ui-btn-f');
-            for (var ii = 0; ii < STAT.S.length; ii++) {
-                if (STAT.S[ii].NR === spKEY) {
-                    spDrag = ii;
-                    break;
-                }
-            }
-            showEinenTip('#SP1', 'Wo sitzt ' + STAT.S[spDrag].VNAME + STAT.S[spDrag].STERNE + '?');
-        });
-    } else {
-        $(".STAMMSP").draggable({
-            revert: "invalid",
-            cursor: "move",
-            cursorAt: {top: 60, left: 100},
-            scroll: false,
-            passive: true,
-            helper: function (event) {
-                spPFX = 'TS';
-                spID = $(this)[0].id; // TS3425
-                spKEY = spID.substr(2);
-                var hColor = '';
-                if ($('#' + spID).hasClass('cRot')) {
-                    hColor = 'color:#dd1111;';
-                }
-                for (var ii = 0; ii < STAT.S.length; ii++) {
-                    if (STAT.S[ii].NR === spKEY) {
-                        spDrag = ii;
-                        break;
-                    }
-                }
-                return $("<div class='ui-corner-all L' style='opacity:.8;padding:12px;background-color:#ccc;" + hColor + "'><b>" + STAT.S[spDrag].VNAME + STAT.S[spDrag].STERNE + '<br>' + STAT.S[spDrag].NNAME + "</b><br>" + (STAT.S[spDrag].ORT.indexOf(',') > 0 ? STAT.S[spDrag].ORT.substr(0, STAT.S[spDrag].ORT.indexOf(',')) : STAT.S[spDrag].ORT) + "</div>");
-            }
-        });
-    }
+        }
+        showEinenTip('#SP1', 'Wo sitzt ' + STAT.S[spDrag].VNAME + STAT.S[spDrag].STERNE + '?');
+    });
 
 }
 
@@ -1255,9 +1204,7 @@ function hideLoading() {
 
 function onSubmitFinden(pNeu) {
     'use strict';
-//    $('#B_Finden').focus();
     $.mobile.activePage.focus();
-//    scrollToRumpf2();
 
     var hNNAME, hVNAME, hORT;
 
@@ -1333,18 +1280,11 @@ function onSubmitFinden(pNeu) {
                                 }
                             }
                         }
-                        if (!LahmeEnte || nGefunden < 10) {
-                            $("#lvGefunden").append("<li data-icon='false'><a class='GEFSP" + hClass + "' id='GS" + SPIELER[i][spNR] + "'><span>" + SPIELER[i][spNNAME] + " " + SPIELER[i][spVNAME] + "</span><span class='N'><br>" + SPIELER[i][spORT] + "</span></a></li>");
-                        }
+                        $("#lvGefunden").append("<li data-icon='false'><a class='GEFSP" + hClass + "' id='GS" + SPIELER[i][spNR] + "'><span>" + SPIELER[i][spNNAME] + " " + SPIELER[i][spVNAME] + "</span><span class='N'><br>" + SPIELER[i][spORT] + "</span></a></li>");
                         nGefunden++;
                     }
                 }
             }
-//            if (!nGefunden) {
-//                scrollToINR();
-//            } else {
-//                scrollToFMeldung();
-//            }
 
             if (lVNAME >= 1 || lNNAME >= 1 || lORT >= 1) {
                 for (var i = 0; i < lSPIELER; i++) {
@@ -1372,74 +1312,40 @@ function onSubmitFinden(pNeu) {
                         if ((lVNAME === 0 || (SPIELER[i][spVNAME].substr(0, lVNAME).toUpperCase() === fVNAME) || (SPIELER[i][spNNAME].substr(0, lVNAME).toUpperCase() === fVNAME))
                                 && (lNNAME === 0 || (SPIELER[i][spNNAME].substr(0, lNNAME).toUpperCase() === fNNAME) || (SPIELER[i][spVNAME].substr(0, lNNAME).toUpperCase() === fNNAME))
                                 && (lORT === 0 || (SPIELER[i][spORT].substr(0, lORT).toUpperCase() === fORT))) {
-                            if (!LahmeEnte || nGefunden < 10) {
-                                $("#lvGefunden").append("<li data-icon='false'><a class='GEFSP " + hClass + "' id='GS" + SPIELER[i][spNR] + "'><span>" + SPIELER[i][spNNAME] + " " + SPIELER[i][spVNAME] + "</span><span class='N'><br>" + SPIELER[i][spORT].substr(0, SPIELER[i][spORT].indexOf(',')) + "</span></a></li>");
-                            }
+                            $("#lvGefunden").append("<li data-icon='false'><a class='GEFSP " + hClass + "' id='GS" + SPIELER[i][spNR] + "'><span>" + SPIELER[i][spNNAME] + " " + SPIELER[i][spVNAME] + "</span><span class='N'><br>" + SPIELER[i][spORT].substr(0, SPIELER[i][spORT].indexOf(',')) + "</span></a></li>");
                             nGefunden++;
                         }
                     } else {
                         if ((lVNAME === 0 || SPIELER[i][spVNAME].substr(0, lVNAME).toUpperCase() === fVNAME)
                                 && (lNNAME === 0 || SPIELER[i][spNNAME].substr(0, lNNAME).toUpperCase() === fNNAME)
                                 && (lORT === 0 || SPIELER[i][spORT].substr(0, lORT).toUpperCase() === fORT)) {
-                            if (!LahmeEnte || nGefunden < 10) {
-                                $("#lvGefunden").append("<li data-icon='false'><a class='GEFSP " + hClass + "' id='GS" + SPIELER[i][spNR] + "'><span>" + SPIELER[i][spNNAME] + " " + SPIELER[i][spVNAME] + "</span><span class='N'><br>" + SPIELER[i][spORT].substr(0, SPIELER[i][spORT].indexOf(',')) + "</span></a></li>");
-                            }
+                            $("#lvGefunden").append("<li data-icon='false'><a class='GEFSP " + hClass + "' id='GS" + SPIELER[i][spNR] + "'><span>" + SPIELER[i][spNNAME] + " " + SPIELER[i][spVNAME] + "</span><span class='N'><br>" + SPIELER[i][spORT].substr(0, SPIELER[i][spORT].indexOf(',')) + "</span></a></li>");
                             nGefunden++;
                         }
                     }
                 }
             }
 
-            if (nGefunden > 10 && LahmeEnte) {
-                $("#lvGefunden").append("<li data-icon='false'><a><span class='XL'>...</span></a></li>");
-            }
-
             $('#lvGefunden').listview().listview('refresh');
 
             $('.nAngemeldet').css('font-size', '24px').css('line-height', '0px');
 
-            if (LahmeEnte) {
-                $(".GEFSP").click(function () {
-                    if (spID) {
-                        $('#' + spID).removeClass('ui-btn-f');
+            $(".GEFSP").click(function () {
+                if (spID) {
+                    $('#' + spID).removeClass('ui-btn-f');
+                }
+                spPFX = 'GS';
+                spID = $(this)[0].id; // SS3425
+                spKEY = spID.substr(2);
+                $('#' + spID).addClass('ui-btn-f');
+                for (var ii = 0; ii < SPIELER.length; ii++) {
+                    if (SPIELER[ii][spNR] === spKEY) {
+                        spDrag = ii;
+                        break;
                     }
-                    spPFX = 'GS';
-                    spID = $(this)[0].id; // SS3425
-                    spKEY = spID.substr(2);
-                    $('#' + spID).addClass('ui-btn-f');
-                    for (var ii = 0; ii < SPIELER.length; ii++) {
-                        if (SPIELER[ii][spNR] === spKEY) {
-                            spDrag = ii;
-                            break;
-                        }
-                    }
-                    showEinenTip('#SP1', 'Wo sitzt ' + SPIELER[spDrag][spVNAME] + '?');
-                });
-            } else {
-                $(".GEFSP").draggable({
-                    revert: "invalid",
-                    cursor: "move",
-                    cursorAt: {top: 60, left: 100},
-                    scroll: false,
-                    passive: true,
-                    helper: function (event) {
-                        spPFX = 'GS';
-                        spID = $(this)[0].id; // SS3425
-                        spKEY = spID.substr(2);
-                        var hColor = '';
-                        if ($('#' + spID).hasClass('cRot')) {
-                            hColor = 'color:#dd1111;';
-                        }
-                        for (var ii = 0; ii < SPIELER.length; ii++) {
-                            if (SPIELER[ii][spNR] === spKEY) {
-                                spDrag = ii;
-                                break;
-                            }
-                        }
-                        return $("<div class='ui-corner-all L' style='opacity:.8;padding:12px;background-color:#ccc;" + hColor + "'><b>" + SPIELER[spDrag][spVNAME] + '<br>' + SPIELER[spDrag][spNNAME] + "</b><br>" + (SPIELER[spDrag][spORT].indexOf(',') > 0 ? SPIELER[spDrag][spORT].substr(0, SPIELER[spDrag][spORT].indexOf(',')) : SPIELER[spDrag][spORT]) + "</div>");
-                    }
-                });
-            }
+                }
+                showEinenTip('#SP1', 'Wo sitzt ' + SPIELER[spDrag][spVNAME] + '?');
+            });
 
             if (nGefunden === 0) {
                 $('#fMeldung').html('<b>0 gefunden.</b>');
@@ -1499,7 +1405,7 @@ function onSubmitFinden(pNeu) {
                 hideLoading();
                 return false;
             }
-            if (!/^[a-zA-Z\-. ÄäÖöÜü]*$/.test(hORT)) {
+            if (!/^[a-zA-Z\-. ÄäÖöÜü,]*$/.test(hORT)) { // Beistrich als Trenner zwischen Ort und Strasse erlaubt.
                 showEinenTip('#I_ORT', 'Im <b>Ort</b> sind Sonderzeichen und Ziffern nicht erlaubt.');
                 $('input[id=I_ORT]').css("color", "red").focus();
                 hideLoading();
@@ -1513,9 +1419,9 @@ function onSubmitFinden(pNeu) {
                 return false;
             }
 
-            SPIELER[0][spNR] = hNNAME + ' ' + hVNAME;
+            SPIELER[0][spNR] = hNNAME + '_' + hVNAME + '_' + hORT.substr(0, hORT.indexOf(','));
             SPIELER[0][spNR] = SPIELER[0][spNR].replace(/Ä/g, 'Ae').replace(/Ü/g, 'Ue').replace(/Ö/g, 'Oe').replace(/\.|\-/g, ' ');
-            SPIELER[0][spNR] = SPIELER[0][spNR].replace(/ä/g, 'ae').replace(/ü/g, 'ue').replace(/ö/g, 'oe').replace(/  /g, ' ').replace(/ /g, '_');
+            SPIELER[0][spNR] = SPIELER[0][spNR].replace(/ä/g, 'ae').replace(/ü/g, 'ue').replace(/ö/g, 'oe').replace(/  /g, ' ').replace(/ /g, 'ˆ');
 
             SPIELER[0][spNNAME] = hNNAME;
             SPIELER[0][spVNAME] = hVNAME;
@@ -1524,34 +1430,17 @@ function onSubmitFinden(pNeu) {
 
             $('#lvGefunden').listview().listview('refresh');
 
-            if (LahmeEnte) {
-                $(".GEFSP").click(function () {
-                    if (spID) {
-                        $('#' + spID).removeClass('ui-btn-f');
-                    }
-                    spPFX = 'GS';
-                    spID = $(this)[0].id; // SS3425
-                    spKEY = spID.substr(2);
-                    $('#' + spID).addClass('ui-btn-f');
-                    spDrag = 0;
-                    showEinenTip('#SP1', 'Wo sitzt ' + SPIELER[spDrag][spVNAME] + '?');
-                });
-            } else {
-                $(".GEFSP").draggable({
-                    revert: "invalid",
-                    cursor: "move",
-                    cursorAt: {top: 60, left: 100},
-                    scroll: false,
-                    passive: true,
-                    helper: function (event) {
-                        spPFX = 'GS';
-                        spID = 'GS' + SPIELER[0][spNR];
-                        spKEY = spID.substr(2);
-                        spDrag = 0;
-                        return $("<div class='ui-corner-all L' style='opacity:.8;padding:12px;background-color:#ccc'><b>" + SPIELER[spDrag][spVNAME] + '<br>' + SPIELER[spDrag][spNNAME] + "</b><br>" + (SPIELER[spDrag][spORT].indexOf(',') > 0 ? SPIELER[spDrag][spORT].substr(0, SPIELER[spDrag][spORT].indexOf(',')) : SPIELER[spDrag][spORT]) + "</div>");
-                    }
-                });
-            }
+            $(".GEFSP").click(function () {
+                if (spID) {
+                    $('#' + spID).removeClass('ui-btn-f');
+                }
+                spPFX = 'GS';
+                spID = $(this)[0].id; // SS3425
+                spKEY = spID.substr(2);
+                $('#' + spID).addClass('ui-btn-f');
+                spDrag = 0;
+                showEinenTip('#SP1', 'Wo sitzt ' + SPIELER[spDrag][spVNAME] + '?');
+            });
 
             $('#D_NeuerSpieler').hide();
             showStatuszeile(false, '<b>Spieler/in wurde erstellt!</b>');

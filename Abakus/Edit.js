@@ -955,7 +955,7 @@ $(document).ready(function (e) {
         }
     });
 
-    if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM')) {
+    if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') < 0) {
         $(":mobile-pagecontainer").pagecontainer("load", "Abakus" + LS.AnzSpieler + LS.JeSeite + ".html");
     }
 

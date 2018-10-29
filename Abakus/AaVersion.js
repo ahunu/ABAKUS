@@ -1,10 +1,10 @@
 
 function getVersion() {
-    return 875;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 876;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
-    return setVersion(2018, 10, 28);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2018, 10, 29);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
@@ -100,11 +100,6 @@ function getVersionsDatum() {
 
 //    (1)  2460, 2776, 2780, 24F5,
 //    A 24B6, 1F110, 1F130, 1F150, 1F170, 1F1E6
-
-// Bei einer LahmeEnte-Version wird
-// in Anmeldung.js   const LahmeEnte auf true gesetzt und
-// in Anmeldung.html werden die Bibliotheken
-// jquery-ui.min.js und TouchPunch.min.js nicht eingebunden.
 
 // Popup-Close
 // Für Android muß vor dem Verlassen einer App die Pupups geschlossen werden!!!

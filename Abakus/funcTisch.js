@@ -748,9 +748,14 @@ function whenSTATloaded() {
     }
 
     var hJetzt = new Date().getTime();
-    if (new Date(STAT.ZULETZT).getTime() > hJetzt + 60000 * 15     // + 15 Minuten Toleranz
-            || new Date(getVersionsDatum()).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
+
+    if (STAT && new Date(STAT.ZULETZT).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
         showEineWarnung('F1: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+        return false;
+    }
+
+    if (new Date(getVersionsDatum()).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
+        showEineWarnung('F2: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
         return false;
     }
 
@@ -766,7 +771,7 @@ function whenSTATloaded() {
 
         if (new Date(STAT.TURTIMESTAMP).getTime() > hJetzt + 60000 * 15) { // + 15 Minuten Toleranz
             if (LS.ME !== '3425') {
-                showEineWarnung('F2: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+                showEineWarnung('F3: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
                 return false;
             }
         }
@@ -775,12 +780,12 @@ function whenSTATloaded() {
             if (STAT.TURRUNDE === 1) {
                 if (CUPS.TURNIER[I] === 'Handy') {
                     if (new Date(STAT.TURTIMESTAMP).getTime() < hJetzt - 60000 * 60 * 36) { // zwei Stunden Toleranz
-                        showEineWarnung('F3: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+                        showEineWarnung('F4: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
                         return false;
                     }
                 } else {
                     if (new Date(STAT.TURTIMESTAMP).getTime() < hJetzt - 60000 * 60 * 24 * 7) { // eine Woche Toleranz
-                        showEineWarnung('F4: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+                        showEineWarnung('F5: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
                         return false;
                     }
                 }

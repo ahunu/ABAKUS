@@ -8,12 +8,12 @@ function fIchStimmeNichtZu() {
     $('.onExit').addClass('ui-disabled');
     localStorage.clear();
     setTimeout(function () {
-        if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') >= 0
-                || window.location.href.toUpperCase().indexOf('FILE:///C:') >= 0) {
-//            window.close();
-            history.go(-2);
+        if (navigator.app) {
+            navigator.app.exitApp();
+        } else if (navigator.device) {
+            navigator.device.exitApp();
         } else {
-            navigator.app.exitApp(); // close phonegap
+            history.go(-2);
         }
     }, 100);
 }

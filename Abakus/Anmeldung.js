@@ -1569,15 +1569,10 @@ $(document).ready(function () {
     }
 
     myJTip = new jBox('Tooltip', {
-        theme: 'TooltipSmall',
-        Class: 'TooltipError',
-        target: '#iVNN',
-        content: '?',
+        theme: 'TooltipError',
         delayClose: 20,
-        closeOnMouseleave: true,
         closeOnClick: true,
         closeOnEsc: true,
-        zIndex: 8000,
         position: {
             x: 'center',
             y: 'bottom'

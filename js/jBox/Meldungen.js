@@ -3,21 +3,24 @@
 
 function showEineNotiz(pText, pColor) {
     if (!pColor) {
-        pColor = 'green';
+        pColor = 'yellow';
     }
     new jBox('Notice', {
-        content: pText,
-        color: pColor
+        attributes: {
+            x: 'right',
+            y: 'bottom'
+        },
+        color: pColor,
+        content: '<span class="M N">' + pText + '</span>',
+        autoClose: 6000
     });
 }
 
 function showEinenTip(pTarget, pText) {
     $(pTarget).focus();
-    myJTip.setContent('<span id="myJTipContent" class="M" style="color: white; padding:0; margin:0">' + pText + '</span>');
+    myJTip.setContent('<span class="M N">' + pText + '</span>');
     myJTip.open({
-        target: pTarget,
-        closeOnClick: true,
-        closeOnEsc: true
+        target: pTarget
     });
 }
 
@@ -188,7 +191,7 @@ function showEineMeldung(pCup, pText, pText2) {
         overlay: true,
         closeOnClick: 'box',
         closeOnEsc: true,
-        closeButton: true
+        closeButton: 'box'
     }).open();
 }
 
@@ -231,7 +234,7 @@ function showEineWarnung(pCup, pText, pText2) {
         overlay: true,
         closeOnClick: 'box',
         closeOnEsc: true,
-        closeButton: true
+        closeButton: 'box'
     }).open();
 }
 

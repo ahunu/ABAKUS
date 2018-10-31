@@ -43,14 +43,6 @@ function myDateString(pDate) {
     return hDate.getFullYear() + '-' + ('00' + (hDate.getMonth() + 1)).substr(-2) + '-' + ('00' + (hDate.getDate())).substr(-2);
 }
 
-//function showEinenTip(pTarget, pText) {
-//    $(pTarget).focus();
-//    myJTip.setContent('<span class="M" style="color:white; background-image: linear-gradient(to bottom, #ffffe0, #fffacd) padding:0; margin:0">' + pText + '</span>');
-//    myJTip.open({
-//        target: pTarget
-//    });
-//}
-
 function getDateString(pDate) {
     var hDate = new Date(pDate);
     return daysOfWeek[hDate.getDay()] + ' ' + hDate.getDate() + ". " + monthsOfYear[hDate.getMonth()] + " " + hDate.getFullYear();
@@ -406,14 +398,10 @@ $(document).bind('pageinit', function () {
         return false;
     };
     myJTip = new jBox('Tooltip', {
-        theme: 'TooltipSmall',
-        Class: 'TooltipError',
-        target: '#iVNN',
-        content: '?',
+        theme: 'TooltipError',
         delayClose: 20,
         closeOnClick: true,
-        closeOnEsc: true,
-        zIndex: 8000
+        closeOnEsc: true
     });
     $(':checkbox').change(function () {
         whenCUPSloaded(true);
@@ -436,7 +424,11 @@ $(document).bind('pageinit', function () {
             return;
         }
     });
-    loadSPIELER();
+//    loadSPIELER();
+    CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+    SPIELERext = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
+
+        whenCUPSloaded(true);
 });
 
 window.onbeforeunload = function (e) {

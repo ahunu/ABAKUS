@@ -528,9 +528,9 @@ function setFont() {
 
 function optFont() {
     'use strict';
-    if (LS.ME === '34s25') {
+    if (LS.ME === '3425') {
         if (stFont === 4.444) {
-            alert($('#L0P1').html()+',  '+$('#L0P1').width()+'px < ? ' + $(window).innerWidth() +'px.');
+            alert($('#L0P1').html() + ',  ' + $('#L0P1').width() + 'px < ? ' + $(window).innerWidth() + 'px.');
         }
         setTimeout(function () {
             var pWidth = $(window).innerWidth();
@@ -564,7 +564,9 @@ function optFont() {
     } else {
         setTimeout(function () {
             var pWidth = $(window).innerWidth();
-            if (PC) {
+            if (PC
+                    || navigator.userAgent.indexOf("iPhone") >= 0
+                    || navigator.userAgent.indexOf("iPad") >= 0) {
                 pWidth -= 12; // Scrollleiste abziehen
             }
             if (($('#L0P1').width()) === pWidth) {

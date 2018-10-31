@@ -243,14 +243,6 @@ function whenSTATloaded() {
     }
 }
 
-function showEinenTip(pTarget, pText) {
-    $(pTarget).focus();
-    myJTip.setContent('<span class="M" style="color:white; padding:0; margin:0">' + pText + '</span>');
-    myJTip.open({
-        target: pTarget
-    });
-}
-
 function getDateString(pDate) {
     var hDate = new Date(parseInt(pDate), (parseInt(pDate.substr(5, 2)) - 1), parseInt(pDate.substr(-2))); // Safari versteht "var hDate = new Date(pDate);" nicht
     if (typeof hDate === 'object') {
@@ -472,7 +464,7 @@ $(document).ready(function () {
                         : 'Zur Berechnung der Cuppunkte<br>werden die sieben besten<br>Ergebnisse verwendet.')
                 + '</div></div>',
         position: {x: hx, y: hy},
-        closeButton: true,
+        closeButton: 'box',
         closeOnEsc: true,
         overlay: false,
         draggable: 'title'

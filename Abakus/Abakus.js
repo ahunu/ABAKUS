@@ -1972,14 +1972,10 @@ $(document).ready(function (e) {
     }
 
     myJTip = new jBox('Tooltip', {
-        theme: 'TooltipSmall',
-        Class: 'TooltipError',
-        target: '#iVNN',
-        content: '?',
+        theme: 'TooltipError',
         delayClose: 20,
         closeOnClick: true,
-        closeOnEsc: true,
-        zIndex: 8000
+        closeOnEsc: true
     });
 
     jbSelberrufer = new jBox('Modal', {

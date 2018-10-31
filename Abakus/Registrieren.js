@@ -233,16 +233,12 @@ $(document).bind('pageinit', function () {
     }
 
     myJTip = new jBox('Tooltip', {
-        theme: 'TooltipSmall',
-        addClass: 'TooltipError',
-        target: '#iVNN',
-        content: 'The activity name must be longer than 2 characters please.',
-        color: 'red',
-        delayClose: 1000,
-        closeOnClick: 'body',
-        closeOnEsc: true,
-        zIndex: 8000
+        theme: 'TooltipError',
+        delayClose: 20,
+        closeOnClick: true,
+        closeOnEsc: true
     });
+
     $("#iCNR").blur(function () {
         var iCNR = $('#iCNR').val().trim();
         var hName = '';

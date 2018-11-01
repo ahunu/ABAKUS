@@ -6,6 +6,7 @@ const spNR = 0;
 const spNNAME = 1;
 const spVNAME = 2;
 const spORT = 3;
+
 var myJBox = null;
 var myJTip = null;
 var nVersuche = 0;
@@ -14,14 +15,6 @@ var xMEFpo = false;
 function whenSPIELERloaded() {
     hideEinenMoment();
     $('#dRegistrieren').removeClass('ui-disabled');
-}
-
-function einFehler(pTarget, pText) {
-    $(pTarget).focus();
-    myJTip.setContent('<span class="M" style="color:white; padding:0; margin:0">' + pText + '</span>');
-    myJTip.open({
-        target: pTarget
-    });
 }
 
 function onRegistrieren() {
@@ -39,11 +32,11 @@ function onRegistrieren() {
         iPIN = 0;
     }
     if (iCNRn < 0 && LS.ME !== '3425' && LS.ME !== 'NOBODY') {
-        einFehler("#iCNR", '(Cup)Spielernummer ungültig.');
+        showEinenTip("#iCNR", '(Cup)Spielernummer ungültig.');
         return;
     }
     if ((iCNRn < 0 || iCNRn > 9999) && iCNRn !== -4 && iCNRn !== -54 && iCNRn !== -56) { // St. bzw. Wr. Tarockcup
-        einFehler("#iCNR", '(Cup)Spielernummer ungültig.');
+        showEinenTip("#iCNR", '(Cup)Spielernummer ungültig.');
         return;
     }
 
@@ -61,7 +54,7 @@ function onRegistrieren() {
                 || iCNRn === 4506 // Sepp Lang
                 || iCNRn === 4731 // Alex Sabkovski
                 ) {
-            einFehler("#iCNR", 'Der PIN eines Admins kann nicht berechnet werden.');
+            showEinenTip("#iCNR", 'Der PIN eines Admins kann nicht berechnet werden.');
             return;
         }
     }
@@ -72,30 +65,30 @@ function onRegistrieren() {
         if (SPIELERext[iCNR]) {
             if (LS.ME !== 'NOBODY' && LS.ME !== '3425') {
                 if (SPIELERext[iCNR][6].length !== 4) {
-                    einFehler("#iCNR", 'Spieler ' + iCNR + ' ist kein Tiroler.');
+                    showEinenTip("#iCNR", 'Spieler ' + iCNR + ' ist kein Tiroler.');
                     return;
                 }
                 if (SPIELERext[iCNR][6].substr(0, 1) !== '6' && SPIELERext[iCNR][6].substr(0, 2) !== '99') {
-                    einFehler("#iCNR", 'Spieler ' + iCNR + ' ist kein Tiroler.');
+                    showEinenTip("#iCNR", 'Spieler ' + iCNR + ' ist kein Tiroler.');
                     return;
                 }
             }
         } else {
             $('#iVNN').val('').removeClass('ui-disabled');
-            einFehler("#iCNR", 'Spieler ' + iCNR + ' existiert nicht.');
+            showEinenTip("#iCNR", 'Spieler ' + iCNR + ' existiert nicht.');
             return;
         }
     }
 
     if (iCNRn === 0) {
         if (iVNN.length === 0) {
-            einFehler('#iVNN', 'Wenn du keine Spielernummer hast,<br>kannst du dich alternativ mit<br>deinem Namen registrieren.');
+            showEinenTip('#iVNN', 'Wenn du keine Spielernummer hast,<br>kannst du dich alternativ mit<br>deinem Namen registrieren.');
             return;
         }
         if (iVNN.indexOf(' ') < 0
                 || iVNN.indexOf(',') < 0
                 || iVNN.indexOf(' ') > iVNN.indexOf(',')) {
-            einFehler('#iVNN', 'Du musst "Familienname Vorname, Ort" eingeben.');
+            showEinenTip('#iVNN', 'Du musst "Familienname Vorname, Ort" eingeben.');
             return;
         }
     }
@@ -128,9 +121,9 @@ function onRegistrieren() {
         $("#iPIN").focus();
         LS.ME = 'NOBODY';
         if (iPIN) {
-            einFehler('#iPIN', 'PIN ung&uuml;ltig, bitte unter<br>Tel. 0650 651 652 2 erfragen.');
+            showEinenTip('#iPIN', 'PIN ung&uuml;ltig, bitte unter<br>Tel. 0650 651 652 2 erfragen.');
         } else {
-            einFehler('#iPIN', 'Du kannst den PIN-Code unter<br>Tel. 0650 651 652 2 erfragen.');
+            showEinenTip('#iPIN', 'Du kannst den PIN-Code unter<br>Tel. 0650 651 652 2 erfragen.');
         }
         nVersuche++;
         if (nVersuche >= 3) {

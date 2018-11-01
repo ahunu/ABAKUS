@@ -16,21 +16,8 @@ function getVersionsDatum() {
 
 
 
-//       LS.Padding = 2;
-//       LS.FontPro = 100;
-//       LS.ZOOM = $("#iZOOM").val();
-
-//    $('.XL').css('font-size', LS.Font[4] + 'px'); // = 26
-//    $('.L').css('font-size', LS.Font[3] + 'px');  // = 24
-//    $('.M').css('font-size', LS.Font[2] + 'px');  // = 22
-//    if (QUERFORMAT()) {
-//        $("#stBody .ui-btn").attr('style', 'padding:.1em 0em;font-size:' + ((LS.Font[2] + LS.Font[3]) / 2) + 'px;');
-//    } else {
-//        $("#stBody .ui-btn").attr('style', 'padding:.06em 0em;font-size:' + ((LS.Font[2] + LS.Font[3]) / 2) + 'px;');
-//    }
-//    $('.S').css('font-size', LS.Font[1] + 'px');  // = 20
-//    $('.XS').css('font-size', LS.Font[0] + 'px'); // = 18
-
+// responsiveVoice - Die Versionen bis inclusive 1.5.10 funktionieren nach der Änderung eines Spiels auf Android nicht !!!
+// Nur mit 1.4.9 wird die Meldung "wants to use speech DENY ALLOW" nach der Änderung eines Spiels nicht gezeigt.
 
 //Panorama / Sachbücher. Romane.
 //Theoretisch-praktische Anweisung zur gründlichen Erlernung des beliebten Tarok-Tappen-Spiels	älteste Königrufenregeln, 2. Auflage mit Anhang übers Königrufen, Wien 1827, s. www.noel.gv.at (NÖ Landesbibliothek)

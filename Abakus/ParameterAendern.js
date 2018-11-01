@@ -804,8 +804,6 @@ $(document).bind('pageinit', function () {
 
     $('#hTitel1').text(CUPS.NAME[I]);
 
-showEineMeldung(53, 'Laut Turnierkalender findet heute kein Turnier statt.');
-
     window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
         var msg = 'JS:';
         if (pMsg) {

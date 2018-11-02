@@ -3,7 +3,7 @@
 
 function checkAnton(pLog, pError) {
     'use strict';
-    if (LS.ME === '3425') {
+    if (LS.ME === '3013') {
         var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
         if (!LOG) {
             LOG = '';

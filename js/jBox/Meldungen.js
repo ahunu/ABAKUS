@@ -276,7 +276,7 @@ function showEinenFehler(pCup, pText, pText2) {
         position: {x: 'center', y: 111},
         overlay: true,
         closeOnClick: true,
-        closeButton: true,
+        closeButton: 'box',
         closeOnEsc: true
     }).open();
 }
@@ -306,6 +306,7 @@ function showEineDBWarnung(pError, pText, pText2) {
             position: {x: 'center', y: 111}
         }).open();
     }
+    writeLOG(hMeld, pError);
 }
 
 function writeLOG(pLog, pError) {
@@ -314,10 +315,15 @@ function writeLOG(pLog, pError) {
     if (!LOG) {
         LOG = '';
     }
+    LOG += '<br>' + new Date().toISOString().substr(0, 10) + ' ' + new Date().toLocaleTimeString().substr(0, 5) + '<br>';
     if (pError) {
-        LOG += new Date().toLocaleString() + ', <b>ERROR</b>:<br>';
-    } else {
-        LOG += new Date().toLocaleString() + ':<br>';
+        var hHref = window.location.href;
+        if (hHref.indexOf('firebaseapp.com') >= 0) {
+            hHref = hHref.substr(hHref.indexOf('firebaseapp.com') + 15);
+        } else if (hHref.indexOf('ABAKUS/public_html') >= 0) {
+            hHref = hHref.substr(hHref.indexOf('ABAKUS/public_html') + 18);
+        }
+        LOG += hHref + ' - JS-Fehler: ' + pError + '<br>';
     }
     LOG += pLog + '<br>';
     localStorage.setItem('Abakus.LOG', JSON.stringify(LOG));

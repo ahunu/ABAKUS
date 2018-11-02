@@ -78,6 +78,7 @@ function SPIELERerweitern() {
 
     var nSpielerNeu = 0;
     var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
+//Wenn SPIELERnr nicht vorhanden ist, müssen die Spieler geladen werden.!!!!!
 
     for (var j = 0; j < STAT.S.length; j++) {
         if (!SPIELERnr[STAT.S[j].NR]) {

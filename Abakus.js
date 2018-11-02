@@ -331,6 +331,8 @@ function initCUPSdelAllSTAT() {
     var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
     var CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     var TURNIER = JSON.parse(localStorage.getItem('Abakus.TURNIER'));
+    var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
+    var SPIELERalpha = JSON.parse(localStorage.getItem('Abakus.SPIELERalpha'));
     localStorage.clear();
     LS.Version = getVersion();
     try {
@@ -369,6 +371,20 @@ function initCUPSdelAllSTAT() {
             localStorage.setItem('Abakus.TURNIER', JSON.stringify(TURNIER));
         } catch (err) {
             LS.Meldung = 'F' + err + ': TURNIER konnte nicht geladen werden.';
+        }
+    }
+    if (SPIELERnr !== null) {
+        try {
+            localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': SPIELERnr konnte nicht geladen werden.';
+        }
+    }
+    if (SPIELERalpha !== null) {
+        try {
+            localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': SPIELERalpha konnte nicht geladen werden.';
         }
     }
     loadCUPS();

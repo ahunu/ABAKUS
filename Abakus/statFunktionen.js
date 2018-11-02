@@ -55,11 +55,11 @@ function getStatMeldungen(pAnAbmelden) {
                 if (STAT.ANMELDUNGEN) {
                     if (STAT.ANMELDUNGEN[LS.ME]) {
                         if (Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER) {
-                            hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled") + '" onclick="AnAbmelden(false);">&nbsp;abmelden&nbsp;</button><br>';
+                            hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="AnAbmelden(false);">&nbsp;abmelden&nbsp;</button><br>';
                             if (STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
-                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled") + '" onclick="$(\'#iNachricht\').val(STAT.ANMELDUNGEN[LS.ME].NACHRICHT).focus();jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;meine Nachricht &auml;ndern&nbsp;</button>';
+                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="$(\'#iNachricht\').val(STAT.ANMELDUNGEN[LS.ME].NACHRICHT).focus();jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;meine Nachricht ändern&nbsp;</button>';
                             } else {
-                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled") + '" onclick="$(\'#iNachricht\').focus();jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;eine Nachricht schreiben&nbsp;</button>';
+                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="$(\'#iNachricht\').focus();jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;eine Nachricht schreiben&nbsp;</button>';
                             }
                         }
                     }

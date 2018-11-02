@@ -1,6 +1,7 @@
 
 function fIchStimmeZu() {
     $('.onExit').addClass('ui-disabled');
+    writeLOG('Ich habe der Datenschutzerklärung zugestimmt.');
     history.back();
 }
 
@@ -16,28 +17,6 @@ function fIchStimmeNichtZu() {
             history.go(-2);
         }
     }, 100);
-}
-
-function writeLOG(pLog, pError) {
-    'use strict';
-    var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
-    if (!LOG) {
-        LOG = '';
-    }
-    if (pError) {
-        console.error(pLog);
-        $('#tLOG').append('<span><b>' + pLog + '</br></span><br>');
-    } else {
-        console.log(pLog);
-        $('#tLOG').append('<span>' + pLog + '</span><br>');
-    }
-    if (pError) {
-        LOG += new Date().toLocaleString() + ', ERROR:<br>';
-    } else {
-        LOG += new Date().toLocaleString() + ':<br>';
-    }
-    LOG += pLog + '<br>';
-    localStorage.setItem('Abakus.LOG', JSON.stringify(LOG));
 }
 
 $(document).bind('pageinit', function () {

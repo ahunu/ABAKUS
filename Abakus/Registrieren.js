@@ -200,7 +200,7 @@ function writeLOG(pLog, pError) {
     } else {
         LOG += new Date().toLocaleString() + ':<br>';
     }
-    LOG += pLog + '<br>';
+    LOG += '<br>' + pLog + '<br>';
     localStorage.setItem('Abakus.LOG', JSON.stringify(LOG));
 }
 

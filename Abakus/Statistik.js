@@ -586,10 +586,13 @@ window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
     msg[3] = ' ';
     console.log(msg);
 
-    if (pUrl !== '' || pLine !== 0) {
-        alert(msg);
-    }
-    return false;
+//    if (pUrl !== '' || pLine !== 0) {
+    alert(msg);
+//    }
+//    return false;
+
+    writeLOG(msg, pError);
+
 };
 
 window.onbeforeunload = function (e) {

@@ -575,7 +575,7 @@ function getTurnierkalender() {
     if (nTurniere === 0) {
         if (I === 3) {
             html = '<span class=M>Nachdem das letzte Turnier abgeschlossen wurde,<br> kann pro Tag ein PC-Turnier durchgespielt werden.</span><br><br>';
-        } else if (I === 52) {
+        } else if (I === 51 || I === 52) {
             html = '';
         } else {
             html = '<span class=L>Laut Turnierkalender sind in nächster Zeit<br>keine Turniere geplant.</span><br><br>';

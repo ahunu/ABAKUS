@@ -39,17 +39,13 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
     ctx.save();
     ctx.textAlign = 'center';
 
-    if (Hoehe > Breite) { // Hochformat
+    if (!QUERFORMAT()) { // Hochformat
 
         var B = Breite;
         var H = Hoehe;
-        var BB = Breite;      // Blockbreite
-        var BH = Breite / 2.3;  // Blockhöhe
-        var TH = Breite / 8.9;  // Texthöhe
-
-        if (Breite / (Hoehe / 2) > 1.7) {         // Korrektur breite Tablets llll
-            TH = Breite / (8.9 + (Breite / (Hoehe / 2.4) - 1.7));
-        }
+        var BB = Breite;       // Blockbreite
+        var BH = Breite / 2.3; // Blockhöhe
+        var TH = Breite / 8.9; // Texthöhe
 
         if (pI === 1) {
 
@@ -278,7 +274,7 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
 
         ctx.translate(Breite / 2, Hoehe - BH);
 
-        if (Breite >= Hoehe) {
+        if (QUERFORMAT()) {
             if (hDisp !== 1) {
                 ctx.font = "bold " + (TH / 1.82) + "pt Helvetica";
                 ctx.font = "bold " + (TH / 1.82) + "pt sans-serif-condensed";
@@ -294,7 +290,7 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
         ctx.translate(Breite - BH, Hoehe / 2);
         ctx.rotate(Math.PI * -90 / 180);
 
-        if (Hoehe >= Breite) {
+        if (!QUERFORMAT()) {
             if (hDisp !== 1) {
                 ctx.font = 'bold ' + (TH / 2) + "pt sans-serif-condensed";
                 ctx.fillText(getTitel(), 0, TH * -0.33);
@@ -317,10 +313,10 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
         hKorr = (Breite / (Hoehe / 2) - 1.7) * 33;
     }
 
-    if (((pI === 1 || pI === 3) && (Hoehe >= Breite))
-            || ((pI === 2 || pI === 4) && (Hoehe <= Breite))) {
+    if (((pI === 1 || pI === 3) && (!QUERFORMAT()))
+            || ((pI === 2 || pI === 4) && (QUERFORMAT()))) {
 
-        if (canvas.height >= canvas.width) { // Hochformat
+        if (!QUERFORMAT()) { // Hochformat
 
             setFontStyle(pSumme, "S", TH - hKorr, B / 4, B / 2.6 + hKorr * 1.5);
             if (hDisp !== 1) {
@@ -361,7 +357,7 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
         }
 
     } else {
-        if (canvas.height >= canvas.width) { // Hochformat
+        if (!QUERFORMAT()) { // Hochformat
             if (hDisp === 1) {
                 setFontStyle(pPunkte, "P", TH, 0, TH * 1.9, pI);
                 if (DS.Storno[aktPos]) {

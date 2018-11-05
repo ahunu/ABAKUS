@@ -36,22 +36,23 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
     ctx.save();
     ctx.textAlign = 'center';
 
-    if (canvas.height > canvas.width) {
-        Hoehe = canvas.height;
-        Breite = canvas.width;
-    } else {
+    if (QUERFORMAT()) {
         Breite = canvas.height;
         Hoehe = canvas.width;
         ctx.translate(Hoehe, 0);
         ctx.rotate(Math.PI * 90 / 180);
+    } else {
+        Hoehe = canvas.height;
+        Breite = canvas.width;
     }
 
     TH = Breite / 8.2;      // Texthöhe
     BH = Breite - TH * 4.7;   // Blockhöhe
-    TH = Breite / 8.7;      // Texthöhe
+    TH = Breite / 8.7;     // Texthöhe
 
     if (Breite / (Hoehe / 2) > 1.7) {         // Korrektur breite Tablets llll
-        TH = TH - ((Breite / (Hoehe / 2.05)) - 1.7) * 110;
+//        TH = TH - ((Breite / (Hoehe / 2.05)) - 1.7) * 110;
+        TH = (Breite + Hoehe) / 22;
     }
 
     if (pI === 1) {
@@ -199,7 +200,7 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
         ctx.fill();
         ctx.fillRect(Breite * 0.44, Hoehe * 0.18, Breite * 0.12, Hoehe * 0.636);
         // lll
-        if (Hoehe > Breite) {
+        if (!QUERFORMAT()) {
             ctx.fillStyle = "lightgray";
             ctx.beginPath();
             ctx.arc(Breite * 0.025, Hoehe * 0.5, Hoehe * 0.05, 0, Math.PI * 2, true);

@@ -42,17 +42,17 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
 
     var BB = Breite / 2;       // Blockbreite
 
-    if (Hoehe >= Breite) {
+    if (QUERFORMAT()) {
+        var TH = Hoehe / 8;       // Texthöhe
+        var BH = Hoehe / 2 - TH * 1.6; // Blockhöhe
+        var TH = Hoehe / 8.5;      // Texthöhe
+    } else {
         var TH = Hoehe / 11;        // Texthöhe
         var BH = Hoehe / 2 - TH * 2.2;  // Blockhöhe
         TH = Hoehe / 11.7;          // Texthöhe
         if (Breite / (Hoehe / 2) > 1.7) {         // Korrektur breite Tablets llll
-            TH = Breite / (11.7 + (Breite / (Hoehe / 2) - 1.7));
+            TH = (Breite + Hoehe) / 22;
         }
-    } else {
-        var TH = Hoehe / 8;       // Texthöhe
-        var BH = Hoehe / 2 - TH * 1.6; // Blockhöhe
-        var TH = Hoehe / 8.5;      // Texthöhe
     }
 
     if (pI === 1) {
@@ -183,7 +183,19 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
         ctx.rotate(Math.PI * -180 / 180);
     }
 
-    if (canvas.height >= canvas.width) { // Hochformat
+    if (QUERFORMAT()) {
+        ctx.fillStyle = "#111";
+        ctx.font = (TH) + "pt sans-serif-condensed";
+        ctx.fillText(pVName, 0, 0);
+
+        setFontStyle(pPunkte, "P", TH, -Breite / 8, BH - TH / 2, pI);
+        if (DS.Storno[aktPos]) {
+            ctx.fillStyle = "#111";
+            ctx.fillText('——', -Breite / 8, BH - TH / 2);
+        }
+
+        setFontStyle(pSumme, "S", TH, BB / 4, BH - TH / 2);
+    } else {
         ctx.fillStyle = "#111";
         if (Breite > 1100) { // HD und größer
             ctx.font = (TH / 1.2) + "pt sans-serif-condensed";
@@ -211,18 +223,6 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
         }
 
         setFontStyle(pSumme, "S", TH, 0, BH - TH / 3);
-    } else {
-        ctx.fillStyle = "#111";
-        ctx.font = (TH) + "pt sans-serif-condensed";
-        ctx.fillText(pVName, 0, 0);
-
-        setFontStyle(pPunkte, "P", TH, -Breite / 8, BH - TH / 2, pI);
-        if (DS.Storno[aktPos]) {
-            ctx.fillStyle = "#111";
-            ctx.fillText('——', -Breite / 8, BH - TH / 2);
-        }
-
-        setFontStyle(pSumme, "S", TH, BB / 4, BH - TH / 2);
     }
 
     ctx.restore();

@@ -1,7 +1,7 @@
 
 /* global LS, CUPS, I, iPfad, hHeute, STAT, mTischTurnier, PC, QUERFORMAT() */
 
-function neuerTisch(pPruefen) {
+function neuerTisch() {
     'use strict';
     if (LS.I && LS.I !== I) {
         if (CUPS.TURNIER[I] === 'Handy'
@@ -88,7 +88,7 @@ function neuerTisch(pPruefen) {
         }
     }
 
-    if (LS.I && LS.gespielt > 0 && pPruefen) {
+    if (LS.I && LS.gespielt > 0) {
         if (LS.I !== I) {
             $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
             $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
@@ -96,10 +96,10 @@ function neuerTisch(pPruefen) {
             $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
         }
         if (mTischTurnier === 'Turnier') {
-            $('#tsNeuerTischTurnier').html('Turnier starten:');
+            $('#tsNeuerTischTurnier').html('Das Turnier starten:');
             $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
         } else {
-            $('#tsNeuerTischTurnier').html('Neuer Tisch:');
+            $('#tsNeuerTischTurnier').html('Ein neuer Tisch:');
             $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und neuen Tisch');
         }
         $("#pTISCHSPEICHERN").popup("open").show();

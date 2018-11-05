@@ -11,7 +11,7 @@ function iStartStop(pPruefen) {
                     + '&nbsp;<b>' + CUPS.NAME[LS.I] + '</b>&nbsp;beenden.');
             return;
         } else if (pPruefen && LS.gespielt) {
-            $('#tsNeuerTischTurnier').html('Turnier starten:');
+            $('#tsNeuerTischTurnier').html('Das Turnier starten:');
             if (LS.I !== I) {
                 $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
                 $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');

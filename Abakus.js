@@ -738,26 +738,26 @@ function listVersion() {
     var vDate = getVersionsDatum();
     var hVersion = vDate.getFullYear() + '.' + (vDate.getMonth() + 1) + '.' + vDate.getDate();
     $('#tVersion,#tVersion2').text(hVersion);
-    var hDate = new Date();
-    vDate = new Date(CUPS.TIMESTAMP);
-    if (hDate.getFullYear() !== vDate.getFullYear()) {
-        if (hDate.getFullYear() > vDate.getFullYear()) {
-            $('#dMeldung').append('Das System wurde für' + hDate.getFullYear() + '<br>'
-                    + 'noch nicht freigegeben.<br>'
-                    + 'Informiere einen Administrator.<br>').show();
-        } else {
-            $('#dMeldung').append('Das Datum ist nicht aktuell.<br>'
-                    + 'Korrigiere das Systemdatum.<br>').show();
-        }
-    }
-    if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
-        $('#dMeldung').append('Diese App bietet nur in der<br>'
-        + 'Zeitzone Wien die volle Funktionalität.<br>'
-        + 'Korrigiere die Zeitzone.<br>');
-    }
-
     if (LS.Meldung) {
         writeLOG('ABAKUS: ' + LS.Meldung);
+    }
+
+    var sDate = new Date(CUPS.TIMESTAMP);
+    var hDate = new Date();
+    if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
+        $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Diese App bietet<br>"
+                + 'nur in der Zeitzone Wien<br>'
+                + 'die volle Funktionalität.<br>'
+                + 'Korrigiere die Zeitzone.<br>').show();
+    }
+    if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+        $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Das Datum ist nicht aktuell.<br>"
+                + 'Korrigiere das Systemdatum.<br>').show();
+    }
+    if (sDate.getFullYear() > hDate.getFullYear()) {
+        $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Das System wurde für " + hDate.getFullYear() + '<br>'
+                + 'noch nicht freigegeben.<br>'
+                + 'Informiere einen Administrator.<br>').show();
     }
 }
 

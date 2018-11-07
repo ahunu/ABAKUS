@@ -870,7 +870,7 @@ function getINT(pStr) {
 
 function checkVersion() {
     'use strict';
-    var sDate = CUPS.TIMESTAMP;
+    var sDate = new Date(CUPS.TIMESTAMP);
     var hDate = new Date();
     if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
         $('#bSpeichern').addClass('ui-disabled');
@@ -882,7 +882,7 @@ function checkVersion() {
         $('#hSpeichern').html('<span class=cRot>'
                 + 'Das Systemdatum ist nicht aktuell.<br>'
                 + '<b>Speichern ist nicht möglich.</b></span>').show();
-    } else if (sDate.getFullYear() !== hDate.getFullYear()) {
+    } else if (sDate.getFullYear() > hDate.getFullYear()) {
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<span class=cRot>'
                 + 'Das System wurde für ' + hDate.getFullYear() + '<br>'

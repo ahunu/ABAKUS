@@ -16,10 +16,6 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
 
     hWait = 500;
 
-    if (pStat === 10) {
-        checkAnton('statShow(' + pStat + ', ' + pSort + ', ' + pHeader + ', ' + pRunde + ', ' + pTurCupGes + ');');
-    }
-
     if (CUPS.TURNIER[stCup] === 'PC' && stOption === 2) {
         stOption = 1;
     }
@@ -110,9 +106,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
         statDiagramm();
     } else {
         if (stStat === 10) {
-            checkAnton('vor statPosAnmeld(); html.length: ' + html.length);
             html = html + statPosAnmeld();
-            checkAnton('nach statPosAnmeld(); html.length: ' + html.length);
         } else if (CUPS.TURNIER[stCup]) {
             if (stSort === 'TZU') {
                 html = html + statPosDivPCtur();

@@ -493,21 +493,21 @@ function showStatistikOT() {
 
 function checkVersion() {
     'use strict';
-    var sDate = CUPS.TIMESTAMP;
+    var sDate = new Date(CUPS.TIMESTAMP);
     var hDate = new Date();
     if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
         $('#bSpeichern').addClass('ui-disabled');
-        $('#hSpeichern').html('<span class="cRot">'
+        $('#hSpeichern').html('<br><span class="cRot">'
                 + '&nbsp&nbsp;Die Zeitzone ist ungleich Wien.<br>'
                 + '&nbsp&nbsp;<b>Speichern ist nicht möglich.</b></span>').show();
     } else if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
         $('#bSpeichern').addClass('ui-disabled');
-        $('#hSpeichern').html('<span class=cRot>'
+        $('#hSpeichern').html('<br><span class=cRot>'
                 + '&nbsp&nbsp;Das Systemdatum ist nicht aktuell.<br>'
                 + '&nbsp&nbsp;<b>Speichern ist nicht möglich.</b></span>').show();
-    } else if (sDate.getFullYear() !== hDate.getFullYear()) {
+    } else if (sDate.getFullYear() > hDate.getFullYear()) {
         $('#bSpeichern').addClass('ui-disabled');
-        $('#hSpeichern').html('<span class=cRot>'
+        $('#hSpeichern').html('<br><span class=cRot>'
                 + '&nbsp&nbsp;Das System wurde für ' + hDate.getFullYear() + '<br>'
                 + '&nbsp&nbsp;noch nicht freigegeben.<br>'
                 + '&nbsp&nbsp;Informiere einen Administrator.<br>'

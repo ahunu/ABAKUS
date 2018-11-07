@@ -40,15 +40,22 @@ function getStatMeldungen(pAnAbmelden) {
     } else if (CUPS.ANMELDERF[stCup]) {
         ret += '<div class="noprint" ' + (pAnAbmelden ? '' : 'onclick="statShow(10,null,null,null,-1);"') + '>';
         var hAnAbmelden = '';
-        if ((new Date('2016-01-11T18:02:22.210Z').getFullYear() !== 2016   // Ist die Hardware vertrauenswürdig ???
-                || new Date('2016-01-11T18:02:22.210Z').getMonth() !== 0
-                || new Date('2016-01-11T18:02:22.210Z').getDate() !== 11
-                || new Date('2016-01-11T18:02:22.210Z').getHours() !== 19  // Wegen der Zeitzone 19 !!! London 0, Wien 1
-                || new Date('2016-01-11T18:02:22.210Z').getMinutes() !== 2
-                || parseInt('22.17 Jahre') !== 22
-                || parseFloat('22.17 Jahre') !== 22.17)
-                && (stCup !== 19 && stCup !== 21 && stCup !== 38)) { // 19 = Fassldippler, 21 = GH Brandstetter 38 = Bei Plischnack (damit Alfred keine Probleme hat)
-            hAnAbmelden = '<br>';
+        var sDate = new Date(CUPS.TIMESTAMP);
+        var hDate = new Date();
+        if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
+            hAnAbmelden = "<br>&nbsp;<img src='../Icons/Fehler.png' width='24' height='24'><span class='cRot M'>"
+                    + "&nbsp;Die Zeitzone ist ungleich Wien.<br>"
+                    + '&nbsp;<b>An- und abmelden ist nicht möglich.</b></span>';
+        } else if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+            hAnAbmelden = "<br>&nbsp;<img src='../Icons/Fehler.png' width='24' height='24'><span class='cRot M'>"
+                    + '&nbsp;Das Systemdatum ist nicht aktuell.<br>'
+                    + '&nbsp;<b>An- und abmelden ist nicht möglich.</b></span>';
+        } else if (sDate.getFullYear() > hDate.getFullYear()) {
+            hAnAbmelden = "<br>&nbsp;<img src='../Icons/Fehler.png' width='24' height='24'><span class='cRot M'>"
+                    + '&nbsp;Das System wurde für ' + hDate.getFullYear() + '<br>'
+                    + '&nbsp;noch nicht freigegeben.<br>'
+                    + '&nbsp;Informiere einen Administrator.<br>'
+                    + '&nbsp;<b>An- und abmelden ist nicht möglich.</b></span>';
         } else {
             if (STAT.TEILNEHMER && pAnAbmelden) {
                 hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled") + '" onclick="AnAbmelden(true);">&nbsp;anmelden&nbsp;</button><br>';

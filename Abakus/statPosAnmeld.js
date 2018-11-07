@@ -1,36 +1,11 @@
 
 /* global STAT, LS, stSort, QUERFORMAT() */
 
-function checkAnton(pLog, pError) {
-    'use strict';
-    if (LS.ME === '3013') {
-        var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
-        if (!LOG) {
-            LOG = '';
-        }
-        LOG += '<br>' + new Date().toISOString().substr(0, 10) + ' ' + new Date().toLocaleTimeString().substr(0, 5) + '<br>';
-//        if (pError) {
-        var hHref = window.location.href;
-        if (hHref.indexOf('firebaseapp.com') >= 0) {
-            hHref = hHref.substr(hHref.indexOf('firebaseapp.com') + 15);
-        } else if (hHref.indexOf('ABAKUS/public_html') >= 0) {
-            hHref = hHref.substr(hHref.indexOf('ABAKUS/public_html') + 18);
-        } else if (hHref.indexOf('www') >= 0) {
-            hHref = hHref.substr(hHref.indexOf('www') + 3);
-        }
-        LOG += '/' + hHref + ' - JS-Fehler: ' + pError + '<br>';
-//        }
-        LOG += pLog + '<br>';
-        localStorage.setItem('Abakus.LOG', JSON.stringify(LOG));
-    }
-}
-
 function statPosAnmeld() {
     'use strict';
     if (stCup === -1) {
         stCup = STAT.I;
     }
-    checkAnton('statPosAnmeld();');
     setTimeout(function () {
         $('.nbButton').removeClass('ui-btn-active');
         if (QUERFORMAT()) {
@@ -124,4 +99,3 @@ function statPosAnmeld() {
     ret += "</tbody></table>";
     return ret + "</div>";
 }
-;

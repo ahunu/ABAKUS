@@ -493,36 +493,25 @@ function showStatistikOT() {
 
 function checkVersion() {
     'use strict';
-    var vDate = getVersionsDatum();
-    var sDate = new Date();
-    if ((new Date('2016-01-11T18:02:22.210Z').getFullYear() !== 2016
-            || new Date('2016-01-11T18:02:22.210Z').getMonth() !== 0
-            || new Date('2016-01-11T18:02:22.210Z').getDate() !== 11
-            || new Date('2016-01-11T18:02:22.210Z').getHours() !== 19      // Wegen der Zeitzone 19 !!! London 0, Wien 1
-            || new Date('2016-01-11T18:02:22.210Z').getMinutes() !== 2
-            || parseInt('22.17 Jahre') !== 22
-            || parseFloat('22.17 Jahre') !== 22.17)
-            && (LS.I !== 19 && LS.I !== 21 && LS.I !== 38)) { // 19 = Fassldippler, 21 = GH Brandstetter, 38 = Bei Plischnack
+    var sDate = CUPS.TIMESTAMP;
+    var hDate = new Date();
+    if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<span class="cRot">'
-                + 'Dein Handy / Tablet kann das<br>'
-                + 'ISO-Datumsformat nicht korrekt<br>'
-                + 'interpretieren.<br>'
-                + '<b>Speichern ist nicht m&ouml;glich.</b></span>').show();
-    } else if (vDate.getTime() > sDate.getTime()) {
+                + '&nbsp&nbsp;Die Zeitzone ist ungleich Wien.<br>'
+                + '&nbsp&nbsp;<b>Speichern ist nicht möglich.</b></span>').show();
+    } else if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<span class=cRot>'
-                + '&nbsp&nbsp;<b>' + (PC ? 'PC' : 'Handy') + '-Datum ist nicht akutell!</b><br>'
-                + '&nbsp&nbsp;Mit einen ung&uuml;ltigen Datum kann<br>'
-                + '&nbsp&nbsp;nicht mehr gespeichert werden.<br>'
-                + '&nbsp&nbsp;Korrigiere das Datum und starte <i><b>Abakus</b></i> neu.</span>').show();
-    } else if (vDate.getFullYear() < sDate.getFullYear()) {
+                + '&nbsp&nbsp;Das Systemdatum ist nicht aktuell.<br>'
+                + '&nbsp&nbsp;<b>Speichern ist nicht möglich.</b></span>').show();
+    } else if (sDate.getFullYear() !== hDate.getFullYear()) {
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<span class=cRot>'
-                + '&nbsp&nbsp;<b>Version abgelaufen!</b><br>'
-                + '&nbsp&nbsp;Mit dieser Version kann <b>' + sDate.getFullYear() + '</b><br>'
-                + '&nbsp&nbsp;nicht mehr gespeichert werden.<br>'
-                + '&nbsp&nbsp;' + (PC ? 'Besorge dir eine aktuelle Version!' : 'Aktualisiere die App!') + '</span>').show();
+                + '&nbsp&nbsp;Das System wurde für ' + hDate.getFullYear() + '<br>'
+                + '&nbsp&nbsp;noch nicht freigegeben.<br>'
+                + '&nbsp&nbsp;Informiere einen Administrator.<br>'
+                + '&nbsp&nbsp;<b>Speichern ist nicht möglich.</b></span>').show();
     }
 }
 
@@ -540,7 +529,7 @@ $(document).ready(function () {
         };
     }
 
-$('#hTitel1').text(CUPS.NAME[LS.I]).css("width", "22vw");
+    $('#hTitel1').text(CUPS.NAME[LS.I]).css("width", "22vw");
 
     LS.Von = new Date(LS.Von);
     LS.Bis = new Date(LS.Bis);
@@ -650,4 +639,5 @@ window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
 
 window.onbeforeunload = function (e) {
     $('#main').addClass('ui-disabled');
-};
+}
+;

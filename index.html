@@ -135,7 +135,7 @@
                                             <img src='Icons/icon-96-xhdpi.png' style="margin-top:.1vw;margin-bottom:-1vw;margin-left:.2vw;height:14vw; width:14vw;" alt="Abakus"/>
                                         </div>
                                         <div class="ui-block-b" style="padding:0;margin:0;">
-                                            <div style='font-size:6.5vw;margin-top:-1vw;margin-left:30vw'><b><i>AbakusT</i></b></div>
+                                            <div style='font-size:6.5vw;margin-top:-1vw;margin-left:30vw'><b><i>Abakus</i></b></div>
                                             <div style='font-size:4vw;margin-top:-2vw;margin-left:30vw' class="N">die königliche</div>
                                             <div style='font-size:4vw;margin-top:-1vw;margin-left:30vw' class="N">Tarock&nbsp;&nbsp;-&nbsp;&nbsp;App</div>
                                         </div>
@@ -145,7 +145,7 @@
                                             <img src='Icons/icon-96-xhdpi.png' style="margin-top:1.1vw;margin-bottom:-1vw;margin-left:1vw;height:18vw; width:18vw;" alt="Abakus"/>
                                         </div>
                                         <div class="ui-block-b" style="padding:0;margin:0;">
-                                            <div style='font-size:9.3vw;margin-top:-1vw;margin-left:20vw'><b><i>AbakusS</i></b></div>
+                                            <div style='font-size:9.3vw;margin-top:-1vw;margin-left:20vw'><b><i>Abakus</i></b></div>
                                             <div style='font-size:5.5vw;margin-top:-3vw;margin-left:20vw' class="N">die königliche</div>
                                             <div style='font-size:5.5vw;margin-top:-2vw;margin-left:20vw' class="N">Tarock&nbsp;&nbsp;-&nbsp;&nbsp;App</div>
                                         </div>
@@ -263,6 +263,8 @@
                                 </div>
                             </div>
                         </div>
+                        <div id=dMeldung class="ui-content M cRot" hidden>
+                        </div>
                         <div>
                             <fieldset>
                                 <span id="dTermine"></span>
@@ -333,7 +335,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="ui-grid-a ui-btn" onClick="neuerTisch();">
+                        <div class="ui-grid-a ui-btn" onClick="neuerTisch(true);">
                             <div class="ui-block-a" style="width:10%; text-align:center;">
                                 <img src='Icons/MeinTisch.png' style="margin-top:0.5vw;margin-bottom:-0.5vw;margin-left:.2vw;height:11vw; width:11vw;" alt="Cup/Runde"/>
                             </div>
@@ -408,7 +410,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a onClick="neuerTisch();" style="padding:.1em" >Neuer Tisch</a>
+                                <a onClick="neuerTisch(true);" style="padding:.1em" >Neuer Tisch</a>
                                 <a onclick="$('#hNeueRunde').toggle('show');">Hilfe</a>
                                 <div id='hNeueRunde' style='margin:1em;' class='M' hidden>Einen <strong>neuen Tisch</strong> kannst du erst beginnen, wenn du den alten Tisch zuvor gespeichert oder gel&ouml;scht hast.
                                     <br>

@@ -441,33 +441,40 @@ function onSubmit() {
     firebase.database().ref('/00/CUPS/' + ("000" + I).substr(-3))
             .set(hCUPS)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
             .then(function () {
-                localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
-                if (LS.I === I) {
-                    LS.CupName = CUPS.NAME[LS.I];
-                    LS.Regeln = CUPS.REGELN[LS.I];
-                    LS.Spieltyp = CUPS.TYP[LS.I];
-                    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
-                    if (CUPS.DOPPELTERUNDEN[LS.I]) {
-                        LS.DoppelteRunden = true;
-                    } else {
-                        LS.DoppelteRunden = false;
-                    }
-                }
-                LS.ShowCups = I;
-                LS.Meldung = 'Die Parameter wurden ge&auml;ndert!';
-                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                firebase.database().ref('/00/CUPS')
+                        .update({TIMESTAMP: firebase.database.ServerValue.TIMESTAMP})
+                        .then(function () {
+                            localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+                            if (LS.I === I) {
+                                LS.CupName = CUPS.NAME[LS.I];
+                                LS.Regeln = CUPS.REGELN[LS.I];
+                                LS.Spieltyp = CUPS.TYP[LS.I];
+                                LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+                                if (CUPS.DOPPELTERUNDEN[LS.I]) {
+                                    LS.DoppelteRunden = true;
+                                } else {
+                                    LS.DoppelteRunden = false;
+                                }
+                            }
+                            LS.ShowCups = I;
+                            LS.Meldung = 'Die Parameter wurden geändert!';
+                            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 
-                if (mCupLoeschen === 1) {
-                    statistikLoeschen();
-                } else {
-                    if (CUPS.NEXTTERMIN[I] !== oNEXTTERMIN) {
-                        updNEXTTERMIN();
-                    } else {
-                        setTimeout(function () {
-                            window.history.go(-1);
+                            if (mCupLoeschen === 1) {
+                                statistikLoeschen();
+                            } else {
+                                if (CUPS.NEXTTERMIN[I] !== oNEXTTERMIN) {
+                                    updNEXTTERMIN();
+                                } else {
+                                    setTimeout(function () {
+                                        window.history.go(-1);
+                                    });
+                                }
+                            }
+                        })
+                        .catch(function (error) {
+                            showEinenDBFehler(error);
                         });
-                    }
-                }
             })
             .catch(function (error) {
                 showEinenFehler('Internet Verbindungsfehler.', 'Sp&auml;ter noch mal probieren.');

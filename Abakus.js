@@ -638,11 +638,11 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
                         + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3
-                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch()" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] !== 'PC') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
-                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch()" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + (CUPS.ANMELDERF[I]
@@ -662,11 +662,11 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
                         + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3
-                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch()" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] !== 'PC') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
-                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch()" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + (CUPS.ANMELDERF[I]
@@ -697,10 +697,13 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                 + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                 + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
                 + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7
-                        ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch()" >'
+                        ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" >'
                         + (CUPS.TURNIER[I] === 'PC' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
                                 ? '<b>Zum Turnier</b></span><br>Vivat Valat!<br>'
-                                : '<b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                : (LS.I === I
+                                        ? '<b>Zu meinem Tisch</b></span><br>Es wurden ' + LS.gespielt + ' Spiele gespielt.<br>'
+                                        : '<b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                        )
                                 )
                         : ''
                         )
@@ -735,6 +738,24 @@ function listVersion() {
     var vDate = getVersionsDatum();
     var hVersion = vDate.getFullYear() + '.' + (vDate.getMonth() + 1) + '.' + vDate.getDate();
     $('#tVersion,#tVersion2').text(hVersion);
+    var hDate = new Date();
+    vDate = new Date(CUPS.TIMESTAMP);
+    if (hDate.getFullYear() !== vDate.getFullYear()) {
+        if (hDate.getFullYear() > vDate.getFullYear()) {
+            $('#dMeldung').append('Das System wurde für' + hDate.getFullYear() + '<br>'
+                    + 'noch nicht freigegeben.<br>'
+                    + 'Informiere einen Administrator.<br>').show();
+        } else {
+            $('#dMeldung').append('Das Datum ist nicht aktuell.<br>'
+                    + 'Korrigiere das Systemdatum.<br>').show();
+        }
+    }
+    if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
+        $('#dMeldung').append('Diese App bietet nur in der<br>'
+        + 'Zeitzone Wien die volle Funktionalität.<br>'
+        + 'Korrigiere die Zeitzone.<br>');
+    }
+
     if (LS.Meldung) {
         writeLOG('ABAKUS: ' + LS.Meldung);
     }
@@ -1275,6 +1296,7 @@ $(document).ready(function () {
         LS.TURGESPIELT = 0;
         LS.Version = 0;
         LS.AnzGespeichert = 0;
+        LS.Timeout = 0;
         if (QUERFORMAT()) {
             LS.ShowSpielerNr = true;
             LS.AnzSpalten = 2;

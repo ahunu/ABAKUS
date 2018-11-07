@@ -31,7 +31,7 @@ function getStatMeldungen(pAnAbmelden) {
         } else {
             var hText;
             if (STAT.TURSPIELER - STAT.TURGESPIELT < 8) {
-                hText = "Ein Tisch ausst&auml;ndig.";
+                hText = "Ein Tisch ausständig.";
             } else {
                 hText = parseInt((STAT.TURSPIELER - STAT.TURGESPIELT) / 4) + " Tische ausst&auml;ndig.";
             }

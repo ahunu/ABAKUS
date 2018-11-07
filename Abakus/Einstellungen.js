@@ -3,7 +3,6 @@
 
 var n = 0;
 
-
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
@@ -43,6 +42,12 @@ $(document).bind('pageinit', function () {
     }
     $("#iFREUNDE").val(hFreunde);
 
+    if (LS.Timeout) {
+        $("#iTIMEOUT").val(LS.Timeout);
+    } else {
+        $("#iTIMEOUT").val(100);
+    }
+
     $('#Schreibzettel' + LS.Schreibzettel).prop('checked', true).checkboxradio('refresh');
     $('#Schreibzetteltrue,#Schreibzettelfalse').click(function () {
         if ($("input[name='Schreibzettel']:checked").val() === 'true') {
@@ -77,13 +82,8 @@ $(document).bind('pageinit', function () {
         $('#bEingabe').click();
     }
 
-
     $("#bDefaults").click(function () {
         'use strict';
-        setTimeout(function () {
-            $('#bDefaults').removeClass('ui-btn-active');
-        }, 100);
-
         LS.Schreibzettel = true;
         $('#Schreibzettelfalse').prop('checked', true).checkboxradio('refresh');
         $('#Schreibzetteltrue').prop('checked', false).checkboxradio('refresh');
@@ -96,6 +96,7 @@ $(document).bind('pageinit', function () {
             LS.AnzSpalten = 1;
             $('#AnzSpalten1').prop('checked', true).checkboxradio('refresh');
         }
+        $("#iTIMEOUT").val(100);
     });
 
     $("#bSpeichern").click(function () {
@@ -127,6 +128,11 @@ $(document).bind('pageinit', function () {
         }
         $("#iFREUNDE").val(hFreunde);
 
+        var hTimeout = parseInt($("#iTIMEOUT").val());
+        if (hTimeout > 400) {
+            hTimeout = 400;
+        }
+        LS.Timeout = hTimeout;
 
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         window.history.back();
@@ -161,7 +167,6 @@ $(document).bind('pageinit', function () {
     };
 
 });
-
 
 window.onbeforeunload = function (e) {
     $(".onExit").addClass('ui-disabled');

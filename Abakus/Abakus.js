@@ -647,16 +647,28 @@ function setFont() {
 
 function Activate(button) {
     'use strict';
-    setTimeout(function () {
-        $(button).removeClass('ui-btn-active').addClass('ui-btn-active');
-    }, 100);
+    if (LS.Timeout) {
+        setTimeout(function () {
+            $(button).removeClass('ui-btn-active').addClass('ui-btn-active');
+        }, LS.Timeout);
+    } else {
+        setTimeout(function () {
+            $(button).removeClass('ui-btn-active').addClass('ui-btn-active');
+        }, 100);
+    }
 }
 
 function Deactivate(button) {
     'use strict';
-    setTimeout(function () {
-        $(button).removeClass('ui-btn-active');
-    }, 100);
+    if (LS.Timeout) {
+        setTimeout(function () {
+            $(button).removeClass('ui-btn-active');
+        }, LS.Timeout);
+    } else {
+        setTimeout(function () {
+            $(button).removeClass('ui-btn-active');
+        }, 100);
+    }
     if (myJTip) {
         myJTip.close();
     }

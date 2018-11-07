@@ -1,7 +1,7 @@
 
 /* global LS, CUPS, I, iPfad, hHeute, STAT, mTischTurnier, PC, QUERFORMAT() */
 
-function neuerTisch() {
+function neuerTisch(pPruefen) {
     'use strict';
     if (LS.I && LS.I !== I) {
         if (CUPS.TURNIER[I] === 'Handy'
@@ -88,7 +88,7 @@ function neuerTisch() {
         }
     }
 
-    if (LS.I && LS.gespielt > 0) {
+    if (LS.I && LS.gespielt > 0 && pPruefen) {
         if (LS.I !== I) {
             $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
             $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
@@ -870,36 +870,24 @@ function getINT(pStr) {
 
 function checkVersion() {
     'use strict';
-    var vDate = getVersionsDatum();
-    var sDate = new Date();
-    if ((new Date('2016-01-11T18:02:22.210Z').getFullYear() !== 2016
-            || new Date('2016-01-11T18:02:22.210Z').getMonth() !== 0
-            || new Date('2016-01-11T18:02:22.210Z').getDate() !== 11
-            || new Date('2016-01-11T18:02:22.210Z').getHours() !== 19      // Wegen der Zeitzone 19 !!! London 0, Wien 1
-            || new Date('2016-01-11T18:02:22.210Z').getMinutes() !== 2
-            || parseInt('22.17 Jahre') !== 22
-            || parseFloat('22.17 Jahre') !== 22.17)
-            && (LS.I !== 19 && LS.I !== 21 && LS.I !== 38)) { // 19 = Fassldippler, 21 = GH Brandstetter, 38 = Bei Plischnack
+    var sDate = CUPS.TIMESTAMP;
+    var hDate = new Date();
+    if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<span class="cRot">'
-                + 'Dein Handy / Tablet kann das<br>'
-                + 'ISO-Datumsformat nicht korrekt<br>'
-                + 'interpretieren.<br>'
-                + '<b>Speichern ist nicht m&ouml;glich.</b></span>').show();
-    } else if (vDate.getTime() > sDate.getTime()) {
+                + 'Die Zeitzone ist ungleich Wien.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
+    } else if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
         $('#bSpeichern').addClass('ui-disabled');
-        $('#hSpeichern').html('<span class="cRot">'
-                + '<b>' + (PC ? 'PC' : 'Handy') + '-Datum ist nicht akutell!</b><br>'
-                + 'Mit einen ung&uuml;ltigen Datum<br>'
-                + 'kann nicht gespeichert werden.<br>'
-                + 'Korrigiere das Datum<br>'
-                + 'und starte <i><b>Abakus</b></i> neu.</span>').show();
-    } else if (vDate.getFullYear() < sDate.getFullYear()) {
+        $('#hSpeichern').html('<span class=cRot>'
+                + 'Das Systemdatum ist nicht aktuell.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
+    } else if (sDate.getFullYear() !== hDate.getFullYear()) {
         $('#bSpeichern').addClass('ui-disabled');
-        $('#hSpeichern').html('<span class="cRot">'
-                + '<b>Version abgelaufen!</b><br>'
-                + 'Mit dieser Version kann <b>' + sDate.getFullYear() + '</b><br>'
-                + 'nicht mehr gespeichert werden.<br>'
-                + 'Besorge dir eine aktuelle Version.</span>').show();
+        $('#hSpeichern').html('<span class=cRot>'
+                + 'Das System wurde für ' + hDate.getFullYear() + '<br>'
+                + 'noch nicht freigegeben.<br>'
+                + 'Informiere einen Administrator.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
     }
 }

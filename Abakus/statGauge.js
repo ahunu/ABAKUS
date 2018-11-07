@@ -79,8 +79,7 @@ function showGauge(pSpiele, pEigGewonnen, pEigVerloren, pAnz, pKolonne) {
             yAxis: {
                 min: 0,
                 max: 100,
-                title: {text: 'Spiele gespielt: <b>' + pSpiele + '</b>'
-                            + '<br>eigene Spiele: <b>' + (pEigGewonnen + pEigVerloren) + '</b>',
+                title: {text: 'eigene Spiele: <b>' + (pEigGewonnen + pEigVerloren) + '</b>',
                     style: {"color": "#333333", "fontSize": hFont}
                 }
             },

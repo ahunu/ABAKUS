@@ -1096,7 +1096,6 @@ function listStammspieler() {
         }
         showEinenTip('#SP1', 'Wo sitzt ' + STAT.S[spDrag].VNAME + STAT.S[spDrag].STERNE + '?');
     });
-
 }
 
 function pcTurnierAnmelden() {
@@ -1638,6 +1637,7 @@ $(document).ready(function () {
         var LS_Font = LS.Font;
         var LS_Version = LS.Version;
         var LS_tempVIPs = LS.tempVIPs;
+        var LS_Timeout = LS.Timeout;
 
         LS.LoadCups = 0;
 
@@ -1655,6 +1655,7 @@ $(document).ready(function () {
         LS.Font = LS_Font;
         LS.Version = LS_Version;
         LS.tempVIPs = LS_tempVIPs;
+        LS.Timeout = LS_Timeout;
 
         if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') {
             SPIELERerweitern();

@@ -57,6 +57,8 @@ function loadCUPS(pTitel, pText, pForce) {
 
             } else if (cup.key === 'SPIELERnr') {
                 SPIELERnr = cup.val();
+            } else if (cup.key === 'TIMESTAMP') {
+                CUPS.TIMESTAMP = cup.val();
             } else {
                 i = cup.key;
                 if (i[0] === '0') {  // Android interpretiert in älteren Versionen

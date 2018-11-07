@@ -322,8 +322,10 @@ function writeLOG(pLog, pError) {
             hHref = hHref.substr(hHref.indexOf('firebaseapp.com') + 15);
         } else if (hHref.indexOf('ABAKUS/public_html') >= 0) {
             hHref = hHref.substr(hHref.indexOf('ABAKUS/public_html') + 18);
+        } else if (hHref.indexOf('www') >= 0) {
+            hHref = hHref.substr(hHref.indexOf('www') + 3);
         }
-        LOG += hHref + ' - JS-Fehler: ' + pError + '<br>';
+        LOG += '/' + hHref + ' - JS-Fehler: ' + pError + '<br>';
     }
     LOG += pLog + '<br>';
     localStorage.setItem('Abakus.LOG', JSON.stringify(LOG));

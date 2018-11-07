@@ -2,18 +2,8 @@
 /*global $, jQuery, Parse, CUP, CUPS, LS, console, spNext, initSTAT*/
 
 var PC = false;
-var FB = undefined;
-var STAT = new Object();
-var SPIELER = new Object(); // Spieler werden in whenSTATloaded ergänzt
-var I = 0;
-
-var time2Check = false;
-var AnmeldungGestartet = false;
-var iTURCODE = 0;
-
-var iPfad = '../Icons/';
-var rPfad = '../';
-var mTischTurnier = '';
+var LS = new Object();
+var CUPS = new Object();
 
 var myJBox = null;
 
@@ -37,6 +27,8 @@ $(document).ready(function () {
     }
 
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+    CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+
     if (LS.ME === '3244' || LS.ME === '4506' || LS.ME === '1014') { // Markus Mair, Sepp Lang, Franz Kienast
         $('#bTurnierkalender,#bSpielerAendern').removeClass('ui-disabled');
         if (PC) {
@@ -48,6 +40,10 @@ $(document).ready(function () {
         $('#dGOOD').show();
         $('.cHEIKEL').removeClass('ui-disabled');
     }
+
+    var hDate = new Date(CUPS.TIMESTAMP);
+    $('#tSystemfreigabe').html('Das System, die App ist für PCs, Handys und Tablets<br>'
+           + 'mit einem Systemdatum zwischen ' + hDate.toLocaleDateString() + ' und 31.12.' + hDate.getFullYear() + ' freigegeben.');
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {

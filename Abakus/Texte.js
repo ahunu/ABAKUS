@@ -148,7 +148,7 @@ function getZitat() {
 
     var iZitat = stLastZitat;
     do {
-        iZitat = Date.now() % 53;
+        iZitat = Date.now() % 54;
     } while (iZitat === stLastZitat);
 
     stLastZitat = iZitat;
@@ -369,6 +369,10 @@ function getZitat() {
                     + '<br>Darum haben sie auch den'
                     + '<br>Reißverschluss erfunden.',
             'Senta Berger, 1941-, österr.dt. Schauspielerin'];
+    } else if (iZitat === 53) {
+        return ['Grüne Politikerinnen'
+                    + '<br>verhüten mit dem Gesicht.',
+            'Joschka Fischer, 1948-, dt. Politiker'];
     }
 }
 

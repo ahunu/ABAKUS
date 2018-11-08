@@ -25,12 +25,12 @@ function showTurnier(pTurnier) {
         }
     }
 
-    if (stCup === 58 && LS.ME === '4731') {     // Alexandra Sabkovski
+    if (LS.ME === '3425'
+            || LS.ME === '3484' && stcup === 56     // Brigitta Hainz
+            || LS.ME === '4731' && stCup === 58) {  // Alexandra Sabkovski
         showIcons(['#iPrint', '#iAnekdote', '#iDownload']);
     } else if (ADMIN) {
         showIcons(['#iPrint', '#iAnekdote']);
-    } else if (LS.ME === '3425') {
-        showIcons(['#iPrint', '#iAnekdote', '#iDownload']);
     } else if (stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
             || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')) {    // Braun Sigi, Sedlacek Robert
         showIcons(['#iPrint', '#iAnekdote']);

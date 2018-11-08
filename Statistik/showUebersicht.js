@@ -337,6 +337,6 @@ function showLogo() {
                 + '<br>der im Sitzen ausgeführt wird.');
         $('#tWeiser').html('Lore Krainer, Kabarettistin und passionierte Tarockiererin');
     }
-    $("#dCopyright").attr('style', "width:" + ($(window).innerWidth() * 0.7) + "px;position: absolute; top: " + ($(window).innerHeight() - $('#dCopyright').height() - 2) + "px; left: " + ($(window).innerWidth() / 100 * 30) + "px;");
+    $("#dCopyright").attr('style', "width:" + ($(window).innerWidth() * 0.72) + "px;position: absolute; top: " + ($(window).innerHeight() - $('#dCopyright').height() - 2) + "px; left: " + ($(window).innerWidth() / 100 * 28) + "px;");
     $("#dCopyright").show();
 }

@@ -750,11 +750,11 @@ function listVersion() {
                 + 'die volle Funktionalität.<br>'
                 + 'Korrigiere die Zeitzone.<br>').show();
     }
-    if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+    if (sDate.getFullYear() > hDate.getFullYear() || sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
         $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Das Datum ist nicht aktuell.<br>"
                 + 'Korrigiere das Systemdatum.<br>').show();
     }
-    if (sDate.getFullYear() > hDate.getFullYear()) {
+    if (sDate.getFullYear() < hDate.getFullYear()) {
         $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Das System wurde für " + hDate.getFullYear() + '<br>'
                 + 'noch nicht freigegeben.<br>'
                 + 'Informiere einen Administrator.<br>').show();

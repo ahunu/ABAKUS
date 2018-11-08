@@ -877,12 +877,12 @@ function checkVersion() {
         $('#hSpeichern').html('<span class="cRot">'
                 + 'Die Zeitzone ist ungleich Wien.<br>'
                 + '<b>Speichern ist nicht möglich.</b></span>').show();
-    } else if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+    } else if (sDate.getFullYear() > hDate.getFullYear() || sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<span class=cRot>'
                 + 'Das Systemdatum ist nicht aktuell.<br>'
                 + '<b>Speichern ist nicht möglich.</b></span>').show();
-    } else if (sDate.getFullYear() > hDate.getFullYear()) {
+    } else if (sDate.getFullYear() < hDate.getFullYear()) {
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<span class=cRot>'
                 + 'Das System wurde für ' + hDate.getFullYear() + '<br>'

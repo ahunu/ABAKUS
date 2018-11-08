@@ -334,30 +334,6 @@ function whenSTATloaded(pNotSynchron) {
     });
 }
 
-function toggleOptionen() {
-    'use strict';
-    if (typeof window.event === "undefined") { // nicht mit Firefox
-        $("#sortUndLayout").toggle("show");
-        return;
-    }
-    if ($("#sortUndLayout").is(":visible")) {
-        $("#sortUndLayout").toggle("show");
-        if (window.event.offsetY > ($("#stHead").height() / 2)) {
-            return;
-        }
-    } else if ($("#cupsUndRunden").is(":visible")) {
-        $("#cupsUndRunden").toggle("show");
-        if (window.event.offsetY <= ($("#stHead").height() / 2)) {
-            return;
-        }
-    }
-    if (window.event.offsetY > ($("#stHead").height() / 2)) {
-        $("#sortUndLayout").toggle("show");
-    } else {
-        $("#cupsUndRunden").toggle("show");
-    }
-}
-
 function getTIME(pDAT) {
     'use strict';
     var std, min, p;

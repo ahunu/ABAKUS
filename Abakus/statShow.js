@@ -165,7 +165,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
                 }
                 $('#stMain').html(
                         "<div id='stHeader' data-role='header' " + hDataPosition + " class='K' style='position: fixed; top: 0; width: 100%; padding:0em; margin:0px'>"
-                        + "<canvas id='stHead' onclick='toggleOptionen();' width='2000' height='66'></canvas>"
+                        + "<canvas id='stHead' onclick='$(\"#sortUndLayout\").toggle(\"show\");' width='2000' height='66'></canvas>"
                         + "<div id=stNavbar data-role='navbar' class='noprint'>"
                         + "<ul>"
                         + "<li class=nb11 id='bSt2'><a onclick='statShow(false,false,false,false,2);' style=" + hStyle + " class='nbButton " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"
@@ -185,7 +185,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
             } else {
                 $('#stMain').html(
                         "<div id='stHeader' data-role='header' " + hDataPosition + " class='K' style='position: fixed; top: 0; width: 100%; padding:0em; margin:0px'>"
-                        + "<canvas id='stHead' onclick='toggleOptionen();' width='2000' height='66'></canvas>"
+                        + "<canvas id='stHead' onclick='$(\"#sortUndLayout\").toggle(\"show\");' width='2000' height='66'></canvas>"
                         + "<div id=stNavbar data-role='navbar' class='noprint'>"
                         + "<ul>"
                         + "<li class=nb18 id='bSt2'><a onclick='statShow(false,false,false,false,2);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"

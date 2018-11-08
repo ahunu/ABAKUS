@@ -500,12 +500,12 @@ function checkVersion() {
         $('#hSpeichern').html('<br><span class="cRot">'
                 + '&nbsp&nbsp;Die Zeitzone ist ungleich Wien.<br>'
                 + '&nbsp&nbsp;<b>Speichern ist nicht möglich.</b></span>').show();
-    } else if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+    } else if (sDate.getFullYear() > hDate.getFullYear() || sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<br><span class=cRot>'
                 + '&nbsp&nbsp;Das Systemdatum ist nicht aktuell.<br>'
                 + '&nbsp&nbsp;<b>Speichern ist nicht möglich.</b></span>').show();
-    } else if (sDate.getFullYear() > hDate.getFullYear()) {
+    } else if (sDate.getFullYear() < hDate.getFullYear()) {
         $('#bSpeichern').addClass('ui-disabled');
         $('#hSpeichern').html('<br><span class=cRot>'
                 + '&nbsp&nbsp;Das System wurde für ' + hDate.getFullYear() + '<br>'

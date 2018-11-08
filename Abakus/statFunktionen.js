@@ -46,11 +46,11 @@ function getStatMeldungen(pAnAbmelden) {
             hAnAbmelden = "<br>&nbsp;<img src='../Icons/Fehler.png' width='24' height='24'><span class='cRot M'>"
                     + "&nbsp;Die Zeitzone ist ungleich Wien.<br>"
                     + '&nbsp;<b>An- und abmelden ist nicht möglich.</b></span>';
-        } else if (sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+        } else if (sDate.getFullYear() > hDate.getFullYear() || sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
             hAnAbmelden = "<br>&nbsp;<img src='../Icons/Fehler.png' width='24' height='24'><span class='cRot M'>"
                     + '&nbsp;Das Systemdatum ist nicht aktuell.<br>'
                     + '&nbsp;<b>An- und abmelden ist nicht möglich.</b></span>';
-        } else if (sDate.getFullYear() > hDate.getFullYear()) {
+        } else if (sDate.getFullYear() < hDate.getFullYear()) {
             hAnAbmelden = "<br>&nbsp;<img src='../Icons/Fehler.png' width='24' height='24'><span class='cRot M'>"
                     + '&nbsp;Das System wurde für ' + hDate.getFullYear() + '<br>'
                     + '&nbsp;noch nicht freigegeben.<br>'
@@ -600,17 +600,7 @@ function getHilfeText() {
 
 function getSortUndLayout() {
     'use strict';
-
-    return  "<div id=cupsUndRunden hidden>"
-            + "<ul data-role='listview'>"
-            + "<li data-role='list-divider' data-theme='d' id=meineRundenCups>&nbsp;&nbsp;Meine Runden / Cups:</li>"
-            + "<li data-icon=false" + (stCup === 8 ? ' data-theme=c' : '') + "><a onclick='getSTAT(8);'>Cafe Heine Cup</a></li>"
-            + "<li data-icon=false" + (stCup === 9 ? ' data-theme=c' : '') + "><a onclick='getSTAT(9);'>Cafe Heine Cup x2</a></li>"
-            + "<li data-icon=false" + (stCup === 10 ? ' data-theme=c' : '') + "><a onclick='getSTAT(10);'>Cafe Heine Cup x3</a></li>"
-            + "</ul>"
-            + "<br>"
-            + "</div>"
-            + "<div id=sortUndLayout hidden>"
+    return  "<div id=sortUndLayout hidden>"
             + "<div class='ui-grid-a ui-responsive L'>"
             + "<div class='ui-block-a st-breakpoint'>"
             + (CUPS.TURNIER[stCup] === 'Handy' && STAT.TURRUNDE > 0 && stTurCupGes === 3

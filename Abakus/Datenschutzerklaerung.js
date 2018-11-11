@@ -28,12 +28,4 @@ $(document).bind('pageinit', function () {
         return false;
     };
 
-    window.onerror = function (msg, url, line, col, error) {
-        console.log('msg: ' + msg + ', url: ' + url + ', line: ' + line);
-        if (url !== '' || line !== 0) {
-            alert(msg + ' url=' + url + ' line=' + line + ', col=' + col + ', error=' + error + '.');
-        }
-        return false;
-    };
-
 });

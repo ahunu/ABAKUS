@@ -455,6 +455,13 @@ function setTisch(pTisch) {
                     break;
                 }
             }
+        } else if (LS.ME !== 'NOBODY') {
+            LS.NR[1] = '';
+            blert(LS.ME, 'FName', 'VName', 'Orttti', '');
+//                    LS.ME.substr(0, LS.ME.indexOf('_')),
+//                    LS.ME.substr(LS.ME.indexOf('_') + 1, LS.ME.lastIndexOf('_')),
+//                    LS.ME.substr(LS.ME.lastIndexOf('_')), '');
+//                    );
         }
     }
     if (LS.I <= 7 && !LS.NR[5] && LS.AnzSpieler >= 5) {
@@ -986,12 +993,22 @@ function listStammspieler() {
         }
     } else {
         if (neuerTisch) {
-            var lSPIELER = SPIELER.length;
-            for (var i = 0; i < lSPIELER; i++) {
-                if (SPIELER[i][spNR] === LS.ME) {
-                    blert(SPIELER[i][spNR], SPIELER[i][spVNAME], SPIELER[i][spNNAME], SPIELER[i][spORT] + '&nbsp;', '');
-                    break;
+            if (LS.ME.length === 4) {
+                var lSPIELER = SPIELER.length;
+                for (var i = 0; i < lSPIELER; i++) {
+                    if (SPIELER[i][spNR] === LS.ME) {
+                        blert(SPIELER[i][spNR], SPIELER[i][spVNAME], SPIELER[i][spNNAME], SPIELER[i][spORT] + '&nbsp;', '');
+                        break;
+                    }
                 }
+            } else if (LS.ME !== 'NOBODY') {
+                console.log('FName: >>>' + LS.ME.substr(0, LS.ME.indexOf('_')) + '<<<');
+                console.log('VName: >>>' + LS.ME.substring(LS.ME.indexOf('_') + 1, LS.ME.lastIndexOf('_')) + '<<<');
+                console.log('Ort:   >>>' + LS.ME.substr(LS.ME.lastIndexOf('_') + 1) + '<<<');
+                blert(LS.ME,
+                        LS.ME.substring(LS.ME.indexOf('_') + 1, LS.ME.lastIndexOf('_')),
+                        LS.ME.substr(0, LS.ME.indexOf('_')),
+                        LS.ME.substr(LS.ME.lastIndexOf('_') + 1), '');
             }
         }
     }
@@ -1063,19 +1080,6 @@ function listStammspieler() {
         if (nachTischen) { // Spieler anmelden
             if (STAT.TURRUNDE === 1 && STAT.TURGESPIELT === 0 && CUPS.BEREadmin[LS.I].indexOf(LS.ME) < 0) {
                 $('#bTische').addClass('ui-disabled');
-            }
-        } else {
-            if (SORT.length >= 4) {
-                //              $('#Stammspieler').collapsible('expand');
-            } else {
-                //    llll          $('#Stammspieler').addClass('ui-disabled');
-                //              $('#SpielerSuchen').collapsible('expand');
-                //              scrollToRumpf2();
-                if (LS.ME.length > 4 && LS.ME !== 'NOBODY') {
-                    $('#I_VNAME').val(LS.ME.substr(0, LS.ME.indexOf(' ')));
-                    $('#I_NNAME').val(LS.ME.substr(LS.ME.indexOf(' ') + 1));
-                    $('#B_Finden').click();
-                }
             }
         }
     }
@@ -1555,7 +1559,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "NOBODY") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
@@ -1806,40 +1810,6 @@ $(document).ready(function () {
         }
     });
 
-    window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
-        if (!navigator.platform.match(/(Win|Mac)/i)
-                && typeof pMsg === 'object'        // '[object Event]'
-                && typeof pUrl === 'undefined'
-                && typeof pLine === 'undefined'
-                && typeof pCol === 'undefined'
-                && typeof pError === 'undefined') {  // Timeserver am Handy nicht verfügbar.
-            return false;                     // Fehler wird ingnoriert.
-        }
-        var msg = 'JS:';
-        if (pMsg) {
-            msg += ', msg: ' + pMsg;
-        }
-        if (pUrl) {
-            msg += ', url: ' + pUrl;
-        }
-        if (pLine) {
-            msg += ', line: ' + pLine;
-        }
-        if (pCol) {
-            msg += ', col: ' + pCol;
-        }
-        if (pError) {
-            msg += ', error: ' + pError;
-        }
-        msg += '.';
-        msg[3] = ' ';
-        console.log(msg);
-
-        if (pUrl !== '' || pLine !== 0) {
-            alert(msg);
-        }
-        return false;
-    };
     $("#I_NR,#I_NNAME,#I_VNAME,#I_ORT").focusin(function () {
         scrollToINR();
     });

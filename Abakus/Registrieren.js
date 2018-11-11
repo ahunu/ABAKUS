@@ -251,13 +251,7 @@ $(document).bind('pageinit', function () {
     });
 
     loadSPIELER();
-    window.onerror = function (msg, url, line, col, error) {
-        console.log('msg: ' + msg + ', url: ' + url + ', line: ' + line);
-        if (url !== '' || line !== 0) {
-            alert(msg + ' url=' + url + ' line=' + line + ', col=' + col + ', error=' + error + '.');
-        }
-        return false;
-    };
+
 });
 window.onbeforeunload = function (e) {
     $('.onExit').addClass('ui-disabled');

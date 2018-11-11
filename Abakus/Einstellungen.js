@@ -18,11 +18,11 @@ $(document).bind('pageinit', function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
-        return false;
+//        return false;
     };
 
     $("#iShowSpielerNr").prop("checked", LS.ShowSpielerNr).checkboxradio("refresh");
@@ -138,33 +138,6 @@ $(document).bind('pageinit', function () {
         window.history.back();
 
     });
-
-    window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
-        var msg = 'JS:';
-        if (pMsg) {
-            msg += ', msg: ' + pMsg;
-        }
-        if (pUrl) {
-            msg += ', url: ' + pUrl;
-        }
-        if (pLine) {
-            msg += ', line: ' + pLine;
-        }
-        if (pCol) {
-            msg += ', col: ' + pCol;
-        }
-        if (pError) {
-            msg += ', error: ' + pError;
-        }
-        msg += '.';
-        msg[3] = ' ';
-        console.log(msg);
-
-        if (pUrl !== '' || pLine !== 0) {
-            alert(msg);
-        }
-        return false;
-    };
 
 });
 

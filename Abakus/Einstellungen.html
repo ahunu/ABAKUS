@@ -15,13 +15,16 @@
             });
         </script>
         <script type="text/javascript" src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
         <!-- Das ist ein Kommentar -->
         <title>Abakus
         </title>
         <link  href="../js/css/Abakus.css" rel="stylesheet" />
         <script src="Einstellungen.js"></script>
     </head>
-    <body onclick="event.stopPropagation();">
+    <body>
         <div data-role="page">
             <div data-role="header" data-position="fixed" style="padding:0em; margin:0em;">
                 <div class="ui-grid-a" onClick="$('#dLegende').toggle('show');">
@@ -64,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <br>
+                <hr>
                 <div class="L B C">Reaktionszeit:
                 </div>
                 <div class="ui-grid-a">
@@ -92,14 +95,9 @@
                         <div class="ui-block-b daten" style="text-align:center;">
                             <fieldset data-role=controlgroup data-mini=true data-theme="a">
                                 <label class=btn>
-                                    <input type='checkbox' id=iSpielerNrww>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spielernummer anzeigen
+                                    <input type='checkbox' id=iSpielerNr onclick="LS.ShowSpielerNr = !LS.ShowSpielerNr;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spielernummer anzeigen
                                 </label>
                             </fieldset>
-                            <form>
-                                <label>
-                                    <input type='checkbox' id=iSpielerNr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spielernummer anzeigen
-                                </label>
-                            </form>
                         </div>
                     </div>
                     <hr>

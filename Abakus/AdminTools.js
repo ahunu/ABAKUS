@@ -42,8 +42,8 @@ $(document).ready(function () {
     }
 
     var hDate = new Date(CUPS.TIMESTAMP);
-    $('#tSystemfreigabe').html('Das System, die App ist für PCs, Handys und Tablets<br>'
-           + 'mit einem Systemdatum zwischen ' + hDate.toLocaleDateString() + ' und 31.12.' + hDate.getFullYear() + ' freigegeben.');
+    $('#tSystemfreigabe').html('Das System ist für den Zeitraum<br>'
+           + 'vom ' + hDate.toLocaleDateString() + ' bis 31.12.' + hDate.getFullYear() + ' freigegeben.');
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
@@ -54,13 +54,6 @@ $(document).ready(function () {
         return false;
     };
 });
-window.onerror = function (msg, url, line, col, error) {
-    console.log('msg: ' + msg + ', url: ' + url + ', line: ' + line + ' error: ' + error);
-    if (url !== '' || line !== 0) {
-        alert(msg + ' url=' + url + ' line=' + line + ', col=' + col + ', error=' + error + '.');
-    }
-    return false;
-};
 window.onbeforeunload = function (e) {
     $('.onExit').addClass('ui-disabled');
 };

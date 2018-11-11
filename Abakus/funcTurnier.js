@@ -447,6 +447,7 @@ function TurnierBEENDENendEnd() {
                 LS.ShowCups = I;
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
+                $('#bZuMeinemTisch').hide();
                 hideEinenMoment();
             })
             .catch(function (error) {

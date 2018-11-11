@@ -1935,33 +1935,6 @@ $(document).ready(function (e) {
         Summieren();
     });
 
-    window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
-        var msg = 'JS:';
-        if (pMsg) {
-            msg += ', msg: ' + pMsg;
-        }
-        if (pUrl) {
-            msg += ', url: ' + pUrl;
-        }
-        if (pLine) {
-            msg += ', line: ' + pLine;
-        }
-        if (pCol) {
-            msg += ', col: ' + pCol;
-        }
-        if (pError) {
-            msg += ', error: ' + pError;
-        }
-        msg += '.';
-        msg[3] = ' ';
-        console.log(msg);
-
-        if (pUrl !== '' || pLine !== 0) {
-            alert(msg);
-        }
-        return false;
-    };
-
     window.onpageshow = function (event) {
         if (event.persisted) {
             if (navigator.userAgent.indexOf("Chrome") < 0

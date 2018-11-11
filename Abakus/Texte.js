@@ -53,9 +53,10 @@ function showText(pText) {
 function getGeschichte() {
 
     if (LS.ME === '3244' || LS.ME === '3425' || LS.ME === '6162') {
-        showEineMeldung('Format:',' B: ' + $(window).width() + ', H: ' + $(window).height() + '<BR> B: ' + $(window).innerWidth() + ', H: ' + $(window).innerHeight());
+        showEineMeldung('Format:', ' B: ' + $(window).width() + ', H: ' + $(window).height() + '<BR> B: ' + $(window).innerWidth() + ', H: ' + $(window).innerHeight());
 
     }
+    nixDo();
 
     return '<span class=M style="text-align:justify">'
 
@@ -148,7 +149,7 @@ function getZitat() {
 
     var iZitat = stLastZitat;
     do {
-        iZitat = Date.now() % 54;
+        iZitat = Date.now() % 51;
     } while (iZitat === stLastZitat);
 
     stLastZitat = iZitat;
@@ -241,22 +242,21 @@ function getZitat() {
         return ['Gott würfelt nicht.',
             'Albert Einstein, 1879-1955, Physiker&nbsp;und&nbsp;Nobelpreisträger'];
     } else if (iZitat === 21) {
-        return ['Das Vergleichen ist&nbsp;das&nbsp;Ende&nbsp;des&nbsp;Glücks'
+        return ['Das Vergleichen ist&nbsp;das&nbsp;Ende&nbsp;des&nbsp;Glücks'  // ??????????????????
                     + '<br>und der Anfang der&nbsp;Unzufriedenheit.',
             'Søren Kierkegaard, dän.&nbsp;Philosoph'];
     } else if (iZitat === 22) {
-        return ['Glück ist kein Geschenk der&nbsp;Götter,'
-                    + '<br>sondern die Frucht innerer&nbsp;Einstellung.',
-            'Erich Fromm, 1900-1980, dt.&nbsp;Philosoph'];
+        return ["Hint' noch is' a jeder a Prophet.",
+            'Johann Nepomuk Nestroy, 1801-1862,<br>österr. Dramatiker, Schauspieler und Opernsänger'];
     } else if (iZitat === 23) {
-        return ['Wenn man glücklich ist,'
+        return ['Wenn man glücklich ist,' // ??????????????????
                     + '<br>sollte man nicht noch&nbsp;glücklicher&nbsp;sein&nbsp;wollen.',
             'Theodor Fontane, 1819-1898, dt.&nbsp;Schriftsteller'];
     } else if (iZitat === 24) {
         return ['Es ist mein Job, nie&nbsp;zufrieden&nbsp;zu&nbsp;sein.',
             'Wernher von Braun, 1912-1977, dt.amerik.&nbsp;Raumfahrtpionier'];
     } else if (iZitat === 25) {
-        return ['Reich wird man erst durch Dinge,'
+        return ['Reich wird man erst durch Dinge,'  // !!!!!!!!!!!!!!!!!
                     + '<br>die man nicht begehrt.',
             'Mahatma Gandhi, 1869-1948, ind.&nbsp;Publizist&nbsp;und&nbsp;Pazifist'];
     } else if (iZitat === 26) {
@@ -270,7 +270,7 @@ function getZitat() {
                     + '<br>ich hätte es früher bemerkt',
             'Colette, 1873-1954, fr.&nbsp;Schriftstellerin&nbsp;und&nbsp;Künstlerin'];
     } else if (iZitat === 28) {
-        return ['Die wahren Lebenskünstler sind&nbsp;bereits&nbsp;glücklich,'
+        return ['Die wahren Lebenskünstler sind&nbsp;bereits&nbsp;glücklich,'  // !!!!!!!!!!!!!!!!!!
                     + '<br>wenn sie nicht unglücklich&nbsp;sind.',
             'Jean Anouilh, 1910-1987, fr.&nbsp;Schriftsteller'];
     } else if (iZitat === 29) {
@@ -278,7 +278,7 @@ function getZitat() {
                     + '<br>aber der Weise verschweigt sie.',
             'Wilhelm Busch, 1832-1908, dt.&nbsp;Dichter&nbsp;und&nbsp;Zeichner'];
     } else if (iZitat === 30) {
-        return ['In der Wut verliert der Mensch seine Intelligenz.',
+        return ['In der Wut verliert der Mensch seine Intelligenz.',  // !!!!!!!!!!!!!!!!!!
             'Tenzin Gyatso, 1935-, Dalai&nbsp;Lama'];
     } else if (iZitat === 31) {
         return ['Enttäuscht vom Affen, schuf&nbsp;Gott&nbsp;den&nbsp;Menschen.'
@@ -289,10 +289,10 @@ function getZitat() {
                     + '<br>das Leben fickt uns alle.',
             'Kurt Cobain, 1967-1994, amerik.&nbsp;Sänger&nbsp;und&nbsp;Gitarrist'];
     } else if (iZitat === 33) {
-        return ['Niemand ist vollkommen:'
-                    + '<br>Glück heißt, seine&nbsp;Grenzen&nbsp;kennen'
-                    + '<br>und sie lieben.',
-            'Romain Rolland, 1866-1944, fr.&nbsp;Schriftsteller'];
+        return ['Männer haben keine Geduld.'
+                    + '<br>Darum haben sie auch den'
+                    + '<br>Reißverschluss erfunden.',
+            'Senta Berger, 1941-, österr.dt. Schauspielerin'];
     } else if (iZitat === 34) {
         return ['Wenn man aus einer Niederlage etwas lernt,'
                     + '<br>hat man nicht wirklich verloren.',
@@ -362,17 +362,8 @@ function getZitat() {
                     + '<br>außer dem, was ich nicht getan habe.',
             'Coco Chanel, 1883-1971, franz. Desingnerin'];
     } else if (iZitat === 51) {
-        return ["Hint' noch is' a jeder a Prophet.",
-            'Johann Nepomuk Nestroy, 1801-1862,<br>österr. Dramatiker, Schauspieler und Opernsänger'];
     } else if (iZitat === 52) {
-        return ['Männer haben keine Geduld.'
-                    + '<br>Darum haben sie auch den'
-                    + '<br>Reißverschluss erfunden.',
-            'Senta Berger, 1941-, österr.dt. Schauspielerin'];
     } else if (iZitat === 53) {
-        return ['Grüne Politikerinnen'
-                    + '<br>verhüten mit dem Gesicht.',
-            'Joschka Fischer, 1948-, dt. Politiker'];
     }
 }
 

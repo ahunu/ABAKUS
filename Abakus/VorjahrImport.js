@@ -295,13 +295,6 @@ $(document).bind('pageinit', function () {
         return false;
     };
     firebase.initDB(0, 'admin');
-
-    window.onerror = function (msg, url, line, col, error) {
-        'use strict';
-        console.log(msg + ' url=' + url + ' line=' + line + ', col=' + col + ', error=' + error + '.');
-        alert(msg + ' url=' + url + ' line=' + line + ', col=' + col + ', error=' + error + '.');
-        return false;
-    };
 });
 
 window.onbeforeunload = function (e) {

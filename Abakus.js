@@ -198,6 +198,12 @@ function writeCanvas(pCup) {
             hTitel2 = 'Turnierserie zum dreifachen Tarif';
         } else if (pCup === 11) {
             hTitel2 = 'Sküs of the year';
+        } else if (pCup === 50) {
+            if (QUERFORMAT) {
+                hTitel2 = 'Eine Veranstaltung des Wiener Zeitung Tarockcup';
+            } else {
+                hTitel2 = 'Ein außergewöhnlicher Event';
+            }
         } else if (pCup === 59) {
             hTitel2 = '<b>U</b>rlaubs-<b>T</b>arock-<b>C</b>up';
         }
@@ -232,7 +238,11 @@ function writeCanvas(pCup) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Farben.png");
         }
         if (QUERFORMAT()) {
-            if (pCup === 51) {
+            if (pCup === 50) {
+                hTitel = '1. Wiener Tarockmarathon';
+                document.title = '1. Wr. Marathon';
+                hTitel2 = 'Eine Veranstaltung des Wiener Zeitung Tarockcup';
+            } else if (pCup === 51) {
                 hTitel = 'Hausruckviertler Tarockcup';
                 document.title = 'HRC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
                 hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" >hausruckcup1.jimdo.com</span>';
@@ -1022,6 +1032,9 @@ function whenCUPSloaded() {
                 var hCupFarbe = '';
                 if (CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
                     hCupName = 'Wr. Tarockcup';
+                } else if (TERMINE[termin].CUP === 50) {
+                    hCupName = '1. Wr. Marathon';
+                    hCupFarbe = ' cDIV';
                 } else if (TERMINE[termin].CUP === 51) {
                     hCupName = 'Hausruckcup';
                     hCupFarbe = ' cHRC';
@@ -1401,31 +1414,7 @@ $(document).ready(function () {
 });
 //  Funktionen  **************************************************************************
 
-window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
-    var msg = 'JS:';
-    if (pMsg) {
-        msg += ', msg: ' + pMsg;
-    }
-    if (pUrl) {
-        msg += ', url: ' + pUrl;
-    }
-    if (pLine) {
-        msg += ', line: ' + pLine;
-    }
-    if (pCol) {
-        msg += ', col: ' + pCol;
-    }
-    if (pError) {
-        msg += ', error: ' + pError;
-    }
-    msg += '.';
-    msg[3] = ' ';
-    console.log(msg);
-    if (pUrl !== '' || pLine !== 0) {
-        alert(msg);
-    }
-    return false;
-};
+
 window.onpageshow = function (event) {
     if (event.persisted) {
         if (navigator.userAgent.indexOf("Chrome") < 0

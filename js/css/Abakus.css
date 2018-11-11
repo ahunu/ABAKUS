@@ -61,8 +61,8 @@ input {
     .ui-btn {padding: .22em .2em !important;}
     
     .XXL {font-size: calc(3.9vw + 35px) !important;} /* Abakus Balken */
-    .XL {font-size: calc(2.7vw + 22px) !important;}
-    .L3 {font-size: calc(2.8vw + 25px) !important;}  /* Vorhand */
+    .XL {font-size: calc(1.38vw + 20px) !important;}
+    .L3 {font-size: calc(1.34vw + 18px) !important;}  /* Vorhand */
     .L3 {font-size: 8vw !important;}  /* Vorhand */
     .L2 {font-size: 7.2vw !important;}  /* Vorhand */
     .L {font-size: 6.44vw !important;}
@@ -86,7 +86,7 @@ input {
 
     .iconL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal 11vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 10vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -151,8 +151,8 @@ input {
     .S  {font-size: calc(0.91vw + 12px) !important;}
     .XS {font-size: calc(0.90vw + 10px) !important;}
 
-    .LL3 {font-size: calc(3vw + 20px) !important;}   /* Buttons 4er und 5er Tische */
-    .LL2 {font-size: calc(1.5vw + 20px) !important;} /* Buttons 6er Tische */
+    .LL3 {font-size: calc(3vw + 19px) !important;}   /* Buttons 4er und 5er Tische */
+    .LL2 {font-size: calc(1.5vw + 22px) !important;} /* Buttons 6er Tische */
 
     .i {    /* Edit */
         display: inline-block;   
@@ -164,7 +164,7 @@ input {
 
     .iconL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal 8vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 7vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

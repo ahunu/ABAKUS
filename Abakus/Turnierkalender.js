@@ -50,6 +50,10 @@ function getDateString(pDate) {
 
 function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
 
+    if (!pScrollTo) {
+        pScrollTo = '?';
+    }
+
     $("#bEinNeuesTurnierEinplanen").removeClass('ui-disabled');
     if (pNachNeuAendernLoeschen) {
         TERMINE.sort(function (a, b) {
@@ -86,6 +90,9 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                     hClass = ' cDIV';
                 } else if (TERMINE[termin].CUP === 31) {
                     hCupName = 'Drumlinger MT';
+                    hClass = ' cDIV';
+                } else if (TERMINE[termin].CUP === 50) {
+                    hCupName = 'Wr. Marathon';
                     hClass = ' cDIV';
                 } else if (TERMINE[termin].CUP === 51) {
                     hCupName = 'Hausruckcup';
@@ -169,6 +176,8 @@ function showTermin(pTermin) {
             }
         } else if (SPIELERext[iVERANSTALTER]) {
             $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
+        } else if (TERMINE[pTermin].CUP === 50) {
+            $('#tVERANSTALTER').html('Promotor ' + iVERANSTALTER + ' existiert nicht.');
         } else {
             $('#tVERANSTALTER').html('Veranstalter ' + iVERANSTALTER + ' existiert nicht.');
         }
@@ -227,8 +236,8 @@ function onAendern() {
     }
 
     var hCUP = parseInt($('#iCUP').val().trim());
-    if (isNaN(hCUP) || hCUP !== 51 && hCUP !== 53 && hCUP !== 54 && hCUP !== 55 && hCUP !== 56 && hCUP !== 58 && hCUP !== 59 && hCUP !== 31 && hCUP !== 30 && hCUP !== 3 && hCUP !== 4) {
-        showEinenTip('#iCUP', 'Hausruckcup = 51,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tir. Tarockcup = 55,<br>Wr. Tarockcup = 56,<br>Stadltarock = 58,<br>UTC Klopeinersee = 59,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+    if (isNaN(hCUP) || hCUP !== 50 && hCUP !== 51 && hCUP !== 53 && hCUP !== 54 && hCUP !== 55 && hCUP !== 56 && hCUP !== 58 && hCUP !== 59 && hCUP !== 31 && hCUP !== 30 && hCUP !== 3 && hCUP !== 4) {
+        showEinenTip('#iCUP', 'Wr. Marathon = 50,<br>Hausruckcup = 51,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tir. Tarockcup = 55,<br>Wr. Tarockcup = 56,<br>Stadltarock = 58,<br>UTC Klopeinersee = 59,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
     if (!/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iCUP').val())) {
@@ -354,6 +363,11 @@ $(document).bind('pageinit', function () {
 
     firebase.initDB(0, 'admin');
 
+    if (CUPS.BEREadmin[50].indexOf(LS.ME) >= 0) {
+        $('#iCUP').val(50);
+        $('#cb50').prop('checked', true).checkboxradio("refresh");
+        $('#tWMA,#tCUP').text('Wr. Marathon').show();
+    }
     if (CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(51);
         $('#cb51').prop('checked', true).checkboxradio("refresh");
@@ -393,10 +407,6 @@ $(document).bind('pageinit', function () {
         $('#tCUP').show();
     }
 
-    window.onerror = function (msg, url, line, col, error) {
-        alert(msg + ' url=' + url + ' line=' + line + ', col=' + col + ', error=' + error + '.');
-        return false;
-    };
     myJTip = new jBox('Tooltip', {
         theme: 'TooltipError',
         delayClose: 20,
@@ -424,11 +434,11 @@ $(document).bind('pageinit', function () {
             return;
         }
     });
-//    loadSPIELER();
+    loadSPIELER();
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     SPIELERext = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
 
-        whenCUPSloaded(true);
+//    whenCUPSloaded(true);
 });
 
 window.onbeforeunload = function (e) {

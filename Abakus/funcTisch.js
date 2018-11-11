@@ -252,15 +252,25 @@ function getCupButtons() {
 }
 
 
+function href(pUrl) {
+    if (window.location.hash) {
+        window.location.replace(pUrl);
+    } else {
+        window.location.href = pUrl;
+    }
+}
+
+
 function hrefParameterAendern() {
     'use strict';
     LS.ShowCups = I;
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-    if (window.location.hash) {
-        window.location.replace('Abakus/ParameterAendern.html');
-    } else {
-        window.location.href = 'Abakus/ParameterAendern.html';
-    }
+        href('Abakus/ParameterAendern.html');
+//    if (window.location.hash) {
+//        window.location.replace('Abakus/ParameterAendern.html');
+//    } else {
+//        window.location.href = 'Abakus/ParameterAendern.html';
+//    }
 }
 
 function checkNeuerTisch() {

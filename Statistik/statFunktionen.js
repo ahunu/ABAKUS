@@ -437,7 +437,7 @@ function setFont() {
     $('#dOver').hide();
 
     if ($('#mTable').length) { // if exists
-        stFont = 4.444;
+        stFont = 5.5;
         stFontPlus = 0;
         if (QUERFORMAT()) {
             if ($(window).innerWidth() < 1360) {        // Mein 15 Zoll Laptop: 1344

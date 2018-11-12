@@ -251,20 +251,6 @@ function getCupButtons() {
     return html + '<br><br>';
 }
 
-
-function href(pUrl) {
-    if (window.location.hash) {
-        window.location.replace(pUrl);
-    } else {
-        if (LS.ME === '3244' && (navigator.userAgent.indexOf("iPhone") >= 0 || navigator.userAgent.indexOf("iPad") >= 0)) {
-            iPhoneFehler();
-        } else {
-            window.location.href = pUrl;
-        }
-    }
-}
-
-
 function hrefParameterAendern() {
     'use strict';
     LS.ShowCups = I;

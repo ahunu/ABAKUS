@@ -666,7 +666,6 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                         : ''
                         )
 
-
                 + (I === 51 && LS.ME === "3425"
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')

@@ -143,87 +143,9 @@ function getCupPunkte(pTurnier, pSpieler) {
     return hPunkte;
 }
 
-function compStNamenLen() {  // Mit Google Nexus 5 geprüft
-    if (CUPS.TURNIER[stCup] === 'PC') {
-        if (stSort === 'STO') {
-            if (stTurCupGes === 3) {
-                stNamenLen = 0.45; // OK
-            } else {
-                stNamenLen = 0.36; // OK
-            }
-        } else if (stSort === 'NAM') {
-            stNamenLen = 0.37;  // ???
-        } else if (stTurCupGes === 3) {
-            stNamenLen = 0.44;  // OK+
-        } else {
-            stNamenLen = 0.32;  // OK
-        }
-    } else if (stStat === -1) {   // 1 = Standardliste
-        if (CUPS.TURNIER[stCup] && stTurCupGes === 3) {
-            stNamenLen = 0.36;   // Note 4 OK
-        } else {
-            stNamenLen = 0.26;   // Note 4 OK
-        }
-    } else if (stStat === 1) {   // 1 = Standardliste
-        if (CUPS.TURNIER[stCup] && stTurCupGes === 3) {
-            stNamenLen = 0.33;   // Nexus und Note 4 OK
-        } else {
-            stNamenLen = 0.37;   // Nexus und Note 4 OK
-        }
-    } else if (stStat === 2) {   // 2 = Stockerlliste
-        if (stTurCupGes === 3) {
-            stNamenLen = 0.41;   // OK
-        } else {
-            stNamenLen = 0.28;   // ????
-        }
-    } else if (stStat === 7) {   // / = 3er-Liste
-        stNamenLen = 0.28;       // ????
-    } else if (stStat > 2) {   // >2= Staudingerliste etc.
-        stNamenLen = 0.26;       // doppelt geprüft
-        if (CUPS.TURNIER[stCup] && stTurCupGes === 3) {
-            stNamenLen = 0.31;   // ????
-        } else {
-            stNamenLen = 0.35;   // OK
-        }
-        stNamenLen = 0.20;       // doppelt geprüft
-    } else {                     // ansonst
-        stNamenLen = 0.38;
-    }
-
-    stNamenLen = stNamenLen - 0.03;
-    if ($(window).width() > 360) {
-        stNamenLen = stNamenLen + ((($(window).width()) - 360) * 0.005 * stNamenLen);
-    }
-
-    var hSchriftG = LS.SchriftG;
-    if (stStat > 2 && !QUERFORMAT()) {
-        hSchriftG--;   // Die Staudingerliste braucht mehr Platz
-    }
-    switch (hSchriftG) {
-        case - 1: // sehr klein + Staudinger + !QUERFORMAT()
-            stNamenLen = stNamenLen + 0.22;
-            break;
-        case 0: // sehr klein
-            stNamenLen = stNamenLen + 0.15;
-            break;
-        case 1: // klein
-            stNamenLen = stNamenLen + 0.09;
-            break;
-        case 2: // mittel
-            stNamenLen = stNamenLen + 0.04;
-            break;
-        case 3: // groß
-            stNamenLen = stNamenLen + 0;
-            break;
-        case 4: // sehr groß
-            stNamenLen = stNamenLen - 0.03;
-            break;
-    }
-}
-
 function getSpielerName(pNR) {
     if (pNR === '0000') {
-        return 'Pr&auml;sidium';
+        return 'Präsidium';
     } else if (isNaN(pNR)) {
         if (pNR) {
             return pNR.substr(0, pNR.lastIndexOf('ˆ')).replace(/%20|_|ˆ/g, ' ');
@@ -269,6 +191,10 @@ function getName(pNR, pMax) {
     if (QUERFORMAT()) {
         return ret;
     } else {
+        var hNamenLen = stNamenLen;
+        if ($(window).width() > 360) {
+            hNamenLen = stNamenLen + ((($(window).width()) - 360) * 0.003 * stNamenLen);
+        }
         l = 0;
         len = 0;
         for (var ii = 0; ii < ret.length; ii++) {
@@ -377,7 +303,8 @@ function getName(pNR, pMax) {
             }
 
             l = l + (1 / f);
-            if (stNamenLen > l) {
+
+            if (hNamenLen > l) {
                 len = ii;
             }
         }
@@ -528,84 +455,48 @@ function setFont() {
 
 function optFont() {
     'use strict';
-    if (LS.ME === '3425') {
-        if (stFont === 4.444) {
-            alert($('#L0P1').html() + ',  ' + $('#L0P1').width() + 'px < ? ' + $(window).innerWidth() + 'px.');
+    setTimeout(function () {
+        var pWidth = $(window).innerWidth();
+        if (PC
+                || navigator.userAgent.indexOf("iPhone") >= 0
+                || navigator.userAgent.indexOf("iPad") >= 0) {
+            pWidth -= 22; // Scrollleiste abziehen
         }
-        setTimeout(function () {
-            var pWidth = $(window).innerWidth();
+        if (($('#L0P1').width()) === pWidth) {
+            return;
+        } else if (($('#L0P1').width()) < pWidth) {
             if (stFontPlus === 0) {
-                if (($('#L0P1').width()) < pWidth) {
-                    stFontPlus = 0.5;
-                    stFont -= 0.5; // Damit der Font beim Wechsel der List nicht größer wird.
-                } else if (($('#L0P1').width()) > pWidth) {
-                    stFontPlus = -0.5;
-                } else {
-                    return;
-                }
-            } else {
-                if (stFontPlus > 0 && stFont >= LS.Font[3] + LS.SchriftG - 5
-                        || stFontPlus < 0 && stFont <= 10) {
-                    return;
-                }
-            }
-
-            if ($('#L0P1').width() < pWidth && stFontPlus < 0
-                    || $('#L0P1').width() > pWidth && stFontPlus > 0 && stFont > LS.Font[1] + LS.SchriftG - 5) {
-                if ($('#L0P1').width() > pWidth) {
-                    stFont -= 0.5;
-                    $('#mTable').css('font-size', stFont + 'px');
-                }
-            } else {
+                stFontPlus = 0.1;
                 stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'px').show(optFont);
-            }
-        });
-    } else {
-        setTimeout(function () {
-            var pWidth = $(window).innerWidth();
-            if (PC
-                    || navigator.userAgent.indexOf("iPhone") >= 0
-                    || navigator.userAgent.indexOf("iPad") >= 0) {
-                pWidth -= 12; // Scrollleiste abziehen
-            }
-            if (($('#L0P1').width()) === pWidth) {
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
                 return;
-            } else if (($('#L0P1').width()) < pWidth) {
-                if (stFontPlus === 0) {
-                    stFontPlus = 0.1;
-                    stFont += stFontPlus;
-                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                    return;
-                } else if (stFontPlus === 0.1) {
-                    stFont += stFontPlus;
-                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                    return;
-                } else {
-                    stFont += -0.05;
-                    $('#mTable').css('font-size', stFont + 'vw');
-                    return;
-                }
+            } else if (stFontPlus === 0.1) {
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
             } else {
-                if (stFontPlus === 0) {
-                    stFontPlus = -0.1;
-                    stFont += stFontPlus;
-                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                    return;
-                } else if (stFontPlus === -0.1) {
-                    stFont += stFontPlus;
-                    if (stFont <= 4.4) {
-                        return;
-                    }
-                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                    return;
-                } else {
-                    stFont += 0.05;
-                    $('#mTable').css('font-size', stFont + 'vw');
+                stFont += -0.05;
+                $('#mTable').css('font-size', stFont + 'vw');
+                return;
+            }
+        } else {
+            if (stFontPlus === 0) {
+                stFontPlus = -0.1;
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else if (stFontPlus === -0.1) {
+                stFont += stFontPlus;
+                if (stFont <= 4.4) {
                     return;
                 }
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else {
+                stFont += 0.05;
+                $('#mTable').css('font-size', stFont + 'vw');
+                return;
             }
-        });
-
-    }
+        }
+    });
 }

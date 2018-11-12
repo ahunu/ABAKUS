@@ -323,35 +323,13 @@ function compStNamenLen() {  // Mit Google Nexus 5 geprüft
         stNamenLen = 0.38;
     }
 
-    stNamenLen = stNamenLen - 0.03;
-    xNamenLen = parseInt(stNamenLen * 100);
+    if (stStat > 2 && !QUERFORMAT()) {
+        stNamenLen += 0.09;   // Die Staudingerliste braucht mehr Platz
+    } else {
+        stNamenLen += 0.04;
+    }
     if ($(window).width() > 360) {
         stNamenLen = stNamenLen + ((($(window).width()) - 360) * 0.005 * stNamenLen);
-    }
-
-    var hSchriftG = LS.SchriftG;
-    if (stStat > 2 && !QUERFORMAT()) {
-        hSchriftG--;   // Die Staudingerliste braucht mehr Platz
-    }
-    switch (hSchriftG) {
-        case - 1: // sehr klein + Staudinger + !QUERFORMAT()
-            stNamenLen = stNamenLen + 0.22;
-            break;
-        case 0: // sehr klein
-            stNamenLen = stNamenLen + 0.15;
-            break;
-        case 1: // klein
-            stNamenLen = stNamenLen + 0.09;
-            break;
-        case 2: // mittel
-            stNamenLen = stNamenLen + 0.04;
-            break;
-        case 3: // groß
-            stNamenLen = stNamenLen + 0;
-            break;
-        case 4: // sehr groß
-            stNamenLen = stNamenLen - 0.03;
-            break;
     }
 }
 
@@ -658,20 +636,6 @@ function getSortUndLayout() {
             + "<br>"
             + "</div>"
             + "<div class='ui-block-b st-breakpoint'>"
-//
-//    Mit JQM 1.4.5 funktioniert das SELECT leider nicht !!!
-//
-//    +     "<div class='ui-field-contain'>"
-//    +         "<div class='L B'><br>&nbsp;Schriftgr&ouml;&szlig;e:</div>"
-//    +         "<select id=sSchriftG" + (stStat === 8 ? " class=ui-disabled" : "") + ">"
-//    +             "<option value='2' data-placeholder='true'>Schriftgr&ouml;&szlig;e:</option>"
-//    +             "<option value='0' "+((LS.SchriftG===0) ? "selected='selected'" : "")+">sehr klein</option>"
-//    +             "<option value='1' "+((LS.SchriftG===1) ? "selected='selected'" : "")+">klein</option>"
-//    +             "<option value='2' "+((LS.SchriftG===2) ? "selected='selected'" : "")+">mittel</option>"
-//    +             "<option value='3' "+((LS.SchriftG===3) ? "selected='selected'" : "")+">gro&szlig;</option>"
-//    +             "<option value='4' "+((LS.SchriftG===4) ? "selected='selected'" : "")+">sehr gro&szlig;</option>"
-//    +         "</select>"
-//    +     "</div>"
 
             + (QUERFORMAT() && stAktiv
                     ? "<div class='L B'><br>&nbsp;Layout:</div>"

@@ -277,17 +277,7 @@ function loadSTATold(I, pCallback) {
                     iSTAT = STAT.S.length;
                     STAT.S[iSTAT] = dataItem.val();
                     if (typeof STAT.S[iSTAT].NR === 'undefined') {
-                        if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') >= 0) {
-                            showEinenFehler('Veraltete Version:', 'PC/Handy ausschalten', 'und wieder einschalten.');
-                        } else if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
-                            showEinenFehler('Veraltetes Programm:', 'Besorge dir eine aktuelle Version.');
-                        } else {
-                            if (QUERFORMAT()) {
-                                showEinenFehler('Veraltete App:', 'Rufe den Play Store auf', 'und aktualisiere <b>"Die Tarock-App f&uuml;r Tablets"</b>.');
-                            } else {
-                                showEinenFehler('Veraltete App:', 'Rufe den Play Store auf', 'und aktualisiere <b>"Die Tarock-App"</b>.');
-                            }
-                        }
+                        showEinenFehler(I, 'Datenbankfehler:', 'dataItem.key ' + dataItem.key + ' unbekannt.');
                         return;
                     }
                     if (hZuletztGespielt < new Date(STAT.S[iSTAT].TIMESTAMP).valueOf()) {

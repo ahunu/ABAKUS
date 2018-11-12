@@ -56,8 +56,7 @@ function getGeschichte() {
         showEineMeldung('Format:', ' B: ' + $(window).width() + ', H: ' + $(window).height() + '<BR> B: ' + $(window).innerWidth() + ', H: ' + $(window).innerHeight());
 
     }
-    nixDo();
-
+    
     return '<span class=M style="text-align:justify">'
 
             + '<p>Spielkarten werden in einer Handschrift eines Mönches Johannes aus dem Jahre 1377 erstmalig schriftlich erwähnt. Der Mönch, der sich als "Deutscher" bezeichnete, lebte in einem schweizer Kloster. Die Handschrift befindet sich heute im Britischen Museum.'
@@ -149,14 +148,15 @@ function getZitat() {
 
     var iZitat = stLastZitat;
     do {
-        iZitat = Date.now() % 51;
+        iZitat = Date.now() % 48;
     } while (iZitat === stLastZitat);
 
     stLastZitat = iZitat;
 
     if (iZitat === 0) {
-        return ['Die Karten sind neu gewürfelt.',
-            'Oliver Kahn, 1969-, dt. Tormann'];
+        return ['Frauen sind da um geliebt, '
+                    + '<br>nicht um verstanden zu werden.',
+            'Oscar Wilde, 1854-1900, irischer Schriftsteller'];
     } else if (iZitat === 1) {
         return ['Die Karten sind neu gewürfelt.',
             'Oliver Kahn, 1969-, dt. Tormann'];
@@ -242,21 +242,22 @@ function getZitat() {
         return ['Gott würfelt nicht.',
             'Albert Einstein, 1879-1955, Physiker&nbsp;und&nbsp;Nobelpreisträger'];
     } else if (iZitat === 21) {
-        return ['Das Vergleichen ist&nbsp;das&nbsp;Ende&nbsp;des&nbsp;Glücks'  // ??????????????????
-                    + '<br>und der Anfang der&nbsp;Unzufriedenheit.',
-            'Søren Kierkegaard, dän.&nbsp;Philosoph'];
+        return ['Frauen sind da um geliebt, '
+                    + '<br>nicht um verstanden zu werden.',
+            'Oscar Wilde, 1854-1900, irischer Schriftsteller'];
     } else if (iZitat === 22) {
         return ["Hint' noch is' a jeder a Prophet.",
             'Johann Nepomuk Nestroy, 1801-1862,<br>österr. Dramatiker, Schauspieler und Opernsänger'];
     } else if (iZitat === 23) {
-        return ['Wenn man glücklich ist,' // ??????????????????
-                    + '<br>sollte man nicht noch&nbsp;glücklicher&nbsp;sein&nbsp;wollen.',
-            'Theodor Fontane, 1819-1898, dt.&nbsp;Schriftsteller'];
+        return ['Es macht keinen Sinn,'
+                    + '<br>mit Männern zu streiten -'
+                    + '<br>sie haben ja doch immer unrecht',
+            'Zsa Zsa Gabor, 1934-1998, ung.&nbsp;amerik.&nbsp;Schauspielerin'];
     } else if (iZitat === 24) {
         return ['Es ist mein Job, nie&nbsp;zufrieden&nbsp;zu&nbsp;sein.',
             'Wernher von Braun, 1912-1977, dt.amerik.&nbsp;Raumfahrtpionier'];
     } else if (iZitat === 25) {
-        return ['Reich wird man erst durch Dinge,'  // !!!!!!!!!!!!!!!!!
+        return ['Reich wird man erst durch Dinge,'
                     + '<br>die man nicht begehrt.',
             'Mahatma Gandhi, 1869-1948, ind.&nbsp;Publizist&nbsp;und&nbsp;Pazifist'];
     } else if (iZitat === 26) {
@@ -270,15 +271,15 @@ function getZitat() {
                     + '<br>ich hätte es früher bemerkt',
             'Colette, 1873-1954, fr.&nbsp;Schriftstellerin&nbsp;und&nbsp;Künstlerin'];
     } else if (iZitat === 28) {
-        return ['Die wahren Lebenskünstler sind&nbsp;bereits&nbsp;glücklich,'  // !!!!!!!!!!!!!!!!!!
-                    + '<br>wenn sie nicht unglücklich&nbsp;sind.',
-            'Jean Anouilh, 1910-1987, fr.&nbsp;Schriftsteller'];
+        return ['Ich bereue nichts im Leben, '
+                    + '<br>außer dem, was ich nicht getan habe.',
+            'Coco Chanel, 1883-1971, franz. Desingnerin'];
     } else if (iZitat === 29) {
         return ['Dumme Gedanken hat jeder,'
                     + '<br>aber der Weise verschweigt sie.',
             'Wilhelm Busch, 1832-1908, dt.&nbsp;Dichter&nbsp;und&nbsp;Zeichner'];
     } else if (iZitat === 30) {
-        return ['In der Wut verliert der Mensch seine Intelligenz.',  // !!!!!!!!!!!!!!!!!!
+        return ['In der Wut verliert der Mensch seine Intelligenz.',
             'Tenzin Gyatso, 1935-, Dalai&nbsp;Lama'];
     } else if (iZitat === 31) {
         return ['Enttäuscht vom Affen, schuf&nbsp;Gott&nbsp;den&nbsp;Menschen.'
@@ -349,18 +350,8 @@ function getZitat() {
                     + "<br>was aus mir hätt' werden können.",
             'Günther Nenning, 1921-2006, österr.&nbsp;Querdenker'];
     } else if (iZitat === 48) {
-        return ['Es macht keinen Sinn,'
-                    + '<br>mit Männern zu streiten -'
-                    + '<br>sie haben ja doch immer unrecht',
-            'Zsa Zsa Gabor, 1934-1998, ung.&nbsp;amerik.&nbsp;Schauspielerin'];
     } else if (iZitat === 49) {
-        return ['Frauen sind da um geliebt, '
-                    + '<br>nicht um verstanden zu werden.',
-            'Oscar Wilde, 1854-1900, irischer Schriftsteller'];
     } else if (iZitat === 50) {
-        return ['Ich bereue nichts im Leben, '
-                    + '<br>außer dem, was ich nicht getan habe.',
-            'Coco Chanel, 1883-1971, franz. Desingnerin'];
     } else if (iZitat === 51) {
     } else if (iZitat === 52) {
     } else if (iZitat === 53) {

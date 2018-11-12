@@ -476,7 +476,6 @@ $(document).ready(function () {
 
     $(document).on('change', '#sSchriftG', function () {
         $('#sortUndLayout').hide();
-        LS.SchriftG = parseInt($(this).val());
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         compStNamenLen();
         if (CUPS.TURNIER[stCup]) {

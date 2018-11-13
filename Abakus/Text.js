@@ -44,7 +44,8 @@ $(document).ready(function () {
         $('#hTitel2').text("des Tarockspiels");
         html += getGeschichte();
     } else if (window.location.href.indexOf('Anekdoten') > 0) {
-        $('#hTitel2').text("Anekdoten");
+        $('#hTitel1').text("Anekdoten");
+        $('#hTitel2').text("und Kurzweiliges");
         html += getAnekdoten();
     } else if (window.location.href.indexOf('Zitate') > 0) {
         $('#DHeader').hide();

@@ -56,7 +56,7 @@ function getGeschichte() {
         showEineMeldung('Format:', ' B: ' + $(window).width() + ', H: ' + $(window).height() + '<BR> B: ' + $(window).innerWidth() + ', H: ' + $(window).innerHeight());
 
     }
-    
+
     return '<span class=M style="text-align:justify">'
 
             + '<p>Spielkarten werden in einer Handschrift eines Mönches Johannes aus dem Jahre 1377 erstmalig schriftlich erwähnt. Der Mönch, der sich als "Deutscher" bezeichnete, lebte in einem schweizer Kloster. Die Handschrift befindet sich heute im Britischen Museum.'

@@ -437,7 +437,7 @@ function setFont() {
     $('#dOver').hide();
 
     if ($('#mTable').length) { // if exists
-        stFont = 5.5;
+        stFont = 5;
         stFontPlus = 0;
         if (QUERFORMAT()) {
             if ($(window).innerWidth() < 1360) {        // Mein 15 Zoll Laptop: 1344
@@ -457,11 +457,6 @@ function optFont() {
     'use strict';
     setTimeout(function () {
         var pWidth = $(window).innerWidth();
-        if (PC
-                || navigator.userAgent.indexOf("iPhone") >= 0
-                || navigator.userAgent.indexOf("iPad") >= 0) {
-            pWidth -= 22; // Scrollleiste abziehen
-        }
         if (($('#L0P1').width()) === pWidth) {
             return;
         } else if (($('#L0P1').width()) < pWidth) {
@@ -475,7 +470,13 @@ function optFont() {
                 $('#mTable').css('font-size', stFont + 'vw').show(optFont);
                 return;
             } else {
-                stFont += -0.05;
+                if (!PC
+                        && navigator.userAgent.indexOf("iPhone") < 0
+                        && navigator.userAgent.indexOf("iPad") < 0) {
+                    stFont += -0.05;
+                } else {
+                    stFont += -0.1;
+                }
                 $('#mTable').css('font-size', stFont + 'vw');
                 return;
             }
@@ -487,14 +488,15 @@ function optFont() {
                 return;
             } else if (stFontPlus === -0.1) {
                 stFont += stFontPlus;
-                if (stFont <= 4.4) {
-                    return;
-                }
                 $('#mTable').css('font-size', stFont + 'vw').show(optFont);
                 return;
             } else {
-                stFont += 0.05;
-                $('#mTable').css('font-size', stFont + 'vw');
+                if (!PC
+                        && navigator.userAgent.indexOf("iPhone") < 0
+                        && navigator.userAgent.indexOf("iPad") < 0) {
+                    stFont += 0.05;
+                    $('#mTable').css('font-size', stFont + 'vw');
+                }
                 return;
             }
         }

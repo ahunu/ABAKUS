@@ -427,6 +427,15 @@ function initSeite2() {
     'use strict';
     I = LS.I;
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+    if (CUPS.TURNIER[I] === 'PC') {
+        $('#bSpieler').addClass('ui-disabled');
+        if (CUPS.SPJERUNDE[I] > LS.gespielt) {
+            $('#bSpeichern').addClass('ui-disabled');
+        }
+        if (LS.gespielt !== 0) {
+            $('#bNeuerTisch').addClass('ui-disabled');
+        }
+    }
     if (!LS.Spieler           // nicht nach dem allerersten Aufruf
             || LS.gespielt === -1    // nach dem allererster Aufruf
             || LS.AnzSpieler < 4

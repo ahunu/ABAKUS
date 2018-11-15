@@ -57,7 +57,7 @@ function statPosAnmeld() {
                 + '<td class="TR">' + (iAnmeldung) + '&nbsp;</td>'
                 + '<td class="TC">' + hUM.getDate() + '.' + (hUM.getMonth() + 1) + '.</td>'
                 + '<td class="TC">' + hUM.getHours() + ':' + ('0' + hUM.getMinutes()).slice(-2) + '&nbsp;</td>'
-                + '<th>' + SORT[anmeldung].NAME + '</th>'
+                + '<th>' + SORT[anmeldung].NAME.replace(' ','&nbsp;') + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>'
                 + '</tr>'
 
 

@@ -35,7 +35,8 @@ var stDetI = [0];
 var stDetTurCupGes = [0];
 var stDetOption = [0];
 var stIndME = 0;
-var stFont = 16;
+var stFont = 6;
+var stFontMax = 6;
 var stFontPlus = 0;
 var stHeader = false;
 var stVollAb = 0;
@@ -426,7 +427,6 @@ $(document).ready(function () {
     if (stCup <= 0) {
         history.back();
     }
-    stFont = 2;
 
     $('#tJJJJ').text(new Date().getFullYear());
 

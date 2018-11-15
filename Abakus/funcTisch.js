@@ -555,11 +555,7 @@ function checkNeuerTisch() {
     var NEXT = new Object();
     NEXT.Seite = 'GR';
     localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
-    if (window.location.hash) {
-        window.location.replace('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
-    } else {
-        window.location.href = 'Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html';
-    }
+    href('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
 }
 
 function blert(pNR, pVNAME, pNNAME, pORT, pSTERNE) {

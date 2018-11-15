@@ -436,9 +436,15 @@ function setFont() {
     }
     $('#dOver').hide();
 
+    function setStMaxFont() {
+        var elem = document.createElement('div');
+        elem.style.width = '1in';
+        document.body.appendChild(elem);
+        stFontMax = 7.5 - (parseInt($(window).innerWidth() / elem.offsetWidth * 10) / 16);
+        document.body.removeChild(elem);
+    }
+    setStMaxFont();
     if ($('#mTable').length) { // if exists
-        stFont = 5;
-        stFontPlus = 0;
         if (QUERFORMAT()) {
             if ($(window).innerWidth() < 1360) {        // Mein 15 Zoll Laptop: 1344
                 $('#mTable').css('font-size', '1.5vw');
@@ -448,6 +454,11 @@ function setFont() {
                 $('#mTable').css('font-size', '1.16vw'); // 4K, etc.
             }
         } else {
+            stFont += 0.4;
+            stFontPlus = 0;
+            if (stFont > stFontMax) {
+                stFont = stFontMax;
+            }
             $('#mTable').css('font-size', stFont + 'vw').show(optFont);
         }
     }
@@ -458,6 +469,13 @@ function optFont() {
     setTimeout(function () {
         var pWidth = $(window).innerWidth();
         if (($('#L0P1').width()) === pWidth) {
+            if (!PC
+                    && navigator.userAgent.indexOf("iPhone") < 0
+                    && navigator.userAgent.indexOf("iPad") < 0) {
+            } else {
+                stFont -= 0.3;
+                $('#mTable').css('font-size', stFont + 'vw');
+            }
             return;
         } else if (($('#L0P1').width()) < pWidth) {
             if (stFontPlus === 0) {
@@ -466,8 +484,10 @@ function optFont() {
                 $('#mTable').css('font-size', stFont + 'vw').show(optFont);
                 return;
             } else if (stFontPlus === 0.1) {
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                if (stFont < stFontMax) {
+                    stFont += stFontPlus;
+                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                }
                 return;
             } else {
                 if (!PC
@@ -475,7 +495,7 @@ function optFont() {
                         && navigator.userAgent.indexOf("iPad") < 0) {
                     stFont += -0.05;
                 } else {
-                    stFont += -0.1;
+                    stFont += -0.3;
                 }
                 $('#mTable').css('font-size', stFont + 'vw');
                 return;
@@ -497,6 +517,49 @@ function optFont() {
                     stFont += 0.05;
                     $('#mTable').css('font-size', stFont + 'vw');
                 }
+                return;
+            }
+        }
+    });
+}
+
+
+function soptFont() {
+    'use strict';
+    setTimeout(function () {
+        var pWidth = $(window).innerWidth();
+        if (($('#L0P1').width()) === pWidth) {
+
+            return;
+        } else if (($('#L0P1').width()) < pWidth) {
+            if (stFontPlus === 0) {
+                stFontPlus = 0.1;
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else if (stFontPlus === 0.1) {
+                if (stFont < stFontMax) {
+                    stFont += stFontPlus;
+                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                }
+                return;
+            } else {
+
+            }
+        } else {
+            if (stFontPlus === 0) {
+                stFontPlus = -0.1;
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else if (stFontPlus === -0.1) {
+                stFont += stFontPlus;
+                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                return;
+            } else {
+                stFont += 0.05;
+                stFont -= 4;
+                $('#mTable').css('font-size', stFont + 'vw');
                 return;
             }
         }

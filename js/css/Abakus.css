@@ -127,7 +127,7 @@ input {
     }
 }       
 
-@media only screen and (orientation : portrait)  and (max-width: 450px) {
+@media only screen and (orientation : portrait) and (min-width: 361px) and (max-width: 450px) {
 
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }

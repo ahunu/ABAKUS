@@ -73,8 +73,8 @@ input {
     .S  {font-size: 4.9vw !important;}
     .XS {font-size: 4.8vw !important;}
 
-    .LL3 {font-size: 8.2vw !important;}  /* A3 */
-    .LL2 {font-size: 7.7vw !important;}  /* A3 */
+    .LL3 {font-size: 8vw !important;}  /* A3 */
+    .LL2 {font-size: 7.5vw !important;}  /* A3 */
 
     .i {    /* Edit */
         display: inline-block;   

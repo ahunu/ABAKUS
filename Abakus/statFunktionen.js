@@ -804,8 +804,7 @@ function setFont() {
         var elem = document.createElement('div');
         elem.style.width = '1in';
         document.body.appendChild(elem);
-//        stFontMax = 7.5 - ($(window).innerWidth() / elem.offsetWidth * 10 / 18);
-        stFontMax = 5.2 - parseInt($(window).innerWidth() / elem.offsetWidth) / 5;
+        stFontMax = 5.5 - parseInt($(window).innerWidth() / elem.offsetWidth * 2.3) / 10;
         document.body.removeChild(elem);
     }
     setStMaxFont();

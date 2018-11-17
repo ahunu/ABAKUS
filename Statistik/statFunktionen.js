@@ -424,15 +424,8 @@ function setStMaxFont() {
     var elem = document.createElement('div');
     elem.style.width = '1in';
     document.body.appendChild(elem);
-    stFontMax = 7.5 - ($(window).innerWidth() / elem.offsetWidth * 10 / 18);          // 5,9
-    stFontMax = 6.8 - ($(window).innerWidth() / elem.offsetWidth * 10 / 23);
-    stFontMax = 6.8 - parseInt($(window).innerWidth() / elem.offsetWidth * 4.3) / 10; // 5,6
-    if (stCup === 56) {
-        stFontMax = 5.2 - parseInt($(window).innerWidth() / elem.offsetWidth) / 5;
-    } else {
-        stFontMax = 6.3 - parseInt($(window).innerWidth() / elem.offsetWidth * 3.4) / 10;
-    }
-    stFontMaxAlt = 7.5 - parseInt($(window).innerWidth() / elem.offsetWidth * 5.55555555555) / 10;
+    stFontMax = 5.5 - parseInt($(window).innerWidth() / elem.offsetWidth * 2.3) / 10;
+    stFontMaxAlt = 5.2 - parseInt($(window).innerWidth() / elem.offsetWidth) / 5;
     document.body.removeChild(elem);
 }
 

@@ -57,7 +57,7 @@ function showTurnier(pTurnier) {
     var nSpieler = 0;
     var hClass = '';
 
-    stNamenLen = 0.41;
+    stNamenLen = 0.38;
 
     var html = getStatMeldungen()
             + "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>"

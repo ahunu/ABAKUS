@@ -44,7 +44,6 @@ var stNamenLen = 0.45;
 var stHeute = "2017-04-04";
 var stFont = 6;
 var stFontMax = 6;
-var stFontMaxAlt = 6;
 var stFontPlus = 0;
 var stLastZitat = 0;
 var stShowList = true;

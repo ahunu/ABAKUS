@@ -425,7 +425,6 @@ function setStMaxFont() {
     elem.style.width = '1in';
     document.body.appendChild(elem);
     stFontMax = 5.5 - parseInt($(window).innerWidth() / elem.offsetWidth * 2.3) / 10;
-    stFontMaxAlt = 5.2 - parseInt($(window).innerWidth() / elem.offsetWidth) / 5;
     document.body.removeChild(elem);
 }
 

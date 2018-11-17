@@ -420,6 +420,17 @@ function writeCanvas(pTitel) {
     }
 }
 
+    function setStMaxFont() {
+        var elem = document.createElement('div');
+        elem.style.width = '1in';
+        document.body.appendChild(elem);
+        stFontMax = 7.5 - ($(window).innerWidth() / elem.offsetWidth * 10 / 18);
+        stFontMax = 6.8 - ($(window).innerWidth() / elem.offsetWidth * 10 / 23);
+        stFontMax = 6.8 - parseInt($(window).innerWidth() / elem.offsetWidth * 4.3) * 10;
+        stFontMaxAlt = 7.5 - parseInt($(window).innerWidth() / elem.offsetWidth * 5.55555555555) / 10;
+        document.body.removeChild(elem);
+    }
+
 function setFont() {
     'use strict';
     if (QUERFORMAT()) {
@@ -436,13 +447,7 @@ function setFont() {
     }
     $('#dOver').hide();
 
-    function setStMaxFont() {
-        var elem = document.createElement('div');
-        elem.style.width = '1in';
-        document.body.appendChild(elem);
-        stFontMax = 7.5 - ($(window).innerWidth() / elem.offsetWidth * 10 / 18);
-        document.body.removeChild(elem);
-    }
+
     setStMaxFont();
     if ($('#mTable').length) { // if exists
         if (QUERFORMAT()) {

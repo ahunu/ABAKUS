@@ -572,6 +572,29 @@ $(document).ready(function () {
 
     $("#bSpeichern").click(function () {
         firebase.initDB(LS.I, 'rw');
+        var hLog = CUPS.NAME[LS.I];
+        hLog += '<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.';
+        DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+        hLog += "<table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text=''>"
+                + "<thead>"
+                + "<tr sclass='ui-bar-d'>"
+                + "<th>&nbsp;Spieler"
+                + "</th>"
+                + "<th class=TC>Punkte&nbsp;"
+                + "</th>"
+                + "</tr>";
+        for (var i = 1; i <= 6; i++) {
+            if (LS.Spieler[i]) {
+                hLog += '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TC>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+            } else if (LS.Spiele[i] !== 0) {
+                hLog += '<tr><td class="cRot B">&nbsp;???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+            }
+        }
+        hLog += "<tbody>"
+                + "</tbody>"
+                + "</table>"
+                + 'Der Tisch wird/wurde gespeichert.';
+        writeLOG(hLog);
         if (CUPS.TYP[LS.I] === 'CUP' || CUPS.TYP[LS.I] === 'MT') {
             loadSTAT(LS.I, 'Der Tisch wird gespeichert:', null, SpeichernNT);
         } else {

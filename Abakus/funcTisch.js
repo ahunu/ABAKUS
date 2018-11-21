@@ -1,7 +1,15 @@
 
 /* global LS, CUPS, I, iPfad, hHeute, STAT, mTischTurnier, PC, QUERFORMAT() */
 
-function neuerTisch(pPruefen) {
+function TischNeuLoeschen() {
+    if (mTischNeuLoeschen === "N") {
+        TischNeu();
+    } else {
+        TischLoeschen(true);
+    }
+}
+
+function TischNeu() {
     'use strict';
     if (LS.I && LS.I !== I) {
         if (CUPS.TURNIER[I] === 'Handy'
@@ -88,7 +96,8 @@ function neuerTisch(pPruefen) {
         }
     }
 
-    if (LS.I && LS.gespielt > 0 && pPruefen) {
+    if (LS.I && LS.gespielt > 0) {
+        mTischNeuLoeschen = "N";
         if (LS.I !== I) {
             $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
             $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
@@ -97,9 +106,11 @@ function neuerTisch(pPruefen) {
         }
         if (mTischTurnier === 'Turnier') {
             $('#tsNeuerTischTurnier').html('Das Turnier starten:');
+            $('#tsDieDen').html('die');
             $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
         } else {
             $('#tsNeuerTischTurnier').html('Ein neuer Tisch:');
+            $('#tsDieDen').html('die');
             $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und neuen Tisch');
         }
         $("#pTISCHSPEICHERN").popup("open").show();
@@ -153,6 +164,66 @@ function neuerTisch(pPruefen) {
                 }
             }
         }
+    }
+}
+
+function TischLoeschen(pLoeschen) {
+    if (pLoeschen || LS.gespielt < 1) {
+        var hLog = CUPS.NAME[LS.I];
+        hLog += '<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.';
+        if (LS.gespielt) {
+            DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+            hLog += "<table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text=''>"
+                    + "<thead>"
+                    + "<tr sclass='ui-bar-d'>"
+                    + "<th>&nbsp;Spieler"
+                    + "</th>"
+                    + "<th class=TC>Punkte&nbsp;"
+                    + "</th>"
+                    + "</tr>";
+            for (var i = 1; i <= 6; i++) {
+                if (LS.Spieler[i]) {
+                    hLog += '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TC>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+                } else if (LS.Spiele[i] !== 0) {
+                    hLog += '<tr><td class="cRot B">&nbsp;???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+                }
+            }
+            hLog += "<tbody>"
+                    + "</tbody>"
+                    + "</table>"
+                    + 'Der Tisch wurde gelöscht.';
+        } else {
+            hLog += '<br>Der Tisch wurde gelöscht.';
+        }
+        writeLOG(hLog);
+        LS.AnzGespeichert = 0;
+        LS.AnzSpieler = 0;
+        LS.gespielt = 0;
+        LS.Spieler = ['', '', '', '', '', '', ''];
+        LS.NR = ['', '', '', '', '', '', ''];
+        LS.VName = ['', '', '', '', '', '', ''];
+        LS.NName = ['', '', '', '', '', '', ''];
+        LS.Sterne = ['', '', '', '', '', '', ''];
+        LS.Ort = ['', '', '', '', '', '', ''];
+        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+        LS.Meldung = "Der Tisch wurde gelöscht!";
+        var h = LS.I;
+        LS.I = 0;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        showCup(h);
+        $('bZuMeinemTisch').hide();
+    } else {
+        mTischNeuLoeschen = "L";
+        if (LS.I !== I) {
+            $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+            $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        } else {
+            $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        }
+        $('#tsNeuerTischTurnier').html('Den Tisch löschen:');
+        $('#tsDieDen').html('den');
+        $('#tsSpieleLoeschen').html('Tisch löschen');
+        $("#pTISCHSPEICHERN").popup("open").show();
     }
 }
 
@@ -336,7 +407,6 @@ function checkNeuerTisch() {
     LS.TURTISCH = 0;
     var hTurnier = STAT._AKTTURNIER._TURNIER;
     var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
-
     if (nMinSeitRundeStart > 75) {
         LS.TURRUNDE++;
     }
@@ -354,7 +424,6 @@ function checkNeuerTisch() {
         return;
     }
     LS.TURTISCH = STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6];
-
     var SORT = [];
     for (var spieler in STAT._AKTTURNIER) {
         if (spieler[0] !== '_') {
@@ -362,7 +431,6 @@ function checkNeuerTisch() {
         }
     }
     SORT.sort();
-
     var nAngemeldet = 0;
     for (var i = 0; i < SORT.length; i++) {
         spieler = SORT[i].substr(SORT[i].lastIndexOf(';') + 1);
@@ -735,7 +803,6 @@ function whenSTATloaded() {
     }
 
     var hJetzt = new Date().getTime();
-
     if (STAT && new Date(STAT.ZULETZT).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
         showEineWarnung('F1: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
         return false;

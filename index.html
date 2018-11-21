@@ -115,7 +115,7 @@
 
             <div class="ui-block-a noprint cLinks" style="width:28%;">
 
-                <div>
+                <div id="dHeader">
                     <ul data-role=listview>
                         <li data-icon=false>
                             <a onclick="$('#dLegende').toggle('show');" style="padding:.0em" class="K">
@@ -286,20 +286,20 @@
                                     <i class="i zmdi-globe-alt"></i>&nbsp;&nbsp;Links&nbsp;</a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bTippsUndTricks" onclick="showText('TippsUndTricks')">&nbsp;
                                     <i class="i zmdi-info-outline"></i>&nbsp;&nbsp;Tipps & Tricks&nbsp;</a>
-                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bInitialisieren" onclick="initCUPSdelAllSTAT();">&nbsp;
-                                    <i class="i zmdi-star"></i>&nbsp;&nbsp;Initialisieren&nbsp;</a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bRegistrieren onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/Registrieren.html';">&nbsp;
                                     <i class="i zmdi-account"></i>&nbsp;&nbsp;Registrieren&nbsp;</a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bFindSpieler  onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/Spieler.html';">&nbsp;
                                     <i class="i zmdi-account"></i>&nbsp;&nbsp;Spieler&nbsp;</a>
-                                <a class="ui-btn ui-btn-inline ui-corner-all L k"                  onclick="showLOG();">&nbsp;
-                                    <i class="i zmdi-view-headline"></i>&nbsp;&nbsp;Log&nbsp;</a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k"                  onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/Einstellungen.html'">&nbsp;
                                     <i class="i zmdi-format-list-bulleted"></i>&nbsp;&nbsp;Einstellungen&nbsp;</a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k"                  onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/Datenschutzerklaerung.html'">&nbsp;
                                     <i class="i zmdi-shild-check"></i>&nbsp;&nbsp;Datenschutzerklärung&nbsp;</a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bAdminTools   onclick="$('.onExit').addClass('ui-disabled');window.location.href = 'Abakus/AdminTools.html'">&nbsp;
                                     <i class="i zmdi-wrench"></i>&nbsp;&nbsp;Administrator Tools&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bInitialisieren" onclick="initCUPSdelAllSTAT();">&nbsp;
+                                    <i class="i zmdi-star"></i>&nbsp;&nbsp;Initialisieren&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k"        onclick="showLOG();">&nbsp;
+                                    <i class="i zmdi-view-headline"></i>&nbsp;&nbsp;Log&nbsp;</a>
                             </div>
                             <div id=tLOG style="margin:0 20px 0;" hidden>
                             </div>
@@ -335,7 +335,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="ui-grid-a ui-btn" onClick="neuerTisch(true);">
+                        <div class="ui-grid-a ui-btn" onClick="TischNeu();">
                             <div class="ui-block-a" style="width:10%; text-align:center;">
                                 <img src='Icons/MeinTisch.png' style="margin-top:0.5vw;margin-bottom:-0.5vw;margin-left:.2vw;height:11vw; width:11vw;" alt="Cup/Runde"/>
                             </div>
@@ -410,7 +410,13 @@
                                 </div>
                             </li>
                             <li>
-                                <a id="bNeuerTisch" onClick="neuerTisch(true);" style="padding:.1em" >Neuer Tisch</a>
+                                <a id="bTischLoeschen" onClick="TischLoeschen();" style="padding:.1em" >Tisch löschen</a>
+                                <a onclick="$('#hTischLoeschen').toggle('show');">Hilfe</a>
+                                <div id='hTischLoeschen' style='margin:1em;' class='M' hidden>Mit <strong>Tisch löschen</strong> wird der Tisch gelöscht.
+                                </div>
+                            </li>
+                            <li>
+                                <a id="bNeuerTisch" onClick="TischNeu();" style="padding:.1em" >Neuer Tisch</a>
                                 <a onclick="$('#hNeueRunde').toggle('show');">Hilfe</a>
                                 <div id='hNeueRunde' style='margin:1em;' class='M' hidden>Einen <strong>neuen Tisch</strong> kannst du erst beginnen, wenn du den alten Tisch zuvor gespeichert oder gel&ouml;scht hast.
                                     <br>
@@ -543,9 +549,8 @@
                 <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='Weiterspielen();'>weiterspielen</a>,
                 <br>die
                 <a data-theme=e data-role='button' data-inline='true' data-mini='true' onclick='$("#pTISCHSPEICHERN").popup("close").show(replaceTischSpeichern);'>Spiele speichern</a>,
-                <br>die
-                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleLoeschen onclick='$("#pTISCHSPEICHERN").popup("close").show(neuerTisch);'>Spiele l&ouml;schen
-                    <br>und neuen Tisch</a>,
+                <br><span id="tsDieDen">die</span>
+                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleLoeschen onclick='$("#pTISCHSPEICHERN").popup("close").show(TischNeuLoeschen);'>Spiele löschen und neuen Tisch</a>,
                 <br>oder
                 <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='$("#pTISCHSPEICHERN").popup("close");'>abbrechen</a>?
             </div>

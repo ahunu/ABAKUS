@@ -28,6 +28,7 @@ var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stLastZitat = 0;
 var lastBtn = '';
+var mTischNeuLoeschen = '';
 const iRufer = 1;
 const iSolorufer = 2;
 const iPagatrufer = 3;
@@ -56,6 +57,8 @@ const iUltimo = 25;
 const iValat = 26;
 
 function QUERFORMAT() {
+    $("body").addClass("bVorhand");
+    $(".ui-btn").addClass("bVorhand");
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
     } else {
@@ -546,6 +549,9 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
     'use strict';
     I = i;
     LS.ShowCups = I;
+    if (LS.Meldung) {
+        var hMeldung = LS.Meldung;
+    }
     if (QUERFORMAT()) {
         resetLastBtn();
         if (pMR && pMR === '#bMR') {
@@ -753,7 +759,11 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
         $('#tischButtons').html(getCupButtons()).trigger('create').show();
         showHF(2);
     } else {
-        $('#hfText').html(CUPS.TEXT1[i]);
+        if (hMeldung) {
+            $('#hfText').html('<div class="B cRot">' + hMeldung + '</div>' + CUPS.TEXT1[i]);
+        } else {
+            $('#hfText').html(CUPS.TEXT1[i]);
+        }
         $('#cupButtons').html(getCupButtons()).trigger('create').show();
         showHF(3);
     }
@@ -1420,6 +1430,7 @@ $(document).ready(function () {
     $('#ddRumpf').each(function () { // sonst funktioniert important nicht
         this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
     });
+
     window.onresize = function (e) {
         $('#pContent').each(function () { // sonst funktioniert important nicht
             this.style.setProperty('height', ($(window).innerHeight() - $('#pContent').offset().top - 1) + 'px', 'important');
@@ -1436,7 +1447,7 @@ window.onpageshow = function (event) {
     if (event.persisted) {
         if (navigator.userAgent.indexOf("Chrome") < 0
                 && navigator.userAgent.indexOf("Opera") < 0) {
-            window.location.reload(); // Ist bei Safari und Firefox erforderlich !!!
+            window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
         }
     }
 };

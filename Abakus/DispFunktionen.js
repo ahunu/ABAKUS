@@ -38,14 +38,6 @@ function showGR() {
         $("#iAudioOff").show();
     }
 
-    if (navigator.vendor.indexOf("Apple") >= 0) {
-        $("#iAudioOn").hide();
-        $("#iAudioOff").show();
-        if (!(navigator.userAgent.match(/iPhone/i)) && !(navigator.userAgent.match(/iPod/i))) {
-            $('#nbAudio').removeClass('ui-disabled').addClass('ui-disabled');
-        }
-    }
-
     if (LS.gespielt >= 2 && LS.gespielt !== LS.SpieleJeRunde) {
         hDisp = 1;
     } else {
@@ -274,14 +266,7 @@ function getSumme(pSpieler) {
         } else {
             $('#nbKorr').removeClass('ui-disabled');
         }
-        if (aktPos !== DS.Game.length - 1 || LS.Ansage === ""
-                || (navigator.vendor.indexOf("Apple") >= 0)
-                && !navigator.userAgent.match(/iPhone/i)
-                && !navigator.userAgent.match(/iPod/i)) {
-            $('#nbAudio').removeClass('ui-disabled').addClass('ui-disabled');
-        } else {
-            $('#nbAudio').removeClass('ui-disabled');
-        }
+        $('#nbAudio').removeClass('ui-disabled');
         for (var ii = 1; ii <= aktPos; ii++) {
             if (!DS.Storno[ii]) {
                 nSpiele++;

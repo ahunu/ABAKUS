@@ -1612,6 +1612,10 @@ $(document).ready(function (e) {
     NEXT = new Object();
     NEXT = JSON.parse(localStorage.getItem('Abakus.NEXT'));
 
+
+//showEineMeldung('LS.I', 'Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+
+
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
 //            return false; // oncontextmenu
@@ -1935,22 +1939,22 @@ $(document).ready(function (e) {
         Summieren();
     });
 
-    window.onpageshow = function (event) {
-        if (event.persisted) {
-            if (navigator.userAgent.indexOf("Chrome") < 0
-                    && navigator.userAgent.indexOf("Opera") < 0) {
-                // window.location.reload()
-                var hJeSeite = LS.JeSeite;
-                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-                if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
-                    window.location.replace('Abakus4' + LS.JeSeite + '.html?');
-                    return;
-                }
-                Seite = '??';
-                showSeite(NEXT.Seite);
-            }
-        }
-    };
+//    window.onpageshow = function (event) {
+//        if (event.persisted) {
+//            if (navigator.userAgent.indexOf("Chrome") < 0
+//                    && navigator.userAgent.indexOf("Opera") < 0) {
+//                // window.location.reload()
+//                var hJeSeite = LS.JeSeite;
+//                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+//                if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
+//                    window.location.replace('Abakus4' + LS.JeSeite + '.html?');
+//                    return;
+//                }
+//                Seite = '??';
+//                showSeite(NEXT.Seite);
+//            }
+//        }
+//    };
 
     if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') < 0) {
         $(":mobile-pagecontainer").pagecontainer("load", "Edit" + LS.AnzSpieler + LS.JeSeite + ".html");
@@ -1977,7 +1981,28 @@ $(document).ready(function (e) {
     });
 
 });
-
+window.onpageshow = function (event) {
+//    if (event.persisted) {
+//        if (navigator.userAgent.indexOf("Chrome") < 0
+//                && navigator.userAgent.indexOf("Opera") < 0) {
+//            window.location.reload(); // Ist bei Safari und Firefox erforderlich !!!
+//        }
+//    }
+//    if (window.performance) {
+//        if (performance && performance.navigation.type === 2) {
+//            window.location.reload();
+//        }
+//    }
+};
+//window.addEventListener( "pageshow", function ( event ) {
+//  var historyTraversal = event.persisted ||
+//                         ( typeof window.performance !== "undefined" &&
+//                              window.performance.navigation.type === 2 );
+//  if ( historyTraversal ) {
+//    // Handle page restore.
+//    window.location.reload();
+//  }
+//});
 window.onbeforeunload = function (e) {
     if (navigator.vendor.indexOf("Apple") < 0) {
         $('body').addClass('ui-disabled'); // Safari macht beim Laden kein removeClass

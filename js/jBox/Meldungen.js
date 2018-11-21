@@ -318,11 +318,22 @@ function writeLOG(pLog, pError) {
     var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
     if (!LOG) {
         LOG = '';
+    } else {
+        var hDate = new Date();
+        var hRest = 0;
+        if (hDate.getMonth() === 0) {
+            hRest = LOG.indexOf('<br>' + (parseInt(hDate.getFullYear()) - 1) + '-');
+        } else {
+            hRest = LOG.indexOf('<br>' + hDate.getFullYear() + '-' + ('00' + hDate.getMonth()).slice(-2) + '-');
+        }
+        if (hRest > 0) {
+            LOG = LOG.substr(0, hRest);
+        }
     }
     console.log(new Date().toLocaleTimeString());
     console.log(new Date().toLocaleTimeString().substr(0, 5));
     console.log(new Date().toLocaleTimeString().substring(0, 5));
-    LOG += '<br>' + new Date().toISOString().substr(0, 10) + ' ' + new Date().toLocaleTimeString().substr(0, 5) + '<br>';
+    var hLog = '<br>' + new Date().toISOString().substr(0, 10) + ' ' + new Date().toLocaleTimeString().substr(0, 5) + '<br>';
     if (pError) {
         var hHref = window.location.href;
         if (hHref.indexOf('firebaseapp.com') >= 0) {
@@ -332,9 +343,9 @@ function writeLOG(pLog, pError) {
         } else if (hHref.indexOf('www') >= 0) {
             hHref = hHref.substr(hHref.indexOf('www') + 3);
         }
-        LOG += '/' + hHref + ' - JS-Fehler: ' + pError + '<br>';
+        hLog += '/' + hHref + ' - JS-Fehler: ' + pError + '<br>';
     }
-    LOG += pLog + '<br>';
+    LOG = hLog + pLog + '<br>' + LOG;
     localStorage.setItem('Abakus.LOG', JSON.stringify(LOG));
 }
 

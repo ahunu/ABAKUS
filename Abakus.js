@@ -672,11 +672,11 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
                         + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3
-                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] !== 'PC') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
-                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + (CUPS.ANMELDERF[I]
@@ -695,11 +695,11 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
                         + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3
-                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] !== 'PC') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
-                                ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + (CUPS.ANMELDERF[I]
@@ -730,7 +730,7 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                 + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                 + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
                 + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7
-                        ? hVorschub + '<span class="cBlau P XL" onclick="neuerTisch(true)" >'
+                        ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" >'
                         + (CUPS.TURNIER[I] === 'PC' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
                                 ? '<b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : (LS.I === I
@@ -778,6 +778,14 @@ function listVersion() {
     if (LS.Meldung) {
         writeLOG('ABAKUS: ' + LS.Meldung);
     }
+    $('#legTechDet').html('<b>Technische Details:</b><br>'
+       +  'performance.navigation.type: ' + performance.navigation.type + '<br>'
+       +  'navigator.vendor: ' + navigator.vendor + '<br>'
+       +  'navigator.platform: ' + navigator.platform + '<br>'
+       +  'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>' );
+
+
+
 
     var sDate = new Date(CUPS.TIMESTAMP);
     var hDate = new Date();

@@ -1939,22 +1939,22 @@ $(document).ready(function (e) {
         Summieren();
     });
 
-//    window.onpageshow = function (event) {
-//        if (event.persisted) {
-//            if (navigator.userAgent.indexOf("Chrome") < 0
-//                    && navigator.userAgent.indexOf("Opera") < 0) {
-//                // window.location.reload()
-//                var hJeSeite = LS.JeSeite;
-//                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-//                if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
-//                    window.location.replace('Abakus4' + LS.JeSeite + '.html?');
-//                    return;
-//                }
-//                Seite = '??';
-//                showSeite(NEXT.Seite);
-//            }
-//        }
-//    };
+    window.onpageshow = function (event) {
+        if (event.persisted) {
+            if (navigator.userAgent.indexOf("Chrome") < 0
+                    && navigator.userAgent.indexOf("Opera") < 0) {
+                // window.location.reload()
+                var hJeSeite = LS.JeSeite;
+                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+                if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
+                    window.location.replace('Abakus4' + LS.JeSeite + '.html?');
+                    return;
+                }
+                Seite = '??';
+                showSeite(NEXT.Seite);
+            }
+        }
+    };
 
     if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') < 0) {
         $(":mobile-pagecontainer").pagecontainer("load", "Edit" + LS.AnzSpieler + LS.JeSeite + ".html");

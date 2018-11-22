@@ -211,7 +211,7 @@ function TischLoeschen(pLoeschen) {
         LS.I = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         showCup(h);
-        $('bZuMeinemTisch').hide();
+        $('#bZuMeinemTisch').hide();
     } else {
         mTischNeuLoeschen = "L";
         if (LS.I !== I) {

@@ -29,7 +29,9 @@ $(document).ready(function () {
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
 
-    if (LS.ME === '3244' || LS.ME === '4506' || LS.ME === '1014') { // Markus Mair, Sepp Lang, Franz Kienast
+    if (LS.ME !== '3244' && LS.ME !== '4731' && LS.ME !== '2553' && LS.ME !== '3590') { // Markus Mair, Alex Sabkovski, Arno Peter, Hans Hafner
+        $('.cHEIKEL').removeClass('ui-disabled');
+    } else if (LS.ME === '3244' || LS.ME === '4506' || LS.ME === '1014') { // Markus Mair, Sepp Lang, Franz Kienast
         $('#bTurnierkalender,#bSpielerAendern').removeClass('ui-disabled');
         if (PC) {
             $('#bSpielerExport').removeClass('ui-disabled');
@@ -43,7 +45,7 @@ $(document).ready(function () {
 
     var hDate = new Date(CUPS.TIMESTAMP);
     $('#tSystemfreigabe').html('Das System ist für den Zeitraum<br>'
-           + 'vom ' + hDate.toLocaleDateString() + ' bis 31.12.' + hDate.getFullYear() + ' freigegeben.');
+            + 'vom ' + hDate.toLocaleDateString() + ' bis 31.12.' + hDate.getFullYear() + ' freigegeben.');
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {

@@ -304,13 +304,13 @@ function wrtSPIELER(I) {
     }
 
     if (ii >= 0) {
-        STAT.S[ii].TIMESTAMP = new Date(STAT.S[ii].TIMESTAMP);
         if (CUPS.TURNIER[LS.I]) {
-            if (STAT.S[ii].PUNKTERx.length === 0) {
-                initSTAT(3); // laufendes Turnier
+            STAT.S[ii].TIMESTAMP = new Date(STAT.S[ii].TIMESTAMP);
+        } else {
+            STAT.S[ii].TIMESTAMP = new Date(STAT.S[ii].TIMESTAMP);
+            if (STAT.S[ii].TIMESTAMP.toDateString() !== new Date().toDateString()) {
+                initSTAT(3); // laufende Runde
             }
-        } else if (STAT.S[ii].TIMESTAMP.toDateString() !== new Date().toDateString()) {
-            initSTAT(3); // laufende Runde
         }
     } else {
         ii = STAT.S.length;
@@ -337,6 +337,10 @@ function wrtSPIELER(I) {
         initSTAT(1); // laufendes Jahr
         initSTAT(2); // Vorjahr
         initSTAT(3); // laufendes Turnier/Runde
+    }
+    if (CUPS.TURNIER[LS.I]) {
+        STAT.S[ii].TIMESTAMP = new Date(LS.TURDATE);
+    } else {
         STAT.S[ii].TIMESTAMP = new Date();
     }
 
@@ -413,7 +417,6 @@ function wrtSPIELER(I) {
                 showEinenDBFehler(error);
                 $('#bSpeichern').removeClass('ui-disabled');
             });
-
 }
 
 function wrtROOT() {
@@ -426,8 +429,11 @@ function wrtROOT() {
         hSTAT.ANMELDfuer = null;
         hSTAT.ANMELDum = null;
     }
-    hSTAT.ZULETZT = new Date(new Date(LS.Von).getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
-
+    if (CUPS.TURNIER[LS.I]) {
+        hSTAT.ZULETZT = new Date(LS.TURDATE).toISOString();
+    } else {
+        hSTAT.ZULETZT = new Date(new Date(LS.Von).getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
+    }
     if (CUPS.TURNIER[LS.I] === 'Handy') {
         if (STAT.TURRUNDE === 2) {
             var hRUNDE3 = true;

@@ -192,6 +192,7 @@ function copyCUPS() {
         CUPS.TEXT1     [iNeu] = iName + '<br>ist eine Kopie von<br><b>' + CUPS.NAME[I] + '</b>.';
         LS.TURCODE = 0;
         LS.TURADMIN = '';
+        LS.TURDATE = null;
         LS.TURRUNDE = 0;
         LS.TURSPIELER = 0;
         LS.TURGESPIELT = 0;

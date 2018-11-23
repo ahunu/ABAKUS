@@ -4,34 +4,41 @@
 function iStartStop(pPruefen) {
     'use strict';
     mTischTurnier = 'Turnier';
-    if (LS.I && LS.I !== I) {
-        if (CUPS.TURNIER[LS.I]) {
-            showEineMeldung((CUPS.NAME[I] + ':'),
-                    '&nbsp;Bitte&nbsp;zuerst&nbsp;das&nbsp;Turnier&nbsp;&nbsp;&nbsp;<br>'
-                    + '&nbsp;<b>' + CUPS.NAME[LS.I] + '</b>&nbsp;beenden.');
-            return;
-        } else if (pPruefen && LS.gespielt) {
-            $('#tsNeuerTischTurnier').html('Das Turnier starten:');
-            if (LS.I !== I) {
-                $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
-                $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
-            } else {
-                $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+    if (LS.I) {
+        if (LS.I === I) {
+            if (LS.TURADMIN !== LS.ME) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        'Nur&nbsp;derjenige,&nbsp;der&nbsp;das&nbsp;&nbsp;&nbsp;&nbsp;<br>'
+                        + 'Turnier&nbsp;gestartet&nbsp;hat<br>'
+                        + 'kann&nbsp;es&nbsp;administrieren.');
+                return;
             }
-            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
-            $("#pTISCHSPEICHERN").popup("open").show();
-            return;
+            if (LS.gespielt) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        'Der letzte Tisch wurde<br>'
+                        + 'noch nicht gespeichert.');
+                return;
+            }
+        } else {
+            if (CUPS.TURNIER[LS.I]) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        '&nbsp;Bitte&nbsp;zuerst&nbsp;das&nbsp;Turnier&nbsp;&nbsp;&nbsp;<br>'
+                        + '&nbsp;<b>' + CUPS.NAME[LS.I] + '</b>&nbsp;beenden.');
+                return;
+            } else if (pPruefen && LS.gespielt) {
+                $('#tsNeuerTischTurnier').html('Das Turnier starten:');
+                if (LS.I !== I) {
+                    $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+                    $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+                } else {
+                    $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+                }
+                $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
+                $("#pTISCHSPEICHERN").popup("open").show();
+                return;
+            }
         }
     }
-
-    if (LS.I === I && LS.TURADMIN !== LS.ME) {
-        showEineMeldung((CUPS.NAME[I] + ':'),
-                'Nur&nbsp;derjenige,&nbsp;der&nbsp;das&nbsp;&nbsp;&nbsp;&nbsp;<br>'
-                + 'Turnier&nbsp;gestartet&nbsp;hat<br>'
-                + 'kann&nbsp;es&nbsp;administrieren.');
-        return;
-    }
-
 
     if (LS.I !== I) {
         LS.AnzGespeichert = 0;
@@ -193,6 +200,7 @@ function TurnierSTARTENend() {
     hSTAT.ZULETZTupd = new Date().toISOString();
     hSTAT.TURCODE = iTURCODE;
     hSTAT.TURADMIN = LS.ME;
+    hSTAT.TURDATE = new Date();
     hSTAT.TURRUNDE = 1;
     hSTAT.TURTIMESTAMP = firebase.database.ServerValue.TIMESTAMP;
 
@@ -204,6 +212,7 @@ function TurnierSTARTENend() {
                 LS.I = I;
                 LS.TURCODE = iTURCODE;
                 LS.TURADMIN = LS.ME;
+                LS.TURDATE = hSTAT.TURDATE;
                 LS.TURRUNDE = 1;
                 LS.TURSPIELER = 0;
                 LS.TURGESPIELT = 0;
@@ -214,6 +223,7 @@ function TurnierSTARTENend() {
                 // Vorerst muss STAT nicht neu geladen werden
                 STAT.TURCODE = iTURCODE;
                 STAT.TURADMIN = LS.ME;
+                STAT.TURDATE = LS.TURDATE;
                 STAT.TURRUNDE = 1;
                 STAT.TURTIMESTAMP = new Date();
                 localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
@@ -425,6 +435,7 @@ function TurnierBEENDENendEnd() {
     hSTAT.ANMELDUNGEN = null;
     hSTAT.TURCODE = 0;
     hSTAT.TURADMIN = '';
+    hSTAT.TURDATE = null;
     hSTAT.TURRUNDE = 0;
     hSTAT.TURTIMESTAMP = null;
 
@@ -441,6 +452,7 @@ function TurnierBEENDENendEnd() {
                 LS.I = 0;
                 LS.TURCODE = 0;
                 LS.TURADMIN = '';
+                LS.TURDATE = null;
                 LS.TURRUNDE = 0;
                 LS.TURSPIELER = 0;
                 LS.TURGESPIELT = 0;

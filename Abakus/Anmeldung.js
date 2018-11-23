@@ -1670,12 +1670,14 @@ $(document).ready(function () {
                 LS.TURCODE = 111;
                 LS.TURADMIN = '3425';
                 LS.TURRUNDE = STAT._AKTTURNIER._RUNDE;
+                LS.TURDATE = null;
                 LS.TURSPIELER = 999;
                 LS.TURGESPIELT = 999;
                 LS.AktRunde = STAT._AKTTURNIER._RUNDE; // Bei einen Storno die zu stornierende Runde
             } else {
                 LS.TURCODE = STAT.TURCODE;
                 LS.TURADMIN = STAT.TURADMIN;
+                LS.TURDATE = STAT.TURDATE;
                 LS.TURRUNDE = STAT.TURRUNDE;
                 LS.TURSPIELER = STAT.TURSPIELER;
                 LS.TURGESPIELT = STAT.TURGESPIELT;
@@ -1730,7 +1732,7 @@ $(document).ready(function () {
             showStatuszeile(true, '<b>' + CUPS.NAME[LS.I] + ':</b>&nbsp;&nbsp;&nbsp;Runde: <b>' + STAT.TURRUNDE + '</b>');
         }
 
-        if (CUPS.TURNIER[LS.I]) {
+        if (CUPS.TURNIER[LS.I]) {            // ``???? LLLL
             if (LS.TURADMIN === LS.ME || true) {
                 if (CUPS.TURNIER[LS.I] === "PC") {
                     $('#dRumpf').hide();

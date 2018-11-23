@@ -5,7 +5,6 @@ var PC = false;
 var DB = new Object();
 var FB = undefined;
 var sHash = '';
-var time2Check = false;
 var AnmeldungGestartet = false;
 var iTURCODE = 0;
 var LS = new Object();
@@ -435,6 +434,11 @@ function initSeite2() {
             $('#bNeuerTisch').addClass('ui-disabled');
         }
     }
+    if (LS.AnzSpieler && !LS.AnzGespeichert) {
+        $('#bTischLoeschen').removeClass('ui-disabled');
+    } else {
+        $('#bTischLoeschen').addClass('ui-disabled');
+    }
     if (!LS.Spieler           // nicht nach dem allerersten Aufruf
             || LS.gespielt === -1    // nach dem allererster Aufruf
             || LS.AnzSpieler < 4
@@ -456,7 +460,7 @@ function initSeite2() {
         if (html) {
             $("#tSpielerPunkte tbody tr").empty();
             $("#tSpielerPunkte > tbody").append(html);
-            $("#tSpielerPunkte").table("refresh").removeClass('ui-disabled');
+//            $("#tSpielerPunkte").table("refresh").removeClass('ui-disabled'); ??? LLL
         }
 
         if (LS.AnzGespeichert === 0) {
@@ -779,10 +783,10 @@ function listVersion() {
         writeLOG('ABAKUS: ' + LS.Meldung);
     }
     $('#legTechDet').html('<b>Technische Details:</b><br>'
-       +  'performance.navigation.type: ' + performance.navigation.type + '<br>'
-       +  'navigator.vendor: ' + navigator.vendor + '<br>'
-       +  'navigator.platform: ' + navigator.platform + '<br>'
-       +  'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>' );
+            + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
+            + 'navigator.vendor: ' + navigator.vendor + '<br>'
+            + 'navigator.platform: ' + navigator.platform + '<br>'
+            + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>');
 
 
 
@@ -1339,6 +1343,7 @@ $(document).ready(function () {
         LS.Ansagen = true;
         LS.TURCODE = 0;
         LS.TURADMIN = '';
+        LS.TURDATE = null;
         LS.TURRUNDE = 0;
         LS.TURSPIELER = 0;
         LS.TURGESPIELT = 0;

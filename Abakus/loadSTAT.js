@@ -235,6 +235,8 @@ function loadSTATold(I, pCallback) {
                     STAT.TURCODE = dataItem.val();
                 } else if (dataItem.key === 'TURADMIN') {
                     STAT.TURADMIN = dataItem.val();
+                } else if (dataItem.key === 'TURDATE') {
+                    STAT.TURDATE = dataItem.val();
                 } else if (dataItem.key === 'TURRUNDE') {
                     STAT.TURRUNDE = dataItem.val();
                 } else if (dataItem.key === 'TURTIMESTAMP') {
@@ -265,6 +267,7 @@ function loadSTATold(I, pCallback) {
                 } else if (dataItem.key === 'NEXTTERMIN') {
                 } else if (dataItem.key === 'TURCODE') {
                 } else if (dataItem.key === 'TURADMIN') {
+                } else if (dataItem.key === 'TURDATE') {
                 } else if (dataItem.key === 'TURRUNDE') {
                 } else if (dataItem.key === 'TURTIMESTAMP') {
                 } else if (dataItem.key === 'TURDATEN') {
@@ -433,7 +436,6 @@ function loadSTATold(I, pCallback) {
             }
         }
 
-
         var hGeaendert = false;
         if (CUPS.NEXTTERMIN[I] !== STAT.NEXTTERMIN) {
             CUPS.NEXTTERMIN[I] = STAT.NEXTTERMIN;
@@ -471,11 +473,13 @@ function loadSTATold(I, pCallback) {
                     LS.I = 0;
                     LS.TURCODE = 0;
                     LS.TURADMIN = '';
+                    LS.TURDATE = null;
                     LS.TURRUNDE = 0;
                     LS.TURSPIELER = 0;
                     LS.TURGESPIELT = 0;
                 } else {
                     LS.TURADMIN = STAT.TURADMIN;
+                    LS.TURDATE = STAT.TURDATE;
                     LS.TURRUNDE = STAT.TURRUNDE;
                     LS.TURSPIELER = STAT.TURSPIELER;
                     LS.TURGESPIELT = STAT.TURGESPIELT;

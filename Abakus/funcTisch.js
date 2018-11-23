@@ -3,13 +3,13 @@
 
 function TischNeuLoeschen() {
     if (mTischNeuLoeschen === "N") {
-        TischNeu();
+        TischNeu(true);
     } else {
         TischLoeschen(true);
     }
 }
 
-function TischNeu() {
+function TischNeu(pNeu) {
     'use strict';
     if (LS.I && LS.I !== I) {
         if (CUPS.TURNIER[I] === 'Handy'
@@ -96,38 +96,20 @@ function TischNeu() {
         }
     }
 
-    if (LS.I && LS.gespielt > 0) {
-        mTischNeuLoeschen = "N";
-        if (LS.I !== I) {
-            $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
-            $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
-        } else {
-            $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
-        }
-        if (mTischTurnier === 'Turnier') {
-            $('#tsNeuerTischTurnier').html('Das Turnier starten:');
-            $('#tsDieDen').html('die');
-            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
-        } else {
-            $('#tsNeuerTischTurnier').html('Ein neuer Tisch:');
-            $('#tsDieDen').html('die');
-            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und neuen Tisch');
-        }
-        $("#pTISCHSPEICHERN").popup("open").show();
-    } else {
-        LS.AnzGespeichert = 0;
-        LS.AnzSpieler = 0;
-        LS.gespielt = 0;
-        LS.Spieler = ['', '', '', '', '', '', ''];
-        LS.NR = ['', '', '', '', '', '', ''];
-        LS.VName = ['', '', '', '', '', '', ''];
-        LS.NName = ['', '', '', '', '', '', ''];
-        LS.Sterne = ['', '', '', '', '', '', ''];
-        LS.Ort = ['', '', '', '', '', '', ''];
-        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
-        if (LS.I !== I || !CUPS.TURNIER[LS.I]) {
-            LS.I = 0;
-        }
+    if (pNeu || LS.gespielt < 1) {
+//        LS.AnzGespeichert = 0;
+//        LS.AnzSpieler = 0;
+//        LS.gespielt = 0;
+//        LS.Spieler = ['', '', '', '', '', '', ''];
+//        LS.NR = ['', '', '', '', '', '', ''];
+//        LS.VName = ['', '', '', '', '', '', ''];
+//        LS.NName = ['', '', '', '', '', '', ''];
+//        LS.Sterne = ['', '', '', '', '', '', ''];
+//        LS.Ort = ['', '', '', '', '', '', ''];
+//        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+//        if (LS.I !== I || !CUPS.TURNIER[LS.I]) {
+//            LS.I = 0;
+//        }
         if (CUPS.TURNIER[I] === 'PC' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)) {
             if (I > 4 && (navigator.appName === 'Microsoft Internet Explorer'
                     || navigator.userAgent.match(/Trident/)
@@ -152,7 +134,6 @@ function TischNeu() {
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             href('Abakus/Anmeldung.html');
         } else {
-            time2Check = true;
             if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
                 loadTURNIER(I, hHeute, 'Das Turnier wird geladen.', hHeute + ', neuer Tisch');
             } else {
@@ -164,6 +145,24 @@ function TischNeu() {
                 }
             }
         }
+    } else {
+        mTischNeuLoeschen = "N";
+        if (LS.I !== I) {
+            $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+            $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        } else {
+            $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        }
+        if (mTischTurnier === 'Turnier') {
+            $('#tsNeuerTischTurnier').html('Das Turnier starten:');
+            $('#tsDieDen').html('die');
+            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
+        } else {
+            $('#tsNeuerTischTurnier').html('Ein neuer Tisch:');
+            $('#tsDieDen').html('die');
+            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und neuen Tisch');
+        }
+        $("#pTISCHSPEICHERN").popup("open").show();
     }
 }
 
@@ -208,10 +207,15 @@ function TischLoeschen(pLoeschen) {
         LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
         LS.Meldung = "Der Tisch wurde gelöscht!";
         var h = LS.I;
-        LS.I = 0;
+        if (CUPS.TURNIER[I] === 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)) {
+            // Sonst kann der Admin das Turnier nicht beenden.
+        } else {
+            LS.I = 0;
+        }
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         showCup(h);
         $('#bZuMeinemTisch').hide();
+        $('a').removeClass('cAktiv');
     } else {
         mTischNeuLoeschen = "L";
         if (LS.I !== I) {
@@ -834,13 +838,13 @@ function whenSTATloaded() {
             if (STAT.TURRUNDE === 1) {
                 if (CUPS.TURNIER[I] === 'Handy') {
                     if (new Date(STAT.TURTIMESTAMP).getTime() < hJetzt - 60000 * 60 * 36) { // zwei Stunden Toleranz
-                        showEineWarnung('F4: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
-                        return false;
+//                        showEineWarnung('F4: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+//                        return false;
                     }
                 } else {
                     if (new Date(STAT.TURTIMESTAMP).getTime() < hJetzt - 60000 * 60 * 24 * 7) { // eine Woche Toleranz
-                        showEineWarnung('F5: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
-                        return false;
+//                        showEineWarnung('F5: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+//                        return false;
                     }
                 }
             }

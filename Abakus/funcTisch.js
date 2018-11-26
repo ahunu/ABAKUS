@@ -807,7 +807,7 @@ function whenSTATloaded() {
     }
 
     var hJetzt = new Date().getTime();
-    if (STAT && new Date(STAT.ZULETZT).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
+    if (STAT && new Date(STAT.ZULETZTupd).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
         showEineWarnung('F1: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
         return false;
     }
@@ -827,49 +827,39 @@ function whenSTATloaded() {
             }
         }
 
-        if (new Date(STAT.TURTIMESTAMP).getTime() > hJetzt + 60000 * 15) { // + 15 Minuten Toleranz
-            if (LS.ME !== '3425') {
-                showEineWarnung('F3: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
-                return false;
-            }
-        }
+        if (CUPS.TURNIER[I] === 'Handy') {
 
-        if (STAT.TURRUNDE) {
-            if (STAT.TURRUNDE === 1) {
-                if (CUPS.TURNIER[I] === 'Handy') {
-                    if (new Date(STAT.TURTIMESTAMP).getTime() < hJetzt - 60000 * 60 * 36) { // zwei Stunden Toleranz
-//                        showEineWarnung('F4: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
-//                        return false;
-                    }
-                } else {
-                    if (new Date(STAT.TURTIMESTAMP).getTime() < hJetzt - 60000 * 60 * 24 * 7) { // eine Woche Toleranz
-//                        showEineWarnung('F5: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
-//                        return false;
-                    }
-                }
-            }
-        }
-
-        if (I > 3) {
-            if (CUPS.TURNIER[I] === 'PC') {
-                if (STAT.TURGESPIELT !== 0) {
-                    if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 && PC) {
-// Der Administrator darf auf den PC
-                    } else {
-// Auch der normale User muss nicht warten bis die Runde vollständig eingegeben ist.
-//    showEineWarnung(I,"Runde "+STAT.TURRUNDE+" l&auml;uft noch!","Hab etwas Geduld.");
-//    return false;
-                    }
-                }
-            }
-            if (CUPS.TURNIER[I] === 'Handy') {
-                if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || STAT.TURGESPIELT === 0) {
-// Administrator muß händische Tische nacherfassen
-                } else {
-                    showEineWarnung(I, "Runde " + STAT.TURRUNDE + " l&auml;uft noch!", "Etwas Geduld bitte!");
+            if (new Date(STAT.TURTIMESTAMP).getTime() > hJetzt + 60000 * 15) { // + 15 Minuten Toleranz
+                if (LS.ME !== '3425') {
+                    showEineWarnung('F3: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
                     return false;
                 }
             }
+
+            if (new Date(STAT.TURTIMESTAMP).toDateString() !== new Date().toDateString()) {
+                if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0) {
+                    if (new Date(STAT.TURTIMESTAMP).getTime() + 60000 * 60 * 24 > hJetzt) { // 24 Stunden Toleranz
+                        showEineWarnung('F4: Datum oder Uhrzeit falsch.',
+                                'Korrekturen müssen innerhalb von 24 Stunden nach Turnierstart durchgeführt werden.');
+                    }
+                } else {
+                    showEineWarnung('F3: Datum ungültig:', 'Nur an dem Tag, an dem<br>'
+                            + 'das Turnier gestartet wurde,<br>'
+                            + 'dem ' + new Date(STAT.TURTIMESTAMP).toLocaleDateString() + ', kann ein<br>'
+                            + 'Tisch eingegeben werden.');
+                    return false;
+                }
+            }
+
+            if (I > 3) {
+                if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || STAT.TURGESPIELT === 0) {
+// Administrator muß händische Tische nacherfassen
+                } else {
+                    showEineWarnung(I, "Runde " + STAT.TURRUNDE + " läuft noch!", "Etwas Geduld bitte!");
+                    return false;
+                }
+            }
+            
         }
     }
 

@@ -192,7 +192,7 @@ function copyCUPS() {
         CUPS.TEXT1     [iNeu] = iName + '<br>ist eine Kopie von<br><b>' + CUPS.NAME[I] + '</b>.';
         LS.TURCODE = 0;
         LS.TURADMIN = '';
-        LS.TURDATE = null;
+        LS.TURTIMESTAMP = null;
         LS.TURRUNDE = 0;
         LS.TURSPIELER = 0;
         LS.TURGESPIELT = 0;
@@ -255,11 +255,6 @@ function copySTAT() {
         if (CUPS.TURNIER[I]) {
             hSTAT.TURCODE = 0;
             hSTAT.TURRUNDE = 0;
-        }
-        if (STAT.ANMELDname) {
-            hSTAT.ANMELDfuer = STAT.ANMELDfuer;
-            hSTAT.ANMELDname = STAT.ANMELDname;
-            hSTAT.ANMELDum = STAT.ANMELDum;
         }
         if (STAT.NEXTTERMIN) {
             hSTAT.NEXTTERMIN = STAT.NEXTTERMIN;

@@ -56,8 +56,6 @@ const iUltimo = 25;
 const iValat = 26;
 
 function QUERFORMAT() {
-    $("body").addClass("bVorhand");
-    $(".ui-btn").addClass("bVorhand");
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
     } else {
@@ -1343,7 +1341,6 @@ $(document).ready(function () {
         LS.Ansagen = true;
         LS.TURCODE = 0;
         LS.TURADMIN = '';
-        LS.TURDATE = null;
         LS.TURRUNDE = 0;
         LS.TURSPIELER = 0;
         LS.TURGESPIELT = 0;

@@ -245,6 +245,16 @@ function wrtSPIELER(I) {
 
     log('>>> wrtSPIELER', I);
 
+    if (CUPS.TURNIER[LS.I]) {
+        var spTIMESTAMP = new Date(LS.TURTIMESTAMP);
+        spTIMESTAMP.setHours(LS.AktRunde);
+        spTIMESTAMP.setMinutes(I);
+        spTIMESTAMP.setSeconds(0);
+        spTIMESTAMP.setMilliseconds(0);
+    } else {
+        var spTIMESTAMP = new Date(new Date(LS.Von).getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
+    }
+
     if (I <= LS.AnzGespeichert) {
         $('#emText').append(LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + ' bereits gespeichert.' + '<br>');
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
@@ -268,7 +278,7 @@ function wrtSPIELER(I) {
     }
 
     if (ii >= 0) {
-        if (new Date(STAT.S[ii].TIMESTAMP).valueOf() === new Date(LS.Von).valueOf()) {  // bereits gespeichert
+        if (new Date(STAT.S[ii].TIMESTAMP).valueOf() === new Date(spTIMESTAMP).valueOf()) {  // bereits gespeichert
             $('#emText').append(LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + ' bereits gespeichert. (f345)' + '<br>');
             log('STATadd bereits gespeichert. (Fehler 345).', I);
             LS.AnzGespeichert = I;
@@ -304,9 +314,7 @@ function wrtSPIELER(I) {
     }
 
     if (ii >= 0) {
-        if (CUPS.TURNIER[LS.I]) {
-            STAT.S[ii].TIMESTAMP = new Date(STAT.S[ii].TIMESTAMP);
-        } else {
+        if (!CUPS.TURNIER[LS.I]) {
             STAT.S[ii].TIMESTAMP = new Date(STAT.S[ii].TIMESTAMP);
             if (STAT.S[ii].TIMESTAMP.toDateString() !== new Date().toDateString()) {
                 initSTAT(3); // laufende Runde
@@ -337,11 +345,6 @@ function wrtSPIELER(I) {
         initSTAT(1); // laufendes Jahr
         initSTAT(2); // Vorjahr
         initSTAT(3); // laufendes Turnier/Runde
-    }
-    if (CUPS.TURNIER[LS.I]) {
-        STAT.S[ii].TIMESTAMP = new Date(LS.TURDATE);
-    } else {
-        STAT.S[ii].TIMESTAMP = new Date();
     }
 
     function incSTAT(pI) {
@@ -397,7 +400,7 @@ function wrtSPIELER(I) {
         STAT.S[ii].STERNE = null;
     }
 
-    STAT.S[ii].TIMESTAMP = new Date(new Date(LS.Von).getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
+    STAT.S[ii].TIMESTAMP = new Date(spTIMESTAMP).valueOf();
 
     console.log('>>> ' + '/00/' + ("000" + LS.I).slice(-3) + '/' + STAT.S[ii].NR);
 
@@ -422,15 +425,10 @@ function wrtSPIELER(I) {
 function wrtROOT() {
     'use strict';
     var hSTAT = new Object();
-    hSTAT.ZULETZTupd = new Date().toISOString();
+    hSTAT.ZULETZTupd = firebase.database.ServerValue.TIMESTAMP;
 
-    if (!CUPS.TURNIER[LS.I]) {
-        hSTAT.ANMELDname = null;
-        hSTAT.ANMELDfuer = null;
-        hSTAT.ANMELDum = null;
-    }
     if (CUPS.TURNIER[LS.I]) {
-        hSTAT.ZULETZT = new Date(LS.TURDATE).toISOString();
+        hSTAT.ZULETZT = new Date(LS.TURTIMESTAMP).toISOString();
     } else {
         hSTAT.ZULETZT = new Date(new Date(LS.Von).getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
     }

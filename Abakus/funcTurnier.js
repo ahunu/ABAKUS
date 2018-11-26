@@ -200,7 +200,6 @@ function TurnierSTARTENend() {
     hSTAT.ZULETZTupd = new Date().toISOString();
     hSTAT.TURCODE = iTURCODE;
     hSTAT.TURADMIN = LS.ME;
-    hSTAT.TURDATE = new Date();
     hSTAT.TURRUNDE = 1;
     hSTAT.TURTIMESTAMP = firebase.database.ServerValue.TIMESTAMP;
 
@@ -212,7 +211,7 @@ function TurnierSTARTENend() {
                 LS.I = I;
                 LS.TURCODE = iTURCODE;
                 LS.TURADMIN = LS.ME;
-                LS.TURDATE = hSTAT.TURDATE;
+                LS.TURTIMESTAMP = new Date();
                 LS.TURRUNDE = 1;
                 LS.TURSPIELER = 0;
                 LS.TURGESPIELT = 0;
@@ -223,7 +222,6 @@ function TurnierSTARTENend() {
                 // Vorerst muss STAT nicht neu geladen werden
                 STAT.TURCODE = iTURCODE;
                 STAT.TURADMIN = LS.ME;
-                STAT.TURDATE = LS.TURDATE;
                 STAT.TURRUNDE = 1;
                 STAT.TURTIMESTAMP = new Date();
                 localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
@@ -435,7 +433,6 @@ function TurnierBEENDENendEnd() {
     hSTAT.ANMELDUNGEN = null;
     hSTAT.TURCODE = 0;
     hSTAT.TURADMIN = '';
-    hSTAT.TURDATE = null;
     hSTAT.TURRUNDE = 0;
     hSTAT.TURTIMESTAMP = null;
 
@@ -452,7 +449,6 @@ function TurnierBEENDENendEnd() {
                 LS.I = 0;
                 LS.TURCODE = 0;
                 LS.TURADMIN = '';
-                LS.TURDATE = null;
                 LS.TURRUNDE = 0;
                 LS.TURSPIELER = 0;
                 LS.TURGESPIELT = 0;

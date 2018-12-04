@@ -694,33 +694,42 @@ function Reset(btn) {
 
 function ErgChange(btn) {
     Deactivate(btn);               //  !!! Ein Muss !!!
-    if (kontra !== 1) {
-        kontra = 1;
-        if (LS.Tarif21T && $("#PS").is(":visible")) {
-            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
-        } else {
-            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+//    if (kontra !== 1) {
+//        kontra = 1;
+//        if (LS.Tarif21T && $("#PS").is(":visible")) {
+//            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
+//        } else {
+//            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+//        }
+//    }
+    if (kontra === 1) {
+        if (btn === '#gWert' && aktSpiel === iTrischaker) {
+            showEinenTip(btn, 'Beim Trischaken<br>zahlt der "Gewinner".');
+            return;
         }
-    }
-    if (btn === '#gWert' && aktSpiel === iTrischaker) {
-        showEinenTip(btn, 'Beim Trischaken<br>zahlt der "Gewinner".');
-        return;
-    }
-    i1 = parseInt($(btn).text()) * -1;
-    if (aktSpiel === i6er && btn === '#gWert') {
-        if (i1 < 0) {
-            i1 *= 2;
-        } else {
-            i1 /= 2;
+        i1 = parseInt($(btn).text()) * -1;
+        if (aktSpiel === i6er && btn === '#gWert') {
+            if (i1 < 0) {
+                i1 *= 2;
+            } else {
+                i1 /= 2;
+            }
         }
-    }
-    $(btn).text(i1);
-    if (i1 > 0) {
-        $(btn).css("color", "black");
+        $(btn).text(i1);
+        if (i1 > 0) {
+            $(btn).css("color", "black");
+        } else {
+            $(btn).css("color", "orangered");
+        }
+        Summieren();
     } else {
-        $(btn).css("color", "orangered");
+        if (btn === '#gWert') {
+            $('#gName').click();
+        } else {
+            $('#' + btn.id.substr(0, btn.id.length - 1)).click();
+        }
     }
-    Summieren();
+
 }
 
 function Summieren() {

@@ -142,14 +142,16 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                             }
                             htmlTE = '<li ' + hDataTheme + ' data-icon=info><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getSpielerName(STAT[turnier]._VERANSTALTER) + '</span></a>'
                                     + '<a onclick="$(\'#hToggle' + nTurniere + '\').toggle(\'show\');">Stockerpl&auml;tze</a></li>'
-                                    + (STAT[turnier]._STOCKERL || STAT[turnier]._ANEKDOTE
-                                            ? '<li data-icon=false id="hToggle' + nTurniere + '" class="M" style="' + (pStockerl ? '' : 'display:none;') + '"><a><span class="N S2" style="margin:0;padding:0">'
-                                            + (STAT[turnier]._STOCKERL
-                                                    ? '&nbsp;&nbsp;1. <b><span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[1] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[1]) + '</span></b>, ' + STAT[turnier][STAT[turnier]._STOCKERL[1]][4] + ' Punkte<br>'
-                                                    + '&nbsp;&nbsp;2. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[2] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[2]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[2]][4] + ' Punkte<br>'
-                                                    + '&nbsp;&nbsp;3. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[3] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[3]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[3]][4] + ' Punkte<br>'
-                                                    : ''
-                                                    )
+                                    + (STAT[turnier]._ANEKDOTE && pAnekdoten
+                                            ? '<div id="hToggle' + nTurniere + '" class="N S2 sui-content"  style="text-align:justify;margin: 0 5px 0 8px;">'
+                                            + STAT[turnier]._ANEKDOTE + '</div>'
+                                            : ''
+                                            )
+                                    + (STAT[turnier]._STOCKERL && pStockerl
+                                            ? '<li data-icon=false id="hToggle' + nTurniere + '" class="M"><a><span class="N S2" style="margin:0;padding:0">'
+                                            + '&nbsp;&nbsp;1. <b><span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[1] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[1]) + '</span></b>, ' + STAT[turnier][STAT[turnier]._STOCKERL[1]][4] + ' Punkte<br>'
+                                            + '&nbsp;&nbsp;2. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[2] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[2]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[2]][4] + ' Punkte<br>'
+                                            + '&nbsp;&nbsp;3. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[3] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[3]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[3]][4] + ' Punkte<br>'
                                             + '</span></a></li>'
                                             : ''
                                             )
@@ -175,7 +177,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                 + '<td class="M" ><span style="white-space:nowrap">1. <span onclick="event.stopPropagation();popupSpieler(\'' + CUPSIEGER[1] + '\');" class="P B cBlau">' + getSpielerName(CUPSIEGER[1]) + '</span>, ' + CUPPUNKTE[CUPSIEGER[1]] + ' Cuppunkte</span></td></tr>'
                 + '<tr hidden><td class="M">adfasdf</td></tr>'
                 + '<tr><td class=noprint></td><td></td><td></td><td class="M"><div style="margin-top:-5px;white-space:nowrap">2. <span onclick="event.stopPropagation();popupSpieler(\'' + CUPSIEGER[2] + '\');" class="P B cBlau">' + getSpielerName(CUPSIEGER[2]) + '</span>, ' + CUPPUNKTE[CUPSIEGER[2]] + ' Cuppunkte<br>3. <span onclick="event.stopPropagation();popupSpieler(\'' + CUPSIEGER[3] + '\');" class="P B cBlau">' + getSpielerName(CUPSIEGER[3]) + '</span>, ' + CUPPUNKTE[CUPSIEGER[3]] + ' Cuppunkte</div></td></td></tr>'
-                + '<tr><td></td><th class="L K" colspan="3">Die Turniere der Saison&nbsp;&nbsp;' + stSaison + ':</th></tr>'
+                + '<tr><td></td><th class="L K" colspan="3">Die ' + (pAnekdoten ? 'Anekdoten' : 'Turniere') + ' der Saison&nbsp;&nbsp;' + stSaison + ':</th></tr>'
                 + htmlTE;
         htmlTE = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"
                 + htmlTE
@@ -193,10 +195,6 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     } else {
         $('#sideDetails').html(
                 '<li data-role="list-divider" onclick="toggleListen();">&nbsp;&nbsp;&nbsp;&nbsp;'
-//                + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-plus noprint" style="float:right;margin-top:-3px;margin-bottom:-8px;margin-right:8px;font-weight:bolder;zoom:1.3"></i>'
-//                + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-minus noprint" style="float:right;margin-top:-3px;margin-bottom:-8px;margin-right:8px;font-weight:bolder;zoom:1.3"></i>'
-
-
                 + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-plus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
                 + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-minus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
 

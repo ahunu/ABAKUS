@@ -64,7 +64,9 @@ function QUERFORMAT() {
 }
 
 function href(pUrl) {
-    if (window.location.hash) {
+//        if (window.location.hash
+//            ||  navigator.vendor.indexOf("Apple") >= 0 && $('#dTermine').is(":hidden")) {
+    if (window.location.hash && navigator.vendor.indexOf("Apple") < 0) {
         window.location.replace(pUrl);
     } else {
         window.location.href = pUrl;

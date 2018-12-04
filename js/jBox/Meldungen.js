@@ -446,20 +446,30 @@ function getDBFehlertext(pErrorCode) {
     return meld;
 }
 
-window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
+window.onerror = function (pMsg, pHtml, pLine, pCol, pError) {
     var msg = '';
     if (pMsg && pMsg !== 'Script error.') {
         msg += 'msg: ' + pMsg + '<br>';
     }
     var iLast = window.location.href.lastIndexOf('/');
     iLast = window.location.href.substr(0, iLast - 1).lastIndexOf('/');
-    msg += 'url: ' + window.location.href.substr(iLast + 1) + '<br>';
-    if (pUrl) {
-        iLast = pUrl.lastIndexOf('/');
-        iLast = pUrl.substr(0, iLast - 1).lastIndexOf('/');
-        pUrl = pUrl.substr(iLast + 1);
-        if (window.location.href.indexOf(pUrl) < 0) {
-            msg += 'script: ' + pUrl + '<br>';
+    var hUrl = window.location.href.substr(iLast + 1);
+    if (pHtml) {
+        iLast = pHtml.lastIndexOf('/');
+        iLast = pHtml.substr(0, iLast - 1).lastIndexOf('/');
+        pHtml = pHtml.substr(iLast + 1);
+    }
+    if (hUrl === "Abakus/TischSpeichern.html"
+            && pHtml === "firebase/firebase.js"
+            && pMsg.indexOf("Firebase: Firebase App named '[DEFAULT]' already exists (app/duplicate-app)") >= 0) {
+        showEinenFehler("Verbindungsfehler!", "Verbindung herstellen<br>und Vorgang wiederholen.<br>html: " + hUrl + "<br>");
+        return false;
+    }
+
+    msg += 'url: ' + hUrl + '<br>';
+    if (pHtml) {
+        if (window.location.href.indexOf(pHtml) < 0) {
+            msg += 'html: ' + pHtml + '<br>';
         }
     }
     if (pLine) {
@@ -469,7 +479,9 @@ window.onerror = function (pMsg, pUrl, pLine, pCol, pError) {
         msg += 'col: ' + pCol + '<br>';
     }
     if (pError) {
-        msg += 'error: ' + pError + '<br>';
+        if (pMsg && pMsg.indexOf(pError) >= 0) {
+            msg += 'error: ' + pError + '<br>';
+        }
     }
     msg = msg.substr(0, msg.lastIndexOf('<br>'));
     showEinenFehler('Javascriptfehler:', msg);

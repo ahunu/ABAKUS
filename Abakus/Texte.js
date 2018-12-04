@@ -107,6 +107,15 @@ function getGeschichte() {
 function getAnekdoten() {
     return '<span class=M style="text-align:justify">'
 
+            + '<p><b>Am 13. 10. 2018 beim Murecker Turnier:</b><br>'
+            + 'Mit acht Herz, Sküs, Mond und zwei kleinen Tarock in der Vorhand gibt`s nur ein Lizit: '
+            + 'Farbensolo, Valat. Und das gleich beim zweiten Spiel in Runde eins. '
+            + 'Das Turnier ist aber noch lange nicht zu Ende. Ein stiller Farbensolovalat, '
+            + 'diesmal mit sieben Herz, Pik König und zwei kleinen Tarock geht sich da in Runde eins noch aus. '
+            + 'Aller guten Dinge sind drei, sagt man '
+            + 'und so greift Fortuna <b>Frithjof Kirchner</b> in der zweiten Runde noch einmal unter die Arme und verhilft ihm zu einem weiteren Valat. '
+            + 'Einem stillen Farbendreiervalat. Das Turnier gewinnt er mit Bravour. Frithjof kann sein Glück kaum fassen. <b>Drei Valate bei einem Turnier</b> hat man ja auch nicht alle Tage. '
+
             + '<p><b>Am 14. 7. 2018 vor dem Garser Tarock:</b><br>'
             + 'Es ist 12 Uhr 15 als Christian Hofmann nach einer langen Nacht aufwacht. Viel zu spät um noch eine Mitfahrgelegenheit nach Gars zu organisieren. '
             + 'Anton Zirkl, sein Leibchauffeur ist bereits auf dem Weg nach Gars. Die Schwester hat bereits anderes geplant. Bleibt nur noch ein Taxi. '

@@ -745,8 +745,7 @@ function onManu() {
         $("#pManu").hide();
         $('#bPS,#bFS,#bNS').removeClass('ui-disabled');
         $('#tSPIEL').text('Spiel ?');
-
-    $('#DE1,#DE2,#DE3,#DE4,#DE5,#DE6').removeClass("bgVorhand").removeClass("bgInaktiv");
+        $('#DE1,#DE2,#DE3,#DE4,#DE5,#DE6').removeClass("bgVorhand").removeClass("bgInaktiv");
         $('#DE' + LS.Vorhand).addClass("bgVorhand");
         $('#DE' + LS.INA1).val('').addClass("bgInaktiv").addClass('ui-disabled');
         $('#DE' + LS.INA2).val('').addClass("bgInaktiv").addClass('ui-disabled');
@@ -757,7 +756,7 @@ function onManu() {
         $("#pManu").show();
         $('#bPS,#bFS,#bNS').addClass('ui-disabled');
         $('#tSPIEL').text('Ganze Runde:');
-    $('#DE1,#DE2,#DE3,#DE4,#DE5,#DE6').removeClass("bgVorhand").removeClass("bgInaktiv");
+        $('#DE1,#DE2,#DE3,#DE4,#DE5,#DE6').removeClass("bgVorhand").removeClass("bgInaktiv").removeClass('ui-disabled');
         if (LS.SpieleJeRunde) {
             $("#iGespielt").val(LS.SpieleJeRunde);
         }

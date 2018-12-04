@@ -275,7 +275,8 @@ function showAnekdote() {
                     + '<div class="ui-block-c" style="padding:11px 4px 0px 8px;">'
                     + '<button id=bASpeichern class="L3 ui-corner-all" onClick="writeAnekdote(true);" style="width:100%;background-color:#efcc44;font-weight:bold;" data-theme="e">speichern</button>'
                     + '</div>'
-                    + '</div>'
+                    + '</div>',
+            closeButton: false
         });
         setTimeout(function () {
             tAnekdote = new nicEditor({maxHeight: ($(window).innerHeight() / 4), buttonList: ['bold', 'italic', 'underline', 'hr']}).panelInstance('tAnekdote');
@@ -316,6 +317,13 @@ function writeAnekdote(pWrite) {
                                 _LASTTURNIER: (STAT._LASTTURNIER.substr(0, 10) + ', ' + Date.now())
                             })
                             .then(function () {
+                                var vAnekdote = $('#fAnekdote').find('.nicEdit-main').html();
+                                if (vAnekdote) {
+                                    STAT[stStat]._ANEKDOTE = vAnekdote;
+                                    $('#bAnekdoten').removeClass('ui-disabled');
+                                } else {
+                                    delete STAT[stStat]._ANEKDOTE;
+                                }
                                 hideEinenMoment();
                             })
                             .catch(function (error) {
@@ -338,7 +346,7 @@ $(document).ready(function () {
     } else {
         PC = false;
     }
-setStMaxFont();
+    setStMaxFont();
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     if (LS === null) {
         if (window.location.href.indexOf('?') > 0) {

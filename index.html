@@ -25,25 +25,32 @@
                         if (hRef.indexOf('ST.TAROCKCUP') > 0 || hRef.indexOf('WR.TAROCKCUP') > 0 || hRef.indexOf('STADLTAROCK') > 0) {
                             window.location.replace('Statistik/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
                         }
-                        var iRef = 0;
-                        for (var ii = CUPS.NAME.length; ii > 0; ii--) {
-                            if (CUPS.NAME[ii]) {
-                                iRef = hRef.indexOf(CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').toUpperCase());
-                                if (iRef > 0) {
-                                    hRef = hRef.substr(iRef);
-                                }
-                                if (hRef === CUPS.NAME[ii].replace(/\%20|_| /g, '').toUpperCase()) {
-                                    if (CUPS.BEREadmin[ii].indexOf(LS.ME) >= 0
-                                            || CUPS.BEREschreiben[ii].indexOf('*') >= 0
-                                            || CUPS.BEREschreiben[ii].indexOf(LS.ME) >= 0) {
-                                        if (CUPS.TYP[ii] === 'CUP' || CUPS.TYP[ii] === 'MT') {
-                                            window.location.replace('Statistik/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
+                        console.log(hRef + ' 1:')
+                        if (hRef.indexOf('MARATHON') > 0) {
+                            console.log(hRef + ' 2:')
+                            LS.ShowCups = 50;
+                            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                        } else {
+                            var iRef = 0;
+                            for (var ii = CUPS.NAME.length; ii > 0; ii--) {
+                                if (CUPS.NAME[ii]) {
+                                    iRef = hRef.indexOf(CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').toUpperCase());
+                                    if (iRef > 0) {
+                                        hRef = hRef.substr(iRef);
+                                    }
+                                    if (hRef === CUPS.NAME[ii].replace(/\%20|_| /g, '').toUpperCase()) {
+                                        if (CUPS.BEREadmin[ii].indexOf(LS.ME) >= 0
+                                                || CUPS.BEREschreiben[ii].indexOf('*') >= 0
+                                                || CUPS.BEREschreiben[ii].indexOf(LS.ME) >= 0) {
+                                            if (CUPS.TYP[ii] === 'CUP' || CUPS.TYP[ii] === 'MT') {
+                                                window.location.replace('Statistik/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
+                                            } else {
+                                                window.location.replace('Abakus/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
+                                            }
                                         } else {
-                                            window.location.replace('Abakus/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
+                                            showEinenFehler(ii, 'Berechtigung fehlt!');
+                                            break;
                                         }
-                                    } else {
-                                        showEinenFehler(ii, 'Berechtigung fehlt!');
-                                        break;
                                     }
                                 }
                             }
@@ -304,12 +311,12 @@
                             <div id=tLOG style="margin:0 20px 0;" hidden>
                             </div>
                             <br>
-                            <div class="ui-body ui-body-c S C" onclick="$('#legTechDet').toggle('show');" style="padding:10px;">
+                            <div class="ui-body ui-body-c S C" onclick="toggleTechDetails();" style="padding:10px;">
                                 <b><i>Abakus</i></b> Version <span id=tVersion></span><br>
                                 &copy; 2015-<span id="tJJJJ2">2099</span> by Leo Luger<br>
                                 &#9993;&nbsp;&nbsp;Luger.Leo@gmail.com<br>
                                 <span id="tSpieler"></span>
-                                <div id=legTechDet hidden>
+                                <div id=dTechDetails hidden>
                                 </div>
                             </div>
                         </div>

@@ -99,6 +99,8 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                                 hSpieler = 'Präsidium';
                             } else if (STAT[turnier]._VERANSTALTER === '9999') {
                                 hSpieler = 'alle Veranstalter';
+                            } else if (STAT[turnier]._VERANSTALTER.length !== 4) {
+                                hSpieler = STAT[turnier]._VERANSTALTER;
                             } else {
                                 hSpieler = '<span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._VERANSTALTER + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._VERANSTALTER) + '</span>';
                             }

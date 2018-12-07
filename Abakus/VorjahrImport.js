@@ -138,7 +138,7 @@ function changeV(pI) {
     iVERANSTALTER = "0000" + iVERANSTALTER;
     iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
     if (iVERANSTALTER === '0000') {
-        $('#tV' + pI).html('Pr&auml;sidium').removeClass('cRot');
+        $('#tV' + pI).html('Präsidium').removeClass('cRot');
     } else if (SPIELER[iVERANSTALTER]) {
         $('#tV' + pI).text(SPIELER[iVERANSTALTER][0] + ' ' + SPIELER[iVERANSTALTER][1]).removeClass('cRot');
         ;
@@ -231,7 +231,7 @@ function Speichern(pSpeichern) {
                     iVERANSTALTER = "0000" + iVERANSTALTER;
                     iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
                     if (iVERANSTALTER === '0000') {
-                        $('#tV' + i).html('Pr&auml;sidium').removeClass('cRot');
+                        $('#tV' + i).html('Präsidium').removeClass('cRot');
                     } else if (SPIELER[iVERANSTALTER]) {
                         $('#tV' + i).text(SPIELER[iVERANSTALTER][0] + ' ' + SPIELER[iVERANSTALTER][1]).removeClass('cRot');
                     } else {

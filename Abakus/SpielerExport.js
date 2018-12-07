@@ -32,7 +32,7 @@ function downloadSpieler(pAktiv) {
 
     for (var spieler in SPIELERext) {
 //      if (pAktiv || typeof SPIELERext[spieler][spANGELEGTvon] === "string" || typeof SPIELERext[spieler][spGEAENDERTvon] === "string") {
-        if (pAktiv && (LS.ME === "x3425" || SPIELERext[spieler][18] && SPIELERext[spieler][18].indexOf(cCUP) >= 0)
+        if (pAktiv && (LS.ME === "3425" || SPIELERext[spieler][18] && SPIELERext[spieler][18].indexOf(cCUP) >= 0)
                 || !pAktiv && (SPIELERext[spieler][spANGELEGTvon] || SPIELERext[spieler][spGEAENDERTvon])) {
             nSpieler++;
             blob += spieler + ';'

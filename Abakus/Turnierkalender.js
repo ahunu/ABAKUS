@@ -1,5 +1,5 @@
 
-/* global firebase */
+/* global firebase, iVERANSTALTER */
 
 // 51 Hausruckcup
 // 52 Raiffeisencup
@@ -77,11 +77,12 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
 
             if (pScrollTo && pScrollTo === 'li' + TERMINE[termin].DATUM
                     || TERMINE[termin].CUP === 51 && $("#cb51").is(':checked')
+                    || TERMINE[termin].CUP === 52 && $("#cb52").is(':checked')
                     || TERMINE[termin].CUP === 53 && $("#cb53").is(':checked')
                     || TERMINE[termin].CUP === 54 && $("#cb54").is(':checked')
                     || TERMINE[termin].CUP === 55 && $("#cb55").is(':checked')
                     || TERMINE[termin].CUP === 56 && $("#cb56").is(':checked')
-                    || ($("#cbDiverse").is(':checked') && TERMINE[termin].CUP !== 51 && TERMINE[termin].CUP !== 53 && TERMINE[termin].CUP !== 54 && TERMINE[termin].CUP !== 55 && TERMINE[termin].CUP !== 56)) {
+                    || ($("#cbDiverse").is(':checked') && TERMINE[termin].CUP !== 51 && TERMINE[termin].CUP !== 52 && TERMINE[termin].CUP !== 53 && TERMINE[termin].CUP !== 54 && TERMINE[termin].CUP !== 55 && TERMINE[termin].CUP !== 56)) {
                 if (TERMINE[termin].CUP === 3) {
                     hCupName = 'Tarockcup (Test)';
                     hClass = ' cDIV';
@@ -97,6 +98,9 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                 } else if (TERMINE[termin].CUP === 51) {
                     hCupName = 'Hausruckcup';
                     hClass = ' cHRC';
+                } else if (TERMINE[termin].CUP === 52) {
+                    hCupName = 'Raiffeisencup';
+                    hClass = ' cRTC';
                 } else if (TERMINE[termin].CUP === 53) {
                     hCupName = 'Sauwaldcup';
                     hClass = ' cSWC';
@@ -166,19 +170,24 @@ function showTermin(pTermin) {
             $('#tCUP').html(CUPS.NAME[TERMINE[pTermin].CUP]).show();
         }
         $('#iNAME').val(TERMINE[I].NAME);
-        $('#iVERANSTALTER').val(TERMINE[I].VERANSTALTER);
-        var iVERANSTALTER = TERMINE[pTermin].VERANSTALTER;
-        if (iVERANSTALTER === '0000') {
+        if (TERMINE[I].VERANSTALTER === "Präsidium" || TERMINE[I].VERANSTALTER === "0000") {
+            $('#iVERANSTALTER').val(-1);
             if (TERMINE[pTermin].CUP === 56) {
-                $('#tVERANSTALTER').html('Pr&auml;sidium, Tel. 0699/10360228, 0664/8598867');
+                $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
             } else {
-                $('#tVERANSTALTER').html('Pr&auml;sidium');
+                $('#tVERANSTALTER').html('Präsidium');
             }
+        } else if (TERMINE[I].VERANSTALTER === "Alle Veranstalter" || TERMINE[I].VERANSTALTER === "9999") {
+            $('#iVERANSTALTER').val(-2);
+            $('#tVERANSTALTER').text('Alle Veranstalter');
         } else if (SPIELERext[iVERANSTALTER]) {
+            $('#iVERANSTALTER').val(TERMINE[I].VERANSTALTER);
             $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
         } else if (TERMINE[pTermin].CUP === 50) {
+            $('#iVERANSTALTER').val(TERMINE[I].VERANSTALTER);
             $('#tVERANSTALTER').html('Promotor ' + iVERANSTALTER + ' existiert nicht.');
         } else {
+            $('#iVERANSTALTER').val(TERMINE[I].VERANSTALTER);
             $('#tVERANSTALTER').html('Veranstalter ' + iVERANSTALTER + ' existiert nicht.');
         }
 
@@ -207,7 +216,7 @@ function showTermin(pTermin) {
         }
         $('#iNAME').val('');
         $('#iVERANSTALTER').val('');
-        $('#tVERANSTALTER').html('(0 = Präsidium, 9999 = Alle Veranstalter)').removeClass('B');
+        $('#tVERANSTALTER').html('(0 = Präsidium, -1 = Alle Veranstalter)').removeClass('B');
         $('#iLOKAL').val('');
         $('#iORT').val('');
     }
@@ -236,8 +245,8 @@ function onAendern() {
     }
 
     var hCUP = parseInt($('#iCUP').val().trim());
-    if (isNaN(hCUP) || hCUP !== 50 && hCUP !== 51 && hCUP !== 53 && hCUP !== 54 && hCUP !== 55 && hCUP !== 56 && hCUP !== 58 && hCUP !== 59 && hCUP !== 31 && hCUP !== 30 && hCUP !== 3 && hCUP !== 4) {
-        showEinenTip('#iCUP', 'Wr. Marathon = 50,<br>Hausruckcup = 51,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tir. Tarockcup = 55,<br>Wr. Tarockcup = 56,<br>Stadltarock = 58,<br>UTC Klopeinersee = 59,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+    if (isNaN(hCUP) || hCUP !== 50 && hCUP !== 51 && hCUP !== 52 && hCUP !== 53 && hCUP !== 54 && hCUP !== 55 && hCUP !== 56 && hCUP !== 58 && hCUP !== 59 && hCUP !== 31 && hCUP !== 30 && hCUP !== 3 && hCUP !== 4) {
+        showEinenTip('#iCUP', 'Wr. Marathon = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tir. Tarockcup = 55,<br>Wr. Tarockcup = 56,<br>Stadltarock = 58,<br>UTC Klopeinersee = 59,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
     if (!/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iCUP').val())) {
@@ -261,26 +270,33 @@ function onAendern() {
         showEinenTip('#iVERANSTALTER', 'Wer veranstaltes das Turnier?');
         return;
     }
-    if (!/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iVERANSTALTER').val())) {
+    if ($('#iVERANSTALTER').val() !== "-1"
+            && !/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iVERANSTALTER').val())) {
         showEinenTip('#iVERANSTALTER', 'Der <b>Veranstalter</b> enth&auml;lt ein ung&uuml;ltiges Sonderzeichen.');
         $('input[id=iVERANSTALTER]').css("color", "red").focus();
         return;
     }
     var iVERANSTALTER = $('#iVERANSTALTER').val();
-    iVERANSTALTER = "0000" + iVERANSTALTER;
-    iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
-    if (iVERANSTALTER === '0000') {
+    if (parseInt(iVERANSTALTER) === -1) {
+        iVERANSTALTER = 'Präsidium';
         if (hCUP === 56) {
-            $('#tVERANSTALTER').html('Pr&auml;sidium, Tel. 0699/10360228, 0664/8598867');
+            $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
         } else {
-            $('#tVERANSTALTER').html('Pr&auml;sidium');
+            $('#tVERANSTALTER').html('Präsidium');
         }
-    } else if (SPIELERext[iVERANSTALTER]) {
-        $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
+    } else if (parseInt(iVERANSTALTER) === -2) {
+        iVERANSTALTER = 'Alle Veranstalter';
+        $('#tVERANSTALTER').text('Alle Veranstalter');
     } else {
-        showEinenTip('#iVERANSTALTER', 'Spieler ' + iVERANSTALTER + ' existiert nicht, 0 = Pr&auml;sidium');
-        $('input[id=iVERANSTALTER]').css("color", "red").focus();
-        return;
+        iVERANSTALTER = "0000" + iVERANSTALTER;
+        iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
+        if (SPIELERext[iVERANSTALTER]) {
+            $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
+        } else {
+            showEinenTip('#iVERANSTALTER', 'Spieler ' + iVERANSTALTER + ' existiert nicht, 0 = Präsidium');
+            $('input[id=iVERANSTALTER]').css("color", "red").focus();
+            return;
+        }
     }
 
     if ($('#iLOKAL').val().trim() === "") {
@@ -373,6 +389,11 @@ $(document).bind('pageinit', function () {
         $('#cb51').prop('checked', true).checkboxradio("refresh");
         $('#tHRC,#tCUP').text('Hausruckcup').show();
     }
+    if (CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) {
+        $('#iCUP').val(52);
+        $('#cb52').prop('checked', true).checkboxradio("refresh");
+        $('#tRTC,#tCUP').text('Raiffeisencup').show();
+    }
     if (CUPS.BEREadmin[53].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(53);
         $('#cb53').prop('checked', true).checkboxradio("refresh");
@@ -417,21 +438,47 @@ $(document).bind('pageinit', function () {
         whenCUPSloaded(true);
     });
     $('#iVERANSTALTER').change(function () {
+        
+//        var iVERANSTALTER = $('#iVERANSTALTER').val();
+//        iVERANSTALTER = "0000" + iVERANSTALTER;
+//        iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
+//        if (iVERANSTALTER === '0000') {
+//            if (parseInt($('#iCUP').val()) === 56) {
+//                $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
+//            } else {
+//                $('#tVERANSTALTER').html('Präsidium');
+//            }
+//        } else if (iVERANSTALTER === '00-1') {
+//            $('#tVERANSTALTER').text('Alle Veranstalter');
+//        } else if (SPIELERext[iVERANSTALTER]) {
+//            $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
+//        } else {
+//            showEinenTip('#iVERANSTALTER', 'Spieler ' + iVERANSTALTER + ' existiert nicht, 0 = Präsidium, -1 = Alle Veranstalter');
+//            $('input[id=iVERANSTALTER]').css("color", "red").focus();
+//            return;
+//        }
+
         var iVERANSTALTER = $('#iVERANSTALTER').val();
-        iVERANSTALTER = "0000" + iVERANSTALTER;
-        iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
-        if (iVERANSTALTER === '0000') {
-            if (parseInt($('#iCUP').val()) === 56) {
-                $('#tVERANSTALTER').html('Pr&auml;sidium, Tel. 0699/10360228, 0664/8598867');
+        if (parseInt(iVERANSTALTER) === -1) {
+            iVERANSTALTER = 'Präsidium';
+            if (hCUP === 56) {
+                $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
             } else {
-                $('#tVERANSTALTER').html('Pr&auml;sidium');
+                $('#tVERANSTALTER').html('Präsidium');
             }
-        } else if (SPIELERext[iVERANSTALTER]) {
-            $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
+        } else if (parseInt(iVERANSTALTER) === -2) {
+            iVERANSTALTER = 'Alle Veranstalter';
+            $('#tVERANSTALTER').text('Alle Veranstalter');
         } else {
-            showEinenTip('#iVERANSTALTER', 'Spieler ' + iVERANSTALTER + ' existiert nicht, 0 = Pr&aum;sidium');
-            $('input[id=iVERANSTALTER]').css("color", "red").focus();
-            return;
+            iVERANSTALTER = "0000" + iVERANSTALTER;
+            iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
+            if (SPIELERext[iVERANSTALTER]) {
+                $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
+            } else {
+                showEinenTip('#iVERANSTALTER', 'Spieler ' + iVERANSTALTER + ' existiert nicht, 0 = Präsidium');
+                $('input[id=iVERANSTALTER]').css("color", "red").focus();
+                return;
+            }
         }
     });
     loadSPIELER();

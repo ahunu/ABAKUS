@@ -144,9 +144,13 @@ function getCupPunkte(pTurnier, pSpieler) {
 }
 
 function getSpielerName(pNR) {
-    if (pNR === '0000') {
-        return 'Präsidium';
-    } else if (isNaN(pNR)) {
+//    if (pNR === '0000') {
+//        return 'Präsidium';
+//    } else if (pNR === '00-1' || pNR === '9999') {
+//        return 'Alle Veranstalter';
+//    } else
+//
+    if (isNaN(pNR)) {
         if (pNR) {
             return pNR.substr(0, pNR.lastIndexOf('ˆ')).replace(/%20|_|ˆ/g, ' ');
         } else {

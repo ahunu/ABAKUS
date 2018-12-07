@@ -64,12 +64,18 @@ function QUERFORMAT() {
 }
 
 function href(pUrl) {
-//        if (window.location.hash
-//            ||  navigator.vendor.indexOf("Apple") >= 0 && $('#dTermine').is(":hidden")) {
-    if (window.location.hash && navigator.vendor.indexOf("Apple") < 0) {
-        window.location.replace(pUrl);
+    if (navigator.vendor.indexOf("Apple") >= 0) {
+        if ($('#dTermine').is(":hidden")) { // window.location.hash funktioniert am iPhone 5c nicht
+            window.location.replace(pUrl);
+        } else {
+            window.location.href = pUrl;
+        }
     } else {
-        window.location.href = pUrl;
+        if (window.location.hash) {
+            window.location.replace(pUrl);
+        } else {
+            window.location.href = pUrl;
+        }
     }
 }
 
@@ -782,15 +788,6 @@ function listVersion() {
     if (LS.Meldung) {
         writeLOG('ABAKUS: ' + LS.Meldung);
     }
-    $('#legTechDet').html('<b>Technische Details:</b><br>'
-            + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
-            + 'navigator.vendor: ' + navigator.vendor + '<br>'
-            + 'navigator.platform: ' + navigator.platform + '<br>'
-            + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>');
-
-
-
-
     var sDate = new Date(CUPS.TIMESTAMP);
     var hDate = new Date();
     if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
@@ -807,6 +804,21 @@ function listVersion() {
         $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Das System wurde für " + hDate.getFullYear() + '<br>'
                 + 'noch nicht freigegeben.<br>'
                 + 'Informiere einen Administrator.<br>').show();
+    }
+}
+
+function toggleTechDetails() {
+    if ($('#dTechDetails').is(":hidden")) {
+        $('#dTechDetails').html('<b>Technische Details:</b><br>'
+                + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
+                + 'navigator.vendor: ' + navigator.vendor + '<br>'
+                + 'navigator.platform: ' + navigator.platform + '<br>'
+                + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>'
+                + 'history.length: ' + history.length + '<br>'
+                + 'location.hash: ' + location.hash + '<br>').show();
+        $('#pContent').scrollTop(9999999);
+    } else {
+        $('#dTechDetails').hide();
     }
 }
 
@@ -857,6 +869,7 @@ function initExtraButtons() {
     }
     if (LS.ME === '3425' // Leo Luger
             || LS.ME === '1014' // Franz Kienast
+            || LS.ME === '0124' // Karl Haas jun.
             || LS.ME === '6027' // Dieter Matuschek
             || LS.ME === '6013' // Horst Hrastnik
             || LS.ME === '3484' // Brigitta Hainz
@@ -1061,7 +1074,7 @@ function whenCUPSloaded() {
     var hAktuellBis = myDateString(Date.now() + (86400000 * 31));
     for (var termin in TERMINE) {
         if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
-                || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && TERMINE[termin].NAME.toUpperCase() !== "TEST") {
+                || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.toUpperCase() !== "TEST" || LS.ME === "3425")) {
             nAktTermine++;
             if (TERMINE[termin].CUP === 8 || TERMINE[termin].CUP === 10) {
                 hTemp = '';
@@ -1456,12 +1469,18 @@ $(document).ready(function () {
 
 
 window.onpageshow = function (event) {
-    if (event.persisted) {
-        if (navigator.userAgent.indexOf("Chrome") < 0
-                && navigator.userAgent.indexOf("Opera") < 0) {
-            window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
-        }
-    }
+//    if (event.persisted) {
+//        if (navigator.userAgent.indexOf("Chrome") < 0
+//                && navigator.userAgent.indexOf("Opera") < 0) {
+//            window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
+//        }
+//    }
+//    if (navigator.vendor.indexOf("Apple") >= 0) {
+//        if (window.performance.navigation.type === 2) {
+//            console.log('Reloading');
+//            window.location.reload();
+//        }
+//    }
 };
 window.onbeforeunload = function (e) {
     $('.onExit').addClass('ui-disabled');

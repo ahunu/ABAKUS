@@ -154,7 +154,7 @@ function downloadExcel() {
 
             fName = hCup + ' ' + stStat + ' - Cupwertung.csv';
         } else {
-            showEinenMoment(STAT[stStat]._NAME + ':', 'Das Turnier wird herungergladen!');
+            showEinenMoment(STAT[stStat]._NAME + ':', 'Das Turnier wird heruntergeladen!');
             blob += (stCup) + ';' + stStat + ';_NAME;' + STAT[stStat]._NAME + '\n';
             blob += (stCup) + ';' + stStat + ';_VERANSTALTER;' + STAT[stStat]._VERANSTALTER + '\n';
             for (var spieler in STAT[stStat]) {

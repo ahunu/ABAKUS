@@ -13,14 +13,13 @@
         <script src='js/jquery/jquery.min.js'></script>
         <script src='js/firebase/firebase.js'></script>
         <script type='text/javascript'>
-            LS = new Object();
-            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-            if (LS) { // nicht beim allerersten Aufruf
-                if (window.location.href.indexOf('?') > 0) { // Quickstart
+            if (window.location.href.indexOf('?') > 0) { // Quickstart
+                LS = new Object();
+                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+                if (LS) { // nicht beim allerersten Aufruf
                     CUPS = new Object();
                     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-                    if (LS !== null
-                            && CUPS !== null) {
+                    if (CUPS) {
                         var hRef = window.location.href.replace(/\%20|_| /g, '').toUpperCase();
                         if (hRef.indexOf('ST.TAROCKCUP') > 0 || hRef.indexOf('WR.TAROCKCUP') > 0 || hRef.indexOf('STADLTAROCK') > 0) {
                             window.location.replace('Statistik/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));

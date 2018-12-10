@@ -142,7 +142,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                             } else {
                                 hDataTheme = '';
                             }
-                            htmlTE = '<li ' + hDataTheme + ' data-icon=info><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getSpielerName(STAT[turnier]._VERANSTALTER) + '</span></a>'
+                            htmlTE = '<li ' + hDataTheme + ' data-icon=info><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span></a>'
                                     + '<a onclick="$(\'#hToggle' + nTurniere + '\').toggle(\'show\');">Stockerpl&auml;tze</a></li>'
                                     + (STAT[turnier]._ANEKDOTE && pAnekdoten
                                             ? '<div id="hToggle' + nTurniere + '" class="N S2 sui-content"  style="text-align:justify;margin: 0 5px 0 8px;">'

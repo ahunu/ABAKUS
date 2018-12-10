@@ -1,5 +1,5 @@
 
-/* global LS, myJTip, myJBox, CUPS */
+/* global LS, myJTip, myJBox, CUPS, pTarget */
 
 var myJBox = null;
 var myJTip = null;
@@ -25,6 +25,14 @@ function showEinenTip(pTarget, pText) {
     myJTip.open({
         target: pTarget
     });
+}
+
+function hideEinenTip() {
+    if (myJTip) {
+        if (myJTip.isOpen) {
+            myJTip.close();
+        }
+    }
 }
 
 function showEinenMoment(pCup, pText, pForce, pSkip) {
@@ -330,9 +338,9 @@ function writeLOG(pLog, pError) {
             LOG = LOG.substr(0, hRest);
         }
     }
-    console.log(new Date().toLocaleTimeString());
-    console.log(new Date().toLocaleTimeString().substr(0, 5));
-    console.log(new Date().toLocaleTimeString().substring(0, 5));
+//    console.log(new Date().toLocaleTimeString());
+//    console.log(new Date().toLocaleTimeString().substr(0, 5));
+//    console.log(new Date().toLocaleTimeString().substring(0, 5));
     var hLog = '<br>' + new Date().toISOString().substr(0, 10) + ' ' + new Date().toLocaleTimeString().substr(0, 5) + '<br>';
     if (pError) {
         var hHref = window.location.href;

@@ -119,14 +119,17 @@ function getSpielerOrt(pNR, pSTANDORT) {
 }
 
 function getCupPunkte(pTurnier, pSpieler) {
-
     if (stCup < 58) {
         if (STAT[pTurnier][pSpieler]) {
             if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
                     return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
                 } else {
-                    return '-';
+                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
+                        return '-' + (STAT[pTurnier][pSpieler][0] - 50);
+                    } else {
+                        return '-';
+                    }
                 }
             }
         } else {
@@ -143,13 +146,15 @@ function getCupPunkte(pTurnier, pSpieler) {
     return hPunkte;
 }
 
+function getVeranstalter(pNR) {
+    if (pNR.length === 4) {
+        return getSpielerName(pNR);
+    } else {
+        return pNR;
+    }
+}
+
 function getSpielerName(pNR) {
-//    if (pNR === '0000') {
-//        return 'Präsidium';
-//    } else if (pNR === '00-1' || pNR === '9999') {
-//        return 'Alle Veranstalter';
-//    } else
-//
     if (isNaN(pNR)) {
         if (pNR) {
             return pNR.substr(0, pNR.lastIndexOf('ˆ')).replace(/%20|_|ˆ/g, ' ');

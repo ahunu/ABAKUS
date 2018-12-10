@@ -72,6 +72,7 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
     var htmlTE = '';
     var hCupName = '';
     var hClass = '';
+    var hWoche = 0;
     if (new Date('2017-05-30') !== 'Invalid Date') { // Safari am PC ist Meschuke
         for (var termin in TERMINE) {
 
@@ -119,6 +120,21 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                 }
                 if (TERMINE[termin].DATUM >= hHeute) {
                     nTermine++;
+//                    if (hDatum !== TERMINE[termin].DATUM) {
+//                        hDatum = TERMINE[termin].DATUM;
+//                        htmlTE += '<span class="M B">&nbsp;&nbsp;' + getDateString(TERMINE[termin].DATUM) + '</span>';
+//                    }
+
+                    Date.prototype.getWoche = function () {
+                        var onejan = new Date(this.getFullYear(), 0, 1);
+                        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() - 1) / 7);
+                    };
+
+
+                    if (hWoche !== new Date(TERMINE[termin].DATUM).getWoche()) {
+                        hWoche = new Date(TERMINE[termin].DATUM).getWoche();
+                        htmlTE += '<span class="S B">&nbsp;&nbsp;' + hWoche + '. Woche, ' + new Date(TERMINE[termin].DATUM).getFullYear() + '</span>';
+                    }
                     if (QUERFORMAT()) {
                         htmlTE += '<li  id=li' + TERMINE[termin].DATUM + ' data-icon=false><a class="Sbtn" onClick="showTermin(' + termin + ');">'
                                 + '<div class="ui-grid-a' + hClass + '">'
@@ -153,6 +169,8 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
 
 function showTermin(pTermin) {
     'use strict';
+    $("#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
+    $('input[id=iVERANSTALTER]').css("color", "black");
     if (pTermin >= 0) {
         if (CUPS.BEREadmin[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0) {
             showEineMeldung(TERMINE[pTermin].NAME + ':', '&Auml;nderung nicht m&ouml;glich.', 'Keine Berechtigung!');
@@ -170,6 +188,7 @@ function showTermin(pTermin) {
             $('#tCUP').html(CUPS.NAME[TERMINE[pTermin].CUP]).show();
         }
         $('#iNAME').val(TERMINE[I].NAME);
+        var iVERANSTALTER = TERMINE[I].VERANSTALTER;
         if (TERMINE[I].VERANSTALTER === "Präsidium" || TERMINE[I].VERANSTALTER === "0000") {
             $('#iVERANSTALTER').val(-1);
             if (TERMINE[pTermin].CUP === 56) {
@@ -206,6 +225,7 @@ function showTermin(pTermin) {
         $('#iORT').val(hText);
     } else {
         I = TERMINE.length;
+        $('#pTermin').popup("open");
         $('#bNeu').show();
         $('#bAendern').hide();
         $('#tTitel').text('Ein Turnier einplanen:');
@@ -216,7 +236,11 @@ function showTermin(pTermin) {
         }
         $('#iNAME').val('');
         $('#iVERANSTALTER').val('');
-        $('#tVERANSTALTER').html('(0 = Präsidium, -1 = Alle Veranstalter)').removeClass('B');
+        if ($('#tCUP').text().indexOf("Steirischer Tarockcup") < 0) {
+            $('#tVERANSTALTER').html('(-1 = Präsidium, -2 = Alle Veranstalter)').removeClass('B');
+        } else {
+            $('#tVERANSTALTER').html('');
+        }
         $('#iLOKAL').val('');
         $('#iORT').val('');
     }
@@ -229,6 +253,7 @@ function onAendern() {
     'use strict';
     nGeaendert++;
     $("#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
+    $('input[id=iVERANSTALTER]').css("color", "black");
     if (I < 0) {
         I = TERMINE.length;
     }
@@ -266,27 +291,31 @@ function onAendern() {
         return;
     }
 
-    if ($('#iVERANSTALTER').val().trim() === "") {
-        showEinenTip('#iVERANSTALTER', 'Wer veranstaltes das Turnier?');
-        return;
-    }
-    if ($('#iVERANSTALTER').val() !== "-1"
-            && !/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iVERANSTALTER').val())) {
-        showEinenTip('#iVERANSTALTER', 'Der <b>Veranstalter</b> enth&auml;lt ein ung&uuml;ltiges Sonderzeichen.');
-        $('input[id=iVERANSTALTER]').css("color", "red").focus();
-        return;
-    }
-    var iVERANSTALTER = $('#iVERANSTALTER').val();
-    if (parseInt(iVERANSTALTER) === -1) {
+//    if ($('#iVERANSTALTER').val().trim() === "") {
+//        showEinenTip('#iVERANSTALTER', 'Wer veranstaltes das Turnier?');
+//        return;
+//    }
+//    if ($('#iVERANSTALTER').val() !== "-1"
+//            && !/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iVERANSTALTER').val())) {
+//        showEinenTip('#iVERANSTALTER', 'Der <b>Veranstalter</b> enth&auml;lt ein ung&uuml;ltiges Sonderzeichen.');
+//        $('input[id=iVERANSTALTER]').css("color", "red").focus();
+//        return;
+//    }
+    var iVERANSTALTER = parseInt($('#iVERANSTALTER').val());
+    if (iVERANSTALTER === -1 && $('#tCUP').text().indexOf("Steirischer Tarockcup") < 0) {
         iVERANSTALTER = 'Präsidium';
         if (hCUP === 56) {
             $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
         } else {
             $('#tVERANSTALTER').html('Präsidium');
         }
-    } else if (parseInt(iVERANSTALTER) === -2) {
+    } else if (iVERANSTALTER === -2 && $('#tCUP').text().indexOf("Steirischer Tarockcup") < 0) {
         iVERANSTALTER = 'Alle Veranstalter';
         $('#tVERANSTALTER').text('Alle Veranstalter');
+    } else if (iVERANSTALTER < 1) {
+        showEinenTip('#iVERANSTALTER', iVERANSTALTER + ' ist keine gültige Spielernummer');
+        $('input[id=iVERANSTALTER]').css("color", "red").focus();
+        return;
     } else {
         iVERANSTALTER = "0000" + iVERANSTALTER;
         iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
@@ -438,37 +467,24 @@ $(document).bind('pageinit', function () {
         whenCUPSloaded(true);
     });
     $('#iVERANSTALTER').change(function () {
-        
-//        var iVERANSTALTER = $('#iVERANSTALTER').val();
-//        iVERANSTALTER = "0000" + iVERANSTALTER;
-//        iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
-//        if (iVERANSTALTER === '0000') {
-//            if (parseInt($('#iCUP').val()) === 56) {
-//                $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
-//            } else {
-//                $('#tVERANSTALTER').html('Präsidium');
-//            }
-//        } else if (iVERANSTALTER === '00-1') {
-//            $('#tVERANSTALTER').text('Alle Veranstalter');
-//        } else if (SPIELERext[iVERANSTALTER]) {
-//            $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
-//        } else {
-//            showEinenTip('#iVERANSTALTER', 'Spieler ' + iVERANSTALTER + ' existiert nicht, 0 = Präsidium, -1 = Alle Veranstalter');
-//            $('input[id=iVERANSTALTER]').css("color", "red").focus();
-//            return;
-//        }
+        hideEinenTip();
+        $('input[id=iVERANSTALTER]').css("color", "black");
 
         var iVERANSTALTER = $('#iVERANSTALTER').val();
         if (parseInt(iVERANSTALTER) === -1) {
             iVERANSTALTER = 'Präsidium';
-            if (hCUP === 56) {
-                $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
-            } else {
-                $('#tVERANSTALTER').html('Präsidium');
-            }
+//            if (hCUP === 56) {
+//                $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
+//            } else {
+            $('#tVERANSTALTER').html('Präsidium');
+//            }
         } else if (parseInt(iVERANSTALTER) === -2) {
             iVERANSTALTER = 'Alle Veranstalter';
             $('#tVERANSTALTER').text('Alle Veranstalter');
+        } else if (parseInt(iVERANSTALTER) < 1) {
+            showEinenTip('#iVERANSTALTER', iVERANSTALTER + ' ist keine gültige Spielernummer.');
+            $('input[id=iVERANSTALTER]').css("color", "red").focus();
+            return;
         } else {
             iVERANSTALTER = "0000" + iVERANSTALTER;
             iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));

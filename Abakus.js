@@ -65,11 +65,11 @@ function QUERFORMAT() {
 
 function href(pUrl) {
     if (navigator.vendor.indexOf("Apple") >= 0) {
-        if ($('#dTermine').is(":hidden")) { // window.location.hash funktioniert am iPhone 5c nicht
-            window.location.replace(pUrl);
-        } else {
-            window.location.href = pUrl;
-        }
+//        if ($('#dTermine').is(":hidden")) { // window.location.hash funktioniert am iPhone 5c nicht
+//            window.location.replace(pUrl);
+//        } else {
+        window.location.href = pUrl;
+//        }
     } else {
         if (window.location.hash) {
             window.location.replace(pUrl);
@@ -156,6 +156,7 @@ function initSeite1() {
         }
         $('#pMenu').show();
         $('#hMix').hide();
+        test1('>>> QF');
     } else {
         if (I === LS.I && I !== 0) {
             initSeite2(LS.I);
@@ -163,15 +164,29 @@ function initSeite1() {
             $('#pTisch').show();
             showCup(I);
             showHF(2);
+            test1('>>> 2');
         } else {
             showHF(1);
+            test1('>>> 1');
         }
+    }
+}
+
+function test1(p1) {
+    if (LS.ME === "x3425") {
+        var msg = p1 + '<br>';
+        msg += 'I: ' + I + '<br>';
+        msg += 'LS.I: ' + LS.I + '<br>';
+        msg += 'LS.ShowCups: ' + LS.ShowCups + '<br>';
+        msg += 'sHash: ' + sHash + '<br>';
+        msg += 'location.hash: ' + window.location.hash + '<br>';
+        writeLOG(msg);
     }
 }
 
 function showHF(pSeite) {
     $('#hMenu,#hMix,#pMenu,#pCup,#pTisch').hide();
-    if (!pSeite || pSeite === 1) {
+    if (pSeite === 1) {
         $('#hMenu,#pMenu').show();
         if (sHash) {
             history.back();
@@ -1468,7 +1483,7 @@ $(document).ready(function () {
 //  Funktionen  **************************************************************************
 
 
-window.onpageshow = function (event) {
+//window.onpageshow = function (event) {
 //    if (event.persisted) {
 //        if (navigator.userAgent.indexOf("Chrome") < 0
 //                && navigator.userAgent.indexOf("Opera") < 0) {
@@ -1481,10 +1496,12 @@ window.onpageshow = function (event) {
 //            window.location.reload();
 //        }
 //    }
-};
-window.onbeforeunload = function (e) {
-    $('.onExit').addClass('ui-disabled');
-};
+//};
+
+//window.onbeforeunload = function (e) {
+//    $('.onExit').addClass('ui-disabled');
+//};
+
 window.onhashchange = function () {
     if (!QUERFORMAT()) {
         if (window.location.hash) {

@@ -690,6 +690,8 @@ function onOK() {
     SetGeberPausierer();
     setTarif();
 
+    LS.ShowCups = LS.I;
+
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     localStorage.setItem('Abakus.DS', JSON.stringify(DS));
 

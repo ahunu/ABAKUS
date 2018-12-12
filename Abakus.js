@@ -64,18 +64,28 @@ function QUERFORMAT() {
 }
 
 function href(pUrl) {
-    if (navigator.vendor.indexOf("Apple") >= 0) {
-//        if ($('#dTermine').is(":hidden")) { // window.location.hash funktioniert am iPhone 5c nicht
+//    if (navigator.vendor.indexOf("Apple") >= 0) {
+//        if ($('#pMenu').is(":hidden")) { // window.location.hash funktioniert am iPhone 5c nicht
+//            window.location.replace(pUrl);
+//            if ("standalone" in window.navigator && window.navigator.standalone) {
+//                window.location.replace(pUrl);
+//            } else {
+//                window.location.href = pUrl;
+//            }
+//        } else {
+//            window.location.href = pUrl;
+//        }
+//    } else {
+//        if (window.location.hash) {
 //            window.location.replace(pUrl);
 //        } else {
-        window.location.href = pUrl;
+//            window.location.href = pUrl;
 //        }
+//    }
+    if ($('#pMenu').is(":hidden")) { // window.location.hash funktioniert am iPhone 5c nicht
+        window.location.replace(pUrl);
     } else {
-        if (window.location.hash) {
-            window.location.replace(pUrl);
-        } else {
-            window.location.href = pUrl;
-        }
+        window.location.href = pUrl;
     }
 }
 
@@ -163,8 +173,12 @@ function initSeite1() {
             $('#pMenu').hide();
             $('#pTisch').show();
             showCup(I);
-            showHF(2);
-            test1('>>> 2');
+//            showHF(2);
+//            test1('>>> 2');
+        } else if (I !== 0) {
+            showCup(I);
+//            showHF(3);
+//            test1('>>> 1');
         } else {
             showHF(1);
             test1('>>> 1');
@@ -188,6 +202,10 @@ function showHF(pSeite) {
     $('#hMenu,#hMix,#pMenu,#pCup,#pTisch').hide();
     if (pSeite === 1) {
         $('#hMenu,#pMenu').show();
+        if (QUERFORMAT && LS.ShowCups) {
+            LS.ShowCups = 0;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
         if (sHash) {
             history.back();
         }
@@ -605,6 +623,7 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
             hrefStatistik();
             return;
         }
+        sHash = "#MeinTisch";
         window.location.href = "#MeinTisch";
     }
 
@@ -827,6 +846,9 @@ function toggleTechDetails() {
         $('#dTechDetails').html('<b>Technische Details:</b><br>'
                 + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
                 + 'navigator.vendor: ' + navigator.vendor + '<br>'
+                + (("standalone" in window.navigator && window.navigator.standalone)
+                        ? 'navigators.standalone: true<br>'
+                        : '')
                 + 'navigator.platform: ' + navigator.platform + '<br>'
                 + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>'
                 + 'history.length: ' + history.length + '<br>'
@@ -1483,24 +1505,24 @@ $(document).ready(function () {
 //  Funktionen  **************************************************************************
 
 
-//window.onpageshow = function (event) {
+window.onpageshow = function (event) {
 //    if (event.persisted) {
 //        if (navigator.userAgent.indexOf("Chrome") < 0
 //                && navigator.userAgent.indexOf("Opera") < 0) {
 //            window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
 //        }
 //    }
-//    if (navigator.vendor.indexOf("Apple") >= 0) {
-//        if (window.performance.navigation.type === 2) {
-//            console.log('Reloading');
-//            window.location.reload();
-//        }
-//    }
-//};
+    if (navigator.vendor.indexOf("Apple") >= 0) {
+        if (window.performance.navigation.type === 2
+                && !window.navigator.standalone) { // bei iOS Web-App nicht notwendig
+            window.location.reload();
+        }
+    }
+};
 
-//window.onbeforeunload = function (e) {
-//    $('.onExit').addClass('ui-disabled');
-//};
+window.onbeforeunload = function (e) {
+    $('.onExit').addClass('ui-disabled');
+};
 
 window.onhashchange = function () {
     if (!QUERFORMAT()) {
@@ -1510,6 +1532,10 @@ window.onhashchange = function () {
             $('#hMenu,#hMix,#pMenu,#pCup,#pTisch').hide();
             $('#hMenu,#pMenu').show();
             sHash = '';
+            if (LS.ShowCups && LS.ShowCups !== LS.I) {
+                LS.ShowCups = 0;
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            }
         } else {
             history.back();
         }

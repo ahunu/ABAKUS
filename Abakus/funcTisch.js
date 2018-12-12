@@ -859,7 +859,7 @@ function whenSTATloaded() {
                     return false;
                 }
             }
-            
+
         }
     }
 
@@ -875,7 +875,9 @@ function whenSTATloaded() {
 
 function Weiterspielen() {
     'use strict';
-    if (LS.SpieleJeRunde !== CUPS.SPJERUNDE[LS.I]) {
+    if (LS.ShowCups !== LS.I
+            || LS.SpieleJeRunde !== CUPS.SPJERUNDE[LS.I]) {
+        LS.ShowCups = LS.I;
         LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }

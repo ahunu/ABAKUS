@@ -1990,28 +1990,7 @@ $(document).ready(function (e) {
     });
 
 });
-window.onpageshow = function (event) {
-//    if (event.persisted) {
-//        if (navigator.userAgent.indexOf("Chrome") < 0
-//                && navigator.userAgent.indexOf("Opera") < 0) {
-//            window.location.reload(); // Ist bei Safari und Firefox erforderlich !!!
-//        }
-//    }
-//    if (window.performance) {
-//        if (performance && performance.navigation.type === 2) {
-//            window.location.reload();
-//        }
-//    }
-};
-//window.addEventListener( "pageshow", function ( event ) {
-//  var historyTraversal = event.persisted ||
-//                         ( typeof window.performance !== "undefined" &&
-//                              window.performance.navigation.type === 2 );
-//  if ( historyTraversal ) {
-//    // Handle page restore.
-//    window.location.reload();
-//  }
-//});
+
 window.onbeforeunload = function (e) {
     if (navigator.vendor.indexOf("Apple") < 0) {
         $('body').addClass('ui-disabled'); // Safari macht beim Laden kein removeClass

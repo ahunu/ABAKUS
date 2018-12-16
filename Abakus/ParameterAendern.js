@@ -808,7 +808,3 @@ $(document).bind('pageinit', function () {
     $('#hTitel1').text(CUPS.NAME[I]);
 
 });
-
-window.onbeforeunload = function (e) {
-    $('.onExit').addClass('ui-disabled');
-};

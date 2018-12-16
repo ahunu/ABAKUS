@@ -56,6 +56,3 @@ $(document).ready(function () {
         return false;
     };
 });
-window.onbeforeunload = function (e) {
-    $('.onExit').addClass('ui-disabled');
-};

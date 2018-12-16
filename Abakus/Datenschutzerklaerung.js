@@ -1,12 +1,10 @@
 
 function fIchStimmeZu() {
-    $('.onExit').addClass('ui-disabled');
     writeLOG('Ich habe der Datenschutzerklärung zugestimmt.');
     history.back();
 }
 
 function fIchStimmeNichtZu() {
-    $('.onExit').addClass('ui-disabled');
     localStorage.clear();
     setTimeout(function () {
         if (navigator.app) {

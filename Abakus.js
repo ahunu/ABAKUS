@@ -1,10 +1,11 @@
 
 /* global getVersionsDatum, firebase, pSeite, pCUP */
 
+var sUrl = '';
+var iStat = '';
 var PC = false;
 var DB = new Object();
 var FB = undefined;
-var sHash = '';
 var AnmeldungGestartet = false;
 var iTURCODE = 0;
 var LS = new Object();
@@ -64,28 +65,22 @@ function QUERFORMAT() {
 }
 
 function href(pUrl) {
-//    if (navigator.vendor.indexOf("Apple") >= 0) {
-//        if ($('#pMenu').is(":hidden")) { // window.location.hash funktioniert am iPhone 5c nicht
-//            window.location.replace(pUrl);
-//            if ("standalone" in window.navigator && window.navigator.standalone) {
-//                window.location.replace(pUrl);
-//            } else {
-//                window.location.href = pUrl;
-//            }
-//        } else {
-//            window.location.href = pUrl;
-//        }
-//    } else {
-//        if (window.location.hash) {
-//            window.location.replace(pUrl);
-//        } else {
-//            window.location.href = pUrl;
-//        }
-//    }
-    if ($('#pMenu').is(":hidden")) { // window.location.hash funktioniert am iPhone 5c nicht
-        window.location.replace(pUrl);
+//    window.location.hash = '';
+//    window.location.href = pUrl;
+
+    if (navigator.vendor.indexOf("Apple") >= 0) {
+        if (window.location.hash) {
+            sUrl = pUrl;
+            window.location.hash = '';
+        } else {
+            window.location.href = pUrl;
+        }
     } else {
-        window.location.href = pUrl;
+        if (window.location.hash) {
+            window.location.replace(pUrl);
+        } else {
+            window.location.href = pUrl;
+        }
     }
 }
 
@@ -101,9 +96,9 @@ function hrefStatistik(pParameter) {
             || (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()))) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
-            window.location.href = "Statistik/Statistik.html";
+            href("Statistik/Statistik.html");
         } else {
-            window.location.href = "Abakus/Statistik.html" + pParameter;
+            href("Abakus/Statistik.html" + pParameter);
         }
     } else {
         loadSTAT(I, 'Statistik wird geladen.', false, hrefStatistikPR);
@@ -140,7 +135,7 @@ function hrefStatistikPR() {
 
     if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        window.location.href = "Abakus/Statistik.html";
+        href("Abakus/Statistik.html");
     } else {
         if (CUPS.MEZULETZT[I] === 0) {
             meldKeineBerechtigung(0);
@@ -150,7 +145,7 @@ function hrefStatistikPR() {
             meldKeineBerechtigung(365);
         } else {
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            window.location.href = "Abakus/Statistik.html";
+            href("Abakus/Statistik.html");
         }
     }
 }
@@ -166,55 +161,30 @@ function initSeite1() {
         }
         $('#pMenu').show();
         $('#hMix').hide();
-        test1('>>> QF');
     } else {
         if (I === LS.I && I !== 0) {
-            initSeite2(LS.I);
-            $('#pMenu').hide();
-            $('#pTisch').show();
+            initSeite2();
+            writeLOG('3. initSeite1: Tisch' + I + ', ' + window.location.href);
             showCup(I);
-//            showHF(2);
-//            test1('>>> 2');
         } else if (I !== 0) {
+            writeLOG('3. initSeite1: Cup' + I + ', ' + window.location.href);
             showCup(I);
-//            showHF(3);
-//            test1('>>> 1');
         } else {
-            showHF(1);
-            test1('>>> 1');
+            writeLOG('3. initSeite1: Menu' + I + ', ' + window.location.href);
+            if (window.location.hash) {
+                writeLOG('333333333333333333333. initSeite1: Menu' + I + ', ' + window.location.href);
+                window.location.hash = '';
+                history.back();
+            } else {
+                $('#hMix,#pCup,#pTisch').hide();
+                $('#hMenu,#pMenu').show();
+//                if (LS.ShowCups) {
+//                    LS.ShowCups = 0;
+//                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//                }
+            }
         }
     }
-}
-
-function test1(p1) {
-    if (LS.ME === "x3425") {
-        var msg = p1 + '<br>';
-        msg += 'I: ' + I + '<br>';
-        msg += 'LS.I: ' + LS.I + '<br>';
-        msg += 'LS.ShowCups: ' + LS.ShowCups + '<br>';
-        msg += 'sHash: ' + sHash + '<br>';
-        msg += 'location.hash: ' + window.location.hash + '<br>';
-        writeLOG(msg);
-    }
-}
-
-function showHF(pSeite) {
-    $('#hMenu,#hMix,#pMenu,#pCup,#pTisch').hide();
-    if (pSeite === 1) {
-        $('#hMenu,#pMenu').show();
-        if (QUERFORMAT && LS.ShowCups) {
-            LS.ShowCups = 0;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
-        if (sHash) {
-            history.back();
-        }
-    } else if (pSeite === 2) {
-        $('#hMix,#pTisch').show();
-    } else if (pSeite === 3) {
-        $('#hMix,#pCup').show();
-    }
-    window.scrollTo(0, 0);
 }
 
 function writeCanvas(pCup) {
@@ -462,7 +432,6 @@ function showLOG() {
 
 function initSeite2() {
     'use strict';
-    I = LS.I;
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
     if (CUPS.TURNIER[I] === 'PC') {
         $('#bSpieler').addClass('ui-disabled');
@@ -499,7 +468,6 @@ function initSeite2() {
         if (html) {
             $("#tSpielerPunkte tbody tr").empty();
             $("#tSpielerPunkte > tbody").append(html);
-//            $("#tSpielerPunkte").table("refresh").removeClass('ui-disabled'); ??? LLL
         }
 
         if (LS.AnzGespeichert === 0) {
@@ -591,6 +559,7 @@ function resetLastBtn() {
 function showCup(i, pTermin, pAnmeldungen, pMR) {
     'use strict';
     I = i;
+    writeLOG('4. showCup' + I + ', ' + window.location.href);
     LS.ShowCups = I;
     if (LS.Meldung) {
         var hMeldung = LS.Meldung;
@@ -623,8 +592,6 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
             hrefStatistik();
             return;
         }
-        sHash = "#MeinTisch";
-        window.location.href = "#MeinTisch";
     }
 
     writeCanvas(I);
@@ -797,11 +764,12 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
 // HOCHFORMAT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     if (I && I === LS.I) {
-        initSeite2(LS.I);
-        $('#pMenu').hide();
-        $('#pTisch').show();
+        initSeite2();
+//        $('#pMenu').hide();
+//        $('#pTisch').show();
         $('#tischButtons').html(getCupButtons()).trigger('create').show();
-        showHF(2);
+        window.location.href = "#" + Date.now();
+        writeLOG('5. showCup Tisch href' + I + ', ' + window.location.href);
     } else {
         if (hMeldung) {
             $('#hfText').html('<div class="B cRot">' + hMeldung + '</div>' + CUPS.TEXT1[i]);
@@ -809,7 +777,8 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
             $('#hfText').html(CUPS.TEXT1[i]);
         }
         $('#cupButtons').html(getCupButtons()).trigger('create').show();
-        showHF(3);
+        window.location.href = "#" + Date.now();
+        writeLOG('5. showCup Cup href' + I + ', ' + window.location.href);
     }
 
 }
@@ -1345,13 +1314,14 @@ function whenCUPSloaded() {
     $('#dFooter').show();
 }
 
+
 // I N I T  ************************************************************************************
-$(document).ready(function () {
+function fINIT() {
     'use strict';
     if (typeof localStorage !== 'object') {
         return;
     }
-
+    writeLOG('2. Document ready(): ' + window.location.href);
     $('#pFehler').hide();
     if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
         PC = true;
@@ -1409,6 +1379,9 @@ $(document).ready(function () {
     } else {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     }
+//        LS.ShowCups = 0;
+
+    iStat = 'Initial: I=' + I + ', LS.ShowCups=' + LS.ShowCups + ', Hash=' + window.location.hash;
 
     initExtraButtons();
     if (window.location.href.toUpperCase().indexOf('?VIPS') > 0) {
@@ -1501,9 +1474,12 @@ $(document).ready(function () {
             this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
         });
     };
-});
+}
 //  Funktionen  **************************************************************************
 
+$(document).ready(function () {
+    fINIT();
+});
 
 window.onpageshow = function (event) {
 //    if (event.persisted) {
@@ -1512,32 +1488,56 @@ window.onpageshow = function (event) {
 //            window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
 //        }
 //    }
-    if (navigator.vendor.indexOf("Apple") >= 0) {
+        if (navigator.userAgent.indexOf("Chrome") < 0
+                && navigator.userAgent.indexOf("Opera") < 0) {
+//    if (navigator.vendor.indexOf("Apple") >= 0) {
+//        writeLOG('onpageshow: Reload >>>>>>>' + window.location.href + ', ' + window.performance.navigation.type + ', ' + sUrl);
         if (window.performance.navigation.type === 2
-                && !window.navigator.standalone) { // bei iOS Web-App nicht notwendig
-            window.location.reload();
+                && !sUrl
+//                && !window.navigator.standalone
+
+                ) { // bei iOS Web-App nicht notwendig
+//            writeLOG('onpageshow: Reload >>>>>>>');
+//            if (window.location.hash) {
+//                window.location.hash = '';
+//            }
+            writeLOG('1. onpageshow: Reload >>>>>>>' + window.location.href + ', ' + window.performance.navigation.type + ', ' + sUrl);
+//            window.location.reload();
+            fINIT();
+//        var href = window.location.href;
+//        window.location.href = href;
         }
     }
 };
 
-window.onbeforeunload = function (e) {
-    $('.onExit').addClass('ui-disabled');
-};
-
 window.onhashchange = function () {
     if (!QUERFORMAT()) {
-        if (window.location.hash) {
-            sHash = window.location.hash;
-        } else if (sHash) {
-            $('#hMenu,#hMix,#pMenu,#pCup,#pTisch').hide();
-            $('#hMenu,#pMenu').show();
-            sHash = '';
-            if (LS.ShowCups && LS.ShowCups !== LS.I) {
-                LS.ShowCups = 0;
-                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            }
+//        alert (iStat + '      Aktuell: I=' + I + ', LS.ShowCups=' + LS.ShowCups + ', Hash=' + window.location.hash);
+        var hHash = window.location.hash;
+        if (hHash && I && I === LS.I) {
+//        if (hHash === '#MeinTisch' && LS.ShowCups) {
+            writeLOG('onhashchange: hash: ' + hHash);
+            $('#hMenu,#pMenu,#pCup').hide();
+            $('#hMix,#pTisch').show();
+        } else if (hHash && LS.ShowCups) {
+            writeLOG('onhashchange: hash: ' + hHash);
+            $('#hMenu,#pMenu,#pTisch').hide();
+            $('#hMix,#pCup').show();
+        } else if (sUrl && LS.ShowCups) {
+            writeLOG('onhashchange: hRef: ' + sUrl);
+            var hUrl = sUrl;
+            sUrl = '';
+//            window.location.href = hUrl;
+            window.location.replace(hUrl);
         } else {
-            history.back();
+            writeLOG('onhashchange: hash: ' + hHash);
+            $('#hMix,#pCup,#pTisch').hide();
+            $('#hMenu,#pMenu').show();
+//            if (LS.ShowCups) {
+//                LS.ShowCups = 0;
+//                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//            }
         }
+        window.scrollTo(0, 0);
     }
 };

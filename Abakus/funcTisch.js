@@ -317,7 +317,7 @@ function getCupButtons() {
     if ((CUPS.TYP[I] !== 'CUP' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0)
             || LS.ME === '3425'
             || I <= 2) {
-        html += "<a onclick='$(" + '".onExit"' + ").addClass(" + '"ui-disabled"' + ");hrefParameterAendern();' data-role='button' data-inline='true' data-mini='true' >&nbsp;Parameter ändern&nbsp;</a>";
+        html += "<a onclick='hrefParameterAendern();' data-role='button' data-inline='true' data-mini='true' >&nbsp;Parameter ändern&nbsp;</a>";
     }
     return html + '<br><br>';
 }
@@ -477,7 +477,6 @@ function checkNeuerTisch() {
     LS.Vorhand = (Date.now() % (LS.AnzSpieler) + 1);
 // onOK aus Anmeldung.js
 
-    $('.onExit').addClass('ui-disabled');
     LS.VName[1] = LS.VName[1].trim();
     LS.VName[2] = LS.VName[2].trim();
     LS.VName[3] = LS.VName[3].trim();

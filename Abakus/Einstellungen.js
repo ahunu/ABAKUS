@@ -100,9 +100,6 @@ $(document).bind('pageinit', function () {
     });
 
     $("#bSpeichern").click(function () {
-
-        $(".onExit").addClass('ui-disabled');
-
         var hFreunde = $("#iFREUNDE").val();
         var hSave;
         LS.Freunde = [];
@@ -140,7 +137,3 @@ $(document).bind('pageinit', function () {
     });
 
 });
-
-window.onbeforeunload = function (e) {
-    $(".onExit").addClass('ui-disabled');
-};

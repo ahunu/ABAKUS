@@ -563,8 +563,6 @@ function onOK() {
         return;
     }
 
-    $('.onExit').addClass('ui-disabled');
-
     if ((LS.VName[1].substr(0, 3) === LS.VName[2].substr(0, 3))
             || (LS.VName[1].substr(0, 3) === LS.VName[3].substr(0, 3))
             || (LS.VName[1].substr(0, 3) === LS.VName[4].substr(0, 3))
@@ -1796,6 +1794,7 @@ $(document).ready(function () {
     }
 
     $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusin(function () {
+        scrollToINR();
         if (!PC) { // PhoneGap cli 6.3.0 schiebt den Footer vor die virtuelle Tastatur
             $('#Footer').hide();
         }
@@ -1814,11 +1813,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#I_NR,#I_NNAME,#I_VNAME,#I_ORT").focusin(function () {
-        scrollToINR();
-    });
+//    $("#I_NR,#I_NNAME,#I_VNAME,#I_ORT").focusin(function () {
+//        scrollToINR();
+//    });
 });
-
-window.onbeforeunload = function (e) {
-    $('.onExit').addClass('ui-disabled');
-};

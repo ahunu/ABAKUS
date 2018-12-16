@@ -205,8 +205,6 @@ function onOK() {
         }
     }
 
-    $(".onExit").addClass('ui-disabled');
-
     if ((LS.AnzSpieler === 4 && LS.JeSeite !== Old_JeSeite)
             || (LS.Pausierer1 !== H_Pausierer1)
             || (LS.Pausierer2 !== H_Pausierer2)
@@ -427,8 +425,4 @@ window.onpageshow = function (event) {
             window.location.reload();
         }
     }
-};
-
-window.onbeforeunload = function (e) {
-    $('.onExit').addClass('ui-disabled');
 };

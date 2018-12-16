@@ -253,6 +253,3 @@ $(document).bind('pageinit', function () {
     loadSPIELER();
 
 });
-window.onbeforeunload = function (e) {
-    $('.onExit').addClass('ui-disabled');
-};

@@ -76,11 +76,17 @@ function QUERFORMAT() {
 }
 
 function historyBack() {
-    if (!QUERFORMAT()) {
+    if (QUERFORMAT()) {
+        history.back();
+    } else {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        if (LS.ME !== 'NOBODY') {
+            history.go(-2);
+        } else {
+            history.back();
+        }
     }
-    history.back();
 }
 
 function AnAbmelden(pAnmelden) {

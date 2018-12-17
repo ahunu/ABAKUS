@@ -66,22 +66,22 @@ function QUERFORMAT() {
 
 function href(pUrl) {
 //    window.location.hash = '';
-//    window.location.href = pUrl;
+    window.location.href = pUrl;
 
-    if (navigator.vendor.indexOf("Apple") >= 0) {
-        if (window.location.hash) {
-            sUrl = pUrl;
-            window.location.hash = '';
-        } else {
-            window.location.href = pUrl;
-        }
-    } else {
-        if (window.location.hash) {
-            window.location.replace(pUrl);
-        } else {
-            window.location.href = pUrl;
-        }
-    }
+//    if (navigator.vendor.indexOf("Apple") >= 0) {
+//        if (window.location.hash) {
+//            sUrl = pUrl;
+//            window.location.hash = '';
+//        } else {
+//            window.location.href = pUrl;
+//        }
+//    } else {
+//        if (window.location.hash) {
+//            window.location.replace(pUrl);
+//        } else {
+//            window.location.href = pUrl;
+//        }
+//    }
 }
 
 function hrefStatistik(pParameter) {
@@ -161,28 +161,15 @@ function initSeite1() {
         }
         $('#pMenu').show();
         $('#hMix').hide();
-    } else {
-        if (I === LS.I && I !== 0) {
-            initSeite2();
-            writeLOG('3. initSeite1: Tisch' + I + ', ' + window.location.href);
-            showCup(I);
-        } else if (I !== 0) {
-            writeLOG('3. initSeite1: Cup' + I + ', ' + window.location.href);
-            showCup(I);
+    } else { // ?????????????????????? llll
+        if (I === 0) {
+            $('#hMix,#pCup,#pTisch').hide();
+            $('#hMenu,#pMenu').show();
         } else {
-            writeLOG('3. initSeite1: Menu' + I + ', ' + window.location.href);
-            if (window.location.hash) {
-                writeLOG('333333333333333333333. initSeite1: Menu' + I + ', ' + window.location.href);
-                window.location.hash = '';
-                history.back();
-            } else {
-                $('#hMix,#pCup,#pTisch').hide();
-                $('#hMenu,#pMenu').show();
-//                if (LS.ShowCups) {
-//                    LS.ShowCups = 0;
-//                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-//                }
+            if (I === LS.I) {
+                initSeite2();
             }
+            showCup(I);
         }
     }
 }
@@ -432,8 +419,10 @@ function showLOG() {
 
 function initSeite2() {
     'use strict';
+    $('#bWeiter,#bSpieler,#bSpeichern').removeClass('ui-disabled'); // Wegen iOS entfernen
+
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
-    if (CUPS.TURNIER[I] === 'PC') {
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC') {
         $('#bSpieler').addClass('ui-disabled');
         if (CUPS.SPJERUNDE[I] > LS.gespielt) {
             $('#bSpeichern').addClass('ui-disabled');
@@ -765,11 +754,13 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
 
     if (I && I === LS.I) {
         initSeite2();
-//        $('#pMenu').hide();
-//        $('#pTisch').show();
         $('#tischButtons').html(getCupButtons()).trigger('create').show();
-        window.location.href = "#" + Date.now();
-        writeLOG('5. showCup Tisch href' + I + ', ' + window.location.href);
+        if (window.location.hash) { // ????????????????????????? llll
+            $('#hMenu,#pMenu,#pCup').hide();
+            $('#hMix,#pTisch').show();
+        } else {
+            window.location.href = "#" + Date.now();
+        }
     } else {
         if (hMeldung) {
             $('#hfText').html('<div class="B cRot">' + hMeldung + '</div>' + CUPS.TEXT1[i]);
@@ -777,8 +768,12 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
             $('#hfText').html(CUPS.TEXT1[i]);
         }
         $('#cupButtons').html(getCupButtons()).trigger('create').show();
-        window.location.href = "#" + Date.now();
-        writeLOG('5. showCup Cup href' + I + ', ' + window.location.href);
+        if (window.location.hash) { // ????????????????????????? llll
+            $('#hMenu,#pMenu,#pTisch').hide();
+            $('#hMix,#pCup').show();
+        } else {
+            window.location.href = "#" + Date.now();
+        }
     }
 
 }
@@ -1482,32 +1477,21 @@ $(document).ready(function () {
 });
 
 window.onpageshow = function (event) {
-//    if (event.persisted) {
-//        if (navigator.userAgent.indexOf("Chrome") < 0
-//                && navigator.userAgent.indexOf("Opera") < 0) {
-//            window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
-//        }
-//    }
+    if (event.persisted) {
         if (navigator.userAgent.indexOf("Chrome") < 0
                 && navigator.userAgent.indexOf("Opera") < 0) {
-//    if (navigator.vendor.indexOf("Apple") >= 0) {
-//        writeLOG('onpageshow: Reload >>>>>>>' + window.location.href + ', ' + window.performance.navigation.type + ', ' + sUrl);
-        if (window.performance.navigation.type === 2
-                && !sUrl
-//                && !window.navigator.standalone
-
-                ) { // bei iOS Web-App nicht notwendig
-//            writeLOG('onpageshow: Reload >>>>>>>');
-//            if (window.location.hash) {
-//                window.location.hash = '';
-//            }
-            writeLOG('1. onpageshow: Reload >>>>>>>' + window.location.href + ', ' + window.performance.navigation.type + ', ' + sUrl);
-//            window.location.reload();
-            fINIT();
-//        var href = window.location.href;
-//        window.location.href = href;
+//            window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
+            if (window.performance.navigation.type === 2) { // bei iOS Web-App nicht notwendig
+                fINIT();
+            }
         }
     }
+//    if (navigator.userAgent.indexOf("Chrome") < 0
+//            && navigator.userAgent.indexOf("Opera") < 0) {
+//        if (window.performance.navigation.type === 2) { // bei iOS Web-App nicht notwendig
+//            fINIT();
+//        }
+//    }
 };
 
 window.onhashchange = function () {
@@ -1523,12 +1507,6 @@ window.onhashchange = function () {
             writeLOG('onhashchange: hash: ' + hHash);
             $('#hMenu,#pMenu,#pTisch').hide();
             $('#hMix,#pCup').show();
-        } else if (sUrl && LS.ShowCups) {
-            writeLOG('onhashchange: hRef: ' + sUrl);
-            var hUrl = sUrl;
-            sUrl = '';
-//            window.location.href = hUrl;
-            window.location.replace(hUrl);
         } else {
             writeLOG('onhashchange: hash: ' + hHash);
             $('#hMix,#pCup,#pTisch').hide();

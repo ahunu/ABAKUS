@@ -125,11 +125,23 @@ function nbHome() {
 
 function statBack() {
     if (window.location.href.indexOf('?') > 0 && window.location.href.indexOf('?FromTurnier') < 0) {
-        window.location.replace('../index.html');
-    } else if (navigator.userAgent.toUpperCase().indexOf("ANDROID") >= 0 && LS.ME !== 'NOBODY') {
-        history.go(-2);
-    } else {
+        if (window.location.href.indexOf('?FromTurnier') < 0) {
+            history.back();
+        } else {
+            window.location.replace('../index.html');
+        }
+    }
+    if (QUERFORMAT()) {
         history.back();
+    } else {
+        LS.ShowCups = 0;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        history.go(-1);
+//        if (LS.ME !== 'NOBODY') {
+//            history.go(-2);
+//        } else {
+//            history.back();
+//        }
     }
 }
 

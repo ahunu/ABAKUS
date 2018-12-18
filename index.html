@@ -32,6 +32,9 @@
                         } else {
                             var iRef = 0;
                             for (var ii = CUPS.NAME.length; ii > 0; ii--) {
+                                if (ii === 10){
+                                    ii  = 10;
+                                }
                                 if (CUPS.NAME[ii]) {
                                     iRef = hRef.indexOf(CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').toUpperCase());
                                     if (iRef > 0) {

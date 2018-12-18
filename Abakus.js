@@ -1,8 +1,6 @@
 
 /* global getVersionsDatum, firebase, pSeite, pCUP */
 
-var sUrl = '';
-var iStat = '';
 var PC = false;
 var DB = new Object();
 var FB = undefined;
@@ -64,26 +62,6 @@ function QUERFORMAT() {
     }
 }
 
-function href(pUrl) {
-//    window.location.hash = '';
-    window.location.href = pUrl;
-
-//    if (navigator.vendor.indexOf("Apple") >= 0) {
-//        if (window.location.hash) {
-//            sUrl = pUrl;
-//            window.location.hash = '';
-//        } else {
-//            window.location.href = pUrl;
-//        }
-//    } else {
-//        if (window.location.hash) {
-//            window.location.replace(pUrl);
-//        } else {
-//            window.location.href = pUrl;
-//        }
-//    }
-}
-
 function hrefStatistik(pParameter) {
     if (!pParameter) {
         pParameter = '';
@@ -96,9 +74,9 @@ function hrefStatistik(pParameter) {
             || (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()))) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
-            href("Statistik/Statistik.html");
+            window.location.href = "Statistik/Statistik.html";
         } else {
-            href("Abakus/Statistik.html" + pParameter);
+            window.location.href = "Abakus/Statistik.html" + pParameter;
         }
     } else {
         loadSTAT(I, 'Statistik wird geladen.', false, hrefStatistikPR);
@@ -135,7 +113,7 @@ function hrefStatistikPR() {
 
     if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        href("Abakus/Statistik.html");
+        window.location.href = "Abakus/Statistik.html";
     } else {
         if (CUPS.MEZULETZT[I] === 0) {
             meldKeineBerechtigung(0);
@@ -145,7 +123,7 @@ function hrefStatistikPR() {
             meldKeineBerechtigung(365);
         } else {
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            href("Abakus/Statistik.html");
+            window.location.href = "Abakus/Statistik.html";
         }
     }
 }
@@ -775,7 +753,6 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
             window.location.href = "#" + Date.now();
         }
     }
-
 }
 
 function listVersion() {
@@ -813,6 +790,7 @@ function toggleTechDetails() {
                 + (("standalone" in window.navigator && window.navigator.standalone)
                         ? 'navigators.standalone: true<br>'
                         : '')
+                + 'navigator.userAgent: ' + navigator.userAgent + '<br>'
                 + 'navigator.platform: ' + navigator.platform + '<br>'
                 + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>'
                 + 'history.length: ' + history.length + '<br>'
@@ -1164,11 +1142,11 @@ function whenCUPSloaded() {
 //            } else {
 //                SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
 //            }
-            if (i > 50 && i < 58) { // Wiener Zeitung Tarockcup
-                SORT[SORT.length] = i + CUPS.NAME[i] + '  ;' + i;
-            } else {
+//            if (i > 50 && i < 58) { // Sort nach Cupname
+//                SORT[SORT.length] = i + CUPS.NAME[i] + '  ;' + i;
+//            } else {
                 SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
-            }
+//            }
         }
     }
 
@@ -1316,7 +1294,6 @@ function fINIT() {
     if (typeof localStorage !== 'object') {
         return;
     }
-    writeLOG('2. Document ready(): ' + window.location.href);
     $('#pFehler').hide();
     if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
         PC = true;
@@ -1349,7 +1326,6 @@ function fINIT() {
         LS.Ansage = '';
         LS.ShowCups = 0;
         LS.LoadCups = 0;
-        LS.LoadStat = 0;
         LS.SchriftG = 1;
         LS.Padding = 2;
         LS.Freunde = [];
@@ -1374,9 +1350,6 @@ function fINIT() {
     } else {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     }
-//        LS.ShowCups = 0;
-
-    iStat = 'Initial: I=' + I + ', LS.ShowCups=' + LS.ShowCups + ', Hash=' + window.location.hash;
 
     initExtraButtons();
     if (window.location.href.toUpperCase().indexOf('?VIPS') > 0) {
@@ -1496,7 +1469,6 @@ window.onpageshow = function (event) {
 
 window.onhashchange = function () {
     if (!QUERFORMAT()) {
-//        alert (iStat + '      Aktuell: I=' + I + ', LS.ShowCups=' + LS.ShowCups + ', Hash=' + window.location.hash);
         var hHash = window.location.hash;
         if (hHash && I && I === LS.I) {
 //        if (hHash === '#MeinTisch' && LS.ShowCups) {
@@ -1516,6 +1488,6 @@ window.onhashchange = function () {
 //                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 //            }
         }
-        window.scrollTo(0, 0);
+            $('#pContent').scrollTop(0);
     }
 };

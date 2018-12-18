@@ -1,6 +1,4 @@
 
-var PC = false;
-
 var LS = new Object();
 var DS = new Object();
 var STAT = new Object();
@@ -65,6 +63,14 @@ function showEinenTip(pTarget, pText) {
     myJTip.open({
         target: pTarget
     });
+}
+
+function QUERFORMAT() {
+    if ($(window).innerWidth() > $(window).innerHeight()) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function SPIELERerweitern() {
@@ -1559,18 +1565,12 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "NOBODY") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
         return false;
     };
-
-    if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
-        PC = true;
-    } else {
-        PC = false;
-    }
 
     myJTip = new jBox('Tooltip', {
         theme: 'TooltipError',
@@ -1795,13 +1795,13 @@ $(document).ready(function () {
 
     $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusin(function () {
         scrollToINR();
-        if (!PC) { // PhoneGap cli 6.3.0 schiebt den Footer vor die virtuelle Tastatur
+        if (!QUERFORMAT()) { // PhoneGap cli 6.3.0 schiebt den Footer vor die virtuelle Tastatur
             $('#Footer').hide();
         }
     });
 
     $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusout(function () {
-        if (!PC) {
+        if (!QUERFORMAT()) {
             setTimeout(function () {
                 if (!$('#I_NR').is(':focus')
                         && !$('#I_VNAME').is(':focus')
@@ -1813,7 +1813,4 @@ $(document).ready(function () {
         }
     });
 
-//    $("#I_NR,#I_NNAME,#I_VNAME,#I_ORT").focusin(function () {
-//        scrollToINR();
-//    });
 });

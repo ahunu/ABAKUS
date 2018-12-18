@@ -1,18 +1,18 @@
 
 function getVersion() {
-    return 899;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 900;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
-    return setVersion(2018, 12, 17);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2018, 12, 18);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
 }
 
-//  Mit wem würdest du am liebsten einmal zu abend essen?
+// Mit wem würdest du am liebsten einmal zu abend essen?
 
-//  Wise würdest du einen perfekten Tag beschreiben?
+// Wise würdest du einen perfekten Tag beschreiben?
 
 // responsiveVoice - Die Versionen bis inclusive 1.5.10 funktionieren nach der Änderung eines Spiels auf Android nicht !!!
 // Nur mit 1.4.9 wird die Meldung "wants to use speech DENY ALLOW" nach der Änderung eines Spiels nicht gezeigt.

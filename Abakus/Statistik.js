@@ -82,7 +82,8 @@ function historyBack() {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         $('#bMeinTisch').addClass('ui-disabled');
-        if (CUPS.BEREadmin[stCup].indexOf(LS.ME) < 0
+        if (window.location.href.indexOf('Anmeldungen') > 0
+                || CUPS.BEREadmin[stCup].indexOf(LS.ME) < 0
                 && CUPS.BEREschreiben[stCup].indexOf('*') < 0
                 && CUPS.BEREschreiben[stCup].indexOf(LS.ME) < 0
                 && stCup > 4) {
@@ -409,30 +410,30 @@ $(document).ready(function () {
 
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
 
-    if (window.location.href.indexOf('?') > 0) {
-        var hRef = window.location.href.replace(/%20|_/g, ' ').toUpperCase();
-        var iRef = 0;
-        for (var ii = CUPS.NAME.length; ii > 0; ii--) {
-            if (CUPS.NAME[ii]) {
-                iRef = hRef.indexOf(CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').toUpperCase());
-                if (iRef > 0) {
-                    hRef = hRef.substr(iRef);
-                }
-                if (hRef === CUPS.NAME[ii].replace(/\%20|_| /g, '').toUpperCase()) {
-                    if (CUPS.BEREadmin[ii].indexOf(LS.ME) >= 0
-                            || CUPS.BEREschreiben[ii].indexOf('*') >= 0
-                            || CUPS.BEREschreiben[ii].indexOf(LS.ME) >= 0
-                            || CUPS.TYP[ii] !== 'PR') {
-                        stCup = ii;
-                        break;
-                    } else {
-                        showEinenFehler(ii, 'Berechtigung fehlt!');
-                        return;
-                    }
-                }
-            }
-        }
-    }
+//    if (window.location.href.indexOf('?') > 0) {
+//        var hRef = window.location.href.replace(/%20|_/g, ' ').toUpperCase();
+//        var iRef = 0;
+//        for (var ii = CUPS.NAME.length; ii > 0; ii--) {
+//            if (CUPS.NAME[ii]) {
+//                iRef = hRef.indexOf(CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').toUpperCase());
+//                if (iRef > 0) {
+//                    hRef = hRef.substr(iRef);
+//                }
+//                if (hRef === CUPS.NAME[ii].replace(/\%20|_| /g, '').toUpperCase()) {
+//                    if (CUPS.BEREadmin[ii].indexOf(LS.ME) >= 0
+//                            || CUPS.BEREschreiben[ii].indexOf('*') >= 0
+//                            || CUPS.BEREschreiben[ii].indexOf(LS.ME) >= 0
+//                            || CUPS.TYP[ii] !== 'PR') {
+//                        stCup = ii;
+//                        break;
+//                    } else {
+//                        showEinenFehler(ii, 'Berechtigung fehlt!');
+//                        return;
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     if (stCup <= 0) {
         history.back();

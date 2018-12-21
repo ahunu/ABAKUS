@@ -1005,29 +1005,38 @@ function whenCUPSloaded() {
     TERMINE.sort(function (a, b) {
         return (a.DATUM > b.DATUM) ? 1 : ((b.DATUM > a.DATUM) ? -1 : 0);
     });
-    if (window.location.href.indexOf('?') > 0) { // Quickstart
-        var hRef = window.location.href.replace(/\%20|_| /g, '').toUpperCase();
-        if (hRef.indexOf('ST.TAROCKCUP') > 0 || hRef.indexOf('WR.TAROCKCUP') > 0 || hRef.indexOf('STADLTAROCK') > 0) {
-            window.location.replace('Statistik/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
-        }
-        var iRef = 0;
-        for (var ii = CUPS.NAME.length; ii > 0; ii--) {
-            if (CUPS.NAME[ii]) {
-                iRef = hRef.indexOf(CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').toUpperCase());
-                if (iRef > 0) {
-                    hRef = hRef.substr(iRef);
-                }
-                if (hRef === CUPS.NAME[ii].replace(/\%20|_| /g, '').toUpperCase()) {
-                    if (CUPS.TYP[ii] === 'PR') {
-                        showEinenFehler(ii, 'Berechtigung fehlt!');
-                        break;
-                    } else {
-                        if (CUPS.TYP[ii] === 'CUP' || CUPS.TYP[ii] === 'MT') {
-                            window.location.replace('Statistik/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
-                        } else {
-                            window.location.replace('Abakus/Statistik.html' + window.location.href.substr(window.location.href.indexOf('?')));
+
+    if (window.location.search) { // Quickstart
+        LS = new Object();
+        LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+        if (LS) { // nicht beim allerersten Aufruf
+            CUPS = new Object();
+            CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+            if (CUPS) {
+                var hCupName = window.location.search.replace(/\%20|_| /g, '').substr(1).toUpperCase();
+                var newCup = 0;
+                if (hCupName === 'WR.TAROCKCUP') {
+                    newCup = 56;
+                } else if (hCupName === 'ST.TAROCKCUP') {
+                    newCup = 54;
+                } else if (hCupName === 'WR.MARATHON') {
+                    newCup = 50;
+                } else if (hCupName === 'CAFEHEINECUP') {
+                    newCup = 8;
+                } else {
+                    for (var ii = CUPS.NAME.length; ii > 0; ii--) {
+                        if (CUPS.NAME[ii]) {
+                            if (CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').indexOf(hCupName) >= 0) {
+                                newCup = ii;
+                                break;
+                            }
                         }
                     }
+                }
+                if (newCup) {
+                    LS.ShowCups = newCup;
+                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                    window.location.replace(window.location.origin + window.location.pathname);
                 }
             }
         }
@@ -1145,7 +1154,7 @@ function whenCUPSloaded() {
 //            if (i > 50 && i < 58) { // Sort nach Cupname
 //                SORT[SORT.length] = i + CUPS.NAME[i] + '  ;' + i;
 //            } else {
-                SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
+            SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
 //            }
         }
     }
@@ -1488,6 +1497,6 @@ window.onhashchange = function () {
 //                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 //            }
         }
-            $('#pContent').scrollTop(0);
+        $('#pContent').scrollTop(0);
     }
 };

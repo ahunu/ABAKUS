@@ -46,37 +46,39 @@
         <div class='M'>
             <br>
             <div id=pMeinCup>
-                <div id="bTurnierkalender" class="ui-btn ui-disabled cHEIKEL" onclick="window.location.href = 'Turnierkalender.html';">
+                <div id="bTurnierkalender" class="ui-btn ui-disabled" onclick="window.location.href = 'Turnierkalender.html';">
                     <div class=XL>Turnierkalender
-                        <div class='S N'>Eintragen und &auml;ndern der Termine.
+                        <div class='S N'>Termine pflegen.
                         </div>
                     </div>
                 </div>
-                <div class="ui-btn ui-disabled cHEIKEL" onclick="window.location.href = 'VorjahrImport.html';">
-                    <div class=XL>Statistikdaten importieren
-                        <div class='S N'>Statistikdaten aus dem System von Karl Haas &uuml;bernehmen.
+                <div id="dStatistikImport" class="ui-disabled" hidden>
+                    <div class="ui-btn" onclick="window.location.href = 'VorjahrImport.html';">
+                        <div class=XL>Statistikdaten importieren
+                            <div class='S N'>Statistikdaten aus dem System von Karl Haas übernehmen.
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="dGOOD" hidden>
-                    <div class="ui-btn ui-disabled cHEIKEL" onclick="window.location.href = 'SpielerImport.html';">
+                <div id="dSpielerImport" class="ui-disabled" hidden>
+                    <div class="ui-btn" onclick="window.location.href = 'SpielerImport.html';">
                         <div class=XL>Spieler importieren
                             <div class='S N'>Einlesen der Spieler-Datei (CSV-Format) von Karl Haas.
                             </div>
-                            <div class='S N'>Dabei werden alle bestehenden Spieler &uuml;berschrieben.
+                            <div class='S N'>Dabei werden alle bestehenden Spieler überschrieben.
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="bSpielerAendern" class="ui-btn ui-disabled cHEIKEL" onclick="window.location.href = 'SpielerAendern.html';">
+                <div id="bSpielerAendern" class="ui-btn ui-disabled" onclick="window.location.href = 'SpielerAendern.html';">
                     <div class=XL>Spielerverwaltung
-                        <div class='S N'>Spieler anzeigen, ändern, neu anlegen
+                        <div class='S N'>Spieler anzeigen, ändern, neu anlegen.
                         </div>
                     </div>
                 </div>
-                <div id="bSpielerExport" class="ui-btn ui-disabled cHEIKEL" onclick="window.location.href = 'SpielerExport.html';">
+                <div id="bSpielerExport" class="ui-btn ui-disabled" onclick="window.location.href = 'SpielerExport.html';">
                     <div class=XL>Spieler exportieren
-                        <div class='S N'>Excel-Spieler-Datei erstellen.
+                        <div class='S N'>Excel-Datei erstellen.
                         </div>
                     </div>
                 </div>
@@ -89,13 +91,13 @@
             </div>
             <br>
             <div id=pMeinCupFuss>
-                <div class="ui-grid-a ui-btn" style="padding:0px;height:53px;" onClick="history.back();">
+                <div class="ui-grid-a ui-btn" style="padding:0px;height:60px;" onClick="history.back();">
                     <div class="ui-block-a" style="width:20%;spadding:-30px 0px 0px 0px">
-                        <img src='../Icons/icon-48-mdpi.png' height="55" width="55"/>
+                        <img src='../Icons/icon-48-mdpi.png' height="60" width="60"/>
                     </div>
                     <div class="ui-block-b C" style="width:75%;xpadding:16px 0px 15px 0px">
                         <div class=L>Abakus
-                            <div class='S N'>Cup- und Runden&uuml;bersicht
+                            <div class='S N'>Cup- und Rundenübersicht
                             </div>
                         </div>
                     </div>

@@ -1793,24 +1793,26 @@ $(document).ready(function () {
         }
     }
 
-    $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusin(function () {
-        scrollToINR();
-        if (!QUERFORMAT()) { // PhoneGap cli 6.3.0 schiebt den Footer vor die virtuelle Tastatur
-            $('#Footer').hide();
-        }
-    });
+    if (LS.Timeout !== 111) {
+        $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusin(function () {
+            scrollToINR();
+            if (!QUERFORMAT()) { // PhoneGap cli 6.3.0 schiebt den Footer vor die virtuelle Tastatur
+                $('#Footer').hide();
+            }
+        });
 
-    $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusout(function () {
-        if (!QUERFORMAT()) {
-            setTimeout(function () {
-                if (!$('#I_NR').is(':focus')
-                        && !$('#I_VNAME').is(':focus')
-                        && !$('#I_NNAME').is(':focus')
-                        && !$('#I_ORT').is(':focus')) {
-                    $('#Footer').show();
-                }
-            });
-        }
-    });
+        $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusout(function () {
+            if (!QUERFORMAT()) {
+                setTimeout(function () {
+                    if (!$('#I_NR').is(':focus')
+                            && !$('#I_VNAME').is(':focus')
+                            && !$('#I_NNAME').is(':focus')
+                            && !$('#I_ORT').is(':focus')) {
+                        $('#Footer').show();
+                    }
+                });
+            }
+        });
+    }
 
 });

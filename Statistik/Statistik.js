@@ -353,10 +353,17 @@ function writeAnekdote(pWrite) {
 $(document).ready(function () {
 
     $('#iDownload,#iPrint,#iAnekdote').hide();
-    if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
-        PC = true;
-    } else {
+    if (navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+            ) {
         PC = false;
+    } else {
+        PC = true;
     }
     setStMaxFont();
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
@@ -547,4 +554,10 @@ window.onbeforeunload = function (e) {
         firebaseRef.off();
     }
     $('#dRumpf,#dFooter').addClass('ui-disabled').show();
+
+    if (!QUERFORMAT() && LS.ME === "NOBODY" && LS.ShowCups) {
+        LS.ShowCups = 0;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        $('#bMeinTisch').addClass('ui-disabled');
+    }
 };

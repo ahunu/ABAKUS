@@ -894,7 +894,6 @@ function getClass(i) {
     }
 
     var cReturn = '';
-//    if (CUPS.BEREadmin[i].indexOf('3425') >= 0 || CUPS.BEREadmin[i].indexOf('3244') >= 0) { // Markus Mair
     if (CUPS.TYP[i] === 'WR'
             || CUPS.TYP[i] === 'FC'
             || CUPS.TYP[i] === 'TC'
@@ -914,7 +913,6 @@ function getClass(i) {
             }
         }
     }
-//    }
     return cReturn;
 }
 
@@ -1035,6 +1033,7 @@ function whenCUPSloaded() {
                 }
                 if (newCup) {
                     LS.ShowCups = newCup;
+                    LS.Quickstart = true;
                     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                     window.location.replace(window.location.origin + window.location.pathname);
                 }
@@ -1051,13 +1050,18 @@ function whenCUPSloaded() {
     var htmlWT = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Weitere Termine:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlMR = '<div data-role="collapsible" data-theme="d" data-collapsed="false" data-iconpos="right" data-corners="false"><h2>&nbsp;Meine Cups/Runden:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlCT = '<div data-role="collapsibleset" data-iconpos="right" data-corners="false">'
-            + '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Cups:</h2><ul data-role="listview" data-split-icon="info">';
+            + '<div data-role="collapsible" data-theme="d"' + (LS.Quickstart ? ' data-collapsed="false"' : '') + '><h2>&nbsp;Cups:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlLC = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Lokale Cups:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlMT = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Mannschaftsturniere:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlFC = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Wirtshausrunden:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlPR = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Private Runden:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlTR = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Testrunden -turniere:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlAR = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Allgemeine Runden:</h2><ul data-role="listview" data-split-icon="info">';
+
+    if (LS.Quickstart) {
+        delete LS.Quickstart;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
     var hTemp = '';
     var hAktuellBis = myDateString(Date.now() + (86400000 * 31));
     for (var termin in TERMINE) {
@@ -1304,10 +1308,17 @@ function fINIT() {
         return;
     }
     $('#pFehler').hide();
-    if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
-        PC = true;
-    } else {
+    if (navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+            ) {
         PC = false;
+    } else {
+        PC = true;
     }
 
     try {

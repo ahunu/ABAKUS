@@ -42,6 +42,7 @@
                         }
                         if (newCup) {
                             LS.ShowCups = newCup;
+                            LS.Quickstart = true;
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                             window.location.replace(window.location.origin + window.location.pathname);
                         }

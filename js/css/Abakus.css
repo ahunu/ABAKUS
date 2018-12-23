@@ -734,16 +734,6 @@ input {
     width: 76% !important;
     clear: none !important;
 }
-/*.cAktiv {
-    color: #FEFEFE;
-    background: #38d;
-}*/
-.bgVorhandAlt {
-    color: #ff8800;
-}
-.bgVorhand {
-    color: #efdf99 !important;
-}
 .cInaktiv {
     color: #D3D3D3;
 }

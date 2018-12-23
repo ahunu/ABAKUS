@@ -380,10 +380,17 @@ function Deactivate(button) {
 // I N I T  ************************************************************************************
 $(document).ready(function () {
 
-    if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
-        PC = true;
-    } else {
+    if (navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+            ) {
         PC = false;
+    } else {
+        PC = true;
     }
 
     if (QUERFORMAT()) {
@@ -548,10 +555,15 @@ $(document).ready(function () {
         }
     });
 
-//    window.onbeforeunload = function (e) {
+    window.onbeforeunload = function (e) {
 //    if (firebaseRef) {
 //        firebaseRef.off();
 //    }
-//    };
+        if (!QUERFORMAT() && LS.ME === "NOBODY" && LS.ShowCups) {
+            LS.ShowCups = 0;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            $('#bMeinTisch').addClass('ui-disabled');
+        }
+    };
 
 });

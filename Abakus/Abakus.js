@@ -1608,10 +1608,17 @@ function Spieler_Init() {
 
 $(document).ready(function (e) {
 
-    if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
-        PC = true;
-    } else {
+    if (navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+            ) {
         PC = false;
+    } else {
+        PC = true;
     }
 
     LS = new Object();

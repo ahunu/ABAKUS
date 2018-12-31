@@ -525,9 +525,7 @@ function resetLastBtn() {
 
 function showCup(i, pTermin, pAnmeldungen, pMR) {
     'use strict';
-    I = i;
-    writeLOG('4. showCup' + I + ', ' + window.location.href);
-    LS.ShowCups = I;
+    LS.ShowCups = I = i;
     if (LS.Meldung) {
         var hMeldung = LS.Meldung;
     }
@@ -877,7 +875,8 @@ function showCUPS() {
             writeLOG('ABAKUS: Update auf Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ').');
         }
         initCUPSdelAllSTAT();
-    } else if (LS.LoadCups > 0 || diff !== 0) {
+//    } else if (LS.LoadCups > 0 || diff === 0) {
+    } else if (LS.LoadCups > 0 || diff !== 0) { // llllll
         loadCUPS(false, false, true);
     } else {
         whenCUPSloaded();
@@ -1465,42 +1464,43 @@ function fINIT() {
 }
 //  Funktionen  **************************************************************************
 
-$(document).ready(function () {
+window.onload = function () {
     fINIT();
-});
+};
+window.onunload = function () {};
 
-window.onpageshow = function (event) {
-    if (event.persisted) {
-        if (navigator.userAgent.indexOf("Chrome") < 0
-                && navigator.userAgent.indexOf("Opera") < 0) {
-//            window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
-            if (window.performance.navigation.type === 2) { // bei iOS Web-App nicht notwendig
-                fINIT();
-            }
-        }
-    }
+//$(document).ready(function () {
+//    fINIT();
+//});
+
+//window.onpageshow = function (event) {
+//    if (event.persisted) {
+//        if (navigator.userAgent.indexOf("Chrome") < 0
+//                && navigator.userAgent.indexOf("Opera") < 0) {
+//        //    window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
+//            if (window.performance.navigation.type === 2) { // bei iOS Web-App nicht notwendig
+//                fINIT();
+//            }
+//        }
+//    }
 //    if (navigator.userAgent.indexOf("Chrome") < 0
 //            && navigator.userAgent.indexOf("Opera") < 0) {
 //        if (window.performance.navigation.type === 2) { // bei iOS Web-App nicht notwendig
 //            fINIT();
 //        }
 //    }
-};
+//};
 
 window.onhashchange = function () {
     if (!QUERFORMAT()) {
         var hHash = window.location.hash;
         if (hHash && I && I === LS.I) {
-//        if (hHash === '#MeinTisch' && LS.ShowCups) {
-            writeLOG('onhashchange: hash: ' + hHash);
             $('#hMenu,#pMenu,#pCup').hide();
             $('#hMix,#pTisch').show();
         } else if (hHash && LS.ShowCups) {
-            writeLOG('onhashchange: hash: ' + hHash);
             $('#hMenu,#pMenu,#pTisch').hide();
             $('#hMix,#pCup').show();
         } else {
-            writeLOG('onhashchange: hash: ' + hHash);
             $('#hMix,#pCup,#pTisch').hide();
             $('#hMenu,#pMenu').show();
 //            if (LS.ShowCups) {

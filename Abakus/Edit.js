@@ -849,7 +849,9 @@ function showBody() {
     }
 }
 
-$(document).ready(function (e) {
+window.onunload = function () {};
+window.onload = function () {
+    // $(document).ready(function () {
 
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
@@ -965,7 +967,7 @@ $(document).ready(function (e) {
         $(":mobile-pagecontainer").pagecontainer("load", "Abakus" + LS.AnzSpieler + LS.JeSeite + ".html");
     }
 
-});
+};
 
 $(function () {
     $('#DE1,#DE2,#DE3,#DE4,#DE5,#DE6').keyup(function () {
@@ -976,20 +978,20 @@ $(function () {
     });
 });
 
-window.onpageshow = function (event) {
-    if (event.persisted) {
-        if (navigator.userAgent.indexOf("Chrome") < 0
-                && navigator.userAgent.indexOf("Opera") < 0) {
-            var hJeSeite = LS.JeSeite;
-            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-            if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
-                window.location.replace('Edit4' + LS.JeSeite + '.html?');
-                return;
-            }
-            showBody();
-        }
-    }
-};
+//window.onpageshow = function (event) {
+//    if (event.persisted) {
+//        if (navigator.userAgent.indexOf("Chrome") < 0
+//                && navigator.userAgent.indexOf("Opera") < 0) {
+//            var hJeSeite = LS.JeSeite;
+//            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+//            if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
+//                window.location.replace('Edit4' + LS.JeSeite + '.html?');
+//                return;
+//            }
+//            showBody();
+//        }
+//    }
+//};
 
 window.onbeforeunload = function (e) {
     $('body').addClass('ui-disabled');

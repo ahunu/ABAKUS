@@ -17,7 +17,7 @@ function showGR() {
 
     aktPos = DS.Game.length - 1;
 
-    canvas = document.getElementById('bchart');
+    canvas = document.getElementById('bChart');
     if (window.location.search) {
         canvas.height = parseInt(window.location.search.substr(1)) - $('#NB').height() - $('#NB').height() - 2;
     } else {
@@ -57,6 +57,9 @@ function showGR() {
             hAnsage.lang = "de-DE";
             window.speechSynthesis.speak(hAnsage);
         }
+    }
+    if (LS.ME === '3425') { // llll
+        $('#dLabel').attr('style', 'background-color:#27a;border:8px solid #33a;color: white;position: fixed; top: 222px; font-size: 44px; cursor: pointer; width: 100%;').show();
     }
 }
 
@@ -138,7 +141,6 @@ function getTitel() {
         }
     }
 }
-;
 
 function getSpiel() {
     'use strict';
@@ -206,7 +208,6 @@ function getSpiel() {
 
     return ret;
 }
-;
 
 function getPunkte(pSpieler) {
     'use strict';

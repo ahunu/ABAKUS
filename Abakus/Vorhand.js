@@ -245,7 +245,9 @@ function onOK() {
 
 }
 
-$(document).ready(function () {
+window.onunload = function () {};
+window.onload = function () {
+    // $(document).ready(function () {
 
     myReferrer = document.referrer;
 
@@ -416,13 +418,13 @@ $(document).ready(function () {
         });
     }
 
-});
-
-window.onpageshow = function (event) {
-    if (event.persisted) {
-        if (navigator.userAgent.indexOf("Chrome") < 0
-                && navigator.userAgent.indexOf("Opera") < 0) {
-            window.location.reload();
-        }
-    }
 };
+
+//window.onpageshow = function (event) {
+//    if (event.persisted) {
+//        if (navigator.userAgent.indexOf("Chrome") < 0
+//                && navigator.userAgent.indexOf("Opera") < 0) {
+//            window.location.reload();
+//        }
+//    }
+//};

@@ -65,6 +65,7 @@ function historyBack() {
     if (!QUERFORMAT() && LS.I !== LS.ShowCups) {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        LS.ShowCups = stCup; // for after Bottom-Forward
     }
     history.back();
 }
@@ -123,7 +124,7 @@ function nbHome() {
     }
 }
 
-function statBack() {
+function statBack() { // llll
     if (window.location.href.indexOf('?') > 0 && window.location.href.indexOf('?FromTurnier') < 0) {
         if (window.location.href.indexOf('?FromTurnier') < 0) {
             history.back();
@@ -410,39 +411,6 @@ $(document).ready(function () {
         }
     };
 
-    if (window.location.href.indexOf('?') > 0 && window.location.href.indexOf('?FromTurnier') < 0) {
-        var hRef = window.location.href.replace(/\%20|_| /g, '').toUpperCase();
-        if (hRef.indexOf('ST.TAROCKCUP') > 0) {
-            stCup = 54;
-        } else if (hRef.indexOf('WR.TAROCKCUP') > 0) {
-            stCup = 56;
-        } else if (hRef.indexOf('STADLTAROCK') > 0) {
-            stCup = 58;
-        } else {
-            var iRef = 0;
-            for (var ii = CUPS.NAME.length; ii > 0; ii--) {
-                if (CUPS.NAME[ii]) {
-                    iRef = hRef.indexOf(CUPS.NAME[ii].replace(/\%20|_| /g, '').toUpperCase());
-                    if (iRef > 0) {
-                        hRef = hRef.substr(iRef);
-                    }
-                    if (hRef === CUPS.NAME[ii].replace(/\%20|_| /g, '').toUpperCase()) {
-                        if (CUPS.BEREadmin[ii].indexOf(LS.ME) >= 0
-                                || CUPS.BEREschreiben[ii].indexOf('*') >= 0
-                                || CUPS.BEREschreiben[ii].indexOf(LS.ME) >= 0
-                                || CUPS.TYP[ii] !== 'PR') {
-                            stCup = ii;
-                            break;
-                        } else {
-                            showEinenFehler(ii, 'Berechtigung fehlt!');
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     if (stCup === 0) {
         history.go(-1);
     }
@@ -549,15 +517,12 @@ $(document).ready(function () {
 });
 
 window.onbeforeunload = function (e) {
-    $('#dRumpf,#dFooter').addClass('ui-disabled');
     if (firebaseRef) {
         firebaseRef.off();
     }
-    $('#dRumpf,#dFooter').addClass('ui-disabled').show();
-
-    if (!QUERFORMAT() && LS.ME === "NOBODY" && LS.ShowCups) {
+    if (!QUERFORMAT()) {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        $('#bMeinTisch').addClass('ui-disabled');
+        LS.ShowCups = stCup; // for after Bottom-Forward
     }
 };

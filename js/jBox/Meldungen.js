@@ -78,8 +78,10 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
     var hID = myJBox.id;
     setTimeout(function () {
         if (pForce) {
-            whenCUPSloaded();
-            $('#dUnAktuell').show();
+            if (CUPS.NAME.length > 100) { // llll
+                whenCUPSloaded();
+                $('#dUnAktuell').show();
+            }
         } else {
             $('.bUeberspringen').show();
             showEinenMoment2(hID, pSkip);

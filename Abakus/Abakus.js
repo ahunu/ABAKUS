@@ -1606,7 +1606,9 @@ function Spieler_Init() {
     $('#ss' + LS.Vorhand).buttonMarkup({theme: 'f'});
 }
 
-$(document).ready(function (e) {
+window.onunload = function () {};
+window.onload = function () {
+    // $(document).ready(function () {
 
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
@@ -1955,22 +1957,22 @@ $(document).ready(function (e) {
         Summieren();
     });
 
-    window.onpageshow = function (event) {
-        if (event.persisted) {
-            if (navigator.userAgent.indexOf("Chrome") < 0
-                    && navigator.userAgent.indexOf("Opera") < 0) {
-                // window.location.reload()
-                var hJeSeite = LS.JeSeite;
-                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-                if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
-                    window.location.replace('Abakus4' + LS.JeSeite + '.html?');
-                    return;
-                }
-                Seite = '??';
-                showSeite(NEXT.Seite);
-            }
-        }
-    };
+//    window.onpageshow = function (event) {
+//        if (event.persisted) {
+//            if (navigator.userAgent.indexOf("Chrome") < 0
+//                    && navigator.userAgent.indexOf("Opera") < 0) {
+//                // window.location.reload()
+//                var hJeSeite = LS.JeSeite;
+//                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+//                if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
+//                    window.location.replace('Abakus4' + LS.JeSeite + '.html?');
+//                    return;
+//                }
+//                Seite = '??';
+//                showSeite(NEXT.Seite);
+//            }
+//        }
+//    };
 
     if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') < 0) {
         $(":mobile-pagecontainer").pagecontainer("load", "Edit" + LS.AnzSpieler + LS.JeSeite + ".html");
@@ -1996,7 +1998,7 @@ $(document).ready(function (e) {
                 + '</div>'
     });
 
-});
+};
 
 window.onbeforeunload = function (e) {
     if (navigator.vendor.indexOf("Apple") < 0) {

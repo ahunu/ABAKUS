@@ -161,9 +161,17 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
         if (hDisp !== 1) {
             ctx.font = 'bold ' + (TH * 0.5) + "pt sans-serif-condensed";
             ctx.fillText(getTitel(), Breite / 2, (Hoehe + TH * 0.5) / 2);
+
+            if (LS.ME === '3425') { // llll
+                $('#dLabZeile1').text(getTitel());
+            }
+
         } else {
             ctx.font = 'bold ' + (TH * 0.6) + "pt sans-serif-condensed";
             ctx.fillText(getSpiel(), Breite / 2, (Hoehe + TH * 0.6) / 2);
+            if (LS.ME === '3425') { // llll
+                $('#dLabZeile1').text(getSpiel());
+            }
         }
 
         ctx.translate(Breite / 4, Hoehe - BH);
@@ -221,7 +229,6 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
             ctx.font = (TH / 1.3) + "pt sans-serif-condensed";  // llll
             ctx.fillText(pNName, 0, BH * 0.22);
         }
-
         setFontStyle(pSumme, "S", TH, 0, BH - TH / 3);
     }
 
@@ -322,4 +329,3 @@ function changeDisp() {
         }, false);
     }
 }
-;

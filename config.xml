@@ -2,8 +2,8 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.phonegap.ABAKUS" 
-        versionCode = "902"
-        version     = "902">     <!-- ABAKUS -->
+        versionCode = "903"
+        version     = "903">     <!-- ABAKUS -->
 
     <name>ABAKUS</name>
     

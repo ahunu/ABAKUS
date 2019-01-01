@@ -383,6 +383,7 @@ function initCUPSdelAllSTAT() {
         }
     }
     loadCUPS();
+    $('#dMeldung').html("<img src='Icons/OK.png' width='24' height='24'><span class=cSchwarz>&nbsp;&nbsp;Das System wurde initialisiert.</span><br>").show();
 }
 
 function showLOG() {
@@ -776,7 +777,8 @@ function listVersion() {
     if (sDate.getFullYear() < hDate.getFullYear()) {
         $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Das System wurde für " + hDate.getFullYear() + '<br>'
                 + 'noch nicht freigegeben.<br>'
-                + 'Informiere einen Administrator.<br>').show();
+                + 'Sollte das Problem nach dem drücken von [Initialisiern] weiter bestehen, '
+                + 'informiere einen Administrator.<br>').show();
     }
 }
 

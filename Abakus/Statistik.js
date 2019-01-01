@@ -296,8 +296,14 @@ function whenSTATloaded(pNotSynchron) {
     } else {
         statShow(0);
     }
-    if (window.location.href.indexOf('?') > 0 && window.location.href.indexOf('?Anmeldung') < 0) { // Direktaufruf
+    if (window.location.href.indexOf('?') > 0) { // Direktaufruf
         $('#stHeader').show();
+        if (window.location.href.indexOf('?Anmeldung') >= 0) {
+            $('#stHeader,#stFooter').show();
+            $('#bMeinTisch').addClass('ui-disabled');
+        } else {
+            $('#stHeader').show();
+        }
     } else {
         $('#stHeader,#stFooter').show();
     }
@@ -541,7 +547,7 @@ $(document).ready(function () {
             $('#bMeinTisch').addClass('ui-disabled');
             LS.ShowCups = stCup; // for after Bottom-Forward
         }
-        
+
     };
 
 });

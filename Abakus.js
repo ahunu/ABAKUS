@@ -313,7 +313,7 @@ function getDateString(pDate) {
     }
 }
 
-function initCUPSdelAllSTAT() {
+function initCUPSdelAllSTAT(pMeldung) {
     'use strict';
     if (QUERFORMAT()) {
         if (lastBtn) {
@@ -383,7 +383,9 @@ function initCUPSdelAllSTAT() {
         }
     }
     loadCUPS();
-    $('#dMeldung').html("<img src='Icons/OK.png' width='24' height='24'><span class=cSchwarz>&nbsp;&nbsp;Das System wurde initialisiert.</span><br>").show();
+    if (pMeldung) {
+        $('#dMeldung').html("<img src='Icons/OK.png' width='24' height='24'><span class=cSchwarz>&nbsp;&nbsp;Die App wurde initialisiert.</span><br>").show();
+    }
 }
 
 function showLOG() {
@@ -868,7 +870,7 @@ function initExtraButtons() {
 function showCUPS() {
     var sync = new Date(CUPS.DATE);
     var heute = new Date();
-    var diff = parseInt((heute - sync) / (86400000 * 2)); // nach 2 Tage
+    var nTage = parseInt((heute - sync) / 86400000);
     if (LS.Version !== getVersion()) {
         localStorage.setItem('Abakus.LOG', JSON.stringify(''));
         if (LS.Version === 0) {
@@ -877,8 +879,7 @@ function showCUPS() {
             writeLOG('ABAKUS: Update auf Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ').');
         }
         initCUPSdelAllSTAT();
-//    } else if (LS.LoadCups > 0 || diff === 0) {
-    } else if (LS.LoadCups > 0 || diff !== 0) { // llllll
+    } else if (LS.LoadCups > 0 || nTage > 2) {
         loadCUPS(false, false, true);
     } else {
         whenCUPSloaded();

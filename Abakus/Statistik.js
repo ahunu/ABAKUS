@@ -541,13 +541,13 @@ $(document).ready(function () {
 //    if (firebaseRef) {
 //        firebaseRef.off();
 //    }
-        if (!QUERFORMAT() && LS.ME === "NOBODY" && LS.ShowCups) {
+        if (!QUERFORMAT() && LS.ShowCups
+                && (LS.ME === "NOBODY" || window.location.href.search === '?Anmeldungen')) {
             LS.ShowCups = 0;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             $('#bMeinTisch').addClass('ui-disabled');
             LS.ShowCups = stCup; // for after Bottom-Forward
         }
-
     };
 
 });

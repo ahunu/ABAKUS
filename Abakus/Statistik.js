@@ -83,7 +83,7 @@ function historyBack() {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         LS.ShowCups = stCup; // for after Bottom-Forward
         $('#bMeinTisch').addClass('ui-disabled');
-        if (window.location.href.indexOf('Anmeldungen') > 0
+        if (window.location.search === '?Anmeldungen'
                 || CUPS.BEREadmin[stCup].indexOf(LS.ME) < 0
                 && CUPS.BEREschreiben[stCup].indexOf('*') < 0
                 && CUPS.BEREschreiben[stCup].indexOf(LS.ME) < 0
@@ -291,14 +291,14 @@ function whenSTATloaded(pNotSynchron) {
         }
     }
 
-    if (stStat === 10 || window.location.href.indexOf('Anmeldungen') > 0) {
+    if (stStat === 10 || window.location.search === '?Anmeldungen') {
         statShow(10);
     } else {
         statShow(0);
     }
-    if (window.location.href.indexOf('?') > 0) { // Direktaufruf
+    if (window.location.search) { // Direktaufruf
         $('#stHeader').show();
-        if (window.location.href.indexOf('?Anmeldung') >= 0) {
+        if (window.location.search === '?Anmeldungen') {
             $('#stHeader,#stFooter').show();
             $('#bMeinTisch').addClass('ui-disabled');
         } else {
@@ -542,7 +542,7 @@ $(document).ready(function () {
 //        firebaseRef.off();
 //    }
         if (!QUERFORMAT() && LS.ShowCups
-                && (LS.ME === "NOBODY" || window.location.href.search === '?Anmeldungen')) {
+                && (LS.ME === "NOBODY" || window.location.search === '?Anmeldungen')) {
             LS.ShowCups = 0;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             $('#bMeinTisch').addClass('ui-disabled');

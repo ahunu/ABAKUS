@@ -1,10 +1,10 @@
 
 function getVersion() {
-    return 907;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 908;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
-    return setVersion(2018, 1, 2);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2018, 1, 3);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }

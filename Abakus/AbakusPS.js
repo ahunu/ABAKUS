@@ -15,16 +15,31 @@ function PS_Init() {
     soloFaktor = 1;
     kontra = 1;
 
-    if (LS.Tarif21T) {
-        $('.cKontra').show();
-        $('#nbSpiel').hide();
-        $('#dKontra').removeClass('nb0').addClass('nb24');
-        $('#dName').removeClass('nb76').addClass('nb52');
-        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
-    } else {
+    if (LS.TURTIMESTAMP) {
         $('#dKontra').removeClass('nb24').addClass('nb0');
         $('#dName').removeClass('nb52').addClass('nb76');
-        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra').addClass('ui-disabled');
+//        if (LS.Tarif21T) {
+//            $('.cKontra').show();
+//            $('#nbSpiel').hide();
+//            $('#dKontra').removeClass('nb0').addClass('nb24');
+//            $('#dName').removeClass('nb76').addClass('nb52');
+//            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
+//        } else {
+//        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+//        }
+    } else {
+        if (LS.Tarif21T) {
+            $('.cKontra').show();
+            $('#nbSpiel').hide();
+            $('#dKontra').removeClass('nb0').addClass('nb24');
+            $('#dName').removeClass('nb76').addClass('nb52');
+            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
+        } else {
+            $('#dKontra').removeClass('nb24').addClass('nb0');
+            $('#dName').removeClass('nb52').addClass('nb76');
+            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+        }
     }
 }
 

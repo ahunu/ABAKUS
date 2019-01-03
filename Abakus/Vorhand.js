@@ -419,12 +419,3 @@ window.onload = function () {
     }
 
 };
-
-//window.onpageshow = function (event) {
-//    if (event.persisted) {
-//        if (navigator.userAgent.indexOf("Chrome") < 0
-//                && navigator.userAgent.indexOf("Opera") < 0) {
-//            window.location.reload();
-//        }
-//    }
-//};

@@ -1467,50 +1467,36 @@ function fINIT() {
 }
 //  Funktionen  **************************************************************************
 
-window.onload = function () {
-    fINIT();
-};
 window.onunload = function () {};
+window.onload = function () {
 
-//$(document).ready(function () {
-//    fINIT();
-//});
+    fINIT();
 
-//window.onpageshow = function (event) {
-//    if (event.persisted) {
-//        if (navigator.userAgent.indexOf("Chrome") < 0
-//                && navigator.userAgent.indexOf("Opera") < 0) {
-//        //    window.location.reload(true); // Ist bei Safari und Firefox erforderlich !!!
-//            if (window.performance.navigation.type === 2) { // bei iOS Web-App nicht notwendig
-//                fINIT();
-//            }
-//        }
-//    }
-//    if (navigator.userAgent.indexOf("Chrome") < 0
-//            && navigator.userAgent.indexOf("Opera") < 0) {
-//        if (window.performance.navigation.type === 2) { // bei iOS Web-App nicht notwendig
-//            fINIT();
-//        }
-//    }
-//};
-
-window.onhashchange = function () {
-    if (!QUERFORMAT()) {
-        var hHash = window.location.hash;
-        if (hHash && I && I === LS.I) {
-            $('#hMenu,#pMenu,#pCup').hide();
-            $('#hMix,#pTisch').show();
-        } else if (hHash && LS.ShowCups) {
-            $('#hMenu,#pMenu,#pTisch').hide();
-            $('#hMix,#pCup').show();
-        } else {
-            $('#hMix,#pCup,#pTisch').hide();
-            $('#hMenu,#pMenu').show();
-//            if (LS.ShowCups) {
-//                LS.ShowCups = 0;
-//                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-//            }
+    window.onhashchange = function () {
+        if (!QUERFORMAT()) {
+            var hHash = window.location.hash;
+            if (hHash && I && I === LS.I) {
+                $('#hMenu,#pMenu,#pCup').hide();
+                $('#hMix,#pTisch').show();
+            } else if (hHash && LS.ShowCups) {
+                $('#hMenu,#pMenu,#pTisch').hide();
+                $('#hMix,#pCup').show();
+            } else {
+                $('#hMix,#pCup,#pTisch').hide();
+                $('#hMenu,#pMenu').show();
+            }
+            $('#pContent').scrollTop(0);
         }
-        $('#pContent').scrollTop(0);
+    };
+
+    if (/iPad|iPhone/.test(navigator.userAgent)) {
+        window.onpageshow = function (event) {
+            if (window.performance.navigation.type === 2) {
+                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+                CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+                initSeite1();
+            }
+        };
     }
+
 };

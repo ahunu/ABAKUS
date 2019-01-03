@@ -1673,7 +1673,7 @@ $(document).ready(function () {
                 LS.TURTIMESTAMP = null;
                 LS.TURSPIELER = 999;
                 LS.TURGESPIELT = 999;
-                LS.AktRunde = STAT._AKTTURNIER._RUNDE; // Bei einen Storno die zu stornierende Runde
+                LS.AktRunde = STAT._AKTTURNIER._RUNDE; // Bei einem Storno die zu stornierende Runde
             } else {
                 LS.TURCODE = STAT.TURCODE;
                 LS.TURADMIN = STAT.TURADMIN;
@@ -1681,7 +1681,7 @@ $(document).ready(function () {
                 LS.TURRUNDE = STAT.TURRUNDE;
                 LS.TURSPIELER = STAT.TURSPIELER;
                 LS.TURGESPIELT = STAT.TURGESPIELT;
-                LS.AktRunde = STAT.TURRUNDE; // Bei einen Storno die zu stornierende Runde
+                LS.AktRunde = STAT.TURRUNDE; // Bei einem Storno die zu stornierende Runde
             }
         }
         LS.CupName = CUPS.NAME[LS.I];

@@ -58,7 +58,7 @@ function showGR() {
             window.speechSynthesis.speak(hAnsage);
         }
     }
-    if (LS.ME === '3425') { // llll
+    if (LS.ME === '3425' && LS.I === 1) { // llll
         $('#dLabel').attr('style', 'background-color:#27a;border:8px solid #33a;color: white;position: fixed; top: 222px; font-size: 44px; cursor: pointer; width: 100%;').show();
     }
 }

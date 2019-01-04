@@ -27,6 +27,7 @@ var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "J
 var stLastZitat = 0;
 var lastBtn = '';
 var mTischNeuLoeschen = '';
+
 const iRufer = 1;
 const iSolorufer = 2;
 const iPagatrufer = 3;
@@ -53,6 +54,8 @@ const iTrull = 23;
 const i4Koenige = 24;
 const iUltimo = 25;
 const iValat = 26;
+const iAbsolut = 27;
+const iXY = 28;
 
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {

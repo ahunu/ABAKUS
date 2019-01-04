@@ -690,6 +690,7 @@ function SetGeberPausierer() {
 }
 
 function setTarif() {
+    'use strict';
     LS.Tarif = new Array(19);
     if (CUPS.TARIF[LS.I].length >= 18) {
         LS.Tarif[iRufer          ] = CUPS.TARIF[LS.I][1 ]; // Rufer
@@ -717,6 +718,20 @@ function setTarif() {
         LS.Tarif[i4Koenige       ] = CUPS.TARIF[LS.I][17]; // Vier Könige
         LS.Tarif[iUltimo         ] = CUPS.TARIF[LS.I][18]; // König ultimo
         LS.Tarif[iValat          ] = CUPS.TARIF[LS.I][19]; // Valat
+        if (CUPS.TARIF[LS.I][20]) {
+            LS.Tarif[iAbsolut    ] = CUPS.TARIF[LS.I][20]; // Prämie 20
+            LS.Tarif20T = CUPS.TARIF20T[LS.I];
+        } else {
+            LS.Tarif[iAbsolut    ] = 0;
+            LS.Tarif20T = '';
+        }
+        if (CUPS.TARIF[LS.I][21]) {
+            LS.Tarif[iXY         ] = CUPS.TARIF[LS.I][21]; // Prämie 21
+            LS.Tarif21T = CUPS.TARIF21T[LS.I];
+        } else {
+            LS.Tarif[iXY         ] = 0;
+            LS.Tarif21T = '';
+        }
     } else if (CUPS.REGELN[LS.I] === 'Wr.') {
         LS.Tarif[iRufer          ] = 1; // Rufer
         LS.Tarif[iSolorufer      ] = 2; // Solorufer
@@ -743,6 +758,10 @@ function setTarif() {
         LS.Tarif[i4Koenige       ] = 1; // Vier Könige
         LS.Tarif[iUltimo         ] = 1; // König ultimo
         LS.Tarif[iValat          ] = 0; // Valat
+        LS.Tarif[iAbsolut        ] = 0; // Absolut
+        LS.Tarif[iXY             ] = 0; // Prämie XY
+        LS.Tarif20T = '';
+        LS.Tarif21T = '';
     } else if (CUPS.REGELN[LS.I] === 'Ooe.') {
         LS.Tarif[iRufer          ] = 1; // Rufer
         LS.Tarif[iSolorufer      ] = 2; // Solorufer
@@ -769,6 +788,10 @@ function setTarif() {
         LS.Tarif[i4Koenige       ] = 1; // Vier Könige
         LS.Tarif[iUltimo         ] = 1; // König ultimo
         LS.Tarif[iValat          ] = 0; // Valat
+        LS.Tarif[iAbsolut        ] = 0; // Absolut
+        LS.Tarif[iXY             ] = 0; // Prämie XY
+        LS.Tarif20T = '';
+        LS.Tarif21T = '';
     } else {
         LS.Tarif[iRufer          ] = 1; // Rufer
         LS.Tarif[iSolorufer      ] = 2; // Solorufer
@@ -795,6 +818,10 @@ function setTarif() {
         LS.Tarif[i4Koenige       ] = 1; // Vier Könige
         LS.Tarif[iUltimo         ] = 1; // König ultimo
         LS.Tarif[iValat          ] = 10; // Valat
+        LS.Tarif[iAbsolut        ] = 1; // Absolut
+        LS.Tarif[iXY             ] = 1; // Prämie XY
+        LS.Tarif20T = 'Sack';
+        LS.Tarif21T = 'XY';
     }
 }
 

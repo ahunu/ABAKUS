@@ -59,7 +59,7 @@ function showGR() {
         }
     }
     if (LS.ME === '3425' && LS.I === 1) { // llll
-        $('#dLabel').attr('style', 'background-color:#27a;border:8px solid #33a;color: white;position: fixed; top: 222px; font-size: 44px; cursor: pointer; width: 100%;').show();
+        $('#dLabel').attr('style', 'background-color:#27a;border:8px solid #33a;color: white;position: fixed; top: 222px; font-size: 2vh; cursor: pointer; width: 100%;').show();
     }
 }
 
@@ -140,6 +140,99 @@ function getTitel() {
             return hh + ':' + mm + '  ' + LS.CupName;
         }
     }
+}
+
+function getSpielneu() {
+    'use strict';
+    var ret = '';
+    var hSpiel = '';
+
+    if (DS.Storno[aktPos] || DS.Korr[aktPos] || DS.Game[aktPos][0] === '*') {
+        ctx.fillStyle = "#111";
+    } else {
+        ctx.fillStyle = "#fb0";
+    }
+
+    if (DS.Game[aktPos][0] === '*') {
+        hSpiel = DS.Game[aktPos].substring(1);
+    } else {
+        hSpiel = DS.Game[aktPos];
+    }
+    ret = hSpiel;
+    if (LS.doppelt > 0 && aktPos === DS.Game.length - 1) {
+        if (hSpiel.length <= 6) {
+            ret = ret + '   ' + LS.doppelt + '*';
+        } else if (hSpiel.indexOf(" ") < 0) {
+            ret = ret + '  ' + LS.doppelt + '*';
+        } else {
+            ret = ret + ' ' + LS.doppelt + '*';
+        }
+    }
+
+    if (LS.DoppelteRunden) {
+        if (LS.doppelt <= 0) {
+            $('#iTarife').show();
+            $('#iDoppelt').hide();
+        } else {
+            $('#iTarife').hide();
+            $('#iDoppelt').show();
+            $('#iDoppelt').removeClass('zmdi-collection-item-' + (LS.doppelt + 1));
+            if (LS.doppelt < 9) {
+                $('#iDoppelt').addClass('zmdi-collection-item-' + LS.doppelt);
+            } else if (LS.doppelt === 9) {
+                $('#iDoppelt').removeClass('zmdi-collection-item-99');
+                $('#iDoppelt').addClass('zmdi-collection-item-9');
+            } else {
+                $('#iDoppelt').addClass('zmdi-collection-item-99');
+            }
+        }
+    }
+
+    if (DS.Game[aktPos].length <= 8) {
+        ret = '   ' + ret;
+    } else if (DS.Game[aktPos].indexOf(" ") < 0) {
+        ret = '  ' + ret;
+    } else {
+        ret = ' ' + ret;
+    }
+
+    if (DS.Storno[aktPos]) {
+        ret = 'S:' + ret;
+    } else {
+        ret = nSpiele + '. Spiel: ' + ret;
+    }
+
+    if (ret.length < 12 && (LS.AnzSpieler !== 4 || LS.JeSeite !== '2')) {
+        ret = ret + '                    '.substr(0, parseInt((12 - ret.length) * 2));
+    }
+
+    return ret;
+}
+
+function getPraemien() {
+    'use strict';
+    var ret = '';
+    var hSpiel = '';
+
+    if (DS.Storno[aktPos] || DS.Korr[aktPos] || DS.Game[aktPos][0] === '*') {
+        ctx.fillStyle = "#111";
+    } else {
+        ctx.fillStyle = "#fb0";
+    }
+
+    if (DS.Game[aktPos][0] === '*') {
+        hSpiel = DS.Game[aktPos].substring(1);
+    } else {
+        hSpiel = DS.Game[aktPos];
+    }
+    ret = hSpiel;
+    if (hSpiel.indexOf(' ') > 0 && hSpiel.indexOf(' ') < hSpiel.length -1) {
+        ret = 'Prämien: ' + hSpiel.substr(hSpiel.indexOf(' '));
+    } else {
+        ret = 'Keine Prämien:';
+    }
+
+    return ret;
 }
 
 function getSpiel() {

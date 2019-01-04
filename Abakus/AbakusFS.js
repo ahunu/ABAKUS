@@ -25,7 +25,7 @@ function FS_Init() {
     $('#dKontra').removeClass('nb24').addClass('nb0');
     $('#dName').removeClass('nb52').addClass('nb76');
     $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
-    if (LS.TURTIMESTAMP) {
+    if (LS.TURRUNDE || LS.TURTISCH) {
         $('.cKontra').addClass('ui-disabled');
     }
 }

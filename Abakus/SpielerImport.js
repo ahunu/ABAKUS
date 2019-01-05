@@ -70,9 +70,6 @@ String.prototype.splitCSV = function (sep) {
 };
 
 function checkSpieler(pNR, pNNAME, pVNAME, pORT, p1) {
-    if (p1 !== 1) {
-        console.log('p1 !== 1;');
-    }
 
     nSpieler++;
     if (i % 20 === 1) {
@@ -81,7 +78,6 @@ function checkSpieler(pNR, pNNAME, pVNAME, pORT, p1) {
                 .closest("table#tSpieler")
                 .table("refresh")
                 .trigger("create");
-        console.log(i + ': >' + pNNAME + '<');
     }
 
     SPIELERext[("000" + parseInt(pNR)).slice(-4)] = [// Spielernummer
@@ -255,7 +251,6 @@ function processData(csv) {
                         .closest("table#tSpieler")
                         .table("refresh")
                         .trigger("create");
-                console.log(i + ': >' + zeile[1] + '<');
             }
 
             SPIELERext[("000" + parseInt(zeile[0])).slice(-4)] = [// Spielernummer
@@ -280,10 +275,6 @@ function processData(csv) {
             ];
         }
     }
-
-    console.log('Records: ' + aCSV.length);
-    console.log('Spieler: ' + nSpieler);
-//  addDieSteirer();
 
     $("#stBody th,td").attr('style', 'padding:.03em;');
     $(".TR").attr('style', 'padding:.03em;text-align:right;');

@@ -70,9 +70,6 @@ function loadCUPS(pTitel, pText, pForce) {
                 i = parseInt(i);
                 var cupval = cup.val();
                 if (i > 0) {
-                    if (!cupval.BERElesen) {
-                        console.log('loadCUPS: BERElesen fehlt! ' + i + ' ' + cupval.NAME);
-                    }
                     CUPS.ANMELDERF     [i] = cupval.ANMELDERF;
                     CUPS.BEREadmin     [i] = cupval.BEREadmin;
                     CUPS.BEREschreiben [i] = cupval.BEREschreiben;
@@ -159,7 +156,6 @@ function loadCUPS(pTitel, pText, pForce) {
         localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
         whenCUPSloaded();
     }, function (error) {
-        console.log('***' + error);
         showEineDBWarnung(error, 'loadCUPS()', 'CUPS once');
         return false;
     });

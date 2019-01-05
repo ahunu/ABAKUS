@@ -125,9 +125,6 @@ function statPosDiv() {
                 SORT[SORT.length] = sKey;
             } else {
                 nGelegenheitsspieler++;
-
-                console.log(STAT.S[i].SPIELE[stTurCupGes] + ' < ' + (STAT.MAXSPIELE[stTurCupGes] * CUPS.DISPAB[stCup][stTurCupGes] / 100));
-
             }
         }
     }

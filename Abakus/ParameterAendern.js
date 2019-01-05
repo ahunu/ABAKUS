@@ -267,7 +267,6 @@ function copySTAT() {
         }
     }
 
-    console.log('/00/' + ('000' + iNeu).substr(-3));
     firebase.database().ref('/00/' + ('000' + iNeu).substr(-3))
             .set(hSTAT)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
             .then(function () {
@@ -484,7 +483,6 @@ function statistikLoeschen() {
 //  showEinenFehler('Statistik wird gel&ouml;scht.', 'Einen Moment bitte.')
     $('#tLoeschen').html('Die Statistik wird gel&ouml;scht!');
     var hCUPname = (("000" + I).substr(-3) + ' ' + CUPS.NAME[I]).replace(/\./g, "").replace(/\#/g, "").replace(/\$/g, "").replace(/\[/g, "").replace(/\]/g, "");
-    console.log(hCUPname);
     firebase.database().ref('/00/' + hCUPname)
             .set(null)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
             .then(function () {
@@ -517,7 +515,6 @@ function statistikLoeschen() {
 
 function updNEXTTERMIN() {
     'use strict';
-    console.log('Update NEXTTERMIN:');
     firebase.database().ref('/00/' + ("000" + I).substr(-3))
             .update({
                 NEXTTERMIN: CUPS.NEXTTERMIN[I],

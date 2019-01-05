@@ -129,6 +129,7 @@ function onRegistrieren() {
         if (nVersuche >= 3) {
             LS.Meldung = "Die Registrierung wurde nach drei Fehlversuchen abgebrochen.";
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            $('#bRegistrieren').prop('disabled', true);
             history.back();
         }
     } else {
@@ -175,7 +176,7 @@ function onRegistrieren() {
         if (TURNIER !== null) {
             localStorage.setItem('Abakus.TURNIER', JSON.stringify(TURNIER));
         }
-
+        $('#bRegistrieren').prop('disabled', true);
         writeLOG('Als ' + LS.ME + ' ' + LS.MEname + ' registriert.');
         history.back();
     }

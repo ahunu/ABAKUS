@@ -256,15 +256,6 @@ function closeArchiv() {
     }
 }
 
-function Log(pLog, pError) {
-    'use strict';
-    if (pError) {
-        console.error(pLog);
-    } else {
-        console.log(pLog);
-    }
-}
-
 function whenSTATloaded(pNotSynchron) {
     'use strict';
 
@@ -505,7 +496,6 @@ $(document).ready(function () {
                     stHeader = true;
                 }
             }
-//        console.log(aktScrollPos)
             lastScrollPos = aktScrollPos;
         }
     });
@@ -528,7 +518,7 @@ $(document).ready(function () {
     var mediaQueryList = window.matchMedia('print');
     mediaQueryList.addListener(function (mql) {
         if (mql.matches) {
-//      console.log('onbeforeprint equivalent');
+            // onbeforeprint equivalent
         } else {
             var canvas = document.getElementById("stHead");
             var context = canvas.getContext('2d');

@@ -16,35 +16,6 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
 
         stSynchron = true;
 
-//        var neu = new Object();
-//
-//        if (data.val() && I === 4) {
-//            STAT = data.val();
-//            for (var turnier in STAT) {
-//                if (turnier === '2018-03-11') {
-//                    neu = {};
-//                    for (var spieler in STAT[turnier]) {
-//                        if (spieler[0] !== '_') {
-//                            neu[spieler] = [STAT[turnier][spieler][1], STAT[turnier][spieler][2], STAT[turnier][spieler][3]];
-//                        } else {
-//                            neu[spieler] = STAT[turnier][spieler];
-//                        }
-//                    }
-//                    STAT = neu;
-//                    firebase.database().ref('/00/054/' + turnier)
-//                            .update( STAT )
-//                            .then(function () {
-//                                console.log(turnier+' erfolgreich eingespielt.');
-//                            })
-//                            .catch(function (error) {
-//                                showEinenDBFehler(error, 'SpeichernNT()', 'update /00/' + ("000" + LS.I).slice(-3));
-//                            });
-//                }
-//            }
-//            return;
-//        }
-
-
         if (data.val()) {
             STAT = data.val();
             for (var turnier in STAT) {
@@ -63,15 +34,8 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
                         }
                     }
 
-                    if (turnier === '2018-05-05') {
-                        console.log('Turnier: ' + turnier);
-                    }
-
                     for (var spieler in STAT[turnier]) {
 
-                        if (spieler === '3610') {
-                            console.log('Turnier: ' + turnier + ', Spieler: ' + spieler);
-                        }
                         if (spieler[0] !== '_') {
 
                             if (CUPS.TYP[I] === 'MT') {

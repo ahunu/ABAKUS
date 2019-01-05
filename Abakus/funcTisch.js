@@ -334,7 +334,6 @@ function checkNeuerTisch() {
     var hGefunden = false;
     if (I !== 3) {  // Ein PC-Turnier kann an jeden Tag stattfinden
         for (var termin in CUPS.TERMINE) {
-            console.log(CUPS.TERMINE[termin].DATUM, CUPS.TERMINE[termin].CUP);
             if (CUPS.TERMINE[termin].CUP === I && CUPS.TERMINE[termin].DATUM === hHeute) {
                 hGefunden = true;
                 break;

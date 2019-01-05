@@ -475,7 +475,7 @@ $(document).ready(function () {
     var mediaQueryList = window.matchMedia('print');
     mediaQueryList.addListener(function (mql) {
         if (mql.matches) {
-//      console.log('onbeforeprint equivalent');
+// onbeforeprint equivalent
         } else {
             $('#dPrint').attr('style', 'width:72%');
             $('#tStand').css('position', 'fixed');

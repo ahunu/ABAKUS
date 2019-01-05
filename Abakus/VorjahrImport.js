@@ -117,7 +117,6 @@ function readCUPORTE(event) {
                     .closest("table#tSpieler")
                     .table("refresh")
                     .trigger("create");
-            console.log(i + ': >' + zeile[1] + '<');
         }
     }
 

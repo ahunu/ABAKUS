@@ -261,7 +261,6 @@ function TurnierBEENDEN(pI) {
         pI = 1;
     }
     if (STAT.MAXSPIELE[3] === 0) {  // es wurde kein Spiel gespielt
-        console.log('Es wurde kein Spiel gespielt.');
         TurnierBEENDENendEnd();
         return;
     }
@@ -284,7 +283,6 @@ function TurnierBEENDEN(pI) {
     var hPunkteZwi = 0;
 //  var aCupPunkte  = [];
 
-    console.log('MaxSpiele: ' + STAT.MAXSPIELE[3] + ', VollAb: ' + Math.round(STAT.MAXSPIELE[3] * CUPS.VOLLAB[I][3] / 100));
     for (var ii = 1; ii < STAT.S.length; ii++) { // Punkte der Stockerplätze errechnen
 
         if (STAT.S[ii].SPIELE[3] > 0) {
@@ -337,19 +335,16 @@ function TurnierBEENDEN(pI) {
         STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 1);
         STAT.S[pI].STOCKERL[3] = '1-0-0';
         hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
-        console.log('1: ' + STAT.S[pI].VNAME + ' ' + STAT.S[pI].NNAME + '  ' + hPunkte1ter + '.');
     } else if (hPunkteAkt === hPunkte2ter) {
         STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 2);
         STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 2);
         STAT.S[pI].STOCKERL[3] = '0-1-0';
         hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
-        console.log('2: ' + STAT.S[pI].VNAME + ' ' + STAT.S[pI].NNAME + '  ' + hPunkte2ter + '.');
     } else if (hPunkteAkt === hPunkte3ter) {
         STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 3);
         STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 3);
         STAT.S[pI].STOCKERL[3] = '0-0-1';
         hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
-        console.log('3: ' + STAT.S[pI].VNAME + ' ' + STAT.S[pI].NNAME + '  ' + hPunkte3ter + '.');
     }
     STAT.S[pI].STOCKERL[iJahr] = STAT.S[pI].STOCKERL[1];
 

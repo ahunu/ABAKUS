@@ -16,7 +16,7 @@
 
                 if (settings.head) {
                     if (settings.left > 0) {
-                        var tr = table.find("thead tr");
+                        var tr = table.find("> thead > tr");
 
                         tr.each(function (k, row) {
                             solverLeftColspan(row, function (cell) {
@@ -26,7 +26,7 @@
                     }
 
                     if (settings.right > 0) {
-                        var tr = table.find("thead tr");
+                        var tr = table.find("> thead > tr");
 
                         tr.each(function (k, row) {
                             solveRightColspan(row, function (cell) {
@@ -38,7 +38,7 @@
 
                 if (settings.foot) {
                     if (settings.left > 0) {
-                        var tr = table.find("tfoot tr");
+                        var tr = table.find("> tfoot > tr");
 
                         tr.each(function (k, row) {
                             solverLeftColspan(row, function (cell) {
@@ -48,7 +48,7 @@
                     }
 
                     if (settings.right > 0) {
-                        var tr = table.find("tfoot tr");
+                        var tr = table.find("> tfoot > tr");
 
                         tr.each(function (k, row) {
                             solveRightColspan(row, function (cell) {
@@ -80,10 +80,10 @@
                     var left = parent.scrollLeft();
 
                     if (settings.head)
-                        this.find("thead tr > *").css("top", top);
+                        this.find("> thead > tr > *").css("top", top);
 
                     if (settings.foot)
-                        this.find("tfoot tr > *").css("bottom", scrollHeight - clientHeight - top);
+                        this.find("> tfoot > tr > *").css("bottom", scrollHeight - clientHeight - top);
 
                     if (settings.left > 0)
                         settings.leftColumns.css("left", left);
@@ -95,9 +95,9 @@
 
             // Set table head fixed
             function fixHead() {
-                var thead = $(settings.table).find("thead");
-                var tr = thead.find("tr");
-                var cells = thead.find("tr > *");
+                var thead = $(settings.table).find("> thead");
+                var tr = thead.find("> tr");
+                var cells = thead.find("> tr > *");
 
                 setBackground(cells);
                 cells.css({
@@ -107,9 +107,9 @@
 
             // Set table foot fixed
             function fixFoot() {
-                var tfoot = $(settings.table).find("tfoot");
-                var tr = tfoot.find("tr");
-                var cells = tfoot.find("tr > *");
+                var tfoot = $(settings.table).find("> tfoot");
+                var tr = tfoot.find("> tr");
+                var cells = tfoot.find("> tr > *");
 
                 setBackground(cells);
                 cells.css({
@@ -125,7 +125,7 @@
 
                 settings.leftColumns = $();
 
-                var tr = table.find("tr");
+                var tr = table.find("> thead > tr, > tbody > tr, > tfoot > tr");
                 tr.each(function (k, row) {
 
                     solverLeftColspan(row, function (cell) {
@@ -165,8 +165,8 @@
 
                 settings.rightColumns = $();
 
-                var tr_head = table.find('thead').find("tr");
-                var tr_body = table.find('tbody').find("tr");
+                var tr_head = table.find('> thead').find("> tr");
+                var tr_body = table.find('> tbody').find("> tr");
                 var fcell = null;
                 tr_head.each(function (k, row) {
                     solveRightColspanHead(row, function (cell) {
@@ -204,10 +204,10 @@
                     var parent = $(element).parent();
 
                     var elementBackground = element.css("background-color");
-                    elementBackground = (elementBackground === "transparent" || elementBackground === "rgba(0, 0, 0, 0)") ? null : elementBackground;
+                    elementBackground = (elementBackground == "transparent" || elementBackground == "rgba(0, 0, 0, 0)") ? null : elementBackground;
 
                     var parentBackground = parent.css("background-color");
-                    parentBackground = (parentBackground === "transparent" || parentBackground === "rgba(0, 0, 0, 0)") ? null : parentBackground;
+                    parentBackground = (parentBackground == "transparent" || parentBackground == "rgba(0, 0, 0, 0)") ? null : parentBackground;
 
                     var background = parentBackground ? parentBackground : "white";
                     background = elementBackground ? elementBackground : background;
@@ -226,7 +226,7 @@
                     var cell = $(row).find("> *:nth-child(" + nth + ")");
                     var colspan = cell.prop("colspan");
 
-                    if (cell.cellPos().left < fixColumn) {
+                    if (typeof cell.cellPos() != 'undefined' && cell.cellPos().left < fixColumn) {
                         action(cell);
                     }
 
@@ -276,11 +276,11 @@
             settings.parent = $(settings.table).parent();
             setParent();
 
-            if (settings.head === true) {
+            if (settings.head == true) {
                 fixHead();
             }
 
-            if (settings.foot === true) {
+            if (settings.foot == true) {
                 fixFoot();
             }
 
@@ -350,5 +350,5 @@
         }
         pos = $cell.data("cellPos");
         return pos;
-    };
+    }
 })(jQuery);

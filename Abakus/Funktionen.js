@@ -33,9 +33,6 @@ function getNextTermin(pCup) {
     var iWoche = 0;
     var iWochentag = 0;
 
-//    console.log(pCup, CUPS.NAME[pCup]);
-//    console.log('Init:', new Date(nextTermin));
-
     for (var ii = 1; ii < 999999; ii++) {
         datNextTermin = new Date(nextTermin);
         iWoche = parseInt((datNextTermin.getDate() - 1) / 7);
@@ -45,9 +42,7 @@ function getNextTermin(pCup) {
             break;
         }
         nextTermin += 86400000;
-//        console.log('Check:', new Date(nextTermin));
     }
-//    console.log('Return:', new Date(nextTermin));
     return nextTermin;
 }
 

@@ -1008,9 +1008,6 @@ function listStammspieler() {
                     }
                 }
             } else if (LS.ME !== 'NOBODY') {
-                console.log('FName: >>>' + LS.ME.substr(0, LS.ME.indexOf('_')) + '<<<');
-                console.log('VName: >>>' + LS.ME.substring(LS.ME.indexOf('_') + 1, LS.ME.lastIndexOf('_')) + '<<<');
-                console.log('Ort:   >>>' + LS.ME.substr(LS.ME.lastIndexOf('_') + 1) + '<<<');
                 blert(LS.ME,
                         LS.ME.substring(LS.ME.indexOf('_') + 1, LS.ME.lastIndexOf('_')),
                         LS.ME.substr(0, LS.ME.indexOf('_')),

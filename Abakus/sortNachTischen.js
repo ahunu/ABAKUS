@@ -49,7 +49,6 @@ function sortNachReihung(pI, pTischAnmelden) {
             if (pTischAnmelden) {
                 blert(STAT.S[i].NR, STAT.S[i].VNAME, STAT.S[i].NNAME, STAT.S[i].ORT, STAT.S[i].STERNE);
                 LS.AnzSpieler++;
-                console.log(SORT[ii] + ' T:' + neuerTisch + '  ' + i + ' ' + STAT.S[i].NR + ' ' + STAT.S[i].VNAME + ' ' + STAT.S[i].NNAME);
             }
         }
         SORT[ii] = neuerTisch + ',' + SORT[ii];
@@ -63,10 +62,7 @@ function sortNachReihung(pI, pTischAnmelden) {
                 if (STAT.S[i].NR !== LS.ME) { // wurde schon angemeldet
                     blert(STAT.S[i].NR, STAT.S[i].VNAME, STAT.S[i].NNAME, STAT.S[i].ORT, STAT.S[i].STERNE);
                     LS.AnzSpieler++;
-                    console.log(SORT[ii] + ' T:' + neuerTisch + '  ' + i + ' ' + STAT.S[i].NR + ' ' + STAT.S[i].VNAME + ' ' + STAT.S[i].NNAME);
                 }
-            } else {
-                console.log(SORT[ii] + ' T:' + neuerTisch);
             }
         }
     }
@@ -167,7 +163,6 @@ function sortNachTischen(pI, pTischAnmelden, pRunde) {
             iTisch++;
             iSpieler = 0;
             tNR = SORT[ii].substring(0, SORT[ii].indexOf(',') + 1);
-            console.log('Tisch: ' + iTisch);
             if (tNR[0] === 'm') {
                 iTischManuell++;
             }
@@ -175,8 +170,6 @@ function sortNachTischen(pI, pTischAnmelden, pRunde) {
             iSpieler++;
         }
         neuerTisch = ((iTisch + tVorrueckung[iSpieler] - 1) % nTische) + 1;
-
-        console.log(SORT[ii] + ' T:' + iTisch + ' S:' + iSpieler + ' N:' + neuerTisch);
 
         if (nTische === 3 && 3 === 4) {          //, 2-, 3+ , 4-
             if (hRunde === 3 && nTischeManuell) {
@@ -195,9 +188,6 @@ function sortNachTischen(pI, pTischAnmelden, pRunde) {
                     blert(STAT.S[i].NR, STAT.S[i].VNAME, STAT.S[i].NNAME, STAT.S[i].ORT, STAT.S[i].STERNE);
                     LS.AnzSpieler++;
                 }
-                console.log(SORT[ii] + ' T:' + iTisch + ' S:' + iSpieler + ' N:' + neuerTisch + '  ' + i + ' ' + STAT.S[i].NR + ' ' + STAT.S[i].VNAME + ' ' + STAT.S[i].NNAME);
-            } else {
-                console.log(SORT[ii] + ' T:' + iTisch + ' S:' + iSpieler + ' N:' + neuerTisch);
             }
         }
         SORT[ii] = neuerTisch + SORT[ii].substring(SORT[ii].indexOf(','));

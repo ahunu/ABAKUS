@@ -306,7 +306,6 @@ function showEineDBWarnung(pError, pText, pText2) {
         }
     }
     var hMeld = 'F' + pError + ': ' + getDBFehlertext(pError) + ', ' + pText;
-    console.log('Datenbankfehler ' + hMeld);
     if (LS.ME === '3425') {
         myJBox = new jBox('Modal', {
             title: '<div class="L2" style="background-color:FireBrick; color: white; text-align: center;">&nbsp;F' + pError + ':&nbsp;Verbindungsfehler:&nbsp;</div>',
@@ -340,9 +339,6 @@ function writeLOG(pLog, pError) {
             LOG = LOG.substr(0, hRest);
         }
     }
-//    console.log(new Date().toLocaleTimeString());
-//    console.log(new Date().toLocaleTimeString().substr(0, 5));
-//    console.log(new Date().toLocaleTimeString().substring(0, 5));
     var hLog = '<br>' + new Date().toISOString().substr(0, 10) + ' ' + new Date().toLocaleTimeString().substr(0, 5) + '<br>';
     if (pError) {
         var hHref = window.location.href;

@@ -77,7 +77,6 @@ function downloadSpieler(pAktiv) {
 function getGEBDAT(pGEBDAT) {
     return pGEBDAT; // Da EXCEL "20-Sep-55" in CSV-Dateien als 20. Sep 55 interpretiert wird, keine Konvertierung.
     if (pGEBDAT) {
-        console.log('' + pGEBDAT.substr(8, 2) + '-' + tMonth[parseInt(pGEBDAT.substr(5, 2))] + '-' + pGEBDAT.substr(2, 2));
         return '' + pGEBDAT.substr(8, 2) + '-' + tMonth[parseInt(pGEBDAT.substr(5, 2))] + '-' + pGEBDAT.substr(2, 2);
     } else {
         return '';

@@ -127,9 +127,6 @@ function SpeichernNT() {
                             LS.Ort = ['', '', '', '', '', '', ''];
                             LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
                             LS.ShowCups = LS.I;
-                            if (!CUPS.TURNIER[LS.I]) {
-                                LS.I = 0;
-                            }
                             LS.I = 0;
                             LS.Meldung = ('Der&nbsp;Tisch&nbsp;wurde&nbsp;gespeichert!');
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));

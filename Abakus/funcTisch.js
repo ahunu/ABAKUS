@@ -900,9 +900,12 @@ function whenSTATloaded() {
 
 function Weiterspielen() {
     'use strict';
-    LS.ShowCups = LS.I;
-    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
-    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//    if (LS.ShowCups !== LS.I
+//            || LS.SpieleJeRunde !== CUPS.SPJERUNDE[LS.I]) {
+        LS.ShowCups = LS.I;
+        LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//    }
     var NEXT = new Object();
     NEXT.Seite = 'GR';
     localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));

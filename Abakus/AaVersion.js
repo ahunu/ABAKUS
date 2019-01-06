@@ -4,7 +4,7 @@ function getVersion() {
 }
 
 function getVersionsDatum() {
-    return setVersion(2018, 1, 5);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2018, 1, 6);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
@@ -17,53 +17,53 @@ function getVersionsDatum() {
 // responsiveVoice - Die Versionen bis inclusive 1.5.10 funktionieren nach der Änderung eines Spiels auf Android nicht !!!
 // Nur mit 1.4.9 wird die Meldung "wants to use speech DENY ALLOW" nach der Änderung eines Spiels nicht gezeigt.
 
-//Panorama / Sachbücher. Romane.
-//Theoretisch-praktische Anweisung zur gründlichen Erlernung des beliebten Tarok-Tappen-Spiels	älteste Königrufenregeln, 2. Auflage mit Anhang übers Königrufen, Wien 1827, s. www.noel.gv.at (NÖ Landesbibliothek)
+// Panorama / Sachbücher. Romane.
+// Theoretisch-praktische Anweisung zur gründlichen Erlernung des beliebten Tarok-Tappen-Spiels	älteste Königrufenregeln, 2. Auflage mit Anhang übers Königrufen, Wien 1827, s. www.noel.gv.at (NÖ Landesbibliothek)
 //
-//Panorama / Bilder. Skulpturen.
-//KaKartenspiel	Franz von Defregger, 1910, s. https://reproarte.com/en/choice-of-topics/category/play-and-sport/27302-card-game-detail
+// Panorama / Bilder. Skulpturen.
+// KaKartenspiel	Franz von Defregger, 1910, s. https://reproarte.com/en/choice-of-topics/category/play-and-sport/27302-card-game-detail
 //
-//Panorama / Presse. Medien.
-//www.rts-salzburg.at zeigt eine normale Seite, keine Tarockinformationen
-//
-//
-//Panorama / Presse. Medien.
-//Der link auf die Wiener Zeitung funktioniert nicht, den Artikel gibt es nicht mehr.
-//
-//Panorama / Sammlungen, Museen, Aussstellungen
-//http://www.gamesmuseum.uwaterloo.ca
+// Panorama / Presse. Medien.
+// www.rts-salzburg.at zeigt eine normale Seite, keine Tarockinformationen
 //
 //
-//http://www.altenburg-tourismus.de
+// Panorama / Presse. Medien.
+// Der link auf die Wiener Zeitung funktioniert nicht, den Artikel gibt es nicht mehr.
+//
+// Panorama / Sammlungen, Museen, Aussstellungen
+// http://www.gamesmuseum.uwaterloo.ca
+//
+//
+// http://www.altenburg-tourismus.de
 //
 //
 //
-//Panorama / Spielkartenfabriken, -händler und Tourismus
+// Panorama / Spielkartenfabriken, -händler und Tourismus
 //
-//http://www.glanzdruck.at
+// http://www.glanzdruck.at
 //
-//http://www.piatnik.at
-//
-//
-//http://www.piatnik-individual.com
-//
-//http://www.attergau.at
+// http://www.piatnik.at
 //
 //
-//Regeln / Regeln der Partnercups
-//www.casinos.at/regeln_stc.pdf
+// http://www.piatnik-individual.com
+//
+// http://www.attergau.at
 //
 //
-//Treffpunkt / Adressen:
-//
-//www.tyrolis.cc
-//
-//
-//Treffpunkt / Wien / Königrufen
-//Meine Montagturniere beginnen seit Jänner jeweils um 18 Uhr.
+// Regeln / Regeln der Partnercups
+// www.casinos.at/regeln_stc.pdf
 //
 //
-//0663 06047662
+// Treffpunkt / Adressen:
+//
+// www.tyrolis.cc
+//
+//
+// Treffpunkt / Wien / Königrufen
+// Meine Montagturniere beginnen seit Jänner jeweils um 18 Uhr.
+//
+//
+// 0663 06047662
 
 
 

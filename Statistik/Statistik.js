@@ -62,7 +62,7 @@ function QUERFORMAT() {
 }
 
 function historyBack() {
-    if (!QUERFORMAT() && LS.I !== LS.ShowCups) {
+    if (!QUERFORMAT()) {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         LS.ShowCups = stCup; // for after Bottom-Forward
@@ -520,9 +520,10 @@ window.onbeforeunload = function (e) {
     if (firebaseRef) {
         firebaseRef.off();
     }
-    if (!QUERFORMAT()) {
+    if (!QUERFORMAT() && LS.I !== LS.ShowCups) {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         LS.ShowCups = stCup; // for after Bottom-Forward
     }
+    history.back();
 };

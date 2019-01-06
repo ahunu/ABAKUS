@@ -373,7 +373,3 @@ $(document).bind('pageinit', function () {
     }
 
 });
-
-window.onbeforeunload = function (e) {
-    $('#main').addClass('ui-disabled');
-};

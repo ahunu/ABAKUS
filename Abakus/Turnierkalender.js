@@ -396,7 +396,7 @@ $(document).bind('pageinit', function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
@@ -503,7 +503,3 @@ $(document).bind('pageinit', function () {
 
 //    whenCUPSloaded(true);
 });
-
-window.onbeforeunload = function (e) {
-    $('#main').addClass('ui-disabled');
-};

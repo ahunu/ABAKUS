@@ -1980,13 +1980,6 @@ window.onload = function () {
                 + '</div>'
                 + '</div>'
     });
-
-    window.onbeforeunload = function (e) {
-        if (navigator.vendor.indexOf("Apple") < 0) {
-            $('body').addClass('ui-disabled'); // Safari macht beim Laden kein removeClass
-        }
-    };
-
 };
 
 if (/iPad|iPhone/.test(navigator.userAgent)) {

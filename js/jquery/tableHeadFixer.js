@@ -350,5 +350,5 @@
         }
         pos = $cell.data("cellPos");
         return pos;
-    }
+    };
 })(jQuery);

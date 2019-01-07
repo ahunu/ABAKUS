@@ -60,7 +60,7 @@ function showTurnier(pTurnier) {
     stNamenLen = 0.38;
 
     var html = getStatMeldungen()
-            + "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>"
+            + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
             + "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
@@ -72,7 +72,8 @@ function showTurnier(pTurnier) {
             + "<th class=TR>R1&nbsp;</th>"
             + "<th class=TR>R2&nbsp;</th>"
             + "<th class=TR>R3&nbsp;</th>"
-            + "</tr></thead><tbody id=tbody>";
+            + "</tr></thead><tbody id=tbody>"
+            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='5'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, ...'></td></tr>" : "");
 
     var SORT = [];
 
@@ -149,7 +150,8 @@ function showTurnier(pTurnier) {
         var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
         $('#sideContent').css('height', hx + 'px');
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, fixedOffset: $('#hfHeaderLinks')});
+//            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, fixedOffset: $('#hfHeaderLinks')});
+            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
         }
     }
 

@@ -509,6 +509,7 @@ $(document).ready(function () {
             } else {
                 rows.show();
             }
+            $("#rFilter").show();
         } else {
             rows.show();
         }

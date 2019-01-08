@@ -57,6 +57,16 @@ const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
 
+function goRoot() {
+    if (/iPad|iPhone/.test(navigator.userAgent)) { // iOS funktioniert anders
+        I = 0;
+        LS.ShowCups = 0;
+        window.location.href = "#" + Date.now();
+    } else {
+        history.back();
+    }
+}
+
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
@@ -1470,9 +1480,10 @@ function fINIT() {
 }
 //  Funktionen  **************************************************************************
 
-window.onunload = function () {};
-window.onload = function () {
-
+//window.onunload = function () {};
+//window.onload = function () {
+$(document).ready(function () {
+    
     fINIT();
 
     window.onhashchange = function () {
@@ -1502,4 +1513,4 @@ window.onload = function () {
         };
     }
 
-};
+});

@@ -27,6 +27,7 @@ var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "J
 var stLastZitat = 0;
 var lastBtn = '';
 var mTischNeuLoeschen = '';
+var mHref = false;
 
 const iRufer = 1;
 const iSolorufer = 2;
@@ -58,13 +59,19 @@ const iAbsolut = 27;
 const iXY = 28;
 
 function goRoot() {
-    if (/iPad|iPhone/.test(navigator.userAgent)) { // iOS funktioniert anders
-        I = 0;
-        LS.ShowCups = 0;
-        window.location.href = "#" + Date.now();
-    } else {
+    $('#hMix,#pCup,#pTisch').hide();
+    $('#hMenu,#pMenu').show();
+    I = 0;
+    LS.ShowCups = 0;
+    history.back();
+}
+
+function fHref(pHref) {
+    mHref = true;
+    if (window.location.hash) {
         history.back();
     }
+    window.location.href = pHref;
 }
 
 function QUERFORMAT() {
@@ -87,9 +94,9 @@ function hrefStatistik(pParameter) {
             || (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()))) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
-            window.location.href = "Statistik/Statistik.html";
+            fHref("Statistik/Statistik.html");
         } else {
-            window.location.href = "Abakus/Statistik.html" + pParameter;
+            fHref("Abakus/Statistik.html" + pParameter);
         }
     } else {
         loadSTAT(I, 'Statistik wird geladen.', false, hrefStatistikPR);
@@ -126,7 +133,7 @@ function hrefStatistikPR() {
 
     if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        window.location.href = "Abakus/Statistik.html";
+        fHref("Abakus/Statistik.html");
     } else {
         if (CUPS.MEZULETZT[I] === 0) {
             meldKeineBerechtigung(0);
@@ -136,7 +143,7 @@ function hrefStatistikPR() {
             meldKeineBerechtigung(365);
         } else {
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            window.location.href = "Abakus/Statistik.html";
+            fHref("Abakus/Statistik.html");
         }
     }
 }
@@ -747,11 +754,9 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
     if (I && I === LS.I) {
         initSeite2();
         $('#tischButtons').html(getCupButtons()).trigger('create').show();
-        if (window.location.hash) { // ????????????????????????? llll
+        if (!QUERFORMAT()) {
             $('#hMenu,#pMenu,#pCup').hide();
             $('#hMix,#pTisch').show();
-        } else {
-            window.location.href = "#" + Date.now();
         }
     } else {
         if (hMeldung) {
@@ -760,13 +765,17 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
             $('#hfText').html(CUPS.TEXT1[i]);
         }
         $('#cupButtons').html(getCupButtons()).trigger('create').show();
-        if (window.location.hash) { // ????????????????????????? llll
+        if (!QUERFORMAT()) {
             $('#hMenu,#pMenu,#pTisch').hide();
             $('#hMix,#pCup').show();
-        } else {
-            window.location.href = "#" + Date.now();
         }
     }
+    setTimeout(function () {
+        if (!window.location.hash) {
+            if (!QUERFORMAT || !window.location.search)
+                window.location.href = "#" + Date.now();
+        }
+    }, 600);
 }
 
 function listVersion() {
@@ -1480,26 +1489,31 @@ function fINIT() {
 }
 //  Funktionen  **************************************************************************
 
-//window.onunload = function () {};
-//window.onload = function () {
+if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) {
+    window.onunload = function () {};
+    window.onload = function () {
+        fINIT();
+    };
+}
+
 $(document).ready(function () {
-    
-    fINIT();
+
+    if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') < 0) {
+        fINIT();
+    }
 
     window.onhashchange = function () {
         if (!QUERFORMAT()) {
-            var hHash = window.location.hash;
-            if (hHash && I && I === LS.I) {
-                $('#hMenu,#pMenu,#pCup').hide();
-                $('#hMix,#pTisch').show();
-            } else if (hHash && LS.ShowCups) {
-                $('#hMenu,#pMenu,#pTisch').hide();
-                $('#hMix,#pCup').show();
+            if (mHref) {
+                mHref = false;
             } else {
-                $('#hMix,#pCup,#pTisch').hide();
-                $('#hMenu,#pMenu').show();
+                if (!window.location.hash) {
+                    $('#hMix,#pCup,#pTisch').hide();
+                    $('#hMenu,#pMenu').show();
+                    I = 0;
+                    LS.ShowCups = 0;
+                }
             }
-            $('#pContent').scrollTop(0);
         }
     };
 

@@ -124,15 +124,11 @@ function TischNeu(pNeu) {
 
             LS.ShowCups = I;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            if (window.location.hash) {
-                window.location.replace('_Turnier/TU_1_Anmeldung.html?init');
-            } else {
-                window.location.href = '_Turnier/TU_1_Anmeldung.html?init';
-            }
+            fHref('_Turnier/TU_1_Anmeldung.html?init');
         } else if (!CUPS.TURNIER[I] && (CUPS.TYP[I] === 'PR' || I === 1) && localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3))) {
             LS.LoadCups = I * -1; // - = neuer Tisch
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            window.location.href = 'Abakus/Anmeldung.html';
+            fHref('Abakus/Anmeldung.html');
         } else {
             if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
                 loadTURNIER(I, hHeute, 'Das Turnier wird geladen.', hHeute + ', neuer Tisch');
@@ -326,7 +322,7 @@ function hrefParameterAendern() {
     'use strict';
     LS.ShowCups = I;
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-    window.location.href = 'Abakus/ParameterAendern.html';
+    fHref('Abakus/ParameterAendern.html');
 }
 
 function checkNeuerTisch() {
@@ -625,7 +621,7 @@ function checkNeuerTisch() {
     var NEXT = new Object();
     NEXT.Seite = 'GR';
     localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
-    window.location.href = 'Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html';
+    fHref('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
 }
 
 function blert(pNR, pVNAME, pNNAME, pORT, pSTERNE) {
@@ -893,9 +889,7 @@ function whenSTATloaded() {
     LS.Bis = new Date();
     LS.LoadCups = I * -1; // - = neuer Tisch
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-    setTimeout(function () {
-        window.location.href = 'Abakus/Anmeldung.html';
-    });
+    fHref('Abakus/Anmeldung.html');
 }
 
 function Weiterspielen() {
@@ -909,11 +903,7 @@ function Weiterspielen() {
     var NEXT = new Object();
     NEXT.Seite = 'GR';
     localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
-    window.location.href = 'Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html';
-}
-
-function replaceTischSpeichern() {
-    window.location.href = 'Abakus/TischSpeichern.html';
+    fHref('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
 }
 
 function getINT(pStr) {

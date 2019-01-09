@@ -76,23 +76,13 @@ function QUERFORMAT() {
 }
 
 function historyBack() {
-    if (QUERFORMAT()) {
-        history.back();
-    } else {
+    if (!QUERFORMAT()) {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         LS.ShowCups = stCup; // for after Bottom-Forward
         $('#bMeinTisch').addClass('ui-disabled');
-        if (window.location.search === '?Anmeldungen'
-                || CUPS.BEREadmin[stCup].indexOf(LS.ME) < 0
-                && CUPS.BEREschreiben[stCup].indexOf('*') < 0
-                && CUPS.BEREschreiben[stCup].indexOf(LS.ME) < 0
-                && stCup > 4) {
-            history.back();
-        } else {
-            history.go(-2);
-        }
     }
+    history.back();
 }
 
 function AnAbmelden(pAnmelden) {

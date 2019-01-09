@@ -2,7 +2,13 @@
 /* global CUPS, I, hHeute, LS */
 
 function showText(pText) {
-    if (!QUERFORMAT()) {
+    if (QUERFORMAT()) {
+        if (window.location.hash) {
+            I = 0;
+            LS.ShowCups = 0;
+            history.back();
+        }
+    } else {
         window.location.href = 'Abakus/Text.html?' + pText;
         return;
     }
@@ -373,7 +379,13 @@ function showLogo(pInit) {
     lastBtn = '#bZitate';
     $(lastBtn).addClass('ui-btn-active');
 
-    if (!QUERFORMAT() && !pInit) {
+    if (QUERFORMAT()) {
+        if (window.location.hash) {
+            I = 0;
+            LS.ShowCups = 0;
+            history.back();
+        }
+    } else if (!pInit) {
         showText('Zitate');
         return;
     }

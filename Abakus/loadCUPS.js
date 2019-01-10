@@ -53,8 +53,6 @@ function loadCUPS(pTitel, pText, pForce) {
 
             if (cup.key === 'TERMINE') {
                 CUPS.TERMINE = cup.val();
-            } else if (cup.key === 'SPIELER') { // ab 2018 nicht mehr erforderlich
-
             } else if (cup.key === 'SPIELERnr') {
                 SPIELERnr = cup.val();
             } else if (cup.key === 'TIMESTAMP') {

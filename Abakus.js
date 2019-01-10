@@ -67,11 +67,17 @@ function goRoot() {
 }
 
 function fHref(pHref) {
+    $('body').addClass('ui-disabled');
     mHref = true;
+//    if (window.location.hash) {
+//        history.back();
+//    }
+//    window.location.href = pHref;
     if (window.location.hash) {
-        history.back();
+        window.location.replace(pHref);
+    } else {
+        window.location.href = pHref;
     }
-    window.location.href = pHref;
 }
 
 function QUERFORMAT() {
@@ -1523,6 +1529,10 @@ $(document).ready(function () {
                 LS = JSON.parse(localStorage.getItem('Abakus.LS'));
                 CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
                 initSeite1();
+                if (LS.I === 0) {
+                    $('#bZuMeinemTisch').hide();
+                }
+                $('body').removeClass('ui-disabled');
             }
         };
     }

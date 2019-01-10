@@ -117,11 +117,10 @@ function SetVorhand(pPlus) {
         }
     }
 }
-;
 
 function DEBuchen() {
     'use strict';
-
+    $('body').addClass('ui-disabled');
     if (xStorno) {
         iSpieler = DS.Spieler[DS.Game.length - 1];
     }
@@ -406,7 +405,6 @@ function DEBuchen() {
     localStorage.setItem('Abakus.DS', JSON.stringify(DS));
 
     if (xManu) {
-//        history.back();
         window.location.replace('TischSpeichern.html');
     } else {
         var NEXT = new Object();

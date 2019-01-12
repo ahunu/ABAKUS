@@ -396,7 +396,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
@@ -521,6 +521,7 @@ $(document).ready(function () {
 //    if (firebaseRef) {
 //        firebaseRef.off();
 //    }
+        $('body').addClass('ui-disabled');
         if (!QUERFORMAT() && LS.ShowCups
                 && (LS.ME === "NOBODY" || window.location.search === '?Anmeldungen')) {
             LS.ShowCups = 0;

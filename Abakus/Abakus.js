@@ -236,7 +236,6 @@ function setGame(pName, pGame, pPlus) {
 function showSpiele() {
     Deactivate('#gName');
     if (kontra === 1) {
-//        $('#gName').removeClass('ui-btn').css('font-weight', 'normal').css('color', 'black').html('&nbsp;&nbsp;Wähle ein Spiel');
         $('#nbSpiel,#gWert,#nbWerte').hide();
         $('#nbSpiele').show();
     } else {
@@ -602,7 +601,8 @@ function AnsagenAendern() {
         $('#iAudio').removeClass('zmdi-volume-off zmdi-volume-up');
         $('#iAudio').addClass('zmdi-volume-up');
         if (navigator.vendor.indexOf("Apple") < 0) {
-            responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
+//            responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
+            responsiveVoice.speak(LS.Ansage, 'Deutsch Male');
         } else if ('speechSynthesis' in window) {
             var hAnsage = new SpeechSynthesisUtterance(LS.Ansage);
             hAnsage.lang = "de-DE";
@@ -1636,7 +1636,7 @@ window.onload = function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
@@ -1978,7 +1978,8 @@ window.onload = function () {
                 + '<div class="ui-block-b" style="padding:8px;">'
                 + '<button class="L3 ui-corner-all" onClick="selberruferSpeichern();" style="width:100%;background-color:#efcc44;font-weight:bold;white-space:nowrap;" data-theme="e">&nbsp;&nbsp;&nbsp;ja&nbsp;&nbsp;&nbsp;</button>'
                 + '</div>'
-                + '</div>'
+                + '</div>',
+        closeButton: false
     });
 };
 

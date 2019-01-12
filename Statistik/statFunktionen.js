@@ -362,20 +362,10 @@ function showIcons(pIcons) {
 
 function writeCanvas(pTitel) {
     var hTitel = CUPS.NAME[stCup];
-    if (QUERFORMAT()) {
-        if (stCup === 54) {
-            hTitel = 'Steirischer Tarockcup';
-        } else if (stCup === 55) {
-            hTitel = 'Tiroler Tarockcup';
-        } else if (stCup === 56) {
-            if (stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0) {
-                hTitel = 'Wr. Tarockcup - out of Vienna';
-            } else {
-                hTitel = 'Wiener Zeitung Tarockcup';
-            }
-        }
-    } else {
-        if (stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0) {
+    if (stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0) {
+        if (QUERFORMAT()) {
+            hTitel = 'Wr. Tarockcup - out of Vienna';
+        } else {
             hTitel = 'Wr. Tarockcup - ooV';
         }
     }
@@ -389,11 +379,7 @@ function writeCanvas(pTitel) {
     $('#hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
 
     if (PC) {
-        if (stCup === 56 && QUERFORMAT()) {
-            $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:'Times New Roman';");
-        } else {
-            $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
-        }
+        $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
         $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");
     }
     // 51 H Hausruckcup

@@ -569,6 +569,8 @@ function onOK() {
         return;
     }
 
+    $('body').addClass('ui-disabled');
+
     if ((LS.VName[1].substr(0, 3) === LS.VName[2].substr(0, 3))
             || (LS.VName[1].substr(0, 3) === LS.VName[3].substr(0, 3))
             || (LS.VName[1].substr(0, 3) === LS.VName[4].substr(0, 3))

@@ -10,6 +10,11 @@
         <script src="../js/jquery/jquery.min.js"></script>
         <script src="../js/firebase/firebase.js"></script>
         <script type="text/javascript">
+            window.onpageshow = function () { // Forward-Button verhindern
+                if (window.performance.navigation.type === 2) {
+                    history.back();
+                }
+            };
             $(document).bind("mobileinit", function () {
                 $.mobile.selectmenu.prototype.options.nativeMenu = false;
                 $.mobile.loadingMessage = true;

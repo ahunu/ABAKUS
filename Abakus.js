@@ -211,7 +211,7 @@ function writeCanvas(pCup) {
             hTitel2 = 'Sküs of the year';
         } else if (pCup === 50) {
             if (QUERFORMAT) {
-                hTitel2 = 'Eine Veranstaltung des Wiener Zeitung Tarockcup';
+                hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
             } else {
                 hTitel2 = 'Ein außergewöhnlicher Event';
             }
@@ -252,7 +252,7 @@ function writeCanvas(pCup) {
             if (pCup === 50) {
                 hTitel = '1. Wiener Tarockmarathon';
                 document.title = '1. Wr. Marathon';
-                hTitel2 = 'Eine Veranstaltung des Wiener Zeitung Tarockcup';
+                hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
             } else if (pCup === 51) {
                 hTitel = 'Hausruckviertler Tarockcup';
                 document.title = 'HRC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
@@ -273,7 +273,7 @@ function writeCanvas(pCup) {
                 hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'http://www.tarock.tirol\')" >www.tarock.tirol</span>';
             } else if (pCup === 56) {
                 document.title = 'WTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
-                hTitel = 'Wiener Zeitung Tarockcup';
+                hTitel = 'Wiener Tarockcup';
                 hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'http://wienertarockcup.at\')" >www.WienerTarockcup.at</span>';
             } else if (pCup === 58) {
                 document.title = 'SST - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
@@ -1172,7 +1172,7 @@ function whenCUPSloaded() {
     var SORT = [];
     for (i = 0; i < CUPS.NAME.length; i++) {
         if (CUPS.NAME[i]) {
-//            if (i === 56) { // Wiener Zeitung Tarockcup
+//            if (i === 56) { // Wiener Tarockcup
 //                SORT[SORT.length] = '1' + CUPS.NAME[i] + '  ;' + i;
 //            } else if (i === 54) { // Steirischer Tarockcup
 //                SORT[SORT.length] = '2' + CUPS.NAME[i] + '  ;' + i;
@@ -1409,7 +1409,7 @@ function fINIT() {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

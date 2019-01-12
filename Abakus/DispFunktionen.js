@@ -50,7 +50,8 @@ function showGR() {
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
         if (navigator.vendor.indexOf("Apple") < 0) {
             responsiveVoice.OnVoiceReady = function () {
-                responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
+//                responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
+                responsiveVoice.speak(LS.Ansage, 'Deutsch Male');
             };
         } else if ('speechSynthesis' in window) {
             var hAnsage = new SpeechSynthesisUtterance(LS.Ansage);

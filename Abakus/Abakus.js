@@ -601,8 +601,7 @@ function AnsagenAendern() {
         $('#iAudio').removeClass('zmdi-volume-off zmdi-volume-up');
         $('#iAudio').addClass('zmdi-volume-up');
         if (navigator.vendor.indexOf("Apple") < 0) {
-//            responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
-            responsiveVoice.speak(LS.Ansage, 'Deutsch Male');
+            responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
         } else if ('speechSynthesis' in window) {
             var hAnsage = new SpeechSynthesisUtterance(LS.Ansage);
             hAnsage.lang = "de-DE";

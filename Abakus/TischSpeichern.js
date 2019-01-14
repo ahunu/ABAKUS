@@ -274,16 +274,16 @@ function wrtSPIELER(I) {
         }
     }
 
-    if (ii >= 0) {
-        if (new Date(STAT.S[ii].TIMESTAMP).valueOf() === new Date(spTIMESTAMP).valueOf()) {  // bereits gespeichert
-            $('#emText').append(LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + ' bereits gespeichert. (f345)' + '<br>');
-            log('STATadd bereits gespeichert. (Fehler 345).', I);
-            LS.AnzGespeichert = I;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            wrtSPIELER(I + 1);
-            return;
-        }
-    }
+//    if (ii >= 0) {
+//        if (new Date(STAT.S[ii].TIMESTAMP).valueOf() === new Date(spTIMESTAMP).valueOf()) {  // bereits gespeichert
+//            $('#emText').append(LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + ' bereits gespeichert. (f345)' + '<br>');
+//            log('STATadd bereits gespeichert. (Fehler 345).', I);
+//            LS.AnzGespeichert = I;
+//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//            wrtSPIELER(I + 1);
+//            return;
+//        }
+//    }
 
     function initSTAT(pI) {
         'use strict';

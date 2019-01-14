@@ -1629,10 +1629,6 @@ window.onload = function () {
     NEXT = new Object();
     NEXT = JSON.parse(localStorage.getItem('Abakus.NEXT'));
 
-
-//showEineMeldung('LS.I', 'Es wurden ' + LS.gespielt + ' Spiele gespielt.');
-
-
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
@@ -1985,11 +1981,15 @@ window.onload = function () {
 if (/iPad|iPhone/.test(navigator.userAgent)) {
     window.onpageshow = function (event) {
         if (window.performance.navigation.type === 2) {
-            var hJeSeite = LS.JeSeite;
+//            var hJeSeite = LS.JeSeite;
             LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-            if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
+//            if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
                 window.location.replace('Abakus4' + LS.JeSeite + '.html?');
-            }
+//            }
         }
     };
 }
+
+window.onbeforeunload = function (e) {
+    $('body').addClass('ui-disabled');
+};

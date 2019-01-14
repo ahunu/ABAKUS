@@ -70,17 +70,11 @@ function historyBack() {
     history.back();
 }
 
-function reloadStat(pCup) {
-    LS.ShowCups = parseInt(pCup);
-    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-    window.location.reload();
-}
-
 function defHome() {
     var hContent = ''
             + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();statBack()">&nbsp;<img src="../Icons/icon-36-ldpi.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;Abakus <span style="font-weight:normal">Hauptseite</span></button><br>'
-            + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();reloadStat(\'' + 56 + '\')">&nbsp;<img src="../Icons/i56.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;Wr. Tarockcup</button><br>'
-            + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();reloadStat(\'' + 54 + '\')">&nbsp;<img src="../Icons/i54.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;St. Tarockcup</button><br>'
+            + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();fINIT(56)">&nbsp;<img src="../Icons/i56.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;Wr. Tarockcup</button><br>'
+            + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();fINIT(54)">&nbsp;<img src="../Icons/i54.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;St. Tarockcup</button><br>'
             + '<button class="L" style="width:100%;" onclick="jbHome.close();$(\'#nbHome\').removeClass(\'ui-btn-active\');">abbrechen</button>';
     jbHome = new jBox('Modal', {
         title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center>Wechsle auf</center></div>',
@@ -120,8 +114,22 @@ function nbHome() {
         $('#dRumpf,#dFooter').addClass('ui-disabled');
         statBack();
     } else {
+        if (jbArchiv) {
+            if (jbArchiv.isOpen) {
+                jbArchiv.close();
+            }
+        }
         jbHome.open();
     }
+}
+
+function nbArchiv() {
+    if (jbHome) {
+        if (jbHome.isOpen) {
+            jbHome.close();
+        }
+    }
+    jbArchiv.open();
 }
 
 function statBack() { // llll
@@ -137,12 +145,7 @@ function statBack() { // llll
     } else {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        history.go(-1);
-//        if (LS.ME !== 'NOBODY') {
-//            history.go(-2);
-//        } else {
-//            history.back();
-//        }
+        history.back();
     }
 }
 
@@ -352,7 +355,10 @@ function writeAnekdote(pWrite) {
 
 // I N I T  ************************************************************************************
 $(document).ready(function () {
+    fINIT();
+});
 
+function fINIT(pCup) {
     $('#iDownload,#iPrint,#iAnekdote').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
@@ -378,7 +384,11 @@ $(document).ready(function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
 
     stHeute = myDateString(new Date());
-    stCup = LS.ShowCups;
+    if (pCup) {
+        stCup = pCup;
+    } else {
+        stCup = LS.ShowCups;
+    }
     if (stCup >= 58) {
         LS.ShowSpielerNr = false;
     }
@@ -420,7 +430,9 @@ $(document).ready(function () {
     STAT = JSON.parse(localStorage.getItem('Abakus.STAT' + (("000" + stCup).slice(-3))));
     SPIELER = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
 
-    firebase.initDB(stCup, 'rw');
+    if (!pCup) {
+        firebase.initDB(stCup, 'rw');
+    }
 
     if (CUPS.TYP[stCup] === 'MT') {
         writeCanvas(eval('"\\u00DC"') + 'bersicht');
@@ -515,7 +527,7 @@ $(document).ready(function () {
         }
     });
     getSTAT(stCup);
-});
+}
 
 window.onbeforeunload = function (e) {
     $('body').addClass('ui-disabled');

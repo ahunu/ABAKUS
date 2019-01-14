@@ -69,10 +69,6 @@ function goRoot() {
 function fHref(pHref) {
     $('body').addClass('ui-disabled');
     mHref = true;
-//    if (window.location.hash) {
-//        history.back();
-//    }
-//    window.location.href = pHref;
     if (window.location.hash) {
         window.location.replace(pHref);
     } else {
@@ -245,6 +241,8 @@ function writeCanvas(pCup) {
         hTitel = CUPS.NAME[pCup];
         if (pCup >= 50 && pCup <= 59) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i" + pCup + ".png");
+        } else if (pCup === 11) {
+            $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i55.png");
         } else {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Farben.png");
         }

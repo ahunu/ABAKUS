@@ -3,6 +3,10 @@
 
 var PC = false;
 
+var LS = new Object();
+var ST = new Object();
+var DS = new Object();
+
 var mErgaenzt = false;
 var mJungmann = false;
 var mKontra = false;
@@ -851,6 +855,10 @@ function showBody() {
 
 window.onunload = function () {};
 window.onload = function () {
+    fINIT();
+};
+
+function fINIT() {
     // $(document).ready(function () {
 
     if (navigator.userAgent.match(/Android/i)
@@ -866,13 +874,8 @@ window.onload = function () {
         PC = true;
     }
 
-    LS = new Object();
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-
-    ST = new Object();
     ST = JSON.parse(localStorage.getItem('Abakus.ST'));
-
-    DS = new Object();
     DS = JSON.parse(localStorage.getItem('Abakus.DS'));
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
@@ -976,7 +979,8 @@ window.onload = function () {
         });
     });
 
-};
+}
+;
 
 if (/iPad|iPhone/.test(navigator.userAgent)) {
     window.onpageshow = function (event) {
@@ -987,7 +991,7 @@ if (/iPad|iPhone/.test(navigator.userAgent)) {
                 window.location.replace('Edit4' + LS.JeSeite + '.html?');
                 return;
             }
-            showBody();
+            fINIT();
         }
     };
 }

@@ -1,5 +1,5 @@
 
-/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbHome, jbArchiv */
+/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbHome, jbArchiv, stFinalTeilnehmer, stNamenLen */
 
 function sortNumber(a, b) {
     return a - b;
@@ -126,14 +126,22 @@ function getCupPunkte(pTurnier, pSpieler) {
                     return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
                 } else {
                     if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
-                        return '-' + (STAT[pTurnier][pSpieler][0] - 50);
+                        return (STAT[pTurnier][pSpieler][0] - 50) * -1;
                     } else {
                         return '-';
                     }
                 }
             }
         } else {
-            return '-';
+            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
+                if (LS.ME === '3425') {
+                    return stFinalTeilnehmer * -1 + 49;
+                } else {
+                    return '-';
+                }
+            } else {
+                return '-';
+            }
         }
     }
 
@@ -143,7 +151,7 @@ function getCupPunkte(pTurnier, pSpieler) {
     } else if (hPunkte > 100) {
         hPunkte = parseInt((hPunkte - 100) / 2) + 100;
     }
-    return hPunkte;
+    return parseInt(hPunkte); //
 }
 
 function getVeranstalter(pNR) {
@@ -514,49 +522,6 @@ function optFont() {
                     stFont += 0.05;
                     $('#mTable').css('font-size', stFont + 'vw');
                 }
-                return;
-            }
-        }
-    });
-}
-
-
-function soptFont() {
-    'use strict';
-    setTimeout(function () {
-        var pWidth = $(window).innerWidth();
-        if (($('#L0P1').width()) === pWidth) {
-
-            return;
-        } else if (($('#L0P1').width()) < pWidth) {
-            if (stFontPlus === 0) {
-                stFontPlus = 0.1;
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else if (stFontPlus === 0.1) {
-                if (stFont < stFontMax) {
-                    stFont += stFontPlus;
-                    $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                }
-                return;
-            } else {
-
-            }
-        } else {
-            if (stFontPlus === 0) {
-                stFontPlus = -0.1;
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else if (stFontPlus === -0.1) {
-                stFont += stFontPlus;
-                $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-                return;
-            } else {
-                stFont += 0.05;
-                stFont -= 4;
-                $('#mTable').css('font-size', stFont + 'vw');
                 return;
             }
         }

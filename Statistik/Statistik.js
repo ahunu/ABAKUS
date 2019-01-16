@@ -39,6 +39,7 @@ var stCup = 0;
 var stSaison = '';
 var stSaisonTab = [];
 var stFinale = false;
+var stFinalTeilnehmer = 0;
 var stStat = 0;
 var stNamenLen = 0.45;
 var stHeute = "2017-04-04";
@@ -496,6 +497,7 @@ function fINIT(pCup) {
             $('#mTable').css('font-size', '1.5vw');
         }
     });
+
     $(document).on('keyup', '#iFilter', function () {
         var rows = $("#tbody").find("tr");
         if (this.value.length) {
@@ -529,8 +531,9 @@ function fINIT(pCup) {
     getSTAT(stCup);
 }
 
-window.onbeforeunload = function (e) {
-    $('body').addClass('ui-disabled');
+history.pushState("ll", null, null);               // State erzeugen
+window.addEventListener('popstate', function (e) { // State verlassen
+    $('body').addClass('ui-disabled');             // ersetzt onbeforeunload
     if (firebaseRef) {
         firebaseRef.off();
     }
@@ -540,4 +543,4 @@ window.onbeforeunload = function (e) {
         LS.ShowCups = stCup; // for after Bottom-Forward
     }
     history.back();
-};
+});

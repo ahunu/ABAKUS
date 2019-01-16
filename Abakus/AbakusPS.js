@@ -18,7 +18,7 @@ function PS_Init() {
     if (LS.TURRUNDE || LS.TURTISCH) {
         $('#dKontra').removeClass('nb24').addClass('nb0');
         $('#dName').removeClass('nb52').addClass('nb76');
-        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra').addClass('ui-disabled');
+        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontsra').addClass('ui-disabled');
     } else {
         if (LS.Tarif21T) {
             $('.cKontra').show();

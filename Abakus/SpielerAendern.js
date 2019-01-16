@@ -993,8 +993,9 @@ $(document).bind('pageinit', function () {
         dZuletzt = new Date(dZuletzt).toJSON().substr(0, 10);
     });
 
+    history.pushState("ll", null, null);               // State erzeugen
+    window.addEventListener('popstate', function (e) { // State verlassen
+        $('body').addClass('ui-disabled');             // ersetzt onbeforeunload
+        history.back();
+    });
 });
-
-window.onbeforeunload = function (e) {
-    $('#main').addClass('ui-disabled');
-};

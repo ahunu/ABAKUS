@@ -150,8 +150,7 @@ function showTurnier(pTurnier) {
         var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
         $('#sideContent').css('height', hx + 'px');
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-//            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, fixedOffset: $('#hfHeaderLinks')});
-            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], fixedOffset: 0.01});
         }
     }
 
@@ -192,7 +191,7 @@ function popupSpieler(pSpieler) {
                 if (STAT[iTurnier][pSpieler]) {
                     hCuppunkte = getCupPunkte(iTurnier, pSpieler);
                     if (!isNaN(hCuppunkte)) {
-                        aCuppunkte.push([900 - getCupPunkte(iTurnier, pSpieler), iTurnier]);
+                        aCuppunkte.push([900 - hCuppunkte, iTurnier]);
                     }
                 }
             }
@@ -209,7 +208,7 @@ function popupSpieler(pSpieler) {
         if (stFinale) {
             hCupPunkte = getCupPunkte(stFinale, pSpieler);
             if (!isNaN(hCupPunkte)) {
-                cuppunkte += hCupPunkte;
+                cuppunkte += parseInt(hCupPunkte);
             }
         }
 

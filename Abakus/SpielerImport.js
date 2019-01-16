@@ -379,6 +379,8 @@ $(document).bind('pageinit', function () {
     }
 });
 
-window.onbeforeunload = function (e) {
-    $('#main').addClass('ui-disabled');
-};
+history.pushState("ll", null, null);               // State erzeugen
+window.addEventListener('popstate', function (e) { // State verlassen
+    $('body').addClass('ui-disabled');             // ersetzt onbeforeunload
+    history.back();
+});

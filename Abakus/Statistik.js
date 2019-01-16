@@ -517,22 +517,7 @@ $(document).ready(function () {
         }
     });
 
-//    window.onbeforeunload = function (e) {
-//    if (firebaseRef) {
-//        firebaseRef.off();
-//    }
-//        $('body').addClass('ui-disabled');
-//        if (!QUERFORMAT() && LS.ShowCups
-//                && (LS.ME === "NOBODY" || window.location.search === '?Anmeldungen')) {
-//            LS.ShowCups = 0;
-//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-//            $('#bMeinTisch').addClass('ui-disabled');
-//            LS.ShowCups = stCup; // for after Bottom-Forward
-//        }
-//    };
-
     history.pushState("ll", null, null);               // State erzeugen
-
     window.addEventListener('popstate', function (e) { // State verlassen
         $('body').addClass('ui-disabled');             // ersetzt onbeforeunload
         if (!QUERFORMAT() && LS.ShowCups

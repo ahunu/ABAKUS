@@ -131,7 +131,7 @@ function showCupwertung() {
         if (stFinale) {
             hCupPunkte = getCupPunkte(stFinale, spieler);
             if (!isNaN(hCupPunkte)) {
-                tCUP[0] += hCupPunkte;
+                tCUP[0] += parseInt(hCupPunkte);
             }
         }
 
@@ -146,13 +146,17 @@ function showCupwertung() {
 
     SORT.sort();
     var html = ''
-            + "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>"
+            + "<div style='height:1px;'></div>" // Keine Ahnung, ohne dem funktioniert setFont nicht !!!!
+            + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, Ort, ...'></div>" : "")
             + (stCup === 58
                     ? "&nbsp;<img src='../Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Cupwertung.</b><br></span>"
                     + "&nbsp;<img src='../Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>"
                     : ''
                     )
-            + "<table id=mTable style='width: 100% !important;' data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
+            + "<table id=mTable data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
+
+//            + "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
+
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>";
     if (LS.ShowSpielerNr && QUERFORMAT()) {
@@ -173,6 +177,9 @@ function showCupwertung() {
                 + (stSaison === stSaisonTab[0] && stCup < 58 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "");
     }
     html += "</tr></thead><tbody id=tbody>";
+    if (!QUERFORMAT()) {
+        html += "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, ...'></td></tr>";
+    }
 
     var nSpieler = 0;
     var hPlatz = 0;
@@ -271,13 +278,21 @@ function showCupwertung() {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
         }
     } else {
-        $('#dContent').html(html);
+//        $('#dContent').html(html);
+//        $('#sideDetails').hide();
+//        $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
+//        var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
+//        $('#sideContent').css('height', hx + 'px');
+//        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
+//            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, fixedOffset: $('#hfHeaderL')});
+//        }
+        $("#dContent").html(html);
         $('#sideDetails').hide();
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
         $('#sideContent').css('height', hx + 'px');
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, fixedOffset: $('#hfHeaderL')});
+            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], fixedOffset: 0.01});
         }
     }
 

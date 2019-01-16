@@ -1976,20 +1976,20 @@ window.onload = function () {
                 + '</div>',
         closeButton: false
     });
-};
 
-if (/iPad|iPhone/.test(navigator.userAgent)) {
-    window.onpageshow = function (event) {
-        if (window.performance.navigation.type === 2) {
-//            var hJeSeite = LS.JeSeite;
-            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-//            if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
+    if (/iPad|iPhone/.test(navigator.userAgent)) {
+        window.onpageshow = function (event) {
+            if (window.performance.navigation.type === 2) {
+                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
                 window.location.replace('Abakus4' + LS.JeSeite + '.html?');
-//            }
-        }
-    };
-}
+            }
+        };
+    }
 
-window.onbeforeunload = function (e) {
-    $('body').addClass('ui-disabled');
+    history.pushState("ll", null, null);               // State erzeugen
+    window.addEventListener('popstate', function (e) { // State verlassen
+        $('body').addClass('ui-disabled');             // ersetzt onbeforeunload
+        history.back();
+    });
+
 };

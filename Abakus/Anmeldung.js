@@ -1201,7 +1201,8 @@ function B_Clear() {
     $('#D_NeuerSpieler').hide();
     $("#lvGefunden").empty();
     $(".GEFSP").off("draggable");
-    $('#fMeldung').text('Wen willst du finden?');
+    $('#fMeldung').text('Wen willst du finden?').focus();
+    $('#Footer').show();
 }
 
 function hideLoading() {
@@ -1795,22 +1796,18 @@ $(document).ready(function () {
     if (LS.Timeout !== 111) {
         $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusin(function () {
             scrollToINR();
-            if (!QUERFORMAT()) { // PhoneGap cli 6.3.0 schiebt den Footer vor die virtuelle Tastatur
-                $('#Footer').hide();
-            }
+            $('#Footer').hide();
         });
 
         $("#I_NR,#I_VNAME,#I_NNAME,#I_ORT").focusout(function () {
-            if (!QUERFORMAT()) {
-                setTimeout(function () {
-                    if (!$('#I_NR').is(':focus')
-                            && !$('#I_VNAME').is(':focus')
-                            && !$('#I_NNAME').is(':focus')
-                            && !$('#I_ORT').is(':focus')) {
-                        $('#Footer').show();
-                    }
-                });
-            }
+            setTimeout(function () {
+                if (!$('#I_NR').is(':focus')
+                        && !$('#I_VNAME').is(':focus')
+                        && !$('#I_NNAME').is(':focus')
+                        && !$('#I_ORT').is(':focus')) {
+                    $('#Footer').show();
+                }
+            }, 200);
         });
     }
 

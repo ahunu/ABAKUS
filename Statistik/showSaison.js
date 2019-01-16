@@ -69,7 +69,9 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     var hDataTheme = '';
     var hSpieler = '';
     stFinale = false;
+    stFinalTeilnehmer = 0;
     stEndstand = false;
+
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (STAT[turnier]._SAISON === stSaison) {
@@ -161,6 +163,14 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    if (stFinale) {
+        for (var teilnehmer in STAT[stFinale]) {
+            if (teilnehmer[0] !== '_') {
+                stFinalTeilnehmer++;
             }
         }
     }

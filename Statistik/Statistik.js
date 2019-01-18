@@ -63,6 +63,7 @@ function QUERFORMAT() {
 }
 
 function historyBack() {
+    $('body').addClass('ui-disabled');
     if (!QUERFORMAT()) {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
@@ -529,18 +530,18 @@ function fINIT(pCup) {
         }
     });
     getSTAT(stCup);
-}
 
-history.pushState("ll", null, null);               // State erzeugen
-window.addEventListener('popstate', function (e) { // State verlassen
-    $('body').addClass('ui-disabled');             // ersetzt onbeforeunload
-    if (firebaseRef) {
-        firebaseRef.off();
-    }
-    if (!QUERFORMAT() && LS.I !== LS.ShowCups) {
-        LS.ShowCups = 0;
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        LS.ShowCups = stCup; // for after Bottom-Forward
-    }
-    history.back();
-});
+    window.onbeforeunload = function (event) {
+        if (/iPad|iPhone/.test(navigator.userAgent)) {
+            $('body').addClass('ui-disabled');
+        }
+        if (firebaseRef) {
+            firebaseRef.off();
+        }
+        if (!QUERFORMAT() && LS.I !== LS.ShowCups) {
+            LS.ShowCups = 0;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            LS.ShowCups = stCup; // for after Bottom-Forward
+        }
+    };
+}

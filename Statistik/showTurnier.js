@@ -59,7 +59,8 @@ function showTurnier(pTurnier) {
 
     stNamenLen = 0.38;
 
-    var html = getStatMeldungen()
+    var html = (!QUERFORMAT() ? "<div id='dDummy'>&nbsp;</div>" : "")
+            + getStatMeldungen()
             + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
             + "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
@@ -73,7 +74,8 @@ function showTurnier(pTurnier) {
             + "<th class=TR>R2&nbsp;</th>"
             + "<th class=TR>R3&nbsp;</th>"
             + "</tr></thead><tbody id=tbody>"
-            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='5'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, ...'></td></tr>" : "");
+            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='5'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
+            + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
 
     var SORT = [];
 
@@ -140,24 +142,28 @@ function showTurnier(pTurnier) {
                 + (stCup === 58 ? "<td class=TR>tarock.firebaseapp.com?Stadltarock&nbsp;</td>" : "")
                 + "</tr></tbody></table><br>");
         $('#tStand').hide();
-        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
-        }
     } else {
+        $('#sideContent').css('height', '2px');
         $("#dContent").html(html + "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>");
         $('#sideDetails').hide();
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
         $('#sideContent').css('height', hx + 'px');
-        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], fixedOffset: 0.01});
-        }
     }
 
     hideEinenMoment();
 
     setFont();
     window.scrollTo(0, 0);
+
+    if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
+        if (QUERFORMAT()) {
+            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
+        } else {
+            $('#dDummy').remove();
+            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+        }
+    }
 }
 
 function popupSpieler(pSpieler) {
@@ -191,7 +197,7 @@ function popupSpieler(pSpieler) {
                 if (STAT[iTurnier][pSpieler]) {
                     hCuppunkte = getCupPunkte(iTurnier, pSpieler);
                     if (!isNaN(hCuppunkte)) {
-                        aCuppunkte.push([900 - hCuppunkte, iTurnier]);
+                        aCuppunkte.push([900 - getCupPunkte(iTurnier, pSpieler), iTurnier]);
                     }
                 }
             }
@@ -209,6 +215,8 @@ function popupSpieler(pSpieler) {
             hCupPunkte = getCupPunkte(stFinale, pSpieler);
             if (!isNaN(hCupPunkte)) {
                 cuppunkte += parseInt(hCupPunkte);
+            } else {
+                pSpieler = pSpieler;
             }
         }
 

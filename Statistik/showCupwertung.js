@@ -24,11 +24,8 @@ function showCupwertung() {
 
     stStat = 'Cupwertung';
     stNamenLen = 0.3;
-
     writeCanvas('Cupwertung  ' + stSaison);
-
     $("#dCopyright").hide();
-
     if (stEndstand) {
         $('#tStand').html('Endstand:').attr('style', 'position: fixed; top: 44px; right: 5px; cursor: pointer;').show();
     } else {
@@ -37,7 +34,6 @@ function showCupwertung() {
 
     var i = 0;
     var html = '';
-
     var tOF = [];
     if (stCup === 54) {
         tOF = [120, 109, 100, 93, 87, 82, 78, 73, 69, 64, 60, 57, 53, 50, 46, 43, 41, 38, 35, 33, 31, 29, 27, 25, 23, 22, 20, 19, 18, 17, 16, 15, 14, 13, 13, 12, 12, 11, 11, 11];
@@ -145,41 +141,29 @@ function showCupwertung() {
     }
 
     SORT.sort();
-    var html = ''
-            + "<div style='height:1px;'></div>" // Keine Ahnung, ohne dem funktioniert setFont nicht !!!!
-            + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, Ort, ...'></div>" : "")
-            + (stCup === 58
+    var html = (!QUERFORMAT() ? "<div id='dDummy'></div>" : "")
+            + (stCup === 58 // Stadltarock
                     ? "&nbsp;<img src='../Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Cupwertung.</b><br></span>"
                     + "&nbsp;<img src='../Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>"
                     : ''
                     )
-            + "<table id=mTable data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
-
-//            + "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
-
+            + "<table id=mTable style='swidth: 100% !important;' data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
-            + "<th class=TR>#&nbsp;&nbsp;</th>";
-    if (LS.ShowSpielerNr && QUERFORMAT()) {
-        html += "<th class=TC>Nr.&nbsp;</th>";
-    }
-    html += "<th class=TL>&nbsp;&nbsp;Name</th>";
-    if (QUERFORMAT()) {
-        html += "<th class='TL noprint'>&nbsp;&nbsp;Ort</th>";
-    }
-    html += "<th class=TR>Ges&nbsp;</th>";
-    if (stFinale) {
-        html += "<th class='TR'>Fin&nbsp;</th>";
-    }
-    html += "<th class=TL colspan='6'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cuppunkte</th>";
+            + "<th class=TR>#&nbsp;&nbsp;</th>"
+            + (LS.ShowSpielerNr && QUERFORMAT() ? "<th class=TC>Nr.&nbsp;</th>" : "")
+            + "<th class=TL>&nbsp;&nbsp;Name</th>"
+            + (QUERFORMAT() ? "<th class='TL noprint'>&nbsp;&nbsp;Ort</th>" : "")
+            + "<th class=TR>Ges&nbsp;</th>"
+            + (stFinale ? "<th class='TR'>Fin&nbsp;</th>" : "")
+            + "<th class=C colspan='6'>Vorrundenpunkte</th>";
     if (QUERFORMAT()) {
         html += "<th class=TC>TN</th>"
                 + "<th class=TC nowrap>1. 2. 3.</th>"
                 + (stSaison === stSaisonTab[0] && stCup < 58 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "");
     }
-    html += "</tr></thead><tbody id=tbody>";
-    if (!QUERFORMAT()) {
-        html += "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, ...'></td></tr>";
-    }
+    html += "</tr></thead><tbody id=tbody>"
+            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
+                    + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
 
     var nSpieler = 0;
     var hPlatz = 0;
@@ -226,7 +210,7 @@ function showCupwertung() {
             if (!isNaN(tCUP[5][i])) {
                 html += '<td class="TR">' + tCUP[5][i] + '&nbsp;</td>';
             } else {
-                html += '<td></td>';
+                html += '<td class="TR"></td>';
             }
         }
 
@@ -249,7 +233,6 @@ function showCupwertung() {
     }
 
     html += "</tbody></table><br>";
-
     if (QUERFORMAT()) {
         html += "<table data-role=table class=S>"
                 + "<tbody>"
@@ -274,30 +257,26 @@ function showCupwertung() {
 
     if (QUERFORMAT()) {
         $('#dRumpf').html(html);
-        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
-        }
     } else {
-//        $('#dContent').html(html);
-//        $('#sideDetails').hide();
-//        $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-//        var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
-//        $('#sideContent').css('height', hx + 'px');
-//        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-//            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, fixedOffset: $('#hfHeaderL')});
-//        }
-        $("#dContent").html(html);
+        $('#dContent').html(html);
         $('#sideDetails').hide();
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
         $('#sideContent').css('height', hx + 'px');
-        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], fixedOffset: 0.01});
-        }
     }
 
     hideEinenMoment();
-
     setFont();
     window.scrollTo(0, 0);
+
+    if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
+        if (QUERFORMAT()) {
+            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
+        } else {
+            $('#dDummy').remove();
+            setTimeout(function () {
+                $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+            }, 2000); // Wegen Headerproportionen erforderlich
+        }
+    }
 }

@@ -800,7 +800,7 @@ function aehnlicheSpielerFinden(pNNAME, pVNAME, pORT, pSPIELER) {
             }
         }
 
-        $("#lvAehnlich").append("<li data-icon='false'><a id='GS" + spieler + "' onclick='showSPIELER(\"" + spieler + "\")'><span class='N " + cFarbe + "'>" + spieler + " </span><span class='" + cFarbe + "'> " + SPIELERext[spieler][spNNAME] + " " + SPIELERext[spieler][spVNAME] +     (SPIELERext[spieler][spZUSATZ] ? ' ' + SPIELERext[spieler][spZUSATZ] : '')        + (SPIELERext[spieler][spVERSTORBEN] ? "&nbsp;&nbsp;&#134;" : "") + "</span><span class='N " + cFarbe + "'><br>" + SPIELERext[spieler][spORT] + ", " + SPIELERext[spieler][spSTRASSE] + "</span></a></li>");
+        $("#lvAehnlich").append("<li data-icon='false'><a id='GS" + spieler + "' onclick='showSPIELER(\"" + spieler + "\")'><span class='N " + cFarbe + "'>" + spieler + " </span><span class='" + cFarbe + "'> " + SPIELERext[spieler][spNNAME] + " " + SPIELERext[spieler][spVNAME] + (SPIELERext[spieler][spZUSATZ] ? ' ' + SPIELERext[spieler][spZUSATZ] : '') + (SPIELERext[spieler][spVERSTORBEN] ? "&nbsp;&nbsp;&#134;" : "") + "</span><span class='N " + cFarbe + "'><br>" + SPIELERext[spieler][spORT] + ", " + SPIELERext[spieler][spSTRASSE] + "</span></a></li>");
     }
 
     $('#lvAehnlich').listview().listview('refresh');
@@ -993,9 +993,10 @@ $(document).bind('pageinit', function () {
         dZuletzt = new Date(dZuletzt).toJSON().substr(0, 10);
     });
 
-    history.pushState("ll", null, null);               // State erzeugen
-    window.addEventListener('popstate', function (e) { // State verlassen
-        $('body').addClass('ui-disabled');             // ersetzt onbeforeunload
-        history.back();
-    });
+    if (/iPad|iPhone/.test(navigator.userAgent)) {
+        window.onbeforeunload = function (event) {
+            $('body').addClass('ui-disabled');
+        };
+    }
+
 });

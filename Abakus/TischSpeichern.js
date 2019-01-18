@@ -612,10 +612,9 @@ $(document).ready(function () {
 
     checkVersion();
 
-});
-
-history.pushState("ll", null, null);               // State erzeugen
-window.addEventListener('popstate', function (e) { // State verlassen
-    $('body').addClass('ui-disabled');             // ersetzt onbeforeunload
-    history.back();
+    if (/iPad|iPhone/.test(navigator.userAgent)) {
+        window.onbeforeunload = function (event) {
+            $('body').addClass('ui-disabled');
+        };
+    }
 });

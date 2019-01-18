@@ -473,16 +473,14 @@ function optFont() {
     'use strict';
     setTimeout(function () {
         var pWidth = $(window).innerWidth();
-        if (($('#L0P1').width()) === pWidth) {
-            if (!PC
-                    && navigator.userAgent.indexOf("iPhone") < 0
-                    && navigator.userAgent.indexOf("iPad") < 0) {
-            } else {
+        var tWidth = $('#mTable').width();
+        if (tWidth === pWidth) {
+            if (PC) {
                 stFont -= 0.3;
                 $('#mTable').css('font-size', stFont + 'vw');
             }
             return;
-        } else if (($('#L0P1').width()) < pWidth) {
+        } else if (tWidth < pWidth) {
             if (stFontPlus === 0) {
                 stFontPlus = 0.1;
                 stFont += stFontPlus;
@@ -495,12 +493,9 @@ function optFont() {
                 }
                 return;
             } else {
-                if (!PC
-                        && navigator.userAgent.indexOf("iPhone") < 0
-                        && navigator.userAgent.indexOf("iPad") < 0) {
-                    stFont += -0.05;
-                } else {
-                    stFont += -0.3;
+                stFont += 0.05;
+                if (PC) {
+                    stFont -= 0.3;
                 }
                 $('#mTable').css('font-size', stFont + 'vw');
                 return;
@@ -516,12 +511,11 @@ function optFont() {
                 $('#mTable').css('font-size', stFont + 'vw').show(optFont);
                 return;
             } else {
-                if (!PC
-                        && navigator.userAgent.indexOf("iPhone") < 0
-                        && navigator.userAgent.indexOf("iPad") < 0) {
-                    stFont += 0.05;
-                    $('#mTable').css('font-size', stFont + 'vw');
+                stFont -= 0.05;
+                if (PC) {
+                    stFont -= 0.3;
                 }
+                $('#mTable').css('font-size', stFont + 'vw');
                 return;
             }
         }

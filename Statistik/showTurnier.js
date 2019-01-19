@@ -153,7 +153,7 @@ function showTurnier(pTurnier) {
 
     hideEinenMoment();
 
-    setFont();
+    setFont(4.7);
     window.scrollTo(0, 0);
 
     if (window.navigator.userAgent.indexOf("MSIE ") === -1) {

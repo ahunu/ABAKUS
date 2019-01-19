@@ -266,7 +266,11 @@ function showCupwertung() {
     }
 
     hideEinenMoment();
-    setFont();
+    if (stFinale) {
+        setFont(3.7);
+    } else {
+        setFont(4.1);
+    }
     window.scrollTo(0, 0);
 
     if (window.navigator.userAgent.indexOf("MSIE ") === -1) {

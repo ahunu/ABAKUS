@@ -15,10 +15,10 @@ function PS_Init() {
     soloFaktor = 1;
     kontra = 1;
 
-    if (LS.TURRUNDE || LS.TURTISCH) {
+    if ((LS.TURRUNDE || LS.TURTISCH) && LS.I !== 11) {
         $('#dKontra').removeClass('nb24').addClass('nb0');
         $('#dName').removeClass('nb52').addClass('nb76');
-        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontsra').addClass('ui-disabled');
+        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra').addClass('ui-disabled');
     } else {
         if (LS.Tarif21T) {
             $('.cKontra').show();

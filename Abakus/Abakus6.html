@@ -47,7 +47,7 @@
                 <div data-role="navbar" data-iconpos="left">
                     <ul>
                         <li class='nb6'>
-                            <a data-role="button" class="K" data-theme="d" id='nbMeinTisch' onclick="window.history.back();">
+                            <a data-role="button" class="K" data-theme="d" id='nbMeinTisch' onclick="$('body').addClass('ui-disabled');window.history.back();">
                                 <img src="../Icons/MeinTisch.png" style="position: absolute; top: 1px; left: 3.3vw;margin:0 0 0 -11px; height:9vh;"/>
                                 <i class="iconXL zmdi-minus cInaktiv"></i></a>
                         </li>
@@ -60,7 +60,7 @@
                                 <i id=iAudio class="iconXL"></i></a>
                         </li>
                         <li class='nb6'>
-                            <a data-role="button" class="K" data-theme="d" id='nbOptions' onclick="window.location.href = 'Vorhand.html';">
+                            <a data-role="button" class="K" data-theme="d" id='nbOptions' onclick="$('body').addClass('ui-disabled');window.location.href = 'Vorhand.html';">
                                 <i id=iOptions class="iconXL zmdi-settings"></i></a>
                         </li>
                         <li class='nb6'>
@@ -68,7 +68,7 @@
                                 <i class="iconXL zmdi-help"></i></a>
                         </li>
                         <li class='nb6'>
-                            <a data-role="button" class="K" data-theme="d" id='nbKorr'    onclick="window.location.replace('Edit6.html?' + aktPos);">
+                            <a data-role="button" class="K" data-theme="d" id='nbKorr'    onclick="$('body').addClass('ui-disabled');window.location.replace('Edit6.html?' + aktPos);">
                                 <img style="position: absolute; top: 5px; left: 4vw;margin:0 0 0 -8px; height:8vh;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVGhD7Zo7TsQwFEWnAxbABvj/VgQ1BRIlBVTUNBQI9kELlLRAQ8Gv44/YAgjuLZ4UWXaIn58dI+VIpxkJZ46wPU5mRgMDA1UxBtfhMbyA53AfLsB/wzy8gz8ev+EOrJ4l+AF9EU33YLV0jRCrjImNEKuK0UaIVcSkRoi9xlhFiL3EWEeIRWNyRYhFYnJHiFljSkWI29AcHjtKRtAvuAzNmIJP0Hex3B5BE6bhI/RdpIQ8OSfTdwS9h0nMQt90+vS8ltMTqGYOPkN30Gs4CXcbr+V2A6rg7vQC3QElQigRcwvHYTS8DX2F7oBuhJAz5h1yekfDiDfoDhiKEHLE8H0swmj4R5oIwTKG70P1gIILm/9Gd8CuEYJFDKe1KmICcp92B4yNEFJiuMFwo1GxCd0BtRGCJoZbPWeGmjPYHPAGpkQIMTH80FXtTk0eYHPQVWhFlxgef3gMSuYSNgc+hJa0xZhFEB6R3QtsQSs4TX3bOqcTbw3MWIF8FuteyCKGEdw43LG51at3pzZ4O+lejKbEhCK4O2V9Gs8bffeiVBMTiuCaMJ1OISxiQhFcE2YLuwspMW0RM7A4mpi2NZH8YZdCTEwogmenpGOHFV1iQhE8xWbZYrWEYg7gGvR9T6i+n8hNKMan+s6uFF1i+IlddYTAr5R9xxnKpx1VrYm/4ANlHjSvINfHKeRzJ/44YGBgoApGo1+f4/OBDCGbMAAAAABJRU5ErkJggg=="/>
                                 <i class="iconXL zmdi-minus cInaktiv"></i></a>
                         </li>
@@ -96,7 +96,7 @@
                                 <div class="ui-block-a">
                                 </div>
                                 <div class="ui-block-b">
-                                    <i class="iconL zmdi-settings K" onclick="window.location.href = 'Vorhand.html';"></i>
+                                    <i class="iconL zmdi-settings K" onclick="$('body').addClass('ui-disabled');window.location.href = 'Vorhand.html';"></i>
                                 </div>
                                 <div class="ui-block-c">
                                 </div>
@@ -355,7 +355,7 @@
                             <i class="iconXL zmdi-equalizer"></i></a>
                     </li>
                     <li class='nb6 NBedit'>
-                        <a data-role="button" class="K" data-theme="d" id='nbED' onclick="location.replace('Edit6.html');">
+                        <a data-role="button" class="K" data-theme="d" id='nbED' onclick="$('body').addClass('ui-disabled');location.replace('Edit6.html');">
                             <i class="iconXL zmdi-edit"></i></a>
                     </li>
                     <li class='nb6 NBedit'>

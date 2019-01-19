@@ -212,7 +212,7 @@ function showRegeln() {
         $('#dContent').html(html).trigger('create').show();
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
         $('#sideDetails').hide();
-        setFont();
+        setFont(4);
         setTimeout(function () {
             var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
             $('#sideContent').css('height', hx + 'px');

@@ -215,7 +215,7 @@ function showPlatzierungen(pSort) {
             var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-            setFont();
+            setFont('?');
         }
 
         hideEinenMoment();

@@ -980,7 +980,6 @@ function fINIT() {
     });
 
 }
-;
 
 if (/iPad|iPhone/.test(navigator.userAgent)) {
     window.onpageshow = function (event) {

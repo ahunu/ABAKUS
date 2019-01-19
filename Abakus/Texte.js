@@ -163,7 +163,7 @@ function getZitat() {
 
     var iZitat = stLastZitat;
     do {
-        iZitat = Date.now() % 48;
+        iZitat = Date.now() % 47;
     } while (iZitat === stLastZitat);
 
     stLastZitat = iZitat;
@@ -266,7 +266,7 @@ function getZitat() {
     } else if (iZitat === 23) {
         return ['Es macht keinen Sinn,'
                     + '<br>mit Männern zu streiten -'
-                    + '<br>sie haben ja doch immer unrecht',
+                    + '<br>sie haben ja doch immer unrecht.',
             'Zsa Zsa Gabor, 1934-1998, ung.&nbsp;amerik.&nbsp;Schauspielerin'];
     } else if (iZitat === 24) {
         return ['Es ist mein Job, nie&nbsp;zufrieden&nbsp;zu&nbsp;sein.',
@@ -326,9 +326,9 @@ function getZitat() {
                     + '<br>Siege steigen zu Kopfe.',
             'Willy Meurer, 1934-, dt.can.&nbsp;Kaufmann&nbsp;und&nbsp;Publizist'];
     } else if (iZitat === 38) {
-        return ['Lerne verlieren zu können'
-                    + '<br>und Du wirst gewinnen.',
-            'Reinhold Bertsch'];
+        return ["Ich könnt' weinen,"
+                    + "<br>was aus mir hätt' werden können.",
+            'Günther Nenning, 1921-2006, österr.&nbsp;Querdenker'];
     } else if (iZitat === 39) {
         return ['Spieler sind wir doch alle.',
             'Carl Friedrich von Weizsäcker, <span style="white-space: nowrap">1912-2007, dt. Bundespräsident</span>'];
@@ -361,9 +361,6 @@ function getZitat() {
                     + '<br>ist auch keine Lösung.',
             'Campino alias Andreas Frege, 1962-&nbsp;dt.&nbsp;Sänger'];
     } else if (iZitat === 47) {
-        return ["Ich könnt' weinen,"
-                    + "<br>was aus mir hätt' werden können.",
-            'Günther Nenning, 1921-2006, österr.&nbsp;Querdenker'];
     } else if (iZitat === 48) {
     } else if (iZitat === 49) {
     } else if (iZitat === 50) {

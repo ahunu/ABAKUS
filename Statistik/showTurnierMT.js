@@ -139,7 +139,7 @@ function showTurnierMW(pTurnier) {
         }
     } else {
         $('#sideContentMT').html("<div class=outer>" + html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br></div>").trigger('create').show();
-        setFont();
+        setFont(4.7);
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
         $('#sideDetails,#sideContent').hide();
         setTimeout(function () {
@@ -234,7 +234,7 @@ function showTurnierEW(pTurnier) {
         setFont();
     } else {
         $('#sideContentMT').html("<div class=outer>" + html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br></div>").trigger('create').show();
-        setFont();
+        setFont(4.7);
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
         $('#sideDetails,#sideContent').hide();
         setTimeout(function () {

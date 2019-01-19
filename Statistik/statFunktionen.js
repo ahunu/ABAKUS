@@ -431,7 +431,7 @@ function setStMaxFont() {
     document.body.removeChild(elem);
 }
 
-function setFont() {
+function setFont(pFont) {
     'use strict';
     if (QUERFORMAT()) {
         setTimeout(function () {
@@ -447,8 +447,6 @@ function setFont() {
     }
     $('#dOver').hide();
 
-
-    setStMaxFont();
     if ($('#mTable').length) { // if exists
         if (QUERFORMAT()) {
             if ($(window).innerWidth() < 1360) {        // Mein 15 Zoll Laptop: 1344
@@ -459,7 +457,12 @@ function setFont() {
                 $('#mTable').css('font-size', '1.16vw'); // 4K, etc.
             }
         } else {
-            stFont += 0.4;
+            setStMaxFont();
+            if (pFont) {
+                stFont = pFont;
+            } else {
+                stFont = 4.2;
+            }
             stFontPlus = 0;
             if (stFont > stFontMax) {
                 stFont = stFontMax;

@@ -431,8 +431,13 @@ function setStMaxFont() {
     document.body.removeChild(elem);
 }
 
-function setFont(pFont) {
+function setFont(pFont, pStickyHeader) {
     'use strict';
+    if (pStickyHeader) {
+        stStickyHeader = true;
+    } else {
+        stStickyHeader = false;
+    }
     if (QUERFORMAT()) {
         setTimeout(function () {
             $('.QUER').show();
@@ -468,6 +473,7 @@ function setFont(pFont) {
                 stFont = stFontMax;
             }
             $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+            console.log('nach Call();');
         }
     }
 }
@@ -482,6 +488,10 @@ function optFont() {
                 stFont -= 0.3;
                 $('#mTable').css('font-size', stFont + 'vw');
             }
+            if (stStickyHeader) {
+                $('#dDummy').remove();
+                $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+            }
             return;
         } else if (tWidth < pWidth) {
             if (stFontPlus === 0) {
@@ -493,6 +503,11 @@ function optFont() {
                 if (stFont < stFontMax) {
                     stFont += stFontPlus;
                     $('#mTable').css('font-size', stFont + 'vw').show(optFont);
+                } else {
+                    if (stStickyHeader) {
+                        $('#dDummy').remove();
+                        $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+                    }
                 }
                 return;
             } else {
@@ -501,6 +516,10 @@ function optFont() {
                     stFont -= 0.3;
                 }
                 $('#mTable').css('font-size', stFont + 'vw');
+                if (stStickyHeader) {
+                    $('#dDummy').remove();
+                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+                }
                 return;
             }
         } else {
@@ -519,6 +538,10 @@ function optFont() {
                     stFont -= 0.3;
                 }
                 $('#mTable').css('font-size', stFont + 'vw');
+                if (stStickyHeader) {
+                    $('#dDummy').remove();
+                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+                }
                 return;
             }
         }

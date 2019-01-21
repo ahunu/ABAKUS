@@ -47,6 +47,7 @@ var stFont = 6;
 var stFontMax = 6;
 var stFontPlus = 0;
 var stLastZitat = 0;
+var stStickyHeader = false;
 var stShowList = true;
 var jbAnekdote = null;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
@@ -64,17 +65,19 @@ function QUERFORMAT() {
 
 function historyBack() {
     $('body').addClass('ui-disabled');
-    if (!QUERFORMAT()) {
+    if (QUERFORMAT() || window.location.href.indexOf('?FromTurnier') > 0) {
+        history.back();
+    } else {
         LS.ShowCups = 0;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         LS.ShowCups = stCup; // for after Bottom-Forward
+        history.back();
     }
-    history.back();
 }
 
 function defHome() {
     var hContent = ''
-            + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();statBack()">&nbsp;<img src="../Icons/icon-36-ldpi.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;Abakus <span style="font-weight:normal">Hauptseite</span></button><br>'
+            + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();historyBack()">&nbsp;<img src="../Icons/icon-36-ldpi.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;Abakus <span style="font-weight:normal">Hauptseite</span></button><br>'
             + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();fINIT(56)">&nbsp;<img src="../Icons/i56.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;Wr. Tarockcup</button><br>'
             + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();fINIT(54)">&nbsp;<img src="../Icons/i54.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;St. Tarockcup</button><br>'
             + '<button class="L" style="width:100%;" onclick="jbHome.close();$(\'#nbHome\').removeClass(\'ui-btn-active\');">abbrechen</button>';
@@ -114,7 +117,7 @@ function nbHome() {
     if (LS.ME[0] === '-' || window.location.href.indexOf('?FromTurnier') > 0) {
         $('#nbHome').buttonMarkup({theme: 'd'});
         $('#dRumpf,#dFooter').addClass('ui-disabled');
-        statBack();
+        historyBack();
     } else {
         if (jbArchiv) {
             if (jbArchiv.isOpen) {
@@ -132,23 +135,6 @@ function nbArchiv() {
         }
     }
     jbArchiv.open();
-}
-
-function statBack() { // llll
-    if (window.location.href.indexOf('?') > 0 && window.location.href.indexOf('?FromTurnier') < 0) {
-        if (window.location.href.indexOf('?FromTurnier') < 0) {
-            history.back();
-        } else {
-            window.location.replace('../index.html');
-        }
-    }
-    if (QUERFORMAT()) {
-        history.back();
-    } else {
-        LS.ShowCups = 0;
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        history.back();
-    }
 }
 
 function getSTAT(pCup) {

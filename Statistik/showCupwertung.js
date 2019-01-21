@@ -267,20 +267,15 @@ function showCupwertung() {
 
     hideEinenMoment();
     if (stFinale) {
-        setFont(3.7);
+        setFont(3.7, true);
     } else {
-        setFont(4.1);
+        setFont(4.1, true);
     }
     window.scrollTo(0, 0);
 
     if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
         if (QUERFORMAT()) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
-        } else {
-            $('#dDummy').remove();
-            setTimeout(function () {
-                $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
-            }, 2000); // Wegen Headerproportionen erforderlich
         }
     }
 }

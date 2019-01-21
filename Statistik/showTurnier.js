@@ -153,15 +153,12 @@ function showTurnier(pTurnier) {
 
     hideEinenMoment();
 
-    setFont(4.7);
+    setFont(4.7, true);
     window.scrollTo(0, 0);
 
     if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
         if (QUERFORMAT()) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
-        } else {
-            $('#dDummy').remove();
-            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
         }
     }
 }

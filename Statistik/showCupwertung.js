@@ -261,8 +261,8 @@ function showCupwertung() {
         $('#dContent').html(html);
         $('#sideDetails').hide();
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-        var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
-        $('#sideContent').css('height', hx + 'px');
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+        $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
 
     hideEinenMoment();
@@ -271,10 +271,10 @@ function showCupwertung() {
     } else {
         setFont(4.1, true);
     }
-    window.scrollTo(0, 0);
 
-    if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-        if (QUERFORMAT()) {
+    if (QUERFORMAT()) {
+        window.scrollTo(0, 0);
+        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
         }
     }

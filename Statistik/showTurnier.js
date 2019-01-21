@@ -75,7 +75,7 @@ function showTurnier(pTurnier) {
             + "<th class=TR>R3&nbsp;</th>"
             + "</tr></thead><tbody id=tbody>"
             + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='5'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
-            + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
+                    + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
 
     var SORT = [];
 
@@ -147,17 +147,16 @@ function showTurnier(pTurnier) {
         $("#dContent").html(html + "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>");
         $('#sideDetails').hide();
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-        var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
-        $('#sideContent').css('height', hx + 'px');
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+        $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
 
     hideEinenMoment();
-
     setFont(4.7, true);
-    window.scrollTo(0, 0);
 
-    if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-        if (QUERFORMAT()) {
+    if (QUERFORMAT()) {
+        window.scrollTo(0, 0);
+        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
         }
     }

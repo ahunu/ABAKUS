@@ -374,6 +374,7 @@ function fINIT(pCup) {
     stHeute = myDateString(new Date());
     if (pCup) {
         stCup = pCup;
+        stStat = 0;
     } else {
         stCup = LS.ShowCups;
     }

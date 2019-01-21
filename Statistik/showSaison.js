@@ -45,10 +45,10 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     $('#nbUebersicht').removeClass('ui-btn-active');
     $('#nbArchiv').addClass('ui-btn-active');
     $('#tArchiv').text(stSaison);
-    if (pSaison === stSaisonTab[0]) {
-        $('#bAktSaison').addClass('ui-disabled');
-    } else {
+    if (pSaison !== stSaisonTab[0] || pAnekdoten) {
         $('#bAktSaison').removeClass('ui-disabled');
+    } else {
+        $('#bAktSaison').addClass('ui-disabled');
     }
 
     if (pStockerl) {
@@ -243,6 +243,8 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     window.scrollTo(0, 0);
     if (pStockerl || pAnekdoten) {
         $("#dCopyright").hide();
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+        $('#sideContent').css('height', hx + 'px').scrollTop(0);
         setFont();
         if (stEndstand) {
             $('#tStand').html('Endstand:').attr('style', 'position: fixed; top: 44px; right: 5px; cursor: pointer;').show();
@@ -251,11 +253,9 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         }
     } else {
         $("#sideContent,#dCopyright").show();
+//        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+//        $('#sideContent').css('height', hx + 'px').scrollTop(0);
         setFont();
-        setTimeout(function () {
-            var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
-            $('#sideContent').css('height', hx + 'px');
-        }, 100);
         stShowList = !stShowList;
         toggleListen();
     }
@@ -274,8 +274,10 @@ function toggleListen() {
         $('#iPlus').hide();
         $('#iMinus').show();
     }
-    var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
-    $('#sideContent').css('height', hx + 'px');
+//    var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
+//    $('#sideContent').css('height', hx + 'px');
+    var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+    $('#sideContent').css('height', hx + 'px').scrollTop(0);
 }
 
 function compCUPPUNKTE() {

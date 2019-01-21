@@ -125,17 +125,15 @@ function showTermine() {
 
     if (QUERFORMAT()) {
         $('#dRumpf').html(htmlTE).trigger('create').show();
-        setFont();
     } else {
         $('#dContent').html("<ul data-role='listview'>" + htmlTE + "</ul>").trigger('create').show();
         $('#sideDetails').hide();
         $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-        setFont();
-        setTimeout(function () {
-            var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
-            $('#sideContent').css('height', hx + 'px');
-        }, 100);
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+        $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
+
+    setFont();
     hideEinenMoment();
 
     window.scrollTo(0, 0);

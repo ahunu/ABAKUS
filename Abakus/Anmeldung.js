@@ -669,7 +669,6 @@ function onOK() {
     LS.Spieler[5] = LS.Spieler[5] + LS.Sterne[5];
     LS.Spieler[6] = LS.Spieler[6] + LS.Sterne[6];
 
-    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
     if (LS.Spieler[5] === '') {
         if (LS.AnzSpieler !== 4) {
             LS.AnzSpieler = 4;
@@ -689,6 +688,8 @@ function onOK() {
             LS.Pausierer2 = 0;
         }
     }
+
+    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
     if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
         LS.SpieleJeRunde = (CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler;
     }

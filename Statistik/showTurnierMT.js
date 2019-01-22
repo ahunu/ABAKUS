@@ -40,7 +40,9 @@ function showTurnierMW(pTurnier) {
     var nSpieler = 0;
     var hClass = '';
     stNamenLen = 0.41;
-    var html = getStatMeldungen()
+
+    var html = (!QUERFORMAT() ? "<div id='dDummy'>&nbsp;</div>" : "")
+//            + getStatMeldungen()
             + "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
@@ -79,7 +81,7 @@ function showTurnierMW(pTurnier) {
     }
     SORTman.sort();
     for (var i = 0; i < SORTman.length; i++) {
-        html += '<tr class="' + hClass + '">';
+        html += '<tr>';
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += "<th></th>";
         }
@@ -132,23 +134,25 @@ function showTurnierMW(pTurnier) {
 
     if (QUERFORMAT()) {
         $('#dRumpf').html("<div class=outer>" + html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br></div>").trigger('create').show();
-        setFont();
         $('#tStand').hide();
+    } else {
+        $('#sideContentMT').css('height', '2px').show();
+        $('#dContentMT').html(html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br>").trigger('create').show();
+        $('#sideDetails,#sideContent').hide();
+        $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
+        var hx = $(window).innerHeight() - $('#sideContentMT').offset().top - $('#dFooter').height() - 1;
+        $('#sideContentMT').css('height', hx + 'px').scrollTop(0);
+    }
+
+    hideEinenMoment();
+    setFont(4.7, true);
+
+    if (QUERFORMAT()) {
+        window.scrollTo(0, 0);
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
         }
-    } else {
-        $('#sideContentMT').html("<div class=outer>" + html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br></div>").trigger('create').show();
-        setFont(4.7);
-        $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-        $('#sideDetails,#sideContent').hide();
-        setTimeout(function () {
-            var hx = $(window).innerHeight() - $('#sideContentMT').offset().top - $('#dFooter').height() - 1;
-            $('#sideContentMT').css('height', hx + 'px');
-        });
     }
-
-    window.scrollTo(0, 0);
 }
 
 
@@ -167,7 +171,8 @@ function showTurnierEW(pTurnier) {
     var nSpieler = 0;
     var hClass = '';
     stNamenLen = 0.41;
-    var html = getStatMeldungen()
+    var html = (!QUERFORMAT() ? "<div id='dDummy'>&nbsp;</div>" : "")
+//            + getStatMeldungen()
             + "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
@@ -228,20 +233,22 @@ function showTurnierEW(pTurnier) {
     if (QUERFORMAT()) {
         $('#dRumpf').html("<div class=outer>" + html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br></div>").trigger('create').show();
         $('#tStand').hide();
+    } else {
+        $('#sideContentMT').css('height', '2px').show();
+        $('#dContentMT').html(html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br>").trigger('create').show();
+        $('#sideDetails,#sideContent').hide();
+        $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
+        var hx = $(window).innerHeight() - $('#sideContentMT').offset().top - $('#dFooter').height() - 1;
+        $('#sideContentMT').css('height', hx + 'px').scrollTop(0);
+    }
+
+    hideEinenMoment();
+    setFont(4.7, true);
+
+    if (QUERFORMAT()) {
+        window.scrollTo(0, 0);
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
         }
-        setFont();
-    } else {
-        $('#sideContentMT').html("<div class=outer>" + html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br></div>").trigger('create').show();
-        setFont(4.7);
-        $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-        $('#sideDetails,#sideContent').hide();
-        setTimeout(function () {
-            var hx = $(window).innerHeight() - $('#sideContentMT').offset().top - $('#dFooter').height() - 1;
-            $('#sideContentMT').css('height', hx + 'px');
-        });
     }
-
-    window.scrollTo(0, 0);
 }

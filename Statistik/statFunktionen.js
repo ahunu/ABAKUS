@@ -473,7 +473,6 @@ function setFont(pFont, pStickyHeader) {
                 stFont = stFontMax;
             }
             $('#mTable').css('font-size', stFont + 'vw').show(optFont);
-            console.log('nach Call();');
         }
     }
 }
@@ -490,7 +489,7 @@ function optFont() {
             }
             if (stStickyHeader) {
                 $('#dDummy').remove();
-                $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+                $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
             }
             return;
         } else if (tWidth < pWidth) {
@@ -506,7 +505,7 @@ function optFont() {
                 } else {
                     if (stStickyHeader) {
                         $('#dDummy').remove();
-                        $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+                        $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
                     }
                 }
                 return;
@@ -518,7 +517,7 @@ function optFont() {
                 $('#mTable').css('font-size', stFont + 'vw');
                 if (stStickyHeader) {
                     $('#dDummy').remove();
-                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
                 }
                 return;
             }
@@ -540,7 +539,7 @@ function optFont() {
                 $('#mTable').css('font-size', stFont + 'vw');
                 if (stStickyHeader) {
                     $('#dDummy').remove();
-                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
                 }
                 return;
             }

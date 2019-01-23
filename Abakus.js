@@ -16,7 +16,7 @@ var iPfad = 'Icons/';
 var rPfad = '';
 var mTischTurnier = '';
 var mHausruckAktiv = false;
-var mRaiffeisenAktiv = true;
+var mRaiffeisenAktiv = false;
 var mTirolAktiv = false;
 var mSauwaldAktiv = false;
 var hHeute = myDateString(new Date());
@@ -1397,6 +1397,10 @@ function fINIT() {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     } else {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+    }
+
+    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "0124") {
+        mRaiffeisenAktiv = true;
     }
 
     initExtraButtons();

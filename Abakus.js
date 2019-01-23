@@ -16,7 +16,7 @@ var iPfad = 'Icons/';
 var rPfad = '';
 var mTischTurnier = '';
 var mHausruckAktiv = false;
-var mRaiffeisenAktiv = false;
+var mRaiffeisenAktiv = true;
 var mTirolAktiv = false;
 var mSauwaldAktiv = false;
 var hHeute = myDateString(new Date());
@@ -1407,7 +1407,7 @@ function fINIT() {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

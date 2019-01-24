@@ -985,7 +985,8 @@ function getMeinTerminBarZeile(pCup) {
 
 function whenCUPSloaded() {
 
-    if (LS.I && (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT')) {
+//    if (LS.I && (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT')) {
+    if (LS.I) { // ????
         if (LS.gespielt > 0) {
             $('#tCupName').html(CUPS.NAME[LS.I] + '<br>' + (LS.gespielt === 1 ? 'Ein Spiel' : LS.gespielt + ' Spiele') + ' gespielt');
         } else if (LS.TURRUNDE) {

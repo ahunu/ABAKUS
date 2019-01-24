@@ -221,6 +221,9 @@ function TischLoeschen(pLoeschen) {
             $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
         }
         $('#tsNeuerTischTurnier').html('Den Tisch löschen:');
+        if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
+            $('#tsSpieleSpeichern').addClass('ui-disabled');
+        }
         $('#tsDieDen').html('den');
         $('#tsSpieleLoeschen').html('Tisch löschen');
         $("#pTISCHSPEICHERN").popup("open").show();

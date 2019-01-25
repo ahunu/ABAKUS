@@ -147,6 +147,7 @@ function showCupwertung() {
                     + "&nbsp;<img src='../Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>"
                     : ''
                     )
+            + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
             + "<table id=mTable style='swidth: 100% !important;' data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
@@ -155,15 +156,12 @@ function showCupwertung() {
             + (QUERFORMAT() ? "<th class='TL noprint'>&nbsp;&nbsp;Ort</th>" : "")
             + "<th class=TR>Ges&nbsp;</th>"
             + (stFinale ? "<th class='TR'>Fin&nbsp;</th>" : "")
-            + "<th class=C colspan='6'>Vorrundenpunkte</th>";
-    if (QUERFORMAT()) {
-        html += "<th class=TC>TN</th>"
-                + "<th class=TC nowrap>1. 2. 3.</th>"
-                + (stSaison === stSaisonTab[0] && stCup < 58 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "");
-    }
-    html += "</tr></thead><tbody id=tbody>"
+            + "<th class=C colspan='6'>Vorrundenpunkte</th>"
+            + (QUERFORMAT() ? "<th class=TC>TN</th><th class=TC nowrap>1. 2. 3.</th>" + (stSaison === stSaisonTab[0] && stCup < 58 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "") : "")
+            + "</tr></thead><tbody id=tbody>"
             + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
-                    + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
+//                    + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
+                    + "<td class=TC><i id='icFilter' onclick='$(this).addClass(\"ui-disabled\");$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-cancel ui-disabled'></i></td></tr>" : "");
 
     var nSpieler = 0;
     var hPlatz = 0;

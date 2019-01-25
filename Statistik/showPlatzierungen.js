@@ -15,9 +15,7 @@ function showPlatzierungen(pSort) {
 
     setTimeout(function () {
 
-        if (ADMIN) {
-            showIcons(['#iPrint']);
-        }
+        showIcons([]);
 
         if (!pSort) {
             pSort = 'Stockerl';

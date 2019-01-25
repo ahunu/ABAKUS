@@ -547,6 +547,9 @@ input {
 .zmdi-delete:before {
     content: '\f154';
 }
+.zmdi-cancel:before {
+    content: '\1f5d9'; 
+}
 .zmdi-download:before {
     content: '\f220';
 }

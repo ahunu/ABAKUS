@@ -9,6 +9,9 @@ function showPlatzierungen(pSort) {
         }
         lastBtn = '#bPlatzierungen';
         $(lastBtn).addClass('ui-btn-active');
+        stNamenLen = 0.32;
+    } else {
+        stNamenLen = 0.44;
     }
 
     showEinenMoment(stCup, 'Die Liste der Platzierungen<br>wird erstellt.');
@@ -26,7 +29,6 @@ function showPlatzierungen(pSort) {
         $("#dCopyright").hide();
 
         stStat = 'Platzierungen';
-        stNamenLen = 0.32;
 
         if (CUPS.TYP[stCup] === 'MT') {
             writeCanvas('Platzierungen');
@@ -95,22 +97,24 @@ function showPlatzierungen(pSort) {
         }
         SORT.sort();
 
-        var htmlRumpf = ''
+        if (QUERFORMAT()) {
+            var htmlRumpf = ''
 //                + "<div id='dFilter' class='noprint' style='width:20%'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>"
-                + '<tbody id=tbody>'
-                + '<tr class="bHell">'
-                + '<th><span ' + (QUERFORMAT() ? "" : " id=L0P1") + '>&nbsp;&nbsp;Teilnehmer&nbsp;&nbsp;<span></th>'
-                + '<td>-</td>'
-                + (CUPS.TYP[stCup] !== 'MT' ? '<td>-</td>' : '');
-        TEILNEHMER[0] = 0;
-        if (QUERFORMAT() || true) {
+                    + '<tbody id=tbody>'
+                    + '<tr class="bHell">'
+                    + '<th><span>&nbsp;&nbsp;Teilnehmer&nbsp;&nbsp;<span></th>'
+                    + '<td>-</td>'
+                    + (CUPS.TYP[stCup] !== 'MT' ? '<td>-</td>' : '');
+            TEILNEHMER[0] = 0;
             for (var I = iTurnier; I >= 7; I--) {
                 htmlRumpf += '<th>' + TEILNEHMER[I] + '</th>';
                 TEILNEHMER[0] += TEILNEHMER[I];
             }
+            htmlRumpf += '<th>' + TEILNEHMER[0] + '</th>'
+                    + '</tr>';
+        } else {
+            var htmlRumpf = '<tbody id=tbody>';
         }
-        htmlRumpf += '<th>' + TEILNEHMER[0] + '</th>';
-        htmlRumpf += '</tr>';
 
         var spieler = '';
         for (var iSpieler in SORT) {
@@ -140,10 +144,13 @@ function showPlatzierungen(pSort) {
             } else {
                 htmlRumpf += '<td class=W>' + DATA[5] + '</td>';
             }
+            if (!QUERFORMAT()) {
+                htmlRumpf += '<td>&nbsp;&nbsp;</td>'; // Dummyspalte
+            }
             if (CUPS.TYP[stCup] !== 'MT') {
                 htmlRumpf += '<td class="W R">' + CUPPUNKTE[spieler] + '&nbsp;&nbsp;&nbsp;&nbsp;</td>';
             }
-            if (QUERFORMAT() || true) {
+            if (QUERFORMAT()) {
                 for (var I = iTurnier; I >= 7; I--) {
                     if (DATA[I]) {
                         if (DATA[I] <= 3) {
@@ -177,28 +184,42 @@ function showPlatzierungen(pSort) {
                 + '</fieldset>'
                 + '</div>';
 
-        if (!QUERFORMAT()) {
+        if (QUERFORMAT()) {
+            var hx = $(window).innerHeight() - $('#dRumpf').offset().top;
+            html = '<div class="parent" style="margin-top: -0px; height: ' + hx + 'px;"><table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
+                    + '<thead>'
+                    + '<tr id=L0P1 class=bHell>'
+                    + '<th class="TL">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sortiert nach:<br><br><br><br></th>'
+                    + '<th class="rotate bottom">1.&nbsp;2.&nbsp;3.<br>beste<br>Platz.</th>'
+                    + (CUPS.TYP[stCup] !== 'MT' ? '<th class="rotate bottom">Cup-<br>punkte</th>' : '')
+                    + html
+                    + '<th class="rotate bottom">Teil-<br>nahmen</th>'
+                    + '</tr>'
+                    + '</thead>'
+                    + htmlRumpf
+                    + '</table>'
+                    + '</div>';
+        } else {
             $('#sideDetails').hide();
-            $('#dContent').html(xhtml).trigger('create');
+            $('#dContent').html('');
             var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
+            hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
+            html = '<div class="parent" style="margin-top: -0px; height: ' + hx + 'px;"><table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
+                    + '<thead>'
+                    + '<tr ' + (QUERFORMAT() ? "id=L0P1" : "") + ' class=bHell>'
+                    + '<th><br>Teilnehmer</th>'
+                    + '<th>beste<br>Platz.</th>'
+                    + '<th>&nbsp;&nbsp;</th>' // Dummyspalte
+                    + (CUPS.TYP[stCup] !== 'MT' ? '<th>Cup-<br>punkte&nbsp;&nbsp;</th>' : '')
+                    + '<th><br>TN&nbsp;&nbsp;</th>'
+                    + '</tr>'
+                    + '</thead>'
+                    + htmlRumpf
+                    + '</table>'
+                    + '</div>';
         }
-
-        var hx = $(window).innerHeight() - $('#dRumpf').offset().top;
-        html = '<div class="parent" style="margin-top: -0px; height: ' + hx + 'px;"><table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
-                + '<thead>'
-                + '<tr ' + (QUERFORMAT() ? "id=L0P1" : "") + ' class=bHell>'
-                + '<th class="TL">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sortiert nach:<br><br><br><br></th>'
-                + '<th class="rotate bottom">1.&nbsp;2.&nbsp;3.<br>beste<br>Platz.</th>'
-                + (CUPS.TYP[stCup] !== 'MT' ? '<th class="rotate bottom">Cup-<br>punkte</th>' : '')
-                + (QUERFORMAT() || true ? html : '')
-                + '<th class="rotate bottom">Teil-<br>nahmen</th>'
-                + '</tr>'
-                + '</thead>'
-                + htmlRumpf
-                + '</table>'
-                + '</div>';
 
         if (QUERFORMAT()) {
             $('#dRumpf').html(html);
@@ -209,11 +230,10 @@ function showPlatzierungen(pSort) {
             $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
         } else {
             $('#sideDetails').hide();
-            $('#dContent').append(html + "<br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span>");
-            var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
+            $('#dContent').append(html);
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-            setFont('?');
+            setFont(3.8, true);
         }
 
         hideEinenMoment();

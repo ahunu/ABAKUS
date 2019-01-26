@@ -182,7 +182,8 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     }
 
     if (QUERFORMAT() && (pStockerl || pAnekdoten)) {
-        htmlTE = '<tr>'
+        htmlTE = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"
+                + '<tr>'
                 + '<td class=noprint>&nbsp;&nbsp;</td>'
                 + '<td class="cBlau P L" onclick="showCupwertung();"><b>Cupwertung</b>&nbsp;&nbsp;' + stSaison + '</td>'
                 + '<td class="M"></td>'
@@ -190,35 +191,22 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                 + '<tr hidden><td class="M">adfasdf</td></tr>'
                 + '<tr><td class=noprint></td><td></td><td></td><td class="M"><div style="margin-top:-5px;white-space:nowrap">2. <span onclick="event.stopPropagation();popupSpieler(\'' + CUPSIEGER[2] + '\');" class="P B cBlau">' + getSpielerName(CUPSIEGER[2]) + '</span>, ' + CUPPUNKTE[CUPSIEGER[2]] + ' Cuppunkte<br>3. <span onclick="event.stopPropagation();popupSpieler(\'' + CUPSIEGER[3] + '\');" class="P B cBlau">' + getSpielerName(CUPSIEGER[3]) + '</span>, ' + CUPPUNKTE[CUPSIEGER[3]] + ' Cuppunkte</div></td></td></tr>'
                 + '<tr><td></td><th class="L K" colspan="3">Die ' + (pAnekdoten ? 'Anekdoten' : 'Turniere') + ' der Saison&nbsp;&nbsp;' + stSaison + ':</th></tr>'
-                + htmlTE;
-        htmlTE = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"
                 + htmlTE
                 + "</tbody></table>";
-        if (QUERFORMAT()) {
-            $('#dRumpf').html(htmlTE).trigger('create').show();
-        } else {
-            $('#sideDetails').hide();
-            $('#dContent').html(htmlTE).trigger('create').show();
-            var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
-            $('#sideContent').css('height', hx + 'px');
-            $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-        }
-        $('#a' + nTurniere).show();
+        $('#dRumpf').html(htmlTE).trigger('create').show();
     } else {
         $('#sideDetails').html(
                 '<li data-role="list-divider" onclick="toggleListen();">&nbsp;&nbsp;&nbsp;&nbsp;'
                 + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-plus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
                 + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-minus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
-
                 + pSaison + ' - die Listen:</li>'
-
                 + '<li class="cListe" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a></li>'
                 + (window.location.href.toUpperCase().indexOf('OOV') < 0
-                        ? (QUERFORMAT()
-                                ? '<li class="cListe" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
+                        ? '<li class="cListe" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
+                        + (QUERFORMAT()
+                                ? '<li class="cListe" data-icon="false"><a id=bStockerlliste onclick="showSaison(\'' + pSaison + '\', true)">&nbsp;Stockerlliste</a></li>'
+                                + '<li class="cListe" data-icon="false"><a id=bAnekdoten ' + (nAnekdoten ? '' : 'class="ui-disabled "') + 'onclick="showSaison(\'' + pSaison + '\', false, true)">&nbsp;Anekdoten</a></li>'
                                 : '')
-                        + '<li class="cListe" data-icon="false"><a id=bStockerlliste onclick="showSaison(\'' + pSaison + '\', true)">&nbsp;Stockerlliste</a></li>'
-                        + '<li class="cListe" data-icon="false"><a id=bAnekdoten ' + (nAnekdoten ? '' : 'class="ui-disabled "') + 'onclick="showSaison(\'' + pSaison + '\', false, true)">&nbsp;Anekdoten</a></li>'
                         : '')
                 + (stSaisonTab[0] === pSaison
                         ? '<li class="cListe" data-icon="false"><a id=bTurnierkalender2 onclick="showTermine()">&nbsp;Turnierkalender</a></li>'

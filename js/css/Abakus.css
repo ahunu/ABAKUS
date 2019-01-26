@@ -59,7 +59,7 @@ input {
 
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.5vw + 4px) !important;} /* index Runden/Cups */
     .ui-btn {padding: .22em .2em !important;}
-    
+
     .XXL {font-size: calc(3.9vw + 35px) !important;} /* Abakus Balken */
     .XL {font-size: calc(1.38vw + 20px) !important;}
     .L3 {font-size: calc(1.34vw + 18px) !important;}  /* Vorhand */
@@ -138,7 +138,7 @@ input {
 
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.5vw + 4px) !important;} /* index Runden/Cups */
     .ui-btn {padding: .22em .2em !important;}
-    
+
     .XXL {font-size: calc(3.9vw + 35px) !important;} /* Abakus Balken */
     .XL {font-size: calc(1.38vw + 20px) !important;}
     .L3 {font-size: calc(1.34vw + 18px) !important;}  /* Vorhand */
@@ -421,6 +421,10 @@ input {
     content: '\2712';
 }
 
+.zmdi-plus-bold:before {
+    content: '\2795';
+}
+
 .zmdi-dot-circle:before {
     content: '\f26f';
 }
@@ -546,9 +550,6 @@ input {
 }
 .zmdi-delete:before {
     content: '\f154';
-}
-.zmdi-cancel:before {
-    content: '\1f5d9'; 
 }
 .zmdi-download:before {
     content: '\f220';

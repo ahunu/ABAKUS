@@ -233,7 +233,7 @@ function showNeuenSPIELER(pNeu) {
     $('#pWarnung').popup('close');
     if (pNeu) {
         var hNummernkreis = 9001;
-        if (LS.ME === "-54" || LS.ME === '6027' || LS.ME === '6013') { // STC: 6027 Dieter Matuschek, 6013 Horst Hrastnik
+        if (LS.ME === "-54" || LS.ME === '3590') { // STC: Hans Hafner
             hNummernkreis = 6001;
         } else if (LS.ME === "-56" || LS.ME === '3484') { // WTC: Brigitta Hainz
             hNummernkreis = 3761;

@@ -48,8 +48,7 @@ function onRegistrieren() {
                 || iCNRn === 3484 // Brigitta Hainz
                 || iCNRn === 3244 // Markus Mair
                 || iCNRn === 4506 // Sepp Lang
-                || iCNRn === 6027 // Dieter Matuschek
-                || iCNRn === 6013 // Horst Hrastnik
+                || iCNRn === 3590 // Hans Hafner
                 || iCNRn === 3244 // Markus Mair
                 || iCNRn === 4506 // Sepp Lang
                 || iCNRn === 4731 // Alex Sabkovski
@@ -231,7 +230,7 @@ $(document).bind('pageinit', function () {
         } else if (iCNR === "-56") {
             hName = "Tarockcup";
         } else if (iCNR === "-58") {
-            hName = "Stadltarock";
+            hName = "Schmankerl Tarock";
         } else if (iCNR === "-59") {
             hName = "UTC Klopeinersee";
         } else {

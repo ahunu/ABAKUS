@@ -30,6 +30,7 @@ var html = '';
 var stOption = 2;
 var stNTitel = 0;
 var stNamenLen = 0;
+var stLastZitat = 0;
 var stKolonne = 0;
 var stDetI = [0];
 var stDetTurCupGes = [0];
@@ -98,6 +99,11 @@ function AnAbmelden(pAnmelden) {
 function AnmeldenExe() {
     var hANMELDUNG = {};
     hANMELDUNG[LS.ME] = {};
+    if (LS.ME === '2778') {
+        hANMELDUNG[LS.ME].NAME = 'Berger Phanthomas';
+    } else {
+        hANMELDUNG[LS.ME].NAME = LS.MEname;
+    }
     hANMELDUNG[LS.ME].NAME = LS.MEname;
     hANMELDUNG[LS.ME].FUER = stNextTermin;
     hANMELDUNG[LS.ME].UM = new Date().toISOString();

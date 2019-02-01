@@ -45,12 +45,15 @@
             }
         </style>
         <script src="statFunktionen.js"></script>
+        <script src='../Abakus/getZitat.js'></script>
         <script src="showUebersicht.js"></script>
         <script src="showSaison.js"></script>
         <script src="showRegeln.js"></script>
         <script src="showTermine.js"></script>
+        <script src="showCupsieger.js"></script>
         <script src="showCupwertung.js"></script>
         <script src="showPlatzierungen.js"></script>
+        <script src="showTeilnehmerzahlen.js"></script>
         <script src="showTischliste.js"></script>
         <script src="showTurnier.js"></script>
         <script src="showTurnierMT.js"></script>
@@ -65,7 +68,7 @@
         <img src='../Icons/Statistik.png'   id=imgStatistik hidden/>
         <img src='../Icons/icon-64.png'     id=imgSkuess hidden/>
         <div id=dCopyright onclick='showLogo();' hidden>
-            <font face="Segoe Print" color="#0000bb"><i><div id='tWeisheit' class='C B L2'></div></i></font>
+            <div style="font-family:Segoe Print; font-style:italic; color:#0000bb" id='tWeisheit' class='C B L2'></div>
             <br><br>
             <div id='tWeiser' class='M C'></div>
             <br><br><br>
@@ -119,7 +122,7 @@
                     </div>
                 </div>
 
-                <ul id="sideDetails" data-role="listview" data-inset="true" data-divider-theme="f" data-corners="false">
+                <ul id="sideDetails" data-role="listview" data-inset="true" data-divider-theme="f" data-corners="false" hidden>
                     <li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines:</li>
                     <li data-icon="false"><a onClick="showAnekdotenMT();" class='ui-disabled'>&nbsp;Anekdoten</a></li>
                     <li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>

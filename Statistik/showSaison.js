@@ -241,8 +241,6 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         }
     } else {
         $("#sideContent,#dCopyright").show();
-//        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
-//        $('#sideContent').css('height', hx + 'px').scrollTop(0);
         setFont();
         stShowList = !stShowList;
         toggleListen();
@@ -262,8 +260,6 @@ function toggleListen() {
         $('#iPlus').hide();
         $('#iMinus').show();
     }
-//    var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
-//    $('#sideContent').css('height', hx + 'px');
     var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
     $('#sideContent').css('height', hx + 'px').scrollTop(0);
 }

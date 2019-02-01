@@ -27,7 +27,7 @@ $(document).ready(function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
 
     if (LS.ME === "3425" || LS.ME === "1000"
-            || LS.ME === '3484' || LS.ME === '6027' || LS.ME === '6013'     // Brigitta Hainz, Dieter Matuschek, Horst Hrastnik
+            || LS.ME === '3484' || LS.ME === '3590'     // Brigitta Hainz, Hans Hafner
             || LS.ME === '3244' || LS.ME === '4506' || LS.ME === '1014' || LS.ME === '0124') { // Markus Mair, Sepp Lang, Franz Kienast, Harl Haas jun.
         $('#bTurnierkalender,#bSpielerAendern').removeClass('ui-disabled');
         if (PC) {

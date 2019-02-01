@@ -693,14 +693,6 @@ function Reset(btn) {
 
 function ErgChange(btn) {
     Deactivate(btn);               //  !!! Ein Muss !!!
-//    if (kontra !== 1) {
-//        kontra = 1;
-//        if (LS.Tarif21T && $("#PS").is(":visible")) {
-//            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
-//        } else {
-//            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
-//        }
-//    }
     if (kontra === 1) {
         if (btn === '#gWert' && aktSpiel === iTrischaker) {
             showEinenTip(btn, 'Beim Trischaken<br>zahlt der "Gewinner".');
@@ -728,7 +720,6 @@ function ErgChange(btn) {
             $('#' + btn.id.substr(0, btn.id.length - 1)).click();
         }
     }
-
 }
 
 function Summieren() {
@@ -777,7 +768,7 @@ function showSeite(pSeite) {
     NEXT.Seite = pSeite;
     localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
 
-    if (pSeite === 'LI') {
+    if (pSeite === 'LI' || pSeite === 'SZ') {
         $("#ss1,#ss2,#ss3,#ss4,#ss5,#ss6").removeClass('ui-disabled');
     } else {
         $("#ss1,#ss2,#ss3,#ss4,#ss5,#ss6").removeClass('ui-disabled').addClass('ui-disabled');
@@ -802,7 +793,7 @@ function showSeite(pSeite) {
     Seite = pSeite;
     if (Seite === 'GR') {
         $('#SPIELER,#nbSpiel,#nbSpiele').hide();
-    } else if (Seite === 'LI') {
+    } else if (Seite === 'LI' || Seite === 'SZ') {
         Spieler_Init();
         $('#SPIELER,#nbSpiel,#nbSpiele').hide();
     } else {
@@ -821,6 +812,11 @@ function showSeite(pSeite) {
         $('#SPIELEallg').hide();
         $('#nbLI').addClass('ui-btn-active');
         showUebersicht();
+    } else if (Seite === 'SZ') {
+        $('#LI').show();
+        $('#SPIELEallg').hide();
+        $('#nbLI').addClass('ui-btn-active');
+        showSchreibzettel();
     } else if (Seite === 'GR') {
         $('#SPIELEallg').hide();
         $('#nbGR').addClass('ui-btn-active');
@@ -895,7 +891,6 @@ function showDetails(pInit) {
         if (e > 0 && !DS.Storno[e]) {
 
             i = DS.GameI[e];
-
             if (DS.Spieler[e] === 1) {
                 hPunkte = DS.Punkte[1][e];
             } else if (DS.Spieler[e] === 2) {
@@ -1320,9 +1315,9 @@ function showSchreibzettel() {
     setFont();
 
     $(".TR").attr('style', 'padding:.03em 0em;text-align:right;');
-    $('html, body').animate({
-        scrollTop: $("#LIste").offset().top
-    });
+
+    $("#tLI").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+    $(document).scrollTop($(document).height());
 }
 
 function showChronik(pInit) {

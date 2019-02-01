@@ -89,7 +89,7 @@ function showTermine() {
                 } else if (CUPS.TERMINE[iTermin].CUP === 56) {
                     hCupName = 'Wr. Tarockcup';
                 } else if (CUPS.TERMINE[iTermin].CUP === 58) {
-                    hCupName = 'Stadltarock';
+                    hCupName = 'Schmankerl Tarock';
                 }
                 if (CUPS.TERMINE[iTermin].DATUM >= stHeute) {
                     nTermine++;

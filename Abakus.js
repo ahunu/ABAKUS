@@ -877,8 +877,7 @@ function initExtraButtons() {
     if (LS.ME === '3425' // Leo Luger
             || LS.ME === '1014' // Franz Kienast
             || LS.ME === '0124' // Karl Haas jun.
-            || LS.ME === '6027' // Dieter Matuschek
-            || LS.ME === '6013' // Horst Hrastnik
+            || LS.ME === '3590' // Hans Hafner
             || LS.ME === '3484' // Brigitta Hainz
             || LS.ME === '3244' // Markus Mair
             || LS.ME === '4506' // Sepp Lang
@@ -1127,7 +1126,7 @@ function whenCUPSloaded() {
                     hCupName = 'Wr. Tarockcup';
                     hCupFarbe = ' cWTC';
                 } else if (TERMINE[termin].CUP === 58) {
-                    hCupName = 'Stadltarock';
+                    hCupName = 'Schmankerl Tarock';
                     hCupFarbe = ' cDIV';
                 } else {
                     hCupName = CUPS.NAME[TERMINE[termin].CUP];

@@ -16,10 +16,21 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
 
         stSynchron = true;
 
+        var hSaison = '';
+        var anzSaisonen = 0;
+        var anzTurniere = 0;
+        var anzTeilnahmen = 0;
+
         if (data.val()) {
             STAT = data.val();
             for (var turnier in STAT) {
                 if (turnier[0] === '2') {
+
+                    anzTurniere++;
+                    if (hSaison !== STAT[turnier]._SAISON) {
+                        hSaison = STAT[turnier]._SAISON;
+                        anzSaisonen++;
+                    }
 
                     var spieler = '';
                     if (STAT[turnier]._AKTTURNIER) { // Handyeingaben in STAT übertragen
@@ -37,6 +48,8 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
                     for (var spieler in STAT[turnier]) {
 
                         if (spieler[0] !== '_') {
+
+                            anzTeilnahmen++;
 
                             if (CUPS.TYP[I] === 'MT') {
                                 STAT[turnier][spieler][5] = STAT[turnier][spieler][3]; // Mannschaft shiften
@@ -91,6 +104,10 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
                 }
             }
         }
+
+        STAT._ANZSAISONEN = anzSaisonen;
+        STAT._ANZTURNIERE = anzTurniere;
+        STAT._ANZTEILNAHMEN = anzTeilnahmen;
 
         localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
 

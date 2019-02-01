@@ -110,7 +110,7 @@ function showCupwertung() {
         }
     }
 
-    var SORT = [];
+    CUPD = [];
     var spieler = '';
     for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
         tCUP = CUP[spieler];
@@ -134,15 +134,15 @@ function showCupwertung() {
         CUP[spieler] = tCUP;
         tCUP.push(spieler);
         if (isNaN(spieler)) {
-            SORT.push((9000 - tCUP[0]) + spieler + ';' + spieler);
+            CUPD.push((9000 - tCUP[0]) + spieler + ';' + spieler);
         } else {
-            SORT.push((9000 - tCUP[0]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+            CUPD.push((9000 - tCUP[0]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         }
     }
 
-    SORT.sort();
+    CUPD.sort();
     var html = (!QUERFORMAT() ? "<div id='dDummy'></div>" : "")
-            + (stCup === 58 // Stadltarock
+            + (stCup === 58 // Schmankerl Tarock
                     ? "&nbsp;<img src='../Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Cupwertung.</b><br></span>"
                     + "&nbsp;<img src='../Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>"
                     : ''
@@ -167,9 +167,9 @@ function showCupwertung() {
     var hPlatz = 0;
     var hLastPoints = 0;
     var hClass = '';
-    for (var ii = 0; ii < SORT.length; ii++) {
+    for (var ii = 0; ii < CUPD.length; ii++) {
         nSpieler++;
-        var spieler = SORT[ii].substring((SORT[ii].lastIndexOf(';') + 1));
+        var spieler = CUPD[ii].substring((CUPD[ii].lastIndexOf(';') + 1));
         tCUP = CUP[spieler];
         if (window.location.href.toUpperCase().indexOf('OOV') < 0) {
             if (spieler === LS.ME) {
@@ -247,7 +247,7 @@ function showCupwertung() {
                 + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
                 + (stCup === 54 ? "<td class=TR>tarock.firebaseapp.com?St.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.firebaseapp.com?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 58 ? "<td class=TR>tarock.firebaseapp.com?Stadltarock&nbsp;</td>" : "")
+                + (stCup === 58 ? "<td class=TR>tarock.firebaseapp.com?Schmankerl Tarock&nbsp;</td>" : "")
                 + "</tr></tbody></table><br>";
     } else {
         html += "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>";

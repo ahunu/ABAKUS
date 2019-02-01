@@ -247,7 +247,7 @@ function XSBuchen(pGame, pPunkte, pS, pP, pSakt) {
         }
 
         if (LS.Schreibzettel) {
-            showSeite('LI');
+            showSeite('SZ');
         } else {
             showSeite('GR');
         }

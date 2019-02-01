@@ -18,7 +18,9 @@ var LS = new Object();
 var CUPS = new Object();
 var STAT = new Object();
 var SPIELER = new Object();
-var CUPPUNKTE = new Object();
+var SAISON = new Object();
+var CUP = new Object();
+var CUPD = new Object();
 var CUPSIEGER = [];
 
 var tFIXPUNKTE = [, 223, 198, 180, 168, 156, 147, 138, 131, 124, // 0 - 9
@@ -365,6 +367,9 @@ function fINIT(pCup) {
     } else {
         PC = true;
     }
+    showLogo();
+    var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+    $('#sideContent').css('height', hx + 'px');
     setStMaxFont();
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     if (LS === null) {

@@ -139,7 +139,7 @@ function showTurnier(pTurnier) {
                 + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
                 + (stCup === 54 ? "<td class=TR>tarock.firebaseapp.com?St.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.firebaseapp.com?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 58 ? "<td class=TR>tarock.firebaseapp.com?Stadltarock&nbsp;</td>" : "")
+                + (stCup === 58 ? "<td class=TR>tarock.firebaseapp.com?Schmankerl Tarock&nbsp;</td>" : "")
                 + "</tr></tbody></table><br>");
         $('#tStand').hide();
     } else {
@@ -162,8 +162,11 @@ function showTurnier(pTurnier) {
     }
 }
 
-function popupSpieler(pSpieler) {
+function popupSpieler(pSpieler, pSaison) {
 
+    if (!pSaison) {
+        pSaison = stSaison;
+    }
     var html = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr class='bGrau sM'>"
             + "<th class=TR>#&nbsp;</th>"
@@ -189,7 +192,7 @@ function popupSpieler(pSpieler) {
     var hCuppunkte = 0;
     if (CUPS.TYP[stCup] === 'CUP') {
         for (var iTurnier in STAT) {
-            if (iTurnier.substr(0, 2) === '20' && STAT[iTurnier]._SAISON === stSaison && iTurnier !== stFinale) {
+            if (iTurnier.substr(0, 2) === '20' && STAT[iTurnier]._SAISON === pSaison && iTurnier !== stFinale) {
                 if (STAT[iTurnier][pSpieler]) {
                     hCuppunkte = getCupPunkte(iTurnier, pSpieler);
                     if (!isNaN(hCuppunkte)) {
@@ -232,7 +235,7 @@ function popupSpieler(pSpieler) {
     var tName = '';
     nTurniere = 0;
     for (var iTurnier in STAT) {
-        if (iTurnier.substr(0, 2) === '20' && (STAT[iTurnier]._SAISON === stSaison || CUPS.TYP[stCup] === 'MT')) {
+        if (iTurnier.substr(0, 2) === '20' && (STAT[iTurnier]._SAISON === pSaison || CUPS.TYP[stCup] === 'MT')) {
             if (STAT[iTurnier][pSpieler]) {
                 nTurniere++;
                 tName = STAT[iTurnier]._NAME;
@@ -284,7 +287,7 @@ function popupSpieler(pSpieler) {
         jbSpieler.open();
     }
 
-    $('#jbSpielerTitel').html(((isNaN(pSpieler) || !PC) ? '' : pSpieler + '&nbsp;&nbsp;') + getSpielerName(pSpieler).replace(' ', '&nbsp;') + (!isNaN(pSpieler) && SPIELER[pSpieler][4] ? '&nbsp;&#134;' : '') + (QUERFORMAT() && stStat !== "Platzierungen" ? '' : '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + getSpielerOrt(pSpieler, true)));
+    $('#jbSpielerTitel').html(((isNaN(pSpieler) || !PC) ? '' : pSpieler + '&nbsp;&nbsp;') + getSpielerName(pSpieler).replace(' ', '&nbsp;') + (stSaison === pSaison ? '' : '&nbsp;&nbsp;-&nbsp;&nbsp;' + pSaison + ' ') + (!isNaN(pSpieler) && SPIELER[pSpieler][4] ? '&nbsp;&#134;' : '') + (QUERFORMAT() && stStat !== "Platzierungen" ? '' : '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + getSpielerOrt(pSpieler, true)));
     var hFont = 0;
     if (nTurniere <= 4) {
         hFont = 3;

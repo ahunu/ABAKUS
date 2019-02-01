@@ -212,30 +212,36 @@ function writeCanvas(pTitel, pFName) {
     }
 }
 
+function getZitatF(pClass) {
+    var hZitat = getZitat();
+        return "<br><br><br><br><div class='C " + pClass + " B cBlau'><i>" + hZitat[0] + "</i></div>"
+                + "<br><div class='C " + pClass + "'>" + hZitat[1] + "</div>";
+}
+
 function setAnzSpalten(pSpalten) {
     $('#sortUndLayout').hide();
     if (stAktSpalten < pSpalten) {
         if (stAktSpalten === 1) {
             if (pSpalten === 2) {
-                $('#SP2').html(getZitat('L'));
+                $('#SP2').html(getZitatF('L'));
             } else if (pSpalten === 3) {
-                $('#SP2').html(getZitat('M'));
+                $('#SP2').html(getZitatF('M'));
                 $('#SP3').html('');
             } else if (pSpalten === 4) {
                 $('#SP2').html('');
-                $('#SP3').html(getZitat('S'));
+                $('#SP3').html(getZitatF('S'));
                 $('#SP4').html('');
             }
         } else if (stAktSpalten === 2) {
             if (pSpalten === 3) {
-                $('#SP3').html(getZitat('M'));
+                $('#SP3').html(getZitatF('M'));
             } else if (pSpalten === 4) {
-                $('#SP3').html(getZitat('S'));
+                $('#SP3').html(getZitatF('S'));
                 $('#SP4').html('');
             }
         } else if (stAktSpalten === 3) {
             if (pSpalten === 4) {
-                $('#SP4').html(getZitat('S'));
+                $('#SP4').html(getZitatF('S'));
             }
         }
     }
@@ -333,8 +339,8 @@ function getName(i, pMax) {
         return 'Summiert';
     }
     if (STAT.S[i].NR === '2778') {
-        STAT.S[i].VNAME = 'Thobias';
-        STAT.S[i].NNAME = 'Berger';
+        STAT.S[i].VNAME = 'Phanthomas';
+        STAT.S[i].NNAME = 'Mountainhammer';
     }
     var ret = '';
     if (pMax) {

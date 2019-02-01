@@ -1,10 +1,10 @@
 
 function getVersion() {
-    return 925;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 926;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
-    return setVersion(2019, 1, 26);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2019, 2, 1);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
@@ -33,7 +33,7 @@ function getVersionsDatum() {
 // Panorama / Sammlungen, Museen, Aussstellungen
 // http://www.gamesmuseum.uwaterloo.ca
 //
-//
+
 // http://www.altenburg-tourismus.de
 //
 //

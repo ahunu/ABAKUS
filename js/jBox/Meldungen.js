@@ -50,7 +50,7 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
         } else if (pCup === 58) {
-            hTitel = "Stadltarock:";
+            hTitel = "Schmankerl Tarock:";
         } else {
             hTitel = CUPS.NAME[pCup] + ':';
         }
@@ -188,7 +188,7 @@ function showEineMeldung(pCup, pText, pText2) {
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
         } else if (pCup === 58) {
-            hTitel = "Stadltarock:";
+            hTitel = "Schmankerl Tarock:";
         } else {
             hTitel = CUPS.NAME[pCup] + ':';
         }
@@ -225,7 +225,7 @@ function showEineWarnung(pCup, pText, pText2) {
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
         } else if (pCup === 58) {
-            hTitel = "Stadltarock:";
+            hTitel = "Schmankerl Tarock:";
         } else {
             hTitel = CUPS.NAME[pCup] + ':';
         }
@@ -268,7 +268,7 @@ function showEinenFehler(pCup, pText, pText2) {
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
         } else if (pCup === 58) {
-            hTitel = "Stadltarock:";
+            hTitel = "Schmankerl Tarock:";
         } else {
             hTitel = CUPS.NAME[pCup] + ':';
         }
@@ -472,24 +472,30 @@ window.onerror = function (pMsg, pHtml, pLine, pCol, pError) {
         return false;
     }
 
-    msg += 'url: ' + hUrl + '<br>';
-    if (pHtml) {
-        if (window.location.href.indexOf(pHtml) < 0) {
-            msg += 'html: ' + pHtml + '<br>';
+    if (pMsg && pMsg !== 'Script error.'
+            || pLine
+            || pCol
+            || pError
+            || LS.ME === '3425') {
+        msg += 'url: ' + hUrl + '<br>';
+        if (pHtml) {
+            if (window.location.href.indexOf(pHtml) < 0) {
+                msg += 'html: ' + pHtml + '<br>';
+            }
         }
-    }
-    if (pLine) {
-        msg += 'line: ' + pLine + '<br>';
-    }
-    if (pCol) {
-        msg += 'col: ' + pCol + '<br>';
-    }
-    if (pError) {
-        if (pMsg && pMsg.indexOf(pError) >= 0) {
-            msg += 'error: ' + pError + '<br>';
+        if (pLine) {
+            msg += 'line: ' + pLine + '<br>';
         }
+        if (pCol) {
+            msg += 'col: ' + pCol + '<br>';
+        }
+        if (pError) {
+            if (pMsg && pMsg.indexOf(pError) >= 0) {
+                msg += 'error: ' + pError + '<br>';
+            }
+        }
+        msg = msg.substr(0, msg.lastIndexOf('<br>'));
+        showEinenFehler('Javascriptfehler:', msg);
     }
-    msg = msg.substr(0, msg.lastIndexOf('<br>'));
-    showEinenFehler('Javascriptfehler:', msg);
     return false;
 };

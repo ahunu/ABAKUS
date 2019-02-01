@@ -11,7 +11,7 @@ function showPlatzierungen(pSort) {
         $(lastBtn).addClass('ui-btn-active');
         stNamenLen = 0.32;
     } else {
-        stNamenLen = 0.44;
+        stNamenLen = 0.50;
     }
 
     showEinenMoment(stCup, 'Die Liste der Platzierungen<br>wird erstellt.');
@@ -113,7 +113,9 @@ function showPlatzierungen(pSort) {
             htmlRumpf += '<th>' + TEILNEHMER[0] + '</th>'
                     + '</tr>';
         } else {
-            var htmlRumpf = '<tbody id=tbody>';
+            var htmlRumpf = '<tbody id=tbody>'
+                    + "<tr id='rFilter'><td colspan='4'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
+                    + "<td class=TC><i id='icFilter' onclick='$(this).addClass(\"ui-disabled\");$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-plus-bold zmdi-hc-rotate-45 ui-disabled'></i></td></tr>";
         }
 
         var spieler = '';
@@ -137,7 +139,7 @@ function showPlatzierungen(pSort) {
             }
 
             htmlRumpf += '<tr class="' + hClass + '">'
-                    + '<td class="' + hClass + ' fixedCol' + (QUERFORMAT() ? 'Quer' : 'Hoch') + ' left" style="width:100%;">&nbsp;<span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P W ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
+                    + '<td class="' + hClass + (QUERFORMAT() ? ' fixedColQuer' : '') + ' left" style="width:100%;">&nbsp;<span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P W ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
 
             if (DATA[1] || DATA[2] || DATA[3]) {
                 htmlRumpf += '<td class=W>' + (DATA[1] ? DATA[1] : '0') + '-' + (DATA[2] ? DATA[2] : '0') + '-' + (DATA[3] ? DATA[3] : '0') + '</td>';
@@ -162,8 +164,10 @@ function showPlatzierungen(pSort) {
                         htmlRumpf += '<td></td>';
                     }
                 }
+                htmlRumpf += '<td>' + DATA[4] + '</td>';
+            } else {
+                htmlRumpf += '<td class=TR>' + DATA[4] + '&nbsp;&nbsp;</td>';
             }
-            htmlRumpf += '<td>' + DATA[4] + '</td>';
             htmlRumpf += '</tr>';
         }
 
@@ -199,6 +203,12 @@ function showPlatzierungen(pSort) {
                     + htmlRumpf
                     + '</table>'
                     + '</div>';
+            $('#dRumpf').html(html);
+            $('#dOver').html(xhtml).trigger('create');
+            setFont();
+            $("#mTable").tableHeadFixer({"left": 1});
+            $("#mTable tr:even").css('background-color', '#efefef');
+            $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
         } else {
             $('#sideDetails').hide();
             $('#dContent').html('');
@@ -206,7 +216,7 @@ function showPlatzierungen(pSort) {
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
             hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
-            html = '<div class="parent" style="margin-top: -0px; height: ' + hx + 'px;"><table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
+            html = '<table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
                     + '<thead>'
                     + '<tr ' + (QUERFORMAT() ? "id=L0P1" : "") + ' class=bHell>'
                     + '<th><br>Teilnehmer</th>'
@@ -217,20 +227,9 @@ function showPlatzierungen(pSort) {
                     + '</tr>'
                     + '</thead>'
                     + htmlRumpf
-                    + '</table>'
-                    + '</div>';
-        }
-
-        if (QUERFORMAT()) {
-            $('#dRumpf').html(html);
-            $('#dOver').html(xhtml).trigger('create');
-            setFont();
-            $("#mTable").tableHeadFixer({"left": 1});
-            $("#mTable tr:even").css('background-color', '#efefef');
-            $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
-        } else {
+                    + '</table>';
             $('#sideDetails').hide();
-            $('#dContent').append(html);
+            $('#dContent').html(html);
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
             setFont(3.8, true);
@@ -241,7 +240,6 @@ function showPlatzierungen(pSort) {
         window.scrollTo(0, 0);
 
 //        $("#dFilter").attr('style', "width:200px;position: absolute; top: 275px; left: " + ($(window).innerWidth() / 100 * 30) + "px;");
-
 
     }, 200);
 

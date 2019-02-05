@@ -1,21 +1,16 @@
 
-/* global CUPS, LS, firebase */
+/* global CUPS, LS, firebase, pell */
 
 var FB = undefined;
-
 var STAT = new Object();
-
 var oNEXTTERMIN = 0;
-
 var I = 0;
 var mCupLoeschen = -1;
 var iNeu;
 var iName;
-
 var hRundeTurnier = 'Runde';
-
+var editor = null;
 var myJBox = null;
-
 function myJBoxClose() {
     myJBox.close();
 }
@@ -122,7 +117,6 @@ function rundeKopieren() {
 
 function copyCUPS() {
     'use strict';
-
     iNeu = parseInt($("#iKIndex").val());
     if (isNaN(iNeu) || iNeu <= 0) {
         $("#kFText").html('<b>Index ung&uumlltig.</b>');
@@ -155,7 +149,6 @@ function copyCUPS() {
 
 // llll    $('#mKopieren').modal('hide');
     showEinenMoment(iName + ':', hRundeTurnier + ' wird erstellt.');
-
     CUPS.ANMELDERF     [iNeu] = CUPS.ANMELDERF     [I];
     CUPS.BEREadmin     [iNeu] = CUPS.BEREadmin     [I];
     CUPS.BEREschreiben [iNeu] = CUPS.BEREschreiben [I];
@@ -245,13 +238,11 @@ function copyCUPS() {
 function copySTAT() {
     'use strict';
     var hSTAT = new Object();
-
     if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'TC') {
         hSTAT = STAT;
     } else {
         hSTAT.ZULETZT = new Date(new Date(STAT.ZULETZT).getTime() - 60000 * new Date().getTimezoneOffset()).toISOString();
         hSTAT.ZULETZTupd = STAT.ZULETZTupd;
-
         if (CUPS.TURNIER[I]) {
             hSTAT.TURCODE = 0;
             hSTAT.TURRUNDE = 0;
@@ -283,9 +274,7 @@ function copyEND() {
     LS.ShowCups = iNeu;
     LS.Meldung = hRundeTurnier + ' wurde erstellt.';
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-
     hideEinenMoment();
-
     setTimeout(function () {
         window.history.back();
     });
@@ -316,13 +305,11 @@ function onSubmit() {
         CUPS.BEREschreiben[I] = '-';
     }
 
-    CUPS.TEXT1[I] = $('#fTEXT1').find('.nicEdit-main').html();
     if (!CUPS.TEXT1[I]) {
         CUPS.TEXT1[I] = null;
     }
 
     CUPS.REGELN[I] = $("input:radio[name=iREGELN]:checked").val();
-
     CUPS.SPIELEAB[I] = parseInt($("#iSPIELEAB").val());
     if (isNaN(CUPS.SPIELEAB[I])) {
         CUPS.SPIELEAB[I] = 0;
@@ -350,7 +337,6 @@ function onSubmit() {
         CUPS.DOPPELTERUNDEN[I] = false;
     }
     CUPS.ANMELDERF[I] = $("#iANMELDERF").is(':checked');
-
     if ($("#dABWTARIFE").is(":visible")) {
         for (var ii = 1; ii <= 21; ii++) {
             CUPS.TARIF[I][ii] = parseInt($("#iTARIF" + ii).val());
@@ -454,7 +440,6 @@ function onSubmit() {
                             LS.ShowCups = I;
                             LS.Meldung = 'Die Parameter wurden geändert!';
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-
                             if (mCupLoeschen === 1) {
                                 statistikLoeschen();
                             } else {
@@ -537,51 +522,64 @@ $(document).bind('pageinit', function () {
 
     LS = new Object();
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };
     }
     document.onselectstart = function (event) {
-        if (!$(".nicEdit-main").is(":focus")) {
+        if ($("#editor").is(":focus")) {
             return false;
 //            event.stopImmediatePropagation();
         }
     };
-
     I = LS.ShowCups;
-
     CUPS = new Object();
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-
     firebase.initDB(0, 'rw');
-
     if (I >= 50 && I <= 59) {
         $('#dCup').hide();
     }
 
     $("#tNAME2").text(CUPS.NAME[I]);
-
     $("#iBEREadmin").val(CUPS.BEREadmin[I]);
     $("#iBEREschreiben").val(CUPS.BEREschreiben[I]);
 
-    setTimeout(function () {
-        new nicEditor({maxHeight: ($(window).innerHeight() / 3), buttonList: ['bold', 'italic', 'underline', "strikethrough", 'indent', 'outdent', 'ol', 'ul', 'subscript', 'superscript', 'hr']}).panelInstance('iTEXT1');
-    });
-
-    setTimeout(function () {
-        if (CUPS.TEXT1[I]) {
-            $('.nicEdit-main').html(CUPS.TEXT1[I]);
-        } else {
-            $('.nicEdit-main').html('');
+    editor = pell.init({
+        element: document.getElementById('editor'),
+        actions: [
+            {name: 'bold', icon: '<b>F</b>', title: 'Fett'},
+            {name: 'italic', icon: '<i>K</i>', title: 'Kursiv'},
+            {name: 'underline', title: 'Unterstreichen'},
+            {name: 'olist', icon: '1.', title: 'Nummerieren'},
+            {name: 'ulist', title: 'Gruppieren'},
+            {name: 'line', title: 'Trennlinie'},
+            {name: 'undo', icon: '<b>&#8630</b>', title: 'Rückgängig', result: () => {
+                    pell.exec('undo');
+                }},
+            {name: 'redo', icon: '<b>&#8631</b>', title: 'Wiederherstellen', result: () => {
+                    pell.exec('redo');
+                }}],
+        classes: {
+            actionbar: 'pell-actionbar-custom-name',
+            button: 'pell-button-custom-name',
+            content: 'pell-content-custom-name',
+            selected: 'pell-button-selected-custom-name'
+        },
+        onChange: function (html) {
+            CUPS.TEXT1[I] = html;
         }
-    }, 100);
+    });
+    if (CUPS.TEXT1[I]) {
+        editor.content.innerHTML = CUPS.TEXT1[I];
+    } else {
+        editor.content.innerHTML = '';
+    }
+    $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
 
     $("input:radio[name=iREGELN][value='Wr.']").prop('checked', (CUPS.REGELN[I] === 'Wr.')).checkboxradio("refresh");
     $("input:radio[name=iREGELN][value='Ooe.']").prop('checked', (CUPS.REGELN[I] === 'Ooe.')).checkboxradio("refresh");
     $("input:radio[name=iREGELN][value='Ti.']").prop('checked', (CUPS.REGELN[I] === 'Ti.')).checkboxradio("refresh");
-
     if (CUPS.TURNIER[I]) {
         CUPS.DOPPELTERUNDEN[I] = false;
         $("#iDOPRUNDEN").attr("disabled", true);
@@ -642,9 +640,7 @@ $(document).bind('pageinit', function () {
     $("#iDO").prop("checked", false).checkboxradio("refresh");
     $("#iFR").prop("checked", false).checkboxradio("refresh");
     $("#iSA").prop("checked", false).checkboxradio("refresh");
-
     $("#iANMELDERF").prop("checked", false).checkboxradio("refresh");
-
     $('#iSO').bind("click", function (event, ui) {
         CUPS.SPIELTAGE[I] = CUPS.SPIELTAGE[I].substr(0, 0) + (CUPS.SPIELTAGE[I][0] === 'J' ? '-' : 'J') + CUPS.SPIELTAGE[I].substr(1, 6);
     });
@@ -666,7 +662,6 @@ $(document).bind('pageinit', function () {
     $('#iSA').bind("click", function (event, ui) {
         CUPS.SPIELTAGE[I] = CUPS.SPIELTAGE[I].substr(0, 6) + (CUPS.SPIELTAGE[I][6] === 'J' ? '-' : 'J') + CUPS.SPIELTAGE[I].substr(7, 0);
     });
-
     $('#iW1').bind("click", function (event, ui) {
         CUPS.WOCHEN[I] = CUPS.WOCHEN[I].substr(0, 0) + (CUPS.WOCHEN[I][0] === 'J' ? '-' : 'J') + CUPS.WOCHEN[I].substr(1, 4);
     });
@@ -682,11 +677,9 @@ $(document).bind('pageinit', function () {
     $('#iW5').bind("click", function (event, ui) {
         CUPS.WOCHEN[I] = CUPS.WOCHEN[I].substr(0, 4) + (CUPS.WOCHEN[I][4] === 'J' ? '-' : 'J') + CUPS.WOCHEN[I].substr(5, 0);
     });
-
     $('#iANMELDERF').bind("click", function (event, ui) {
         CUPS.ANMELDERF[I] = !CUPS.ANMELDERF[I];
     });
-
     $('#cbCupLoeschen').bind("click", function (event, ui) {
 
         if (LS.I === I && CUPS.TURNIER[LS.I]) {
@@ -697,7 +690,6 @@ $(document).bind('pageinit', function () {
         }
 
         mCupLoeschen = mCupLoeschen * -1;
-
         if (mCupLoeschen === 1) {
             $('#bLoeschen').show();
             $('#tLoeschen').html('Die Statistik welcher Runde, welches Cups soll gel&ouml;scht werden?');
@@ -710,7 +702,6 @@ $(document).bind('pageinit', function () {
             $('#bLoeschen').hide();
         }
     });
-
     if (CUPS.SPIELTAGE[I][0] === 'J') {
         $("#iSO").prop("checked", true).checkboxradio("refresh");
     }
@@ -754,12 +745,9 @@ $(document).bind('pageinit', function () {
     }
 
     $("#iSPIELEAB").val(CUPS.SPIELEAB[I]);
-
     $('#iSWNAMEV,#iSWNAMEVN,#iSWNAMENV').prop('checked', false).checkboxradio('refresh');
     $("#iSWNAME" + CUPS.SWNAME[I]).prop("checked", true).checkboxradio("refresh");
-
     $("#iNAME2LEN").val(CUPS.NAME2LEN[I]);
-
     if (new Date(CUPS.NEXTTERMIN[I]).toDateString() === new Date().toDateString()
             || CUPS.NEXTTERMIN[I] > Date.now()) {
         oNEXTTERMIN = CUPS.NEXTTERMIN[I];
@@ -769,13 +757,10 @@ $(document).bind('pageinit', function () {
     $("#iDISPAB0").val(CUPS.DISPAB[I][0]);
     $("#iDISPAB1").val(CUPS.DISPAB[I][1]);
     $("#iDISPAB3").val(CUPS.DISPAB[I][3]);
-
     $("#iVOLLAB0").val(CUPS.VOLLAB[I][0]);
     $("#iVOLLAB1").val(CUPS.VOLLAB[I][1]);
     $("#iVOLLAB3").val(CUPS.VOLLAB[I][3]);
-
     $("#iSPJERUNDE").val(CUPS.SPJERUNDE[I]);
-
     if (CUPS.TURNIER[I]) {
         if (CUPS.TURNIER[I] === 'PC') {
             $("#tTYP").text('PC-Turnier');
@@ -801,7 +786,5 @@ $(document).bind('pageinit', function () {
     $('input:radio[name=iREGELN]').change(function () {
         CUPS.REGELN[I] = $("input:radio[name=iREGELN]:checked").val();
     });
-
     $('#hTitel1').text(CUPS.NAME[I]);
-
 });

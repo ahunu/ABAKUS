@@ -3,8 +3,11 @@
 
 function bereSaison(pTurniere) {
 
-    SAISON[stSaison] = {anzTurniere: pTurniere,
-        anzTeilnahmen: 0};
+    SAISON[stSaison] = {
+        anzTurniere: pTurniere,
+        anzTeilnehmer: 0,
+        anzTeilnahmen: 0
+    };
 
     stFinale = false;
     stFinalTeilnehmer = 0;
@@ -86,6 +89,7 @@ function bereSaison(pTurniere) {
                                     }
                                     CUP[spieler] = tCUP;
                                 } else {
+                                    SAISON[stSaison].anzTeilnehmer++;
                                     tCUP = [0, 0, 0, 0, 0, 0];
                                     if (STAT[turnier][spieler][0] === 1) {
                                         tCUP[1]++;
@@ -144,6 +148,8 @@ function bereSaison(pTurniere) {
 
 function showTeilnehmerzahlen() {
 
+    var nGesTeilnehmer = 0;
+
     function getAbweichung() {
         var dSaison = parseInt((SAISON[stSaison].anzTeilnahmen / SAISON[stSaison].anzTurniere) + 0.5);
         var dGesamt = parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5);
@@ -164,12 +170,15 @@ function showTeilnehmerzahlen() {
     }
 
     function addPosition() {
+        nGesTeilnehmer += SAISON[stSaison].anzTeilnehmer;
         html = "<tr>"
-                + "<td>&nbsp;" + stSaison + "</td>"
+                + "<td class=TC>&nbsp;" + stSaison + "</td>"
                 + "<td class=TC>" + SAISON[stSaison].anzTurniere + "</td>"
-                + "<td class=TR>" + SAISON[stSaison].anzTeilnahmen + "</td>"
-                + "<td class=TR>" + parseInt((SAISON[stSaison].anzTeilnahmen / SAISON[stSaison].anzTurniere) + 0.5) + "</td>"
-                + "<td class=TR>" + getAbweichung() + "&nbsp;</td>"
+                + (QUERFORMAT() ? "<td class=TR>" + SAISON[stSaison].anzTeilnehmer + "&nbsp;&nbsp;&nbsp;</td>" : "")
+                + "<td class=TR>" + SAISON[stSaison].anzTeilnahmen + "&nbsp;&nbsp;&nbsp;</td>"
+                + "<td class=TR>" + parseInt((SAISON[stSaison].anzTeilnahmen / SAISON[stSaison].anzTurniere) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+                + "<td class=TR>" + getAbweichung() + "&nbsp;&nbsp;</td>"
+                + (QUERFORMAT() ? "<td></td>" : "")
                 + "</tr>"
                 + html;
     }
@@ -225,41 +234,48 @@ function showTeilnehmerzahlen() {
         addPosition();
     }
     html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"
-            + "<tr class='bGrau'>"
-            + "<th></th>"
-            + "<th></th>"
-            + "<th colspan='3'>Teilnehmerzahlen&nbsp;</th>"
+            + "<tr id='L0P1' class='bGrau'>"
+            + "<th class=TL></th>"
+            + "<th xclass=TR></th>"
+            + "<th class=TR>Teil-&nbsp;&nbsp;&nbsp;</th>"
+            + (QUERFORMAT() ? "<th class=TR>Teil-&nbsp;&nbsp;&nbsp;</th>" : "")
+            + "<th class=TR>&#216; pro&nbsp;</th>"
+            + "<th class=TR>Abwei.&nbsp;&nbsp;</th>"
+            + (QUERFORMAT() ? "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>" : "")
             + "</tr>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TL></th>"
-            + "<th xclass=TR>Turniere</th>"
-            + "<th class=TR>Teiln.</th>"
-            + "<th class=TR>&#216;</th>"
-            + "<th class=TR>+/-&nbsp;</th>"
+            + "<th xclass=TR>" + (QUERFORMAT() ? "Turniere" : "Turn.") + "</th>"
+            + (QUERFORMAT() ? "<th class=TR>nehmer</th>" : "")
+            + "<th class=TR>nahmen</th>"
+            + "<th class=TR>Turnier</th>"
+            + "<th class=TR>vom &#216;&nbsp;&nbsp;</th>"
+            + (QUERFORMAT() ? "<td></td>" : "")
             + "</tr>"
             + html;
     html += "<tr class='bGrau'>"
-            + "<th class=TL>&nbsp;Gesamt</th>"
+            + "<th class=TC>&nbsp;Gesamt</th>"
             + "<td class=TC>" + STAT._ANZTURNIERE + "</th>"
-            + "<td class=TR>" + STAT._ANZTEILNAHMEN + "</td>"
-            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "</td>"
+            + "<td class=TC></th>"
+            + (QUERFORMAT() ? "<td class=TR>" + STAT._ANZTEILNAHMEN + "&nbsp;&nbsp;&nbsp;</td>" : "")
+            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+            + (QUERFORMAT() ? "<td></td>" : "")
             + "<td class=TR></td>"
             + "</tr>";
     html += "<tr class='bGrau'>"
-            + "<th class=TL>&nbsp;Im Schnitt</th>"
+            + "<th class=TC>&nbsp;Im&nbsp;Schnitt</th>"
             + "<td class=TC>" + parseInt((STAT._ANZTURNIERE / STAT._ANZSAISONEN) + 0.5) + "</td>"
-            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZSAISONEN) + 0.5) + "</td>"
-            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "</td>"
+            + (QUERFORMAT() ? "<td class=TR>" + parseInt((nGesTeilnehmer / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</th>" : "")
+            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</td>"
+            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
             + "<td class=TR></td>"
+            + (QUERFORMAT() ? "<td></td>" : "")
             + "</tr>"
             + "</tbody></table>"
             + "<br>"
-            + "<div class='S2 B'>&nbsp;Legende:</div>"
-            + "<table class='S2'><tbody>"
-            + "<tr><td>&nbsp;Teiln.:&nbsp;&nbsp;</td><td>Anzahl der Teilnahmen</td></tr>"
-            + "<tr><td>&nbsp;&#216;:</td><td>Durchschnitt der Teilnehmer je Turnier</td></tr>"
-            + "<tr><td>&nbsp;+/-:</td><td>Abweichung zum Gesamtdurchsnitt je Turnier</td></tr>"
-            + "</tbody></table>";
+            + "<div style='font-size:1.2vw;font-weight: normal;text-align:center'>"
+            + (QUERFORMAT() ? "&mdash;&mdash; &copy; 2015-2019 by Leo Luger &mdash;&mdash;" : "")
+            + "</div>";
 
     if (QUERFORMAT()) {
         $('#dRumpf').html(html);

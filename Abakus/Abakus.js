@@ -1316,7 +1316,10 @@ function showSchreibzettel() {
 
     $(".TR").attr('style', 'padding:.03em 0em;text-align:right;');
 
-    $("#tLI").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+
+    if (typeof $("#tLI").stickyTableHeaders === "function") { // ist Android < 4.0 nicht verfügbar
+        $("#tLI").stickyTableHeaders({scrollableArea: $("#dContent")[0], "fixedOffset": 0.01});
+    }
     $(document).scrollTop($(document).height());
 }
 

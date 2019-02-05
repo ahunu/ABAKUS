@@ -543,5 +543,5 @@ function fINIT(pCup) {
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             LS.ShowCups = stCup; // for after Bottom-Forward
         }
-    }
+    };
 }

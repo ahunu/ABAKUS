@@ -489,7 +489,9 @@ function optFont() {
             }
             if (stStickyHeader) {
                 $('#dDummy').remove();
-                $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
+                if (typeof $("#mTable").stickyTableHeaders === "function") { // ist Android < 4.0 nicht verfügbar
+                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
+                }
             }
             return;
         } else if (tWidth < pWidth) {
@@ -505,7 +507,9 @@ function optFont() {
                 } else {
                     if (stStickyHeader) {
                         $('#dDummy').remove();
-                        $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
+                        if (typeof $("#mTable").stickyTableHeaders === "function") { // ist Android < 4.0 nicht verfügbar
+                            $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
+                        }
                     }
                 }
                 return;
@@ -517,7 +521,9 @@ function optFont() {
                 $('#mTable').css('font-size', stFont + 'vw');
                 if (stStickyHeader) {
                     $('#dDummy').remove();
-                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
+                    if (typeof $("#mTable").stickyTableHeaders === "function") { // ist Android < 4.0 nicht verfügbar
+                        $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
+                    }
                 }
                 return;
             }
@@ -539,7 +545,9 @@ function optFont() {
                 $('#mTable').css('font-size', stFont + 'vw');
                 if (stStickyHeader) {
                     $('#dDummy').remove();
-                    $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
+                    if (typeof $("#mTable").stickyTableHeaders === "function") { // ist Android < 4.0 nicht verfügbar
+                        $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
+                    }
                 }
                 return;
             }

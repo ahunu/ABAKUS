@@ -33,7 +33,7 @@ input {
     .L2 {font-size: calc(1.17vw + 13px);}
     .L, input, .ui-btn, .ui-radio, .ui-checkbox {font-size: calc(1.1vw + 12px) !important;}
     .M2 {font-size: calc(0.96vw + 11px);}
-    .M, .nicEdit-main {font-size: calc(0.92vw + 10px);}
+    .M {font-size: calc(0.92vw + 10px);}
     .S3 {font-size: calc(0.91vw + 9px);}
     .S2 {font-size: calc(0.90vw + 8px);}
     .S {font-size: calc(0.89vw + 7px);}
@@ -66,7 +66,7 @@ input {
     .L3 {font-size: 8vw !important;}  /* Vorhand */
     .L2 {font-size: 7.2vw !important;}  /* Vorhand */
     .L {font-size: 6.44vw !important;}
-    .M3, .nicEdit-main {font-size: 5.4vw !important;} /* A3 Navbar Private Runden */
+    .M3 {font-size: 5.4vw !important;} /* A3 Navbar Private Runden */
     .M2 {font-size: 5.4vw !important;}                /* A3 */
     .M  {font-size: 5.33vw !important;}
     .S2 {font-size: 5.2vw !important;}
@@ -145,7 +145,7 @@ input {
     .L3 {font-size: 8vw !important;}  /* Vorhand */
     .L2 {font-size: 7.2vw !important;}  /* Vorhand */
     .L {font-size: 6.44vw !important;}
-    .M3, .nicEdit-main {font-size: 5.9vw !important;} /* RundenStatistik Navbar */
+    .M3 {font-size: 5.9vw !important;} /* RundenStatistik Navbar */
     .M2 {font-size: 5.6vw !important;}
     .M  {font-size: 5.33vw !important;}
     .S2 {font-size: 5.2vw !important;}
@@ -225,7 +225,7 @@ input {
     .L  {font-size: calc(1.25vw + 20px) !important;}
     .M3, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
     .M2, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
-    .M, .nicEdit-main {font-size: calc(0.95vw + 16px) !important;}
+    .M  {font-size: calc(0.95vw + 16px) !important;}
     .S2 {font-size: calc(0.93vw + 14px) !important;}
     .S  {font-size: calc(0.91vw + 12px) !important;}
     .XS {font-size: calc(0.90vw + 10px) !important;}
@@ -306,7 +306,7 @@ input {
     .L2 {font-size: calc(1.01vw + 13px) !important;}
     .L  {font-size: calc(0.97vw + 12px) !important;}
     .M2, .Sbtn {font-size: calc(0.93vw + 11px) !important;}
-    .M, .nicEdit-main {font-size: calc(0.90vw + 10px) !important;}
+    .M  {font-size: calc(0.90vw + 10px) !important;}
     .S2 {font-size: calc(0.89vw + 9px) !important;}
     .S  {font-size: calc(0.88vw + 8px) !important;}
     .XS {font-size: calc(0.87vw + 7px) !important;}
@@ -863,10 +863,6 @@ input[type="number"] {
 
 textarea {
     background:Gainsboro;
-}
-.nicEdit-main {
-    background-color:Gainsboro;
-    text-align: left
 }
 
 .BOX {

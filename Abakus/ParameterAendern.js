@@ -11,6 +11,7 @@ var iName;
 var hRundeTurnier = 'Runde';
 var editor = null;
 var myJBox = null;
+
 function myJBoxClose() {
     myJBox.close();
 }
@@ -527,12 +528,7 @@ $(document).bind('pageinit', function () {
             return false; // oncontextmenu
         };
     }
-    document.onselectstart = function (event) {
-        if ($("#editor").is(":focus")) {
-            return false;
-//            event.stopImmediatePropagation();
-        }
-    };
+
     I = LS.ShowCups;
     CUPS = new Object();
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
@@ -547,25 +543,8 @@ $(document).bind('pageinit', function () {
 
     editor = pell.init({
         element: document.getElementById('editor'),
-        actions: [
-            {name: 'bold', icon: '<b>F</b>', title: 'Fett'},
-            {name: 'italic', icon: '<i>K</i>', title: 'Kursiv'},
-            {name: 'underline', title: 'Unterstreichen'},
-            {name: 'olist', icon: '1.', title: 'Nummerieren'},
-            {name: 'ulist', title: 'Gruppieren'},
-            {name: 'line', title: 'Trennlinie'},
-            {name: 'undo', icon: '<b>&#8630</b>', title: 'Rückgängig', result: () => {
-                    pell.exec('undo');
-                }},
-            {name: 'redo', icon: '<b>&#8631</b>', title: 'Wiederherstellen', result: () => {
-                    pell.exec('redo');
-                }}],
-        classes: {
-            actionbar: 'pell-actionbar-custom-name',
-            button: 'pell-button-custom-name',
-            content: 'pell-content-custom-name',
-            selected: 'pell-button-selected-custom-name'
-        },
+        actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'undo', 'redo'],
+        classes: {actionbar: 'pell-actionbar-custom-name'},
         onChange: function (html) {
             CUPS.TEXT1[I] = html;
         }

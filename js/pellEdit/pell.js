@@ -42,8 +42,8 @@
 
     var defaultActions = {
         bold: {
-            icon: '<b>B</b>',
-            title: 'Bold',
+            icon: '<b>F</b>',
+            title: 'Fett',
             state: function state() {
                 return queryCommandState('bold');
             },
@@ -52,8 +52,8 @@
             }
         },
         italic: {
-            icon: '<i>I</i>',
-            title: 'Italic',
+            icon: '<i>K</i>',
+            title: 'Kursiv',
             state: function state() {
                 return queryCommandState('italic');
             },
@@ -63,7 +63,7 @@
         },
         underline: {
             icon: '<u>U</u>',
-            title: 'Underline',
+            title: 'Unterstreichen',
             state: function state() {
                 return queryCommandState('underline');
             },
@@ -110,15 +110,15 @@
             }
         },
         olist: {
-            icon: '&#35;',
-            title: 'Ordered List',
+            icon: '1.',
+            title: 'Nummerieren',
             result: function result() {
                 return exec('insertOrderedList');
             }
         },
         ulist: {
             icon: '&#8226;',
-            title: 'Unordered List',
+            title: 'Gruppieren',
             result: function result() {
                 return exec('insertUnorderedList');
             }
@@ -132,7 +132,7 @@
         },
         line: {
             icon: '&#8213;',
-            title: 'Horizontal Line',
+            title: 'Trennlinie',
             result: function result() {
                 return exec('insertHorizontalRule');
             }
@@ -153,6 +153,20 @@
                 var url = window.prompt('Enter the image URL');
                 if (url)
                     exec('insertImage', url);
+            }
+        },
+        undo: {
+            icon: '<b>&#8630</b>',
+            title: 'Rückgängig',
+            result: function result() {
+                exec('undo');
+            }
+        },
+        redo: {
+            icon: '<b>&#8631</b>',
+            title: 'Wiederherstellen',
+            result: function result() {
+                exec('redo');
             }
         }
     };

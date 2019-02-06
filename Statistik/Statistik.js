@@ -273,15 +273,15 @@ function showAnekdote() {
     if (!jbAnekdote) {
         jbAnekdote = new jBox('Modal', {
             title: '<div class=L2 style="background-color:#27a;border:8px solid #27a;color: white;">&nbsp;Eine Anekdote zum Turnier <b><span id=jbAnekdoteTitle></span></b>:</div>',
-            content: '<div><form id=fAnekdote>'
-                    + '<textarea id="tAnekdote" placeholder="Describe yourself here..." style="width: 300px; height: ' + ($(window).innerHeight() / 4 - 11) + 'px; border: 1px solid #000; width:' + ($(window).innerWidth() * (QUERFORMAT() ? 0.7 : 0.9)) + 'px;background:silver;">'
-                    + '</textarea></form>'
+            content: '<div>'
+                    + '<div id="editor" class="M" style="width: 300px; ddheight: ' + ($(window).innerHeight() / 4 - 11) + 'px; width:' + ($(window).innerWidth() * (QUERFORMAT() ? 0.7 : 0.9)) + 'px;background:#eee; border-width:6px; border-style:double;border-color:#ddd; text-align: justify;"></div>'
+//+ '<div id="editor" class="M" style="background-color:#eee; border-width:5px; border-style:groove; text-align:left"></div>'
                     + '<div class="ui-grid-b">'
                     + '<div class="ui-block-a" style="padding:11px 8px 0px 4px;">'
                     + '<button class="L2 ui-corner-all" onClick="writeAnekdote(false);" style="width:100%;" data-theme="a">abbrechen</button>'
                     + '</div>'
                     + '<div class="ui-block-b" style="padding:11px 4px 0px 4px;">'
-                    + '<button id=bAClear class="L2 ui-corner-all" onClick="$(\'.nicEdit-main\').html(\'\').focus();" style="width:100%;">clear</button>'
+                    + '<button id=bAClear class="L2 ui-corner-all" onClick="$(\'.pell-content\').html(\'\').focus();" style="width:100%;">clear</button>'
                     + '</div>'
                     + '<div class="ui-block-c" style="padding:11px 4px 0px 8px;">'
                     + '<button id=bASpeichern class="L3 ui-corner-all" onClick="writeAnekdote(true);" style="width:100%;background-color:#efcc44;font-weight:bold;" data-theme="e">speichern</button>'
@@ -290,31 +290,51 @@ function showAnekdote() {
             closeButton: false
         });
         setTimeout(function () {
-            tAnekdote = new nicEditor({maxHeight: ($(window).innerHeight() / 4), buttonList: ['bold', 'italic', 'underline', 'hr']}).panelInstance('tAnekdote');
-            $('.nicEdit-main').css('background-color', 'gainsboro');
             if (ADMIN
                     || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
                     || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')) {    // Braun Sigi, Sedlacek Robert
+                editor = pell.init({
+                    element: document.getElementById('editor'),
+                    actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'undo', 'redo'],
+                    classes: {actionbar: 'pell-actionbar-custom-name'},
+                    onChange: function () {
+                    }
+                });
             } else {
+                editor = pell.init({
+                    element: document.getElementById('editor'),
+                    actions: [],
+                    classes: {actionbar: 'pell-actionbar-custom-name'},
+                    onChange: function () {
+                    }
+                });
                 $('#bAClear,#bASpeichern').hide();
             }
-
+            $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
         });
     }
     jbAnekdote.open();
     setTimeout(function () {
+        editor.content.innerHTML = '';
         $('#jbAnekdoteTitle').text(STAT[stStat]._NAME);
         if (STAT[stStat]._ANEKDOTE) {
-            $('.nicEdit-main').html(STAT[stStat]._ANEKDOTE).focus();
+            $('.pell-content').html(STAT[stStat]._ANEKDOTE).focus();
         } else {
-            $('.nicEdit-main').html('').focus();
+            $('.pell-content').html('').focus();
         }
+
+        if (STAT[stStat]._ANEKDOTE) {
+            editor.content.innerHTML = STAT[stStat]._ANEKDOTE;
+        } else {
+            editor.content.innerHTML = '';
+        }
+
     }, 100);
 }
 
 function writeAnekdote(pWrite) {
     if (pWrite) {
-        var vAnekdote = $('#fAnekdote').find('.nicEdit-main').html();
+        var vAnekdote = editor.content.innerHTML;
         if (!vAnekdote) {
             vAnekdote = null;
         }
@@ -328,7 +348,7 @@ function writeAnekdote(pWrite) {
                                 _LASTTURNIER: (STAT._LASTTURNIER.substr(0, 10) + ', ' + Date.now())
                             })
                             .then(function () {
-                                var vAnekdote = $('#fAnekdote').find('.nicEdit-main').html();
+                                var vAnekdote = editor.content.innerHTML;
                                 if (vAnekdote) {
                                     STAT[stStat]._ANEKDOTE = vAnekdote;
                                     $('#bAnekdoten').removeClass('ui-disabled');
@@ -352,7 +372,6 @@ function writeAnekdote(pWrite) {
 $(document).ready(function () {
     fINIT();
 });
-
 function fINIT(pCup) {
     $('#iDownload,#iPrint,#iAnekdote').hide();
     if (navigator.userAgent.match(/Android/i)
@@ -380,7 +399,6 @@ function fINIT(pCup) {
         }
     }
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-
     stHeute = myDateString(new Date());
     if (pCup) {
         stCup = pCup;
@@ -419,7 +437,6 @@ function fINIT(pCup) {
             return false;
         }
     };
-
     if (stCup === 0) {
         history.go(-1);
     }
@@ -428,7 +445,6 @@ function fINIT(pCup) {
     }
     STAT = JSON.parse(localStorage.getItem('Abakus.STAT' + (("000" + stCup).slice(-3))));
     SPIELER = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
-
     if (!pCup) {
         firebase.initDB(stCup, 'rw');
     }
@@ -441,7 +457,6 @@ function fINIT(pCup) {
 
     $('#tJJJJ').text(new Date().getFullYear());
     setFont();
-
     myJTip = new jBox('Tooltip', {
         theme: 'TooltipSmall',
         Class: 'TooltipError',
@@ -495,7 +510,6 @@ function fINIT(pCup) {
             $('#mTable').css('font-size', '1.5vw');
         }
     });
-
     $(document).on('keyup', '#iFilter', function () {
         var rows = $("#tbody").find("tr");
         if (this.value.length) {
@@ -529,7 +543,6 @@ function fINIT(pCup) {
         }
     });
     getSTAT(stCup);
-
     window.onbeforeunload = function (event) {
         if (/iPad|iPhone/.test(navigator.userAgent)) {
             $('body').addClass('ui-disabled');

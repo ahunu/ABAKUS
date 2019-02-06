@@ -53,15 +53,14 @@ function addPosition() {
                 + '</div>';
         $('#dRumpf').prepend(html);
     } else {
-        var html = '<br>'
-                + '<div class="ui-grid-b">'
-                + '<div class="ui-block-a" style="width:30%; text-align: center;">'
-                + '<div class="L">' + stSaison + ':</div>'
-                + '<div class="S2">Turniere: ' + SAISON[stSaison].anzTurniere + '</div>'
-                + '</div>'
-                + '<div class="ui-block-b S2" style="width:50%;">' + tBlockB + '</div>'
-                + '<div class="ui-block-c S2 C" style="width:20%;">' + tBlockC + '</div>'
-                + '</div>';
+        var html = '<tr>'
+                + '<th class="S2 TC">' + stSaison + ':</th>'
+//                + '<td class="S2">Turniere: ' + SAISON[stSaison].anzTurniere + '</td>'
+                + '</tr>'
+                + '<tr>'
+                + '<td class="S2">' + tBlockB + '</td>'
+                + '<td class="S2">' + tBlockC + '</td>'
+                + '</tr>';
         $('#dContent').prepend(html);
     }
 }

@@ -256,7 +256,7 @@ function showTeilnehmerzahlen() {
     html += "<tr class='bGrau'>"
             + "<th class=TC>&nbsp;Gesamt</th>"
             + "<td class=TC>" + STAT._ANZTURNIERE + "</th>"
-            + "<td class=TR>" + STAT._ANZTEILNAHMEN + "&nbsp;&nbsp;&nbsp;</th>"
+            + "<td class=TR></th>"
             + (QUERFORMAT() ? "<td class=TR>" + STAT._ANZTEILNAHMEN + "&nbsp;&nbsp;&nbsp;</td>" : "")
             + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
             + (QUERFORMAT() ? "<td></td>" : "")

@@ -134,11 +134,7 @@ function getCupPunkte(pTurnier, pSpieler) {
             }
         } else {
             if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
-                if (LS.ME === '3425') {
-                    return stFinalTeilnehmer * -1 + 49;
-                } else {
-                    return '-';
-                }
+                return stFinalTeilnehmer * -1 + 49;
             } else {
                 return '-';
             }

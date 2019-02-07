@@ -340,7 +340,7 @@ function getName(i, pMax) {
     }
     if (STAT.S[i].NR === '2778') {
         STAT.S[i].VNAME = 'Phanthomas';
-        STAT.S[i].NNAME = 'Mountainhammer';
+        STAT.S[i].NNAME = 'B.';
     }
     var ret = '';
     if (pMax) {

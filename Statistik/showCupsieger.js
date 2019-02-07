@@ -1,7 +1,8 @@
 
 /* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stSaisonTab, stEndstand, jbSpieler, ADMIN, SAISON, CUP, CUPD */
 
-function addPosition() {
+
+function addPosition(pSaison) {
 
     var p0 = 0;
     var p1 = 9999;
@@ -13,34 +14,74 @@ function addPosition() {
     var tBlockD = '';
     var tBlockE = '';
 
+    var hBG = (pSaison % 2) ? '' : 'bSehrHell';
+
+    var html = '';
+
+    if (!QUERFORMAT()) {
+        html += '<tr class=' + hBG + '>'
+                + '<td>&nbsp;&nbsp;</td>'
+                + '<th class="TC">' + stSaison + ':</th>'
+                + '<td colspan="2"></td>'
+//                + '<td class="S2">Turniere: ' + SAISON[stSaison].anzTurniere + '</td>'
+                + '</tr>';
+    }
+
     for (var i = 0; i < CUPD.length; i++) {
         var spieler = CUPD[i].substring((CUPD[i].lastIndexOf(';') + 1));
         p0 = parseInt(CUPD[i]);
         if (p1 >= p0) {
             p1 = p0;
-            tBlockB += '<div>1. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></div>';
-            tBlockC += CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '<br>';
-            tBlockD += (9000 - p0) + '<br>' + '';
-            tBlockE += CUP[spieler][5].length + '<br>';
+            if (QUERFORMAT()) {
+                tBlockB += '<div>1. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></div>';
+                tBlockC += CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '<br>';
+                tBlockD += (9000 - p0) + '<br>' + '';
+                tBlockE += CUP[spieler][5].length + '<br>';
+            } else {
+                html += '<tr class=' + hBG + '>'
+                        + '<td></td>'
+                        + '<td>' + '1. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>'
+                        + '<td class="TC">' + CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '</td>'
+                        + '<td class="TR">' + (9000 - p0) + '&nbsp;</td>'
+                        + '</tr>';
+            }
         } else if (p2 >= p0) {
             p2 = p0;
-            tBlockB += '<div>2. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></div>';
-            tBlockC += CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '<br>';
-            tBlockD += (9000 - p0) + '<br>' + '';
-            tBlockE += CUP[spieler][5].length + '<br>';
+            if (QUERFORMAT()) {
+                tBlockB += '<div>2. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></div>';
+                tBlockC += CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '<br>';
+                tBlockD += (9000 - p0) + '<br>' + '';
+                tBlockE += CUP[spieler][5].length + '<br>';
+            } else {
+                html += '<tr class=' + hBG + '>'
+                        + '<td></td>'
+                        + '<td>' + '2. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>'
+                        + '<td class="TC">' + CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '</td>'
+                        + '<td class="TR">' + (9000 - p0) + '&nbsp;</td>'
+                        + '</tr>';
+            }
         } else if (p3 >= p0) {
             p3 = p0;
-            tBlockB += '<div>3. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></div>';
-            tBlockC += CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '<br>';
-            tBlockD += (9000 - p0) + '<br>' + '';
-            tBlockE += CUP[spieler][5].length + '<br>';
+            if (QUERFORMAT()) {
+                tBlockB += '<div>3. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></div>';
+                tBlockC += CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '<br>';
+                tBlockD += (9000 - p0) + '<br>' + '';
+                tBlockE += CUP[spieler][5].length + '<br>';
+            } else {
+                html += '<tr class=' + hBG + '>'
+                        + '<td></td>'
+                        + '<td>' + '3. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>'
+                        + '<td class="TC">' + CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '</td>'
+                        + '<td class="TR">' + (9000 - p0) + '&nbsp;</td>'
+                        + '</tr>';
+            }
         } else {
             break;
         }
     }
 
     if (QUERFORMAT()) {
-        var html = '<br>'
+        html = '<br>'
                 + '<div class="ui-grid-d">'
                 + '<div class="ui-block-a" style="width:22%; text-align: center;">'
                 + '<div class="XL">' + stSaison + ':</div>'
@@ -53,19 +94,13 @@ function addPosition() {
                 + '</div>';
         $('#dRumpf').prepend(html);
     } else {
-        var html = '<tr>'
-                + '<th class="S2 TC">' + stSaison + ':</th>'
-//                + '<td class="S2">Turniere: ' + SAISON[stSaison].anzTurniere + '</td>'
-                + '</tr>'
-                + '<tr>'
-                + '<td class="S2">' + tBlockB + '</td>'
-                + '<td class="S2">' + tBlockC + '</td>'
-                + '</tr>';
-        $('#dContent').prepend(html);
+        return html;
     }
 }
 
 function showCupsieger() {
+
+    var html = '';
 
     if (QUERFORMAT()) {
         if (lastBtn) {
@@ -104,12 +139,14 @@ function showCupsieger() {
     var CUP = {};
     stSaison = '';
     var nTurniere = 0;
+    var nSaison = 0;
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (STAT[turnier]._SAISON !== stSaison) {
                 if (stSaison) {
+                    nSaison++;
                     bereSaison(nTurniere);
-                    addPosition();
+                    html = addPosition(nSaison) + html;
                 }
                 nTurniere = 0;
                 stSaison = STAT[turnier]._SAISON;
@@ -118,7 +155,20 @@ function showCupsieger() {
         }
     }
     if (stSaison) {
+        nSaison++;
         bereSaison(nTurniere);
-        addPosition();
+        html = addPosition(nSaison) + html;
+        if (!QUERFORMAT()) {
+            $('#dContent').html(
+                    "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive ssssstable-stripe' data-column-btn-text=''><thead>"
+                    + "<tr id='L0P1' class='bGrau'>"
+                    + "<th class=TL></th>"
+                    + "<th class=TR></th>"
+                    + "<td class=TC>1.2.3.</td>"
+                    + "<td class=TR>CupP&nbsp;</td>"
+                    + "</tr></thead><tbody>"
+                    + html + "</tbody></table>").show();
+        }
+        setFont(4.7, true);
     }
 }

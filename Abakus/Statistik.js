@@ -100,7 +100,7 @@ function AnmeldenExe() {
     var hANMELDUNG = {};
     hANMELDUNG[LS.ME] = {};
     if (LS.ME === '2778') {
-        hANMELDUNG[LS.ME].NAME = 'B. Phanthomas';
+        hANMELDUNG[LS.ME].NAME = 'Phan Thomas';
     } else {
         hANMELDUNG[LS.ME].NAME = LS.MEname;
     }

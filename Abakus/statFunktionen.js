@@ -339,8 +339,8 @@ function getName(i, pMax) {
         return 'Summiert';
     }
     if (STAT.S[i].NR === '2778') {
-        STAT.S[i].VNAME = 'Phanthomas';
-        STAT.S[i].NNAME = 'B.';
+        STAT.S[i].VNAME = 'Thomas';
+        STAT.S[i].NNAME = 'Phan';
     }
     var ret = '';
     if (pMax) {

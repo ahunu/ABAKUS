@@ -255,17 +255,17 @@ function showTeilnehmerzahlen() {
             + html;
     html += "<tr class='bGrau'>"
             + "<th class=TC>&nbsp;Gesamt</th>"
-            + "<td class=TC>" + STAT._ANZTURNIERE + "</th>"
-            + "<td class=TR></th>"
-            + (QUERFORMAT() ? "<td class=TR>" + STAT._ANZTEILNAHMEN + "&nbsp;&nbsp;&nbsp;</td>" : "")
-            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+            + "<td class=TC>" + STAT._ANZTURNIERE + "</td>"
             + (QUERFORMAT() ? "<td></td>" : "")
+            + "<td class=TR>" + STAT._ANZTEILNAHMEN + "&nbsp;&nbsp;&nbsp;</td>"
+            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
             + "<td class=TR></td>"
+            + (QUERFORMAT() ? "<td></td>" : "")
             + "</tr>";
     html += "<tr class='bGrau'>"
             + "<th class=TC>&nbsp;Im&nbsp;Schnitt</th>"
             + "<td class=TC>" + parseInt((STAT._ANZTURNIERE / STAT._ANZSAISONEN) + 0.5) + "</td>"
-            + (QUERFORMAT() ? "<td class=TR>" + parseInt((nGesTeilnehmer / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</th>" : "")
+            + (QUERFORMAT() ? "<td class=TR>" + parseInt((nGesTeilnehmer / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</td>" : "")
             + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</td>"
             + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
             + "<td class=TR></td>"

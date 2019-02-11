@@ -284,11 +284,10 @@ function whenSTATloaded(pNotSynchron) {
     } else {
         statShow(0);
     }
-    if (window.location.search) { // Direktaufruf
+    if (window.location.search) {
         $('#stHeader').show();
         if (window.location.search === '?Anmeldungen') {
             $('#stHeader,#stFooter').show();
-            $('#bMeinTisch').addClass('ui-disabled');
         } else {
             $('#stHeader').show();
         }
@@ -528,8 +527,7 @@ $(document).ready(function () {
         if (/iPad|iPhone/.test(navigator.userAgent)) {
             $('body').addClass('ui-disabled');
         }
-        if (!QUERFORMAT() && LS.ShowCups
-                && (LS.ME === "NOBODY" || window.location.search === '?Anmeldungen')) {
+        if (!QUERFORMAT() && LS.ShowCups && LS.ME === "NOBODY") {
             LS.ShowCups = 0;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             $('#bMeinTisch').addClass('ui-disabled');

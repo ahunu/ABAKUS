@@ -1643,6 +1643,7 @@ $(document).ready(function () {
         var LS_Version = LS.Version;
         var LS_tempVIPs = LS.tempVIPs;
         var LS_Timeout = LS.Timeout;
+        var LS_MeineCups = LS.MeineCups;
 
         LS.LoadCups = 0;
 
@@ -1661,6 +1662,7 @@ $(document).ready(function () {
         LS.Version = LS_Version;
         LS.tempVIPs = LS_tempVIPs;
         LS.Timeout = LS_Timeout;
+        LS.MeineCups = LS_MeineCups;
 
         if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') {
             SPIELERerweitern();

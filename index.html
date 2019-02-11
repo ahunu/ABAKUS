@@ -19,7 +19,7 @@
                 if (LS) { // nicht beim allerersten Aufruf
                     CUPS = new Object();
                     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-                    if (CUPS) {
+                    if (CUPS && window.location.search) {
                         var hCupName = window.location.search.replace(/\%20|_| /g, '').substr(1).toUpperCase();
                         var newCup = 0;
                         if (hCupName === 'WR.TAROCKCUP') {
@@ -45,6 +45,8 @@
                             LS.Quickstart = true;
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                             window.location.replace(window.location.origin + window.location.pathname);
+                        } else {
+                            window.location.search = "";
                         }
                     }
                 }

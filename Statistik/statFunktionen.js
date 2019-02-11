@@ -52,7 +52,7 @@ function getStatMeldungen() {
         ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>";
     }
 
-    if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === stStat && false) {
+    if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === stStat) {
         if (STAT._AKTTURNIER._RUNDE) {
             var nMinSeitRundeStart = parseInt((Date.now() - STAT._AKTTURNIER._RUNDESTART) / 60000);
             if (STAT._AKTTURNIER._RUNDE <= 3) {
@@ -66,19 +66,25 @@ function getStatMeldungen() {
                     ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wurde noch nicht gespeichert.</b><br></span>";
                 }
             } else {
-                ret += "<div class=noprint>&nbsp;<img src='" + Pfad + "Icons/OK.png'  width='24' height='24'><span class=M>&nbsp;<b>Das Turnier wurde beendet.</b><br></span></div>";
-                ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die Korrektheit der Daten wurde noch nicht best&auml;tigt.</b><br></span>";
-                if (nMinSeitRundeStart < 15) {
-                    var hZeit = new Date(STAT._AKTTURNIER._RUNDESTART + (60000 * 15)).toLocaleTimeString().substr(0, 5);
-                    ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Reklamationen werden bis " + hZeit + " angenommen.</b></span>";
+                ret += "<div class=noprint>";
+                if (QUERFORMAT) {
+                    ret += "&nbsp;<img src='" + Pfad + "Icons/OK.png'  width='24' height='24'><span class=M>&nbsp;<b>Das Turnier wurde beendet.</b><br></span>";
+                    ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die Korrektheit der Daten wurde noch nicht best&auml;tigt.</b><br></span>";
+                    if (nMinSeitRundeStart < 15) {
+                        var hZeit = new Date(STAT._AKTTURNIER._RUNDESTART + (60000 * 15)).toLocaleTimeString().substr(0, 5);
+                        ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Reklamationen werden bis " + hZeit + " angenommen.</b></span>";
+                    }
+                } else {
+                    if (nMinSeitRundeStart < 15) {
+                        var hZeit = new Date(STAT._AKTTURNIER._RUNDESTART + (60000 * 15)).toLocaleTimeString().substr(0, 5);
+                        ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Reklamationen werden bis " + hZeit + " angenommen.</b></span>";
+                    } else {
+                        ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die Korrektheit der Daten wurde noch nicht best&auml;tigt.</b><br></span>";
+                    }
                 }
+                ret += "</div>";
             }
         }
-    }
-    if (LS.Meldung) {
-        ret = ret + "&nbsp;<img src='" + Pfad + "Icons/OK.png'  width='24' height='24'><span class=M>&nbsp;<b>" + LS.Meldung + "</b><br></span>";
-        LS.Meldung = '';
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
     ret += "<div id=dInstabil " + (!PC && !navigator.onLine && stSynchron ? "" : "hidden") + ">";
     ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Instabile Internetverbindung.</b><br></span>";

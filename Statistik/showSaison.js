@@ -245,6 +245,13 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         stShowList = !stShowList;
         toggleListen();
     }
+
+    if (LS.Meldung) {
+        $('#sideDetails').prepend("&nbsp;<img src='../Icons/OK.png' width='24' height='24'><span class=M>&nbsp;<b>" + LS.Meldung + "</b><br></span>");
+        LS.Meldung = '';
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
+
 }
 
 function toggleListen() {

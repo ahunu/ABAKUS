@@ -2,7 +2,6 @@
 /* global LS */
 
 var n = 0;
-
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
@@ -47,6 +46,12 @@ $(document).bind('pageinit', function () {
     } else {
         $("#iTIMEOUT").val(100);
     }
+
+
+    for (var meinCup of LS.MeineCups) {
+        $('#iMC' + meinCup).prop('checked', true).checkboxradio('refresh');
+    }
+
 
     $('#Schreibzettel' + LS.Schreibzettel).prop('checked', true).checkboxradio('refresh');
     $('#Schreibzetteltrue,#Schreibzettelfalse').click(function () {
@@ -100,6 +105,27 @@ $(document).bind('pageinit', function () {
     });
 
     $("#bSpeichern").click(function () {
+
+        LS.MeineCups = [];
+        if ($("#iMC51").is(":checked"))
+            LS.MeineCups.push(51);
+        if ($("#iMC52").is(":checked"))
+            LS.MeineCups.push(52);
+        if ($("#iMC53").is(":checked"))
+            LS.MeineCups.push(53);
+        if ($("#iMC54").is(":checked"))
+            LS.MeineCups.push(54);
+        if ($("#iMC55").is(":checked"))
+            LS.MeineCups.push(55);
+        if ($("#iMC56").is(":checked"))
+            LS.MeineCups.push(56);
+        if ($("#iMC57").is(":checked"))
+            LS.MeineCups.push(57);
+        if ($("#iMC58").is(":checked"))
+            LS.MeineCups.push(58);
+        if ($("#iMC59").is(":checked"))
+            LS.MeineCups.push(59);
+
         var hFreunde = $("#iFREUNDE").val();
         var hSave;
         LS.Freunde = [];

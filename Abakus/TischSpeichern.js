@@ -128,7 +128,7 @@ function SpeichernNT() {
                             LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
                             LS.ShowCups = LS.I;
                             LS.I = 0;
-                            LS.Meldung = ('Der&nbsp;Tisch&nbsp;wurde&nbsp;gespeichert!');
+                            LS.Meldung = ('Der Tisch wurde gespeichert!');
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                             loadTURNIER(LS.ShowCups, STAT._AKTTURNIER._TURNIER, null, hLASTTURNIER, showStatistikNT);
                         })
@@ -464,7 +464,7 @@ function wrtROOT() {
                 if (!CUPS.TURNIER[LS.I]) {
                     LS.I = 0;
                 }
-                LS.Meldung = ('Der&nbsp;Tisch&nbsp;wurde&nbsp;gespeichert!');
+                LS.Meldung = ('Der Tisch wurde gespeichert!');
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 loadSTAT(LS.ShowCups, null, null, showStatistikOT);
             })
@@ -581,6 +581,9 @@ $(document).ready(function () {
     $("#bSpeichern").click(function () {
         firebase.initDB(LS.I, 'rw');
         var hLog = CUPS.NAME[LS.I];
+        if (LS.TURRUNDE && LS.TURTISCH) {
+            hLog += '<br>Runde: ' + LS.TURRUNDE + '&nbsp;&nbsp;Tisch: ' + LS.TURTISCH + '.';
+        }
         hLog += '<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.';
         DS = JSON.parse(localStorage.getItem('Abakus.DS'));
         hLog += "<table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text=''>"

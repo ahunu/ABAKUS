@@ -84,7 +84,10 @@ function QUERFORMAT() {
     }
 }
 
-function hrefStatistik(pParameter) {
+function hrefStatistik(pCup, pParameter) {
+    if (pCup) {
+        I = pCup;
+    }
     if (!pParameter) {
         pParameter = '';
     }
@@ -94,6 +97,9 @@ function hrefStatistik(pParameter) {
             || CUPS.TYP[I] === 'PR' && CUPS.MEZULETZT[I] && (
             (CUPS.MEZULETZT[I] + (100 * 86400000) < Date.now() && CUPS.NAME[I].substr(0, 4) === 'Bei ')
             || (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()))) {
+        if (pCup) {
+            LS.ShowCups = pCup;
+        }
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
             fHref("Statistik/Statistik.html");
@@ -279,11 +285,7 @@ function writeCanvas(pCup) {
                 document.title = CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
             }
         }
-        if (pCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0) {
-            hTitel = 'Wr. Tarockcup - out of Vienna';
-        } else {
-            hTitel = hTitel.replace(/ |_/g, '&nbsp;');
-        }
+        hTitel = hTitel.replace(/ |_/g, '&nbsp;');
     }
     $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel);
     $('.hfHeaderZeile2,#qfHeaderZeile2').html(hTitel2);
@@ -577,7 +579,7 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
         }
     } else {
         if (pAnmeldungen === '?Anmeldungen') {
-            hrefStatistik(pAnmeldungen);
+            hrefStatistik(false, pAnmeldungen);
             return;
         }
         if (!(CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)) {
@@ -683,7 +685,7 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                                 : ''
                                 )
                         + (CUPS.ANMELDERF[I]
-                                ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(\'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(false, \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
                         + ((CUPS.TYP[I] !== 'CUP' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0)) || LS.ME === '3425' || I <= 2
@@ -706,7 +708,7 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                                 : ''
                                 )
                         + (CUPS.ANMELDERF[I]
-                                ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(\'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(false, \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
                         + ((CUPS.TYP[I] !== 'CUP' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0)) || LS.ME === '3425' || I <= 2
@@ -897,6 +899,9 @@ function showCUPS() {
     var heute = new Date();
     var nTage = parseInt((heute - sync) / 86400000);
     if (LS.Version !== getVersion()) {
+        if (LS.Version < 930) {
+            LS.MeineCups = [54, 56];
+        }
         localStorage.setItem('Abakus.LOG', JSON.stringify(''));
         if (LS.Version === 0) {
             writeLOG('ABAKUS: Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ') wurde installiert.');
@@ -1071,11 +1076,9 @@ function whenCUPSloaded() {
 
     var i = 0;
     var nAktTermine = 0;
-    var nPersTermine = 0;
     var nMeineRundenCups = 0;
-    var htmlPT = '<div data-role="collapsible" data-theme="d" data-collapsed="false"><h2>&nbsp;Meine Termine:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlAT = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Aktuelle Termine:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlWT = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Weitere Termine:</h2><ul data-role="listview" data-split-icon="info">';
+    var htmlAKT = '<div data-role="collapsible" data-theme="d" data-collapsed="false"><h2>&nbsp;Aktuelle Termine:</h2><ul data-role="listview" data-split-icon="info">';
+    var htmlALLE = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Alle Termine:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlMR = '<div data-role="collapsible" data-theme="d" data-collapsed="false" data-iconpos="right" data-corners="false"><h2>&nbsp;Meine Cups/Runden:</h2><ul data-role="listview" data-split-icon="info">';
     var htmlCT = '<div data-role="collapsibleset" data-iconpos="right" data-corners="false">'
             + '<div data-role="collapsible" data-theme="d"' + (LS.Quickstart ? ' data-collapsed="false"' : '') + '><h2>&nbsp;Cups:</h2><ul data-role="listview" data-split-icon="info">';
@@ -1095,7 +1098,6 @@ function whenCUPSloaded() {
     for (var termin in TERMINE) {
         if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
                 || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.toUpperCase() !== "TEST" || LS.ME === "3425")) {
-            nAktTermine++;
             if (TERMINE[termin].CUP === 8 || TERMINE[termin].CUP === 10) {
                 hTemp = '';
             }
@@ -1134,20 +1136,35 @@ function whenCUPSloaded() {
                 }
                 if (QUERFORMAT()) {
                     hTemp = '<li data-icon=false><a id="bCUP' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + "," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
+                } else if (TERMINE[termin].DATUM === hHeute) {
+                    if (LS.ME.length === 14) {
+                        hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',false,false,\'#bMR\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                + '<a onclick="toggleShow(\'#hToggleH' + termin + '\');">Hilfe</a></li>'
+                                + '<div id="hToggleH' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                                + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
+                                + '</div>';
+                    } else {
+                        hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                + '<a onclick="toggleShow(\'#hToggleH' + termin + '\');">Hilfe</a></li>'
+                                + '<div id="hToggleH' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                                + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
+                                + '</div>';
+                    }
                 } else {
-                    hTemp = '<li data-icon=info><a class="K' + hCupFarbe + '" onClick="toggleShow(\'#hToggleTEe' + termin + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
-                            + '<div id="hToggleTEe' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                    hTemp = '<li data-icon=info><a class="K' + hCupFarbe + '" onClick="toggleShow(\'#hToggleTE' + termin + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
+                            + '<div id="hToggleTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                             + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                             + '</div>';
                 }
+                htmlALLE += hTemp;
                 if (TERMINE[termin].DATUM <= hAktuellBis) {
-                    htmlAT += hTemp;
-                } else {
-                    htmlWT += hTemp.replace(/hToggleTE/g, 'hToggleWT');
+                    if (LS.MeineCups.includes(TERMINE[termin].CUP) || TERMINE[termin].CUP === 52) {
+                        nAktTermine++;
+                        htmlAKT += hTemp.replace(/hToggleTE/g, 'hToggleAKT');
+                    }
                 }
             } else {
                 var iii = TERMINE[termin].CUP;
-                nPersTermine++;
                 if (QUERFORMAT()) {
                     hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                 } else {
@@ -1161,8 +1178,9 @@ function whenCUPSloaded() {
                                 + '</div>';
                     }
                 }
-                htmlAT += hTemp;
-                htmlPT += hTemp.replace(/-1/g, '-2');
+                htmlALLE += hTemp;
+                nAktTermine++;
+                htmlAKT += hTemp.replace(/hToggleTE/g, 'hToggleAKT');
             }
         }
     }
@@ -1304,12 +1322,9 @@ function whenCUPSloaded() {
         }
     }
 
-    if (nAktTermine) {
-        $('#dTermine').html('<div data-role="collapsibleset" data-iconpos="right" data-corners="false">'
-                + (nPersTermine ? htmlPT + '</ul></div>' : '')
-                + htmlAT + '</ul></div>'
-                + htmlWT + '</ul></div></div>').trigger('create');
-    }
+    $('#dTermine').html('<div data-role="collapsibleset" data-iconpos="right" data-corners="false">'
+            + (nAktTermine ? htmlAKT + '</ul></div>' : '')
+            + htmlALLE + '</ul></div></div>').trigger('create');
     if (nMeineRundenCups) {
         $('#dMeineRundenCups').html(htmlMR + '</ul></div>').trigger('create');
     }
@@ -1366,6 +1381,7 @@ function fINIT() {
         LS = new Object();
         LS.ME = "NOBODY";
         LS.MEname = 'Nicht registriert';
+        LS.MeineCups = [54, 56];
         LS.Schreibzettel = false;
         LS.I = 0;
         LS.gespielt = 0; // -1

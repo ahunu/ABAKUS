@@ -60,13 +60,17 @@ var jbNavbarExt = null;
 var jbArchiv = null;
 
 var daysOfWeek = ["So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."];
-var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
+var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stNextTermin = 0;
 var stNextTerminDat = null;
 
 var mAnmelden = true;
 
 var jbNachricht = null;
+
+function seiteUeberspringen(pCup) {
+    return (!(CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[pCup].indexOf('*') >= 0 || CUPS.BEREschreiben[pCup].indexOf('*') >= 0) && LS.ME !== "NOBODY") || pCup <= 7));
+}
 
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
@@ -173,30 +177,6 @@ function NachrichtSenden() {
             });
 }
 
-function getSTAT(pCup) {
-    stCup = pCup;
-    stSynchron = false;
-    if (CUPS.BEREadmin[stCup].indexOf(LS.ME) < 0
-            && CUPS.BEREschreiben[stCup].indexOf('*') < 0
-            && CUPS.BEREschreiben[stCup].indexOf(LS.ME) < 0
-            && stCup > 4
-            || (QUERFORMAT())) { // QUERFORMAT() auf Tablet
-        $("#tMeinTisch").text(CUPS.NAME[stCup]);
-        $("#iMeinTisch").attr("src", "../Icons/Farben.png");
-        $("#bMeinTisch").addClass("ui-disabled");
-    } else {
-        $("#tMeinTisch").text(CUPS.NAME[stCup]);
-        $("#iMeinTisch").attr("src", "../Icons/Farben.png");
-    }
-    STAT = JSON.parse(localStorage.getItem("Abakus.STAT" + ("000" + stCup).substr(-3)));
-    if (STAT === null) {
-        loadInProgress = true;
-        loadSTAT(stCup, 'Statistik wird geladen.');
-    } else {
-        whenSTATloaded(true);
-    }
-}
-
 function showNavbarExt() {
     if (!jbNavbarExt) {
         jbNavbarExt = new jBox('Modal', {
@@ -293,18 +273,6 @@ function whenSTATloaded(pNotSynchron) {
         }
     } else {
         $('#stHeader,#stFooter').show();
-    }
-    if (stCup === LS.I && CUPS.TURNIER[stCup]) {
-        if (CUPS.BEREadmin[stCup].indexOf(LS.ME) < 0
-                && CUPS.BEREschreiben[stCup].indexOf('*') < 0
-                && CUPS.BEREschreiben[stCup].indexOf(LS.ME) < 0
-                && stCup > 4
-                || (QUERFORMAT())) { // QUERFORMAT() auf Tablet
-            $("#bMeinTisch").addClass("ui-disabled");
-        } else {
-            $("#tMeinTisch").text(CUPS.NAME[stCup]);
-            $("#iMeinTisch").attr("src", "../Icons/Farben.png");
-        }
     }
     setTimeout(function () {
         hideEinenMoment();
@@ -437,17 +405,6 @@ $(document).ready(function () {
                 + '</div>'
     });
 
-    if (CUPS.BEREadmin[stCup].indexOf(LS.ME) < 0
-            && CUPS.BEREschreiben[stCup].indexOf('*') < 0
-            && CUPS.BEREschreiben[stCup].indexOf(LS.ME) < 0
-            && stCup > 4
-            || (QUERFORMAT())) { // QUERFORMAT() auf Tablet
-        $("#bMeinTisch").addClass("ui-disabled");
-    } else {
-        $("#tMeinTisch").text(CUPS.NAME[stCup]);
-        $("#iMeinTisch").attr("src", "../Icons/Farben.png");
-    }
-
     stAnzSpalten = LS.AnzSpalten;
     if (stCup === 11) {
         stSort = 'GES';
@@ -457,7 +414,25 @@ $(document).ready(function () {
     stTurCupGes = 3;
 
     firebase.initDB(stCup);
-    getSTAT(stCup);
+
+    if (QUERFORMAT() || seiteUeberspringen(stCup)) {
+        $("#tMeinTisch").text(CUPS.NAME[stCup]);
+        $("#iMeinTisch").attr("src", "../Icons/Farben.png");
+        $("#bMeinTisch").addClass("ui-disabled");
+    } else if (stCup === LS.I) {
+    } else {
+        $("#tMeinTisch").text(CUPS.NAME[stCup]);
+        $("#iMeinTisch").attr("src", "../Icons/Farben.png");
+    }
+
+    stSynchron = false;
+    STAT = JSON.parse(localStorage.getItem("Abakus.STAT" + ("000" + stCup).substr(-3)));
+    if (STAT === null) {
+        loadInProgress = true;
+        loadSTAT(stCup, 'Statistik wird geladen.');
+    } else {
+        whenSTATloaded(true);
+    }
 
 //**** ON CHANGE ***************************************************************
 
@@ -527,7 +502,7 @@ $(document).ready(function () {
         if (/iPad|iPhone/.test(navigator.userAgent)) {
             $('body').addClass('ui-disabled');
         }
-        if (!QUERFORMAT() && LS.ShowCups && LS.ME === "NOBODY") {
+        if (!QUERFORMAT() && seiteUeberspringen(stCup)) {
             LS.ShowCups = 0;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             $('#bMeinTisch').addClass('ui-disabled');

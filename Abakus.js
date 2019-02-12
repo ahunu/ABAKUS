@@ -552,6 +552,10 @@ function resetLastBtn() {
     }
 }
 
+function seiteUeberspringen(pCup) {
+    return (!(CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[pCup].indexOf('*') >= 0 || CUPS.BEREschreiben[pCup].indexOf('*') >= 0) && LS.ME !== "NOBODY") || pCup <= 7));
+}
+
 function showCup(i, pTermin, pAnmeldungen, pMR) {
     'use strict';
     LS.ShowCups = I = i;
@@ -582,7 +586,7 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
             hrefStatistik(false, pAnmeldungen);
             return;
         }
-        if (!(CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)) {
+        if (seiteUeberspringen(I)) {
             hrefStatistik();
             return;
         }
@@ -900,7 +904,7 @@ function showCUPS() {
     var nTage = parseInt((heute - sync) / 86400000);
     if (LS.Version !== getVersion()) {
         if (LS.Version < 930) {
-            LS.MeineCups = [54, 56];
+            LS.MeineCups = [56];
         }
         localStorage.setItem('Abakus.LOG', JSON.stringify(''));
         if (LS.Version === 0) {
@@ -1139,14 +1143,14 @@ function whenCUPSloaded() {
                 } else if (TERMINE[termin].DATUM === hHeute) {
                     if (LS.ME.length === 14) {
                         hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',false,false,\'#bMR\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                + '<a onclick="toggleShow(\'#hToggleH' + termin + '\');">Hilfe</a></li>'
-                                + '<div id="hToggleH' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                                + '<a onclick="toggleShow(\'#hToggleTE' + termin + '\');">Hilfe</a></li>'
+                                + '<div id="hToggleTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     } else {
                         hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                + '<a onclick="toggleShow(\'#hToggleH' + termin + '\');">Hilfe</a></li>'
-                                + '<div id="hToggleH' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                                + '<a onclick="toggleShow(\'#hToggleTE' + termin + '\');">Hilfe</a></li>'
+                                + '<div id="hToggleTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     }
@@ -1381,7 +1385,7 @@ function fINIT() {
         LS = new Object();
         LS.ME = "NOBODY";
         LS.MEname = 'Nicht registriert';
-        LS.MeineCups = [54, 56];
+        LS.MeineCups = [56];
         LS.Schreibzettel = false;
         LS.I = 0;
         LS.gespielt = 0; // -1
@@ -1458,6 +1462,11 @@ function fINIT() {
             CUPS.MEZULETZTVOR = null;
             delete CUPS.MEZULETZTVOR;
             localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+        }
+    }
+    if (LS.ShowCups) {
+        if (seiteUeberspringen(LS.ShowCups)) {
+            LS.ShowCups = 0;
         }
     }
 

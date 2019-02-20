@@ -1,7 +1,6 @@
 
 /* global LS */
 
-var n = 0;
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
@@ -30,6 +29,7 @@ $(document).bind('pageinit', function () {
         $('#iShowSpielerNr').prop('checked', LS.ShowSpielerNr).checkboxradio('refresh');
     });
 
+    $("#iAKTTAGE").val(LS.AktTage);
 
     var hFreunde = '';
     for (var ii = 0; ii < LS.Freunde.length; ii++) {
@@ -86,7 +86,9 @@ $(document).bind('pageinit', function () {
         $('#bLayout').hide();
         $('#bEingabe').click();
     }
-
+    if (LS.ME === '3425' || LS.ME === '3590') {
+        $('#bReaktionszeit').show();
+    }
     $("#bDefaults").click(function () {
         'use strict';
         LS.Schreibzettel = true;
@@ -105,6 +107,8 @@ $(document).bind('pageinit', function () {
     });
 
     $("#bSpeichern").click(function () {
+
+        LS.AktTage = $("#iAKTTAGE").val();
 
         LS.MeineCups = [];
         if ($("#iMC51").is(":checked"))

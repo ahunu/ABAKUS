@@ -377,7 +377,7 @@ function Speichern() {
             })
             .then(function () {
                 hideEinenMoment();
-                LS.Meldung = ('Der Turnierkalender wurden ge&auml;ndert!');
+                LS.Meldung = ('Der Turnierkalender wurde geändert!');
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 CUPS.TERMINE = TERMINE;
                 localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));

@@ -6,15 +6,11 @@ function fIchStimmeZu() {
 
 function fIchStimmeNichtZu() {
     localStorage.clear();
-    setTimeout(function () {
-        if (navigator.app) {
-            navigator.app.exitApp();
-        } else if (navigator.device) {
-            navigator.device.exitApp();
-        } else {
-            history.go(-2);
-        }
-    }, 100);
+    if (navigator.userAgent.match(/Android/i)) {
+        history.back();
+    } else {
+        history.go(-2);
+    }
 }
 
 $(document).bind('pageinit', function () {

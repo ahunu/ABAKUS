@@ -67,7 +67,7 @@ function getStatMeldungen() {
                 }
             } else {
                 ret += "<div class=noprint>";
-                if (QUERFORMAT) {
+                if (QUERFORMAT()) {
                     ret += "&nbsp;<img src='" + Pfad + "Icons/OK.png'  width='24' height='24'><span class=M>&nbsp;<b>Das Turnier wurde beendet.</b><br></span>";
                     ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die Korrektheit der Daten wurde noch nicht best&auml;tigt.</b><br></span>";
                     if (nMinSeitRundeStart < 15) {

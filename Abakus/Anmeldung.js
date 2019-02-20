@@ -1635,6 +1635,7 @@ $(document).ready(function () {
         var LS_Schreibzettel = LS.Schreibzettel;
         var LS_AnzSpalten = LS.AnzSpalten;
         var LS_Ansagen = LS.Ansagen;
+        var LS_AktTage = LS.AktTage;
         var LS_I = LS.LoadCups * -1; // - ist Kennung für neuen Tisch
         var LS_SchriftG = LS.SchriftG;
         var LS_Padding = LS.Padding;
@@ -1643,6 +1644,8 @@ $(document).ready(function () {
         var LS_Version = LS.Version;
         var LS_tempVIPs = LS.tempVIPs;
         var LS_Timeout = LS.Timeout;
+        var LS_LastBtn = LS.LastBtn;
+        var LS_LastDate = LS.LastDate;
         var LS_MeineCups = LS.MeineCups;
 
         LS.LoadCups = 0;
@@ -1653,6 +1656,7 @@ $(document).ready(function () {
         LS.Schreibzettel = LS_Schreibzettel;
         LS.AnzSpalten = LS_AnzSpalten;
         LS.Ansagen = LS_Ansagen;
+        LS.AktTage = LS_AktTage;
         LS.I = LS_I;
         LS.ShowCups = LS_I;
         LS.SchriftG = LS_SchriftG;
@@ -1662,6 +1666,8 @@ $(document).ready(function () {
         LS.Version = LS_Version;
         LS.tempVIPs = LS_tempVIPs;
         LS.Timeout = LS_Timeout;
+        LS.LastBtn = LS_LastBtn;
+        LS.LastDate = LS_LastDate;
         LS.MeineCups = LS_MeineCups;
 
         if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') {

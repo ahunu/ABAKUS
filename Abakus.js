@@ -25,7 +25,7 @@ var myJBox = null;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stLastZitat = 0;
-var lastBtn = '';
+//var LS.LastBtn = '';
 var mTischNeuLoeschen = '';
 var mHref = false;
 
@@ -212,7 +212,7 @@ function writeCanvas(pCup) {
         } else if (pCup === 11) {
             hTitel2 = 'Sküs of the year';
         } else if (pCup === 50) {
-            if (QUERFORMAT) {
+            if (QUERFORMAT()) {
                 hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
             } else {
                 hTitel2 = 'Ein außergewöhnlicher Event';
@@ -342,7 +342,7 @@ function getDateString(pDate) {
 function initCUPSdelAllSTAT(pMeldung) {
     'use strict';
     if (QUERFORMAT()) {
-        if (lastBtn) {
+        if (LS.LastBtn) {
             resetLastBtn();
             $('#bInitialisieren').addClass('ui-btn-active'); // nicht beim ersten Mal
         }
@@ -479,7 +479,7 @@ function initSeite2() {
                 $('#tGespielt').html('<b> Der Tisch wurde nicht vollst&auml;ndig ' + (LS.gespielt > 0 ? 'gespeichert' : 'storniert') + '.</b>').addClass('cRot');
             }
         }
-        ;
+
         if ((LS.AnzGespeichert > 0 && LS.AnzGespeichert !== LS.AnzSpieler)
                 || (LS.Spieler[0] === 'Diverse')) {
             $('#bWeiter').addClass('ui-disabled');
@@ -498,54 +498,42 @@ function initSeite2() {
     checkVersion();
 }
 
-function checkShowCup(i) {
-    'use strict';
-    setTimeout(function () {
-        if (hShowCupText) {
-            hShowCupText = false;
-        } else {
-            showCup(i, false, false, '#bMR');
-        }
-    });
-}
-
 function resetLastBtn() {
-    if (lastBtn) {
-        $(lastBtn).removeClass('ui-btn-active');
-        if (lastBtn.indexOf('T') > 1) {
-            if (lastBtn.length > 8) {
-                if (lastBtn.substr(0, 8) === '#bCUP51T') {
-                    $(lastBtn).addClass('cHRC');
-                } else if (lastBtn.substr(0, 8) === '#bCUP52T') {
-                    $(lastBtn).addClass('cRTC');
-                } else if (lastBtn.substr(0, 8) === '#bCUP53T') {
-                    $(lastBtn).addClass('cSWC');
-                } else if (lastBtn.substr(0, 8) === '#bCUP54T') {
-                    $(lastBtn).addClass('cSTC');
-                } else if (lastBtn.substr(0, 8) === '#bCUP55T') {
-                    $(lastBtn).addClass('cTTC');
-                } else if (lastBtn.substr(0, 8) === '#bCUP56T') {
-                    $(lastBtn).addClass('cWTC');
+    if (LS.LastBtn) {
+        $(LS.LastBtn).removeClass('ui-btn-active');
+        if (LS.LastBtn[4] === '5') {
+            if (LS.LastBtn.length > 6) {
+                if (LS.LastBtn.substr(4, 3) === '51T') {
+                    $(LS.LastBtn).addClass('cHRC');
+                } else if (LS.LastBtn.substr(4, 3) === '52T') {
+                    $(LS.LastBtn).addClass('cRTC');
+                } else if (LS.LastBtn.substr(4, 3) === '53T') {
+                    $(LS.LastBtn).addClass('cSWC');
+                } else if (LS.LastBtn.substr(4, 3) === '54T') {
+                    $(LS.LastBtn).addClass('cSTC');
+                } else if (LS.LastBtn.substr(4, 3) === '55T') {
+                    $(LS.LastBtn).addClass('cTTC');
+                } else if (LS.LastBtn.substr(4, 3) === '56T') {
+                    $(LS.LastBtn).addClass('cWTC');
                 } else {
-                    $(lastBtn).addClass('cDIV');
+                    $(LS.LastBtn).addClass('cDIV');
                 }
+            } else if (LS.LastBtn.substr(4, 2) === '51'
+                    || LS.LastBtn.substr(4, 2) === '52'
+                    || LS.LastBtn.substr(4, 2) === '53'
+                    || LS.LastBtn.substr(4, 2) === '55') {
+                $(LS.LastBtn).addClass('cDIV');
             }
-        } else if (lastBtn === '#bCUP51'
-                || lastBtn === '#bCUP52'
-                || lastBtn === '#bCUP53'
-                || lastBtn === '#bCUP55') {
-            $(lastBtn).addClass('cDIV');
         } else {
-            var hCup = 0;
-            if (lastBtn.substr(0, 5) === '#bCUP') {
-                hCup = parseInt(lastBtn.substr(5)); // #bCUP
-            } else if (lastBtn.substr(0, 4) === '#bMR') {
-                hCup = parseInt(lastBtn.substr(4)); // #bMR
-            }
-            if (hCup) {
-                var hClass = getClass(hCup);
-                if (hClass) {
-                    $(lastBtn).addClass(hClass);
+            if (LS.LastBtn[LS.LastBtn.length - 1] === 'T') {
+                $(LS.LastBtn).addClass('cDIV');
+            } else {
+                var hCup = parseInt(LS.LastBtn.substr(4));
+                if (hCup) {
+                    var hClass = getClass(hCup);
+                    if (hClass) {
+                        $(LS.LastBtn).addClass(hClass);
+                    }
                 }
             }
         }
@@ -556,30 +544,36 @@ function seiteUeberspringen(pCup) {
     return (!(CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[pCup].indexOf('*') >= 0 || CUPS.BEREschreiben[pCup].indexOf('*') >= 0) && LS.ME !== "NOBODY") || pCup <= 7));
 }
 
-function showCup(i, pTermin, pAnmeldungen, pMR) {
+function showCup(i, pBtn, pTermin, pAnmeldungen) {
     'use strict';
     LS.ShowCups = I = i;
     if (LS.Meldung) {
         var hMeldung = LS.Meldung;
     }
+    if (pBtn) {
+        if (QUERFORMAT()) {
+            resetLastBtn();
+        }
+        if (pAnmeldungen) {
+            LS.LastBtn = '#' + pBtn + i + 'T';
+        } else if (pTermin && pTermin !== -1) {
+            LS.LastBtn = '#' + pBtn + i + 'T' + pTermin;
+        } else if (pBtn) {
+            LS.LastBtn = '#' + pBtn + i;
+        }
+    }
     if (QUERFORMAT()) {
-        resetLastBtn();
-        if (pMR && pMR === '#bMR') {
-            lastBtn = '#bMR' + i;
-            $(lastBtn).addClass('ui-btn-active').removeClass('fGruen').removeClass('cAktiv');
-        } else if (pTermin || pTermin === 0) {
-            lastBtn = '#bCUP' + i + 'T' + pTermin;
-            $(lastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cDIV').removeClass('fGruen');
-        } else {
-            if (pMR && pMR === '?' && $('#bMR' + i).length) {
-                lastBtn = '#bMR' + i;
-            } else {
-                lastBtn = '#bCUP' + i;
+        if (pBtn) {
+            if (pAnmeldungen) {
+                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen').removeClass('cDIV');
+            } else if (pTermin) {
+                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cDIV').removeClass('fGruen');
+            } else if (pBtn) {
                 if (i === 51 || i === 52 || i === 53 || i === 55) {
-                    $(lastBtn).removeClass('cDIV');
+                    $(LS.LastBtn).removeClass('cDIV');
                 }
+                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen');
             }
-            $(lastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen');
         }
     } else {
         if (pAnmeldungen === '?Anmeldungen') {
@@ -786,6 +780,14 @@ function showCup(i, pTermin, pAnmeldungen, pMR) {
                 window.location.href = "#" + Date.now();
         }
     }, 600);
+
+//showEineNotiz(LS.LastBtn + ' at: ' +)
+//    setTimeout(function () {
+//        if ($('#pContent').position().top + $(LS.LastBtn.substr(0, 4)).position().top > $(window).innerHeight() / 3) {
+//            $('#pContent').scrollTop($(LS.LastBtn.substr(0, 4)).offset().top - $(window).innerHeight() / 3);
+//        }
+//    }, 200);
+
 }
 
 function listVersion() {
@@ -903,8 +905,9 @@ function showCUPS() {
     var heute = new Date();
     var nTage = parseInt((heute - sync) / 86400000);
     if (LS.Version !== getVersion()) {
-        if (LS.Version < 930) {
+        if (LS.Version < 932) {
             LS.MeineCups = [56];
+            LS.AktTage = 30;
         }
         localStorage.setItem('Abakus.LOG', JSON.stringify(''));
         if (LS.Version === 0) {
@@ -983,12 +986,12 @@ function getClassMeinTermin(i) {
 function getMeinTerminBarZeile(pCup) {
     if (typeof CUPS.MEANGEMELDET[pCup] === 'number') {
         if (CUPS.MEANGEMELDET[pCup] > Date.now()) {
-            return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cGruen">angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
+            return '<a id=bAL' + pCup + 'T class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',\'bAL\',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cGruen">angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
         } else {
-            return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cRot">nicht angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
+            return '<a id=bAL' + pCup + 'T class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',\'bAL\',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cRot">nicht angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
         }
     }
-    return '<a id=bCUP' + pCup + 'T-1 class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S">???<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
+    return '<a id=bAL' + pCup + 'T class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',\'bAL\',-1,\'?Anmeldungen\')">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S">???<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a>';
 }
 
 function whenCUPSloaded() {
@@ -1081,24 +1084,23 @@ function whenCUPSloaded() {
     var i = 0;
     var nAktTermine = 0;
     var nMeineRundenCups = 0;
-    var htmlAKT = '<div data-role="collapsible" data-theme="d" data-collapsed="false"><h2>&nbsp;Aktuelle Termine:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlALLE = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Alle Termine:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlMR = '<div data-role="collapsible" data-theme="d" data-collapsed="false" data-iconpos="right" data-corners="false"><h2>&nbsp;Meine Cups/Runden:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlCT = '<div data-role="collapsibleset" data-iconpos="right" data-corners="false">'
-            + '<div data-role="collapsible" data-theme="d"' + (LS.Quickstart ? ' data-collapsed="false"' : '') + '><h2>&nbsp;Cups:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlLC = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Lokale Cups:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlMT = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Mannschaftsturniere:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlFC = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Wirtshausrunden:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlPR = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Private Runden:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlTR = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Testrunden -turniere:</h2><ul data-role="listview" data-split-icon="info">';
-    var htmlAR = '<div data-role="collapsible" data-theme="d"><h2>&nbsp;Allgemeine Runden:</h2><ul data-role="listview" data-split-icon="info">';
+    var htmlAKT = '<div id="bAK" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Aktuelle Termine:</h2><ul data-role="listview">';
+    var htmlALLE = '<div id="bAL" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Alle Termine:</h2><ul data-role="listview">';
+    var htmlMR = '<div id="bMR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class=" "><h2>&nbsp;Meine Cups/Runden:</h2><ul data-role="listview">';
+    var htmlCT = '<div id="bCT" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"' + (LS.Quickstart ? ' data-collapsed="false"' : '') + '><h2>&nbsp;Cups:</h2><ul data-role="listview">';
+    var htmlLC = '<div id="bLC" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Lokale Cups:</h2><ul data-role="listview">';
+    var htmlMT = '<div id="bMT" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Mannschaftsturniere:</h2><ul data-role="listview">';
+    var htmlFC = '<div id="bFC" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Wirtshausrunden:</h2><ul data-role="listview">';
+    var htmlPR = '<div id="bPR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Private Runden:</h2><ul data-role="listview">';
+    var htmlTR = '<div id="bTR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Testrunden -turniere:</h2><ul data-role="listview">';
+    var htmlAR = '<div id="bAR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Allgemeine Runden:</h2><ul data-role="listview">';
 
     if (LS.Quickstart) {
         delete LS.Quickstart;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
     var hTemp = '';
-    var hAktuellBis = myDateString(Date.now() + (86400000 * 31));
+    var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
     for (var termin in TERMINE) {
         if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
                 || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.toUpperCase() !== "TEST" || LS.ME === "3425")) {
@@ -1139,24 +1141,24 @@ function whenCUPSloaded() {
                     hCupFarbe = ' cDIV';
                 }
                 if (QUERFORMAT()) {
-                    hTemp = '<li data-icon=false><a id="bCUP' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + "," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
+                    hTemp = '<li data-icon=false><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
                 } else if (TERMINE[termin].DATUM === hHeute) {
-                    if (LS.ME.length === 14) {
-                        hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',false,false,\'#bMR\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                + '<a onclick="toggleShow(\'#hToggleTE' + termin + '\');">Hilfe</a></li>'
-                                + '<div id="hToggleTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                    if (LS.ME.length === 4) {
+                        hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                + '<a onclick="toggleShow(\'#togglebTE' + termin + '\');">Hilfe</a></li>'
+                                + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     } else {
                         hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                + '<a onclick="toggleShow(\'#hToggleTE' + termin + '\');">Hilfe</a></li>'
-                                + '<div id="hToggleTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                                + '<a onclick="toggleShow(\'#togglebTE' + termin + '\');">Hilfe</a></li>'
+                                + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     }
                 } else {
-                    hTemp = '<li data-icon=info><a class="K' + hCupFarbe + '" onClick="toggleShow(\'#hToggleTE' + termin + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
-                            + '<div id="hToggleTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                    hTemp = '<li data-icon=info><a class="K' + hCupFarbe + '" onClick="toggleShow(\'#togglebTE' + termin + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
+                            + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                             + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                             + '</div>';
                 }
@@ -1164,7 +1166,7 @@ function whenCUPSloaded() {
                 if (TERMINE[termin].DATUM <= hAktuellBis) {
                     if (LS.MeineCups.includes(TERMINE[termin].CUP) || TERMINE[termin].CUP === 52) {
                         nAktTermine++;
-                        htmlAKT += hTemp.replace(/hToggleTE/g, 'hToggleAKT');
+                        htmlAKT += hTemp.replace(/bAL/g, 'bAK');
                     }
                 }
             } else {
@@ -1176,15 +1178,15 @@ function whenCUPSloaded() {
                             || !CUPS.TEXT1[iii]) {
                         hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                     } else {
-                        hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#hToggleTE' + iii + '\');">Hilfe</a></li>'
-                                + '<div id="hToggleTE' + iii + '" class="M TGL" style=margin-left:10px; hidden>'
+                        hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#togglebTE' + iii + '\');">Hilfe</a></li>'
+                                + '<div id="togglebTE' + iii + '" class="M TGL" style=margin-left:10px; hidden>'
                                 + (CUPS.TEXT1[iii] ? CUPS.TEXT1[iii] + '<br>' : '')
                                 + '</div>';
                     }
                 }
                 htmlALLE += hTemp;
                 nAktTermine++;
-                htmlAKT += hTemp.replace(/hToggleTE/g, 'hToggleAKT');
+                htmlAKT += hTemp.replace(/bAL/g, 'bAT');
             }
         }
     }
@@ -1220,7 +1222,7 @@ function whenCUPSloaded() {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
             nMeineRundenCups++;
             if (QUERFORMAT() || !CUPS.TEXT1[i]) {
-                htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',false,false,\'#bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
+                htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
             } else {
                 if (i === 51 && !mHausruckAktiv
                         || i === 52 && !mRaiffeisenAktiv
@@ -1231,9 +1233,9 @@ function whenCUPSloaded() {
                             + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] : '')
                             + '</div>';
                 } else {
-                    htmlMR += '<li><a  id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',false,false,\'#bMR\')">&nbsp;' + getCupName(i) + '</a>'
-                            + '<a onclick="toggleShow(\'#hToggle1' + i + '\');">Hilfe</a></li>'
-                            + '<div id="hToggle1' + i + '" class="TGL M" style=margin-left:10px; hidden>'
+                    htmlMR += '<li><a  id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a>'
+                            + '<a onclick="toggleShow(\'#togglebMR' + i + '\');">Hilfe</a></li>'
+                            + '<div id="togglebMR' + i + '" class="TGL M" style=margin-left:10px; hidden>'
                             + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
                             + '</div>';
                 }
@@ -1247,11 +1249,11 @@ function whenCUPSloaded() {
         } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
             nMeineRundenCups++;
             if (QUERFORMAT() || !CUPS.TEXT1[i]) {
-                htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',false,false,\'#bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
+                htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
             } else {
-                htmlMR += '<li><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',false,false,\'#bMR\')">&nbsp;' + getCupName(i) + '</a>'
-                        + '<a onclick="toggleShow(\'#hToggle1' + i + '\');">Hilfe</a></li>'
-                        + '<div id="hToggle1' + i + '" class="TGL M" style=margin-left:10px; hidden>'
+                htmlMR += '<li><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a>'
+                        + '<a onclick="toggleShow(\'#togglebMR' + i + '\');">Hilfe</a></li>'
+                        + '<div id="togglebMR' + i + '" class="TGL M" style=margin-left:10px; hidden>'
                         + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
                         + '</div>';
             }
@@ -1276,9 +1278,9 @@ function whenCUPSloaded() {
                         && CUPS.MEZULETZT[i] + (300 * 86400000) > Date.now()) { // Nur wenn in den letzten 300 Tagen gespielt
                     nMeineRundenCups++;
                     if (QUERFORMAT() || !CUPS.TEXT1[i]) {
-                        htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',false,false,\'#bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
+                        htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
                     } else {
-                        htmlMR += '<li><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',false,false,\'#bMR\')">&nbsp;' + getCupName(i) + '</a>'
+                        htmlMR += '<li><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a>'
                                 + '<a onclick="toggleShow(\'#hToggle1' + i + '\');">Hilfe</a></li>'
                                 + '<div id="hToggle1' + i + '" class="TGL M" style=margin-left:10px; hidden>'
                                 + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
@@ -1292,15 +1294,15 @@ function whenCUPSloaded() {
     for (var s = 0; s < SORT.length; s++) {
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
         if (QUERFORMAT() || !CUPS.TEXT1[i] || CUPS.TYP[i] === 'PR') {
-            html = '<li data-icon=false><a id="bCUP' + i + '" class="' + getClass(i) + (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? ' cDIV' : '') + '" onClick="showCup(' + i + ')">&nbsp;' + getCupName(i) + '</a></li>';
+            html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? ' cDIV' : '') + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a></li>';
         } else {
             if (!QUERFORMAT() && (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv)) {
-                html = '<li data-icon=false><a id="bCUP' + i + '" class="cDIV' + getClass(i) + '" onClick="toggleShow(\'#hToggle2' + i + '\');">&nbsp;' + getCupName(i) + '</a></li>'
+                html = '<li data-icon=false><a id="bXX' + i + '" class="cDIV' + getClass(i) + '" onClick="toggleShow(\'#hToggle2' + i + '\');">&nbsp;' + getCupName(i) + '</a></li>'
                         + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
                         + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] : '')
                         + '</div>';
             } else {
-                html = '<li><a id="bCUP' + i + '" class="' + (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? 'cDIV ' : '') + getClass(i) + '" onClick="showCup(' + i + ')">&nbsp;' + getCupName(i) + '</a>'
+                html = '<li><a id="bXX' + i + '" class="' + (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? 'cDIV ' : '') + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a>'
                         + '<a onclick="toggleShow(\'#hToggle2' + i + '\');">Hilfe</a></li>'
                         + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
                         + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
@@ -1321,32 +1323,41 @@ function whenCUPSloaded() {
             htmlFC = htmlFC + html;
         } else if (CUPS.TYP[i] === 'PR') {
             htmlPR = htmlPR + html;
-        } else if (CUPS.TYP[i] === 'AR' || CUPS.TYP[i] === 'ET') {
+        } else if (CUPS.TYP[i] === 'AR') {
             htmlAR = htmlAR + html;
         }
     }
 
-    $('#dTermine').html('<div data-role="collapsibleset" data-iconpos="right" data-corners="false">'
-            + (nAktTermine ? htmlAKT + '</ul></div>' : '')
-            + htmlALLE + '</ul></div></div>').trigger('create');
+    $('#dTermine').html((nAktTermine ? htmlAKT + '</ul></div>' : '')
+            + htmlALLE + '</ul></div>').trigger('create');
     if (nMeineRundenCups) {
         $('#dMeineRundenCups').html(htmlMR + '</ul></div>').trigger('create');
     }
-    $('#dRundenCups').html(htmlCT + '</ul></div>' + htmlLC + '</ul></div>' + htmlMT + '</ul></div>' + htmlFC + '</ul></div>' + htmlPR + '</ul></div>' + htmlTR + '</ul></div>' + htmlAR + '</ul></div></div>').trigger('create').show();
+    $('#dRundenCups').html(htmlCT.replace(/bXX/g, 'bCT') + '</ul></div>' + htmlLC.replace(/bXX/g, 'bLC') + '</ul></div>' + htmlMT.replace(/bXX/g, 'bMT') + '</ul></div>' + htmlFC.replace(/bXX/g, 'bFC') + '</ul></div>' + htmlPR.replace(/bXX/g, 'bPR') + '</ul></div>' + htmlTR.replace(/bXX/g, 'bTR') + '</ul></div>' + htmlAR.replace(/bXX/g, 'bAR') + '</ul></div>').trigger('create').show();
     if (LS.Meldung) {
         $('#dMeldung').append("&nbsp;<img src='Icons/Achtung.png'  width='24' height='24'>&nbsp;<b>" + LS.Meldung + "</b>");
     }
     hideEinenMoment();
     window.scrollTo(0, 0);
     if (QUERFORMAT()) {
-        if (lastBtn) {
+        if (LS.LastBtn) {
             $('#bInitialisieren').removeClass('ui-btn-active');
-            $(lastBtn).addClass('ui-btn-active');
         }
+    }
+    if (LS.LastBtn) {
+        $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
+        if (QUERFORMAT()) {
+            $(LS.LastBtn).addClass('ui-btn-active');
+        }
+        if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 1.3) {
+            $('#pContent').scrollTop($(LS.LastBtn).offset().top - $(window).innerHeight() / 1.3);
+        }
+    } else {
+        $('#bAK').collapsible({collapsed: false});
+        $('#bMR').collapsible({collapsed: false});
     }
     $('#dFooter').show();
 }
-
 
 // I N I T  ************************************************************************************
 function fINIT() {
@@ -1392,7 +1403,10 @@ function fINIT() {
         LS.Regeln = "Wr.";
         LS.Meldung = '';
         LS.Ansage = '';
+        LS.AktTage = 30;
         LS.ShowCups = 0;
+        LS.LastBtn = '';
+        LS.LastDate = hHeute;
         LS.LoadCups = 0;
         LS.SchriftG = 1;
         LS.Padding = 2;
@@ -1421,6 +1435,16 @@ function fINIT() {
 
     if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "0124") {
         mRaiffeisenAktiv = true;
+    }
+
+    if (LS.Version < 932) {
+        LS.LastDate = hHeute;
+        LS.LastBtn = '';
+    }
+
+    if (LS.LastDate !== hHeute) {
+        LS.LastDate = hHeute;
+        LS.LastBtn = '';
     }
 
     initExtraButtons();
@@ -1464,7 +1488,7 @@ function fINIT() {
             localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
         }
     }
-    if (LS.ShowCups) {
+    if (LS.ShowCups && !QUERFORMAT()) {
         if (seiteUeberspringen(LS.ShowCups)) {
             LS.ShowCups = 0;
         }
@@ -1555,6 +1579,13 @@ $(document).ready(function () {
             if (window.performance.navigation.type === 2) {
                 LS = JSON.parse(localStorage.getItem('Abakus.LS'));
                 CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+                if (LS.ME !== 'NOBODY') { // nach Registrierung aktualisieren
+                    if (LS.ME.length === 4) {
+                        $('#tSpieler').html('Registriert für Spieler ' + LS.ME + '<br>' + LS.MEname + '.');
+                    } else {
+                        $('#tSpieler').html('Registriert für Spieler<br>' + LS.MEname + '.');
+                    }
+                }
                 initSeite1();
                 if (LS.I === 0) {
                     $('#bZuMeinemTisch').hide();

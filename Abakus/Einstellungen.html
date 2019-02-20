@@ -51,20 +51,34 @@
             </div>
             <div data-role="main">
                 <br>
-                <div class="L B C">Turniere unter Aktuelle Termine anzeigen:
+                <div class="L B C">Aktuelle Termine:
                 </div>
                 <div class="ui-grid-a">
                     <div class="ui-block-a hilfe" style="text-align:center;">
                         <span class='M'><br>
                             Auf der Hauptseite der App werden<br>
-                            die in den nächsten 30 Tagen<br>
+                            die in den nächsten n Tagen<br>
                             stattfindenden Turniere angezeigt.
                         </span>
                     </div>
-                    <div class="ui-block-b daten" style="text-align:center;">
+                    <div class="ui-block-b daten M2" style="stext-align:center;">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:25%;margin:0;ddtext-align:right;">
+                                <br>
+                                <input type="number" id="iAKTTAGE">
+                            </div>
+                            <div class="ui-block-b"  style="width:2%;margin:0;dtext-align:right;">
+                            </div>
+                            <div class="ui-block-c"  style="width:73%;margin:0;dtext-align:right;">
+                                Alle innerhalb der nächsten<br>
+                                Tage stattfindenden Turniere<br>
+                                der folgenden Tarockcups<br>
+                                unter <b>Aktuelle Termine</b> anzeigen.
+                            </div>
+                        </div>
                         <fieldset data-role=controlgroup data-mini=true data-theme="a">
                             <label class=btn>
-                                <input type='checkbox' id=iMC51>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hauruckcup
+                                <input type='checkbox' id=iMC51>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hausruckcup
                             </label>
                             <label class="btn ui-disabled">
                                 <input type='checkbox' id=iMC52>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Raiffeisen Tarockcup
@@ -85,9 +99,10 @@
                         <br>
                         <fieldset data-role=controlgroup data-mini=true data-theme="a">
                             <label class=btn>
-                                <input type='checkbox' id=iMC58>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sommer Schmankerl Tarock
+                                <input type='checkbox' id=iMC58>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schmankerl Tarock
                             </label>
                         </fieldset>
+                        <br>
                     </div>
                 </div>
                 <hr>
@@ -107,18 +122,20 @@
                         </div>
                     </div>
                 </div>
-                <hr>
-                <div class="L B C">Reaktionszeit:
-                </div>
-                <div class="ui-grid-a">
-                    <div class="ui-block-a hilfe" style="text-align:center;">
-                        <br>
-                        <span class='M'>Wenn du eine Schaltfläche mehrmals antippen musst, damit die App reagiert, solltest du die Reaktionszeit erhöhen.
-                        </span>
+                <div id=bReaktionszeit hidden>
+                    <hr>
+                    <div class="L B C">Reaktionszeit:
                     </div>
-                    <div class="ui-block-b daten" style="text-align:center;">
-                        <input type=number min="0" max="400" id=iTIMEOUT>
-                        <div style='text-align:left'>0=schnell, 100=normal, 400=langsam
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe" style="text-align:center;">
+                            <br>
+                            <span class='M'>Wenn du eine Schaltfläche mehrmals antippen musst, damit die App reagiert, solltest du die Reaktionszeit erhöhen.
+                            </span>
+                        </div>
+                        <div class="ui-block-b daten" style="text-align:center;">
+                            <input type=number min="60" max="600" id=iTIMEOUT>
+                            <div style='text-align:left'>60=schnell, 100=normal, 600=langsam
+                            </div>
                         </div>
                     </div>
                 </div>

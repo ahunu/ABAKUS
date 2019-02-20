@@ -17,8 +17,8 @@ function showText(pText) {
     });
     $('#qfHeaderIcon').show();
     resetLastBtn();
-    lastBtn = '#b' + pText;
-    $(lastBtn).addClass('ui-btn-active');
+    LS.LastBtn = '#b' + pText;
+    $(LS.LastBtn).addClass('ui-btn-active');
 
     var html = '';
     var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 4);
@@ -58,9 +58,9 @@ function showText(pText) {
 
 function getGeschichte() {
 
-    if (LS.ME === '3244' || LS.ME === '3425' || LS.ME === '6162') {
-        showEineMeldung('Format:', ' B: ' + $(window).width() + ', H: ' + $(window).height() + '<BR> B: ' + $(window).innerWidth() + ', H: ' + $(window).innerHeight());
-
+    if (LS.ME === '3425') {
+        let aa = 128;
+        showEineMeldung('let aa 128 = ' + aa + ', Format:', ' B: ' + $(window).width() + ', H: ' + $(window).height() + '<BR> B: ' + $(window).innerWidth() + ', H: ' + $(window).innerHeight());
     }
 
     return '<span class=M style="text-align:justify">'
@@ -162,8 +162,8 @@ function getAnekdoten() {
 function showLogo(pInit) {
 
     resetLastBtn();
-    lastBtn = '#bZitate';
-    $(lastBtn).addClass('ui-btn-active');
+    LS.LastBtn = '#bZitate';
+    $(LS.LastBtn).addClass('ui-btn-active');
 
     if (QUERFORMAT()) {
         if (window.location.hash) {

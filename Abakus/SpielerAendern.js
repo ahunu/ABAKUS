@@ -702,7 +702,7 @@ function spielerAnzeigen() {
     var SORT2 = [];
     var cFarbe = '';
     for (iSpieler in SORT) {
-        SORT2.push((sSpieler ? SORT[iSpieler] : SPIELERext[SORT[iSpieler]][spNNAME] + 'zZz' + SPIELERext[SORT[iSpieler]][spVNAME]).replace(/Ä/g, 'A').replace(/Ü/g, 'U').replace(/Ö/g, 'O').replace(/ä/g, 'a').replace(/ü/g, 'u').replace(/ö/g, 'o') + ';' + SORT[iSpieler]);
+        SORT2.push((sSpieler ? SORT[iSpieler] : SPIELERext[SORT[iSpieler]][spNNAME] + ' ' + SPIELERext[SORT[iSpieler]][spVNAME]).replace(/Ä/g, 'A').replace(/Ü/g, 'U').replace(/Ö/g, 'O').replace(/ä/g, 'a').replace(/ü/g, 'u').replace(/ö/g, 'o') + ';' + SORT[iSpieler]);
     }
     SORT2.sort();
     for (var iSpieler in SORT2) {
@@ -770,13 +770,13 @@ function aehnlicheSpielerFinden(pNNAME, pVNAME, pORT, pSPIELER) {
                 && (!pNNAME || SPIELERext[spieler][spNNAME].toUpperCase() === pNNAME)) {
             if (!pSPIELER || pSPIELER !== spieler) {
                 nGleich++;
-                SORT.push((SPIELERext[spieler][spNNAME] + 'zZz' + SPIELERext[spieler][spVNAME]).replace(/Ä/g, 'A').replace(/Ü/g, 'U').replace(/Ö/g, 'O').replace(/ä/g, 'a').replace(/ü/g, 'u').replace(/ö/g, 'o') + ';' + spieler);
+                SORT.push((SPIELERext[spieler][spNNAME] + ' ' + SPIELERext[spieler][spVNAME]).replace(/Ä/g, 'A').replace(/Ü/g, 'U').replace(/Ö/g, 'O').replace(/ä/g, 'a').replace(/ü/g, 'u').replace(/ö/g, 'o') + ';' + spieler);
             }
         } else if ((lVNAME === 0 || SPIELERext[spieler][spVNAME].substr(0, lVNAME).toUpperCase() === fVNAME)
                 && (lNNAME === 0 || SPIELERext[spieler][spNNAME].substr(0, lNNAME).toUpperCase() === fNNAME)
                 && (lORT === 0 || SPIELERext[spieler][spORT].substr(0, lORT).toUpperCase() === fORT)) {
             if (!pSPIELER || pSPIELER !== spieler) {
-                SORT.push((SPIELERext[spieler][spNNAME] + 'zZz' + SPIELERext[spieler][spVNAME]).replace(/Ä/g, 'A').replace(/Ü/g, 'U').replace(/Ö/g, 'O').replace(/ä/g, 'a').replace(/ü/g, 'u').replace(/ö/g, 'o') + ';' + spieler);
+                SORT.push((SPIELERext[spieler][spNNAME] + ' ' + SPIELERext[spieler][spVNAME]).replace(/Ä/g, 'A').replace(/Ü/g, 'U').replace(/Ö/g, 'O').replace(/ä/g, 'a').replace(/ü/g, 'u').replace(/ö/g, 'o') + ';' + spieler);
             }
         }
     }

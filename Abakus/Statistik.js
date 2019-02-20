@@ -108,7 +108,6 @@ function AnmeldenExe() {
     } else {
         hANMELDUNG[LS.ME].NAME = LS.MEname;
     }
-    hANMELDUNG[LS.ME].NAME = LS.MEname;
     hANMELDUNG[LS.ME].FUER = stNextTermin;
     hANMELDUNG[LS.ME].UM = new Date().toISOString();
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN')
@@ -370,7 +369,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

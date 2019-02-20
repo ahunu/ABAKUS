@@ -1,10 +1,10 @@
 
 function getVersion() {
-    return 931;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 932;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
-    return setVersion(2019, 2, 12);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2019, 2, 20);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
@@ -32,46 +32,6 @@ function getVersionsDatum() {
 //
 // Panorama / Sammlungen, Museen, Aussstellungen
 // http://www.gamesmuseum.uwaterloo.ca
-//
-
-// http://www.altenburg-tourismus.de
-//
-//
-//
-// Panorama / Spielkartenfabriken, -händler und Tourismus
-//
-// http://www.glanzdruck.at
-//
-// http://www.piatnik.at
-//
-//
-// http://www.piatnik-individual.com
-//
-// http://www.attergau.at
-//
-//
-// Regeln / Regeln der Partnercups
-// www.casinos.at/regeln_stc.pdf
-//
-//
-// Treffpunkt / Adressen:
-//
-// www.tyrolis.cc
-//
-//
-// Treffpunkt / Wien / Königrufen
-// Meine Montagturniere beginnen seit Jänner jeweils um 18 Uhr.
-//
-//
-// 0663 06047662
-
-
-
-//
-//
-//
-//
-// Sind Dateien für Import oder Export im Spiel dann <meta charset='UTF-8'/>
 
 // LET kann vom Galaxy Nexus nicht interpretiert werden.
 
@@ -89,15 +49,7 @@ function getVersionsDatum() {
 // Popup-Close
 // Für Android muß vor dem Verlassen einer App die Pupups geschlossen werden!!!
 
-// SOMMERZEIT !!!
-// "Automatisch an Sommerzeit apassen" immer aktivieren!
-// Eventuell mit dem Administrator.
-
-// Galaxy Note4: devicePixelRatio: 3, Höhe: 616, Breite: 360 ---> 1:1,711
-// Galaxy Nexus: devicePixelRatio: 2, Höhe: 567, Breite: 360 ---> 1:1,575
-
 // Galaxy Nexus meldet bei "'string'.repeat(n)" Object has no method 'repeat'.
-
 // Auf Galaxy Nexus und Galaxy S5 mini ist folgendes zu beachten:
 // 0n wird als Oktalzahl interpretiert.
 // 00n wird als Hexadezimalzahl interpretiert.

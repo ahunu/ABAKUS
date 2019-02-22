@@ -25,7 +25,6 @@ var myJBox = null;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stLastZitat = 0;
-//var LS.LastBtn = '';
 var mTischNeuLoeschen = '';
 var mHref = false;
 
@@ -781,13 +780,6 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
         }
     }, 600);
 
-//showEineNotiz(LS.LastBtn + ' at: ' +)
-//    setTimeout(function () {
-//        if ($('#pContent').position().top + $(LS.LastBtn.substr(0, 4)).position().top > $(window).innerHeight() / 3) {
-//            $('#pContent').scrollTop($(LS.LastBtn.substr(0, 4)).offset().top - $(window).innerHeight() / 3);
-//        }
-//    }, 200);
-
 }
 
 function listVersion() {
@@ -1347,10 +1339,15 @@ function whenCUPSloaded() {
     if (LS.LastBtn) {
         $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
         if (QUERFORMAT()) {
-            $(LS.LastBtn).addClass('ui-btn-active');
+            $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
         }
         if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 1.3) {
-            $('#pContent').scrollTop($(LS.LastBtn).offset().top - $(window).innerHeight() / 1.3);
+            $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 1.3));
+            if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
+                if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 1.3) {
+                    $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 1.3));
+                }
+            }
         }
     } else {
         $('#bAK').collapsible({collapsed: false});

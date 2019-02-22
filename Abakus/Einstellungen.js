@@ -24,11 +24,6 @@ $(document).bind('pageinit', function () {
     };
 
     $("#iShowSpielerNr").prop("checked", LS.ShowSpielerNr).checkboxradio("refresh");
-    $('#iShowSpielerNr').change(function () {
-        LS.ShowSpielerNr = !LS.ShowSpielerNr;
-        $('#iShowSpielerNr').prop('checked', LS.ShowSpielerNr).checkboxradio('refresh');
-    });
-
     $("#iAKTTAGE").val(LS.AktTage);
 
     var hFreunde = '';
@@ -51,7 +46,6 @@ $(document).bind('pageinit', function () {
     for (var meinCup of LS.MeineCups) {
         $('#iMC' + meinCup).prop('checked', true).checkboxradio('refresh');
     }
-
 
     $('#Schreibzettel' + LS.Schreibzettel).prop('checked', true).checkboxradio('refresh');
     $('#Schreibzetteltrue,#Schreibzettelfalse').click(function () {

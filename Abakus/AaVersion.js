@@ -1,10 +1,10 @@
 
 function getVersion() {
-    return 932;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 933;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
-    return setVersion(2019, 2, 22);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2019, 2, 23);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
@@ -56,3 +56,4 @@ function getVersionsDatum() {
 // Number.isInteger(123) ist nicht verfügbar.
 // Auf dem Galaxy Nexus vertragen sich 'use strict' und Inlinefunktionen nicht miteinander.
 // Auf dem Galaxy Nexus vertragen sich 'use strict' und CONST Variablendeffinitionen nicht miteinander.
+// Auf dem Galaxy Nexus wird myArray.includes(...) nicht unterstützt.

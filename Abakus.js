@@ -1136,29 +1136,37 @@ function whenCUPSloaded() {
                     hTemp = '<li data-icon=false><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
                 } else if (TERMINE[termin].DATUM === hHeute) {
                     if (LS.ME.length === 4) {
-                        hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                        hTemp = '<li><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
                                 + '<a onclick="toggleShow(\'#togglebTE' + termin + '\');">Hilfe</a></li>'
                                 + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     } else {
-                        hTemp = '<li><a class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                        hTemp = '<li><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
                                 + '<a onclick="toggleShow(\'#togglebTE' + termin + '\');">Hilfe</a></li>'
                                 + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     }
                 } else {
-                    hTemp = '<li data-icon=info><a class="K' + hCupFarbe + '" onClick="toggleShow(\'#togglebTE' + termin + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
+                    hTemp = '<li data-icon=info><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '" onClick="toggleShow(\'#togglebTE' + termin + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
                             + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
                             + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                             + '</div>';
                 }
                 htmlALLE += hTemp;
                 if (TERMINE[termin].DATUM <= hAktuellBis) {
-                    if (LS.MeineCups.includes(TERMINE[termin].CUP) || TERMINE[termin].CUP === 52) {
+                    if (TERMINE[termin].CUP === 52 && LS.ME === '3425') { // Raiffeisencup für mich zum testen
                         nAktTermine++;
                         htmlAKT += hTemp.replace(/bAL/g, 'bAK');
+                    } else {
+                        for (var iMC in LS.MeineCups) {
+                            if (LS.MeineCups[iMC] === TERMINE[termin].CUP) {
+                                nAktTermine++;
+                                htmlAKT += hTemp.replace(/bAL/g, 'bAK');
+                                break;
+                            }
+                        }
                     }
                 }
             } else {

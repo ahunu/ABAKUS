@@ -10,6 +10,17 @@ function getNextTermin(pCup) {
     hHeute.setMilliseconds(999);
     hHeute = hHeute.valueOf();
 
+//  1 sekunde     1 000 ms
+//  1 Minute     60 000 ms
+//  1 Stunde  3 600 000 ms
+//  1 Tag    86 400 000 ms
+//  1 Woche 604 800 000 ms
+
+
+    if (pCup === 44) {
+        pCup = 44;
+    }
+
     var hZuletzt = new Date(0); // Keine Anmeldung wenn Turnier schon eröffnet
     if (typeof CUPS.MEZULETZT[pCup] === 'number') {
         hZuletzt = new Date(CUPS.MEZULETZT[pCup]);
@@ -27,7 +38,11 @@ function getNextTermin(pCup) {
 
     var nextTermin = hHeute;
     if (hHeute === hZuletzt) {
-        nextTermin += 86400000;
+        if (new Date().getHours() >= 20) { // nach 20 Uhr immer nächsten Termin suchen
+            nextTermin += 86400000;
+        } else if (CUPS.SPIELEAB[pCup] > 12 && new Date().getHours() > CUPS.SPIELEAB[pCup]) { // ab einer Stunde nach Spielbeginn nächster Termin
+            nextTermin += 86400000;
+        }
     }
 
     var iWoche = 0;
@@ -44,139 +59,6 @@ function getNextTermin(pCup) {
         nextTermin += 86400000;
     }
     return nextTermin;
-}
-
-function getNextTerminALT(pCup) {
-
-    var hHeute = new Date();
-    hHeute.setHours(22); // 22 wegen der Sommenrzeit
-    hHeute.setMinutes(59);
-    hHeute.setSeconds(59);
-    hHeute.setMilliseconds(999);
-    hHeute = hHeute.valueOf();
-
-    var hZuletzt = new Date(0); // Keine Anmeldung wenn Turnier schon eröffnet
-    if (typeof CUPS.MEZULETZT[pCup] === 'number') {
-        hZuletzt = new Date(CUPS.MEZULETZT[pCup]);
-    }
-    hZuletzt.setHours(22); // 22 wegen der Sommenrzeit
-    hZuletzt.setMinutes(59);
-    hZuletzt.setSeconds(59);
-    hZuletzt.setMilliseconds(999);
-    hZuletzt = hZuletzt.valueOf();
-
-    if (CUPS.NEXTTERMIN[pCup] >= hHeute
-            && CUPS.NEXTTERMIN[pCup] > hZuletzt) {
-        return CUPS.NEXTTERMIN[pCup];
-    }
-
-    var datNextTermin = new Date();
-    datNextTermin.setDate(1);   // das Monat durchsuchen
-    datNextTermin.setHours(22); // 22 wegen der Sommenrzeit
-    datNextTermin.setMinutes(59);
-    datNextTermin.setSeconds(59);
-    datNextTermin.setMilliseconds(999);
-
-    var iWochentag = datNextTermin.getDay();
-    var inNTagen = -1;
-    for (var ii = iWochentag; ii <= 6; ii++) {
-        if (CUPS.SPIELTAGE[pCup][ii] === 'J') {
-            inNTagen = ii - iWochentag;
-            break;
-        }
-    }
-    if (inNTagen === -1) {
-        for (var ii = 0; ii < iWochentag; ii++) {
-            if (CUPS.SPIELTAGE[pCup][ii] === 'J') {
-                inNTagen = ii - iWochentag + 7;
-                break;
-            }
-        }
-    }
-
-//  1 sekunde     1 000 ms
-//  1 Minute     60 000 ms
-//  1 Stunde  3 600 000 ms
-//  1 Tag    86 400 000 ms
-//  1 Woche 604 800 000 ms
-
-    datNextTermin.setDate(inNTagen + 1);  // Wochentag setzen
-    datNextTermin = datNextTermin.valueOf();
-
-    if (CUPS.WOCHEN[pCup][0] === 'J') { // 1. Woche
-        if (datNextTermin >= hHeute
-                && datNextTermin > hZuletzt) {
-            return datNextTermin;
-        }
-    }
-    datNextTermin += 604800000; // 2. Woche
-    if (CUPS.WOCHEN[pCup][1] === 'J') {
-        if (datNextTermin >= hHeute
-                && datNextTermin > hZuletzt) {
-            return datNextTermin;
-        }
-    }
-    datNextTermin += 604800000; // 3. Woche
-    if (CUPS.WOCHEN[pCup][2] === 'J') {
-        if (datNextTermin >= hHeute
-                && datNextTermin > hZuletzt) {
-            return datNextTermin;
-        }
-    }
-    datNextTermin += 604800000; // 4. Woche
-    if (CUPS.WOCHEN[pCup][3] === 'J') {
-        if (datNextTermin >= hHeute
-                && datNextTermin > hZuletzt) {
-            return datNextTermin;
-        }
-    }
-    datNextTermin += 604800000; // 5. / 1. Woche
-    if (new Date(datNextTermin).getMonth() === new Date(hHeute).getMonth()) {
-        if (CUPS.WOCHEN[pCup][4] === 'J') {
-            if (datNextTermin >= hHeute
-                    && datNextTermin > hZuletzt) {
-                return datNextTermin;
-            }
-        }
-        datNextTermin += 604800000; // 1. Woche
-    }
-    if (CUPS.WOCHEN[pCup][0] === 'J') {
-        if (datNextTermin >= hHeute
-                && datNextTermin > hZuletzt) {
-            return datNextTermin;
-        }
-    }
-    datNextTermin += 604800000; // 2. Woche
-    if (CUPS.WOCHEN[pCup][1] === 'J') {
-        if (datNextTermin >= hHeute
-                && datNextTermin > hZuletzt) {
-            return datNextTermin;
-        }
-    }
-    datNextTermin += 604800000; // 3. Woche
-    if (CUPS.WOCHEN[pCup][2] === 'J') {
-        if (datNextTermin >= hHeute
-                && datNextTermin > hZuletzt) {
-            return datNextTermin;
-        }
-    }
-    datNextTermin += 604800000; // 4. Woche
-    if (CUPS.WOCHEN[pCup][3] === 'J') {
-        if (datNextTermin >= hHeute
-                && datNextTermin > hZuletzt) {
-            return datNextTermin;
-        }
-    }
-    datNextTermin += 604800000; // 5. Woche
-    if (new Date(datNextTermin).getMonth() === new Date(hHeute).getMonth() + 1) {
-        if (CUPS.WOCHEN[pCup][4] === 'J') {
-            if (datNextTermin >= hHeute
-                    && datNextTermin > hZuletzt) {
-                return datNextTermin;
-            }
-        }
-    }
-    return datNextTermin;
 }
 
 function getCupName(pI) {

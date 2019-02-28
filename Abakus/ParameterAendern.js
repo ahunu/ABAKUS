@@ -323,7 +323,7 @@ function onSubmit() {
 
     if ($("#iNEXTTERMIN").val()) {
         var hNextTermin = new Date($("#iNEXTTERMIN").val());
-        hNextTermin.setHours(23);
+        hNextTermin.setHours(22); // 22 wegen der Sommerzeit
         hNextTermin.setMinutes(59);
         hNextTermin.setSeconds(59);
         hNextTermin.setMilliseconds(999);

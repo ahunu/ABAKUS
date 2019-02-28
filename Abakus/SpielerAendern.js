@@ -569,7 +569,7 @@ function onFinden(pUPDATEart) {
         }
     } else {
 //      != darf nicht geändert werden.
-        if (fNR != parseInt(fNR)) {
+        if (fNR != parseInt(fNR)) { // != darf nicht geändert werden
 //      != darf nicht geändert werden.
             $('input[id=F_NR]').css("color", "#dd1111");
             $('#fMeldung').html(' Bitte eine g&uuml;ltige Spielernummer eingeben.');

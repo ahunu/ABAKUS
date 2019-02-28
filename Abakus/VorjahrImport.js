@@ -130,17 +130,20 @@ function readCUPORTE(event) {
 
 function changeV(pI) {
     var iVERANSTALTER = parseInt($('#iV' + pI).val());
-    if (iVERANSTALTER < 0 || iVERANSTALTER > 9999) {
+    if (!iVERANSTALTER || iVERANSTALTER < -2 || iVERANSTALTER > 9999) {
         $('#tV' + pI).html(iVERANSTALTER + ' ist kein g&uuml;tige Spielernummmer.').addClass('cRot');
         return;
     }
     iVERANSTALTER = "0000" + iVERANSTALTER;
     iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
-    if (iVERANSTALTER === '0000') {
+    if (iVERANSTALTER === '00-1') {
+        iVERANSTALTER === '-1';
         $('#tV' + pI).html('Präsidium').removeClass('cRot');
+    } else if (iVERANSTALTER === '00-2') {
+        iVERANSTALTER === '-2';
+        $('#tV' + pI).html('alle Veranstalter').removeClass('cRot');
     } else if (SPIELER[iVERANSTALTER]) {
         $('#tV' + pI).text(SPIELER[iVERANSTALTER][0] + ' ' + SPIELER[iVERANSTALTER][1]).removeClass('cRot');
-        ;
     } else {
         $('#tV' + pI).text('Spieler ' + iVERANSTALTER + ' existiert nicht.').addClass('cRot');
     }
@@ -223,14 +226,18 @@ function Speichern(pSpeichern) {
                 nFehler++;
             } else {
                 iVERANSTALTER = parseInt(iVERANSTALTER);
-                if (iVERANSTALTER < 0 || iVERANSTALTER > 9999) {
-                    $('#tV' + i).html(iVERANSTALTER + ' ist kein g&uuml;tige Spielernummmer.').addClass('cRot');
+                if (!iVERANSTALTER || iVERANSTALTER < -2 || iVERANSTALTER > 9999) {
+                    $('#tV' + i).html(iVERANSTALTER + ' ist keine gütige Spielernummmer.').addClass('cRot');
                     nFehler++;
                 } else {
                     iVERANSTALTER = "0000" + iVERANSTALTER;
                     iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
-                    if (iVERANSTALTER === '0000') {
+                    if (iVERANSTALTER === '00-1') {
+                        iVERANSTALTER === '-1';
                         $('#tV' + i).html('Präsidium').removeClass('cRot');
+                    } else if (iVERANSTALTER === '00-2') {
+                        iVERANSTALTER === '-2';
+                        $('#tV' + i).html('alle Veranstalter').removeClass('cRot');
                     } else if (SPIELER[iVERANSTALTER]) {
                         $('#tV' + i).text(SPIELER[iVERANSTALTER][0] + ' ' + SPIELER[iVERANSTALTER][1]).removeClass('cRot');
                     } else {
@@ -260,6 +267,11 @@ function Speichern(pSpeichern) {
             var iVERANSTALTER = $('#iV' + i).val();
             iVERANSTALTER = "0000" + parseInt(iVERANSTALTER);
             iVERANSTALTER = iVERANSTALTER.substring((iVERANSTALTER.length - 4));
+            if (iVERANSTALTER === "00-1") {
+                iVERANSTALTER = "Präsidium";
+            } else if (iVERANSTALTER === "00-2") {
+                iVERANSTALTER = "Alle Veranstalter";
+            }
             DATA[tDATUM[i]]._VERANSTALTER = iVERANSTALTER;
             DATA[tDATUM[i]]._SAISON = hDatMin + '/' + hDatMax.substr(2, 2);
             DATA[tDATUM[i]]._NAME = $('#iN' + i).val();
@@ -267,6 +279,11 @@ function Speichern(pSpeichern) {
     }
 
     showEinenMoment('Vorjahre einspielen:', nTurniere + ' Turniere werden eingespielt.');
+
+    if (LS.ME === "3425") {
+        sCUP3 = '056'; // WTC
+    }
+
 
     firebase.database().ref('/00/' + sCUP3)
             .update(DATA)

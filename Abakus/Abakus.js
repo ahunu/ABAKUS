@@ -633,10 +633,8 @@ function ResetSpieler(btn) {
 
 function setFont() {
     'use strict';
-
     $('#nbMeinTisch,#nbTarife,#nbAudio,#nbOptions,#nbHelp,#nbKorr').removeClass('ui-corner-all');
     $('#nbLI,#nbED,#nbPS,#nbFS,#nbNS,#nbGR').removeClass('ui-corner-all');
-
     if (QUERFORMAT()) {
         $('#iMeinTisch').attr('style', 'position: absolute; top: 3px; left: ' + ($(window).innerWidth() / 28) + 'px;margin:0 0 0 -8px;').height($(window).innerWidth() / 24);
     } else {

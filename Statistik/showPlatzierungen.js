@@ -18,8 +18,6 @@ function showPlatzierungen(pSort) {
 
     setTimeout(function () {
 
-        showIcons([]);
-
         if (!pSort) {
             pSort = 'Stockerl';
         }

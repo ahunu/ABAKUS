@@ -33,14 +33,14 @@ function addPosition(pSaison) {
         if (p1 >= p0) {
             p1 = p0;
             if (QUERFORMAT()) {
-                tBlockB += '<div>1. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></div>';
+                tBlockB += '<div>1. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau"><b>' + (getName(spieler).replace(' ', '&nbsp;')) + '</b></span></div>';
                 tBlockC += CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '<br>';
                 tBlockD += (9000 - p0) + '<br>' + '';
                 tBlockE += CUP[spieler][5].length + '<br>';
             } else {
                 html += '<tr class=' + hBG + '>'
                         + '<td></td>'
-                        + '<td>' + '1. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>'
+                        + '<td>' + '1. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau"><b>' + (getName(spieler).replace(' ', '&nbsp;')) + '</b></span></td>'
                         + '<td class="TC">' + CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '</td>'
                         + '<td class="TR">' + (9000 - p0) + '&nbsp;</td>'
                         + '</tr>';
@@ -114,7 +114,9 @@ function showCupsieger() {
         jbSpieler.close();
     }
 
-    showIcons([]);
+    if (ADMIN || LS.ME === '3425' || (LS.ME === '2037' && stCup === 56)) { // Robert Sedlaczek
+        showIcons(['#iPrint']);
+    }
 
     stStat = 'Cupsieger';
     stNamenLen = 99;

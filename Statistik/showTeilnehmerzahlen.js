@@ -153,15 +153,25 @@ function showTeilnehmerzahlen() {
     function getAbweichung() {
         var dSaison = parseInt((SAISON[stSaison].anzTeilnahmen / SAISON[stSaison].anzTurniere) + 0.5);
         var dGesamt = parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5);
+        if (stCup === 56) { // WTC - Abweichung von Antons 75er Turnier 2019 ::: Teilnehmer - Durchschnitt = 124
+//            dGesamt = parseInt(((STAT._ANZTEILNAHMEN - 124) / STAT._ANZTURNIERE) + 0.5);
+//            if (stSaison === "2017/18") {
+//                dSaison = parseInt(((SAISON[stSaison].anzTeilnahmen - 124) / SAISON[stSaison].anzTurniere) + 0.5);
+//            }
+//            dGesamt = parseInt(((STAT._ANZTEILNAHMEN - 192) / (STAT._ANZTURNIERE - 1)) + 0.5);
+//            if (stSaison === "2017/18") {
+//                dSaison = parseInt(((SAISON[stSaison].anzTeilnahmen - 192) / (SAISON[stSaison].anzTurniere - 1)) + 0.5);
+//            }
+        }
         if (dSaison === dGesamt) {
             return "&#177;0,0 %";
         } else {
             hRet = (dSaison - dGesamt) / (dGesamt / 1000);
-            if (hRet >= 0.5) {
-                hRet = parseInt(hRet + 0.5);
+            if (hRet >= 0.05) {
+                hRet = parseInt(hRet + 0.05);
                 return '+' + parseInt(hRet / 10) + ',' + parseInt(hRet % 10) + ' %';
-            } else if (hRet <= -0.5) {
-                hRet = parseInt(hRet - 0.5);
+            } else if (hRet <= -0.05) {
+                hRet = parseInt(hRet - 0.05);
                 return parseInt(hRet / 10) + ',' + Math.abs(parseInt(hRet % 10)) + ' %';
             } else {
                 return "&#177;0,0 %";
@@ -195,7 +205,9 @@ function showTeilnehmerzahlen() {
         jbSpieler.close();
     }
 
-    showIcons([]);
+    if (ADMIN || LS.ME === '3425' || (LS.ME === '2037' && stCup === 56)) { // Robert Sedlaczek
+        showIcons(['#iPrint']);
+    }
 
     stStat = 'Teilnehmerzahlen';
     stNamenLen = 99;
@@ -283,5 +295,4 @@ function showTeilnehmerzahlen() {
         $('#dContent').html(html);
     }
 
-    setFont(4.7, true);
 }

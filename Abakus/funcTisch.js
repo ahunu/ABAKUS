@@ -413,6 +413,10 @@ function checkNeuerTisch() {
         LS.TURRUNDE++;
     }
 
+    if (LS.I === 52) {
+        LS.TURRUNDE++; // Test only
+    }
+
     if (STAT[hTurnier][LS.ME]) {
         if (STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '-') {
             showEineWarnung(I, 'Du hast Runde ' + LS.TURRUNDE + ' bereits gespielt.');

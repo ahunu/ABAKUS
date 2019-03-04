@@ -73,7 +73,59 @@
                         </div>
                     </div>
                 </div>
-                <div id="dCup">
+                <hr>
+                <div class="L B C">Berechtigungen:
+                </div>
+                <div class="ui-grid-a" id="dRundenBerechtigungen">
+                    <div class="ui-block-a hilfe M" style="text-align:center;">
+                        <br>Für jeden Spieler der einen Tisch eingeben können soll, muss die Spielernummer vierstellig eingegeben werden.
+                        <br>Für Manfred Doppler also 0919.
+                        <br>Als Gedankenstütze können der Spielernummer die Initialen vorangestellt werden.
+                        <br>Ein Stern bedeutet, dass alle Spieler, die sich registriert haben, einen Tisch eingeben können.
+                    </div>
+                    <div class="ui-block-b daten" style="text-align:center;">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:20%;">
+                            </div>
+                            <div class="ui-block-b" style="width:80%;">
+                                <div class="ui-field-contain">
+                                    <div class="L" style="text-align: left">Parameter ändern:</div>
+                                    <input  id="iBEREadmin" type="text" class="ui-disabled"  data-role="none" placeholder="Administratorrechte:">
+                                    <br><br>
+                                    <div class="L" style="text-align: left">Tische eingeben:</div>
+                                    <input  id="iBEREschreiben" type="text"  data-role="none" placeholder="Lesen und schreiben:">
+                                    <div class="L" style="text-align: left">z.B.: MD0919,MM3244...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-grid-a" id="dCupBerechtigungen">
+                    <div class="ui-block-a hilfe M" style="text-align:center;">
+                        <br>Es können mehrere Andministratoren und auch
+                        <br>mehrere Stellvertreter eingegeben werden.
+                        <br>Als Gedankenstütze können der Spielernummer
+                        <br>die Initialen vorangestellt werden.
+                    </div>
+                    <div class="ui-block-b daten" style="text-align:center;">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:20%;">
+                            </div>
+                            <div class="ui-block-b" style="width:80%;">
+                                <div class="ui-field-contain">
+                                    <div class="L" style="text-align: left">Administrator:<div class="S">Turnierkalender und Parameter pflegen.<br>
+                                            Spieler verwalten und Downloads erstellen.</div></div>
+                                    <input id="iBEREadmin" type="text" data-role="none">
+                                    <div class="S" style="text-align: left">z.B.: EH3757,...</div>
+                                    <br>
+                                    <div class="L" style="text-align: left">Administratorstellvertreter:<div class="S">Turnierkalender und Parameter pflegen.</div></div>
+                                    <input id="iBEREschreiben" type="text" data-role="none">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dRunden">
                     <hr>
                     <div class="L B C">Regeln:
                     </div>
@@ -312,33 +364,6 @@
                                                 <input id="iTARIF19" type="number" pattern="\d*" min=0 max=50 data-role="none">
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="L B C">Berechtigungen:
-                    </div>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a hilfe M" style="text-align:center;">
-                            <br>Für jeden Spieler der einen Tisch eingeben können soll, muss die Spielernummer vierstellig eingegeben werden.
-                            <br>Für Manfred Doppler also 0919.
-                            <br>Als Gedankenstütze können der Spielernummer die Initialen vorangestellt werden.
-                            <br>Ein Stern bedeutet, dass alle Spieler, die sich registriert haben, einen Tisch eingeben können.
-                        </div>
-                        <div class="ui-block-b daten" style="text-align:center;">
-                            <div class="ui-grid-a">
-                                <div class="ui-block-a" style="width:20%;">
-                                </div>
-                                <div class="ui-block-b" style="width:80%;">
-                                    <div class="ui-field-contain">
-                                        <div class="L" style="text-align: left">Parameter ändern:</div>
-                                        <input  id="iBEREadmin" type="text" class="ui-disabled"  data-role="none" placeholder="Administratorrechte:">
-                                        <br><br>
-                                        <div class="L" style="text-align: left">Tische eingeben:</div>
-                                        <input  id="iBEREschreiben" type="text"  data-role="none" placeholder="Lesen und schreiben:">
-                                        <div class="L" style="text-align: left">z.B.: MD0919,MM3244...</div>
                                     </div>
                                 </div>
                             </div>
@@ -619,7 +644,7 @@
                     <div class="ui-body ui-body-c L">
                         <div id=bLoeschen hidden>
                             <br>
-                            <span class='cRot B' xstyle='color:red' id=tLoeschen>Die Statistik welcher Runde, welches Cups soll gel&ouml;scht werden?
+                            <span class='cRot B' id=tLoeschen>Die Statistik welcher Runde, welches Cups soll gel&ouml;scht werden?
                             </span>
                             <label for="iCupLoeschen"  class="ui-hidden-accessible">:
                             </label>

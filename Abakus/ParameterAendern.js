@@ -285,22 +285,26 @@ function onSubmit() {
     'use strict';
     if (mCupLoeschen === 1) {
         if (CUPS.NAME[I] !== $("#iCupLoeschen").val()) {
-            if ($('#tLoeschen').html() === 'Die Statistik welcher Runde, welches Cups soll gelöscht werden?'
-                    || $('#tLoeschen').html() === 'Die Statistik welcher Runde, welches Cups soll gel&ouml;scht werden?'
-                    || $('#tLoeschen').html() === 'Die Statistik welcher Runde, welches Cups soll gel&amp;ouml;scht werden?') {
+            if ($('#tLoeschen').html() === 'Die Statistik welcher Runde, welches Cups soll gelöscht werden?') {
                 $('#tLoeschen').html('Welche Statistik willst du l&ouml;schen?');
             } else {
-                $('#tLoeschen').html('Die Statistik welcher Runde, welches Cups soll gel&ouml;scht werden?');
+                $('#tLoeschen').html('Die Statistik welcher Runde, welches Cups soll gelöscht werden?');
             }
             $("#iCupLoeschen").focus();
             $('html, body').scrollTop($(document).height());
             return false;
         }
-        showEinenMoment(CUPS.NAME[I], 'Statistik&nbsp;wird&nbsp;gel&ouml;scht.');
+        showEinenMoment(CUPS.NAME[I], 'Statistik&nbsp;wird&nbsp;gelöscht.');
     } else {
         showEinenMoment(CUPS.NAME[I], 'Daten&nbsp;werden&nbsp;gespeichert.');
     }
 
+    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {
+        CUPS.BEREadmin[I] = $("#iBEREadmin").val().trim();
+        if (CUPS.BEREadmin[I] === '') {
+            CUPS.BEREadmin[I] = '-';
+        }
+    }
     CUPS.BEREschreiben[I] = $("#iBEREschreiben").val().trim();
     if (CUPS.BEREschreiben[I] === '') {
         CUPS.BEREschreiben[I] = '-';
@@ -466,8 +470,8 @@ function onSubmit() {
 
 function statistikLoeschen() {
     'use strict';
-//  showEinenFehler('Statistik wird gel&ouml;scht.', 'Einen Moment bitte.')
-    $('#tLoeschen').html('Die Statistik wird gel&ouml;scht!');
+//  showEinenFehler('Statistik wird gelöscht.', 'Einen Moment bitte.')
+    $('#tLoeschen').html('Die Statistik wird gelöscht!');
     var hCUPname = (("000" + I).substr(-3) + ' ' + CUPS.NAME[I]).replace(/\./g, "").replace(/\#/g, "").replace(/\$/g, "").replace(/\[/g, "").replace(/\]/g, "");
     firebase.database().ref('/00/' + hCUPname)
             .set(null)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
@@ -479,7 +483,7 @@ function statistikLoeschen() {
                                 localStorage.removeItem("Abakus.STAT" + ("000" + I).substr(-3));
                             }
                             LS.ShowCups = I;
-                            LS.Meldung = 'Die Statistik wurde gel&ouml;scht!';
+                            LS.Meldung = 'Die Statistik wurde gelöscht!';
                             $('#tLoeschen').html(LS.Meldung);
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                             if (CUPS.NEXTTERMIN[I] !== oNEXTTERMIN) {
@@ -534,9 +538,13 @@ $(document).bind('pageinit', function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     firebase.initDB(0, 'rw');
     if (I >= 50 && I <= 59) {
-        $('#dCup').hide();
+        $('#dRunden').hide();
     }
-
+    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {
+        $('#dRundenBerechtigungen').remove();
+    } else {
+        $('#dCupBerechtigungen').remove();
+    }
     $("#tNAME2").text(CUPS.NAME[I]);
     $("#iBEREadmin").val(CUPS.BEREadmin[I]);
     $("#iBEREschreiben").val(CUPS.BEREschreiben[I]);
@@ -671,7 +679,7 @@ $(document).bind('pageinit', function () {
         mCupLoeschen = mCupLoeschen * -1;
         if (mCupLoeschen === 1) {
             $('#bLoeschen').show();
-            $('#tLoeschen').html('Die Statistik welcher Runde, welches Cups soll gel&ouml;scht werden?');
+            $('#tLoeschen').html('Die Statistik welcher Runde, welches Cups soll gelöscht werden?');
             $("#iCupLoeschen").focus();
             $('html, body').scrollTop($(document).height());
         } else {

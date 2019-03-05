@@ -126,6 +126,8 @@ function SpeichernNT() {
                             LS.Sterne = ['', '', '', '', '', '', ''];
                             LS.Ort = ['', '', '', '', '', '', ''];
                             LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+                            LS.TURRUNDE = 0;
+                            delete LS.TURTISCH;
                             LS.ShowCups = LS.I;
                             LS.I = 0;
                             LS.Meldung = ('Der Tisch wurde gespeichert!');

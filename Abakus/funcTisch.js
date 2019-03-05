@@ -201,6 +201,10 @@ function TischLoeschen(pLoeschen) {
         LS.Sterne = ['', '', '', '', '', '', ''];
         LS.Ort = ['', '', '', '', '', '', ''];
         LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+        LS.TURRUNDE = 0;
+        if ('TURTISCH' in LS) {
+            delete LS.TURTISCH;
+        }
         LS.Meldung = "Der Tisch wurde gelöscht!";
         var h = LS.I;
         if (CUPS.TURNIER[I] === 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)) {

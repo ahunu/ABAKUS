@@ -1092,6 +1092,7 @@ function whenCUPSloaded() {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
     var hTemp = '';
+    var hBtnName = 'b??';
     var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
     for (var termin in TERMINE) {
         if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
@@ -1133,24 +1134,27 @@ function whenCUPSloaded() {
                     hCupFarbe = ' cDIV';
                 }
                 if (QUERFORMAT()) {
-                    hTemp = '<li data-icon=false><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
+                    hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
+                    hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
                 } else if (TERMINE[termin].DATUM === hHeute) {
+                    hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
                     if (LS.ME.length === 4) {
-                        hTemp = '<li><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                + '<a onclick="toggleShow(\'#togglebTE' + termin + '\');">Hilfe</a></li>'
-                                + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                        hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\',' + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Hilfe</a></li>'
+                                + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     } else {
-                        hTemp = '<li><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                + '<a onclick="toggleShow(\'#togglebTE' + termin + '\');">Hilfe</a></li>'
-                                + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                        hTemp = '<li><a id="b' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Hilfe</a></li>'
+                                + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     }
                 } else {
-                    hTemp = '<li data-icon=info><a id="bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I + '" class="K' + hCupFarbe + '" onClick="toggleShow(\'#togglebTE' + termin + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
-                            + '<div id="togglebTE' + termin + '" class="S TGL" style=margin-left:10px; hidden>'
+                    hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
+                    hTemp = '<li data-icon=info><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="toggleShow(\'#tgl' + hBtnName + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
+                            + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                             + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                             + '</div>';
                 }

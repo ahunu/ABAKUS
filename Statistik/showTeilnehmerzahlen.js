@@ -294,5 +294,5 @@ function showTeilnehmerzahlen() {
     } else {
         $('#dContent').html(html);
     }
-
+    setFont(0,32, true);
 }

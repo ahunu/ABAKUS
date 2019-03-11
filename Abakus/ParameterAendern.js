@@ -11,6 +11,7 @@ var iName;
 var hRundeTurnier = 'Runde';
 var editor = null;
 var myJBox = null;
+var myJTip = null;
 
 function myJBoxClose() {
     myJBox.close();
@@ -153,11 +154,6 @@ function copyCUPS() {
     CUPS.ANMELDERF     [iNeu] = CUPS.ANMELDERF     [I];
     CUPS.BEREadmin     [iNeu] = CUPS.BEREadmin     [I];
     CUPS.BEREschreiben [iNeu] = CUPS.BEREschreiben [I];
-    if (CUPS.TYP[I] === 'PR') {
-        CUPS.BERElesen[iNeu] = '-';
-    } else {
-        CUPS.BERElesen[iNeu] = '*';
-    }
     CUPS.DISPAB        [iNeu] = CUPS.DISPAB        [I];
     CUPS.DOPPELTERUNDEN[iNeu] = CUPS.DOPPELTERUNDEN[I];
     CUPS.NAME          [iNeu] = iName;
@@ -196,7 +192,6 @@ function copyCUPS() {
     hCUPS.ANMELDERF = CUPS.ANMELDERF[I];
     hCUPS.BEREadmin = CUPS.BEREadmin[I];
     hCUPS.BEREschreiben = CUPS.BEREschreiben[I];
-    hCUPS.BERElesen = CUPS.BERElesen[I];
     hCUPS.DISPAB = CUPS.DISPAB      [I];
     hCUPS.DOPPELTERUNDEN = CUPS.DOPPELTERUNDEN[I];
     hCUPS.NAME = iName;
@@ -283,6 +278,22 @@ function copyEND() {
 
 function onSubmit() {
     'use strict';
+
+    var hBEREadmin = $("#iBEREadmin").val().trim();
+    var hBEREschreiben = $("#iBEREschreiben").val().trim();
+
+    if (hBEREadmin.indexOf(LS.ME) >= 0 && hBEREschreiben.indexOf(LS.ME) >= 0) {
+        showEinenTip("#iBEREschreiben", 'Du kannst nicht gleichzeitig<br>Admin und Stellvertreter sein.');
+        return;
+    }
+
+    if (hBEREadmin.indexOf(LS.ME) >= 0 && CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0) {
+        showEinenTip("#iBEREadmin", 'Ein Stellvertreter kann sich nicht<br>selbst Adminrechte vergeben.');
+        return;
+    }
+
+
+
     if (mCupLoeschen === 1) {
         if (CUPS.NAME[I] !== $("#iCupLoeschen").val()) {
             if ($('#tLoeschen').html() === 'Die Statistik welcher Runde, welches Cups soll gelöscht werden?') {
@@ -398,11 +409,7 @@ function onSubmit() {
     hCUPS.ANMELDERF = CUPS.ANMELDERF[I];
     hCUPS.BEREadmin = CUPS.BEREadmin[I];
     hCUPS.BEREschreiben = CUPS.BEREschreiben[I];
-    if (CUPS.TYP[I] === 'PR') {
-        hCUPS.BERElesen = '-';
-    } else {
-        hCUPS.BERElesen = '*';
-    }
+    hCUPS.BERElesen = null;              // wird nicht mehr benötigt
     hCUPS.DISPAB = CUPS.DISPAB      [I];
     hCUPS.NAME = CUPS.NAME          [I];
     hCUPS.NAME2LEN = CUPS.NAME2LEN  [I];
@@ -549,6 +556,11 @@ $(document).bind('pageinit', function () {
     $("#iBEREadmin").val(CUPS.BEREadmin[I]);
     $("#iBEREschreiben").val(CUPS.BEREschreiben[I]);
 
+    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {
+        if (CUPS.BEREadmin[I].indexOf(LS.ME) < 0 && CUPS.BEREschreiben[I].indexOf(LS.ME) < 0) {
+            $("#editor,#iBEREadmin,#iBEREschreiben,#bSpeichern").addClass('ui-disabled');
+        }
+    }
     editor = pell.init({
         element: document.getElementById('editor'),
         actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'undo', 'redo'],
@@ -774,4 +786,11 @@ $(document).bind('pageinit', function () {
         CUPS.REGELN[I] = $("input:radio[name=iREGELN]:checked").val();
     });
     $('#hTitel1').text(CUPS.NAME[I]);
+
+    myJTip = new jBox('Tooltip', {
+        theme: 'TooltipError',
+        delayClose: 20,
+        closeOnClick: true,
+        closeOnEsc: true
+    });
 });

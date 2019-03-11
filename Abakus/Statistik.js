@@ -69,7 +69,22 @@ var mAnmelden = true;
 var jbNachricht = null;
 
 function seiteUeberspringen(pCup) {
-    return (!(CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[pCup].indexOf('*') >= 0 || CUPS.BEREschreiben[pCup].indexOf('*') >= 0) && LS.ME !== "NOBODY") || pCup <= 7));
+    if (pCup === 1 || pCup === 5 || pCup === 6 || pCup === 7) { // Private Runde, oö. Regeln, wr. Regeln, tir. Regeln
+        return false;
+    } else if (LS.ME === "NOBODY") {
+        return true;
+    } else if (pCup <= 7) {
+        return true;
+    } else if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'MT') {
+        return false;
+    } else if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
+            || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[pCup].indexOf('*') >= 0
+            || CUPS.BEREschreiben[pCup].indexOf('*') >= 0) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function QUERFORMAT() {

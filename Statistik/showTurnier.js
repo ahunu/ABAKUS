@@ -26,7 +26,7 @@ function showTurnier(pTurnier) {
     }
 
     if (LS.ME === '3425'
-            || LS.ME === '3484' && stCup === 56     // Brigitta Hainz
+            || LS.ME === '3757' && stCup === 56     // Erwin Haider
             || LS.ME === '4731' && stCup === 58) {  // Alexandra Sabkovski
         showIcons(['#iPrint', '#iAnekdote', '#iDownload']);
     } else if (ADMIN) {

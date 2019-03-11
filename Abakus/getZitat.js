@@ -3,7 +3,7 @@ function getZitat() {
 
     var iZitat = stLastZitat;
     do {
-        iZitat = Date.now() % 48;
+        iZitat = Date.now() % 52;
     } while (iZitat === stLastZitat);
 
     stLastZitat = iZitat;
@@ -205,10 +205,55 @@ function getZitat() {
                     + '<br>bleibt ein Narr sein Leben lang.',
             'Martin Luther, 1483-1546, dt. Theologe und Reformator'];
     } else if (iZitat === 48) {
+        return ['Wir schätzen die Menschen,'
+                    + '<br>die frisch und offen ihre Meinung sagen -'
+                    + '<br>vorausgesetzt sie meinen dasselbe wie wir.',
+            'Mark Twain, 1835-1910, amerik.&nbsp;Schriftsteller'];
     } else if (iZitat === 49) {
+        return ['Man bleibt jung, solange man noch lernen,'
+                    + '<br>neue Gewohnheiten annehmen und'
+                    + '<br>Widerspruch ertragen kann.',
+            'Marie von Ebner-Eschenbach, <span style="white-space: nowrap">1830-1916, österr. Schriftstellerin</span>'];
     } else if (iZitat === 50) {
+        return ['Nicht die Glücklichen sind dankbar.'
+                    + '<br>Es sind die Dankbaren die glücklich sind',
+            'Francis Bacon, 1561-1626, engl. Philosoph'];
     } else if (iZitat === 51) {
+        return ['Bier ist der Beweis,'
+                    + '<br>dass Gott uns liebt und will,'
+                    + '<br>dass wir glücklich sind.',
+            'Benjamin Franklin, 1706-1790,<br>amerik. Erfinder und Politiker'];
     } else if (iZitat === 52) {
+        return [''
+                    + '<br>',
+            ''];
     } else if (iZitat === 53) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 54) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 55) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 56) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 57) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 58) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 59) {
+        return [''
+                    + '<br>',
+            ''];
     }
 }

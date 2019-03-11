@@ -26,18 +26,29 @@ $(document).ready(function () {
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
 
-    if (LS.ME === "3425" || LS.ME === "1000"
-            || LS.ME === '3484' || LS.ME === '3590'     // Brigitta Hainz, Hans Hafner
-            || LS.ME === '3244' || LS.ME === '4506' || LS.ME === '1014' || LS.ME === '0124') { // Markus Mair, Sepp Lang, Franz Kienast, Harl Haas jun.
+    if (LS.ME === '3425'                              // Ich
+            || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 // Administratoren
+            || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) {
         $('#bTurnierkalender,#bSpielerAendern').removeClass('ui-disabled');
         if (PC) {
             $('#bSpielerExport').removeClass('ui-disabled');
         }
-    } else if (LS.ME === '4731') { // Alex Sabkovski
+    }
+    if (LS.ME === '4731'                                  // Alex Sabkovski
+            || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0 // Administrator-Stellvertreter
+            || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0
+            || CUPS.BEREschreiben[53].indexOf(LS.ME) >= 0
+            || CUPS.BEREschreiben[54].indexOf(LS.ME) >= 0
+            || CUPS.BEREschreiben[55].indexOf(LS.ME) >= 0
+            || CUPS.BEREschreiben[56].indexOf(LS.ME) >= 0 ) {
         $('#bTurnierkalender').removeClass('ui-disabled');
     }
 
-    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "3484") { // Brigitta Hainz
+    if (LS.ME === "3425" || LS.ME === "1000") {
         $('#dStatistikImport').removeClass('ui-disabled').show();
     }
 

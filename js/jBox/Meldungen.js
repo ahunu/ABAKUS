@@ -47,6 +47,8 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
     } else if (pCup !== 0) {
         if (pCup === 54) {
             hTitel = "St. Tarockcup:";
+        } else if (pCup === 52) {
+            hTitel = "Raiffeisencup:";
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
         } else if (pCup === 58) {

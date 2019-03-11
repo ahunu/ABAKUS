@@ -27,6 +27,7 @@ var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "J
 var stLastZitat = 0;
 var mTischNeuLoeschen = '';
 var mHref = false;
+var meinStellvertreter = '3244';
 
 const iRufer = 1;
 const iSolorufer = 2;
@@ -540,7 +541,22 @@ function resetLastBtn() {
 }
 
 function seiteUeberspringen(pCup) {
-    return (!(CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[pCup].indexOf('*') >= 0 || CUPS.BEREschreiben[pCup].indexOf('*') >= 0) && LS.ME !== "NOBODY") || pCup <= 7));
+    if (pCup === 1 || pCup === 5 || pCup === 6 || pCup === 7) { // Private Runde, oö. Regeln, wr. Regeln, tir. Regeln
+        return false;
+    } else if (LS.ME === "NOBODY") {
+        return true;
+    } else if (pCup <= 7) {
+        return true;
+    } else if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'MT') {
+        return false;
+    } else if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
+            || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[pCup].indexOf('*') >= 0
+            || CUPS.BEREschreiben[pCup].indexOf('*') >= 0) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function showCup(i, pBtn, pTermin, pAnmeldungen) {
@@ -686,6 +702,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                                 : ''
                                 )
                         + ((CUPS.TYP[I] !== 'CUP' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0)) || LS.ME === '3425' || I <= 2
+                                || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && LS.ME === meinStellvertreter)
                                 ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern()" ><b>Parameter ändern</b></span><br>'
                                 : ''
                                 )
@@ -862,31 +879,24 @@ function initExtraButtons() {
     } else {
         $('#bRegistrieren').hide();
     }
-    if (LS.ME === '3425' // Leo Luger
-            || LS.ME === '0124' // Karl Haas
-            || LS.ME === '1014' // Franz Kienast
-            || LS.ME === '3322' // Sigi Braun
-            || LS.ME === '3484' // Brigitta Hainz
-            || LS.ME === '3244' // Markus Mair
-            || LS.ME === '4506' // Sepp Lang
+
+    $('#bAdminTools,#bFindSpieler').hide();
+
+    if (LS.ME === '3425'
+            || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[53].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[54].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[55].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[56].indexOf(LS.ME) >= 0
             ) {
-        $('#bFindSpieler').show();
-    } else {
-        $('#bFindSpieler').hide();
+        $('#bAdminTools,#bFindSpieler').show();
     }
-    if (LS.ME === '3425' // Leo Luger
-            || LS.ME === '1014' // Franz Kienast
-            || LS.ME === '0124' // Karl Haas jun.
-            || LS.ME === '3590' // Hans Hafner
-            || LS.ME === '3484' // Brigitta Hainz
-            || LS.ME === '3244' // Markus Mair
-            || LS.ME === '4506' // Sepp Lang
-            || LS.ME === '4731' // Alex Sabkovski --- Turnierkalender
-            ) {
+
+    if (LS.ME === '4731') { // Alex Sabkovski --- Turnierkalender
         $('#bAdminTools').show();
-    } else {
-        $('#bAdminTools').hide();
     }
+
     if (!QUERFORMAT()) {
         $('#bLinks,#bAdminTools').hide();
     }
@@ -987,6 +997,8 @@ function getMeinTerminBarZeile(pCup) {
 }
 
 function whenCUPSloaded() {
+
+    initExtraButtons();
 
 //    if (LS.I && (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT')) {
     if (LS.I) { // ????
@@ -1160,7 +1172,7 @@ function whenCUPSloaded() {
                 }
                 htmlALLE += hTemp;
                 if (TERMINE[termin].DATUM <= hAktuellBis) {
-                    if (TERMINE[termin].CUP === 52 && LS.ME === '3425') { // Raiffeisencup für mich zum testen
+                    if (TERMINE[termin].CUP === 52 && LS.ME === 's3425') { // Raiffeisencup für mich zum testen
                         nAktTermine++;
                         htmlAKT += hTemp.replace(/bAL/g, 'bAK');
                     } else {
@@ -1456,7 +1468,6 @@ function fINIT() {
         LS.LastBtn = '';
     }
 
-    initExtraButtons();
     if (window.location.href.toUpperCase().indexOf('?VIPS') > 0) {
         LS.tempVIPs = window.location.href.substr(window.location.href.toUpperCase().indexOf('?VIPS'));
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
@@ -1497,6 +1508,7 @@ function fINIT() {
             localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
         }
     }
+
     if (LS.ShowCups && !QUERFORMAT()) {
         if (seiteUeberspringen(LS.ShowCups)) {
             LS.ShowCups = 0;

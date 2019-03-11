@@ -24,7 +24,6 @@ function loadCUPS(pTitel, pText, pForce) {
         CUPS.ANMELDERF = [];
         CUPS.BEREadmin = [];
         CUPS.BEREschreiben = [];
-        CUPS.BERElesen = [];
         CUPS.DISPAB = [];
         CUPS.DOPPELTERUNDEN = [];
         CUPS.NAME = [];
@@ -71,7 +70,6 @@ function loadCUPS(pTitel, pText, pForce) {
                     CUPS.ANMELDERF     [i] = cupval.ANMELDERF;
                     CUPS.BEREadmin     [i] = cupval.BEREadmin;
                     CUPS.BEREschreiben [i] = cupval.BEREschreiben;
-                    CUPS.BERElesen     [i] = cupval.BERElesen;
                     CUPS.DISPAB        [i] = cupval.DISPAB;
                     if (cupval.DOPPELTERUNDEN) {
                         CUPS.DOPPELTERUNDEN[i] = true;

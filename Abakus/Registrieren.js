@@ -45,7 +45,7 @@ function onRegistrieren() {
                 || iCNRn === 124 // Karl Haas
                 || iCNRn === 1014 // Franz Kienast
                 || iCNRn === 3322 // Sigi Braun
-                || iCNRn === 3484 // Brigitta Hainz
+                || iCNRn === 3757 // Erwin Haider
                 || iCNRn === 3244 // Markus Mair
                 || iCNRn === 4506 // Sepp Lang
                 || iCNRn === 3590 // Hans Hafner

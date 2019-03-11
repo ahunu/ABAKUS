@@ -235,7 +235,7 @@ function showNeuenSPIELER(pNeu) {
         var hNummernkreis = 9001;
         if (LS.ME === "-54" || LS.ME === '3590') { // STC: Hans Hafner
             hNummernkreis = 6001;
-        } else if (LS.ME === "-56" || LS.ME === '3484') { // WTC: Brigitta Hainz
+        } else if (LS.ME === "-56" || LS.ME === '3757') { // WTC: Erwin Haider
             hNummernkreis = 3761;
         } else if (LS.ME === "-55" || LS.ME === '3244') { // WTC: Markus Mair
             hNummernkreis = 4001;

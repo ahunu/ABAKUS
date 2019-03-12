@@ -546,7 +546,7 @@ function seiteUeberspringen(pCup) {
     } else if (LS.ME === "NOBODY") {
         return true;
     } else if (pCup <= 7) {
-        return true;
+        return false;
     } else if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'MT') {
         return false;
     } else if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
@@ -689,7 +689,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
-                        + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3
+                        + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3 || I === 55 && LS.ME === "3425")
                                 ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
@@ -703,29 +703,6 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                                 )
                         + ((CUPS.TYP[I] !== 'CUP' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0)) || LS.ME === '3425' || I <= 2
                                 || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && LS.ME === meinStellvertreter)
-                                ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern()" ><b>Parameter ändern</b></span><br>'
-                                : ''
-                                )
-                        : ''
-                        )
-
-                + (I === 51 && LS.ME === "3425"
-                        ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
-                        + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
-
-                        + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3
-                                ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
-                                : ''
-                                )
-                        + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] !== 'PC') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
-                                ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
-                                : ''
-                                )
-                        + (CUPS.ANMELDERF[I]
-                                ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(false, \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
-                                : ''
-                                )
-                        + ((CUPS.TYP[I] !== 'CUP' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0)) || LS.ME === '3425' || I <= 2
                                 ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern()" ><b>Parameter ändern</b></span><br>'
                                 : ''
                                 )
@@ -1108,7 +1085,7 @@ function whenCUPSloaded() {
     var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
     for (var termin in TERMINE) {
         if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
-                || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.toUpperCase() !== "TEST" || LS.ME === "3425")) {
+                || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0,4) !== "test" || LS.ME === "3425")) {
             if (TERMINE[termin].CUP === 8 || TERMINE[termin].CUP === 10) {
                 hTemp = '';
             }
@@ -1455,7 +1432,7 @@ function fINIT() {
     }
 
     if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "0124") {
-        mRaiffeisenAktiv = true;
+        mTirolAktiv = true;
     }
 
     if (LS.Version < 932) {
@@ -1475,7 +1452,7 @@ function fINIT() {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

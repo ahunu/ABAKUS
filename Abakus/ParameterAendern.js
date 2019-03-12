@@ -557,7 +557,7 @@ $(document).bind('pageinit', function () {
     $("#iBEREschreiben").val(CUPS.BEREschreiben[I]);
 
     if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {
-        if (CUPS.BEREadmin[I].indexOf(LS.ME) < 0 && CUPS.BEREschreiben[I].indexOf(LS.ME) < 0) {
+        if (CUPS.BEREadmin[I].indexOf(LS.ME) < 0 && CUPS.BEREschreiben[I].indexOf(LS.ME) < 0 && LS.ME !== '3425') {
             $("#editor,#iBEREadmin,#iBEREschreiben,#bSpeichern").addClass('ui-disabled');
         }
     }

@@ -74,7 +74,7 @@ function seiteUeberspringen(pCup) {
     } else if (LS.ME === "NOBODY") {
         return true;
     } else if (pCup <= 7) {
-        return true;
+        return false;
     } else if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'MT') {
         return false;
     } else if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0

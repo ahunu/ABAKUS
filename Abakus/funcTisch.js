@@ -38,7 +38,7 @@ function TischNeu(pNeu) {
                 }
             }
             if (!hOK) {
-                showEineMeldung(I, 'Laut Turnierkalender findet heute kein Turnier statt.');
+                showEineMeldung(I, 'Laut Turnierkalender findet<br>heute kein Turnier statt.');
                 return;
             }
         }
@@ -110,7 +110,7 @@ function TischNeu(pNeu) {
 //        if (LS.I !== I || !CUPS.TURNIER[LS.I]) {
 //            LS.I = 0;
 //        }
-        if (CUPS.TURNIER[I] === 'PC' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)) {
+        if (CUPS.TURNIER[I] === 'PC' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
             if (I > 4 && (navigator.appName === 'Microsoft Internet Explorer'
                     || navigator.userAgent.match(/Trident/)
                     || navigator.userAgent.match(/MSIE /))) {
@@ -343,7 +343,7 @@ function checkNeuerTisch() {
             }
         }
         if (!hGefunden) {
-            showEineWarnung(I, 'Laut Turnierkalender findet heute kein Turnier statt.');
+            showEineWarnung(I, 'Laut Turnierkalender findet<br>heute kein Turnier statt.');
             return false;
         }
     }
@@ -417,12 +417,13 @@ function checkNeuerTisch() {
         LS.TURRUNDE++;
     }
 
-    if (LS.I === 52) {
+    if (LS.I === 55) {
         LS.TURRUNDE++; // Test only
     }
 
     if (STAT[hTurnier][LS.ME]) {
-        if (STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '-') {
+        if (STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '?'
+                && STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '-') {
             showEineWarnung(I, 'Du hast Runde ' + LS.TURRUNDE + ' bereits gespielt.');
             return;
         }
@@ -430,9 +431,16 @@ function checkNeuerTisch() {
 
     if (STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === 0
             || STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === '-') {
-        showEineWarnung(I, 'Du bist nich angemeldet.', 'Informiere den Veranstalter.');
+        showEineWarnung(I, 'Du bist nicht angemeldet.', 'Informiere den Veranstalter.');
         return;
     }
+
+    if (STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === '?') {
+        showEineWarnung(I, 'Die Runde ' + LS.TURRUNDE + ' wurde<br>noch nicht freigegeben.',
+                'Warte auf das OK<br>der Turnierleitung.');
+        return;
+    }
+
     LS.TURTISCH = STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6];
     var SORT = [];
     for (var spieler in STAT._AKTTURNIER) {

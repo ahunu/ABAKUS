@@ -137,6 +137,6 @@ function showCupsieger() {
         } else {
             $('#dContent').html(html).show();
         }
-        setFont(3,true);
+        setFont(4.8, true);
     }
 }

@@ -418,7 +418,7 @@ function checkNeuerTisch() {
     }
 
     if (LS.I === 55) {
-        LS.TURRUNDE++; // Test only
+//        LS.TURRUNDE++; // Test only
     }
 
     if (STAT[hTurnier][LS.ME]) {
@@ -648,7 +648,11 @@ function blert(pNR, pVNAME, pNNAME, pORT, pSTERNE) {
     LS.NR    [LS.AnzSpieler] = pNR;
     LS.VName [LS.AnzSpieler] = pVNAME.trim();
     LS.NName [LS.AnzSpieler] = pNNAME.trim();
-    LS.Ort   [LS.AnzSpieler] = pORT.trim();
+    if (typeof pORT === "string") {
+        LS.Ort   [LS.AnzSpieler] = pORT.trim();
+    } else {
+        LS.Ort   [LS.AnzSpieler] = pORT;
+    }
     LS.Sterne[LS.AnzSpieler] = pSTERNE;
 }
 

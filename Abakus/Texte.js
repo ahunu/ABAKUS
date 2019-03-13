@@ -347,21 +347,24 @@ function getTippsUndTricks() {
 function getTurnierkalender() {
     var html = '';
     var nTurniere = 0;
+
     for (var iTermin in CUPS.TERMINE) {
         if (CUPS.TERMINE[iTermin].DATUM >= hHeute && CUPS.TERMINE[iTermin].CUP === I) {
-            if (I !== 56
-                    || I === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                    || I === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && CUPS.TERMINE[iTermin].NAME.toUpperCase().indexOf('OOV') > 0) {
-                nTurniere++;
-                html += '<div class="ui-grid-a">'
-                        + '<div class="ui-block-a M" style="width:20%;padding-top:.2em">'
-                        + getDateString(CUPS.TERMINE[iTermin].DATUM)
-                        + '</div>'
-                        + '<div class="ui-block-b S" style="width:80%">'
-                        + '<span class=L><b>' + CUPS.TERMINE[iTermin].NAME + '</b></span><br>'
-                        + getTerminText(iTermin)
-                        + '</div>'
-                        + '</div><br>';
+            if (CUPS.TERMINE[iTermin].NAME.substr(0, 4) !== "test" || LS.ME === "3425") {
+                if (I !== 56
+                        || I === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
+                        || I === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && CUPS.TERMINE[iTermin].NAME.toUpperCase().indexOf('OOV') > 0) {
+                    nTurniere++;
+                    html += '<div class="ui-grid-a">'
+                            + '<div class="ui-block-a M" style="width:20%;padding-top:.2em">'
+                            + getDateString(CUPS.TERMINE[iTermin].DATUM)
+                            + '</div>'
+                            + '<div class="ui-block-b S" style="width:80%">'
+                            + '<span class=L><b>' + CUPS.TERMINE[iTermin].NAME + '</b></span><br>'
+                            + getTerminText(iTermin)
+                            + '</div>'
+                            + '</div><br>';
+                }
             }
         }
     }

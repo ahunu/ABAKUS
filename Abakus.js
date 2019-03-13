@@ -1431,7 +1431,7 @@ function fINIT() {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     }
 
-    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "0124") {
+    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "0124" || LS.ME === "3244") {
         mTirolAktiv = true;
     }
 

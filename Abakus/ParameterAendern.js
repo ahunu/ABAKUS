@@ -220,13 +220,27 @@ function copyCUPS() {
             .set(hCUPS)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
             .then(function () {
                 if (iNeu === 4) {
-                    loadSTAT(I, '', false, copySTAT);
+//                    loadSTAT(I, '', false, copySTAT);
+                    firebase.database().ref('/00/' + ('000' + iNeu).substr(-3)).once('value')
+                            .then(function (snapshot) {
+                                firebase.database().ref('/00/004')
+                                        .set(snapshot.val())  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+                                        .then(function () {
+                                            copyEND();
+                                        })
+                                        .catch(function (error) {
+                                            showEineDBWarnung(error, 'copyCUPS()', 'Set /00/004.');
+                                        });
+                            }, function (error) {
+                                showEineDBWarnung(error, 'copyCUPS()', 'Get /00/' + ('000' + iNeu).substr(-3) + '.');
+                                return false;
+                            });
                 } else {
                     copyEND();
                 }
             })
             .catch(function (error) {
-                showEinenFehler('Internet Verbindungsfehler.', 'Sp&auml;ter noch mal probieren.');
+                showEinenFehler('Internet Verbindungsfehler.', 'Später noch mal probieren.');
                 console.error("onSubmitCup: Nix is OK !");
             });
 }

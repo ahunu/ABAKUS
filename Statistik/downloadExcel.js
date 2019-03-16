@@ -28,14 +28,14 @@ function downloadExcel() {
 
             var tOF = [120, 109, 100, 93, 87, 82, 78, 73, 69, 64, 60, 57, 53, 50, 46, 43, 41, 38, 35, 33, 31, 29, 27, 25, 23, 22, 20, 19, 18, 17, 16, 15, 14, 13, 13, 12, 12, 11, 11, 11];
 
-            var CUP = {};
+            var hCUP = {};
             var hCupPunkte = 0;
             for (var turnier in STAT) {
                 if (STAT[turnier]._SAISON === stSaison) {
                     for (var spieler in STAT[turnier]) {
                         if (spieler[0] !== '_') {
-                            if (CUP[spieler]) {
-                                tCUP = CUP[spieler];
+                            if (hCUP[spieler]) {
+                                tCUP = hCUP[spieler];
                                 if (STAT[turnier][spieler][0] === 1) {
                                     tCUP[1]++;
                                 } else if (STAT[turnier][spieler][0] === 2) {
@@ -60,7 +60,7 @@ function downloadExcel() {
                                         tCUP[5].splice(ii, 0, hCupPunkte);
                                     }
                                 }
-                                CUP[spieler] = tCUP;
+                                hCUP[spieler] = tCUP;
                             } else {
                                 tCUP = [0, 0, 0, 0, 0, 0];
                                 if (STAT[turnier][spieler][0] === 1) {
@@ -74,7 +74,7 @@ function downloadExcel() {
                                 if (turnier !== stFinale) {
                                     tCUP[5] = [getCupPunkte(turnier, spieler)];
                                 }
-                                CUP[spieler] = tCUP;
+                                hCUP[spieler] = tCUP;
                             }
                         }
                     }
@@ -83,8 +83,8 @@ function downloadExcel() {
 
             var SORT = [];
             var spieler = '';
-            for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
-                tCUP = CUP[spieler];
+            for (var spieler in hCUP) { // der Internet Explorer versteht kein  for (var CUPrec of hCUP)
+                tCUP = hCUP[spieler];
                 for (var i in tCUP[5]) {
                     if (i < 6) {
                         if (!isNaN(tCUP[5][i])) {
@@ -102,7 +102,7 @@ function downloadExcel() {
                     }
                 }
 
-                CUP[spieler] = tCUP;
+                hCUP[spieler] = tCUP;
                 tCUP.push(spieler);
                 if (isNaN(spieler)) {
                     SORT.push((9000 - tCUP[0]) + spieler + ';' + spieler);
@@ -121,7 +121,7 @@ function downloadExcel() {
             for (var ii = 0; ii < SORT.length; ii++) {
                 nSpieler++;
                 var spieler = SORT[ii].substring((SORT[ii].lastIndexOf(';') + 1));
-                tCUP = CUP[spieler];
+                tCUP = hCUP[spieler];
 
 
                 if (hLastPoints !== tCUP[0]) {

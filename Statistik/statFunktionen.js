@@ -131,6 +131,7 @@ function getCupPunkte(pTurnier, pSpieler) {
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
                     return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
                 } else {
+//                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
                     if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
                         return (STAT[pTurnier][pSpieler][0] - 50) * -1;
                     } else {
@@ -139,6 +140,7 @@ function getCupPunkte(pTurnier, pSpieler) {
                 }
             }
         } else {
+//            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
             if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
                 return stFinalTeilnehmer * -1 + 49;
             } else {

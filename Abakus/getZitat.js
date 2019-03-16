@@ -6,7 +6,8 @@ function getZitat() {
         iZitat = Date.now() % 52;
     } while (iZitat === stLastZitat);
 
-    stLastZitat = iZitat;
+    stLastZitat = iZitat = 3;
+    iZitat = 3;
 
     if (iZitat === 0) {
         return ['Frauen sind da um geliebt, '
@@ -22,7 +23,7 @@ function getZitat() {
             'Johann Strauß, 1825-1899, Walzerkönig'];
     } else if (iZitat === 3) {
         return ['Wer ohne Sünde ist'
-                    + '<br>(keine Fehler macht),'
+                    + '<br><span class="M">(keine Fehler macht)</span>,'
                     + '<br>werfe den ersten Stein!',
             'Jesus von Nazareth'];
     } else if (iZitat === 4) {

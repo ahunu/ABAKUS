@@ -417,10 +417,6 @@ function checkNeuerTisch() {
         LS.TURRUNDE++;
     }
 
-    if (LS.I === 55) {
-//        LS.TURRUNDE++; // Test only
-    }
-
     if (STAT[hTurnier][LS.ME]) {
         if (STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '?'
                 && STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '-') {

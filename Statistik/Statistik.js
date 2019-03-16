@@ -154,6 +154,7 @@ function getSTAT(pCup) {
 }
 
 function whenSTATloaded() {
+    initSAISON();
     stSaisonTab = [''];
     for (var turnier in STAT) {
         if (turnier[0] === '2') {

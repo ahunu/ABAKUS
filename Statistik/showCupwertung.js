@@ -42,6 +42,7 @@ function showCupwertung() {
     }
     var CUP = {};
     var hCupPunkte = 0;
+    var nTeilnahmen = 0;
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (STAT[turnier]._SAISON === stSaison) {
@@ -59,7 +60,7 @@ function showCupwertung() {
                                     || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && istFreund(spieler)) {
 
 
-
+                                nTeilnahmen++;
                                 if (CUP[spieler]) {
                                     tCUP = CUP[spieler];
                                     if (STAT[turnier][spieler][0] === 1) {
@@ -238,7 +239,8 @@ function showCupwertung() {
                 + "<tr><td>&nbsp;&nbsp;TN:</td><td>Teilnahmen</td></tr>"
                 + "<tr><td>&nbsp;&nbsp;1.2.3.:&nbsp;&nbsp;</td><td>Stockerlpl&auml;tze</td></tr>"
                 + (stSaison === stSaisonTab[0] && stCup < 58 ? "<tr><td>&nbsp;&nbsp;&Ouml;F:</td><td>&Ouml;sterreichfinale Vorrundenpunkte</td></tr>" : "")
-                + "<tr><td></td><td></td></tr>"
+                + "<tr><td>&nbsp;&nbsp;" + nSpieler + "</td><td>Teilnehmer</td></tr>"
+                + "<tr><td>&nbsp;&nbsp;" + nTeilnahmen + "</td><td>Teilnahmen</td></tr>"
                 + "</tbody></table><br>"
 
                 + "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"

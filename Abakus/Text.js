@@ -35,6 +35,9 @@ $(document).ready(function () {
     };
 
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+    LS.ShowCups = 0;
+    LS.LastBtn = '';
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 
     var hH = parseInt($(window).innerHeight() - $('#dHeader').height() - $('#footer').height() - 1);
     var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px;">'

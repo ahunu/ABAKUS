@@ -853,7 +853,9 @@ function showBody() {
     }
 }
 
-window.onunload = function () {};
+window.onbeforeunload = function (event) {
+    $('body').addClass('ui-disabled');
+};
 window.onload = function () {
     fINIT();
 };
@@ -989,8 +991,9 @@ if (/iPad|iPhone/.test(navigator.userAgent)) {
             if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
                 window.location.replace('Edit4' + LS.JeSeite + '.html?');
                 return;
+            } else {
+                fINIT();
             }
-            fINIT();
         }
     };
 }

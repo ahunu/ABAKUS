@@ -3,6 +3,9 @@
 
 var PC = false;
 
+var LS = new Object();
+var DS = new Object();
+
 var sI = 0;
 var pI = 0;
 var iME = 0;
@@ -1600,9 +1603,14 @@ function Spieler_Init() {
     $('#ss' + LS.Vorhand).buttonMarkup({theme: 'f'});
 }
 
-window.onunload = function () {};
+window.onbeforeunload = function (event) {
+    $('body').addClass('ui-disabled');
+};
 window.onload = function () {
-    // $(document).ready(function () {
+    fINIT();
+};
+
+function fINIT() {
 
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
@@ -1972,17 +1980,21 @@ window.onload = function () {
         closeButton: false
     });
 
-    if (/iPad|iPhone/.test(navigator.userAgent)) {
-        window.onpageshow = function (event) {
-            if (window.performance.navigation.type === 2) {
-                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+}
+
+if (/iPad|iPhone/.test(navigator.userAgent)) {
+    window.onpageshow = function (event) {
+        if (window.performance.navigation.type === 2) {
+            var hJeSeite = LS.JeSeite;
+            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+            if (LS.AnzSpieler === 4 && LS.JeSeite !== hJeSeite) {
                 window.location.replace('Abakus4' + LS.JeSeite + '.html?');
+                return;
+            } else {
+                $('body').removeClass('ui-disabled');
+                $('#nbOptions').removeClass('ui-btn-active');
+                fINIT();
             }
-        };
-
-        window.onbeforeunload = function (event) {
-            $('body').addClass('ui-disabled');
-        };
-    }
-
-};
+        }
+    };
+}

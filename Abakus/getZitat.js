@@ -1,13 +1,30 @@
 
+/* global stLastZitat */
+
 function getZitat() {
 
-    var iZitat = stLastZitat;
+    var iZitat = 9999;
     do {
+        NOK = false;
         iZitat = Date.now() % 52;
-    } while (iZitat === stLastZitat);
+        for (var i = 0; i < stLastZitat.length; i++) {
+            if (stLastZitat[i] === iZitat) {
+                NOK = true;
+                break;
+            }
+        }
+        if (NOK) {
+            iZitat = 9999;
+        } else {
+            stLastZitat.unshift(iZitat);
+        }
+    } while (iZitat === 9999);
 
-    stLastZitat = iZitat = 3;
-    iZitat = 3;
+    if (stLastZitat.length > 8) {
+        stLastZitat = stLastZitat.slice(0, 8);
+    }
+
+//    stLastZitat = iZitat;
 
     if (iZitat === 0) {
         return ['Frauen sind da um geliebt, '
@@ -202,7 +219,7 @@ function getZitat() {
                     + '<br>ist auch keine Lösung.',
             'Campino alias Andreas Frege, 1962-&nbsp;dt.&nbsp;Sänger'];
     } else if (iZitat === 47) {
-                return ['Wer nicht liebt Wein, Weib und Gesang,'
+        return ['Wer nicht liebt Wein, Weib und Gesang,'
                     + '<br>bleibt ein Narr sein Leben lang.',
             'Martin Luther, 1483-1546, dt. Theologe und Reformator'];
     } else if (iZitat === 48) {

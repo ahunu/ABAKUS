@@ -1,6 +1,6 @@
 
 var LS = new Object();
-var stLastZitat = 0;
+var stLastZitat = [];
 
 function showNextZitat() {
     if (window.location.href.indexOf('Zitate') > 0) {

@@ -239,7 +239,7 @@ function writeCanvas(pCup) {
         hTitel = CUPS.NAME[pCup];
         if (pCup >= 50 && pCup <= 59) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i" + pCup + ".png");
-        } else if (pCup === 11) {
+        } else if (pCup === 11 || pCup === 25) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i55.png");
         } else {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Farben.png");
@@ -679,14 +679,6 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         : ''
                         )
 
-                + (I === 51 && !mHausruckAktiv && (LS.ME === '1014' || LS.ME === '3425')
-                        || I === 52 && !mRaiffeisenAktiv && (LS.ME === '0124' || LS.ME === '3425')
-                        || I === 53 && !mSauwaldAktiv && (LS.ME === '4506' || LS.ME === '3425')
-                        || I === 55 && !mTirolAktiv && (LS.ME === '3244' || LS.ME === '3425')
-                        ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern()" ><b>Parameter ändern</b></span><br>'
-                        : ''
-                        )
-
                 + (I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
@@ -703,11 +695,15 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                                 ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(false, \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
-                        + ((CUPS.TYP[I] !== 'CUP' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0)) || LS.ME === '3425' || I <= 2
-                                || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && LS.ME === meinStellvertreter)
-                                ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern()" ><b>Parameter ändern</b></span><br>'
-                                : ''
-                                )
+                        : ''
+                        )
+
+                + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0
+                        || (CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.TYP[I] !== 'CUP')
+                        || LS.ME === '3425'
+                        || I <= 2
+                        || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || LS.ME === meinStellvertreter))
+                        ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern()" ><b>Parameter ändern</b></span><br>'
                         : ''
                         )
 
@@ -1433,7 +1429,7 @@ function fINIT() {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     }
 
-    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "0124" || LS.ME === "3244") {
+    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "0124") {
         mTirolAktiv = true;
     }
 

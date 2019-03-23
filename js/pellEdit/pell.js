@@ -141,9 +141,12 @@
             icon: '&#128279;',
             title: 'Link',
             result: function result() {
-                var url = window.prompt('Enter the link URL');
-                if (url)
-                    exec('createLink', url);
+                var url = window.prompt('Vollständige URL:');
+                if (url) {
+                    var prompt = window.prompt('Link:');
+                    if (prompt)
+                        exec('insertHTML', '<span class="cBlau P" onclick="window.open(\'' + url + '\')">' + prompt + '</span>');
+                }
             }
         },
         image: {

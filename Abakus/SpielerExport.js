@@ -2,10 +2,12 @@
 /* global firebase */
 
 var FB = undefined;
-var LS = new Object();
 
+var LS = new Object();
+var CUPS = new Object();
 var SPIELERext = new Object();
-var cCUP = '?';
+
+var kzAktiv = '?';
 
 const spANGELEGTvon = 20;
 const spGEAENDERTvon = 22;
@@ -32,7 +34,7 @@ function downloadSpieler(pAktiv) {
 
     for (var spieler in SPIELERext) {
 //      if (pAktiv || typeof SPIELERext[spieler][spANGELEGTvon] === "string" || typeof SPIELERext[spieler][spGEAENDERTvon] === "string") {
-        if (pAktiv && (LS.ME === "3425" || SPIELERext[spieler][18] && SPIELERext[spieler][18].indexOf(cCUP) >= 0)
+        if (pAktiv && (LS.ME === "3425" || SPIELERext[spieler][18] && SPIELERext[spieler][18].indexOf(kzAktiv) >= 0)
                 || !pAktiv && (SPIELERext[spieler][spANGELEGTvon] || SPIELERext[spieler][spGEAENDERTvon])) {
             nSpieler++;
             blob += spieler + ';'
@@ -95,11 +97,29 @@ $(document).bind('pageinit', function () {
     } else {
         $('#bDownloadFuerKarlHaas').removeClass('ui-disabled');
     }
+
+    CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+    if (LS.ME === '3425') { // Leo Luger
+        kzAktiv = 'W';
+    } else if (LS.ME === "-51" || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) { // Franz Kienast
+        kzAktiv = 'H';
+    } else if (LS.ME === "-52" || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) { // Karl Haas
+        kzAktiv = 'R';
+    } else if (LS.ME === "-53" || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0) { // Sepp Lang
+        kzAktiv = 'S';
+    } else if (LS.ME === "-54" || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0) { // Hans Hafner
+        kzAktiv = 'G';
+    } else if (LS.ME === "-55" || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0) { // Markus Mair
+        kzAktiv = 'T';
+    } else if (LS.ME === "-56" || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) { // Erwin Haider
+        kzAktiv = 'W';
+    }
+
     document.onselectstart = function () {
         return false;
     };
 
-    firebase.initDB(0, 'admin');
+    firebase.initDB(0);
 
     if (true) {
         loadSPIELER();

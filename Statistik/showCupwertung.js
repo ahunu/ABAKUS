@@ -42,6 +42,7 @@ function showCupwertung() {
     }
     var CUP = {};
     var hCupPunkte = 0;
+    var nTurniere = 0;
     var nTeilnahmen = 0;
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
@@ -49,6 +50,7 @@ function showCupwertung() {
                 if (stCup !== 56
                         || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
                         || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
+                    nTurniere++;
                     for (var spieler in STAT[turnier]) {
                         if (spieler[0] !== '_') {
 
@@ -113,6 +115,7 @@ function showCupwertung() {
 
     CUPD = [];
     var spieler = '';
+    var hKey = 0;
     for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
         tCUP = CUP[spieler];
         for (var i in tCUP[5]) {
@@ -134,10 +137,14 @@ function showCupwertung() {
 
         CUP[spieler] = tCUP;
         tCUP.push(spieler);
+        hKey = (9000 - tCUP[0]);
+        if (stFinale) {
+            hKey = hKey * 1000 - getCupPunkte(stFinale, spieler);
+        }
         if (isNaN(spieler)) {
-            CUPD.push((9000 - tCUP[0]) + spieler + ';' + spieler);
+            CUPD.push(hKey + spieler + ';' + spieler);
         } else {
-            CUPD.push((9000 - tCUP[0]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+            CUPD.push(hKey + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         }
     }
 
@@ -166,7 +173,7 @@ function showCupwertung() {
 
     var nSpieler = 0;
     var hPlatz = 0;
-    var hLastPoints = 0;
+    var hLastKey = 0;
     var hClass = '';
     for (var ii = 0; ii < CUPD.length; ii++) {
         nSpieler++;
@@ -187,8 +194,8 @@ function showCupwertung() {
                 }
             }
         }
-        if (hLastPoints !== tCUP[0]) {
-            hLastPoints = tCUP[0];
+        if (hLastKey !== parseInt(CUPD[ii])) {
+            hLastKey = parseInt(CUPD[ii]);
             hPlatz = nSpieler;
         }
 
@@ -221,8 +228,8 @@ function showCupwertung() {
                 html += '<td class="TC">-</td>';
             }
             if (stSaison === stSaisonTab[0] && stCup < 58) {
-                if (ii < tOF.length) {
-                    html += '<td class="R" nowrap>' + tOF[ii] + '&nbsp;</td>';
+                if (hPlatz < tOF.length) {
+                    html += '<td class="R" nowrap>' + tOF[hPlatz] + '&nbsp;</td>';
                 } else {
                     html += '<td class="R">-&nbsp;&nbsp;</td>';
                 }
@@ -239,6 +246,7 @@ function showCupwertung() {
                 + "<tr><td>&nbsp;&nbsp;TN:</td><td>Teilnahmen</td></tr>"
                 + "<tr><td>&nbsp;&nbsp;1.2.3.:&nbsp;&nbsp;</td><td>Stockerlpl&auml;tze</td></tr>"
                 + (stSaison === stSaisonTab[0] && stCup < 58 ? "<tr><td>&nbsp;&nbsp;&Ouml;F:</td><td>&Ouml;sterreichfinale Vorrundenpunkte</td></tr>" : "")
+                + "<tr><td>&nbsp;&nbsp;" + nTurniere + "</td><td>Turniere</td></tr>"
                 + "<tr><td>&nbsp;&nbsp;" + nSpieler + "</td><td>Teilnehmer</td></tr>"
                 + "<tr><td>&nbsp;&nbsp;" + nTeilnahmen + "</td><td>Teilnahmen</td></tr>"
                 + "</tbody></table><br>"

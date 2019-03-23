@@ -577,7 +577,7 @@ $(document).bind('pageinit', function () {
     }
     editor = pell.init({
         element: document.getElementById('editor'),
-        actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'undo', 'redo'],
+        actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
         classes: {actionbar: 'pell-actionbar-custom-name'},
         onChange: function (html) {
             CUPS.TEXT1[I] = html;

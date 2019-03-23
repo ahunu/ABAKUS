@@ -172,8 +172,8 @@ function showTermin(pTermin) {
     $("#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
     $('input[id=iVERANSTALTER]').css("color", "black");
     if (pTermin >= 0) {
-        if (CUPS.BEREadmin[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0) {
-            showEineMeldung(TERMINE[pTermin].NAME + ':', '&Auml;nderung nicht m&ouml;glich.', 'Keine Berechtigung!');
+        if (CUPS.BEREadmin[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0 || CUPS.BEREschreiben[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0) {
+            showEineMeldung(TERMINE[pTermin].NAME + ':', 'Änderung nicht möglich.', 'Keine Berechtigung!');
             return;
         }
         I = pTermin;
@@ -275,7 +275,7 @@ function onAendern() {
         return;
     }
     if (!/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iCUP').val())) {
-        showEinenTip('#iCUP', 'Der <b>Cup</b> enth&auml;lt ein ung&uuml;ltiges Sonderzeichen.');
+        showEinenTip('#iCUP', 'Der <b>Cup</b> enthält ein ungültiges Sonderzeichen.');
         $('input[id=iCUP]').css("color", "red").focus();
         return;
     }
@@ -286,7 +286,7 @@ function onAendern() {
     }
 
     if (!/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iNAME').val())) {
-        showEinenTip('#iNAME', 'Der <b>Turniername</b> enth&auml;lt ein ung&uuml;ltiges Sonderzeichen.');
+        showEinenTip('#iNAME', 'Der <b>Turniername</b> enthält ein ungültiges Sonderzeichen.');
         $('input[id=iNAME]').css("color", "red").focus();
         return;
     }
@@ -408,42 +408,42 @@ $(document).bind('pageinit', function () {
 
     firebase.initDB(0, 'admin');
 
-    if (CUPS.BEREadmin[50].indexOf(LS.ME) >= 0) {
+    if (CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[50].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(50);
         $('#cb50').prop('checked', true).checkboxradio("refresh");
         $('#tWMA,#tCUP').text('Wr. Marathon').show();
     }
-    if (CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) {
+    if (CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(51);
         $('#cb51').prop('checked', true).checkboxradio("refresh");
         $('#tHRC,#tCUP').text('Hausruckcup').show();
     }
-    if (CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) {
+    if (CUPS.BEREadmin[52].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(52);
         $('#cb52').prop('checked', true).checkboxradio("refresh");
         $('#tRTC,#tCUP').text('Raiffeisencup').show();
     }
-    if (CUPS.BEREadmin[53].indexOf(LS.ME) >= 0) {
+    if (CUPS.BEREadmin[53].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[53].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(53);
         $('#cb53').prop('checked', true).checkboxradio("refresh");
         $('#tSWC,#tCUP').html('Sauwald Tarockcup').show();
     }
-    if (CUPS.BEREadmin[54].indexOf(LS.ME) >= 0) {
+    if (CUPS.BEREadmin[54].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[54].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(54);
         $('#cb54').prop('checked', true).checkboxradio("refresh");
         $('#tSTC,#tCUP').html('Steirischer Tarockcup').show();
     }
-    if (CUPS.BEREadmin[55].indexOf(LS.ME) >= 0) {
+    if (CUPS.BEREadmin[55].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[55].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(55);
         $('#cb55').prop('checked', true).checkboxradio("refresh");
         $('#tTTC,#tCUP').html('Tiroler Tarockcup').show();
     }
-    if (CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) {
+    if (CUPS.BEREadmin[56].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[56].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(56);
         $('#cb56').prop('checked', true).checkboxradio("refresh");
         $('#tWTC,#tCUP').html('Wiener Tarockcup').show();
     }
-    if (CUPS.BEREadmin[58].indexOf(LS.ME) >= 0) {
+    if (CUPS.BEREadmin[58].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[58].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(58);
         $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
         $('#tDIV,#tCUP').html('Sommer Stadl Tarock').show();

@@ -3,6 +3,8 @@
 
 var FB = undefined;
 var LS = new Object();
+var CUPS = new Object();
+
 var SPIELERext = null;
 var SPIELERnrUpdate = {};
 var SPIELERextUpdate = {};
@@ -42,7 +44,7 @@ var iANGELEGTam = null;
 var iANGELEGTvon = null;
 var iGEAENDERTam = null;
 var iGEAENDERTvon = null;
-var cCUP = '';
+var kzAktiv = '';
 var I = 0;
 var iNR = 0;
 var hNeu = false;
@@ -81,7 +83,7 @@ function B_Clear() {
 
 function ifAktiv(pSpieler) {
     if (SPIELERext[pSpieler][spAKTIV]) {
-        if (SPIELERext[pSpieler][spAKTIV].indexOf(cCUP) >= 0) {
+        if (SPIELERext[pSpieler][spAKTIV].indexOf(kzAktiv) >= 0) {
             return true;
         } else {
             return false;
@@ -165,7 +167,7 @@ function showSPIELER(i) {
     iTITEL2IGN = SPIELERext[i][spTITEL2IGN];
     iAKTIV = SPIELERext[i][spAKTIV];
     if (iAKTIV) {
-        if (iAKTIV.indexOf(cCUP) >= 0) {
+        if (iAKTIV.indexOf(kzAktiv) >= 0) {
             $("#iAKTIV").prop("checked", true).checkboxradio("refresh");
         } else {
             $("#iAKTIV").prop("checked", false).checkboxradio("refresh");
@@ -271,14 +273,14 @@ function showNeuenSPIELER(pNeu) {
     $('#iEMAIL').val('');
     $('#iGEBDAT').val('');
     $('#iGESCHLECHT').val('');
-    if (cCUP) {
+    if (kzAktiv) {
         $("#iAKTIV").prop("checked", true).checkboxradio("refresh");
     } else {
         $("#iAKTIV").prop("checked", false).checkboxradio("refresh");
     }
     $("#iVERSTORBEN").prop("checked", false).checkboxradio("refresh");
     $('#fTEXT').html('');
-    iAKTIV = cCUP;
+    iAKTIV = kzAktiv;
     iVERZOGEN = false;
     iTITEL1IGN = false;
     iTITEL2IGN = false;
@@ -345,7 +347,7 @@ function onOK(pSpeichern) {
     var iAKTIV = '?';
     if (hNeu) {
         if ($("#iAKTIV").prop("checked")) {
-            iAKTIV = cCUP;
+            iAKTIV = kzAktiv;
         } else {
             iAKTIV = '';
         }
@@ -357,14 +359,14 @@ function onOK(pSpeichern) {
         }
         if ($("#iAKTIV").prop("checked")) {
             if (iAKTIV) {
-                if (iAKTIV.indexOf(cCUP) < 0) {
-                    iAKTIV += cCUP;
+                if (iAKTIV.indexOf(kzAktiv) < 0) {
+                    iAKTIV += kzAktiv;
                 }
             } else {
-                iAKTIV += cCUP;
+                iAKTIV += kzAktiv;
             }
         } else {
-            iAKTIV = iAKTIV.replace(cCUP, '');
+            iAKTIV = iAKTIV.replace(kzAktiv, '');
         }
     }
 
@@ -477,7 +479,7 @@ function onOK(pSpeichern) {
         } else {
             if (iAKTIV === SPIELERext[iNR][spAKTIV]) {
                 hMeldung += iNR + ' <b> ' + iNNAME + ' ' + iVNAME + (iVERSTORBEN ? "&nbsp;&#134;" : "") + '</b> aus ' + iORT + ' wurde nicht ge&auml;ndert.<br>';
-            } else if (iAKTIV && iAKTIV.indexOf(cCUP) >= 0) {
+            } else if (iAKTIV && iAKTIV.indexOf(kzAktiv) >= 0) {
                 if (SPIELERext[iNR][spANGELEGTam] !== hThisSession && SPIELERext[iNR][spGEAENDERTam] !== hThisSession) {
                     if (SPIELERext[iNR][spGEAENDERTvon]) {
                         iGEAENDERTvon = SPIELERext[iNR][spGEAENDERTvon] + ' Statusaenderung';
@@ -887,7 +889,7 @@ function onSpeichern() {
                 } else {
                     SPIELERext[spieler][spGEAENDERTvon] = SPIELERext[spieler][spGEAENDERTvon].substr(0, SPIELERext[spieler][spGEAENDERTvon].indexOf(' Statusaenderung'));
                 }
-                html += spieler + ' <b>' + SPIELERext[spieler][spNNAME] + ' ' + SPIELERext[spieler][spVNAME] + '</b> aus ' + SPIELERext[spieler][spORT] + ' wird ' + (SPIELERext[iNR][spAKTIV].indexOf(cCUP) >= 0 ? '' : 'de') + 'aktiviert.<br>';
+                html += spieler + ' <b>' + SPIELERext[spieler][spNNAME] + ' ' + SPIELERext[spieler][spVNAME] + '</b> aus ' + SPIELERext[spieler][spORT] + ' wird ' + (SPIELERext[iNR][spAKTIV].indexOf(kzAktiv) >= 0 ? '' : 'de') + 'aktiviert.<br>';
                 SPIELERnrUpdate[spieler] = getSPIELERnr(spieler);
                 SPIELERextUpdate[spieler] = SPIELERext[spieler];
             }
@@ -961,6 +963,24 @@ $(document).bind('pageinit', function () {
     document.onselectstart = function () {
         return false;
     };
+
+    CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+    if (LS.ME === '3425') { // Leo Luger
+        kzAktiv = 'W';
+    } else if (LS.ME === "-51" || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) { // Franz Kienast
+        kzAktiv = 'H';
+    } else if (LS.ME === "-52" || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) { // Karl Haas
+        kzAktiv = 'R';
+    } else if (LS.ME === "-53" || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0) { // Sepp Lang
+        kzAktiv = 'S';
+    } else if (LS.ME === "-54" || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0) { // Hans Hafner
+        kzAktiv = 'G';
+    } else if (LS.ME === "-55" || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0) { // Markus Mair
+        kzAktiv = 'T';
+    } else if (LS.ME === "-56" || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) { // Erwin Haider
+        kzAktiv = 'W';
+    }
+
     firebase.initDB(0, 'admin');
 
     if (LS.ME === '3425') {

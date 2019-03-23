@@ -1,6 +1,6 @@
 
 function getVersion() {
-    return 943;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 944;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {

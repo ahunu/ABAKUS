@@ -139,7 +139,10 @@ function showCupwertung() {
         tCUP.push(spieler);
         hKey = (9000 - tCUP[0]);
         if (stFinale) {
-            hKey = hKey * 1000 - getCupPunkte(stFinale, spieler);
+            hKey = hKey * 1000;
+            if (!isNaN(hCupPunkte)) {
+                hKey -= parseInt(hCupPunkte);
+            }
         }
         if (isNaN(spieler)) {
             CUPD.push(hKey + spieler + ';' + spieler);

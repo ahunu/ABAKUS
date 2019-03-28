@@ -210,9 +210,9 @@ function showPlatzierungen(pSort) {
         } else {
             $('#sideDetails').hide();
             $('#dContent').html('');
-            var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
+            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
             $('#sideContent').css('height', hx + 'px');
-            $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
+            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
             hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
             html = '<table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
                     + '<thead>'
@@ -229,7 +229,7 @@ function showPlatzierungen(pSort) {
             $('#sideDetails').hide();
             $('#dContent').html(html);
             $('#sideContent').css('height', hx + 'px');
-            $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
+            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
             setFont(3.8, true);
         }
 

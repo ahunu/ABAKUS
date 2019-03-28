@@ -22,9 +22,9 @@
                     if (CUPS && window.location.search) {
                         var hCupName = window.location.search.replace(/\%20|_| /g, '').substr(1).toUpperCase();
                         var newCup = 0;
-                        if (hCupName === 'WR.TAROCKCUP') {
+                        if (hCupName === 'WR.TAROCKCUP' || hCupName === '?WR.TAROCKCUP') { // '?WR... = über Wiener Zeitung
                             newCup = 56;
-                        } else if (hCupName === 'ST.TAROCKCUP') {
+                        } else if (hCupName === 'ST.TAROCKCUP' || hCupName === '?ST.TAROCKCUP') { // '?WR... = über Wiener Zeitung
                             newCup = 54;
                         } else if (hCupName === 'WR.MARATHON') {
                             newCup = 50;

@@ -205,7 +205,7 @@ function getLinks() {
             + '<span class="cBlau P M" onclick="window.open(\'https://tarockrunde-sauwald.jimdo.com\')" ><b>Sauwaldcup (SWC)</b>, Innviertel (Sepp Lang), seit 2016</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://www.wienerzeitung.at/themen_channel/spiele/tarock/tarock_cup\')" ><b>Wiener Tarockcup (WTC)</b>, Wien/NÖ (Siegfried Braun), seit 2003</span><br>'
             + '<span class="cBlau P M" onclick="showCup(56)" ><b>Wiener Tarockcup</b> - Ergebnisse</span><br>'
-            + '<span class="cBlau P M" onclick="window.open(\'https://tarockcup.weebly.com\')" ><b>Steirischer Tarockcup (STC)</b>, Steiermark (Peter Baumann), seit 2013/14</span><br>'
+            + '<span class="cBlau P M" onclick="window.open(\'https://steirercup.webnode.at\')" ><b>Steirischer Tarockcup (STC)</b>, Steiermark (Peter Baumann), seit 2013/14</span><br>'
             + '<span class="cBlau P M" onclick="showCup(54)" ><b>Steirischer Tarockcup</b> - Ergebnisse</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol\')" ><b>Tiroler Tarockcup (TTC)</b>, Tirol (Markus Mair), seit 2008/09</span><br>'
             + '<br>'

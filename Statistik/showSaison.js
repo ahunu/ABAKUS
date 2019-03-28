@@ -21,7 +21,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     }
 
     if (pSaison === '#tArchiv') {
-        pSaison = $('#tArchiv').text();
+        pSaison = stSaison;
     }
 
     if (pStockerl || pAnekdoten) {
@@ -43,13 +43,8 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     }
 
     $('#nbUebersicht').removeClass('ui-btn-active');
-    $('#nbArchiv').addClass('ui-btn-active');
+    $('#nbSaison').addClass('ui-btn-active');
     $('#tArchiv').text(stSaison);
-    if (pSaison !== stSaisonTab[0] || pAnekdoten) {
-        $('#bAktSaison').removeClass('ui-disabled');
-    } else {
-        $('#bAktSaison').addClass('ui-disabled');
-    }
 
     if (pStockerl) {
         stStat = 'Stockerlliste';
@@ -217,8 +212,8 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         if (pStockerl) {
             $('#dContent').html(htmlTE).listview('refresh');
             $('#sideDetails').hide();
-            $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-            var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
+            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
+            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
             $('#sideContent').css('height', hx + 'px');
         } else {
             $('#dContent').html(htmlTE).listview('refresh');

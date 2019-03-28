@@ -25,27 +25,24 @@ function showUebersicht() {
             + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>').listview('refresh').show();
 
     var html = '';
-    for (var saison in stSaisonTab) {
-        html += '<li data-icon="false"><a onClick="showSaison(stSaisonTab[' + saison + ']);">&nbsp;' + stSaisonTab[saison] + '</a></li>';
+
+    for (var i = 1; i < stSaisonTab.length; i++) {
+        html += '<li data-icon="false"><a onClick="showSaison(stSaisonTab[' + i + ']);">&nbsp;' + stSaisonTab[i] + '</a></li>';
     }
     $('#dContent').html(html).listview('refresh');
 
     $('#nbUebersicht').addClass('ui-btn-active');
-    $('#nbArchiv').removeClass('ui-btn-active');
+    $('#nbSaison,#nbArchiv').removeClass('ui-btn-active');
     if (QUERFORMAT()) {
         showIcons([]);
-        $('#tArchiv').text('Archiv');
     }
 
-    if (stSaisonTab.length) {
-        $('#bAktSaison').removeClass('ui-disabled');
-    }
     stStat = 'Uebersicht';
     writeCanvas('Vivat Valat!');
     hideEinenMoment();
     setFont();
 
-    var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height();
+    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1);
     $('#sideContent').css('height', hx + 'px');
 
     window.scrollTo(0, 0);
@@ -97,11 +94,7 @@ function showUebersichtMT() {
     window.scrollTo(0, 0);
 
     $("#sideContent,#sideDetails,#dContent,#dCopyright").show();
-    if (QUERFORMAT()) {
-        var hx = $(window).innerHeight() - $('#sideContent').offset().top;
-    } else {
-        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height();
-    }
+    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 3);
     $('#sideContent').css('height', hx + 'px');
 }
 

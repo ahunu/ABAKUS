@@ -210,11 +210,11 @@ function showRegeln() {
         setFont();
     } else {
         $('#dContent').html(html).trigger('create').show();
-        $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
+        $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
         $('#sideDetails').hide();
         setFont(4);
         setTimeout(function () {
-            var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1;
+            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
             $('#sideContent').css('height', hx + 'px');
         }, 100);
     }

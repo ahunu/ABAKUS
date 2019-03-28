@@ -99,7 +99,7 @@ function defHome() {
 
 function defArchiv() {
     var hContent = '';
-    for (var i = 0; i < stSaisonTab.length; i++) {
+    for (var i = 1; i < stSaisonTab.length; i++) {
         hContent += '<button class="L" style="width:100%;font-weight:bold;" onclick="jbArchiv.close();showSaison(\'' + stSaisonTab[i] + '\')">' + stSaisonTab[i] + '</button><br>';
     }
     hContent += '<button class="L" data-role=none style="width:100%;" onclick="jbArchiv.close();">zur&uuml;ck</button>';
@@ -107,8 +107,8 @@ function defArchiv() {
         title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center><i class="i zmdi-play zmdi-hc-rotate-90"></i>&nbsp;&nbsp;&nbsp;Archiv</center></div>',
         content: hContent,
         target: $('#nbArchiv'),
-        position: {y: 'top'},
-        width: $('#nbArchiv').width(),
+        position: {x: 'right', y: 'top'},
+        width: $('#nbSaison').width() + $('#nbArchiv').width() + 4,
         closeButton: false,
         overlay: false,
         attach: (QUERFORMAT() ? '#nbArchiv' : ''),
@@ -155,7 +155,7 @@ function getSTAT(pCup) {
 
 function whenSTATloaded() {
     initSAISON();
-    stSaisonTab = [''];
+    stSaisonTab = [];
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (stCup !== 56
@@ -169,16 +169,9 @@ function whenSTATloaded() {
             }
         }
     }
-    stSaisonTab.splice(0, 1);
-    stSaisonTab.reverse();
 
-    if (CUPS.TYP[stCup] === 'MT') {
-    } else {
-        if (stSaisonTab.length) {
-            $('#bAktSaison').removeClass('ui-disabled');
-            $('#tAktSaison').text(stSaisonTab[0]);
-        }
-    }
+    stSaisonTab.reverse();
+    stSaisonTab.splice(0, 0, 'Summen');
 
     if (LS.ME[0] === '-' || window.location.href.indexOf('?FromTurnier') > 0) {
         $('#tZumTurnier').html('Zum Turnier');
@@ -197,7 +190,7 @@ function whenSTATloaded() {
             showUebersichtMT('*');
         } else {
             if (stSaisonTab.length >= 1) {
-                showSaison(stSaisonTab[0]);
+                showSaison(stSaisonTab[1]);
             } else {
                 showUebersicht();
                 showTermine();
@@ -413,9 +406,6 @@ function fINIT(pCup) {
 
     if (QUERFORMAT()) {
         $('#hfHeader').remove();
-        if (CUPS.TYP[stCup] === 'MT') {
-            $('#dFooter').remove().hide();
-        }
     } else {
         $('#dLinks').attr("style", "width:100%");
         $('#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dMargin,#dRumpf,#dCopyright,#tStand').remove();
@@ -551,7 +541,7 @@ function fINIT(pCup) {
         if (firebaseRef) {
             firebaseRef.off();
         }
-        if (STAT._AKTTURNIER && STAT._AKTTURNIER._RUNDE && STAT._AKTTURNIER._RUNDE <= 3 && LS.ME.length === 4) {
+        if (STAT && STAT._AKTTURNIER && STAT._AKTTURNIER._RUNDE && STAT._AKTTURNIER._RUNDE <= 3 && LS.ME.length === 4) {
         } else if (!QUERFORMAT() && LS.I !== LS.ShowCups) {
             LS.ShowCups = 0;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));

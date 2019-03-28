@@ -127,8 +127,8 @@ function showTischliste() {
     } else {
         $("#dContent").html(html + "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>");
         $('#sideDetails').hide();
-        $('#nbUebersicht,#nbArchiv,#bAktSaison').removeClass('ui-disabled').removeClass('ui-btn-active');
-        var hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
+        $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
+        var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
         $('#sideContent').css('height', hx + 'px');
     }
 

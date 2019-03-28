@@ -1,5 +1,6 @@
 
 /* global T, iTischR1, iTischR2, iTischR3, iMannschaft, STAT */
+
 function SAISON(pTurniere, pTeilnehmer, pTeilnahmen) {
     this._Turniere = pTurniere;
     this._Teilnehmer = pTeilnehmer;

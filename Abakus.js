@@ -262,7 +262,7 @@ function writeCanvas(pCup) {
                 hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://tarockrunde-sauwald.jimdo.com\')" >tarockrunde-sauwald.jimdo.com</span>';
             } else if (pCup === 54) {
                 document.title = 'STC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
-                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://tarockcup.weebly.com\')" >https://tarockcup.weebly.com</span>';
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://steirercup.webnode.at\')" >https://steirercup.webnode.at</span>';
             } else if (pCup === 55) {
                 document.title = 'TTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
                 hTitel = 'Tiroler Tarockcup';

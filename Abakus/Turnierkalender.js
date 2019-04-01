@@ -109,7 +109,7 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                     hCupName = 'St. Tarockcup';
                     hClass = ' cSTC';
                 } else if (TERMINE[termin].CUP === 55) {
-                    hCupName = 'Tir. Tarockcup';
+                    hCupName = 'Tirolcup';
                     hClass = ' cTTC';
                 } else if (TERMINE[termin].CUP === 56) {
                     hCupName = 'Wr. Tarockcup';
@@ -172,7 +172,7 @@ function showTermin(pTermin) {
     $("#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
     $('input[id=iVERANSTALTER]').css("color", "black");
     if (pTermin >= 0) {
-        if (CUPS.BEREadmin[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0 || CUPS.BEREschreiben[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0) {
+        if (CUPS.BEREadmin[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0 && CUPS.BEREschreiben[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0) {
             showEineMeldung(TERMINE[pTermin].NAME + ':', 'Änderung nicht möglich.', 'Keine Berechtigung!');
             return;
         }
@@ -271,7 +271,7 @@ function onAendern() {
 
     var hCUP = parseInt($('#iCUP').val().trim());
     if (isNaN(hCUP) || hCUP !== 50 && hCUP !== 51 && hCUP !== 52 && hCUP !== 53 && hCUP !== 54 && hCUP !== 55 && hCUP !== 56 && hCUP !== 58 && hCUP !== 59 && hCUP !== 31 && hCUP !== 30 && hCUP !== 3 && hCUP !== 4) {
-        showEinenTip('#iCUP', 'Wr. Marathon = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tir. Tarockcup = 55,<br>Wr. Tarockcup = 56,<br>Schmankerl Tarock = 58,<br>UTC Klopeinersee = 59,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+        showEinenTip('#iCUP', 'Wr. Marathon = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Schmankerl Tarock = 58,<br>UTC Klopeinersee = 59,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
     if (!/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iCUP').val())) {

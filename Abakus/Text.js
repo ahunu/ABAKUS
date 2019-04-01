@@ -62,6 +62,10 @@ $(document).ready(function () {
     } else if (window.location.href.indexOf('TippsUndTricks') > 0) {
         $('#hTitel2').text("Tipps & Tricks");
         html += getTippsUndTricks();
+    } else if (window.location.href.indexOf('XXIIDevisen') > 0) {
+        $('#hTitel1').text("XXII Devisen");
+        $('#hTitel2').text("Fia aufgweckte Spüla");
+        html += XXIIDevisen();
     }
     html += '</html></html>';
     $('#dRumpf').html(html);

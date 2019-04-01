@@ -42,7 +42,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         compCUPPUNKTE();
     }
 
-    $('#nbUebersicht').removeClass('ui-btn-active');
+    $('#nbUebersicht,#nbArchiv').removeClass('ui-btn-active');
     $('#nbSaison').addClass('ui-btn-active');
     $('#tArchiv').text(stSaison);
 

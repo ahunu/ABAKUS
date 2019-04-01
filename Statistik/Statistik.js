@@ -104,7 +104,7 @@ function defArchiv() {
     }
     hContent += '<button class="L" data-role=none style="width:100%;" onclick="jbArchiv.close();">zur&uuml;ck</button>';
     jbArchiv = new jBox('Modal', {
-        title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center><i class="i zmdi-play zmdi-hc-rotate-90"></i>&nbsp;&nbsp;&nbsp;Archiv</center></div>',
+        title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center>Archiv&nbsp;&nbsp;&nbsp;<i class="i zmdi-play zmdi-hc-rotate-90"></i></center></div>',
         content: hContent,
         target: $('#nbArchiv'),
         position: {x: 'right', y: 'top'},
@@ -133,6 +133,7 @@ function nbHome() {
 }
 
 function nbArchiv() {
+    $('#nbArchiv').removeClass('ui-btn-active');
     if (jbHome) {
         if (jbHome.isOpen) {
             jbHome.close();

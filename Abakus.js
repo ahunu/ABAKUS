@@ -872,6 +872,10 @@ function initExtraButtons() {
         $('#bAdminTools').show();
     }
 
+    if (LS.ME !== '3425' && LS.ME !== '3244' && LS.ME !== '3228') { // Alex Sabkovski --- Turnierkalender
+        $('#bXXIIDevisen').show();
+    }
+
     if (!QUERFORMAT()) {
         $('#bLinks,#bAdminTools').hide();
     }
@@ -1108,7 +1112,7 @@ function whenCUPSloaded() {
                     hCupName = 'St. Tarockcup';
                     hCupFarbe = ' cSTC';
                 } else if (TERMINE[termin].CUP === 55) {
-                    hCupName = 'Tir. Tarockcup';
+                    hCupName = 'Tirolcup';
                     hCupFarbe = ' cTTC';
                 } else if (TERMINE[termin].CUP === 56) {
                     hCupName = 'Wr. Tarockcup';

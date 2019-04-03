@@ -23,6 +23,12 @@ var myJBox = null;
 
 var iJahr = 0;
 
+function log(pText, I) {
+    'use strict';
+    nLog++;
+    console.log(LS.Spieler[I] + '(' + I + '): ' + pText + '.<br>');
+}
+
 function Summieren(I) {
     'use strict';
     log('Summieren', I);
@@ -229,12 +235,6 @@ function whenSTATloaded() {
     }
 }
 
-function log(pText, I) {
-    'use strict';
-    nLog++;
-    console.log(LS.Spieler[I] + '(' + I + '): ' + pText + '.<br>');
-}
-
 function wrtSPIELER(I) {
 //    'use strict';    wegen inline Funktionen nicht möglich (fehlverhalten auf Android)
     if (I > LS.AnzSpieler) {
@@ -251,7 +251,12 @@ function wrtSPIELER(I) {
         spTIMESTAMP.setSeconds(0);
         spTIMESTAMP.setMilliseconds(0);
     } else {
-        var spTIMESTAMP = new Date(new Date(LS.Von).getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
+        var spTIMESTAMP = new Date(new Date(LS.Von));
+    }
+    spTIMESTAMP = new Date(spTIMESTAMP.getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
+
+    if (LS.NR[I] === '3425') {
+        I = I;
     }
 
     if (I <= LS.AnzGespeichert) {
@@ -275,17 +280,6 @@ function wrtSPIELER(I) {
             break;
         }
     }
-
-//    if (ii >= 0) {
-//        if (new Date(STAT.S[ii].TIMESTAMP).valueOf() === new Date(spTIMESTAMP).valueOf()) {  // bereits gespeichert
-//            $('#emText').append(LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + ' bereits gespeichert. (f345)' + '<br>');
-//            log('STATadd bereits gespeichert. (Fehler 345).', I);
-//            LS.AnzGespeichert = I;
-//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-//            wrtSPIELER(I + 1);
-//            return;
-//        }
-//    }
 
     function initSTAT(pI) {
         'use strict';

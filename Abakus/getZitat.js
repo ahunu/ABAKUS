@@ -20,11 +20,9 @@ function getZitat() {
         }
     } while (iZitat === 9999);
 
-    if (stLastZitat.length > 8) {
-        stLastZitat = stLastZitat.slice(0, 8);
+    if (stLastZitat.length > 22) {
+        stLastZitat = stLastZitat.slice(0, 22);
     }
-
-//    stLastZitat = iZitat;
 
     if (iZitat === 0) {
         return ['Frauen sind da um geliebt, '

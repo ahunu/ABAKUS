@@ -873,7 +873,7 @@ function initExtraButtons() {
     }
 
     if (LS.ME !== '3425' && LS.ME !== '3244' && LS.ME !== '3228') { // Alex Sabkovski --- Turnierkalender
-        $('#bXXIIDevisen').show();
+        $('#bXXIIDevisen').hide();
     }
 
     if (!QUERFORMAT()) {

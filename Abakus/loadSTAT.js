@@ -287,7 +287,11 @@ function loadSTATold(I, pCallback) {
                         STAT.TEILNEHMER = true;
                         hMEZULETZT = new Date(STAT.S[iSTAT].TIMESTAMP).valueOf();
                     }
-                    STAT.S[iSTAT].TIMESTAMP = new Date(new Date(STAT.S[iSTAT].TIMESTAMP).getTime() + 60000 * new Date(STAT.S[iSTAT].TIMESTAMP).getTimezoneOffset());
+//                    STAT.S[iSTAT].TIMESTAMP = new Date(new Date(STAT.S[iSTAT].TIMESTAMP).getTime() + 60000 * new Date(STAT.S[iSTAT].TIMESTAMP).getTimezoneOffset());
+
+                    if (STAT.S[iSTAT].NR === LS.ME && LS.ME === '3425') {
+                        console.log(STAT.S[iSTAT].NR + ':   DB: ' + new Date(hMEZULETZT).toString() + ',  Korr: ' + STAT.S[iSTAT].TIMESTAMP.toString());
+                    }
 
                     if (typeof STAT.S[iSTAT].STERNE === 'undefined') {
                         STAT.S[iSTAT].STERNE = '';

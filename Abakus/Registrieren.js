@@ -35,7 +35,7 @@ function onRegistrieren() {
         showEinenTip("#iCNR", '(Cup)Spielernummer ungültig.');
         return;
     }
-    if ((iCNRn < 0 || iCNRn > 9999) && iCNRn !== -4 && iCNRn !== -54 && iCNRn !== -56) { // St. bzw. Wr. Tarockcup
+    if ((iCNRn < 0 || iCNRn > 9999) && iCNRn !== -4 && iCNRn !== -52 && iCNRn !== -54 && iCNRn !== -55 && iCNRn !== -56) { // Raiffeisencup(Spieler einpflegen), St. bzw. Wr. Tarockcup
         showEinenTip("#iCNR", '(Cup)Spielernummer ungültig.');
         return;
     }

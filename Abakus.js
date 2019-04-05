@@ -340,10 +340,7 @@ function initCUPSdelAllSTAT(pMeldung) {
         }
     }
     $('#pContent').scrollTop(0);
-//    $('#bAK').collapsible({collapsed: false});
-//    $('#bMR').collapsible({collapsed: false});
-//    $('#bAL,#bCT,#bLC,#bMT,#bFC,#PR,#bTR,#bAR').collapsible({collapsed: true});
-    LS.ShowCups = 0;
+//    LS.ShowCups = 0;
     LS.LastBtn = '';
 
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
@@ -411,8 +408,7 @@ function initCUPSdelAllSTAT(pMeldung) {
     if (pMeldung) {
         $('#dMeldung').html("<img src='Icons/OK.png' width='24' height='24'><span class=cSchwarz>&nbsp;&nbsp;Die App wurde initialisiert.</span><br>").show();
     }
-    $('#bAK').collapsible({collapsed: false});
-    $('#bMR').collapsible({collapsed: false});
+    $('#bAK,#bMR').collapsible({collapsed: false});
     $('#bAL,#bCT,#bLC,#bMT,#bFC,#PR,#bTR,#bAR').collapsible({collapsed: true});
 }
 
@@ -1341,14 +1337,16 @@ function whenCUPSloaded() {
     }
     if (LS.LastBtn) {
         $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
-        if (QUERFORMAT()) {
-            $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
-        }
-        if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 1.3) {
-            $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 1.3));
-            if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
-                if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 1.3) {
-                    $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 1.3));
+        if ($(LS.LastBtn).length) {
+            if (QUERFORMAT()) {
+                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
+            }
+            if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 1.3) {
+                $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 1.3));
+                if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
+                    if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 1.3) {
+                        $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 1.3));
+                    }
                 }
             }
         }

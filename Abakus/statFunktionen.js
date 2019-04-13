@@ -214,8 +214,8 @@ function writeCanvas(pTitel, pFName) {
 
 function getZitatF(pClass) {
     var hZitat = getZitat();
-        return "<br><br><br><br><div class='C " + pClass + " B cBlau'><i>" + hZitat[0] + "</i></div>"
-                + "<br><div class='C " + pClass + "'>" + hZitat[1] + "</div>";
+    return "<br><br><br><br><div class='C " + pClass + " B cBlau'><i>" + hZitat[0] + "</i></div>"
+            + "<br><div class='C " + pClass + "'>" + hZitat[1] + "</div>";
 }
 
 function setAnzSpalten(pSpalten) {
@@ -351,7 +351,7 @@ function getName(i, pMax) {
                 ret = STAT.S[i].NNAME + ' ' + STAT.S[i].VNAME;
             }
             if (typeof STAT.S[i].STERNE === 'string') {
-                ret = ret + STAT.S[i].STERNE;
+                ret = ret + ' ' + STAT.S[i].STERNE;
             }
             return ret;
         }
@@ -383,7 +383,7 @@ function getName(i, pMax) {
     }
     ret = ret.trim();
     if (typeof STAT.S[i].STERNE === 'string') {
-        ret = ret + STAT.S[i].STERNE;
+        ret = ret + ' ' + STAT.S[i].STERNE;
     }
     if (QUERFORMAT() || stStat === 8) {
         return ret;
@@ -666,9 +666,9 @@ function listeDrucken() {
     context.clearRect(0, 0, 70, 70);
     context.drawImage(imgSkuess, 3, 4);
     $("#sortUndLayout").hide();
-//  $("#stHead").show();
     $('html, body').scrollTop();
     setTimeout(function () {
+        $('#mTable').css('font-size', '3vw');
         javascript:window.print();
     }, 500);
 }

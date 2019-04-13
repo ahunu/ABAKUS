@@ -12,9 +12,14 @@ var kzAktiv = '?';
 const spANGELEGTvon = 20;
 const spGEAENDERTvon = 22;
 
+const spANGELEGTam = 19;
+const spGEAENDERTam = 21;
+
 const tMonth = ['', 'Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 
 var myJBox = null;
+
+const dHeute = new Date();
 
 function whenSPIELERloaded() {
     'use strict';
@@ -28,14 +33,38 @@ function downloadSpieler(pAktiv) {
 
     showEinenMoment('Spieler Download:', 'Downloadfile wird erstellt!');
 
-    var fName = 'SPIELER.csv';
+    var fName = '';
+
+    if (pAktiv) {
+        if (pAktiv === '*') {
+            fName = 'SPIELER (alle).csv';
+        } else {
+            fName = 'SPIELER (aktive).csv';
+        }
+    } else {
+        fName = 'SPIELER (neue oder geänderte).csv';
+
+        var iDATUM = $('#iDATUM').val();
+        if (iDATUM === "") {
+            showEinenFehler('Ab wann?', 'Ab wann soll downgeloaded werden?');
+            return;
+        }
+
+        iDATUM = new Date(iDATUM);
+        if (iDATUM > dHeute) {
+            showEinenFehler('Ab wann?', 'Das Datum darf nicht in der Zukunft liegen!');
+            return;
+        }
+    }
+
     var blob = 'Nr.;Zuname;Vorname;Titel vor;Titel nach;Zusatz;Straße;PLZ;Ort;Festnetz;Mobil;Geburtsdatum;E-Mail;Geschlecht;Startort;Verstorben;Verzogen;Titel v. ign.;Titel n. ign.;;Angelegt am;Angelegt von;Geaendert am;Geaendert von;\n';
     var nSpieler = 0;
 
     for (var spieler in SPIELERext) {
-//      if (pAktiv || typeof SPIELERext[spieler][spANGELEGTvon] === "string" || typeof SPIELERext[spieler][spGEAENDERTvon] === "string") {
-        if (pAktiv && (LS.ME === "3425" || SPIELERext[spieler][18] && SPIELERext[spieler][18].indexOf(kzAktiv) >= 0)
-                || !pAktiv && (SPIELERext[spieler][spANGELEGTvon] || SPIELERext[spieler][spGEAENDERTvon])) {
+        if (pAktiv && pAktiv === '*'
+                || pAktiv && SPIELERext[spieler][18] && SPIELERext[spieler][18].indexOf(kzAktiv) >= 0
+                || !pAktiv && (SPIELERext[spieler][spANGELEGTam] && new Date(SPIELERext[spieler][spANGELEGTam]) >= iDATUM
+                        || SPIELERext[spieler][spGEAENDERTam] && new Date(SPIELERext[spieler][spGEAENDERTam]) >= iDATUM)) {
             nSpieler++;
             blob += spieler + ';'
                     + SPIELERext[spieler][0] + ';'  // Familienname
@@ -90,12 +119,14 @@ $(document).bind('pageinit', function () {
 
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
 
-    if (LS.ME !== "3425" && LS.ME !== "1000" && LS.ME !== "0124") {
+    if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };
-    } else {
-        $('#bDownloadFuerKarlHaas').removeClass('ui-disabled');
+    }
+
+    if (LS.ME === "3425" || LS.ME === "1014" || LS.ME === "0124") { // Franz Kienast, Karl Haas jun.
+        $('#bDownloadAlleSpieler,#bDownloadFuerKarlHaas').removeClass('ui-disabled');
     }
 
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
@@ -119,6 +150,11 @@ $(document).bind('pageinit', function () {
         return false;
     };
 
+    if (dHeute.getMonth() > 3) {
+        $('#iDATUM').val(dHeute.getFullYear() + '-03-01');
+    } else {
+        $('#iDATUM').val((dHeute.getFullYear() - 1) + '-03-01');
+    }
     firebase.initDB(0);
 
     if (true) {

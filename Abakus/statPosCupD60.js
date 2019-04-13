@@ -92,6 +92,23 @@ function statPosCupD60(pRunde) {
 
     SORT = [];
     for (var i = 0, eoa = STAT.S.length; i < eoa; i++) {
+
+
+        
+        if (STAT.S[i].NR === '1887') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        } else  if (STAT.S[i].NR === '3244') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        } else  if (STAT.S[i].NR === '4242') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        } else  if (STAT.S[i].NR === '4082') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        } else  if (STAT.S[i].NR === '4249') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        }
+
+
+
         if (STAT.S[i].SPIELE[stTurCupGes] > 0) {
             if (STAT.S[i].SPIELE[stTurCupGes] >= (STAT.MAXSPIELE[stTurCupGes] * CUPS.DISPAB[stCup][stTurCupGes] / 100)
                     || stGelegenheitsspieler
@@ -123,9 +140,6 @@ function statPosCupD60(pRunde) {
                 } else if (stSort.indexOf('TIS') === 0) {
                     sKey = STAT.S[i].SCHREIBER[0] + ',' + STAT.S[i].NNAME + ' ' + STAT.S[i].VNAME + ';' + i;
                 } else {
-//                    if (sKey < 0) {
-//                        sKey = STAT.S[i].PUNKTE[stTurCupGes] * 60 / STAT.S[i].SPIELE[stTurCupGes];
-//                    }
                     sKey = (50000000000 - parseInt(sKey * 100)) + ',' + getName(i, 99) + ';' + i;
                 }
 

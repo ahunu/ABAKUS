@@ -1,5 +1,5 @@
 
-/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, CUPSIEGER, stSaisonTab, stShowList */
+/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, stShowList, SAISON, isSaison */
 
 function showSaison(pSaison, pStockerl, pAnekdoten) {
 
@@ -20,25 +20,15 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         jbSpieler.close();
     }
 
-    if (pSaison === '#tArchiv') {
-        pSaison = stSaison;
-    }
-
     if (pStockerl || pAnekdoten) {
         showIcons(['#iPrint']);
     } else {
         showIcons([]);
     }
 
-    if (typeof pSaison !== 'string') {
-        if (stSaison === -1) {
-            pSaison = 0;
-        } else {
-            pSaison = stSaison;
-        }
-    }
-    if (stSaison !== pSaison) {
-        stSaison = pSaison;
+    if (pSaison && iSaison !== pSaison) {
+        iSaison = pSaison;
+        stSaison = SAISON[iSaison][isSaison];
         compCUPPUNKTE();
     }
 
@@ -182,9 +172,9 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                 + '<td class=noprint>&nbsp;&nbsp;</td>'
                 + '<td class="cBlau P L" onclick="showCupwertung();"><b>Cupwertung</b>&nbsp;&nbsp;' + stSaison + '</td>'
                 + '<td class="M"></td>'
-                + '<td class="M" ><span style="white-space:nowrap">1. <span onclick="event.stopPropagation();popupSpieler(\'' + CUPSIEGER[1] + '\');" class="P B cBlau">' + getSpielerName(CUPSIEGER[1]) + '</span>, ' + CUPPUNKTE[CUPSIEGER[1]] + ' Cuppunkte</span></td></tr>'
+                + '<td class="M" ><span style="white-space:nowrap">1. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is1] + 'fff\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is1]) + '</span>, ' + SAISON[iSaison][is1CupPunkte] + ' Cuppunkte</span></td></tr>'
                 + '<tr hidden><td class="M">adfasdf</td></tr>'
-                + '<tr><td class=noprint></td><td></td><td></td><td class="M"><div style="margin-top:-5px;white-space:nowrap">2. <span onclick="event.stopPropagation();popupSpieler(\'' + CUPSIEGER[2] + '\');" class="P B cBlau">' + getSpielerName(CUPSIEGER[2]) + '</span>, ' + CUPPUNKTE[CUPSIEGER[2]] + ' Cuppunkte<br>3. <span onclick="event.stopPropagation();popupSpieler(\'' + CUPSIEGER[3] + '\');" class="P B cBlau">' + getSpielerName(CUPSIEGER[3]) + '</span>, ' + CUPPUNKTE[CUPSIEGER[3]] + ' Cuppunkte</div></td></td></tr>'
+                + '<tr><td class=noprint></td><td></td><td></td><td class="M"><div style="margin-top:-5px;white-space:nowrap">2. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is2] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is2]) + '</span>, ' + SAISON[iSaison][is2CupPunkte] + ' Cuppunkte<br>3. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is3] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is3]) + '</span>, ' + SAISON[iSaison][is3CupPunkte] + ' Cuppunkte</div></td></td></tr>'
                 + '<tr><td></td><th class="L K" colspan="3">Die ' + (pAnekdoten ? 'Anekdoten' : 'Turniere') + ' der Saison&nbsp;&nbsp;' + stSaison + ':</th></tr>'
                 + htmlTE
                 + "</tbody></table>";
@@ -194,20 +184,16 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                 '<li data-role="list-divider" onclick="toggleListen();">&nbsp;&nbsp;&nbsp;&nbsp;'
                 + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-plus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
                 + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-minus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
-                + pSaison + ' - die Listen:</li>'
+                + stSaison + ' - die Listen:</li>'
                 + '<li class="cListe" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a></li>'
                 + (window.location.href.toUpperCase().indexOf('OOV') < 0
                         ? '<li class="cListe" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
                         + (QUERFORMAT()
-                                ? '<li class="cListe" data-icon="false"><a id=bStockerlliste onclick="showSaison(\'' + pSaison + '\', true)">&nbsp;Stockerlliste</a></li>'
-                                + '<li class="cListe" data-icon="false"><a id=bAnekdoten ' + (nAnekdoten ? '' : 'class="ui-disabled "') + 'onclick="showSaison(\'' + pSaison + '\', false, true)">&nbsp;Anekdoten</a></li>'
+                                ? '<li class="cListe" data-icon="false"><a id=bStockerlliste onclick="showSaison(\'' + iSaison + '\', true)">&nbsp;Stockerlliste</a></li>'
+                                + '<li class="cListe" data-icon="false"><a id=bAnekdoten ' + (nAnekdoten ? '' : 'class="ui-disabled "') + 'onclick="showSaison(\'' + iSaison + '\', false, true)">&nbsp;Anekdoten</a></li>'
                                 : '')
                         : '')
-                + (stSaisonTab[0] === pSaison
-                        ? '<li class="cListe" data-icon="false"><a id=bTurnierkalender2 onclick="showTermine()">&nbsp;Turnierkalender</a></li>'
-                        : ''
-                        )
-                + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;' + pSaison + ' - die Turniere:</li>'
+                + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Turniere:</li>'
                 ).listview('refresh').show();
         if (pStockerl) {
             $('#dContent').html(htmlTE).listview('refresh');
@@ -336,25 +322,4 @@ function compCUPPUNKTE() {
         }
     }
 
-    CUPSIEGER = [, 0, 0, 0];
-    var _Punkte = [, 0, 0, 0];
-    for (var spieler in CUPPUNKTE) {
-        sCUPPUNKTE = 0;
-        if (CUPPUNKTE[spieler] >= _Punkte[1]) {
-            CUPSIEGER[3] = CUPSIEGER[2];
-            CUPSIEGER[2] = CUPSIEGER[1];
-            CUPSIEGER[1] = spieler;
-            _Punkte[3] = _Punkte[2];
-            _Punkte[2] = _Punkte[1];
-            _Punkte[1] = CUPPUNKTE[spieler];
-        } else if (CUPPUNKTE[spieler] >= _Punkte[2]) {
-            CUPSIEGER[3] = CUPSIEGER[2];
-            CUPSIEGER[2] = spieler;
-            _Punkte[3] = _Punkte[2];
-            _Punkte[2] = CUPPUNKTE[spieler];
-        } else if (CUPPUNKTE[spieler] >= _Punkte[3]) {
-            CUPSIEGER[3] = spieler;
-            _Punkte[3] = CUPPUNKTE[spieler];
-        }
-    }
 }

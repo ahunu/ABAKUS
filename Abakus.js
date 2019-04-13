@@ -695,7 +695,6 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         )
 
                 + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0
-                        || (CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.TYP[I] !== 'CUP')
                         || LS.ME === '3425'
                         || I <= 2
                         || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || LS.ME === meinStellvertreter))

@@ -1,5 +1,5 @@
 
-/* global firebase, showCupwertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, stSaisonTab, MPPUtils */
+/* global firebase, showCupwertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, MPPUtils, isSaison */
 
 // 51 Hausruckcup
 // 52 Raiffeisencup
@@ -18,10 +18,9 @@ var LS = new Object();
 var CUPS = new Object();
 var STAT = new Object();
 var SPIELER = new Object();
-var SAISON = new Object();
+var SAISON = [];
 var CUP = new Object();
 var CUPD = new Object();
-var CUPSIEGER = [];
 
 var tFIXPUNKTE = [, 223, 198, 180, 168, 156, 147, 138, 131, 124, // 0 - 9
     117, 110, 105, 100, 95, 90, 85, 80, 76, 72, // 10 - 19
@@ -38,8 +37,9 @@ var jbHome = null;
 var I = -1;
 var Y = 0;
 var stCup = 0;
+var iSaison = 0;
+var aktSaison = 0;
 var stSaison = '';
-var stSaisonTab = [];
 var stFinale = false;
 var stFinalTeilnehmer = 0;
 var stStat = 0;
@@ -99,8 +99,8 @@ function defHome() {
 
 function defArchiv() {
     var hContent = '';
-    for (var i = 1; i < stSaisonTab.length; i++) {
-        hContent += '<button class="L" style="width:100%;font-weight:bold;" onclick="jbArchiv.close();showSaison(\'' + stSaisonTab[i] + '\')">' + stSaisonTab[i] + '</button><br>';
+    for (var i = SAISON.length - 1; i > 0; i--) {
+        hContent += '<button class="L" style="width:100%;font-weight:bold;" onclick="jbArchiv.close();showSaison(' + i + ')">' + SAISON[i][isSaison] + '</button><br>';
     }
     hContent += '<button class="L" data-role=none style="width:100%;" onclick="jbArchiv.close();">zur&uuml;ck</button>';
     jbArchiv = new jBox('Modal', {
@@ -155,24 +155,8 @@ function getSTAT(pCup) {
 }
 
 function whenSTATloaded() {
-    initSAISON();
-    stSaisonTab = [];
-    for (var turnier in STAT) {
-        if (turnier[0] === '2') {
-            if (stCup !== 56
-                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
-                if (STAT[turnier]._SAISON) {
-                    if (STAT[turnier]._SAISON !== stSaisonTab[stSaisonTab.length - 1]) {
-                        stSaisonTab[stSaisonTab.length] = STAT[turnier]._SAISON;
-                    }
-                }
-            }
-        }
-    }
 
-    stSaisonTab.reverse();
-    stSaisonTab.splice(0, 0, 'Summen');
+    initSAISON();
 
     if (LS.ME[0] === '-' || window.location.href.indexOf('?FromTurnier') > 0) {
         $('#tZumTurnier').html('Zum Turnier');
@@ -190,8 +174,8 @@ function whenSTATloaded() {
         if (CUPS.TYP[stCup] === 'MT') {
             showUebersichtMT('*');
         } else {
-            if (stSaisonTab.length >= 1) {
-                showSaison(stSaisonTab[1]);
+            if (aktSaison) {
+                showSaison(aktSaison);
             } else {
                 showUebersicht();
                 showTermine();

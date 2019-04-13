@@ -280,6 +280,11 @@ function loadSTATold(I, pCallback) {
                         showEinenFehler(I, 'Datenbankfehler:', 'dataItem.key ' + dataItem.key + ' unbekannt.');
                         return;
                     }
+
+                    // ?????????????????????????????????????
+                    STAT.S[iSTAT].TIMESTAMP = new Date(new Date(STAT.S[iSTAT].TIMESTAMP).getTime() + 60000 * new Date(STAT.S[iSTAT].TIMESTAMP).getTimezoneOffset());
+                    // ?????????????????????????????????????
+
                     if (hZuletztGespielt < new Date(STAT.S[iSTAT].TIMESTAMP).valueOf()) {
                         hZuletztGespielt = new Date(STAT.S[iSTAT].TIMESTAMP).valueOf();
                     }
@@ -287,7 +292,6 @@ function loadSTATold(I, pCallback) {
                         STAT.TEILNEHMER = true;
                         hMEZULETZT = new Date(STAT.S[iSTAT].TIMESTAMP).valueOf();
                     }
-//                    STAT.S[iSTAT].TIMESTAMP = new Date(new Date(STAT.S[iSTAT].TIMESTAMP).getTime() + 60000 * new Date(STAT.S[iSTAT].TIMESTAMP).getTimezoneOffset());
 
                     if (STAT.S[iSTAT].NR === LS.ME && LS.ME === '3425') {
                         console.log(STAT.S[iSTAT].NR + ':   DB: ' + new Date(hMEZULETZT).toString() + ',  Korr: ' + STAT.S[iSTAT].TIMESTAMP.toString());

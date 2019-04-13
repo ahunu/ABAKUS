@@ -253,18 +253,10 @@ function statPosCup(pRunde) {
             }
 
             if (QUERFORMAT()) {
-                if (CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0) {
-                    if (STAT.S[i].ORT.indexOf(',') > 0) {
-                        pos += "<td nowrap>" + STAT.S[i].ORT.substr(0, STAT.S[i].ORT.indexOf(',')).substr(0, 6) + "</td>";
-                    } else {
-                        pos += "<td nowrap>" + STAT.S[i].ORT.substr(0, 6) + "</td>";
-                    }
+                if (STAT.S[i].ORT.indexOf(',') > 0) {
+                    pos += "<td nowrap>" + STAT.S[i].ORT.substr(0, STAT.S[i].ORT.indexOf(',')) + "</td>";
                 } else {
-                    if (STAT.S[i].ORT.indexOf(',') > 0) {
-                        pos += "<td nowrap>" + STAT.S[i].ORT.substr(0, STAT.S[i].ORT.indexOf(',')) + "</td>";
-                    } else {
-                        pos += "<td nowrap>" + STAT.S[i].ORT + "</td>";
-                    }
+                    pos += "<td nowrap>" + STAT.S[i].ORT + "</td>";
                 }
             }
 

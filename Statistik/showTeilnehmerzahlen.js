@@ -1,170 +1,13 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stSaisonTab, stEndstand, jbSpieler, ADMIN, SAISON, hRet */
-
-function bereSaison(pTurniere) {
-
-    SAISON[stSaison] = {
-        anzTurniere: pTurniere,
-        anzTeilnehmer: 0,
-        anzTeilnahmen: 0
-    };
-
-    stFinale = false;
-    stFinalTeilnehmer = 0;
-    stEndstand = false;
-
-    for (var turnier in STAT) {
-        if (turnier[0] === '2') {
-            if (STAT[turnier]._SAISON === stSaison) {
-                if (stCup !== 56
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
-
-                    if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
-                        stFinale = turnier;
-                        if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
-                            stEndstand = false;
-                        } else {
-                            stEndstand = true;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    if (stFinale) {
-        for (var teilnehmer in STAT[stFinale]) {
-            if (teilnehmer[0] !== '_') {
-                stFinalTeilnehmer++;
-            }
-        }
-    }
-
-    CUP = {};
-    var hCupPunkte = 0;
-    for (var turnier in STAT) {
-        if (turnier[0] === '2') {
-            if (STAT[turnier]._SAISON === stSaison) {
-                if (stCup !== 56
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
-                    for (var spieler in STAT[turnier]) {
-                        if (spieler[0] !== '_') {
-
-
-
-
-                            if (stCup !== 56
-                                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && istFreund(spieler)) {
-
-                                SAISON[stSaison].anzTeilnahmen++;
-
-                                if (CUP[spieler]) {
-                                    tCUP = CUP[spieler];
-                                    if (STAT[turnier][spieler][0] === 1) {
-                                        tCUP[1]++;
-                                    } else if (STAT[turnier][spieler][0] === 2) {
-                                        tCUP[2]++;
-                                    } else if (STAT[turnier][spieler][0] === 3) {
-                                        tCUP[3]++;
-                                    }
-                                    tCUP[4]++;
-                                    if (turnier !== stFinale) {
-                                        hCupPunkte = getCupPunkte(turnier, spieler);
-                                        if (getCupPunkte(turnier, spieler) === '-') {
-                                            tCUP[5].push(hCupPunkte);
-                                        } else {
-                                            ii = tCUP[5].length;
-                                            for (var i = 0; i < tCUP[5].length; i++) {
-                                                if (tCUP[5][i] === '-'
-                                                        || tCUP[5][i] <= hCupPunkte) {
-                                                    ii = i;
-                                                    break;
-                                                }
-                                            }
-                                            tCUP[5].splice(ii, 0, hCupPunkte);
-                                        }
-                                    }
-                                    CUP[spieler] = tCUP;
-                                } else {
-                                    SAISON[stSaison].anzTeilnehmer++;
-                                    tCUP = [0, 0, 0, 0, 0, 0];
-                                    if (STAT[turnier][spieler][0] === 1) {
-                                        tCUP[1]++;
-                                    } else if (STAT[turnier][spieler][0] === 2) {
-                                        tCUP[2]++;
-                                    } else if (STAT[turnier][spieler][0] === 3) {
-                                        tCUP[3]++;
-                                    }
-                                    tCUP[4]++;
-                                    if (turnier !== stFinale) {
-                                        tCUP[5] = [getCupPunkte(turnier, spieler)];
-                                    }
-                                    CUP[spieler] = tCUP;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    CUPD = [];
-    var spieler = '';
-    for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
-        tCUP = CUP[spieler];
-        for (var i in tCUP[5]) {
-            if (i < 6) {
-                if (!isNaN(tCUP[5][i])) {
-                    tCUP[0] += tCUP[5][i];
-                }
-            } else {
-                break;
-            }
-        }
-
-        if (stFinale) {
-            hCupPunkte = getCupPunkte(stFinale, spieler);
-            if (!isNaN(hCupPunkte)) {
-                tCUP[0] += parseInt(hCupPunkte);
-            }
-        }
-
-        CUP[spieler] = tCUP;
-        tCUP.push(spieler);
-        if (isNaN(spieler)) {
-            CUPD.push((9000 - tCUP[0]) + spieler + ';' + spieler);
-        } else {
-            CUPD.push((9000 - tCUP[0]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
-        }
-    }
-
-    CUPD.sort();
-
-}
-
 function showTeilnehmerzahlen() {
 
     var nGesTeilnehmer = 0;
 
-    function getAbweichung() {
-        var dSaison = parseInt((SAISON[stSaison].anzTeilnahmen / SAISON[stSaison].anzTurniere) + 0.5);
+    function getAbweichung(pSaison) {
+        var dSaison = parseInt((SAISON[pSaison][isAnzTeilnahmen] / SAISON[pSaison][isAnzTurniere]) + 0.5);
         var dGesamt = parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5);
-        if (stCup === 56) { // WTC - Abweichung von Antons 75er Turnier 2019 ::: Teilnehmer - Durchschnitt = 124
-//            dGesamt = parseInt(((STAT._ANZTEILNAHMEN - 124) / STAT._ANZTURNIERE) + 0.5);
-//            if (stSaison === "2017/18") {
-//                dSaison = parseInt(((SAISON[stSaison].anzTeilnahmen - 124) / SAISON[stSaison].anzTurniere) + 0.5);
-//            }
-//            dGesamt = parseInt(((STAT._ANZTEILNAHMEN - 192) / (STAT._ANZTURNIERE - 1)) + 0.5);
-//            if (stSaison === "2017/18") {
-//                dSaison = parseInt(((SAISON[stSaison].anzTeilnahmen - 192) / (SAISON[stSaison].anzTurniere - 1)) + 0.5);
-//            }
-        }
         if (dSaison === dGesamt) {
-            return "&#177;0,0 %";
+            return "&plusmn;0,0 %";
         } else {
             hRet = (dSaison - dGesamt) / (dGesamt / 1000);
             if (hRet >= 0.05) {
@@ -174,23 +17,9 @@ function showTeilnehmerzahlen() {
                 hRet = parseInt(hRet - 0.05);
                 return parseInt(hRet / 10) + ',' + Math.abs(parseInt(hRet % 10)) + ' %';
             } else {
-                return "&#177;0,0 %";
+                return "&plusmn;0,0 %";
             }
         }
-    }
-
-    function addPosition() {
-        nGesTeilnehmer += SAISON[stSaison].anzTeilnehmer;
-        html = "<tr>"
-                + "<td class=TC>&nbsp;" + stSaison + "</td>"
-                + "<td class=TC>" + SAISON[stSaison].anzTurniere + "</td>"
-                + (QUERFORMAT() ? "<td class=TR>" + SAISON[stSaison].anzTeilnehmer + "&nbsp;&nbsp;&nbsp;</td>" : "")
-                + "<td class=TR>" + SAISON[stSaison].anzTeilnahmen + "&nbsp;&nbsp;&nbsp;</td>"
-                + "<td class=TR>" + parseInt((SAISON[stSaison].anzTeilnahmen / SAISON[stSaison].anzTurniere) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
-                + "<td class=TR>" + getAbweichung() + "&nbsp;&nbsp;</td>"
-                + (QUERFORMAT() ? "<td></td>" : "")
-                + "</tr>"
-                + html;
     }
 
     if (QUERFORMAT()) {
@@ -226,25 +55,22 @@ function showTeilnehmerzahlen() {
 
     var html = "";
 
-    stSaison = '';
-    var nTurniere = 0;
-    for (var turnier in STAT) {
-        if (turnier[0] === '2') {
-            if (STAT[turnier]._SAISON !== stSaison) {
-                if (stSaison) {
-                    bereSaison(nTurniere);
-                    addPosition();
-                }
-                nTurniere = 0;
-                stSaison = STAT[turnier]._SAISON;
-            }
-            nTurniere++;
+    for (var iiSaison in SAISON) {
+        if (iiSaison) {
+            nGesTeilnehmer += SAISON[iiSaison][isAnzTeilnehmer];
+            html = "<tr>"
+                    + "<td class=TC>&nbsp;" + SAISON[iiSaison][isSaison] + "</td>"
+                    + "<td class=TC>" + SAISON[iiSaison][isAnzTurniere] + "</td>"
+                    + (QUERFORMAT() ? "<td class=TR>" + SAISON[iiSaison][isAnzTeilnehmer] + "&nbsp;&nbsp;&nbsp;</td>" : "")
+                    + "<td class=TR>" + SAISON[iiSaison][isAnzTeilnahmen] + "&nbsp;&nbsp;&nbsp;</td>"
+                    + "<td class=TR>" + parseInt((SAISON[iiSaison][isAnzTeilnahmen] / SAISON[iiSaison][isAnzTurniere]) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+                    + "<td class=TR>" + getAbweichung(iiSaison) + "&nbsp;&nbsp;</td>"
+                    + (QUERFORMAT() ? "<td></td>" : "")
+                    + "</tr>"
+                    + html;
         }
     }
-    if (stSaison) {
-        bereSaison(nTurniere);
-        addPosition();
-    }
+
     html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TL></th>"

@@ -505,6 +505,7 @@ $(document).ready(function () {
         if (mql.matches) {
             // onbeforeprint equivalent
         } else {
+            $('#mTable').css('font-size', '1.5vw');
             var canvas = document.getElementById("stHead");
             var context = canvas.getContext('2d');
             context.clearRect(0, 0, 70, 70);

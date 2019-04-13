@@ -54,12 +54,25 @@
                 <div class="ui-block-a" style="width:25%;">
                 </div>
                 <div class="ui-block-b" style="width:50%;">
-                    <button type="button" data-theme="e" onclick="downloadSpieler(false)" class="ui-disabled" id="bDownloadFuerKarlHaas">Neue und ge&auml;nderte Spieler downloaden.
-                        <br>
+                    <button type="button" data-theme="e" onclick="downloadSpieler('*')" class="ui-disabled" id="bDownloadAlleSpieler">Alle Spieler downloaden.
+                    </button>
+                    <button type="button" data-theme="e" onclick="downloadSpieler(true)">Die aktiven/dsgvo Spieler downloaden.
+                    </button>
+                    <button type="button" data-theme="e" onclick="downloadSpieler(false)" class="ui-disabled" id="bDownloadFuerKarlHaas">
+                        <div class="ui-grid-b L" style='padding:0em;'>
+                            <div class="ui-block-a R" style='width:33%'>
+                                Seit dem&nbsp;
+                            </div>
+                            <div class="ui-block-b" style='width:31%'>
+                                <input id="iDATUM" type="date" sdata-clear-btn="false" class='C' data-role="none"  onclick="event.stopImmediatePropagation();" data-mini="true" >
+                            </div>
+                            <div class="ui-block-c L" style='width:36%; text-align: left;'>
+                                &nbsp;&nbsp;angelegte
+                            </div>
+                        </div>
+                        oder geänderte Spieler downloaden.<br>
                         <span class="N">Downloadfile für Karl Haas jun. erstellen.
                         </span>
-                    </button>
-                    <button type="button" data-theme="e" onclick="downloadSpieler(true)">Alle <span id="tAktiveSpieler">aktiven Spieler</span> downloaden.
                     </button>
                     <br>
                     <br>

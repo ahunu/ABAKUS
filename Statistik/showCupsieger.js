@@ -1,5 +1,5 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stSaisonTab, stEndstand, jbSpieler, ADMIN, SAISON, CUP, CUPD */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, CUP, CUPD */
 
 function addPosition(pSaison) {
 
@@ -8,13 +8,13 @@ function addPosition(pSaison) {
     var p2 = 9999;
     var p3 = 9999;
 
-    var hBG = (pSaison % 2) ? '' : 'bSehrHell';
+    var hBG = (pSaison % 2) ? 'bSehrHell' : '';
 
     var html = '';
 
     html += '<tr class=' + hBG + '>'
             + '<td>&nbsp;&nbsp;</td>'
-            + '<th class="TC">' + stSaison + ':</th>'
+            + '<th class="TC">' + SAISON[pSaison][isSaison] + ':</th>'
             + '<td colspan="3"></td>'
             + (QUERFORMAT() ? '<td class="TR">&nbsp;</td><td>&nbsp;</td>' : '')
             + '</tr>';
@@ -26,8 +26,8 @@ function addPosition(pSaison) {
             p1 = p0;
             html += '<tr class=' + hBG + '>'
                     + '<td></td>'
-                    + '<td>' + '1. <span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\',\'' + stSaison + '\');" class="P cBlau"><b>' + (getName(spieler).replace(' ', '&nbsp;')) + '</b></span></td>'
-                    + (QUERFORMAT() ? '<td>' + getSpielerOrt(spieler) + '</td>' : '')
+                    + '<td>' + '1. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[pSaison][is1] + '\',\'' + stSaison + '\');" class="P cBlau"><b>' + (getName(SAISON[pSaison][is1]).replace(' ', '&nbsp;')) + '</b></span></td>'
+                    + (QUERFORMAT() ? '<td>' + getSpielerOrt(SAISON[pSaison][is1]) + '</td>' : '')
                     + '<td class="TC">' + CUP[spieler][1] + '-' + CUP[spieler][2] + '-' + CUP[spieler][3] + '</td>'
                     + '<td class="TR">' + (9000 - p0) + '&nbsp;</td>'
                     + (QUERFORMAT() ? '<td class="TR">' + CUP[spieler][5].length + '&nbsp;</td><td>&nbsp;</td>' : '')
@@ -85,11 +85,6 @@ function showCupsieger() {
     writeCanvas(stStat);
     $("#dCopyright").hide();
 
-    SAISON["Gesamt"] = {
-        anzSaisonen: 0,
-        anzTurniere: 0
-    };
-
     if (QUERFORMAT()) {
         $('#dRumpf').html('');
     } else {
@@ -100,26 +95,13 @@ function showCupsieger() {
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
 
-    stSaison = '';
-    var nTurniere = 0;
-    var nSaison = 0;
-    for (var turnier in STAT) {
-        if (turnier[0] === '2') {
-            if (STAT[turnier]._SAISON !== stSaison) {
-                if (stSaison) {
-                    nSaison++;
-                    bereSaison(nTurniere);
-                    html = addPosition(nSaison) + html;
-                }
-                nTurniere = 0;
-                stSaison = STAT[turnier]._SAISON;
-            }
-            nTurniere++;
+    for (var iiSaison in SAISON) {
+        if (iiSaison) {
+            html += addPosition(iiSaison);
         }
     }
-    if (stSaison) {
-        nSaison++;
-        bereSaison(nTurniere);
+
+    if (html) {
         html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive ssssstable-stripe' data-column-btn-text=''><thead>"
                 + "<tr id='L0P1' class='bGrau'>"
                 + "<th class=TL></th>"
@@ -129,7 +111,6 @@ function showCupsieger() {
                 + "<th class=TR>CupP</th>"
                 + (QUERFORMAT() ? '<th class=TR>TN&nbsp;</th><th>&nbsp;</th>' : '')
                 + "</tr></thead><tbody>"
-                + addPosition(nSaison)
                 + html
                 + "</tbody></table>";
         if (QUERFORMAT()) {

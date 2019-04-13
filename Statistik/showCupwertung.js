@@ -1,5 +1,5 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stSaisonTab, stEndstand, jbSpieler, ADMIN */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN */
 
 function showCupwertung() {
 
@@ -168,7 +168,7 @@ function showCupwertung() {
             + "<th class=TR>Ges&nbsp;</th>"
             + (stFinale ? "<th class='TR'>Fin&nbsp;</th>" : "")
             + "<th class=C colspan='6'>Vorrundenpunkte</th>"
-            + (QUERFORMAT() ? "<th class=TC>TN</th><th class=TC nowrap>1. 2. 3.</th>" + (stSaison === stSaisonTab[0] && stCup < 58 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "") : "")
+            + (QUERFORMAT() ? "<th class=TC>TN</th><th class=TC nowrap>1. 2. 3.</th>" + (iSaison === aktSaison && stCup < 58 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "") : "")
             + "</tr></thead><tbody id=tbody>"
             + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
 //                    + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
@@ -230,7 +230,7 @@ function showCupwertung() {
             } else {
                 html += '<td class="TC">-</td>';
             }
-            if (stSaison === stSaisonTab[0] && stCup < 58) {
+            if (iSaison === aktSaison && stCup < 58) {
                 if (hPlatz < tOF.length) {
                     html += '<td class="R" nowrap>' + tOF[hPlatz] + '&nbsp;</td>';
                 } else {
@@ -248,7 +248,7 @@ function showCupwertung() {
                 + "<tr><th colspan='2' class=TL>&nbsp;&nbsp;Legende:</th></tr>"
                 + "<tr><td>&nbsp;&nbsp;TN:</td><td>Teilnahmen</td></tr>"
                 + "<tr><td>&nbsp;&nbsp;1.2.3.:&nbsp;&nbsp;</td><td>Stockerlpl&auml;tze</td></tr>"
-                + (stSaison === stSaisonTab[0] && stCup < 58 ? "<tr><td>&nbsp;&nbsp;&Ouml;F:</td><td>&Ouml;sterreichfinale Vorrundenpunkte</td></tr>" : "")
+                + (iSaison === aktSaison && stCup < 58 ? "<tr><td>&nbsp;&nbsp;&Ouml;F:</td><td>&Ouml;sterreichfinale Vorrundenpunkte</td></tr>" : "")
                 + "<tr><td>&nbsp;&nbsp;" + nTurniere + "</td><td>Turniere</td></tr>"
                 + "<tr><td>&nbsp;&nbsp;" + nSpieler + "</td><td>Teilnehmer</td></tr>"
                 + "<tr><td>&nbsp;&nbsp;" + nTeilnahmen + "</td><td>Teilnahmen</td></tr>"

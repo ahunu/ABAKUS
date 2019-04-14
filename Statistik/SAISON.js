@@ -86,8 +86,6 @@ function bereSaison() {
                         if (spieler[0] !== '_') {
 
 
-
-
                             if (stCup !== 56
                                     || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
                                     || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && istFreund(spieler)) {
@@ -103,7 +101,7 @@ function bereSaison() {
                                     } else if (STAT[turnier][spieler][0] === 3) {
                                         tCUP[3]++;
                                     }
-                                    tCUP[4]++;
+
                                     if (turnier !== stFinale) {
                                         hCupPunkte = getCupPunkte(turnier, spieler);
                                         if (getCupPunkte(turnier, spieler) === '-') {
@@ -123,7 +121,7 @@ function bereSaison() {
                                     CUP[spieler] = tCUP;
                                 } else {
                                     SAISON[iSaison][isAnzTeilnehmer]++;
-                                    tCUP = [0, 0, 0, 0, 0, 0];
+                                    tCUP = [0, 0, 0, 0, 0, []];
                                     if (STAT[turnier][spieler][0] === 1) {
                                         tCUP[1]++;
                                     } else if (STAT[turnier][spieler][0] === 2) {
@@ -132,6 +130,7 @@ function bereSaison() {
                                         tCUP[3]++;
                                     }
                                     tCUP[4]++;
+
                                     if (turnier !== stFinale) {
                                         tCUP[5] = [getCupPunkte(turnier, spieler)];
                                     }

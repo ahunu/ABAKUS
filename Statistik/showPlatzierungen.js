@@ -214,7 +214,7 @@ function showPlatzierungen(pSort) {
             $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
         } else {
             $('#sideDetails').hide();
-            $('#dContent').html('');
+//            $('#dContent').html('');
             var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
@@ -232,7 +232,7 @@ function showPlatzierungen(pSort) {
                     + htmlRumpf
                     + '</table>';
             $('#sideDetails').hide();
-            $('#dContent').html(html);
+            $('#dContent').html(html + '<br>');
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
             setFont(3.8, true);

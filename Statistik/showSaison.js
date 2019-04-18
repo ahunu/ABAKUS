@@ -202,7 +202,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
             var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
             $('#sideContent').css('height', hx + 'px');
         } else {
-            $('#dContent').html(htmlTE).listview('refresh');
+            $('#dContent').html(htmlTE + '<br>').listview('refresh');
         }
         if (QUERFORMAT()) {
             showLogo();

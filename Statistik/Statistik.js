@@ -229,9 +229,6 @@ function whenSTATloaded() {
         }
     });
     defArchiv();
-    if (QUERFORMAT()) {
-        $('#qfHeaderIcons').show();
-    }
 }
 
 function getDateString(pDate) {
@@ -249,17 +246,21 @@ function scrollToMe() {
             jbSpieler.close();
         }
     }
-    if (stStat === "Platzierungen") {
-
-        $('.parent').scrollTop(0);
-
-        $('.parent').animate({
-            scrollTop: $("#itsMe").offset().top - 333
-        }, 800);
+    if (QUERFORMAT()) {
+        if (stStat === "Platzierungen") {
+            $('.parent').scrollTop(0).animate({
+                scrollTop: $("#itsMe").offset().top - 333
+            }, 800);
+        } else {
+            $('html, body').animate({
+                scrollTop: $("#itsMe").offset().top - 237
+            }, 800);
+        }
     } else {
-        $('html, body').animate({
-            scrollTop: $("#itsMe").offset().top - 237
-        }, 800);
+//        $('#sideContent').scrollTop(0).animate({
+//            scrollTop: $("#itsMe").offset().top - 333
+//        }, 800);
+        $('#sideContent').scrollTop(0).scrollTop($("#itsMe").offset().top - 333);
     }
 }
 

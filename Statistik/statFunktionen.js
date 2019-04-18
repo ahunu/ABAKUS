@@ -370,7 +370,7 @@ function showIcons(pIcons) {
         }
     } else {
         if (pIcons.length && pIcons[0] === '#iGo') {
-            $('#iGo').attr('style', 'position: fixed; bottom: 122px; right: 172px; font-size: 144px; cursor: pointer;').show();
+            $('#iGo').attr('style', 'position: fixed; top: ' + ($("#hfHeader").offset().top + 7) + 'px; right: 8px; font-size: 34px; cursor: pointer;').show();
         }
     }
 }

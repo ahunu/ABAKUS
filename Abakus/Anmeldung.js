@@ -1038,9 +1038,9 @@ function listStammspieler() {
             LS.JeSeite = '';
         }
         if (STAT.TURRUNDE >= 3) {
-            sortNachReihung(LS.I, tischAnmelden);
+            sortNachReihung(tischAnmelden);
         } else {
-            sortNachTischen(LS.I, tischAnmelden, STAT.TURRUNDE);
+            sortNachTischen(tischAnmelden);
         }
 
         if (tischAnmelden) {

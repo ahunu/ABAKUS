@@ -1,5 +1,5 @@
 
-/* global firebase, showCupwertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, MPPUtils, isSaison */
+/* global firebase, showCupwertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, MPPUtils, isSaison, pell */
 
 // 51 Hausruckcup
 // 52 Raiffeisencup
@@ -243,6 +243,26 @@ function getDateString(pDate) {
     }
 }
 
+function scrollToMe() {
+    if (jbSpieler) {
+        if (jbSpieler.isOpen) {
+            jbSpieler.close();
+        }
+    }
+    if (stStat === "Platzierungen") {
+
+        $('.parent').scrollTop(0);
+
+        $('.parent').animate({
+            scrollTop: $("#itsMe").offset().top - 333
+        }, 800);
+    } else {
+        $('html, body').animate({
+            scrollTop: $("#itsMe").offset().top - 237
+        }, 800);
+    }
+}
+
 function showAnekdote() {
     if (jbSpieler) {
         if (jbSpieler.isOpen) {
@@ -352,7 +372,7 @@ $(document).ready(function () {
     fINIT();
 });
 function fINIT(pCup) {
-    $('#iDownload,#iPrint,#iAnekdote').hide();
+    $('#iDownload,#iPrint,#iAnekdote,#iGo').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
             || navigator.userAgent.match(/iPhone/i)

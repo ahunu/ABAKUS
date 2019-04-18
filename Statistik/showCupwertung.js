@@ -14,13 +14,6 @@ function showCupwertung() {
     if (jbSpieler.isOpen) {
         jbSpieler.close();
     }
-    if (ADMIN || (LS.ME === '2037' && stCup === 56)) { // Robert Sedlaczek
-        if (LS.ME === '3425') {
-            showIcons(['#iDownload', '#iPrint']);
-        } else {
-            showIcons(['#iPrint']);
-        }
-    }
 
     stStat = 'Cupwertung';
     stNamenLen = 0.3;
@@ -151,6 +144,22 @@ function showCupwertung() {
         }
     }
 
+    if (LS.ME.length === 4) {
+        if (CUP[LS.ME]) {
+            if (LS.ME === '3425') {
+                showIcons(['#iGo', '#iPrint', '#iDownload']);
+            } else {
+                showIcons(['#iGo', '#iPrint']);
+            }
+        } else {
+            if (LS.ME === '3425') {
+                showIcons(['#iPrint', '#iDownload']);
+            } else {
+                showIcons(['#iPrint']);
+            }
+        }
+    }
+
     CUPD.sort();
     var html = (!QUERFORMAT() ? "<div id='dDummy'></div>" : "")
             + (stCup === 58 // Schmankerl Tarock
@@ -182,27 +191,26 @@ function showCupwertung() {
         nSpieler++;
         var spieler = CUPD[ii].substring((CUPD[ii].lastIndexOf(';') + 1));
         tCUP = CUP[spieler];
-        if (window.location.href.toUpperCase().indexOf('OOV') < 0) {
-            if (spieler === LS.ME) {
-                hClass = 'bBeige';
-            } else {
-                hClass = '';
-                if (istFreund(spieler)) {
+
+        if (spieler === LS.ME) {
+            hClass = 'bBeige';
+        } else if (window.location.href.toUpperCase().indexOf('OOV') < 0) {
+            hClass = '';
+            if (istFreund(spieler)) {
+                hClass = ' bBeige2';
+            }
+            if (LS.tempVIPs) {
+                if (LS.tempVIPs.indexOf(spieler) > 0) {
                     hClass = ' bBeige2';
-                }
-                if (LS.tempVIPs) {
-                    if (LS.tempVIPs.indexOf(spieler) > 0) {
-                        hClass = ' bBeige2';
-                    }
                 }
             }
         }
+
         if (hLastKey !== parseInt(CUPD[ii])) {
             hLastKey = parseInt(CUPD[ii]);
             hPlatz = nSpieler;
         }
-
-        html += '<tr class="' + hClass + '">'
+        html += '<tr ' + (spieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
                 + '<td class="TR">' + hPlatz + '.&nbsp;</td>';
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += '<td class=TC>' + (isNaN(spieler) ? '????' : spieler) + '&nbsp;</td>';

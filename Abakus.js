@@ -604,6 +604,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
 
     var hVorschub = '<br><br>';
     var html = '';
+    var htmlNaechstTermin = '';
     if (CUPS.ANMELDERF.length > I && CUPS.ANMELDERF[I]) {
         html = '<span class=XL>Nächste' + (CUPS.TURNIER[I] ? 's Turnier' : ' Runde') + ':<b>&nbsp;&nbsp;&nbsp;';
         if (myDateString(getNextTermin(I)) === hHeute) {
@@ -623,6 +624,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                 html += '<span class="M cRot B">Ich bin nicht angemeldet.</span><br>';
             }
         }
+        htmlNaechstTermin = '<br><br>' + html.replace(/XL/g, 'M3');
         html += '<br>';
         hVorschub = '<br>';
     } else if (pTermin !== false && !isNaN(pTermin)) {
@@ -750,14 +752,15 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
         }
     } else {
         if (hMeldung) {
-            $('#hfText').html('<div class="B cRot">' + hMeldung + '</div>' + CUPS.TEXT1[i]);
+            $('#hfText').html('<div class="B cRot">' + hMeldung + '</div>' + CUPS.TEXT1[i] + htmlNaechstTermin);
         } else {
-            $('#hfText').html(CUPS.TEXT1[i]);
+            $('#hfText').html(CUPS.TEXT1[i] + htmlNaechstTermin);
         }
         $('#cupButtons').html(getCupButtons()).trigger('create').show();
         if (!QUERFORMAT()) {
             $('#hMenu,#pMenu,#pTisch').hide();
             $('#hMix,#pCup').show();
+            $('#pContent').scrollTop(0);
         }
     }
     setTimeout(function () {
@@ -1009,7 +1012,12 @@ function whenCUPSloaded() {
             if (CUPS.MEZULETZT[iii] + (200 * 86400000) > Date.now() // 200 Tage
                     || CUPS.BEREadmin[iii].indexOf(LS.ME) >= 0
                     || CUPS.BEREschreiben[iii].indexOf(LS.ME) >= 0) {
-                CUPS.NEXTTERMIN[iii] = getNextTermin(iii);
+                if (!CUPS.NEXTTERMIN[iii]) {
+                    CUPS.NEXTTERMIN[iii] = 0;
+                }
+                if (CUPS.NEXTTERMIN[iii] < Date.now()) {
+                    CUPS.NEXTTERMIN[iii] = getNextTermin(iii);
+                }
                 TERMINE[TERMINE.length] = {
                     DATUM: myDateString(CUPS.NEXTTERMIN[iii]),
                     CUP: iii
@@ -1463,7 +1471,6 @@ function fINIT() {
         CUPS.NAME = [];
         CUPS.MEANGEMELDET = [];
         CUPS.MEZULETZT = [];
-        localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
     } else {
         CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
         if (typeof CUPS.MEZULETZT !== 'object') {

@@ -3,6 +3,8 @@
 
 function showTurnier(pTurnier) {
 
+    var mMitgespielt = false;
+
     if (QUERFORMAT()) {
         if (lastBtn) {
             $(lastBtn).removeClass('ui-btn-active');
@@ -15,29 +17,6 @@ function showTurnier(pTurnier) {
         stStat = pTurnier;
     } else {
         pTurnier = stStat;
-    }
-
-    if (ADMIN || (LS.ME === '2037' && stCup === 56)) { // Robert Sedlaczek
-        if (LS.ME === '3425') {
-            showIcons(['#iDownload', '#iPrint']);
-        } else {
-            showIcons(['#iPrint']);
-        }
-    }
-
-    if (LS.ME === '3425'
-            || LS.ME === '3757' && stCup === 56     // Erwin Haider
-            || LS.ME === '4731' && stCup === 58) {  // Alexandra Sabkovski
-        showIcons(['#iPrint', '#iAnekdote', '#iDownload']);
-    } else if (ADMIN) {
-        showIcons(['#iPrint', '#iAnekdote']);
-    } else if (stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
-            || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')) {    // Braun Sigi, Sedlacek Robert
-        showIcons(['#iPrint', '#iAnekdote']);
-    } else if (STAT[pTurnier]._ANEKDOTE) {
-        showIcons(['#iAnekdote']);
-    } else {
-        showIcons([]);
     }
 
     if (jbSpieler.isOpen) {
@@ -88,6 +67,39 @@ function showTurnier(pTurnier) {
                         + (5000 - STAT[pTurnier][iSpieler][4])
                         + (5000 - Math.max(STAT[pTurnier][iSpieler][1], STAT[pTurnier][iSpieler][2], STAT[pTurnier][iSpieler][3]))
                         + ';' + iSpieler;
+                if (iSpieler === LS.ME) {
+                    mMitgespielt = true;
+                }
+            }
+        }
+    }
+
+    if (LS.ME.length === 4) {
+        if (mMitgespielt) {
+            if (LS.ME === '3425'
+                    || LS.ME === '3757' && stCup === 56     // Erwin Haider
+                    || LS.ME === '4731' && stCup === 58) {  // Alexandra Sabkovski
+                showIcons(['#iGo', '#iPrint', '#iAnekdote', '#iDownload']);
+            } else if (ADMIN
+                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
+                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
+                    || STAT[pTurnier]._ANEKDOTE) {
+                showIcons(['#iGo', '#iPrint', '#iAnekdote']);
+            } else {
+                showIcons(['#iGo', '#iPrint']);
+            }
+        } else {
+            if (LS.ME === '3425'
+                    || LS.ME === '3757' && stCup === 56     // Erwin Haider
+                    || LS.ME === '4731' && stCup === 58) {  // Alexandra Sabkovski
+                showIcons(['#iPrint', '#iAnekdote', '#iDownload']);
+            } else if (ADMIN
+                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
+                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
+                    || STAT[pTurnier]._ANEKDOTE) {
+                showIcons(['#iPrint', '#iAnekdote']);
+            } else {
+                showIcons(['#iPrint']);
             }
         }
     }
@@ -97,23 +109,22 @@ function showTurnier(pTurnier) {
     for (var ii = 0; ii < SORT.length; ii++) {
         var iSpieler = SORT[ii].substring((SORT[ii].lastIndexOf(';') + 1));
         nSpieler++;
-        if (window.location.href.toUpperCase().indexOf('OOV') < 0) {
-            if (iSpieler === LS.ME) {
-                hClass = 'bBeige';
-            } else {
-                hClass = '';
-                if (istFreund(iSpieler)) {
+
+        if (iSpieler === LS.ME) {
+            hClass = 'bBeige';
+        } else if (window.location.href.toUpperCase().indexOf('OOV') < 0) {
+            hClass = '';
+            if (istFreund(iSpieler)) {
+                hClass = ' bBeige2';
+            }
+            if (LS.tempVIPs) {
+                if (LS.tempVIPs.indexOf(iSpieler) > 0) {
                     hClass = ' bBeige2';
-                }
-                if (LS.tempVIPs) {
-                    if (LS.tempVIPs.indexOf(iSpieler) > 0) {
-                        hClass = ' bBeige2';
-                    }
                 }
             }
         }
 
-        html += '<tr class="' + hClass + '">'
+        html += '<tr ' + (iSpieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
                 + '<td class="TR">&nbsp;' + nSpieler + '.&nbsp;</td>';
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += '<td class=TC>' + (isNaN(iSpieler) ? '????' : iSpieler) + '&nbsp;</td>';

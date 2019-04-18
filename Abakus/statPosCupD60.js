@@ -94,7 +94,7 @@ function statPosCupD60(pRunde) {
     for (var i = 0, eoa = STAT.S.length; i < eoa; i++) {
 
 
-        
+
         if (STAT.S[i].NR === '1887') {
             console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
         } else  if (STAT.S[i].NR === '3244') {
@@ -160,9 +160,9 @@ function statPosCupD60(pRunde) {
 
     if (stSort.indexOf('TIS') === 0) {
         if (pRunde !== 3) {
-            sortNachTischen(stCup, false, pRunde);
+            sortNachTischen(false);
         } else {
-            sortNachReihung(stCup, false);
+            sortNachReihung(false);
         }
     }
 

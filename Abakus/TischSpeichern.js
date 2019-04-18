@@ -369,7 +369,8 @@ function wrtSPIELER(I) {
         if (CUPS.TURNIER[LS.I] === 'Handy') {
             STAT.S[ii].PUNKTERx[iRUNDE] = DS.Punkte[I][0];
             if (DS.Game[1] === 'Diverse') { // DS.xxx bei PC-Turnier nicht verfügbar
-                STAT.S[ii].SCHREIBER[iRUNDE] = 'm' + new Date().getMilliseconds();
+//                STAT.S[ii].SCHREIBER[iRUNDE] = 'm' + new Date().getMilliseconds();
+                STAT.S[ii].SCHREIBER[iRUNDE] = 'm' + LS.NR[1];
             } else {
                 if (LS.NR[I] === LS.ME) {
                     STAT.S[ii].SCHREIBER[iRUNDE] = LS.ME + ',*';

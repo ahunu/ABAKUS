@@ -153,9 +153,9 @@ function statPosCup(pRunde) {
 
     if (stSort.indexOf('TIS') === 0) {
         if (pRunde !== 3) {
-            sortNachTischen(stCup, false, pRunde);
+            sortNachTischen(false);
         } else {
-            sortNachReihung(stCup, false);
+            sortNachReihung(false);
         }
     }
 

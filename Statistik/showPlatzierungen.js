@@ -3,6 +3,8 @@
 
 function showPlatzierungen(pSort) {
 
+    var mMitgespielt = false;
+
     if (QUERFORMAT()) {
         if (lastBtn) {
             $(lastBtn).removeClass('ui-btn-active');
@@ -68,6 +70,9 @@ function showPlatzierungen(pSort) {
                                     DATA[spieler][5] = STAT[turnier][spieler][0];
                                 }
                                 TEILNEHMER[iTurnier]++;
+                                if (spieler === LS.ME) {
+                                    mMitgespielt = true;
+                                }
                             }
                         }
                     }
@@ -136,7 +141,7 @@ function showPlatzierungen(pSort) {
                 hClass = 'bSehrHell';
             }
 
-            htmlRumpf += '<tr class="' + hClass + '">'
+            htmlRumpf += '<tr ' + (spieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
                     + '<td class="' + hClass + (QUERFORMAT() ? ' fixedColQuer' : '') + ' left" style="width:100%;">&nbsp;<span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P W ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
 
             if (DATA[1] || DATA[2] || DATA[3]) {
@@ -237,7 +242,13 @@ function showPlatzierungen(pSort) {
 
         window.scrollTo(0, 0);
 
-//        $("#dFilter").attr('style', "width:200px;position: absolute; top: 275px; left: " + ($(window).innerWidth() / 100 * 30) + "px;");
+        if (LS.ME.length === 4) {
+            if (mMitgespielt) {
+                showIcons(['#iGo']);
+            } else {
+//                showIcons(['#iGo']);
+            }
+        }
 
     }, 200);
 

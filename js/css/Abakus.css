@@ -393,9 +393,6 @@ input {
 .zmdi-toll:before {
     content: '\f1e0';
 }
-.zmdi-caret-up-circle:before {
-    content: '\f2f7';
-}
 .zmdi-gamepad:before {
     content: '\f298';
 }
@@ -407,6 +404,12 @@ input {
 }
 .zmdi-home:before {
     content: '\f175';
+}
+.zmdi-caret-up-circle:before {
+    content: '\f2f7';
+}
+.zmdi-dot-circle:before {
+    content: '\f26f';
 }
 .zmdi-close-circle-o:before {
     content: '\f134';

@@ -21,6 +21,16 @@ var myJBox = null;
 
 const dHeute = new Date();
 
+function iNUTZUNGSBESTIMMUNGENonClick() {
+    if ($("#iNUTZUNGSBESTIMMUNGEN").prop("checked")) {
+        $("#iNUTZUNGSBESTIMMUNGEN").prop("checked", true).checkboxradio("refresh");
+        $("#bAlleSpieler,#bAktiveSpieler,#bNeuOderGeaendert").removeClass('ui-disabled');
+    } else {
+        $("#iNUTZUNGSBESTIMMUNGEN").prop("checked", false).checkboxradio("refresh");
+        $("#bAlleSpieler,#bAktiveSpieler,#bNeuOderGeaendert").addClass('ui-disabled');
+    }
+}
+
 function whenSPIELERloaded() {
     'use strict';
     setTimeout(function () {
@@ -57,7 +67,7 @@ function downloadSpieler(pAktiv) {
         }
     }
 
-    var blob = 'Nr.;Zuname;Vorname;Titel vor;Titel nach;Zusatz;Straße;PLZ;Ort;Festnetz;Mobil;Geburtsdatum;E-Mail;Geschlecht;Startort;Verstorben;Verzogen;Titel v. ign.;Titel n. ign.;;Angelegt am;Angelegt von;Geaendert am;Geaendert von;\n';
+    var blob = 'Nr.;Zuname;Vorname;Titel vor;Titel nach;Zusatz;Straße;PLZ;Ort;Festnetz;Mobil;Geburtsdatum;E-Mail;Geschlecht;Startort;Verstorben;Verzogen;Titel v. ign.;Titel n. ign.;Aktiv/dsgvo;Angelegt am;Angelegt von;Geaendert am;Geaendert von;\n';
     var nSpieler = 0;
 
     for (var spieler in SPIELERext) {
@@ -85,8 +95,7 @@ function downloadSpieler(pAktiv) {
                     + (SPIELERext[spieler][15] ? 'WAHR' : 'FALSCH') + ';' // Verzogen
                     + (SPIELERext[spieler][16] ? 'WAHR' : 'FALSCH') + ';' // Titel1 ignorieren
                     + (SPIELERext[spieler][17] ? 'WAHR' : 'FALSCH') + ';' // Titel2 ingnorieren
-//                  + ";"                                                 // aktiv
-                    + (SPIELERext[spieler][18] ? SPIELERext[spieler][18] : '') + ';' // Angelegt am
+                    + (SPIELERext[spieler][18] ? SPIELERext[spieler][18] : '') + ';' // Aktiv/dsgvo
                     + (SPIELERext[spieler][19] ? SPIELERext[spieler][19] : '') + ';' // Angelegt am
                     + (SPIELERext[spieler][20] ? SPIELERext[spieler][20] : '') + ';' // Angelegt von
                     + (SPIELERext[spieler][21] ? SPIELERext[spieler][21] : '') + ';' // Geaendert am
@@ -103,7 +112,6 @@ function downloadSpieler(pAktiv) {
     $('#tMeldung').text('Es wurden ' + nSpieler + ' Spieler exportiert.');
 
 }
-
 
 function getGEBDAT(pGEBDAT) {
     return pGEBDAT; // Da EXCEL "20-Sep-55" in CSV-Dateien als 20. Sep 55 interpretiert wird, keine Konvertierung.
@@ -125,8 +133,8 @@ $(document).bind('pageinit', function () {
         };
     }
 
-    if (LS.ME === "3425" || LS.ME === "1014" || LS.ME === "0124") { // Franz Kienast, Karl Haas jun.
-        $('#bDownloadAlleSpieler,#bDownloadFuerKarlHaas').removeClass('ui-disabled');
+    if (LS.ME !== "3425" && LS.ME !== "1014" && LS.ME !== "0124") { // Franz Kienast, Karl Haas jun.
+        $("#bAlleSpieler,#bNeuOderGeaendert").remove();
     }
 
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));

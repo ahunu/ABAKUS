@@ -124,40 +124,6 @@ function getSpielerOrt(pNR, pSTANDORT) {
     return hOrt;
 }
 
-function getCupPunkteMist(pTurnier, pSpieler) {
-    if (stCup < 58) {
-        if (STAT[pTurnier][pSpieler]) {
-            if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
-                if (STAT[pTurnier][pSpieler][0] <= 50) {
-                    return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
-                } else {
-//                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
-//                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
-//                        return (STAT[pTurnier][pSpieler][0] - 50) * -1;
-//                    } else {
-                        return '-';
-//                    }
-                }
-            }
-        } else {
-//  //            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
-//            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
-//                return stFinalTeilnehmer * -1 + 49;
-//            } else {
-                return '-';
-//            }
-        }
-    }
-
-    var hPunkte = STAT[pTurnier][pSpieler][4]; // Meine Cuppunkte
-    if (hPunkte < 0) {
-        hPunkte = '-';
-    } else if (hPunkte > 100) {
-        hPunkte = parseInt((hPunkte - 100) / 2) + 100;
-    }
-    return parseInt(hPunkte); //
-}
-
 function getCupPunkte(pTurnier, pSpieler) {
     if (stCup < 58) {
         if (STAT[pTurnier][pSpieler]) {
@@ -166,7 +132,7 @@ function getCupPunkte(pTurnier, pSpieler) {
                     return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
                 } else {
 //                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
-                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
+                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && stCup === 56) {
                         return (STAT[pTurnier][pSpieler][0] - 50) * -1;
                     } else {
                         return '-';
@@ -175,7 +141,7 @@ function getCupPunkte(pTurnier, pSpieler) {
             }
         } else {
 //  //            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
-            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
+            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && stCup === 56) {
                 return stFinalTeilnehmer * -1 + 49;
             } else {
                 return '-';
@@ -397,11 +363,14 @@ function listeDrucken() {
 
 function showIcons(pIcons) {
     'use strict';
+    $('#iGo,#iDownload,#iPrint,#iAnekdote').hide();
     if (QUERFORMAT()) {
-        $('#iDownload,#iPrint,#iAnekdote').hide();
-        var i = 0;
-        for (i = 0; i < pIcons.length; i++) {
-            $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (25 + (50 * i)) + 'px; font-size: 44px; cursor: pointer;').show();
+        for (var i = 0; i < pIcons.length; i++) {
+            $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (20 + (50 * i)) + 'px; font-size: 44px; cursor: pointer;').show();
+        }
+    } else {
+        if (pIcons.length && pIcons[0] === '#iGo') {
+            $('#iGo').attr('style', 'position: fixed; bottom: 122px; right: 172px; font-size: 144px; cursor: pointer;').show();
         }
     }
 }

@@ -32,6 +32,7 @@ function loadCUPS(pTitel, pText, pForce) {
         CUPS.MEANGEMELDET = cMEANGEMELDET;
         CUPS.MEZULETZT = cMEZULETZT;
         CUPS.REGELN = [];
+        CUPS.RUNDEN = [];
         CUPS.SPIELEAB = [];
         CUPS.SPIELTAGE = [];
         CUPS.WOCHEN = [];
@@ -84,6 +85,11 @@ function loadCUPS(pTitel, pText, pForce) {
                         CUPS.NEXTTERMIN[i] = cupval.NEXTTERMIN;
                     }
                     CUPS.REGELN        [i] = cupval.REGELN;
+                    if (typeof cupval.RUNDEN === "undefined") {
+                        CUPS.RUNDEN    [i] = null;
+                    } else {
+                        CUPS.RUNDEN    [i] = cupval.RUNDEN;
+                    }
                     CUPS.SPIELEAB      [i] = cupval.SPIELEAB;
                     CUPS.SPIELTAGE     [i] = cupval.SPIELTAGE;
                     if (typeof cupval.WOCHEN === "undefined") {

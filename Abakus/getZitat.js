@@ -6,7 +6,7 @@ function getZitat() {
     var iZitat = 9999;
     do {
         NOK = false;
-        iZitat = Date.now() % 52;
+        iZitat = Date.now() % 53;
         for (var i = 0; i < stLastZitat.length; i++) {
             if (stLastZitat[i] === iZitat) {
                 NOK = true;
@@ -240,9 +240,9 @@ function getZitat() {
                     + '<br>dass wir glücklich sind.',
             'Benjamin Franklin, 1706-1790,<br>amerik. Erfinder und Politiker'];
     } else if (iZitat === 52) {
-        return [''
-                    + '<br>',
-            ''];
+        return ['Bankraub: eine Initiative von Dilettanten.'
+                    + '<br>Wahre Profis gründen eine Bank.',
+            'Bertold Brecht, 1898-1956, dt. Dramatiker und Lyriker'];
     } else if (iZitat === 53) {
         return [''
                     + '<br>',

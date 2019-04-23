@@ -47,15 +47,12 @@
             <b>karl.haas@aon.at</b> zu senden.
         </div>
         <div id='main'>
-            <br>
-            <br>
             <div class="ui-grid-b">
                 <div class="ui-block-a" style="width:15%;">
                 </div>
                 <div class="ui-block-b" style="width:70%; text-align:justify">
-                    <div class="L B" style="text-align:center">Nutzungsbedingungen im Sinne der Datenschutzgrundverordnung.</div>
-                    <br>
-                    <span class="M">Die Spielerdaten werden vom Österreichischen Tarockfinale
+                    <div id="ueNutzungsbedingungen" class="L B" style="text-align:center"><br>Nutzungsbedingungen im Sinne der Datenschutzgrundverordnung.<br></div>
+                    <span id="tNutzungsbedingungen" class="M"><br>Die Spielerdaten werden vom Österreichischen Tarockfinale
                         und den ihm angeschlossenen Cups
                         gemeinschaftlich gewartet und gemeinschaftlich für Tarockzwecke genutzt.
                         Ein Download darf nur zum Zweck der gemeinschaftlichen Wartung beziehungsweise zur gemeinschaftlichen Nutzung für Tarockzwecke erfolgen.
@@ -79,7 +76,7 @@
                     <br>
                     <button type="button" data-theme="e" onclick="downloadSpieler('*')" class="ui-disabled" id="bAlleSpieler">Alle Spieler downloaden.
                     </button>
-                    <button type="button" data-theme="e" onclick="downloadSpieler(true)" class="ui-disabled" id="bAktiveSpieler">Die aktiven/dsgvo Spieler downloaden.
+                    <button type="button" data-theme="e" onclick="downloadSpieler(true)" class="ui-disabled" id="bAktiveSpieler">Die aktiven/dsgvo Spieler<br>des <span id='tAktiveSpieler'>eigenen Cups</span> downloaden.
                     </button>
                     <button type="button" data-theme="e" onclick="downloadSpieler(false)" class="ui-disabled" id="bNeuOderGeaendert">
                         <div class="ui-grid-b L" style='padding:0em;'>
@@ -95,7 +92,6 @@
                         </div>
                         oder geänderte Spieler downloaden.
                     </button>
-                    <br>
                     <br>
                     <div id=tMeldung class='M'>
                     </div>

@@ -160,6 +160,7 @@ function copyCUPS() {
     CUPS.NAME2LEN      [iNeu] = CUPS.NAME2LEN      [I];
     CUPS.NEXTTERMIN    [iNeu] = CUPS.NEXTTERMIN    [I];
     CUPS.REGELN        [iNeu] = CUPS.REGELN        [I];
+    CUPS.RUNDEN        [iNeu] = CUPS.RUNDEN        [I];
     CUPS.SPIELEAB[iNeu] = parseInt($("#iSPIELEAB").val()); // die Korrektur übernehmen
     if (isNaN(CUPS.SPIELEAB[iNeu])) {
         CUPS.SPIELEAB[I] = 0;
@@ -198,6 +199,7 @@ function copyCUPS() {
     hCUPS.NAME2LEN = CUPS.NAME2LEN  [I];
     hCUPS.NEXTTERMIN = CUPS.NEXTTERMIN[I];
     hCUPS.REGELN = CUPS.REGELN      [I];
+    hCUPS.RUNDEN = CUPS.RUNDEN      [I];
     hCUPS.SPIELEAB = CUPS.SPIELEAB  [I];
     hCUPS.SPIELTAGE = CUPS.SPIELTAGE[I];
     hCUPS.WOCHEN = CUPS.WOCHEN      [I];
@@ -414,6 +416,15 @@ function onSubmit() {
         CUPS.VOLLAB[I][3] = 0;
     }
 
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === "Handy") {
+        CUPS.RUNDEN[I] = parseInt($("#iRUNDEN").val());
+        if (isNaN(CUPS.RUNDEN[I])) {
+            CUPS.RUNDEN[I] = 0;
+        }
+    } else {
+        CUPS.RUNDEN[I] = null;
+    }
+
     CUPS.SPJERUNDE[I] = parseInt($("#iSPJERUNDE").val());
     if (isNaN(CUPS.SPJERUNDE[I])) {
         CUPS.SPJERUNDE[I] = 0;
@@ -429,6 +440,7 @@ function onSubmit() {
     hCUPS.NAME2LEN = CUPS.NAME2LEN  [I];
     hCUPS.NEXTTERMIN = CUPS.NEXTTERMIN[I];
     hCUPS.REGELN = CUPS.REGELN      [I];
+    hCUPS.RUNDEN = CUPS.RUNDEN      [I];
     hCUPS.SPIELEAB = CUPS.SPIELEAB  [I];
     hCUPS.SPIELTAGE = CUPS.SPIELTAGE[I];
     hCUPS.WOCHEN = CUPS.WOCHEN      [I];
@@ -566,6 +578,11 @@ $(document).bind('pageinit', function () {
     } else {
         $('#dCupBerechtigungen').remove();
     }
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === "Handy") {
+    } else {
+        $('.cHandyTurnier').remove();
+    }
+    $('#HandyTurnier').remove();
     $("#tNAME2").text(CUPS.NAME[I]);
     $("#iBEREadmin").val(CUPS.BEREadmin[I]);
     $("#iBEREschreiben").val(CUPS.BEREschreiben[I]);
@@ -779,6 +796,7 @@ $(document).bind('pageinit', function () {
             $("#tTYP").text('PC-Turnier');
         } else {
             $("#tTYP").text('Spontanturnier');
+            $("#iRUNDEN").val(CUPS.RUNDEN[I]);
         }
         if (LS.I === I) {
             $("#tTURCODE").text(LS.TURCODE);

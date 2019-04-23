@@ -162,7 +162,7 @@ function showSPIELER(i) {
     $('#iGEBDAT').val(SPIELERext[i][spGEBDAT]);
     $('#iGESCHLECHT').val(SPIELERext[i][spGESCHLECHT]);
     $("#iVERSTORBEN").prop("checked", (SPIELERext[i][spVERSTORBEN] === true)).checkboxradio("refresh");
-    iVERZOGEN = SPIELERext[i][spVERZOGEN];
+    $("#iVERZOGEN").prop("checked", (SPIELERext[i][spVERZOGEN] === true)).checkboxradio("refresh");
     iTITEL1IGN = SPIELERext[i][spTITEL1IGN];
     iTITEL2IGN = SPIELERext[i][spTITEL2IGN];
     iAKTIV = SPIELERext[i][spAKTIV];
@@ -279,9 +279,9 @@ function showNeuenSPIELER(pNeu) {
         $("#iAKTIV").prop("checked", false).checkboxradio("refresh");
     }
     $("#iVERSTORBEN").prop("checked", false).checkboxradio("refresh");
+    $("#iVERZOGEN").prop("checked", false).checkboxradio("refresh");
     $('#fTEXT').html('');
     iAKTIV = kzAktiv;
-    iVERZOGEN = false;
     iTITEL1IGN = false;
     iTITEL2IGN = false;
     $('#pSpieler').popup("open");
@@ -344,6 +344,7 @@ function onOK(pSpeichern) {
     var iGEBDAT = $("#iGEBDAT").val().trim();
     var iGESCHLECHT = $("#iGESCHLECHT").val().trim();
     var iVERSTORBEN = $("#iVERSTORBEN").prop("checked");
+    var iVERZOGEN = $("#iVERZOGEN").prop("checked");
     var iAKTIV = '?';
     if (hNeu) {
         if ($("#iAKTIV").prop("checked")) {

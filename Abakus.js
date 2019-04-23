@@ -1089,102 +1089,104 @@ function whenCUPSloaded() {
     var hBtnName = 'b??';
     var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
     for (var termin in TERMINE) {
-        if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
-                || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4) !== "test" || LS.ME === "3425")) {
-            if (TERMINE[termin].CUP === 8 || TERMINE[termin].CUP === 10) {
-                hTemp = '';
-            }
-            if (CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
-                var hCupName = '';
-                var hCupFarbe = '';
-                if (CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
-                    hCupName = 'Wr. Tarockcup';
-                } else if (TERMINE[termin].CUP === 50) {
-                    hCupName = '1. Wr. Marathon';
-                    hCupFarbe = ' cDIV';
-                } else if (TERMINE[termin].CUP === 51) {
-                    hCupName = 'Hausruckcup';
-                    hCupFarbe = ' cHRC';
-                } else if (TERMINE[termin].CUP === 52) {
-                    hCupName = 'Raiffeisencup';
-                    hCupFarbe = ' cRTC';
-                } else if (TERMINE[termin].CUP === 53) {
-                    hCupName = 'Sauwaldcup';
-                    hCupFarbe = ' cSWC';
-                } else if (TERMINE[termin].CUP === 54) {
-                    hCupName = 'St. Tarockcup';
-                    hCupFarbe = ' cSTC';
-                } else if (TERMINE[termin].CUP === 55) {
-                    hCupName = 'Tirolcup';
-                    hCupFarbe = ' cTTC';
-                } else if (TERMINE[termin].CUP === 56) {
-                    hCupName = 'Wr. Tarockcup';
-                    hCupFarbe = ' cWTC';
-                } else if (TERMINE[termin].CUP === 58) {
-                    hCupName = 'Schmankerl Tarock';
-                    hCupFarbe = ' cDIV';
-                } else {
-                    hCupName = CUPS.NAME[TERMINE[termin].CUP];
-                    hCupFarbe = ' cDIV';
+        if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4) !== "Test") {
+            if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
+                    || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4) !== "Test" || LS.ME === "3425")) {
+                if (TERMINE[termin].CUP === 8 || TERMINE[termin].CUP === 10) {
+                    hTemp = '';
                 }
-                if (QUERFORMAT()) {
-                    hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
-                    hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
-                } else if (TERMINE[termin].DATUM === hHeute) {
-                    hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
-                    if (LS.ME.length === 4) {
-                        hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\',' + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Hilfe</a></li>'
-                                + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
-                                + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
-                                + '</div>';
+                if (CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
+                    var hCupName = '';
+                    var hCupFarbe = '';
+                    if (CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
+                        hCupName = 'Wr. Tarockcup';
+                    } else if (TERMINE[termin].CUP === 50) {
+                        hCupName = '1. Wr. Marathon';
+                        hCupFarbe = ' cDIV';
+                    } else if (TERMINE[termin].CUP === 51) {
+                        hCupName = 'Hausruckcup';
+                        hCupFarbe = ' cHRC';
+                    } else if (TERMINE[termin].CUP === 52) {
+                        hCupName = 'Raiffeisencup';
+                        hCupFarbe = ' cRTC';
+                    } else if (TERMINE[termin].CUP === 53) {
+                        hCupName = 'Sauwaldcup';
+                        hCupFarbe = ' cSWC';
+                    } else if (TERMINE[termin].CUP === 54) {
+                        hCupName = 'St. Tarockcup';
+                        hCupFarbe = ' cSTC';
+                    } else if (TERMINE[termin].CUP === 55) {
+                        hCupName = 'Tirolcup';
+                        hCupFarbe = ' cTTC';
+                    } else if (TERMINE[termin].CUP === 56) {
+                        hCupName = 'Wr. Tarockcup';
+                        hCupFarbe = ' cWTC';
+                    } else if (TERMINE[termin].CUP === 58) {
+                        hCupName = 'Schmankerl Tarock';
+                        hCupFarbe = ' cDIV';
                     } else {
-                        hTemp = '<li><a id="b' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Hilfe</a></li>'
+                        hCupName = CUPS.NAME[TERMINE[termin].CUP];
+                        hCupFarbe = ' cDIV';
+                    }
+                    if (QUERFORMAT()) {
+                        hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
+                        hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
+                    } else if (TERMINE[termin].DATUM === hHeute) {
+                        hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
+                        if (LS.ME.length === 4) {
+                            hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\',' + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                    + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Hilfe</a></li>'
+                                    + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
+                                    + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
+                                    + '</div>';
+                        } else {
+                            hTemp = '<li><a id="b' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                    + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Hilfe</a></li>'
+                                    + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
+                                    + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
+                                    + '</div>';
+                        }
+                    } else {
+                        hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
+                        hTemp = '<li data-icon=info><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="toggleShow(\'#tgl' + hBtnName + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
                                 + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                 + '</div>';
                     }
-                } else {
-                    hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
-                    hTemp = '<li data-icon=info><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="toggleShow(\'#tgl' + hBtnName + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
-                            + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
-                            + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
-                            + '</div>';
-                }
-                htmlALLE += hTemp;
-                if (TERMINE[termin].DATUM <= hAktuellBis) {
-                    if (TERMINE[termin].CUP === 52 && LS.ME === 's3425') { // Raiffeisencup für mich zum testen
-                        nAktTermine++;
-                        htmlAKT += hTemp.replace(/bAL/g, 'bAK');
-                    } else {
-                        for (var iMC in LS.MeineCups) {
-                            if (LS.MeineCups[iMC] === TERMINE[termin].CUP) {
-                                nAktTermine++;
-                                htmlAKT += hTemp.replace(/bAL/g, 'bAK');
-                                break;
+                    htmlALLE += hTemp;
+                    if (TERMINE[termin].DATUM <= hAktuellBis) {
+                        if (TERMINE[termin].CUP === 52 && LS.ME === 's3425') { // Raiffeisencup für mich zum testen
+                            nAktTermine++;
+                            htmlAKT += hTemp.replace(/bAL/g, 'bAK');
+                        } else {
+                            for (var iMC in LS.MeineCups) {
+                                if (LS.MeineCups[iMC] === TERMINE[termin].CUP) {
+                                    nAktTermine++;
+                                    htmlAKT += hTemp.replace(/bAL/g, 'bAK');
+                                    break;
+                                }
                             }
                         }
                     }
-                }
-            } else {
-                var iii = TERMINE[termin].CUP;
-                if (QUERFORMAT()) {
-                    hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                 } else {
-                    if (CUPS.TYP[iii] === 'PR'
-                            || !CUPS.TEXT1[iii]) {
+                    var iii = TERMINE[termin].CUP;
+                    if (QUERFORMAT()) {
                         hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                     } else {
-                        hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#togglebTE' + iii + '\');">Hilfe</a></li>'
-                                + '<div id="togglebTE' + iii + '" class="M TGL" style=margin-left:10px; hidden>'
-                                + (CUPS.TEXT1[iii] ? CUPS.TEXT1[iii] + '<br>' : '')
-                                + '</div>';
+                        if (CUPS.TYP[iii] === 'PR'
+                                || !CUPS.TEXT1[iii]) {
+                            hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
+                        } else {
+                            hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#togglebTE' + iii + '\');">Hilfe</a></li>'
+                                    + '<div id="togglebTE' + iii + '" class="M TGL" style=margin-left:10px; hidden>'
+                                    + (CUPS.TEXT1[iii] ? CUPS.TEXT1[iii] + '<br>' : '')
+                                    + '</div>';
+                        }
                     }
+                    htmlALLE += hTemp;
+                    nAktTermine++;
+                    htmlAKT += hTemp.replace(/bAL/g, 'bAT');
                 }
-                htmlALLE += hTemp;
-                nAktTermine++;
-                htmlAKT += hTemp.replace(/bAL/g, 'bAT');
             }
         }
     }
@@ -1216,7 +1218,7 @@ function whenCUPSloaded() {
     SORT.sort();
     for (var s = 0; s < SORT.length; s++) { // Meine Runden/Cups --- Bei Xxxxxx
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
-        if (i < 5 || CUPS.TYP[i] === 'MT') {
+        if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
             nMeineRundenCups++;
             if (QUERFORMAT() || !CUPS.TEXT1[i]) {
@@ -1242,7 +1244,7 @@ function whenCUPSloaded() {
     }
     for (var s = 0; s < SORT.length; s++) { // mit Schreibberechtigung >>>>>>>>>> später eventuell entfernen
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
-        if (i < 5 || CUPS.TYP[i] === 'MT') {
+        if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
         } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
             nMeineRundenCups++;
@@ -1259,7 +1261,7 @@ function whenCUPSloaded() {
     }
     for (var s = 0; s < SORT.length; s++) { // Meine Runden/Cups --- Bei Xxxxxx
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
-        if (i < 5 || CUPS.TYP[i] === 'MT') {
+        if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
         } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
         } else {
@@ -1307,7 +1309,7 @@ function whenCUPSloaded() {
                         + '</div>';
             }
         }
-        if (CUPS.TYP[i] === 'TR' || i <= 4) { // 4te TestRunde / TestCup
+        if (CUPS.NAME[i].substr(0, 4) === "Test" || CUPS.TYP[i] === 'TR' || i <= 4) { // 4te TestRunde / TestCup
             if (i < 4 || LS.ME === '3425') {
                 htmlTR = htmlTR + html;
             }

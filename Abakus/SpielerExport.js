@@ -8,6 +8,7 @@ var CUPS = new Object();
 var SPIELERext = new Object();
 
 var kzAktiv = '?';
+var mCup = 0;
 
 const spANGELEGTvon = 20;
 const spGEAENDERTvon = 22;
@@ -22,6 +23,8 @@ var myJBox = null;
 const dHeute = new Date();
 
 function iNUTZUNGSBESTIMMUNGENonClick() {
+     $("#ueNutzungsbedingungen").toggleClass('L M');
+     $("#tNutzungsbedingungen").toggleClass('M S');
     if ($("#iNUTZUNGSBESTIMMUNGEN").prop("checked")) {
         $("#iNUTZUNGSBESTIMMUNGEN").prop("checked", true).checkboxradio("refresh");
         $("#bAlleSpieler,#bAktiveSpieler,#bNeuOderGeaendert").removeClass('ui-disabled');
@@ -139,20 +142,29 @@ $(document).bind('pageinit', function () {
 
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (LS.ME === '3425') { // Leo Luger
+        mCup = 56;
         kzAktiv = 'W';
     } else if (LS.ME === "-51" || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) { // Franz Kienast
+        mCup = 51;
         kzAktiv = 'H';
     } else if (LS.ME === "-52" || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) { // Karl Haas
+        mCup = 52;
         kzAktiv = 'R';
     } else if (LS.ME === "-53" || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0) { // Sepp Lang
+        mCup = 53;
         kzAktiv = 'S';
     } else if (LS.ME === "-54" || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0) { // Hans Hafner
+        mCup = 54;
         kzAktiv = 'G';
     } else if (LS.ME === "-55" || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0) { // Markus Mair
+        mCup = 55;
         kzAktiv = 'T';
     } else if (LS.ME === "-56" || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) { // Erwin Haider
+        mCup = 56;
         kzAktiv = 'W';
     }
+
+$('#tAktiveSpieler').text(CUPS.NAME[mCup]);
 
     document.onselectstart = function () {
         return false;

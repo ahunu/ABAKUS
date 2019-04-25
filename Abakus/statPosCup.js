@@ -152,7 +152,7 @@ function statPosCup(pRunde) {
     SORT.sort();  // muss sein
 
     if (stSort.indexOf('TIS') === 0) {
-        if (pRunde !== 3) {
+        if (pRunde < CUPS.RUNDEN[LS.I]) {
             sortNachTischen(false);
         } else {
             sortNachReihung(false);

@@ -19,6 +19,14 @@ function iStartStop(pPruefen) {
                         + 'noch nicht gespeichert.');
                 return;
             }
+            if (LS.TURRUNDE <= CUPS.RUNDEN[I]) {
+                if (!LS.TURGESPIELT) {
+                    showEineMeldung((CUPS.NAME[I] + ':'),
+                            'Runde ' + LS.TURRUNDE + ' ist noch<br>'
+                            + 'ausständig.');
+                    return;
+                }
+            }
         } else {
             if (CUPS.TURNIER[LS.I]) {
                 showEineMeldung((CUPS.NAME[I] + ':'),
@@ -84,12 +92,12 @@ function iStartStop(pPruefen) {
             }
         }
         $("#ssText").text('Turnier starten ?');
+    } else if (LS.TURRUNDE === CUPS.RUNDEN[I]) {
+        $("#ssText").text('Turnier beenden ?');
     } else if (LS.TURRUNDE === 1) {
         $("#ssText").text('Runde 1 beenden ?');
     } else if (LS.TURRUNDE === 2) {
         $("#ssText").text('Runde 2 beenden ?');
-    } else {
-        $("#ssText").text('Turnier beenden ?');
     }
 
     $("#ssMELD").hide();
@@ -130,7 +138,7 @@ function onStartStop() {
             }
             $('#iTURCODE').filter(':input:focus').blur();
             $("#pSTARTSTOP").popup("close");
-            if (LS.TURRUNDE !== 3) {
+            if (LS.TURRUNDE < CUPS.RUNDEN[LS.I]) {
                 showEinenMoment(CUPS.NAME[LS.I], 'Runde&nbsp;' + LS.TURRUNDE + '&nbsp;wird&nbsp;beendet.');
                 RundeXbeenden(LS.TURCODE);
             } else {

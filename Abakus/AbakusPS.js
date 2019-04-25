@@ -32,6 +32,7 @@ function PS_Init() {
             $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
         }
     }
+    setFont();
 }
 
 function SetPraemienSolo(pSolo) {

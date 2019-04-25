@@ -39,13 +39,13 @@ input {
     .S {font-size: calc(0.89vw + 7px);}
     .XS {font-size: calc(0.88vw + 6px);}
     .XXS {font-size: calc(0.87vw + 5px);}
-}       
+}
 
 .iconJQM::after {
     background-size: 32px !important;
     width: 38px !important;
     height: 38px !important;
-    margin-top: -0.72em;     
+    margin-top: -0.72em;
 }
 
 @media only screen and (orientation : portrait) and (max-width: 360px) { /* Galaxy A3 */

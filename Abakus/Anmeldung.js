@@ -1037,10 +1037,10 @@ function listStammspieler() {
         } else {
             LS.JeSeite = '';
         }
-        if (STAT.TURRUNDE >= 3) {
-            sortNachReihung(tischAnmelden);
-        } else {
+        if (STAT.TURRUNDE < CUPS.RUNDEN[LS.I]) {
             sortNachTischen(tischAnmelden);
+        } else {
+            sortNachReihung(tischAnmelden);
         }
 
         if (tischAnmelden) {
@@ -1074,6 +1074,23 @@ function listStammspieler() {
             }
         }
 
+    }
+
+    if (neuerTisch && !LS.NR[1]) {
+        if (LS.ME.length === 4) {
+            var lSPIELER = SPIELER.length;
+            for (var i = 0; i < lSPIELER; i++) {
+                if (SPIELER[i][spNR] === LS.ME) {
+                    blert(SPIELER[i][spNR], SPIELER[i][spVNAME], SPIELER[i][spNNAME], SPIELER[i][spORT] + '&nbsp;', '');
+                    break;
+                }
+            }
+        } else if (LS.ME !== 'NOBODY') {
+            blert(LS.ME,
+                    LS.ME.substring(LS.ME.indexOf('_') + 1, LS.ME.lastIndexOf('_')),
+                    LS.ME.substr(0, LS.ME.indexOf('_')),
+                    LS.ME.substr(LS.ME.lastIndexOf('_') + 1), '');
+        }
     }
 
     $("#lvStammSP,#lvTische").listview().listview("refresh");
@@ -1566,7 +1583,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "NOBODY") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

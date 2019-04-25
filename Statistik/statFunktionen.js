@@ -1,5 +1,5 @@
 
-/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbHome, jbArchiv, stFinalTeilnehmer, stNamenLen */
+/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbHome, jbArchiv, stFinalTeilnehmer, stNamenLen, stSaison */
 
 function sortNumber(a, b) {
     return a - b;
@@ -131,8 +131,11 @@ function getCupPunkte(pTurnier, pSpieler) {
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
                     return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
                 } else {
+                    return '-';
 //                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
-                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && stCup === 56) {
+                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
+                            && (stCup === 54 && stSaison <= '2018/19'
+                                    || stCup === 56 && stSaison <= '2018/19')) {
                         return (STAT[pTurnier][pSpieler][0] - 50) * -1;
                     } else {
                         return '-';
@@ -141,7 +144,10 @@ function getCupPunkte(pTurnier, pSpieler) {
             }
         } else {
 //  //            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
-            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && stCup === 56) {
+            return '-';
+            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
+                    && (stCup === 54 && stSaison <= '2018/19'
+                            || stCup === 56 && stSaison <= '2018/19')) {
                 return stFinalTeilnehmer * -1 + 49;
             } else {
                 return '-';

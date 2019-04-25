@@ -84,7 +84,7 @@ function defHome() {
             + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();historyBack()">&nbsp;<img src="../Icons/icon-36-ldpi.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;Abakus <span style="font-weight:normal">Hauptseite</span></button><br>'
             + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();fINIT(56)">&nbsp;<img src="../Icons/i56.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;Wr. Tarockcup</button><br>'
             + '<button class="L" style="width:100%;font-weight:bold;text-align:left;" onclick="jbHome.close();fINIT(54)">&nbsp;<img src="../Icons/i54.png" height="32" width="32" style="margin:-8px;">&nbsp;&nbsp;St. Tarockcup</button><br>'
-            + '<button class="L" style="width:100%;" onclick="jbHome.close();$(\'#nbHome\').removeClass(\'ui-btn-active\');">abbrechen</button>';
+            + '<button class="L" style="width:100%;" onclick="resetNB();jbHome.close();$(\'#nbHome\').removeClass(\'ui-btn-active\');">abbrechen</button>';
     jbHome = new jBox('Modal', {
         title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center>Wechsle auf</center></div>',
         content: hContent,
@@ -102,7 +102,7 @@ function defArchiv() {
     for (var i = SAISON.length - 1; i > 0; i--) {
         hContent += '<button class="L" style="width:100%;font-weight:bold;" onclick="jbArchiv.close();showSaison(' + i + ')">' + SAISON[i][isSaison] + '</button><br>';
     }
-    hContent += '<button class="L" data-role=none style="width:100%;" onclick="jbArchiv.close();">zur&uuml;ck</button>';
+    hContent += '<button class="L" data-role=none style="width:100%;" onclick="resetNB();jbArchiv.close();">zurück</button>';
     jbArchiv = new jBox('Modal', {
         title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center>Archiv&nbsp;&nbsp;&nbsp;<i class="i zmdi-play zmdi-hc-rotate-90"></i></center></div>',
         content: hContent,
@@ -117,7 +117,12 @@ function defArchiv() {
     });
 }
 
+function resetNB() {
+    $(stStat === 'Uebersicht' ? '#nbUebersicht' : '#nbSaison').addClass('ui-btn-active');
+}
+
 function nbHome() {
+    $('#nbHome').removeClass('ui-btn-active');
     if (LS.ME[0] === '-' || window.location.href.indexOf('?FromTurnier') > 0) {
         $('#nbHome').buttonMarkup({theme: 'd'});
         $('#dRumpf,#dFooter').addClass('ui-disabled');

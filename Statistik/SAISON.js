@@ -12,10 +12,10 @@ const isAnzTurniere = 7;
 const isAnzTeilnehmer = 8;
 const isAnzTeilnahmen = 9;
 
-
 function initSAISON() {
     iSaison = 0;
     stSaison = '';
+    SAISON = [];
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (STAT[turnier]._SAISON !== stSaison) {
@@ -35,10 +35,6 @@ function initSAISON() {
 }
 
 function bereSaison() {
-
-    if (iSaison === 10) {
-        i = i;
-    }
 
     SAISON[iSaison] = [stSaison, '', '', '', 0, 0, 0, 0, 0, 0];
 

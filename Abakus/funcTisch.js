@@ -284,32 +284,33 @@ function getCupButtons() {
             }
 
             var cClass = '';
-            if (new Date(CUPS.NEXTTERMIN[I]).toDateString() !== new Date().toDateString()) {
-                if (CUPS.SPIELTAGE[I][iWochentag] === 'J'
-                        || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
-                    if (CUPS.TURNIER[I]) { // nicht in dieser Woche
+            if (LS.I === I && LS.TURADMIN === LS.ME) {
+            } else {
+                if (new Date(CUPS.NEXTTERMIN[I]).toDateString() !== new Date().toDateString()) {
+                    if (CUPS.SPIELTAGE[I][iWochentag] === 'J'
+                            || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
                         var iWoche = parseInt((new Date().getDate() - 1) / 7);
                         //                  if (I ===  8 && new Date().getDate() >= 15) {
                         if (CUPS.WOCHEN[I][iWoche] !== 'J') {
-                            cClass = ' ui-disabled';
+                            cClass = ' ui-disabled';  // nicht in dieser Woche
                         }
-                    }
-                    if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date()).getHours() + 1 >= CUPS.SPIELEAB[I] // 1 Stunde Toleranz
-                            || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+                        if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date()).getHours() + 1 >= CUPS.SPIELEAB[I] // 1 Stunde Toleranz
+                                || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+                        } else {
+                            cClass = ' ui-disabled';
+                            // Es wird erst ab "17" Uhr gespielt.
+                        }
                     } else {
                         cClass = ' ui-disabled';
-                        // Es wird erst ab "17" Uhr gespielt.
+                        // An einen "Freitag" wird nicht gespielt.
                     }
-                } else {
-                    cClass = ' ui-disabled';
-                    // An einen "Freitag" wird nicht gespielt.
                 }
             }
 
             if (LS.I === 0 && !LS.TURRUNDE || (LS.I !== 0 && LS.I !== I)) {
                 html += "<a onclick='iStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bStartbutton>&nbsp;Turnier starten&nbsp;</a>";
             } else if (LS.I === I && (LS.TURADMIN === LS.ME || LS.I < 5)) {
-                if (LS.TURRUNDE < 3) {
+                if (LS.TURRUNDE < CUPS.RUNDEN[I]) {
                     html += "<a onclick='iStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bRundeXbeenden>&nbsp;Runde " + LS.TURRUNDE + " beenden&nbsp;</a>";
                 } else {
                     html += "<a onclick='iStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bTurnierBeenden>&nbsp;Turnier beenden&nbsp;</a>";

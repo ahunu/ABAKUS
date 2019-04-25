@@ -643,6 +643,9 @@ function setFont() {
     } else {
         $('#iMeinTisch').attr('style', 'position: absolute; top: 3px; left: ' + ($(window).innerWidth() / 28) + 'px;margin:0 0 0 -8px;').height($(window).innerWidth() / 8);
     }
+    if (LS.ME === '3312') { // Christian Faltl
+        $('.ui-btn').attr('style', 'padding: 0 0 !important;');
+    }
 }
 
 function Activate(button) {

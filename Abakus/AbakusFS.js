@@ -28,6 +28,7 @@ function FS_Init() {
     if ((LS.TURRUNDE || LS.TURTISCH) && LS.I !== 11) {
         $('.cKontra').addClass('ui-disabled');
     }
+    setFont();
 }
 
 function pruefenFS() {

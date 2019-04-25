@@ -1,5 +1,5 @@
 
-/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, stLastZitat */
+/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, stLastZitat, SAISON, isSaison */
 
 function showUebersicht() {
 
@@ -29,7 +29,7 @@ function showUebersicht() {
     for (var i = SAISON.length - 1; i > 0; i--) {
         html += '<li data-icon="false"><a onClick="showSaison(' + i + ');">&nbsp;' + SAISON[i][isSaison] + '</a></li>';
     }
-    $('#dContent').html(html).listview('refresh');
+    $('#dContent').html(html + '<br>').listview('refresh');
 
     $('#nbUebersicht').addClass('ui-btn-active');
     $('#nbSaison,#nbArchiv').removeClass('ui-btn-active');

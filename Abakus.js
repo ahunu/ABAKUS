@@ -1310,9 +1310,7 @@ function whenCUPSloaded() {
             }
         }
         if (CUPS.NAME[i].substr(0, 4) === "Test" || CUPS.TYP[i] === 'TR' || i <= 4) { // 4te TestRunde / TestCup
-            if (i < 4 || LS.ME === '3425') {
-                htmlTR = htmlTR + html;
-            }
+            htmlTR = htmlTR + html;
         } else if (CUPS.TYP[i] === 'CUP' && (i >= 51 && i <= 57)) {
             htmlCT = htmlCT + html;
         } else if (CUPS.TYP[i] === 'CUP' || CUPS.TYP[i] === 'TC') {

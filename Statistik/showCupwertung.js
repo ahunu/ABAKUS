@@ -1,5 +1,5 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, aktSaison, iSaison */
 
 function showCupwertung() {
 
@@ -253,13 +253,10 @@ function showCupwertung() {
     if (QUERFORMAT()) {
         html += "<table data-role=table class=S>"
                 + "<tbody>"
-                + "<tr><th colspan='2' class=TL>&nbsp;&nbsp;Legende:</th></tr>"
-                + "<tr><td>&nbsp;&nbsp;TN:</td><td>Teilnahmen</td></tr>"
-                + "<tr><td>&nbsp;&nbsp;1.2.3.:&nbsp;&nbsp;</td><td>Stockerlpl&auml;tze</td></tr>"
-                + (iSaison === aktSaison && stCup < 58 ? "<tr><td>&nbsp;&nbsp;&Ouml;F:</td><td>&Ouml;sterreichfinale Vorrundenpunkte</td></tr>" : "")
-                + "<tr><td>&nbsp;&nbsp;" + nTurniere + "</td><td>Turniere</td></tr>"
-                + "<tr><td>&nbsp;&nbsp;" + nSpieler + "</td><td>Teilnehmer</td></tr>"
-                + "<tr><td>&nbsp;&nbsp;" + nTeilnahmen + "</td><td>Teilnahmen</td></tr>"
+                + "<tr><th colspan='2' class=TL>&nbsp;&nbsp;Statistik:</th><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;</td><th colspan='2' class=TL>&nbsp;&nbsp;Legende:</th></tr>"
+                + "<tr><td class='R'>&nbsp;&nbsp;" + nTurniere + "</td><td>&nbsp;&nbsp;Turniere</td><td></td><td>&nbsp;&nbsp;TN:</td><td>Teilnahmen</td></tr>"
+                + "<tr><td class='R'>&nbsp;&nbsp;" + nSpieler + "</td><td>&nbsp;&nbsp;Teilnehmer</td><td></td><td>&nbsp;&nbsp;1.2.3.:&nbsp;&nbsp;</td><td>Stockerlpl&auml;tze</td></tr>"
+                + "<tr><td class='R'>&nbsp;&nbsp;" + nTeilnahmen + "</td><td>&nbsp;&nbsp;Teilnahmen</td><td></td>" + (iSaison === aktSaison && stCup < 58 ? "<td>&nbsp;&nbsp;ÖF:</td><td>Österreichfinale Vorrundenpunkte</td>" : "") + "</tr>"
                 + "</tbody></table><br>"
 
                 + "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"

@@ -1,7 +1,6 @@
 
 /* global SORT, STAT, LS */
 
-
 function sortNachTischen(pTischAnmelden) {
 
     var i = 0;

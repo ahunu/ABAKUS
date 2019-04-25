@@ -93,21 +93,17 @@ function statPosCupD60(pRunde) {
     SORT = [];
     for (var i = 0, eoa = STAT.S.length; i < eoa; i++) {
 
-
-
         if (STAT.S[i].NR === '1887') {
-            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
-        } else  if (STAT.S[i].NR === '3244') {
-            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
-        } else  if (STAT.S[i].NR === '4242') {
-            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
-        } else  if (STAT.S[i].NR === '4082') {
-            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
-        } else  if (STAT.S[i].NR === '4249') {
-            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes]  + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes] + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        } else if (STAT.S[i].NR === '3244') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes] + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        } else if (STAT.S[i].NR === '4242') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes] + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        } else if (STAT.S[i].NR === '4082') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes] + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
+        } else if (STAT.S[i].NR === '4249') {
+            console.log(STAT.S[i].NR + ' ' + getName(i, 99) + '; Spiele: ' + STAT.S[i].SPIELE[stTurCupGes] + '; Spiele: ' + new Date(STAT.S[i].TIMESTAMP));
         }
-
-
 
         if (STAT.S[i].SPIELE[stTurCupGes] > 0) {
             if (STAT.S[i].SPIELE[stTurCupGes] >= (STAT.MAXSPIELE[stTurCupGes] * CUPS.DISPAB[stCup][stTurCupGes] / 100)
@@ -159,7 +155,7 @@ function statPosCupD60(pRunde) {
     SORT.sort();  // muss sein
 
     if (stSort.indexOf('TIS') === 0) {
-        if (pRunde !== 3) {
+        if (pRunde < CUPS.RUNDEN[LS.I]) {
             sortNachTischen(false);
         } else {
             sortNachReihung(false);

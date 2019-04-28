@@ -1,5 +1,5 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, aktSaison, iSaison */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, aktSaison, iSaison, SP, spRangImCup, is1, SAISON, spTeilnahmen, spBestePlatz, spCuppunkte */
 
 function showCupwertung() {
 
@@ -47,56 +47,36 @@ function showCupwertung() {
                     for (var spieler in STAT[turnier]) {
                         if (spieler[0] !== '_') {
 
-
-
-
                             if (stCup !== 56
                                     || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
                                     || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && istFreund(spieler)) {
 
-
                                 nTeilnahmen++;
                                 if (CUP[spieler]) {
-                                    tCUP = CUP[spieler];
-                                    if (STAT[turnier][spieler][0] === 1) {
-                                        tCUP[1]++;
-                                    } else if (STAT[turnier][spieler][0] === 2) {
-                                        tCUP[2]++;
-                                    } else if (STAT[turnier][spieler][0] === 3) {
-                                        tCUP[3]++;
-                                    }
-                                    tCUP[4]++;
+
                                     if (turnier !== stFinale) {
                                         hCupPunkte = getCupPunkte(turnier, spieler);
                                         if (getCupPunkte(turnier, spieler) === '-') {
-                                            tCUP[5].push(hCupPunkte);
+                                            CUP[spieler].push(hCupPunkte);
                                         } else {
-                                            ii = tCUP[5].length;
-                                            for (var i = 0; i < tCUP[5].length; i++) {
-                                                if (tCUP[5][i] === '-'
-                                                        || tCUP[5][i] <= hCupPunkte) {
+                                            ii = CUP[spieler].length;
+                                            for (var i = 0; i < CUP[spieler].length; i++) {
+                                                if (CUP[spieler][i] === '-'
+                                                        || CUP[spieler][i] <= hCupPunkte) {
                                                     ii = i;
                                                     break;
                                                 }
                                             }
-                                            tCUP[5].splice(ii, 0, hCupPunkte);
+                                            CUP[spieler].splice(ii, 0, hCupPunkte);
                                         }
                                     }
-                                    CUP[spieler] = tCUP;
+
                                 } else {
-                                    tCUP = [0, 0, 0, 0, 0, 0];
-                                    if (STAT[turnier][spieler][0] === 1) {
-                                        tCUP[1]++;
-                                    } else if (STAT[turnier][spieler][0] === 2) {
-                                        tCUP[2]++;
-                                    } else if (STAT[turnier][spieler][0] === 3) {
-                                        tCUP[3]++;
-                                    }
-                                    tCUP[4]++;
                                     if (turnier !== stFinale) {
-                                        tCUP[5] = [getCupPunkte(turnier, spieler)];
+                                        CUP[spieler] = [getCupPunkte(turnier, spieler)];
+                                    } else {
+                                        CUP[spieler] = [];
                                     }
-                                    CUP[spieler] = tCUP;
                                 }
                             }
                         }
@@ -106,50 +86,21 @@ function showCupwertung() {
         }
     }
 
-    CUPD = [];
+    var SORTnachPlatz = [];
     var spieler = '';
     var hKey = 0;
-    for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
-        tCUP = CUP[spieler];
-        for (var i in tCUP[5]) {
-            if (i < 6) {
-                if (!isNaN(tCUP[5][i])) {
-                    tCUP[0] += tCUP[5][i];
-                }
-            } else {
-                break;
-            }
-        }
-
-        if (stFinale) {
-            hCupPunkte = getCupPunkte(stFinale, spieler);
-            if (!isNaN(hCupPunkte)) {
-                tCUP[0] += parseInt(hCupPunkte);
-            }
-        }
-
-        CUP[spieler] = tCUP;
-        tCUP.push(spieler);
-        hKey = (9000 - tCUP[0]);
-        if (stFinale) {
-            hKey = hKey * 1000;
-            if (!isNaN(hCupPunkte)) {
-                hKey -= parseInt(hCupPunkte);
-            }
-        }
-        if (isNaN(spieler)) {
-            CUPD.push(hKey + spieler + ';' + spieler);
-        } else {
-            CUPD.push(hKey + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+    for (var spieler in SP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
+        if (SP[spieler][iSaison]) {
+            SORTnachPlatz.push((100 + SP[spieler][iSaison][spRangImCup]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         }
     }
 
     if (LS.ME.length === 4) {
         if (CUP[LS.ME]) {
             if (LS.ME === '3425') {
-                showIcons(['#iGo', '#iPrint', '#iDownload']);
+                showIcons(['#iScrollToMe', '#iPrint', '#iDownload']);
             } else {
-                showIcons(['#iGo', '#iPrint']);
+                showIcons(['#iScrollToMe', '#iPrint']);
             }
         } else {
             if (LS.ME === '3425') {
@@ -160,7 +111,7 @@ function showCupwertung() {
         }
     }
 
-    CUPD.sort();
+    SORTnachPlatz.sort();
     var html = (!QUERFORMAT() ? "<div id='dDummy'></div>" : "")
             + (stCup === 58 // Schmankerl Tarock
                     ? "&nbsp;<img src='../Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Cupwertung.</b><br></span>"
@@ -187,10 +138,9 @@ function showCupwertung() {
     var hPlatz = 0;
     var hLastKey = 0;
     var hClass = '';
-    for (var ii = 0; ii < CUPD.length; ii++) {
+    for (var ii = 0; ii < SORTnachPlatz.length; ii++) {
         nSpieler++;
-        var spieler = CUPD[ii].substring((CUPD[ii].lastIndexOf(';') + 1));
-        tCUP = CUP[spieler];
+        var spieler = SORTnachPlatz[ii].substring((SORTnachPlatz[ii].lastIndexOf(';') + 1));
 
         if (spieler === LS.ME) {
             hClass = 'bBeige';
@@ -206,8 +156,8 @@ function showCupwertung() {
             }
         }
 
-        if (hLastKey !== parseInt(CUPD[ii])) {
-            hLastKey = parseInt(CUPD[ii]);
+        if (hLastKey !== parseInt(SORTnachPlatz[ii])) {
+            hLastKey = parseInt(SORTnachPlatz[ii]);
             hPlatz = nSpieler;
         }
         html += '<tr ' + (spieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
@@ -219,25 +169,23 @@ function showCupwertung() {
         if (QUERFORMAT()) {
             html += '<td class=noprint>' + getSpielerOrt(spieler, true) + '</td>';
         }
-        html += '<th class="TR">' + tCUP[0] + '&nbsp;</th>';
+        html += '<th class="TR">' + SP[spieler][iSaison][spCuppunkte] + '&nbsp;</th>';
         if (stFinale) {
             html += "<td class='TR'>" + getCupPunkte(stFinale, spieler) + "&nbsp;</td>";
         }
         for (var i = 0; i < 6; i++) {
-            if (!isNaN(tCUP[5][i])) {
-                html += '<td class="TR">' + tCUP[5][i] + '&nbsp;</td>';
+            if (CUP[spieler][i]) {
+                html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
             } else {
                 html += '<td class="TR"></td>';
             }
         }
 
         if (QUERFORMAT()) {
-            html += '<td class="TR">' + tCUP[4] + '&nbsp;</td>';
-            if (tCUP[1] || tCUP[2] || tCUP[3]) {
-                html += '<td class="TC" nowrap>' + tCUP[1] + '-' + tCUP[2] + '-' + tCUP[3] + '</td>';
-            } else {
-                html += '<td class="TC">-</td>';
-            }
+
+            html += '<td class="TR">' + SP[spieler][iSaison][spTeilnahmen] + '&nbsp;</td>';
+            html += '<td class="TC" nowrap>' + SP[spieler][iSaison][spBestePlatz] + '</td>';
+
             if (iSaison === aktSaison && stCup < 58) {
                 if (hPlatz < tOF.length) {
                     html += '<td class="R" nowrap>' + tOF[hPlatz] + '&nbsp;</td>';
@@ -253,9 +201,9 @@ function showCupwertung() {
     if (QUERFORMAT()) {
         html += "<table data-role=table class=S>"
                 + "<tbody>"
-                + "<tr><th colspan='2' class=TL>&nbsp;&nbsp;Statistik:</th><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;</td><th colspan='2' class=TL>&nbsp;&nbsp;Legende:</th></tr>"
+                + "<tr><th colspan='2' class=TL>&nbsp;&nbsp;Daten:</th><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;</td><th colspan='2' class=TL>&nbsp;&nbsp;Legende:</th></tr>"
                 + "<tr><td class='R'>&nbsp;&nbsp;" + nTurniere + "</td><td>&nbsp;&nbsp;Turniere</td><td></td><td>&nbsp;&nbsp;TN:</td><td>Teilnahmen</td></tr>"
-                + "<tr><td class='R'>&nbsp;&nbsp;" + nSpieler + "</td><td>&nbsp;&nbsp;Teilnehmer</td><td></td><td>&nbsp;&nbsp;1.2.3.:&nbsp;&nbsp;</td><td>Stockerlpl&auml;tze</td></tr>"
+                + "<tr><td class='R'>&nbsp;&nbsp;" + nSpieler + "</td><td>&nbsp;&nbsp;Teilnehmer</td><td></td><td>&nbsp;&nbsp;1.2.3.:&nbsp;&nbsp;</td><td>Stockerlplätze / beste Platzierung</td></tr>"
                 + "<tr><td class='R'>&nbsp;&nbsp;" + nTeilnahmen + "</td><td>&nbsp;&nbsp;Teilnahmen</td><td></td>" + (iSaison === aktSaison && stCup < 58 ? "<td>&nbsp;&nbsp;ÖF:</td><td>Österreichfinale Vorrundenpunkte</td>" : "") + "</tr>"
                 + "</tbody></table><br>"
 

@@ -19,8 +19,9 @@ var CUPS = new Object();
 var STAT = new Object();
 var SPIELER = new Object();
 var SAISON = [];
-var CUP = new Object();
 var CUPD = new Object();
+
+var SP = new Object();
 
 var tFIXPUNKTE = [, 223, 198, 180, 168, 156, 147, 138, 131, 124, // 0 - 9
     117, 110, 105, 100, 95, 90, 85, 80, 76, 72, // 10 - 19
@@ -246,6 +247,7 @@ function getDateString(pDate) {
 }
 
 function scrollToMe() {
+        $('#iScrollToMe').removeClass('ui-btn-active');
     if (jbSpieler) {
         if (jbSpieler.isOpen) {
             jbSpieler.close();
@@ -262,9 +264,6 @@ function scrollToMe() {
             }, 800);
         }
     } else {
-//        $('#sideContent').scrollTop(0).animate({
-//            scrollTop: $("#itsMe").offset().top - 333
-//        }, 800);
         $('#sideContent').scrollTop(0).scrollTop($("#itsMe").offset().top - 333);
     }
 }
@@ -378,7 +377,7 @@ $(document).ready(function () {
     fINIT();
 });
 function fINIT(pCup) {
-    $('#iDownload,#iPrint,#iAnekdote,#iGo').hide();
+    $('#iDownload,#iPrint,#iAnekdote,#iScrollToMe').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
             || navigator.userAgent.match(/iPhone/i)

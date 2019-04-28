@@ -79,14 +79,14 @@ function showTurnier(pTurnier) {
             if (LS.ME === '3425'
                     || LS.ME === '3757' && stCup === 56     // Erwin Haider
                     || LS.ME === '4731' && stCup === 58) {  // Alexandra Sabkovski
-                showIcons(['#iGo', '#iPrint', '#iAnekdote', '#iDownload']);
+                showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote', '#iDownload']);
             } else if (ADMIN
                     || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
                     || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
                     || STAT[pTurnier]._ANEKDOTE) {
-                showIcons(['#iGo', '#iPrint', '#iAnekdote']);
+                showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote']);
             } else {
-                showIcons(['#iGo', '#iPrint']);
+                showIcons(['#iScrollToMe', '#iPrint']);
             }
         } else {
             if (LS.ME === '3425'
@@ -203,7 +203,7 @@ function popupSpieler(pSpieler, pSaison) {
     var hCuppunkte = 0;
     if (CUPS.TYP[stCup] === 'CUP') {
         for (var iTurnier in STAT) {
-            if (iTurnier.substr(0, 2) === '20' && STAT[iTurnier]._SAISON === pSaison && iTurnier !== stFinale) {
+            if (iTurnier[0] === '2' && STAT[iTurnier]._SAISON === pSaison && iTurnier !== stFinale) {
                 if (STAT[iTurnier][pSpieler]) {
                     hCuppunkte = getCupPunkte(iTurnier, pSpieler);
                     if (!isNaN(hCuppunkte)) {
@@ -225,8 +225,6 @@ function popupSpieler(pSpieler, pSaison) {
             hCupPunkte = getCupPunkte(stFinale, pSpieler);
             if (!isNaN(hCupPunkte)) {
                 cuppunkte += parseInt(hCupPunkte);
-            } else {
-                pSpieler = pSpieler;
             }
         }
 
@@ -234,6 +232,7 @@ function popupSpieler(pSpieler, pSaison) {
             positionen = '<tr class=bGrau>'
                     + '<td></td>'
                     + '<th class=TC>Gesamt</th>'
+//                    + '<th class="TR" nowrap>' + SP[SAISON[pSaison][is1]][pSaison][spCuppunkte] + '&nbsp;</th>';
                     + '<th class="TR" nowrap>' + cuppunkte + '&nbsp;</th>';
             if (QUERFORMAT()) {
                 positionen += '<th class="TC" colspan="4">Cuppunkte&nbsp;&nbsp;<i onclick="event.stopPropagation();$(\'#jbSpielerHelp\').toggle();" class="i zmdi-info P"></i></th>';
@@ -246,7 +245,7 @@ function popupSpieler(pSpieler, pSaison) {
     var tName = '';
     nTurniere = 0;
     for (var iTurnier in STAT) {
-        if (iTurnier.substr(0, 2) === '20' && (STAT[iTurnier]._SAISON === pSaison || CUPS.TYP[stCup] === 'MT')) {
+        if (iTurnier[0] === '2' && (STAT[iTurnier]._SAISON === pSaison || CUPS.TYP[stCup] === 'MT')) {
             if (STAT[iTurnier][pSpieler]) {
                 nTurniere++;
                 tName = STAT[iTurnier]._NAME;

@@ -17,7 +17,7 @@ function showUebersicht() {
     $("#sideContent").show();
     $('#sideDetails').html(
             '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Gesamtstatistiken</li>'
-            + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();" class="ui-disabled">&nbsp;Cupsieger</a></li>'
+            + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();">&nbsp;Cupsieger</a></li>'
             + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();">&nbsp;Teilnehmerzahlen</a></li>'
             + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
             + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'

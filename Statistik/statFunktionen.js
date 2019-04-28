@@ -369,14 +369,14 @@ function listeDrucken() {
 
 function showIcons(pIcons) {
     'use strict';
-    $('#iGo,#iDownload,#iPrint,#iAnekdote').hide();
+    $('#iScrollToMe,#iDownload,#iPrint,#iAnekdote').hide();
     if (QUERFORMAT()) {
         for (var i = 0; i < pIcons.length; i++) {
             $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (20 + (50 * i)) + 'px; font-size: 44px; cursor: pointer;').show();
         }
     } else {
-        if (pIcons.length && pIcons[0] === '#iGo') {
-            $('#iGo').attr('style', 'position: fixed; top: ' + ($("#hfHeader").offset().top + 7) + 'px; right: 8px; font-size: 34px; cursor: pointer;').show();
+        if (pIcons.length && pIcons[0] === '#iScrollToMe') {
+            $('#iScrollToMe').attr('style', 'position: fixed; top: ' + ($("#hfHeader").offset().top + 7) + 'px; right: 8px; font-size: 34px; cursor: pointer;').show();
         }
     }
 }

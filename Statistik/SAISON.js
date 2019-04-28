@@ -1,5 +1,5 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, hRet */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, hRet, SP */
 
 const isSaison = 0;
 const is1 = 1;
@@ -70,7 +70,7 @@ function bereSaison() {
         }
     }
 
-    CUP = {};
+    var CUP = {};
     var hCupPunkte = 0;
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
@@ -89,48 +89,58 @@ function bereSaison() {
                                 SAISON[iSaison][isAnzTeilnahmen]++;
 
                                 if (CUP[spieler]) {
-                                    tCUP = CUP[spieler];
+                                    aSP = CUP[spieler];
                                     if (STAT[turnier][spieler][0] === 1) {
-                                        tCUP[1]++;
+                                        aSP[1]++;
                                     } else if (STAT[turnier][spieler][0] === 2) {
-                                        tCUP[2]++;
+                                        aSP[2]++;
                                     } else if (STAT[turnier][spieler][0] === 3) {
-                                        tCUP[3]++;
+                                        aSP[3]++;
                                     }
+                                    aSP[4]++;
+
+                                    if (aSP[6] > STAT[turnier][spieler][0]) {
+                                        aSP[6] = STAT[turnier][spieler][0];  // Beste Platzierung
+                                    }
+                                    aSP[7] += STAT[turnier][spieler][4]; // Punkte
 
                                     if (turnier !== stFinale) {
                                         hCupPunkte = getCupPunkte(turnier, spieler);
                                         if (getCupPunkte(turnier, spieler) === '-') {
-                                            tCUP[5].push(hCupPunkte);
+                                            aSP[5].push(hCupPunkte);
                                         } else {
-                                            ii = tCUP[5].length;
-                                            for (var i = 0; i < tCUP[5].length; i++) {
-                                                if (tCUP[5][i] === '-'
-                                                        || tCUP[5][i] <= hCupPunkte) {
+                                            ii = aSP[5].length;
+                                            for (var i = 0; i < aSP[5].length; i++) {
+                                                if (aSP[5][i] === '-'
+                                                        || aSP[5][i] <= hCupPunkte) {
                                                     ii = i;
                                                     break;
                                                 }
                                             }
-                                            tCUP[5].splice(ii, 0, hCupPunkte);
+                                            aSP[5].splice(ii, 0, hCupPunkte);
                                         }
                                     }
-                                    CUP[spieler] = tCUP;
+                                    CUP[spieler] = aSP;
                                 } else {
                                     SAISON[iSaison][isAnzTeilnehmer]++;
-                                    tCUP = [0, 0, 0, 0, 0, []];
+                                    aSP = [0, 0, 0, 0, 0, []];
                                     if (STAT[turnier][spieler][0] === 1) {
-                                        tCUP[1]++;
+                                        aSP[1]++;
                                     } else if (STAT[turnier][spieler][0] === 2) {
-                                        tCUP[2]++;
+                                        aSP[2]++;
                                     } else if (STAT[turnier][spieler][0] === 3) {
-                                        tCUP[3]++;
+                                        aSP[3]++;
                                     }
-                                    tCUP[4]++;
+                                    aSP[4]++;
 
                                     if (turnier !== stFinale) {
-                                        tCUP[5] = [getCupPunkte(turnier, spieler)];
+                                        aSP[5] = [getCupPunkte(turnier, spieler)];
                                     }
-                                    CUP[spieler] = tCUP;
+
+                                    aSP[6] = STAT[turnier][spieler][0]; // Platzierung
+                                    aSP[7] = STAT[turnier][spieler][4]; // Punkte
+
+                                    CUP[spieler] = aSP;
                                 }
                             }
                         }
@@ -140,14 +150,19 @@ function bereSaison() {
         }
     }
 
-    CUPD = [];
+    var CUPD = [];
     var spieler = '';
     for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
-        tCUP = CUP[spieler];
-        for (var i in tCUP[5]) {
+
+        if (spieler === '3425' && iSaison === 10) {
+            spieler = spieler;
+        }
+
+        aSP = CUP[spieler];
+        for (var i in aSP[5]) {
             if (i < 6) {
-                if (!isNaN(tCUP[5][i])) {
-                    tCUP[0] += tCUP[5][i];
+                if (!isNaN(aSP[5][i])) {
+                    aSP[0] += aSP[5][i];
                 }
             } else {
                 break;
@@ -157,40 +172,64 @@ function bereSaison() {
         if (stFinale) {
             hCupPunkte = getCupPunkte(stFinale, spieler);
             if (!isNaN(hCupPunkte)) {
-                tCUP[0] += parseInt(hCupPunkte);
+                aSP[0] += parseInt(hCupPunkte);
             }
         }
 
-        if (tCUP[0] > SAISON[iSaison][is3CupPunkte]) {
-            if (tCUP[0] > SAISON[iSaison][is2CupPunkte]) {
-                if (tCUP[0] > SAISON[iSaison][is1CupPunkte]) {
+        if (aSP[0] > SAISON[iSaison][is3CupPunkte]) {
+            if (aSP[0] > SAISON[iSaison][is2CupPunkte]) {
+                if (aSP[0] > SAISON[iSaison][is1CupPunkte]) {
                     SAISON[iSaison][is3] = SAISON[iSaison][is2];
                     SAISON[iSaison][is3CupPunkte] = SAISON[iSaison][is2CupPunkte];
                     SAISON[iSaison][is2] = SAISON[iSaison][is1];
                     SAISON[iSaison][is2CupPunkte] = SAISON[iSaison][is1CupPunkte];
                     SAISON[iSaison][is1] = spieler;
-                    SAISON[iSaison][is1CupPunkte] = tCUP[0];
+                    SAISON[iSaison][is1CupPunkte] = aSP[0];
                 } else {
                     SAISON[iSaison][is3] = SAISON[iSaison][is2];
                     SAISON[iSaison][is3CupPunkte] = SAISON[iSaison][is2CupPunkte];
                     SAISON[iSaison][is2] = spieler;
-                    SAISON[iSaison][is2CupPunkte] = tCUP[0];
+                    SAISON[iSaison][is2CupPunkte] = aSP[0];
                 }
             } else {
                 SAISON[iSaison][is3] = spieler;
-                SAISON[iSaison][is3CupPunkte] = tCUP[0];
+                SAISON[iSaison][is3CupPunkte] = aSP[0];
             }
         }
 
-        CUP[spieler] = tCUP;
-        tCUP.push(spieler);
-        if (isNaN(spieler)) {
-            CUPD.push((9000 - tCUP[0]) + spieler + ';' + spieler);
+        if (!SP[spieler]) {
+            SP[spieler] = [];
+        }
+
+        spRangImCup = 0;
+        spCuppunkte = 1;
+        spTeilnahmen = 2;
+        spBestePlatz = 3;
+        spPunkte = 4;
+        SP[spieler][iSaison] = [0, aSP[0], aSP[4], aSP[6], aSP[7]];
+        if (aSP[6] < 4) {
+            SP[spieler][iSaison][3] = aSP[1] + '-' + aSP[2] + '-' + aSP[3];
+        }
+
+        if (stFinale) {
+            CUPD.push((9000 - aSP[0]) + 'FP:' + (5000 - getCupPunkte(stFinale, spieler)) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         } else {
-            CUPD.push((9000 - tCUP[0]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+            CUPD.push((9000 - aSP[0]) + 'FP:0000' + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         }
     }
 
     CUPD.sort();
 
+    var hPlatz = 0;
+    var hLastKey = '';
+    for (var ii = 0; ii < CUPD.length; ii++) {
+
+        var spieler = CUPD[ii].substring((CUPD[ii].lastIndexOf(';') + 1));
+
+        if (hLastKey !== CUPD[ii].substr(0, 11)) {
+            hLastKey = CUPD[ii].substr(0, 11);
+            hPlatz = ii;
+        }
+        SP[spieler][iSaison][0] = hPlatz + 1;
+    }
 }

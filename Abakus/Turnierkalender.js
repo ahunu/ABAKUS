@@ -270,10 +270,15 @@ function onAendern() {
     }
 
     var hCUP = parseInt($('#iCUP').val().trim());
-    if (isNaN(hCUP) || hCUP !== 50 && hCUP !== 51 && hCUP !== 52 && hCUP !== 53 && hCUP !== 54 && hCUP !== 55 && hCUP !== 56 && hCUP !== 58 && hCUP !== 59 && hCUP !== 31 && hCUP !== 30 && hCUP !== 3 && hCUP !== 4) {
+
+//    if (!CUPS.TYP[hCUP] || CUPS.TYP[hCUP] !== 'CUP') {
+    if (hCUP < 0 || !CUPS.TYP[hCUP] || CUPS.TYP[hCUP] !== 'CUP') {
+//    if (isNaN(hCUP) || hCUP !== 50 && hCUP !== 51 && hCUP !== 52 && hCUP !== 53 && hCUP !== 54 && hCUP !== 55 && hCUP !== 56 && hCUP !== 58 && hCUP !== 59 && hCUP !== 31 && hCUP !== 30 && hCUP !== 3 && hCUP !== 4) {
         showEinenTip('#iCUP', 'Wr. Marathon = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Schmankerl Tarock = 58,<br>UTC Klopeinersee = 59,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
+
+
     if (!/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iCUP').val())) {
         showEinenTip('#iCUP', 'Der <b>Cup</b> enthält ein ungültiges Sonderzeichen.');
         $('input[id=iCUP]').css("color", "red").focus();
@@ -282,6 +287,10 @@ function onAendern() {
 
     if ($('#iNAME').val().trim() === "") {
         showEinenTip('#iNAME', 'Wie willst du das Turnier nennen?');
+        return;
+    }
+    if ($('#iNAME').val().length > 28) {
+        showEinenTip('#iNAME', 'Der Turniername darf nur 28 Zeichen lang sein.');
         return;
     }
 

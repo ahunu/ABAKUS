@@ -6,7 +6,7 @@ function getZitat() {
     var iZitat = 9999;
     do {
         NOK = false;
-        iZitat = Date.now() % 53;
+        iZitat = Date.now() % 55;
         for (var i = 0; i < stLastZitat.length; i++) {
             if (stLastZitat[i] === iZitat) {
                 NOK = true;
@@ -244,13 +244,13 @@ function getZitat() {
                     + '<br>Wahre Profis gründen eine Bank.',
             'Bertold Brecht, 1898-1956, dt. Dramatiker und Lyriker'];
     } else if (iZitat === 53) {
-        return [''
-                    + '<br>',
-            ''];
+        return ['Nur ein wirklich starker Spieler'
+                    + '<br>weiß wie schwach er spielt.',
+            'Savielly Tartakower, 1887-1956, pol. fr. Schachmeister'];
     } else if (iZitat === 54) {
-        return [''
-                    + '<br>',
-            ''];
+        return ['Es reicht nicht ein guter Spieler zu sein...'
+                    + '<br>man muss auch gut spielen.',
+            'Siegbert Tarrasch, 1862-1934, dt. Schachmeister'];
     } else if (iZitat === 55) {
         return [''
                     + '<br>',
@@ -268,6 +268,26 @@ function getZitat() {
                     + '<br>',
             ''];
     } else if (iZitat === 59) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 60) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 61) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 62) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 63) {
+        return [''
+                    + '<br>',
+            ''];
+    } else if (iZitat === 64) {
         return [''
                     + '<br>',
             ''];

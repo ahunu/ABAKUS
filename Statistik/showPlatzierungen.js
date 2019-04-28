@@ -244,9 +244,9 @@ function showPlatzierungen(pSort) {
 
         if (LS.ME.length === 4) {
             if (mMitgespielt) {
-                showIcons(['#iGo']);
+                showIcons(['#iScrollToMe']);
             } else {
-//                showIcons(['#iGo']);
+//                showIcons(['#iScrollToMe']);
             }
         }
 

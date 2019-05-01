@@ -597,7 +597,7 @@ function checkNeuerTisch() {
     LS.Spieler[4] = LS.Spieler[4] + LS.Sterne[4];
     LS.Spieler[5] = LS.Spieler[5] + LS.Sterne[5];
     LS.Spieler[6] = LS.Spieler[6] + LS.Sterne[6];
-    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+
     if (LS.Spieler[5] === '') {
         LS.JeSeite = '1';
         if (LS.AnzSpieler !== 4) {
@@ -618,8 +618,16 @@ function checkNeuerTisch() {
             LS.Pausierer2 = 0;
         }
     }
-    if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
-        LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+
+    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+    if (LS.I === 54) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+        if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
+            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler);
+        }
+    } else {           // Rest - 5er-Tische spielen mehr
+        if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
+            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+        }
     }
 
     SetGeberPausierer();
@@ -916,10 +924,17 @@ function Weiterspielen() {
     'use strict';
     LS.ShowCups = LS.I;
     LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
-    if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
-        LS.SpieleJeRunde = (CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler;
-
+    if (LS.I === 54) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+        var STAT = JSON.parse(localStorage.getItem('Abakus.STAT077'));
+        if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
+            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler);
+        }
+    } else {           // Rest - 5er-Tische spielen mehr
+        if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
+            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+        }
     }
+
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     var NEXT = new Object();
     NEXT.Seite = 'GR';

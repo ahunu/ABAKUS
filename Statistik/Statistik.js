@@ -8,7 +8,7 @@
 // 55 Tiroler Tarockcup
 // 56 Wr. Tarockcup
 
-// 58 Sommer Stadl Tarock
+// 81 Sommer Schmankerl Tarock
 
 var ADMIN = false;
 var PC = false;
@@ -247,7 +247,7 @@ function getDateString(pDate) {
 }
 
 function scrollToMe() {
-        $('#iScrollToMe').removeClass('ui-btn-active');
+    $('#iScrollToMe').removeClass('ui-btn-active');
     if (jbSpieler) {
         if (jbSpieler.isOpen) {
             jbSpieler.close();
@@ -410,7 +410,7 @@ function fINIT(pCup) {
     } else {
         stCup = LS.ShowCups;
     }
-    if (stCup >= 58) {
+    if (stCup >= 60) {
         LS.ShowSpielerNr = false;
     }
 

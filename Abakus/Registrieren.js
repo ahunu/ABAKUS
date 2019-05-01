@@ -229,9 +229,9 @@ $(document).bind('pageinit', function () {
             hName = "Wr. Tarockcup";
         } else if (iCNR === "-56") {
             hName = "Tarockcup";
-        } else if (iCNR === "-58") {
+        } else if (iCNR === "-81") {
             hName = "Schmankerl Tarock";
-        } else if (iCNR === "-59") {
+        } else if (iCNR === "-82") {
             hName = "UTC Klopeinersee";
         } else {
             iCNR = '0000' + iCNR;

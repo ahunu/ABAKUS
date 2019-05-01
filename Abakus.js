@@ -28,7 +28,6 @@ var stLastZitat = [];
 var mTischNeuLoeschen = '';
 var mHref = false;
 var meinStellvertreter = '3244';
-
 const iRufer = 1;
 const iSolorufer = 2;
 const iPagatrufer = 3;
@@ -57,7 +56,6 @@ const iUltimo = 25;
 const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
-
 function fHref(pHref) {
     $('body').addClass('ui-disabled');
     mHref = true;
@@ -130,7 +128,6 @@ function hrefStatistikPR() {
     }
 
     hideEinenMoment();
-
     if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0) {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         fHref("Abakus/Statistik.html");
@@ -209,7 +206,7 @@ function writeCanvas(pCup) {
             } else {
                 hTitel2 = 'Ein außergewöhnlicher Event';
             }
-        } else if (pCup === 59) {
+        } else if (pCup === 82) {
             hTitel2 = '<b>U</b>rlaubs-<b>T</b>arock-<b>C</b>up';
         }
     }
@@ -237,7 +234,7 @@ function writeCanvas(pCup) {
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/DieGeschichte.png");
     } else {
         hTitel = CUPS.NAME[pCup];
-        if (pCup >= 50 && pCup <= 59) {
+        if (CUPS.TYP[pCup] === 'CUP') {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i" + pCup + ".png");
         } else if (pCup === 11 || pCup === 25) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i55.png");
@@ -271,7 +268,7 @@ function writeCanvas(pCup) {
                 document.title = 'WTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
                 hTitel = 'Wiener Tarockcup';
                 hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'http://wienertarockcup.at\')" >www.WienerTarockcup.at</span>';
-            } else if (pCup === 58) {
+            } else if (pCup === 81) {
                 document.title = 'SST - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
             } else {
                 document.title = CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
@@ -342,7 +339,6 @@ function initCUPSdelAllSTAT(pMeldung) {
     $('#pContent').scrollTop(0);
 //    LS.ShowCups = 0;
     LS.LastBtn = '';
-
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
     var TU = JSON.parse(localStorage.getItem('Abakus.TU'));
     var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
@@ -430,7 +426,20 @@ function initSeite2() {
     if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC') {
         $('#bSpieler').addClass('ui-disabled');
         if (CUPS.SPJERUNDE[I] > LS.gespielt) {
-            $('#bSpeichern').addClass('ui-disabled');
+
+            if (LS.I === 54 && LS.AnzSpieler === 4) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+                var STAT = JSON.parse(localStorage.getItem('Abakus.STAT077'));
+                if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
+                    if (parseInt(CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler > LS.gespielt) {
+                        $('#bSpeichern').addClass('ui-disabled');
+                    }
+                } else {
+                    $('#bSpeichern').addClass('ui-disabled');
+                }
+            } else {           // Rest - 5er-Tische spielen mehr
+                $('#bSpeichern').addClass('ui-disabled');
+            }
+
         }
         if (LS.gespielt !== 0) {
             $('#bNeuerTisch').addClass('ui-disabled');
@@ -641,7 +650,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
             hVorschub = '<br>';
         }
     }
-    if (I >= 50 && I <= 59) {
+    if (CUPS.TYP[I] === 'CUP') {
         hVorschub = '<br>';
     }
     hVorschub = '<br><br>';
@@ -769,7 +778,6 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                 window.location.href = "#" + Date.now();
         }
     }, 600);
-
 }
 
 function listVersion() {
@@ -854,7 +862,6 @@ function initExtraButtons() {
     }
 
     $('#bAdminTools,#bFindSpieler').hide();
-
     if (LS.ME === '3425'
             || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0
@@ -976,7 +983,6 @@ function getMeinTerminBarZeile(pCup) {
 function whenCUPSloaded() {
 
     initExtraButtons();
-
 //    if (LS.I && (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT')) {
     if (LS.I) { // ????
         if (LS.gespielt > 0) {
@@ -993,7 +999,7 @@ function whenCUPSloaded() {
     if (LS.ME[0] === '-') { // User für Turnier-PC
         LS.ShowCups = parseInt(LS.ME) * -1;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        showEinenMoment(CUPS.NAME[parseInt(LS.ME) * -1] + ':', "Die Turnierverwaltung wird gestartet.");
+        showEinenMoment(CUPS.NAME[LS.ShowCups] + ':', "Die Turnierverwaltung wird gestartet.");
         setTimeout(function () {
             window.location.replace('_Turnier/TU_1_Anmeldung.html?init');
         }, 20);
@@ -1029,7 +1035,6 @@ function whenCUPSloaded() {
     TERMINE.sort(function (a, b) {
         return (a.DATUM > b.DATUM) ? 1 : ((b.DATUM > a.DATUM) ? -1 : 0);
     });
-
     if (window.location.search) { // Quickstart
         LS = new Object();
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
@@ -1080,7 +1085,6 @@ function whenCUPSloaded() {
     var htmlPR = '<div id="bPR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Private Runden:</h2><ul data-role="listview">';
     var htmlTR = '<div id="bTR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Testrunden -turniere:</h2><ul data-role="listview">';
     var htmlAR = '<div id="bAR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Allgemeine Runden:</h2><ul data-role="listview">';
-
     if (LS.Quickstart) {
         delete LS.Quickstart;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
@@ -1121,7 +1125,7 @@ function whenCUPSloaded() {
                     } else if (TERMINE[termin].CUP === 56) {
                         hCupName = 'Wr. Tarockcup';
                         hCupFarbe = ' cWTC';
-                    } else if (TERMINE[termin].CUP === 58) {
+                    } else if (TERMINE[termin].CUP === 81) {
                         hCupName = 'Schmankerl Tarock';
                         hCupFarbe = ' cDIV';
                     } else {
@@ -1207,7 +1211,7 @@ function whenCUPSloaded() {
 //            } else {
 //                SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
 //            }
-//            if (i > 50 && i < 58) { // Sort nach Cupname
+//            if (i > 50 && i < 81) { // Sort nach Cupname
 //                SORT[SORT.length] = i + CUPS.NAME[i] + '  ;' + i;
 //            } else {
             SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
@@ -1465,7 +1469,6 @@ function fINIT() {
     document.onselectstart = function () {
         return false;
     };
-
     if (localStorage.getItem("Abakus.CUPS") === null) {
         CUPS = new Object();
         CUPS.NAME = [];
@@ -1538,7 +1541,6 @@ function fINIT() {
     $('#ddRumpf').each(function () { // sonst funktioniert important nicht
         this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
     });
-
     window.onresize = function (e) {
         $('#pContent').each(function () { // sonst funktioniert important nicht
             this.style.setProperty('height', ($(window).innerHeight() - $('#pContent').offset().top - 1) + 'px', 'important');
@@ -1573,7 +1575,6 @@ $(document).ready(function () {
                     $('#hMenu,#pMenu').show();
                     I = 0;
                     LS.ShowCups = 0;
-
                     $('#dMeldung').text('');
                     if (LS.LastBtn) {
                         $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
@@ -1596,7 +1597,6 @@ $(document).ready(function () {
             }
         }
     };
-
     if (/iPad|iPhone/.test(navigator.userAgent)) {
         window.onpageshow = function (event) {
             if (window.performance.navigation.type === 2) {

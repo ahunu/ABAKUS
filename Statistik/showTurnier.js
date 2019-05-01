@@ -78,7 +78,7 @@ function showTurnier(pTurnier) {
         if (mMitgespielt) {
             if (LS.ME === '3425'
                     || LS.ME === '3757' && stCup === 56     // Erwin Haider
-                    || LS.ME === '4731' && stCup === 58) {  // Alexandra Sabkovski
+                    || LS.ME === '4731' && stCup === 81) {  // Alexandra Sabkovski
                 showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote', '#iDownload']);
             } else if (ADMIN
                     || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
@@ -91,7 +91,7 @@ function showTurnier(pTurnier) {
         } else {
             if (LS.ME === '3425'
                     || LS.ME === '3757' && stCup === 56     // Erwin Haider
-                    || LS.ME === '4731' && stCup === 58) {  // Alexandra Sabkovski
+                    || LS.ME === '4731' && stCup === 81) {  // Alexandra Sabkovski
                 showIcons(['#iPrint', '#iAnekdote', '#iDownload']);
             } else if (ADMIN
                     || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
@@ -150,7 +150,7 @@ function showTurnier(pTurnier) {
                 + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
                 + (stCup === 54 ? "<td class=TR>tarock.firebaseapp.com?St.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.firebaseapp.com?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 58 ? "<td class=TR>tarock.firebaseapp.com?Schmankerl Tarock&nbsp;</td>" : "")
+                + (stCup === 81 ? "<td class=TR>tarock.firebaseapp.com?Schmankerl Tarock&nbsp;</td>" : "")
                 + "</tr></tbody></table><br>");
         $('#tStand').hide();
     } else {

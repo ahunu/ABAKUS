@@ -241,7 +241,7 @@ function getLinks() {
             + '<span class="cBlau P M" onclick="showCup(54)" ><b>Steirischer Tarockcup</b> - Ergebnisse</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol\')" ><b>Tiroler Tarockcup (TTC)</b>, Tirol (Markus Mair), seit 2008/09</span><br>'
             + '<br>'
-            + '<span class="cBlau P M" onclick="showCup(58)" ><b>Sommer Stadl Tarock (SST)</b>, Altenhof (Alexandra Sabkovski)</span><br>'
+            + '<span class="cBlau P M" onclick="showCup(81)" ><b>Sommer Schmankerl Tarock (SST)</b>, Altenhof (Alexandra Sabkovski)</span><br>'
             + '<br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-aktuell/tarockkalender.pdf\')" ><b>Turnierkalender - &Ouml;sterreich</b>, Markus Mair</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-aktuell/tarock_medaillenspiegel_cups.pdf\')" ><b>Medaillenspiegel &uuml;ber alle Cups</b>, Markus Mair</span><br>'

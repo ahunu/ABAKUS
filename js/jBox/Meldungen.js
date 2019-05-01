@@ -51,7 +51,7 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
             hTitel = "Raiffeisencup:";
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
-        } else if (pCup === 58) {
+        } else if (pCup === 81) {
             hTitel = "Schmankerl Tarock:";
         } else {
             hTitel = CUPS.NAME[pCup] + ':';
@@ -189,7 +189,7 @@ function showEineMeldung(pCup, pText, pText2) {
             hTitel = "St. Tarockcup:";
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
-        } else if (pCup === 58) {
+        } else if (pCup === 81) {
             hTitel = "Schmankerl Tarock:";
         } else {
             hTitel = CUPS.NAME[pCup] + ':';
@@ -226,7 +226,7 @@ function showEineWarnung(pCup, pText, pText2) {
             hTitel = "St. Tarockcup:";
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
-        } else if (pCup === 58) {
+        } else if (pCup === 81) {
             hTitel = "Schmankerl Tarock:";
         } else {
             hTitel = CUPS.NAME[pCup] + ':';
@@ -269,7 +269,7 @@ function showEinenFehler(pCup, pText, pText2) {
             hTitel = "St. Tarockcup:";
         } else if (pCup === 56) {
             hTitel = "Wr. Tarockcup:";
-        } else if (pCup === 58) {
+        } else if (pCup === 81) {
             hTitel = "Schmankerl Tarock:";
         } else {
             hTitel = CUPS.NAME[pCup] + ':';

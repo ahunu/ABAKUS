@@ -224,6 +224,7 @@ function bBestaetigen(pStep) {
 function showNeuenSPIELER(pNeu) {
     'use strict';
     hNeu = true;
+    $("#lvAehnlich").empty();
     $('#aeTitel').text('Kein Spieler darf ein zweites Mal angelegt werden.');
     $("body").addClass('noScroll');
     $('#aeText').html("Sollte es in dieser Datenbank Spieler mit ähnlichen Namen geben, werden diese hier angezeigt. "
@@ -447,10 +448,11 @@ function onOK(pSpeichern) {
     } else {
         aehnlicheSpielerFinden(iNNAME, iVNAME, iORT, iNR);
     }
-
     if (!pSpeichern) {
         $("#fTEXT").html('Die Daten sind OK.');
-        $("#bOK").removeClass('ui-disabled');
+        if ($('#bBestaetigen2').is(":hidden")) {
+            $("#bOK").removeClass('ui-disabled');
+        }
         return;
     }
 

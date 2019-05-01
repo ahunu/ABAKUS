@@ -12,9 +12,17 @@ const isAnzTurniere = 7;
 const isAnzTeilnehmer = 8;
 const isAnzTeilnahmen = 9;
 
+const spRangImCup = 0;
+const spCuppunkte = 1;
+const spTeilnahmen = 2;
+const spBestePlatz = 3;
+const spPunkte = 4;
+const sp0Cupsiege = 0;
+
 function initSAISON() {
     iSaison = 0;
     stSaison = '';
+    SP = {};
     SAISON = [];
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
@@ -154,10 +162,6 @@ function bereSaison() {
     var spieler = '';
     for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
 
-        if (spieler === '3425' && iSaison === 10) {
-            spieler = spieler;
-        }
-
         aSP = CUP[spieler];
         for (var i in aSP[5]) {
             if (i < 6) {
@@ -198,14 +202,9 @@ function bereSaison() {
         }
 
         if (!SP[spieler]) {
-            SP[spieler] = [];
+            SP[spieler] = [[]];
         }
 
-        spRangImCup = 0;
-        spCuppunkte = 1;
-        spTeilnahmen = 2;
-        spBestePlatz = 3;
-        spPunkte = 4;
         SP[spieler][iSaison] = [0, aSP[0], aSP[4], aSP[6], aSP[7]];
         if (aSP[6] < 4) {
             SP[spieler][iSaison][3] = aSP[1] + '-' + aSP[2] + '-' + aSP[3];
@@ -223,13 +222,18 @@ function bereSaison() {
     var hPlatz = 0;
     var hLastKey = '';
     for (var ii = 0; ii < CUPD.length; ii++) {
-
         var spieler = CUPD[ii].substring((CUPD[ii].lastIndexOf(';') + 1));
-
         if (hLastKey !== CUPD[ii].substr(0, 11)) {
             hLastKey = CUPD[ii].substr(0, 11);
-            hPlatz = ii;
+            hPlatz = ii + 1;
         }
-        SP[spieler][iSaison][0] = hPlatz + 1;
+        SP[spieler][iSaison][0] = hPlatz;
+        if (hPlatz === 1 && stFinale) {
+            if (SP[spieler][0][sp0Cupsiege]) {
+                SP[spieler][0][sp0Cupsiege] = SP[spieler][0][sp0Cupsiege] + 1;
+            } else {
+                SP[spieler][0][sp0Cupsiege] = 1;
+            }
+        }
     }
 }

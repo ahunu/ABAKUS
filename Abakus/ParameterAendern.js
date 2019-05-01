@@ -570,7 +570,7 @@ $(document).bind('pageinit', function () {
     CUPS = new Object();
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     firebase.initDB(0, 'rw');
-    if (I >= 51 && I <= 59) {
+    if (CUPS.TYP[I] === 'CUP') {
         $('#dRunden').hide();
     }
     if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {

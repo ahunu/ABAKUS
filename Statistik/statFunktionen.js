@@ -1,5 +1,5 @@
 
-/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbHome, jbArchiv, stFinalTeilnehmer, stNamenLen, stSaison */
+/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbHome, jbArchiv, stFinalTeilnehmer, stNamenLen, stSaison, iSaison, sp0Cupsiege, SP */
 
 function sortNumber(a, b) {
     return a - b;
@@ -47,7 +47,7 @@ function getStatMeldungen() {
     var ret = "";
     var Pfad = "../";
 
-    if (stCup === 58) {
+    if (stCup === 81) {
         ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Turnierwertung.</b><br></span>";
         ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>";
     }
@@ -125,13 +125,14 @@ function getSpielerOrt(pNR, pSTANDORT) {
 }
 
 function getCupPunkte(pTurnier, pSpieler) {
-    if (stCup < 58) {
+
+    if (stCup < 60) {
         if (STAT[pTurnier][pSpieler]) {
             if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
                     return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
                 } else {
-                    return '-';
+//                    return '-';
 //                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
                     if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
                             && (stCup === 54 && stSaison <= '2018/19'
@@ -144,7 +145,7 @@ function getCupPunkte(pTurnier, pSpieler) {
             }
         } else {
 //  //            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
-            return '-';
+//            return '-';
             if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
                     && (stCup === 54 && stSaison <= '2018/19'
                             || stCup === 56 && stSaison <= '2018/19')) {
@@ -155,6 +156,9 @@ function getCupPunkte(pTurnier, pSpieler) {
         }
     }
 
+    if (!STAT[pTurnier][pSpieler]) {
+        return '-'; // Spieler hat am Finale nicht teilgenommen
+    }
     var hPunkte = STAT[pTurnier][pSpieler][4]; // Meine Cuppunkte
     if (hPunkte < 0) {
         hPunkte = '-';
@@ -181,7 +185,18 @@ function getSpielerName(pNR) {
         }
     } else {
         if (SPIELER[pNR]) {
-            return SPIELER[pNR][0] + ' ' + SPIELER[pNR][1];
+            console.log(pNR);
+            var ret = SPIELER[pNR][0] + ' ' + SPIELER[pNR][1];
+            if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
+                var nTimes = SP[pNR][0][sp0Cupsiege];
+                ret += '<sup> ';
+                while (nTimes > 0) {
+                    ret += '*';
+                    nTimes--;
+                }
+                ret += '</sup>';
+            }
+            return ret;
         } else {
             return pNR + ' (neu)';
         }
@@ -197,150 +212,177 @@ function getName(pNR, pMax) {
         if (SPIELER[pNR]) {
             ret = SPIELER[pNR][0] + ' ' + SPIELER[pNR][1];
         } else {
-            ret = pNR + ' ?';
+            ret = pNR + ' (neu)';
         }
     }
 
     if (pMax) {
         if (pMax >= 99) {
+            if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
+                var nTimes = SP[pNR][0][sp0Cupsiege];
+                ret += '<sup> ';
+                while (nTimes > 0) {
+                    ret += '*';
+                    nTimes--;
+                }
+                ret += '</sup>';
+            }
             return ret;
         }
     } else if (QUERFORMAT()) { // 22 = Himmelfreundpointner R.
-        if (ret.length <= 22) {
-            return ret;
-        } else if (ret.charAt(21) === ' ' || ret.charAt(22) === ' ') {
-            return ret.substr(0, 22);
-        } else {
-            return ret.substr(0, 22) + '.';
+        if (ret.length > 22) {
+            if (ret.charAt(21) === ' ' || ret.charAt(22) === ' ') {
+                ret = ret.substr(0, 22);
+            } else {
+                ret = ret.substr(0, 22) + '.';
+            }
         }
-    }
-
-    if (QUERFORMAT()) {
+        if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
+            var nTimes = SP[pNR][0][sp0Cupsiege];
+            ret += '<sup> ';
+            while (nTimes > 0) {
+                ret += '*';
+                nTimes--;
+            }
+            ret += '</sup>';
+        }
         return ret;
-    } else {
-        var hNamenLen = stNamenLen;
-        if ($(window).width() > 360) {
-            hNamenLen = stNamenLen + ((($(window).width()) - 360) * 0.003 * stNamenLen);
+    }
+
+//    if (QUERFORMAT()) {
+//        if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
+//            var nTimes = SP[pNR][0][sp0Cupsiege];
+//            ret += ' ';
+//            while (nTimes > 0) {
+//                ret += '*';
+//                nTimes--;
+//            }
+//        }
+//        return ret;
+//    } else {
+    var hNamenLen = stNamenLen;
+    if ($(window).width() > 360) {
+        hNamenLen = stNamenLen + ((($(window).width()) - 360) * 0.003 * stNamenLen);
+    }
+    l = 0;
+    len = 0;
+    for (var ii = 0; ii < ret.length; ii++) {
+
+        switch (ret[ii]) {
+            case ' ':
+            case '.':
+            case ',':
+            case 'i':
+            case 'j':
+            case 'l':
+                f = 70;
+                break;
+            case 'I':
+            case '*':
+                f = 62;
+                break;
+            case 't':
+                f = 52;
+                break;
+            case 'f':
+            case 'r':
+                f = 51;
+                break;
+            case 'c':
+            case 'k':
+            case 's':
+            case 'v':
+            case 'x':
+            case 'y':
+            case 'z':
+                f = 38;
+                break;
+            case 'e':
+                f = 36;
+                break;
+            case 'a':
+                f = 35;
+                break;
+            case 'b':
+            case 'd':
+            case 'g':
+            case 'h':
+            case 'n':
+            case 'o':
+            case 'p':
+            case 'q':
+            case 'u':
+            case 'ä':
+            case 'ü':
+            case 'ö':
+                f = 34;
+                break;
+            case 'w':
+                f = 27;
+                break;
+            case 'm':
+                f = 23;
+                break;
+            case 'J':
+                f = 38;
+                break;
+            case 'L':
+                f = 34;
+                break;
+            case 'F':
+            case 'T':
+            case 'Z':
+                f = 31;
+                break;
+            case 'A':
+            case 'Ä':
+            case 'B':
+            case 'E':
+            case 'P':
+            case 'S':
+            case 'K':
+            case 'V':
+            case 'X':
+            case 'Y':
+                f = 29;
+                break;
+            case 'C':
+            case 'D':
+            case 'H':
+            case 'N':
+            case 'R':
+            case 'U':
+            case 'Ü':
+                f = 26;
+                break;
+            case 'G':
+            case 'O':
+            case 'Ö':
+            case 'Q':
+                f = 25;
+                break;
+            case 'M':
+                f = 23;
+                break;
+            case 'W':
+                f = 20;
+                break;
+            default:
+                f = 30;
         }
-        l = 0;
-        len = 0;
-        for (var ii = 0; ii < ret.length; ii++) {
 
-            switch (ret[ii]) {
-                case ' ':
-                case '.':
-                case ',':
-                case 'i':
-                case 'j':
-                case 'l':
-                    f = 70;
-                    break;
-                case 'I':
-                case '*':
-                    f = 62;
-                    break;
-                case 't':
-                    f = 52;
-                    break;
-                case 'f':
-                case 'r':
-                    f = 51;
-                    break;
-                case 'c':
-                case 'k':
-                case 's':
-                case 'v':
-                case 'x':
-                case 'y':
-                case 'z':
-                    f = 38;
-                    break;
-                case 'e':
-                    f = 36;
-                    break;
-                case 'a':
-                    f = 35;
-                    break;
-                case 'b':
-                case 'd':
-                case 'g':
-                case 'h':
-                case 'n':
-                case 'o':
-                case 'p':
-                case 'q':
-                case 'u':
-                case 'ä':
-                case 'ü':
-                case 'ö':
-                    f = 34;
-                    break;
-                case 'w':
-                    f = 27;
-                    break;
-                case 'm':
-                    f = 23;
-                    break;
-                case 'J':
-                    f = 38;
-                    break;
-                case 'L':
-                    f = 34;
-                    break;
-                case 'F':
-                case 'T':
-                case 'Z':
-                    f = 31;
-                    break;
-                case 'A':
-                case 'Ä':
-                case 'B':
-                case 'E':
-                case 'P':
-                case 'S':
-                case 'K':
-                case 'V':
-                case 'X':
-                case 'Y':
-                    f = 29;
-                    break;
-                case 'C':
-                case 'D':
-                case 'H':
-                case 'N':
-                case 'R':
-                case 'U':
-                case 'Ü':
-                    f = 26;
-                    break;
-                case 'G':
-                case 'O':
-                case 'Ö':
-                case 'Q':
-                    f = 25;
-                    break;
-                case 'M':
-                    f = 23;
-                    break;
-                case 'W':
-                    f = 20;
-                    break;
-                default:
-                    f = 30;
-            }
+        l = l + (1 / f);
 
-            l = l + (1 / f);
-
-            if (hNamenLen > l) {
-                len = ii;
-            }
-        }
-        if (ret.indexOf('uml;') > 0 && ret.indexOf('uml;') < len) {
-            return ret.substring(0, len + 6);
-        } else {
-            return ret.substring(0, len + 1);
+        if (hNamenLen > l) {
+            len = ii;
         }
     }
+    if (ret.indexOf('uml;') > 0 && ret.indexOf('uml;') < len) {
+        return ret.substring(0, len + 6);
+    } else {
+        return ret.substring(0, len + 1);
+    }
+//    }
 }
 
 function listeDrucken() {
@@ -391,7 +433,7 @@ function writeCanvas(pTitel) {
         }
     }
     $('#tStand').hide();
-    if (stCup >= 50 && stCup <= 59) {
+    if (CUPS.TYP[stCup] === 'CUP') {
         $("#hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
     } else {
         $("#hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
@@ -409,7 +451,7 @@ function writeCanvas(pTitel) {
     // 54 G St. Tarockcup
     // 55 T Tiroler Tarockcup
     // 56 W Wr. Tarockcup
-    // 58 A Sommerstadl
+    // 81 A Sommerstadl
 
     if (PC) {
         if (stCup === 51) {
@@ -426,9 +468,9 @@ function writeCanvas(pTitel) {
             document.title = 'WTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else if (stCup === 56) {
             document.title = 'WTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
-        } else if (stCup === 58) {
+        } else if (stCup === 81) {
             document.title = 'SST - ' + pTitel.replace('  ', ' ').replace('/', '-');
-        } else if (stCup === 58) {
+        } else if (stCup === 81) {
             document.title = 'UTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else {
             document.title = CUPS.NAME[stCup] + ' - ' + pTitel.replace('  ', ' ').replace('/', '-');

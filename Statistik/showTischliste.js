@@ -21,21 +21,6 @@ function showTischliste() {
 
     $("#dCopyright").hide();
 
-    if (ADMIN) {
-        if (LS.ME === '3425') {
-            showIcons(['#iDownload', '#iPrint', '#iAnekdote']);
-        } else {
-            showIcons(['#iPrint', '#iAnekdote']);
-        }
-    } else if (stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
-            || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')) {    // Braun Sigi, Sedlacek Robert
-        showIcons(['#iAnekdote']);
-    } else if (STAT[pTurnier]._ANEKDOTE) {
-        showIcons(['#iAnekdote']);
-    } else {
-        showIcons([]);
-    }
-
     if (jbSpieler.isOpen) {
         jbSpieler.close();
     }
@@ -81,11 +66,17 @@ function showTischliste() {
 
     SORT.sort();
 
+    var hRunde = STAT._AKTTURNIER._RUNDE;
+    if (hRunde < 3 && STAT._AKTTURNIER._RUNDESTART + 3600000 < Date.now()) { // > eine Stunde
+        hRunde++;
+    }
+
     for (var ii = 0; ii < SORT.length; ii++) {
         var iSpieler = SORT[ii].substring((SORT[ii].lastIndexOf(';') + 1));
         nSpieler++;
         if (iSpieler === LS.ME) {
             hClass = 'bBeige';
+            showIcons(['#iScrollToMe']);
         } else {
             hClass = '';
             for (var iFreund in LS.Freunde) {
@@ -99,10 +90,9 @@ function showTischliste() {
                 }
             }
         }
-
-        html += '<tr class="' + hClass + '">'
+        html += '<tr ' + (iSpieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
                 + '<td class=TC>' + (isNaN(iSpieler) ? '????' : iSpieler) + '&nbsp;</td>'
-                + '<td class=link><span onclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P' + (STAT._AKTTURNIER[LS.ME] && STAT._AKTTURNIER[LS.ME][STAT._AKTTURNIER._RUNDE + 6] === STAT._AKTTURNIER[iSpieler][STAT._AKTTURNIER._RUNDE + 6] ? ' B' : '') + (iSpieler === LS.ME ? ' cSchwarz' : ' cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
+                + '<td class=link><span onclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P' + (STAT._AKTTURNIER[LS.ME] && STAT._AKTTURNIER[LS.ME][hRunde + 6] === STAT._AKTTURNIER[iSpieler][hRunde + 6] ? ' B' : '') + (iSpieler === LS.ME ? ' cSchwarz' : ' cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
         if (QUERFORMAT()) {
             html += '<td>' + STAT._AKTTURNIER[iSpieler][6] + '</td>'; // Ort / Mannschaft
         }

@@ -826,23 +826,26 @@ input {
     text-align: right;
 }
 
-i.noprint:hover {
-    cursor: pointer;
-    color: #1066aa;
-    font-weight: bold;
+@media only screen and (orientation : landscape)  {
+    i.noprint:hover {
+        cursor: pointer;
+        color: #1066aa;
+        font-weight: bold;
+    }
+    .P:hover {
+        cursor: pointer;
+        color: #0000bb;          /* violett: #bb0088 */
+        text-decoration: underline;
+        zoom: 102%;
+    }
+    i.P:hover {
+        cursor: pointer;
+        color: #1066aa;
+        text-decoration: none;
+        zoom: 103%;
+    }
 }
-.P:hover {
-    cursor: pointer;
-    color: #0000bb;          /* violett: #bb0088 */
-    text-decoration: underline;
-    zoom: 102%;
-}
-i.P:hover {
-    cursor: pointer;
-    color: #1066aa;
-    text-decoration: none;
-    zoom: 103%;
-}
+
 .W {
     white-space: nowrap;
 }

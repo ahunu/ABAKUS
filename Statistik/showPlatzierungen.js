@@ -215,10 +215,10 @@ function showPlatzierungen(pSort) {
         } else {
             $('#sideDetails').hide();
 //            $('#dContent').html('');
-            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
+            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-            hx = $(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height();
+            hx = $(window).innerHeight() - $('#dContent').offset().top;
             html = '<table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
                     + '<thead>'
                     + '<tr ' + (QUERFORMAT() ? "id=L0P1" : "") + ' class=bHell>'

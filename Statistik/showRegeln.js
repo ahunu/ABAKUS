@@ -214,7 +214,7 @@ function showRegeln() {
         $('#sideDetails').hide();
         setFont(4);
         setTimeout(function () {
-            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
+            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
             $('#sideContent').css('height', hx + 'px');
         }, 100);
     }

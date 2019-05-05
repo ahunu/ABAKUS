@@ -224,7 +224,7 @@ function showCupwertung() {
         $('#dContent').html(html);
         $('#sideDetails').hide();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
 

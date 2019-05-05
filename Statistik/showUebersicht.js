@@ -12,7 +12,7 @@ function showUebersicht() {
         jbSpieler.close();
     }
 
-    $('#iPlus,#iMinus,#sideContentMT').hide();
+    $('#iPlus,#iMinus').hide();
 
     $("#sideContent").show();
     $('#sideDetails').html(
@@ -42,7 +42,7 @@ function showUebersicht() {
     hideEinenMoment();
     setFont();
 
-    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1);
+    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - 1);
     $('#sideContent').css('height', hx + 'px');
 
     window.scrollTo(0, 0);
@@ -57,7 +57,7 @@ function showUebersichtMT() {
         jbSpieler.close();
     }
 
-    $("#iPlus,#iMinus,#sideContentMT").hide();
+    $("#iPlus,#iMinus").hide();
     showIcons([]);
 
     var html = '';
@@ -94,7 +94,7 @@ function showUebersichtMT() {
     window.scrollTo(0, 0);
 
     $("#sideContent,#sideDetails,#dContent,#dCopyright").show();
-    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 3);
+    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - 3);
     $('#sideContent').css('height', hx + 'px');
 }
 

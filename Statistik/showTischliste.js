@@ -25,18 +25,10 @@ function showTischliste() {
         jbSpieler.close();
     }
 
-    if (QUERFORMAT()) {
-        writeCanvas(pTurnier + '  Tischliste');
-    } else {
-        writeCanvas('Tischliste');
-    }
-
     $('#iAnekdote').removeClass('cBlau B');
 
     var i = 0;
 
-    var htmlTE = '';
-    var hCupName = '';
     var nSpieler = 0;
     var hClass = '';
 
@@ -58,18 +50,23 @@ function showTischliste() {
 
     var SORT = [];
 
+    var hRunde = STAT._AKTTURNIER._RUNDE;
     for (var iSpieler in STAT._AKTTURNIER) {
         if (iSpieler[0] !== '_') {
             SORT[SORT.length] = STAT._AKTTURNIER[iSpieler][0] + ';' + iSpieler;
+        } else if (STAT._AKTTURNIER._RUNDE < 3 && iSpieler.substr(0,3) === '_R' + STAT._AKTTURNIER._RUNDE) {
+            hRunde = STAT._AKTTURNIER._RUNDE + 1;
         }
     }
 
-    SORT.sort();
 
-    var hRunde = STAT._AKTTURNIER._RUNDE;
-    if (hRunde < 3 && STAT._AKTTURNIER._RUNDESTART + 3600000 < Date.now()) { // > eine Stunde
-        hRunde++;
+    if (QUERFORMAT()) {
+        writeCanvas(pTurnier + '  Tischliste,&nbsp;&nbsp;' + hRunde + '. Runde');
+    } else {
+        writeCanvas('Tischliste,&nbsp;&nbsp;' + hRunde + '. Runde');
     }
+
+    SORT.sort();
 
     for (var ii = 0; ii < SORT.length; ii++) {
         var iSpieler = SORT[ii].substring((SORT[ii].lastIndexOf(';') + 1));
@@ -118,7 +115,7 @@ function showTischliste() {
         $("#dContent").html(html + "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>");
         $('#sideDetails').hide();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-        var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
+        var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
         $('#sideContent').css('height', hx + 'px');
     }
 

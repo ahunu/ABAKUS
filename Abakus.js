@@ -234,7 +234,7 @@ function writeCanvas(pCup) {
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/DieGeschichte.png");
     } else {
         hTitel = CUPS.NAME[pCup];
-        if (CUPS.TYP[pCup] === 'CUP') {
+        if (CUPS.TYP[pCup] === 'CUP' && pCup > 4) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i" + pCup + ".png");
         } else if (pCup === 11 || pCup === 25) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i55.png");

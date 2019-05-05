@@ -199,7 +199,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
             $('#dContent').html(htmlTE).listview('refresh');
             $('#sideDetails').hide();
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - $('#dFooter').height() - 1);
+            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
             $('#sideContent').css('height', hx + 'px');
         } else {
             $('#dContent').html(htmlTE + '<br>').listview('refresh');
@@ -212,7 +212,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     window.scrollTo(0, 0);
     if (pStockerl || pAnekdoten) {
         $("#dCopyright").hide();
-        var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
         setFont();
         if (stEndstand) {
@@ -248,7 +248,7 @@ function toggleListen() {
         $('#iPlus').hide();
         $('#iMinus').show();
     }
-    var hx = $(window).innerHeight() - $('#sideContent').offset().top - $('#dFooter').height() - 1;
+    var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
     $('#sideContent').css('height', hx + 'px').scrollTop(0);
 }
 

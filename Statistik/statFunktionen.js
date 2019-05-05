@@ -1,5 +1,5 @@
 
-/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbHome, jbArchiv, stFinalTeilnehmer, stNamenLen, stSaison, iSaison, sp0Cupsiege, SP */
+/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbArchiv, stFinalTeilnehmer, stNamenLen, stSaison, iSaison, sp0Cupsiege, SP */
 
 function sortNumber(a, b) {
     return a - b;
@@ -433,7 +433,7 @@ function writeCanvas(pTitel) {
         }
     }
     $('#tStand').hide();
-    if (CUPS.TYP[stCup] === 'CUP') {
+    if (CUPS.TYP[stCup] === 'CUP' && stCup > 4) {
         $("#hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
     } else {
         $("#hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
@@ -498,9 +498,6 @@ function setFont(pFont, pStickyHeader) {
             $('.QUER').show();
         }, 200);
     } else {
-        if (jbHome && jbHome.isOpen) {
-            jbHome.close();
-        }
         if (jbArchiv && jbArchiv.isOpen) {
             jbArchiv.close();
         }

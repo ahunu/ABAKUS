@@ -11,6 +11,7 @@ const is3CupPunkte = 6;
 const isAnzTurniere = 7;
 const isAnzTeilnehmer = 8;
 const isAnzTeilnahmen = 9;
+const isVorlaeufig = 10;
 
 const spRangImCup = 0;
 const spCuppunkte = 1;
@@ -37,6 +38,9 @@ function initSAISON() {
     }
     if (stSaison) {
         bereSaison();
+    }
+    if (CUPS.TYP[LS.I] === "CUP" && !stFinale) {
+        SAISON[iSaison][isVorlaeufig] = true; // Vorläufige Reihung
     }
     aktSaison = iSaison;
     iSaison = 0;

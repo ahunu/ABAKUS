@@ -6,7 +6,7 @@ function getZitat() {
     var iZitat = 9999;
     do {
         NOK = false;
-        iZitat = Date.now() % 55;
+        iZitat = Date.now() % 57;
         for (var i = 0; i < stLastZitat.length; i++) {
             if (stLastZitat[i] === iZitat) {
                 NOK = true;
@@ -252,13 +252,14 @@ function getZitat() {
                     + '<br>man muss auch gut spielen.',
             'Siegbert Tarrasch, 1862-1934, dt. Schachmeister'];
     } else if (iZitat === 55) {
-        return [''
+        return ['Das Spiel zeigt den Charakter.'
                     + '<br>',
-            ''];
+            'Deutsches Sprichwort'];
     } else if (iZitat === 56) {
-        return [''
-                    + '<br>',
-            ''];
+        return ['Wenn die Unfähigkeit einen Decknamen braucht,'
+                    + '<br>nennt sie sich Pech.',
+            'Charles Maurice de Talleyrand, 1754-1838'
+        + '<br>fr. Staatsmann und Bischof'];
     } else if (iZitat === 57) {
         return [''
                     + '<br>',

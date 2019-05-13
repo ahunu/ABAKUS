@@ -124,7 +124,7 @@ function showTurnier(pTurnier) {
             }
         }
 
-        html += '<tr ' + (iSpieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
+        html += '<tr ' + (iSpieler === LS.ME ? 'id="tr' + LS.ME + '"' : '') + ' class="' + hClass + '">'
                 + '<td class="TR">&nbsp;' + nSpieler + '.&nbsp;</td>';
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += '<td class=TC>' + (isNaN(iSpieler) ? '????' : iSpieler) + '&nbsp;</td>';

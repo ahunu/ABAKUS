@@ -54,6 +54,7 @@
         <script src="showCupwertung.js"></script>
         <script src="showPlatzierungen.js"></script>
         <script src="showTeilnehmerzahlen.js"></script>
+        <script src="showTeilnehmer.js"></script>
         <script src="showTischliste.js"></script>
         <script src="showTurnier.js"></script>
         <script src="showTurnierMT.js"></script>
@@ -189,7 +190,9 @@
             <i onclick="event.stopPropagation(); downloadExcel();" title="Die Daten herunterladen." id=iDownload class="i zmdi-download noprint"></i>
             <i onclick="event.stopPropagation(); listeDrucken();"  title="Die Statistik drucken."   id=iPrint class="i zmdi-print noprint"></i>
             <i onclick="event.stopPropagation(); showAnekdote();"  title="Die Anekdoten anzeigen."  id=iAnekdote class="i zmdi-comment-text noprint"></i>
-            <i onclick="event.stopPropagation(); scrollToMe();"    title="Scroll zu meiner Zeile."  id=iScrollToMe class="i zmdi-dot-circle noprint"></i>
+            <i onclick="event.stopPropagation(); scrollToMe();"    title="Zu meiner Zeile scrollen."  id=iScrollToMe class="i zmdi-dot-circle noprint"></i>
+            <i onclick="event.stopPropagation(); $('.trDet').show();" title="Die Saisonergebnisse einblenden."  id=iShowDetails class="i zmdi-blocks noprint"></i>
+            <i onclick="event.stopPropagation(); $('.trDet').hide();" title="Die Saisonergebnisse ausblenden."  id=iHideDetails class="i zmdi-list noprint"></i>
         </div>
     </body>
 </html>

@@ -58,12 +58,12 @@ function getStatMeldungen() {
             if (STAT._AKTTURNIER._RUNDE <= 3) {
                 if (nMinSeitRundeStart < 15) {
                     ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wurde begonnen.</b><br></span>";
-                } else if (nMinSeitRundeStart < 60) {
+                } else if (nMinSeitRundeStart < 45) {
                     ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wird gespielt.</b><br></span>";
                 } else if (nMinSeitRundeStart < 90) {
-                    ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wird noch gespielt.</b><br></span>";
+                    ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wird noch <wbr>gespielt.</b><br></span>";
                 } else {
-                    ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wurde noch nicht gespeichert.</b><br></span>";
+                    ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wurde noch <wbr>nicht <wbr>gespeichert.</b><br></span>";
                 }
             } else {
                 ret += "<div class=noprint>";
@@ -170,13 +170,13 @@ function getCupPunkte(pTurnier, pSpieler) {
 
 function getVeranstalter(pNR) {
     if (pNR.length === 4) {
-        return getSpielerName(pNR);
+        return getSpielerName(pNR, true);
     } else {
         return pNR;
     }
 }
 
-function getSpielerName(pNR) {
+function getSpielerName(pNR,pOhneSterne) {
     if (isNaN(pNR)) {
         if (pNR) {
             return pNR.substr(0, pNR.lastIndexOf('ˆ')).replace(/%20|_|ˆ/g, ' ');
@@ -185,16 +185,14 @@ function getSpielerName(pNR) {
         }
     } else {
         if (SPIELER[pNR]) {
-            console.log(pNR);
             var ret = SPIELER[pNR][0] + ' ' + SPIELER[pNR][1];
-            if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
+            if (SP[pNR] && SP[pNR][0][sp0Cupsiege] && !pOhneSterne) {
                 var nTimes = SP[pNR][0][sp0Cupsiege];
-                ret += '<sup> ';
+                ret += ' ';
                 while (nTimes > 0) {
                     ret += '*';
                     nTimes--;
                 }
-                ret += '</sup>';
             }
             return ret;
         } else {
@@ -218,14 +216,13 @@ function getName(pNR, pMax) {
 
     if (pMax) {
         if (pMax >= 99) {
-            if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
+            if (QUERFORMAT && SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
                 var nTimes = SP[pNR][0][sp0Cupsiege];
-                ret += '<sup> ';
+                ret += ' ';
                 while (nTimes > 0) {
                     ret += '*';
                     nTimes--;
                 }
-                ret += '</sup>';
             }
             return ret;
         }
@@ -239,12 +236,11 @@ function getName(pNR, pMax) {
         }
         if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
             var nTimes = SP[pNR][0][sp0Cupsiege];
-            ret += '<sup> ';
+            ret += ' ';
             while (nTimes > 0) {
                 ret += '*';
                 nTimes--;
             }
-            ret += '</sup>';
         }
         return ret;
     }
@@ -411,7 +407,7 @@ function listeDrucken() {
 
 function showIcons(pIcons) {
     'use strict';
-    $('#iScrollToMe,#iDownload,#iPrint,#iAnekdote').hide();
+    $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iAnekdote').hide();
     if (QUERFORMAT()) {
         for (var i = 0; i < pIcons.length; i++) {
             $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (20 + (50 * i)) + 'px; font-size: 44px; cursor: pointer;').show();

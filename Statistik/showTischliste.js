@@ -59,7 +59,6 @@ function showTischliste() {
         }
     }
 
-
     if (QUERFORMAT()) {
         writeCanvas(pTurnier + '  Tischliste,&nbsp;&nbsp;' + hRunde + '. Runde');
     } else {
@@ -87,7 +86,7 @@ function showTischliste() {
                 }
             }
         }
-        html += '<tr ' + (iSpieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
+        html += '<tr ' + (iSpieler === LS.ME ? 'id="tr' + LS.ME + '"' : '') + ' class="' + hClass + '">'
                 + '<td class=TC>' + (isNaN(iSpieler) ? '????' : iSpieler) + '&nbsp;</td>'
                 + '<td class=link><span onclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P' + (STAT._AKTTURNIER[LS.ME] && STAT._AKTTURNIER[LS.ME][hRunde + 6] === STAT._AKTTURNIER[iSpieler][hRunde + 6] ? ' B' : '') + (iSpieler === LS.ME ? ' cSchwarz' : ' cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
         if (QUERFORMAT()) {

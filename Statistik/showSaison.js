@@ -1,5 +1,5 @@
 
-/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, stShowList, SAISON, isSaison */
+/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, stShowList, SAISON, isSaison, isVorlaeufig, is1, is1CupPunkte, is3, is2, is2CupPunkte, is3CupPunkte */
 
 function showSaison(pSaison, pStockerl, pAnekdoten) {
 
@@ -170,9 +170,9 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         htmlTE = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"
                 + '<tr>'
                 + '<td class=noprint>&nbsp;&nbsp;</td>'
-                + '<td class="cBlau P L" onclick="showCupwertung();"><b>Cupwertung</b>&nbsp;&nbsp;' + stSaison + '</td>'
+                + '<td class="cBlau P L" onclick="showCupwertung();"><b>Cupwertung</b>&nbsp;&nbsp;' + stSaison + '&nbsp;&nbsp;&nbsp;&nbsp;' + (SAISON[pSaison][isVorlaeufig] ? (QUERFORMAT() ? '<span class="XS cSchwarz">(Vorläufige Reihung)</span>' : '(Vorläufig)') : '') + '</td>'
                 + '<td class="M"></td>'
-                + '<td class="M" ><span style="white-space:nowrap">1. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is1] + 'fff\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is1]) + '</span>, ' + SAISON[iSaison][is1CupPunkte] + ' Cuppunkte</span></td></tr>'
+                + '<td class="M" ><span style="white-space:nowrap">1. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is1] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is1]) + '</span>, ' + SAISON[iSaison][is1CupPunkte] + ' Cuppunkte</span></td></tr>'
                 + '<tr hidden><td class="M">adfasdf</td></tr>'
                 + '<tr><td class=noprint></td><td></td><td></td><td class="M"><div style="margin-top:-5px;white-space:nowrap">2. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is2] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is2]) + '</span>, ' + SAISON[iSaison][is2CupPunkte] + ' Cuppunkte<br>3. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is3] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is3]) + '</span>, ' + SAISON[iSaison][is3CupPunkte] + ' Cuppunkte</div></td></td></tr>'
                 + '<tr><td></td><th class="L K" colspan="3">Die ' + (pAnekdoten ? 'Anekdoten' : 'Turniere') + ' der Saison&nbsp;&nbsp;' + stSaison + ':</th></tr>'

@@ -141,7 +141,7 @@ function showPlatzierungen(pSort) {
                 hClass = 'bSehrHell';
             }
 
-            htmlRumpf += '<tr ' + (spieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
+            htmlRumpf += '<tr ' + (spieler === LS.ME ? 'id="tr' + LS.ME + '"' : '') + ' class="' + hClass + '">'
                     + '<td class="' + hClass + (QUERFORMAT() ? ' fixedColQuer' : '') + ' left" style="width:100%;">&nbsp;<span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P W ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
 
             if (DATA[1] || DATA[2] || DATA[3]) {

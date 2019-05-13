@@ -98,9 +98,8 @@ function QUERFORMAT() {
 function historyBack() {
     $('body').addClass('ui-disabled');
     if (!QUERFORMAT()) {
-        LS.ShowCups = 0;
+        LS.ShowCups = stCup;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        LS.ShowCups = stCup; // for after Bottom-Forward
         $('#bMeinTisch').addClass('ui-disabled');
     }
     history.back();
@@ -381,6 +380,8 @@ $(document).ready(function () {
     }
 
     stCup = LS.ShowCups;
+    LS.ShowCups = 0;
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {

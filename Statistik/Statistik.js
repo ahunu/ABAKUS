@@ -54,6 +54,8 @@ var stShowList = true;
 var jbAnekdote = null;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
+var anz = 0;
+var html = '';
 
 var lastBtn = '';
 
@@ -213,15 +215,15 @@ function scrollToMe() {
     if (QUERFORMAT()) {
         if (stStat === "Platzierungen") {
             $('.parent').scrollTop(0).animate({
-                scrollTop: $("#itsMe").offset().top - 333
+                scrollTop: $("#tr" + LS.ME).offset().top - 333
             }, 800);
         } else {
             $('html, body').animate({
-                scrollTop: $("#itsMe").offset().top - 237
+                scrollTop: $("#tr" + LS.ME).offset().top - 237
             }, 800);
         }
     } else {
-        $('#sideContent').scrollTop(0).scrollTop($("#itsMe").offset().top - 333);
+        $('#sideContent').scrollTop(0).scrollTop($("#tr" + LS.ME).offset().top - 333);
     }
 }
 
@@ -334,7 +336,7 @@ $(document).ready(function () {
     fINIT();
 });
 function fINIT(pCup) {
-    $('#iDownload,#iPrint,#iAnekdote,#iScrollToMe').hide();
+    $('#iDownload,#iPrint,#iAnekdote,#iScrollToMe,#iShowDetails,#iHideDetails').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
             || navigator.userAgent.match(/iPhone/i)

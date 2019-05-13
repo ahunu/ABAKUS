@@ -414,15 +414,19 @@ function checkNeuerTisch() {
     LS.TURTISCH = 0;
     var hTurnier = STAT._AKTTURNIER._TURNIER;
     var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
-    if (nMinSeitRundeStart > 75) {
+    if (nMinSeitRundeStart > 60) {
         LS.TURRUNDE++;
     }
 
     if (STAT[hTurnier][LS.ME]) {
         if (STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '?'
                 && STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '-') {
-            showEineWarnung(I, 'Du hast Runde ' + LS.TURRUNDE + ' bereits gespielt.');
-            return;
+            if (LS.TURRUNDE === 3) {
+                showEineWarnung(I, 'Du hast Runde ' + LS.TURRUNDE + ' bereits gespielt.');
+                return;
+            } else {
+                LS.TURRUNDE++;
+            }
         }
     }
 
@@ -620,7 +624,7 @@ function checkNeuerTisch() {
     }
 
     LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
-    if (LS.I === 54) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+    if (LS.I === 54 || LS.I === 77) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
         if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
             LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler);
         }
@@ -923,18 +927,12 @@ function whenSTATloaded() {
 function Weiterspielen() {
     'use strict';
     LS.ShowCups = LS.I;
-    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
-    if (LS.I === 54) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
-        var STAT = JSON.parse(localStorage.getItem('Abakus.STAT077'));
-        if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
-            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler);
-        }
-    } else {           // Rest - 5er-Tische spielen mehr
+    if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+        LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
         if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
             LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
         }
     }
-
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     var NEXT = new Object();
     NEXT.Seite = 'GR';

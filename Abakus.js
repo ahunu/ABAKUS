@@ -334,11 +334,12 @@ function initCUPSdelAllSTAT(pMeldung) {
         if (LS.LastBtn) {
             resetLastBtn();
             $('#bInitialisieren').addClass('ui-btn-active'); // nicht beim ersten Mal
+            LS.LastBtn = '#bInitialisieren';
         }
     }
     $('#pContent').scrollTop(0);
 //    LS.ShowCups = 0;
-    LS.LastBtn = '';
+//    LS.LastBtn = '';
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
     var TU = JSON.parse(localStorage.getItem('Abakus.TU'));
     var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
@@ -425,21 +426,8 @@ function initSeite2() {
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
     if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC') {
         $('#bSpieler').addClass('ui-disabled');
-        if (CUPS.SPJERUNDE[I] > LS.gespielt) {
-
-            if (LS.I === 54 && LS.AnzSpieler === 4) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
-                var STAT = JSON.parse(localStorage.getItem('Abakus.STAT077'));
-                if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
-                    if (parseInt(CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler > LS.gespielt) {
-                        $('#bSpeichern').addClass('ui-disabled');
-                    }
-                } else {
-                    $('#bSpeichern').addClass('ui-disabled');
-                }
-            } else {           // Rest - 5er-Tische spielen mehr
-                $('#bSpeichern').addClass('ui-disabled');
-            }
-
+        if (LS.SpieleJeRunde > LS.gespielt) {
+            $('#bSpeichern').addClass('ui-disabled');
         }
         if (LS.gespielt !== 0) {
             $('#bNeuerTisch').addClass('ui-disabled');
@@ -568,6 +556,13 @@ function seiteUeberspringen(pCup) {
 
 function showCup(i, pBtn, pTermin, pAnmeldungen) {
     'use strict';
+    
+//$('#qfHeader').hide())
+//    var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 1);
+//            $('#dRumpf').html('<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px;">'
+// + '<iframe style="width:100%; height:100%" src="https://tarockoesterreich.jimdo.com"></iframe></div>');
+//    return;
+
     LS.ShowCups = I = i;
     if (LS.Meldung) {
         var hMeldung = LS.Meldung;

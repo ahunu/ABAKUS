@@ -414,6 +414,12 @@ input {
 .zmdi-close-circle-o:before {
     content: '\f134';
 }
+.zmdi-blocks:before {
+    content: '\f316';
+}
+.zmdi-list:before {
+    content: '\f23a';
+}
 .zmdi-minus-circle:before {
     content: '\f271';
 }

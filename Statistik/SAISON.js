@@ -17,8 +17,12 @@ const spRangImCup = 0;
 const spCuppunkte = 1;
 const spTeilnahmen = 2;
 const spBestePlatz = 3;
-const spPunkte = 4;
-const sp0Cupsiege = 0;
+const spSumPlatz = 4;
+const spPunkte = 5;
+const sp0Cupsiege = 1;
+const sp0Cup2ter = 2;
+const sp0Cup3ter = 3;
+const sp0BestePlatz = 0;
 
 function initSAISON() {
     iSaison = 0;
@@ -39,7 +43,7 @@ function initSAISON() {
     if (stSaison) {
         bereSaison();
     }
-    if (CUPS.TYP[LS.I] === "CUP" && !stFinale) {
+    if (CUPS.TYP[stCup] === "CUP" && !stFinale) {
         SAISON[iSaison][isVorlaeufig] = true; // Vorläufige Reihung
     }
     aktSaison = iSaison;
@@ -114,7 +118,8 @@ function bereSaison() {
                                     if (aSP[6] > STAT[turnier][spieler][0]) {
                                         aSP[6] = STAT[turnier][spieler][0];  // Beste Platzierung
                                     }
-                                    aSP[7] += STAT[turnier][spieler][4]; // Punkte
+                                    aSP[7] += STAT[turnier][spieler][0]; // Durch. Platzierung
+                                    aSP[8] += STAT[turnier][spieler][4]; // Punkte
 
                                     if (turnier !== stFinale) {
                                         hCupPunkte = getCupPunkte(turnier, spieler);
@@ -135,7 +140,7 @@ function bereSaison() {
                                     CUP[spieler] = aSP;
                                 } else {
                                     SAISON[iSaison][isAnzTeilnehmer]++;
-                                    aSP = [0, 0, 0, 0, 0, []];
+                                    aSP = [0, 0, 0, 0, 1, [], STAT[turnier][spieler][0], STAT[turnier][spieler][0], STAT[turnier][spieler][4]];
                                     if (STAT[turnier][spieler][0] === 1) {
                                         aSP[1]++;
                                     } else if (STAT[turnier][spieler][0] === 2) {
@@ -143,14 +148,10 @@ function bereSaison() {
                                     } else if (STAT[turnier][spieler][0] === 3) {
                                         aSP[3]++;
                                     }
-                                    aSP[4]++;
 
                                     if (turnier !== stFinale) {
                                         aSP[5] = [getCupPunkte(turnier, spieler)];
                                     }
-
-                                    aSP[6] = STAT[turnier][spieler][0]; // Platzierung
-                                    aSP[7] = STAT[turnier][spieler][4]; // Punkte
 
                                     CUP[spieler] = aSP;
                                 }
@@ -206,10 +207,10 @@ function bereSaison() {
         }
 
         if (!SP[spieler]) {
-            SP[spieler] = [[]];
+            SP[spieler] = [[[999]]];
         }
 
-        SP[spieler][iSaison] = [0, aSP[0], aSP[4], aSP[6], aSP[7]];
+        SP[spieler][iSaison] = [0, aSP[0], aSP[4], aSP[6], aSP[7], aSP[8]];
         if (aSP[6] < 4) {
             SP[spieler][iSaison][3] = aSP[1] + '-' + aSP[2] + '-' + aSP[3];
         }
@@ -232,11 +233,28 @@ function bereSaison() {
             hPlatz = ii + 1;
         }
         SP[spieler][iSaison][0] = hPlatz;
-        if (hPlatz === 1 && stFinale) {
-            if (SP[spieler][0][sp0Cupsiege]) {
-                SP[spieler][0][sp0Cupsiege] = SP[spieler][0][sp0Cupsiege] + 1;
-            } else {
-                SP[spieler][0][sp0Cupsiege] = 1;
+        if (SP[spieler][0][sp0BestePlatz] > hPlatz) {
+            SP[spieler][0][sp0BestePlatz] = hPlatz;
+        }
+        if (stFinale) {
+            if (hPlatz === 1) {
+                if (SP[spieler][0][sp0Cupsiege]) {
+                    SP[spieler][0][sp0Cupsiege] = SP[spieler][0][sp0Cupsiege] + 1;
+                } else {
+                    SP[spieler][0][sp0Cupsiege] = 1;
+                }
+            } else if (hPlatz === 2) {
+                if (SP[spieler][0][sp0Cup2ter]) {
+                    SP[spieler][0][sp0Cup2ter] = SP[spieler][0][sp0Cup2ter] + 1;
+                } else {
+                    SP[spieler][0][sp0Cup2ter] = 1;
+                }
+            } else if (hPlatz === 3) {
+                if (SP[spieler][0][sp0Cup3ter]) {
+                    SP[spieler][0][sp0Cup3ter] = SP[spieler][0][sp0Cup3ter] + 1;
+                } else {
+                    SP[spieler][0][sp0Cup3ter] = 1;
+                }
             }
         }
     }

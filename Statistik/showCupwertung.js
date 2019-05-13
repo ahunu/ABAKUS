@@ -159,7 +159,7 @@ function showCupwertung() {
             hLastKey = parseInt(SORTnachPlatz[ii]);
             hPlatz = nSpieler;
         }
-        html += '<tr ' + (spieler === LS.ME ? 'id="itsMe"' : '') + ' class="' + hClass + '">'
+        html += '<tr ' + (spieler === LS.ME ? 'id="tr' + LS.ME + '"' : '') + ' class="' + hClass + '">'
                 + '<td class="TR">' + hPlatz + '.&nbsp;</td>';
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += '<td class=TC>' + (isNaN(spieler) ? '????' : spieler) + '&nbsp;</td>';

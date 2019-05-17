@@ -95,8 +95,8 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                     hCupName = 'Drumlinger MT';
                     hClass = ' cDIV';
                 } else if (TERMINE[termin].CUP === 50) {
-                    hCupName = 'Wr. Marathon';
-                    hClass = ' cDIV';
+                    hCupName = 'Österreichfinale';
+                    hClass = ' cWTC';
                 } else if (TERMINE[termin].CUP === 51) {
                     hCupName = 'Hausruckcup';
                     hClass = ' cHRC';
@@ -115,6 +115,9 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                 } else if (TERMINE[termin].CUP === 56) {
                     hCupName = 'Wr. Tarockcup';
                     hClass = ' cWTC';
+                } else if (TERMINE[termin].CUP === 80) {
+                    hCupName = 'Wr. Marathon';
+                    hClass = ' cDIV';
                 } else {
                     hCupName = CUPS.NAME[TERMINE[termin].CUP];
                     hClass = ' cDIV';
@@ -273,7 +276,7 @@ function onAendern() {
     var hCUP = parseInt($('#iCUP').val().trim());
 
     if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'MT')) {
-        showEinenTip('#iCUP', 'Wr. Marathon = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+        showEinenTip('#iCUP', 'Österreichfinale = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Wr. Marathon = 80,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
 

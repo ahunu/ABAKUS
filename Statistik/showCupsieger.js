@@ -80,7 +80,7 @@ function showCupsieger() {
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
 
-    for (var iSaison = SAISON.length - 1; iSaison > 0; iSaison--) {
+    for (var iSaison = 2; iSaison < SAISON.length; iSaison++) {
         html += addPosition(iSaison);
     }
 

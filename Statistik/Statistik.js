@@ -38,7 +38,6 @@ var I = -1;
 var Y = 0;
 var stCup = 0;
 var iSaison = 0;
-var aktSaison = 0;
 var stSaison = '';
 var stFinale = false;
 var stFinalTeilnehmer = 0;
@@ -83,7 +82,7 @@ function historyBack() {
 
 function defArchiv() {
     var hContent = '';
-    for (var i = SAISON.length - 1; i > 0; i--) {
+    for (var i = 1; i < SAISON.length; i++) {
         hContent += '<button class="L" style="width:100%;font-weight:bold;" onclick="jbArchiv.close();showSaison(' + i + ')">' + SAISON[i][isSaison] + '</button><br>';
     }
     hContent += '<button class="L" data-role=none style="width:100%;" onclick="resetNB();jbArchiv.close();">zurück</button>';
@@ -139,8 +138,8 @@ function whenSTATloaded() {
         if (CUPS.TYP[stCup] === 'MT') {
             showUebersichtMT('*');
         } else {
-            if (aktSaison) {
-                showSaison(aktSaison);
+            if (STAT) {
+                showSaison(1);
             } else {
                 showUebersicht();
                 showTermine();

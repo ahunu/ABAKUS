@@ -791,12 +791,13 @@ input {
 }
 .fGruen {color: #228822 !important}
 .fBlau {color: #222288 !important}
+.cTOF {color: #b80f0a !important}
 .cHRC {color: #00994d !important}
 .cRTC {color: #0000bb !important}
 .cSWC {color: #8600b3 !important}
 .cSTC {color: #cc6600 !important}
 .cTTC {color: #111111 !important}
-.cWTC {color: #ef0000 !important}
+.cWTC {color: #e2252b !important}
 .cSST {color: #8b7355 !important}
 .cDIV {color: #777777 !important}
 .cPassiv {color: #222 !important}

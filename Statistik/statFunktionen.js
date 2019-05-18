@@ -160,12 +160,13 @@ function getCupPunkte(pTurnier, pSpieler) {
         return '-'; // Spieler hat am Finale nicht teilgenommen
     }
     var hPunkte = STAT[pTurnier][pSpieler][4]; // Meine Cuppunkte
-    if (hPunkte < 0) {
-        hPunkte = '-';
+    if (hPunkte <= 0) {
+        return '-';
     } else if (hPunkte > 100) {
-        hPunkte = parseInt((hPunkte - 100) / 2) + 100;
+        return parseInt((hPunkte - 100) / 2) + 100;
+    } else {
+        return hPunkte;
     }
-    return parseInt(hPunkte); //
 }
 
 function getVeranstalter(pNR) {

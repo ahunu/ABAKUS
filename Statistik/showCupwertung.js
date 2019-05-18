@@ -3,6 +3,20 @@
 
 function showCupwertung() {
 
+
+//    if (LS.ME === '3425') {
+//        if (QUERFORMAT()) {
+//            $('#dRumpf').html('<object data="https://photos.app.goo.gl/AWuYWXxWMw6AZEiQ8" width="400" height="300" type="text/html">Alternative Conten');
+//        } else {
+//            $('#dContent').load('https://photos.app.goo.gl/AWuYWXxWMw6AZEiQ8');
+//            $('#sideDetails').hide();
+//            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
+//            var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
+//            $('#sideContent').css('height', hx + 'px').scrollTop(0);
+//        }
+//        return;
+//    }
+
     if (QUERFORMAT()) {
         if (lastBtn) {
             $(lastBtn).removeClass('ui-btn-active');

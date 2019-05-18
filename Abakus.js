@@ -1164,16 +1164,11 @@ function whenCUPSloaded() {
                     }
                     htmlALLE += hTemp;
                     if (TERMINE[termin].DATUM <= hAktuellBis) {
-                        if (TERMINE[termin].CUP === 52 && LS.ME === 's3425') { // Raiffeisencup für mich zum testen
-                            nAktTermine++;
-                            htmlAKT += hTemp.replace(/bAL/g, 'bAK');
-                        } else {
-                            for (var iMC in LS.MeineCups) {
-                                if (LS.MeineCups[iMC] === TERMINE[termin].CUP) {
-                                    nAktTermine++;
-                                    htmlAKT += hTemp.replace(/bAL/g, 'bAK');
-                                    break;
-                                }
+                        for (var iMC in LS.MeineCups) {
+                            if (TERMINE[termin].CUP === 50 || TERMINE[termin].CUP === LS.MeineCups[iMC]) {
+                                nAktTermine++;
+                                htmlAKT += hTemp.replace(/bAL/g, 'bAK');
+                                break;
                             }
                         }
                     }
@@ -1204,7 +1199,7 @@ function whenCUPSloaded() {
     for (i = 0; i < CUPS.NAME.length; i++) {
         if (CUPS.NAME[i]) {
             if (i === 50) { // Österreichfinale
-                SORT[SORT.length] = '9' + CUPS.NAME[i] + '  ;' + i;
+                SORT[SORT.length] = '0' + CUPS.NAME[i] + '  ;' + i;
             } else if (i === 51) { // Hausruckcup
                 SORT[SORT.length] = '1' + CUPS.NAME[i] + '  ;' + i;
             } else if (i === 52) { // Raiffeisencup
@@ -1309,6 +1304,45 @@ function whenCUPSloaded() {
                 html = '<li data-icon=false><a id="bXX' + i + '" class="cDIV' + getClass(i) + '" onClick="toggleShow(\'#hToggle2' + i + '\');">&nbsp;' + getCupName(i) + '</a></li>'
                         + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
                         + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] : '')
+                        + (i === 50
+                                ? '<div class=S2><br>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a" style="width:20%"></div>'
+                                + '<div class="ui-block-b M" style="width:80%">Die Tarockmeister:</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2018</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Wimmer Anton</b><br>Puchkirchen</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2017</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Christian Rieseneder</b><br>Wien</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2016</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Mülleder Josef</b><br>Bad Leonfelden</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2015</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Zauner Hubert</b><br>Bad Ischl</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2014</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Stürmer Rudi</b><br>Bad Leonfelden</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2013</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Ebner Florian</b><br>Linz</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2012</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Böckl Josef</b><br>Neukirchen/V.</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2011</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Leimhofer Markus</b><br>Neustadl</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2010</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Manzenreiter Hermann</b><br>Bad Leonfelden</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2009</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Doppler Manfred</b><br>Ampflwang</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2008</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div></div>'
+                                : '')
                         + '</div>';
             } else {
                 html = '<li><a id="bXX' + i + '" class="' + (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? 'cDIV ' : '') + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a>'

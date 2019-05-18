@@ -41,6 +41,21 @@
                             }
                         }
                         if (newCup) {
+                            if (newCup <= 4) {
+                                LS.LastBtn = '#bTR' + newCup;
+                            } else  if (newCup <= 7) {
+                                LS.LastBtn = '#bAR' + newCup;
+                            } else  if (CUPS.TYP[newCup] === 'CUP' && newCup >= 50 && newCup <= 59) {
+                                LS.LastBtn = '#bCT' + newCup;
+                            } else  if (CUPS.TYP[newCup] === 'CUP' || CUPS.TURNIER[newCup]) {
+                                LS.LastBtn = '#bLC' + newCup;
+                            } else  if (CUPS.TYP[newCup] === 'MT') {
+                                LS.LastBtn = '#bMT' + newCup;
+                            } else  if (CUPS.TYP[newCup] === 'PR') {
+                                LS.LastBtn = '#bPR' + newCup;
+                            } else {
+                                LS.LastBtn = '#bFC' + newCup;
+                            }
                             LS.ShowCups = newCup;
                             LS.Quickstart = true;
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));

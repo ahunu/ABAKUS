@@ -54,7 +54,7 @@ function showTischliste() {
     for (var iSpieler in STAT._AKTTURNIER) {
         if (iSpieler[0] !== '_') {
             SORT[SORT.length] = STAT._AKTTURNIER[iSpieler][0] + ';' + iSpieler;
-        } else if (STAT._AKTTURNIER._RUNDE < 3 && iSpieler.substr(0,3) === '_R' + STAT._AKTTURNIER._RUNDE) {
+        } else if (STAT._AKTTURNIER._RUNDE < 3 && iSpieler.substr(0, 3) === '_R' + STAT._AKTTURNIER._RUNDE) {
             hRunde = STAT._AKTTURNIER._RUNDE + 1;
         }
     }
@@ -116,6 +116,7 @@ function showTischliste() {
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
         $('#sideContent').css('height', hx + 'px');
+        $('#nbTurniere').removeClass('ui-btn-active');
     }
 
     hideEinenMoment();

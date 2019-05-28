@@ -60,8 +60,8 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
         hTitel = 'Abakus:';
     }
     if (hTitel && hTitel.length > 20 && $(window).innerWidth() <= $(window).innerHeight()) {
-        if (hTitel.indexOf('Mannschaftsturnier') > 0) {
-            hTitel = hTitel.replace('Mannschaftsturnier', 'MT.');
+        if (hTitel.indexOf('Mannschaftsturniere') > 0) {
+            hTitel = hTitel.replace('Mannschaftsturniere', 'MT.');
         }
     }
     myJBox = new jBox('Modal', {

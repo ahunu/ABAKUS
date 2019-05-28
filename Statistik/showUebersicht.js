@@ -71,7 +71,11 @@ function showUebersichtMT(pTurniere) {
             if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
                 hDataTheme = ' data-theme="f" ';
                 if (STAT._AKTTURNIER._RUNDE <= 3) {
-                    html = '<li data-theme="f" data-icon=false><a class="Sbtn K" id="bTischliste" onclick="showTischliste();">&nbsp;<span class="L">Tischliste</span></a></li>'
+                    var hIchSitzeAuf = '';
+                    if (STAT._AKTTURNIER[LS.ME]) {
+                        hIchSitzeAuf = '<span class="M N"><br>&nbsp;&nbsp;Ich sitze auf <b>' + STAT._AKTTURNIER[LS.ME][7] + '</b>, <b>' + STAT._AKTTURNIER[LS.ME][8] + '</b> und <b>' + STAT._AKTTURNIER[LS.ME][9] + '</b>.</span>';
+                    }
+                    html = '<li data-theme="f" data-icon=false><a class="Sbtn K" id="bTischliste" onclick="showTischliste();">&nbsp;<span class="L">Tischliste' + hIchSitzeAuf + '</a></li>'
                             + html;
                 }
             } else {
@@ -114,55 +118,6 @@ function showUebersichtMT(pTurniere) {
     $('#sideContent').css('height', hx + 'px');
 }
 
-function showAllgemeinesMT(pAllgemein) {
-
-    if (jbSpieler.isOpen) {
-        jbSpieler.close();
-    }
-
-    $("#iPlus,#iMinus").hide();
-    showIcons([]);
-
-    var html = '';
-    var nTurniere = 0;
-    for (var turnier in STAT) {
-        if (turnier[0] === '2') {
-            nTurniere++;
-            if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
-                if (STAT._AKTTURNIER._RUNDE <= 3) {
-                    html = '<li data-theme="f" data-icon=false><a class="Sbtn" id="bTischliste" onclick="showTischliste();">&nbsp;<span class="L">Tischliste</span></a></li>'
-                            + html;
-                }
-                html = '<li data-theme="f" data-icon=false><a id="b' + turnier + '" class="Sbtn" onclick="showTurnierMW(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + '</span></a></li>'
-                        + html;
-            } else {
-                html = '<li data-icon=false><a id="b' + turnier + '" class="Sbtn" onclick="showTurnierMW(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + '</span></a></li>'
-                        + html;
-            }
-        }
-    }
-
-    pSort = '';
-
-    $('#dContent').html(html).listview('refresh').show();
-
-    $('#iMW').prop('checked', true).checkboxradio('refresh');
-    $('#iEW').prop('checked', false).checkboxradio('refresh');
-
-    stStat = 'Allgemeines';
-    writeCanvas('Vivat Valat!');
-    showLogo();
-    hideEinenMoment();
-    setFont();
-    window.scrollTo(0, 0);
-
-    $("#sideContent").hide();
-
-    $("#sideTurniereMT,#dContent,#dCopyright").show();
-    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - 3);
-    $('#sideContent').css('height', hx + 'px');
-}
-
 function showAnekdotenMT() {
 
     if (jbSpieler.isOpen) {
@@ -173,27 +128,23 @@ function showAnekdotenMT() {
     showIcons([]);
 
     var html = '';
-    var nTurniere = 0;
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
-            nTurniere++;
-            html = '<tr>'
-                    + '<td class=noprint>&nbsp;&nbsp;</td>'
-                    + '<td class="cBlau P B L" onclick="showTurnier(\'' + turnier + '\');"><span style="white-space:nowrap">' + STAT[turnier]._NAME + '</span></td>'
-                    + '<td class="M" >' + turnier + '&nbsp;</td>'
-                    + '<td class="M" nowrap>'
-                    + (STAT[turnier]._ANEKDOTE
-                            ? '<tr hidden></tr>'
-                            + '<tr id="a' + nTurniere + '" class="M"><td colspan="4" class=M><div style="text-align:justify;margin: 0 5px 0 44px;">' + STAT[turnier]._ANEKDOTE + '</div></td></tr>'
-                            : ''
-                            )
-                    + html;
+            if (STAT[turnier]._ANEKDOTE) {
+                html = '<tr>'
+                        + '<td class=noprint>&nbsp;&nbsp;</td>'
+                        + '<td class="M" >' + turnier + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>'
+                        + '<td class="cBlau P B L" onclick="showTurnierMW(\'' + turnier + '\');"><span style="white-space:nowrap">' + STAT[turnier]._NAME + '</span></td>'
+                        + '<td class="M" nowrap>'
+                        + '<tr hidden></tr><tr class="M"><td colspan="4" class=M><div style="text-align:justify;margin: 0 5px 0 44px;">' + STAT[turnier]._ANEKDOTE + '</div></td></tr>'
+                        + html;
+            }
         }
     }
 
     pSort = '';
 
-    $('#dRumpf').html(html).listview('refresh').show();
+    $('#dRumpf').html(html);
 
     stStat = 'Anekdoten';
     writeCanvas('Anekdoten');

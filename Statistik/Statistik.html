@@ -3,6 +3,7 @@
     <head>
         <meta charset='utf-8'/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <?php header('Access-Control-Allow-Origin: *'); ?>
         <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
         <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
         <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
@@ -96,14 +97,20 @@
                                 <!--  <a id=nbHome onClick="nbHome();"><img src="../Icons/icon-36-ldpi.png" height="32" width="32" style="margin:-8px;"></a> -->
                                 <a onclick="historyBack()"><i class="i zmdi-home"></i></a>
                             </li>
-                            <li class="nb39">
+                            <li class="nb39 cCUP">
                                 <a id=nbUebersicht onClick="showUebersicht();">Übersicht</a>
                             </li>
-                            <li class="nb35">
+                            <li class="nb35 cCUP">
                                 <a id=nbSaison onclick="showSaison()"><span id="tArchiv">Archiv</span></a>
                             </li>
-                            <li class="nb12">
+                            <li class="nb12 cCUP">
                                 <a id=nbArchiv onclick="nbArchiv()"><i class="i zmdi-play zmdi-hc-rotate-90"></i></a>
+                            </li>
+                            <li class="nb50 cMT">
+                                <a id=nbAllgemeines onClick="showUebersichtMT();">Allgemeines</a>
+                            </li>
+                            <li class="nb38 cMT">
+                                <a id=nbTurniere onclick="showUebersichtMT(true)"><span id="tArchiv">Turniere</span></a>
                             </li>
                         </ul>
                     </div>
@@ -128,12 +135,13 @@
                     </div>
                 </div>
 
-                <ul id="sideDetails" data-role="listview" data-inset="true" data-divider-theme="f" data-corners="false" hidden>
-                    <li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines:</li>
-                    <li data-icon="false"><a onClick="showAnekdotenMT();" class='ui-disabled'>&nbsp;Anekdoten</a></li>
-                    <li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>
-                    <li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Wertung:</li>
-                    <li data-icon="false" style='padding:0;margin:0'>
+                <ul id="sideTurniereMT" data-role="listview" data-inset="true" data-divider-theme="f" data-corners="false" hidden>
+                    <li class="cMTallg" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines:</li>
+                    <li class="cMTallg" data-icon="false"><a onClick="showPlatzierungen();">&nbsp;Einzelplatzierungen</a></li>
+                    <li class="cMTallg sui-disabled" data-icon="false"><a onClick="showAnekdotenMT();">&nbsp;Anekdoten</a></li>
+                    <li class="cMTallg" data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>
+                    <li class="cMTturn" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Wertung:</li>
+                    <li class="cMTturn" data-icon="false" style='padding:0;margin:0'>
                         <fieldset data-role=controlgroup data-mini="true" data-theme="a" style='padding:0;margin:0'>
                             <input type=radio name=iWERTUNG onClick="setMwEwWertung('MW')" id=iMW value='MW' >
                             <label class=btn for=iMW >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mannschaftswertung</label>
@@ -141,7 +149,7 @@
                             <label class=btn for=iEW >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Einzelwertung</label>
                         </fieldset>
                     </li>
-                    <li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Die Turniere:</li>
+                    <li class="cMTturn" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Die Turniere:</li>
                 </ul>
 
             </div>

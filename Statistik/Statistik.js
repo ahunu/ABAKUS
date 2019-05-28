@@ -131,12 +131,16 @@ function whenSTATloaded() {
         $('#tZumTurnier').html('Zurück');
     }
 
-    if (CUPS.TYP[stCup] === 'MT') {
-        showUebersichtMT('*');
-    }
+//    if (CUPS.TYP[stCup] === 'MT') {
+//        showUebersichtMT('*');
+//    }
     if (!stStat) {
         if (CUPS.TYP[stCup] === 'MT') {
-            showUebersichtMT('*');
+            if (STAT) {
+                showUebersichtMT(true);
+            } else {
+                showUebersichtMT(false);
+            }
         } else {
             if (STAT) {
                 showSaison(1);
@@ -148,7 +152,7 @@ function whenSTATloaded() {
     } else {
         if (stStat === 'Uebersicht') {
             if (CUPS.TYP[stCup] === 'MT') {
-                showUebersichtMT();
+                showUebersichtMT(true);
             } else {
                 showSaison();
             }
@@ -370,6 +374,11 @@ function fINIT(pCup) {
     }
     if (stCup >= 60) {
         LS.ShowSpielerNr = false;
+    }
+    if (CUPS.TYP[stCup] === 'CUP') {
+        $('.cMT').remove();
+    } else {
+        $('.cCUP').remove();
     }
 
     if (QUERFORMAT()) {

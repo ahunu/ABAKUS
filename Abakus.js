@@ -336,15 +336,13 @@ function getDateString(pDate) {
 function initCUPSdelAllSTAT(pMeldung) {
     'use strict';
     if (QUERFORMAT()) {
-        if (LS.LastBtn) {
-            resetLastBtn();
-            $('#bInitialisieren').addClass('ui-btn-active'); // nicht beim ersten Mal
-            LS.LastBtn = '#bInitialisieren';
-        }
+//        if (LS.LastBtn) {
+//            resetLastBtn();
+//            $('#bInitialisieren').addClass('ui-btn-active'); // nicht beim ersten Mal
+//            LS.LastBtn = '#bInitialisieren';
+//        }
     }
     $('#pContent').scrollTop(0);
-//    LS.ShowCups = 0;
-//    LS.LastBtn = '';
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
     var TU = JSON.parse(localStorage.getItem('Abakus.TU'));
     var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
@@ -658,6 +656,11 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                 + '<br>'
                 + '<div class="ui-grid-a"><div class="ui-block-a M" style="width:47%">'
 
+                + (I === 50
+                        ? hVorschub + '<div class="M" style="width:92%;text-align:justify;">Seit 2008 findet jedes Jahr im April das Tarock-Österreich-Finale im Königrufen statt. Die besten Tarockspieler aus ganz Österreich treffen sich im Casino Linz zu einem Tarockevent der Extraklasse.</div>'
+                        : ''
+                        )
+
                 + (I === 51 && !mHausruckAktiv
                         ? hVorschub + 'Organisation:&nbsp;&nbsp;<b><span class=M2>Franz Kienast</span></b><br><br>'
                         + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:f.kienast@eduhi.at\';" >f.kienast@eduhi.at</span><br>'
@@ -680,11 +683,6 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                 + (I === 55 && !mTirolAktiv
                         ? hVorschub + 'Organisation:&nbsp;&nbsp;<b><span class=M2>Markus Mair</span></b><br><br>'
                         + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:treff.tarock@chello.at\';" >treff.tarock@chello.at</span><br>'
-                        : ''
-                        )
-
-                + (I === 50
-                        ? hVorschub + '<div class="M" style="width:92%;text-align:justify;">Seit 2008 findet jedes Jahr im April das Tarock-Österreich-Finale im Königrufen statt. Die besten Tarockspieler aus ganz Österreich treffen sich im Casino Linz zu einem Tarockevent der Extraklasse.</div>'
                         : ''
                         )
 
@@ -1140,7 +1138,7 @@ function whenCUPSloaded() {
                     if (QUERFORMAT()) {
                         hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
                         hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
-                    } else if (TERMINE[termin].DATUM === hHeute) {
+                    } else if (TERMINE[termin].DATUM === hHeute && (TERMINE[termin].CUP === 54 || TERMINE[termin].CUP === 56)) {
                         hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
                         if (LS.ME.length === 4) {
                             hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\',' + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
@@ -1309,6 +1307,9 @@ function whenCUPSloaded() {
                                 + '<div class="ui-grid-a">'
                                 + '<div class="ui-block-a" style="width:20%"></div>'
                                 + '<div class="ui-block-b M" style="width:80%">Die Tarockmeister:</div></div>'
+                                + '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a C M3" style="width:20%">2019</div>'
+                                + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div>'
                                 + '<div class="ui-grid-a">'
                                 + '<div class="ui-block-a C M3" style="width:20%">2018</div>'
                                 + '<div class="ui-block-b" style="width:80%"><b>Wimmer Anton</b><br>Puchkirchen</div></div>'
@@ -1615,7 +1616,7 @@ $(document).ready(function () {
                     I = 0;
                     LS.ShowCups = 0;
                     $('#dMeldung').text('');
-                    if (LS.LastBtn) {
+                    if (LS.LastBtn && $(LS.LastBtn).length) {
                         $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
                         if (QUERFORMAT()) {
                             $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');

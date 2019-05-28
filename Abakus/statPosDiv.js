@@ -242,7 +242,7 @@ function statPosDiv() {
             }
         }
     }
-    ;
+
     ret += "</tbody></table>"
             + (nHaendisch ? '<div class=M>&nbsp;H&auml;ndisch mitgeschriebene Spiele sind nicht ber&uuml;cksichtigt.</div>' : '')
             + (nGelegenheitsspieler ? '<div class=M>&nbsp;' + nGelegenheitsspieler + ' Gelegenheitsspieler wurden nicht gelistet.</div>' : '')
@@ -255,4 +255,3 @@ function statPosDiv() {
                     );
     return ret;
 }
-;

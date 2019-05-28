@@ -211,7 +211,7 @@ function showRegeln() {
     } else {
         $('#dContent').html(html).trigger('create').show();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-        $('#sideDetails').hide();
+        $('#sideTurniereMT').hide();
         setFont(4);
         setTimeout(function () {
             var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);

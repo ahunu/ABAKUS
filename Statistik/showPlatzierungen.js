@@ -31,7 +31,7 @@ function showPlatzierungen(pSort) {
         stStat = 'Platzierungen';
 
         if (CUPS.TYP[stCup] === 'MT') {
-            writeCanvas('Platzierungen');
+            writeCanvas('Einzelplatzierungen');
         } else {
             writeCanvas('Platzierungen ' + stSaison);
         }
@@ -213,7 +213,7 @@ function showPlatzierungen(pSort) {
             $("#mTable tr:even").css('background-color', '#efefef');
             $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
         } else {
-            $('#sideDetails').hide();
+            $('#sideTurniereMT').hide();
 //            $('#dContent').html('');
             var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
             $('#sideContent').css('height', hx + 'px');
@@ -231,7 +231,7 @@ function showPlatzierungen(pSort) {
                     + '</thead>'
                     + htmlRumpf
                     + '</table>';
-            $('#sideDetails').hide();
+            $('#sideTurniereMT').hide();
             $('#dContent').html(html + '<br>');
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');

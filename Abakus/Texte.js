@@ -230,7 +230,7 @@ function getLinks() {
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarockcup.at\')" ><b>Raiffeisen Tarockcup Austria (RTC)</b>, M&uuml;hlviertel (Karl Haas), seit 1995/96</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" ><b>Hausruckviertler Tarockcup (HRC)</b>, Hausruck (Franz Kienast), seit 1997/98</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://tarockrunde-sauwald.jimdo.com\')" ><b>Sauwaldcup (SWC)</b>, Innviertel (Sepp Lang), seit 2016</span><br>'
-            + '<span class="cBlau P M" onclick="window.open(\'https://www.wienerzeitung.at/themen_channel/spiele/tarock/tarock_cup\')" ><b>Wiener Tarockcup (WTC)</b>, Wien/NÖ (Siegfried Braun), seit 2003</span><br>'
+            + '<span class="cBlau P M" onclick="window.open(\'http://www.wienertarockcup.at\')" ><b>Wiener Tarockcup (WTC)</b>, Wien/NÖ (Siegfried Braun), seit 2003</span><br>'
             + '<span class="cBlau P M" onclick="showCup(56)" ><b>Wiener Tarockcup</b> - Ergebnisse</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://steirercup.webnode.at\')" ><b>Steirischer Tarockcup (STC)</b>, Steiermark (Peter Baumann), seit 2013/14</span><br>'
             + '<span class="cBlau P M" onclick="showCup(54)" ><b>Steirischer Tarockcup</b> - Ergebnisse</span><br>'
@@ -400,6 +400,8 @@ function getTurnierkalender() {
             html = '<span class=M>Nachdem das letzte Turnier abgeschlossen wurde,<br> kann pro Tag ein PC-Turnier durchgespielt werden.</span><br><br>';
         } else if (I === 51 || I === 52) {
             html = '';
+        } else if (I === 50) {
+            html = '<span class=L>Das nächste Österreichfinale ist für Ende April, Anfang Mai ' + (new Date().getFullYear() + 1) + ' geplant.</span><br><br>';
         } else {
             html = '<span class=L>Laut Turnierkalender sind in nächster Zeit<br>keine Turniere geplant.</span><br><br>';
         }
@@ -413,8 +415,21 @@ function getTurnierkalender() {
                 + '<div class="ui-block-a" style="width:20%"></div>'
                 + '<div class="ui-block-b L" style="width:40%">Gesamtwertung</div>'
                 + '<div class="ui-block-c L" style="width:40%">Tageswertung</div>'
-                + '</div><br>';
-        html += '<div class="ui-grid-b S2">'
+                + '</div><br>'
+                + '<div class="ui-grid-b S2">'
+                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2019</div>'
+                + '<div class="ui-block-b" style="width:40%">'
+                + '<span>1. <b>Huemer Manfred</b>, Bad Leonf.</span><br>'
+                + '<span>2. Raninger Rudolf, Julbach</span><br>'
+                + '<span>3. Pestitschek Günther, Graz</span><br>'
+                + '</div>'
+                + '<div class="ui-block-c" style="width:40%">'
+                + '<span>1. Kneifl Josef, Linz</span><br>'
+                + '<span>2. Kienberger Johann, Zell a.P.</span><br>'
+                + '<span>3. Dallinger Elisabeth, Eferding</span><br>'
+                + '</div>'
+                + '</div><br>'
+                + '<div class="ui-grid-b S2">'
                 + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2018</div>'
                 + '<div class="ui-block-b" style="width:40%">'
                 + '<span>1. <b>Wimmer Anton</b>, Puchkirchen</span><br>'

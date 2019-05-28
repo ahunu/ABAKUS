@@ -1,8 +1,10 @@
 
-/* global STAT, LS, QUERFORMAT(), getName */
+/* global STAT, LS, QUERFORMAT(), getName, ADMIN, stCup */
 
 var iMannschaft = 5;
 function showTurnierMW(pTurnier) {
+
+    var mMitgespielt = false;
 
     if (QUERFORMAT()) {
         if (lastBtn) {
@@ -28,10 +30,6 @@ function showTurnierMW(pTurnier) {
     }
 
     $("#dCopyright").hide();
-    showIcons([]);
-    if (ADMIN) {
-        showIcons(['#iPrint', '#iAnekdote']);
-    }
 
     writeCanvas(stStat + '  Mannschaftswertung');
     $('#nb_Mannschaft').addClass('ui-btn-active');
@@ -42,7 +40,6 @@ function showTurnierMW(pTurnier) {
     stNamenLen = 0.41;
 
     var html = (!QUERFORMAT() ? "<div id='dDummy'>&nbsp;</div>" : "")
-//            + getStatMeldungen()
             + "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
@@ -72,6 +69,9 @@ function showTurnierMW(pTurnier) {
                     + (5000 - STAT[pTurnier][iSpieler][4])
                     + (5000 - Math.max(STAT[pTurnier][iSpieler][1], STAT[pTurnier][iSpieler][2], STAT[pTurnier][iSpieler][3]))
                     + ';' + iSpieler;
+            if (iSpieler === LS.ME) {
+                mMitgespielt = true;
+            }
         }
     }
     SORTsp.sort();
@@ -114,7 +114,7 @@ function showTurnierMW(pTurnier) {
                     }
                 }
 
-                html += '<tr class="' + hClass + '">'
+                html += '<tr ' + (iSpieler === LS.ME ? 'id="tr' + LS.ME + '"' : '') + ' class="' + hClass + '">'
                         + '<td class="TR">&nbsp;' + nSpieler + '.&nbsp;</td>';
                 if (LS.ShowSpielerNr && QUERFORMAT()) {
                     html += '<td class=TC>' + (isNaN(iSpieler) ? '????' : iSpieler) + '&nbsp;</td>';
@@ -138,7 +138,7 @@ function showTurnierMW(pTurnier) {
     } else {
         $('#sideContent').css('height', '2px').show();
         $('#dContent').html(html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br>").trigger('create').show();
-        $('#sideDetails,#sideContent').hide();
+        $('#sideTurniereMT,#sideContent').hide();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
@@ -153,10 +153,36 @@ function showTurnierMW(pTurnier) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
         }
     }
+
+    if (LS.ME.length === 4) {
+        if (mMitgespielt) {
+            if (ADMIN
+                    || LS.ME === '3425'
+                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
+                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
+                    || STAT[pTurnier]._ANEKDOTE) {
+                showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote']);
+            } else {
+                showIcons(['#iScrollToMe', '#iPrint']);
+            }
+        } else {
+            if (ADMIN
+                    || LS.ME === '3425'
+                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
+                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
+                    || STAT[pTurnier]._ANEKDOTE) {
+                showIcons(['#iPrint', '#iAnekdote']);
+            } else {
+                showIcons(['#iPrint']);
+            }
+        }
+    }
+
 }
 
-
 function showTurnierEW(pTurnier) {
+
+    var mMitgespielt = false;
 
     if (pTurnier) {
         stStat = pTurnier;
@@ -191,6 +217,9 @@ function showTurnierEW(pTurnier) {
                     + (5000 - STAT[pTurnier][iSpieler][4])
                     + (5000 - Math.max(STAT[pTurnier][iSpieler][1], STAT[pTurnier][iSpieler][2], STAT[pTurnier][iSpieler][3]))
                     + ';' + iSpieler;
+            if (iSpieler === LS.ME) {
+                mMitgespielt = true;
+            }
         }
     }
 
@@ -214,7 +243,7 @@ function showTurnierEW(pTurnier) {
             }
         }
 
-        html += '<tr class="' + hClass + '">'
+        html += '<tr ' + (iSpieler === LS.ME ? 'id="tr' + LS.ME + '"' : '') + ' class="' + hClass + '">'
                 + '<td class="TR">&nbsp;' + nSpieler + '.&nbsp;</td>';
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += '<td class=TC>' + (isNaN(iSpieler) ? '????' : iSpieler) + '&nbsp;</td>';
@@ -236,7 +265,7 @@ function showTurnierEW(pTurnier) {
     } else {
         $('#sideContent').css('height', '2px').show();
         $('#dContent').html(html + "</tbody></table><br>&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</span><br>").trigger('create').show();
-        $('#sideDetails,#sideContent').hide();
+        $('#sideTurniereMT,#sideContent').hide();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
@@ -249,6 +278,31 @@ function showTurnierEW(pTurnier) {
         window.scrollTo(0, 0);
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
+        }
+    }
+
+
+    if (LS.ME.length === 4) {
+        if (mMitgespielt) {
+            if (ADMIN
+                    || LS.ME === '3425'
+                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
+                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
+                    || STAT[pTurnier]._ANEKDOTE) {
+                showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote']);
+            } else {
+                showIcons(['#iScrollToMe', '#iPrint']);
+            }
+        } else {
+            if (ADMIN
+                    || LS.ME === '3425'
+                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
+                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
+                    || STAT[pTurnier]._ANEKDOTE) {
+                showIcons(['#iPrint', '#iAnekdote']);
+            } else {
+                showIcons(['#iPrint']);
+            }
         }
     }
 }

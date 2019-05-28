@@ -177,7 +177,7 @@ function getVeranstalter(pNR) {
     }
 }
 
-function getSpielerName(pNR,pOhneSterne) {
+function getSpielerName(pNR, pOhneSterne) {
     if (isNaN(pNR)) {
         if (pNR) {
             return pNR.substr(0, pNR.lastIndexOf('ˆ')).replace(/%20|_|ˆ/g, ' ');
@@ -204,6 +204,9 @@ function getSpielerName(pNR,pOhneSterne) {
 
 function getName(pNR, pMax) {
 
+    if (typeof pMax === "undefined") {
+        pMax = 99;
+    }
     var ret = '';
     if (isNaN(pNR)) {
         ret = pNR.substr(0, pNR.lastIndexOf('ˆ')).replace(/%20|_|ˆ/g, ' ');
@@ -217,7 +220,16 @@ function getName(pNR, pMax) {
 
     if (pMax) {
         if (pMax >= 99) {
-            if (QUERFORMAT && SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
+            if (QUERFORMAT) {
+                if (ret.length > 22) {
+                    if (ret.charAt(21) === ' ' || ret.charAt(22) === ' ') {
+                        ret = ret.substr(0, 22);
+                    } else {
+                        ret = ret.substr(0, 22) + '.';
+                    }
+                }
+            }
+            if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
                 var nTimes = SP[pNR][0][sp0Cupsiege];
                 ret += ' ';
                 while (nTimes > 0) {
@@ -246,17 +258,6 @@ function getName(pNR, pMax) {
         return ret;
     }
 
-//    if (QUERFORMAT()) {
-//        if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
-//            var nTimes = SP[pNR][0][sp0Cupsiege];
-//            ret += ' ';
-//            while (nTimes > 0) {
-//                ret += '*';
-//                nTimes--;
-//            }
-//        }
-//        return ret;
-//    } else {
     var hNamenLen = stNamenLen;
     if ($(window).width() > 360) {
         hNamenLen = stNamenLen + ((($(window).width()) - 360) * 0.003 * stNamenLen);
@@ -379,7 +380,6 @@ function getName(pNR, pMax) {
     } else {
         return ret.substring(0, len + 1);
     }
-//    }
 }
 
 function listeDrucken() {

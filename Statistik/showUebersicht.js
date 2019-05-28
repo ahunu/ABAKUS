@@ -15,7 +15,7 @@ function showUebersicht() {
     $('#iPlus,#iMinus').hide();
 
     $("#sideContent").show();
-    $('#sideDetails').html(
+    $('#sideTurniereMT').html(
             '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Gesamtstatistiken</li>'
             + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();">&nbsp;Cupsieger</a></li>'
             + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();">&nbsp;Teilnehmerzahlen</a></li>'
@@ -52,7 +52,69 @@ function showUebersicht() {
     }
 }
 
-function showUebersichtMT() {
+function showUebersichtMT(pTurniere) {
+
+
+
+    if (jbSpieler.isOpen) {
+        jbSpieler.close();
+    }
+
+    $("#iPlus,#iMinus").hide();
+    showIcons([]);
+
+    var html = '';
+    var nTurniere = 0;
+    for (var turnier in STAT) {
+        if (turnier[0] === '2') {
+            nTurniere++;
+            if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
+                hDataTheme = ' data-theme="f" ';
+                if (STAT._AKTTURNIER._RUNDE <= 3) {
+                    html = '<li data-theme="f" data-icon=false><a class="Sbtn K" id="bTischliste" onclick="showTischliste();">&nbsp;<span class="L">Tischliste</span></a></li>'
+                            + html;
+                }
+            } else {
+                hDataTheme = '';
+            }
+            html = '<li ' + hDataTheme + ' data-icon=info><a class="K" id="b' + turnier + '" onclick="showTurnierMW(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span></a>'
+                    + '<a onclick="$(\'#hToggle' + nTurniere + '\').toggle(\'show\');">Stockerpl&auml;tze</a></li>'
+                    + html;
+        }
+    }
+
+    pSort = '';
+
+    $('#dContent').html(html + '<br>').listview('refresh').show();
+
+    $('#iMW').prop('checked', true).checkboxradio('refresh');
+    $('#iEW').prop('checked', false).checkboxradio('refresh');
+
+    stStat = 'Uebersicht';
+    writeCanvas('Vivat Valat!');
+    showLogo();
+    hideEinenMoment();
+    setFont();
+    window.scrollTo(0, 0);
+
+    if (pTurniere) {
+        $('#nbTurniere').addClass("ui-btn-active");
+        $('#nbAllgemeines').removeClass("ui-btn-active");
+        $('.cMTallg').hide();
+        $('.cMTturn,#dContent').show();
+    } else {
+        $('#nbTurniere').removeClass("ui-btn-active");
+        $('#nbAllgemeines').addClass("ui-btn-active");
+        $('.cMTallg').show();
+        $('.cMTturn,#dContent').hide();
+    }
+
+    $("#sideContent,#sideTurniereMT,#dCopyright").show();
+    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - 3);
+    $('#sideContent').css('height', hx + 'px');
+}
+
+function showAllgemeinesMT(pAllgemein) {
 
     if (jbSpieler.isOpen) {
         jbSpieler.close();
@@ -87,14 +149,16 @@ function showUebersichtMT() {
     $('#iMW').prop('checked', true).checkboxradio('refresh');
     $('#iEW').prop('checked', false).checkboxradio('refresh');
 
-    stStat = 'Uebersicht';
+    stStat = 'Allgemeines';
     writeCanvas('Vivat Valat!');
     showLogo();
     hideEinenMoment();
     setFont();
     window.scrollTo(0, 0);
 
-    $("#sideContent,#sideDetails,#dContent,#dCopyright").show();
+    $("#sideContent").hide();
+
+    $("#sideTurniereMT,#dContent,#dCopyright").show();
     var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - 3);
     $('#sideContent').css('height', hx + 'px');
 }

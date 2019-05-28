@@ -165,6 +165,9 @@ function initGames() {
 }
 
 function setGame(pName, pGame, pPlus) {
+    if (pGame === 13) { // Trischaken
+        showEinenTip('#SPIELER', 'Wer hat das<br>Trischaken<br>"gewonnen"?');
+    }
     if (pGame) { // nicht bei Kontra
         aktSpiel = parseInt(pGame);
         aktSpielWert = LS.Tarif[aktSpiel];
@@ -1739,7 +1742,7 @@ function fINIT() {
             } else if (hI === pI) {
                 ResetSpieler(pI);
                 pI = 0;
-            } else if (sI === 0 || Seite !== 'PS' || (aktSpiel === 0 || aktSpiel >= i6er)) {
+            } else if (sI === 0 || aktSpiel === 0 || (aktSpiel >= i6er && (aktSpiel !== iTrischaker || LS.Regeln !== 'Ti.'))) {
                 if (sI) {
                     ResetSpieler(sI);
                 }

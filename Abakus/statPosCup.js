@@ -1,5 +1,5 @@
 
-/* global stSort, STAT, stGelegenheitsspieler, CUPS, stTurCupGes, QUERFORMAT(), getName, PC, LS, stStat, stAktSpalten, D60Punkte */
+/* global stSort, STAT, stGelegenheitsspieler, CUPS, stTurCupGes, QUERFORMAT(), getName, PC, LS, stStat, stAktSpalten, D60Punkte, stAktiv */
 
 function statPosCup(pRunde) {
     'use strict';
@@ -92,57 +92,63 @@ function statPosCup(pRunde) {
                     || stGelegenheitsspieler
                     || STAT.S[i].NR === '0000') {
 
-                if (STAT.S[i].NR === '0000') {
-                    sKey = '00000000000;' + i;
-                } else if (stSort === 'NAM') {
-                    sKey = getName(i, 99) + ';' + i;
-                } else if (stSort.indexOf('TIS') === 0) {
-                    sKey = STAT.S[i].SCHREIBER[0] + ',' + STAT.S[i].NNAME + ' ' + STAT.S[i].VNAME + ';' + i;
-                } else if (stSort === 'D60') {
-                    sKey = STAT.S[i].PUNKTE[stTurCupGes] * 60 / STAT.S[i].SPIELE[stTurCupGes] + ',' + getName(i, 99) + ';' + i;
-                } else if (stSort === 'GES') {
-                    if (stTurCupGes === 3) {
+                if (STAT.S[i].NR === '0000'
+                        || stSort.indexOf('TIS') !== 0
+                        || STAT.TURRUNDE === 2 && STAT.S[i].PUNKTERx[0]
+                        || STAT.TURRUNDE === 3 && STAT.S[i].PUNKTERx[1]) {  // nur wenn TIS oder in der letzten Runde mitgespielt
+
+                    if (STAT.S[i].NR === '0000') {
+                        sKey = '00000000000;' + i;
+                    } else if (stSort === 'NAM') {
+                        sKey = getName(i, 99) + ';' + i;
+                    } else if (stSort.indexOf('TIS') === 0) {
+                        sKey = STAT.S[i].SCHREIBER[0] + ',' + STAT.S[i].NNAME + ' ' + STAT.S[i].VNAME + ';' + i;
+                    } else if (stSort === 'D60') {
+                        sKey = (STAT.S[i].PUNKTE[stTurCupGes] * 60 / STAT.S[i].SPIELE[stTurCupGes] + ',' + getName(i, 99) + ';' + i).replace(/Ä/g, 'Ae').replace(/Ü/g, 'Ue').replace(/Ö/g, 'Oe').replace(/ä/g, 'ae').replace(/ü/g, 'ue').replace(/ö/g, 'oe');
+                    } else if (stSort === 'GES') {
+                        if (stTurCupGes === 3) {
+                            sKey = (50000000000 - parseInt(STAT.S[i].PUNKTE[stTurCupGes] * 100)) + ',' + getName(i, 99) + ';' + i;
+                        } else {
+                            CupPunkte = 900000;
+                            for (var ii = 0; ii < STAT.S[i].CUPPUNKTE[stTurCupGes].length; ii++) {
+                                if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] >= 0 && ii < 6) {
+                                    hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];
+                                    if (hCupPunkte > 0) {
+                                        if (hCupPunkte > 100) {
+                                            hCupPunkte = 100 + parseInt((hCupPunkte - 100) / 2);
+                                        }
+                                        CupPunkte -= hCupPunkte;  // - wegen der Sortierung
+                                    }
+                                }
+                            }
+                            sKey = CupPunkte + ',' + getName(i, 99) + ';' + i;
+                        }
+                    } else if (stSort === 'STO') {
+                        if (stTurCupGes === 3) {
+                            sKey = (50000000000 - STAT.S[i].PUNKTE[3]) + ',' + getName(i, 99) + ';' + i;
+                        } else {
+                            if (STAT.S[i].STOCKERL[stTurCupGes] === '-') {
+                                continue;
+                            }
+                            CupPunkte = 900000;
+                            for (var ii = 0; ii < STAT.S[i].CUPPUNKTE[stTurCupGes].length; ii++) {
+                                if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] >= 0 && ii < 6) {
+                                    hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];
+                                    if (hCupPunkte > 0) {
+                                        if (hCupPunkte > 100) {
+                                            hCupPunkte = 100 + parseInt((hCupPunkte - 100) / 2);
+                                        }
+                                        CupPunkte -= hCupPunkte;  // - wegen der Sortierung
+                                    }
+                                }
+                            }
+                            sKey = getSkeyStockerl(STAT.S[i].STOCKERL[stTurCupGes]) + ',' + CupPunkte + ',' + getName(i, 99) + ';' + i;
+                        }
+                    } else {
                         sKey = (50000000000 - parseInt(STAT.S[i].PUNKTE[stTurCupGes] * 100)) + ',' + getName(i, 99) + ';' + i;
-                    } else {
-                        CupPunkte = 900000;
-                        for (var ii = 0; ii < STAT.S[i].CUPPUNKTE[stTurCupGes].length; ii++) {
-                            if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] >= 0 && ii < 6) {
-                                hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];
-                                if (hCupPunkte > 0) {
-                                    if (hCupPunkte > 100) {
-                                        hCupPunkte = 100 + parseInt((hCupPunkte - 100) / 2);
-                                    }
-                                    CupPunkte -= hCupPunkte;  // - wegen der Sortierung
-                                }
-                            }
-                        }
-                        sKey = CupPunkte + ',' + getName(i, 99) + ';' + i;
                     }
-                } else if (stSort === 'STO') {
-                    if (stTurCupGes === 3) {
-                        sKey = (50000000000 - STAT.S[i].PUNKTE[3]) + ',' + getName(i, 99) + ';' + i;
-                    } else {
-                        if (STAT.S[i].STOCKERL[stTurCupGes] === '-') {
-                            continue;
-                        }
-                        CupPunkte = 900000;
-                        for (var ii = 0; ii < STAT.S[i].CUPPUNKTE[stTurCupGes].length; ii++) {
-                            if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] >= 0 && ii < 6) {
-                                hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];
-                                if (hCupPunkte > 0) {
-                                    if (hCupPunkte > 100) {
-                                        hCupPunkte = 100 + parseInt((hCupPunkte - 100) / 2);
-                                    }
-                                    CupPunkte -= hCupPunkte;  // - wegen der Sortierung
-                                }
-                            }
-                        }
-                        sKey = getSkeyStockerl(STAT.S[i].STOCKERL[stTurCupGes]) + ',' + CupPunkte + ',' + getName(i, 99) + ';' + i;
-                    }
-                } else {
-                    sKey = (50000000000 - parseInt(STAT.S[i].PUNKTE[stTurCupGes] * 100)) + ',' + getName(i, 99) + ';' + i;
+                    SORT[SORT.length] = sKey;
                 }
-                SORT[SORT.length] = sKey;
             } else {
                 nGelegenheitsspieler++;
             }

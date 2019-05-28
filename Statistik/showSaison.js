@@ -26,7 +26,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         showIcons([]);
     }
 
-    if (pSaison && iSaison !== pSaison) {
+    if (pSaison && iSaison !== pSaison && CUPS.TYP[stCup] === 'CUP') {
         iSaison = pSaison;
         stSaison = SAISON[iSaison][isSaison];
         compCUPPUNKTE();
@@ -166,21 +166,23 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         $('#bAnekdoten').addClass('ui-disabled');
     }
 
-    if (QUERFORMAT() && (pStockerl || pAnekdoten)) {
+    if (QUERFORMAT() && (pAnekdoten || pStockerl)) {
         htmlTE = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"
-                + '<tr>'
-                + '<td class=noprint>&nbsp;&nbsp;</td>'
-                + '<td class="cBlau P L" onclick="showCupwertung();"><b>Cupwertung</b>&nbsp;&nbsp;' + stSaison + '&nbsp;&nbsp;&nbsp;&nbsp;' + (SAISON[pSaison][isVorlaeufig] ? (QUERFORMAT() ? '<span class="XS cSchwarz">(Vorläufige Reihung)</span>' : '(Vorläufig)') : '') + '</td>'
-                + '<td class="M"></td>'
-                + '<td class="M" ><span style="white-space:nowrap">1. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is1] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is1]) + '</span>, ' + SAISON[iSaison][is1CupPunkte] + ' Cuppunkte</span></td></tr>'
-                + '<tr hidden><td class="M">adfasdf</td></tr>'
-                + '<tr><td class=noprint></td><td></td><td></td><td class="M"><div style="margin-top:-5px;white-space:nowrap">2. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is2] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is2]) + '</span>, ' + SAISON[iSaison][is2CupPunkte] + ' Cuppunkte<br>3. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is3] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is3]) + '</span>, ' + SAISON[iSaison][is3CupPunkte] + ' Cuppunkte</div></td></td></tr>'
+                + (SAISON[pSaison][isVorlaeufig] ? ''
+                        : '<tr>'
+                        + '<td class=noprint>&nbsp;&nbsp;</td>'
+                        + '<td class="cBlau P L" onclick="showCupwertung();"><b>Cupwertung</b>&nbsp;&nbsp;' + stSaison + '&nbsp;&nbsp;&nbsp;&nbsp;' + (SAISON[pSaison][isVorlaeufig] ? (QUERFORMAT() ? '<span class="XS cSchwarz">(Vorläufige Reihung)</span>' : '(Vorläufig)') : '') + '</td>'
+                        + '<td class="M"></td>'
+                        + '<td class="M" ><span style="white-space:nowrap">1. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is1] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is1]) + '</span>, ' + SAISON[iSaison][is1CupPunkte] + ' Cuppunkte</span></td></tr>'
+                        + '<tr hidden><td class="M">adfasdf</td></tr>'
+                        + '<tr><td class=noprint></td><td></td><td></td><td class="M"><div style="margin-top:-5px;white-space:nowrap">2. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is2] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is2]) + '</span>, ' + SAISON[iSaison][is2CupPunkte] + ' Cuppunkte<br>3. <span onclick="event.stopPropagation();popupSpieler(\'' + SAISON[iSaison][is3] + '\');" class="P B cBlau">' + getSpielerName(SAISON[iSaison][is3]) + '</span>, ' + SAISON[iSaison][is3CupPunkte] + ' Cuppunkte</div></td></td></tr>'
+                        )
                 + '<tr><td></td><th class="L K" colspan="3">Die ' + (pAnekdoten ? 'Anekdoten' : 'Turniere') + ' der Saison&nbsp;&nbsp;' + stSaison + ':</th></tr>'
                 + htmlTE
                 + "</tbody></table>";
         $('#dRumpf').html(htmlTE).trigger('create').show();
     } else {
-        $('#sideDetails').html(
+        $('#sideTurniereMT').html(
                 '<li data-role="list-divider" onclick="toggleListen();">&nbsp;&nbsp;&nbsp;&nbsp;'
                 + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-plus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
                 + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-minus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
@@ -197,7 +199,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                 ).listview('refresh').show();
         if (pStockerl) {
             $('#dContent').html(htmlTE).listview('refresh');
-            $('#sideDetails').hide();
+            $('#sideTurniereMT').hide();
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
             var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
             $('#sideContent').css('height', hx + 'px');
@@ -228,7 +230,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     }
 
     if (LS.Meldung) {
-        $('#sideDetails').prepend("&nbsp;<img src='../Icons/OK.png' width='24' height='24'><span class=M>&nbsp;<b>" + LS.Meldung + "</b><br></span>");
+        $('#sideTurniereMT').prepend("&nbsp;<img src='../Icons/OK.png' width='24' height='24'><span class=M>&nbsp;<b>" + LS.Meldung + "</b><br></span>");
         LS.Meldung = '';
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }

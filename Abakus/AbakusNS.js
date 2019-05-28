@@ -1,4 +1,4 @@
-/* global iTrischaker, LS, sI, iPiZwiccolo, iBettler, iPiZwiccoloOvert, iBettlerOvert */
+/* global iTrischaker, LS, sI, pI, iPiZwiccolo, iBettler, iPiZwiccoloOvert, iBettlerOvert */
 
 function NS_Init() {
     $('.cNS,#Nx2,#Nx4').buttonMarkup({theme: 'a'});
@@ -30,7 +30,11 @@ function pruefenNS() {
     }
 
     if (aktSpiel === iTrischaker) {
-        XSBuchen(pGame, aktPunkte, sI, 0, LS.Vorhand);
+        if (LS.Regeln === 'Ti.' && pI) {
+            XSBuchen(pGame, aktPunkte, sI, pI, LS.Vorhand);
+        } else {
+            XSBuchen(pGame, aktPunkte, sI, 0, LS.Vorhand);
+        }
     } else {
         XSBuchen(pGame, aktPunkte, sI, 0);
     }

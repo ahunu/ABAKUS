@@ -12,10 +12,12 @@ function addTNPosition(pSpieler) {
 //    const sp0Cup2ter = 2;
 //    const sp0Cup3ter = 3;
 
-        var hBG = '';
-        if (pSpieler === LS.ME) {
-            hBG = 'bBeige';
-        }
+    var hBG = '';
+    if (pSpieler === LS.ME) {
+        hBG = 'bBeige';
+    } else if (anz % 2) {
+        hBG = 'bSehrHell';
+    }
 
     var nSaisonTN = 0;
     var nTurnierTN = 0;
@@ -47,7 +49,7 @@ function addTNPosition(pSpieler) {
                     + '<td class=TC>' + SP[pSpieler][i][spBestePlatz] + '</td>'
                     + '<td class=TC>' + parseInt(SP[pSpieler][i][spSumPlatz] / SP[pSpieler][i][spTeilnahmen]) + '</td>'
                     + '<td class="TR QUER">' + SP[pSpieler][i][spTeilnahmen] + '</td>'
-                    + '<td class="TR QUER">' + SP[pSpieler][i][spPunkte] + '</td>'
+                    + (window.location.href[0] === 'f' ? '<td class="TR QUER">' + SP[pSpieler][i][spPunkte] + '</td>' : '')
                     + '<td>&nbsp;</td>'
                     + '</tr>';
         }
@@ -61,17 +63,13 @@ function addTNPosition(pSpieler) {
             ) {
 
         anz++;
-        if (pSpieler !== LS.ME) {
-            if (anz % 2) {
-                hBG  = 'bSehrHell'
-            }
-        }
+
 
         html = '<tr id="tr' + pSpieler + '" class="' + hBG + '" onclick="$(\'.trDet' + pSpieler + '\').toggle();">'
                 + '<th>&nbsp;</th>'
                 + (SP[pSpieler][1]
-                        ? '<td><span onclick="event.stopPropagation();popupSpieler(\'' + pSpieler + '\');" class="P cBlau">' + (getSpielerName(pSpieler).replace(' ', '&nbsp;')) + '</span></td>'
-                        : '<td>' + (getSpielerName(pSpieler).replace(' ', '&nbsp;')) + '</td>'
+                        ? '<td><span onclick="event.stopPropagation();popupSpieler(\'' + pSpieler + '\');" class="P cBlau">' + (getName(pSpieler).replace(' ', '&nbsp;')) + '</span></td>'
+                        : '<td>' + (getName(pSpieler).replace(' ', '&nbsp;')) + '</td>'
                         );
         if (SP[pSpieler][0][sp0Cupsiege] || SP[pSpieler][0][sp0Cup2ter] || SP[pSpieler][0][sp0Cup3ter]) {
             html += '<td class=TC>' + (SP[pSpieler][0][sp0Cupsiege] ? SP[pSpieler][0][sp0Cupsiege] : '0') + '-'
@@ -98,6 +96,8 @@ function addTNPosition(pSpieler) {
 }
 
 function showTeilnehmer(pSort) {
+
+    var anz = 0;
 
     if (pSort) {
         showEinenMoment(CUPS.NAME[stCup], 'Statistik&nbsp;wird&nbsp;sortiert.');
@@ -148,7 +148,7 @@ function showTeilnehmer(pSort) {
             $('#dRumpf').html('');
         } else {
             $('#dContent').html('');
-            $('#sideDetails').hide();
+            $('#sideTurniereMT').hide();
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
             var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
             $('#sideContent').css('height', hx + 'px').scrollTop(0);
@@ -251,29 +251,42 @@ function showTeilnehmer(pSort) {
                     + "<tr id='L0P1' class='bGrau'>"
                     + "<th></th>"
                     + "<th id=CUP class='C P cBlau" + (pSort === 'NAME' ? ' U' : '') + "' onclick='showTeilnehmer(\"NAME\")'>Name</th>"
-                    + "<th id=CUP class='C P cBlau" + (pSort === 'CUP' ? ' U' : '') + "' onclick='showTeilnehmer(\"CUP\")'>Cup<br>1.2.3</th>"
-                    + "<th id=TURNIER class='C P cBlau" + (pSort === 'TURNIER' ? ' U' : '') + "' onclick='showTeilnehmer(\"TURNIER\")'>Turnier<br>1.2.3</th>"
+                    + "<th id=CUP class='C P cBlau" + (pSort === 'CUP' ? ' U' : '') + "' onclick='showTeilnehmer(\"CUP\")'>Cup<br>1.2.3.</th>"
+                    + "<th id=TURNIER class='C P cBlau" + (pSort === 'TURNIER' ? ' U' : '') + "' onclick='showTeilnehmer(\"TURNIER\")'>Turnier<br>1.2.3.</th>"
                     + "<th id=PLATZ class='TC P cBlau" + (pSort === 'PLATZ' ? ' U' : '') + "' onclick='showTeilnehmer(\"PLATZ\")'>&Oslash;<br>Platz</th>"
                     + "<th id=TN class='TR P cBlau QUER" + (pSort === 'TN' ? ' U' : '') + "' onclick='showTeilnehmer(\"TN\")'>TN</th>"
-                    + "<th id=PUNKTE class='TR P cBlau QUER" + (pSort === 'PUNKTE' ? ' U' : '') + "' onclick='showTeilnehmer(\"PUNKTE\")'>Punkte</th>"
+                    + (window.location.href[0] === 'f' ? "<th id=PUNKTE class='TR P cBlau QUER" + (pSort === 'PUNKTE' ? ' U' : '') + "' onclick='showTeilnehmer(\"PUNKTE\")'>Punkte</th>" : '')
                     + "<th></th>"
                     + "</tr>"
                     + "</thead><tbody>"
                     + html
                     + "</tbody></table>";
             if (QUERFORMAT()) {
-                html += "<br><table data-role=table class=XS>"
+                html += "<br><table data-role=table>"
                         + "<tbody>"
-                        + "<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></td><th>Legende:</th><td></td></tr>"
-                        + "<tr><td></td><td colspan=2>Ein Klick auf die / den</th></tr>"
-                        + "<tr><td></td><td><b>Überschrift</b></td><td>blendet alle Details ein oder aus.</td></tr>"
-                        + "<tr><td></td><td><b>Spielerzeile</b></td><td>blendet die Details des Spielers ein oder aus.</td></tr>"
-                        + "<tr><td></td><td><b>Namen</b></td><td>zeigt die Turnierübersicht.</td></tr>"
-                        + "<tr><td></td><td colspan=2>Von Spieler, die in der laufenden Saison noch nicht mitgespielt haben,</th></tr>"
-                        + "<tr><td></td><td colspan=2>kann kann die Turnierübersicht nur über die Details aufgerufen werden.</th></tr>"
+                        + "<tr class=XS><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></td><th>Legende:</th><td></td></tr>"
+                        + "<tr class=XS><td></td><td><b>1.2.3.</b></td><td>Stockerlplätze / beste Platzierung</td></tr>"
+                        + "<tr class=XS><td></td><td><b>&Oslash; Platz</b></td><td>Durchschnittliche Platzierung</td></tr>"
+                        + "<tr class=XS><td></td><td><b>TN</b></td><td>Teilnahmen</td></tr>"
+                        + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
+                        + "<tr><td></td><td colspan=2>Mit einen Klick auf eine Spaltenüberschrift kannst du die Sortierung ändern.</th></tr>"
+                        + "<tr><td></td><td colspan=2>Durch das Anklicken einer Zeile kannst du die Saisonergebnisse ein- oder ausblenden.</th></tr>"
+                        + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
+                        + "<tr><td></td><td colspan=2>Es sind alle jene Spieler gelistet welche</th></tr>"
+                        + "<tr><td></td><td colspan=2>in der aktuellen Saison schon teilgenommen,</th></tr>"
+                        + "<tr><td></td><td colspan=2>in der letzten Saison mindestens fünfmal teilgenommen,</th></tr>"
+                        + "<tr><td></td><td colspan=2>insgesamt mindestens 20 mal teilgenommen</th></tr>"
+                        + "<tr><td></td><td colspan=2>oder mindestens einen Stockerlplatz erreicht haben.</th></tr>"
                         + "</tbody></table><br>";
                 $('#dRumpf').html(html).show();
             } else {
+                html += "<br><table data-role=table>"
+                        + "<tbody>"
+                        + "<tr class=S><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></td><th>Legende:</th><td></td></tr>"
+                        + "<tr class=S><td></td><td><b>1.2.3.</b></td><td>Stockerlplätze / beste Platzierung</td></tr>"
+                        + "<tr class=S><td></td><td><b>&Oslash; Platz</b></td><td>Durchschnittliche Platzierung</td></tr>"
+                        + "<tr class=S><td></td><td><b>TN</b></td><td>Teilnahmen</td></tr>";
+                        + "</tbody></table><br><br>";
                 $('#dContent').html(html).show();
             }
             hideEinenMoment();

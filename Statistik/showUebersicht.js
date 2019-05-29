@@ -144,7 +144,13 @@ function showAnekdotenMT() {
 
     pSort = '';
 
-    $('#dRumpf').html(html);
+    if (QUERFORMAT()) {
+        $('#dRumpf').html(html);
+    } else {
+        $('#sideTurniereMT').hide();
+        $('#dContent').html(html + '<br>').show();
+        $('#nbAllgemeines').removeClass('ui-btn-active');
+    }
 
     stStat = 'Anekdoten';
     writeCanvas('Anekdoten');

@@ -123,7 +123,11 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                             if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
                                 hDataTheme = ' data-theme="f" ';
                                 if (STAT._AKTTURNIER._RUNDE <= 3) {
-                                    htmlTE = '<li data-theme="f" data-icon=false><a class="Sbtn K" id="bTischliste" onclick="showTischliste();">&nbsp;<span class="L">Tischliste</span></a></li>'
+                                    var hIchSitzeAuf = '';
+                                    if (STAT._AKTTURNIER[LS.ME]) {
+                                        hIchSitzeAuf = '<span class="M N"><br>&nbsp;&nbsp;Ich sitze auf <b>' + STAT._AKTTURNIER[LS.ME][7] + '</b>, <b>' + STAT._AKTTURNIER[LS.ME][8] + '</b> und <b>' + STAT._AKTTURNIER[LS.ME][9] + '</b>.</span>';
+                                    }
+                                    htmlTE = '<li data-theme="f" data-icon=false><a class="Sbtn K" id="bTischliste" onclick="showTischliste();">&nbsp;<span class="L">Tischliste' + hIchSitzeAuf + '</span></a></li>'
                                             + htmlTE;
                                 }
                             } else {

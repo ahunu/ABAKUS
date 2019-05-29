@@ -213,8 +213,6 @@ function showPlatzierungen(pSort) {
             $("#mTable tr:even").css('background-color', '#efefef');
             $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
         } else {
-            $('#sideTurniereMT').hide();
-//            $('#dContent').html('');
             var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
@@ -232,9 +230,10 @@ function showPlatzierungen(pSort) {
                     + htmlRumpf
                     + '</table>';
             $('#sideTurniereMT').hide();
-            $('#dContent').html(html + '<br>');
+            $('#dContent').html(html + '<br>').show();
             $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
+            $('#nbAllgemeines').removeClass('ui-btn-active');
             setFont(3.8, true);
         }
 

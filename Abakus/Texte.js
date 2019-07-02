@@ -231,17 +231,19 @@ function getLinks() {
             + '<span class="cBlau P M" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" ><b>Hausruckviertler Tarockcup (HRC)</b>, Hausruck (Franz Kienast), seit 1997/98</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://tarockrunde-sauwald.jimdo.com\')" ><b>Sauwaldcup (SWC)</b>, Innviertel (Sepp Lang), seit 2016</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.wienertarockcup.at\')" ><b>Wiener Tarockcup (WTC)</b>, Wien/NÖ (Siegfried Braun), seit 2003</span><br>'
-            + '<span class="cBlau P M" onclick="showCup(56)" ><b>Wiener Tarockcup</b> - Ergebnisse</span><br>'
+            + '<span class="cBlau P M" onclick="showCup(56,\'bCT\')" ><b>Wiener Tarockcup</b> - Ergebnisse</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://steirercup.webnode.at\')" ><b>Steirischer Tarockcup (STC)</b>, Steiermark (Peter Baumann), seit 2013/14</span><br>'
-            + '<span class="cBlau P M" onclick="showCup(54)" ><b>Steirischer Tarockcup</b> - Ergebnisse</span><br>'
+            + '<span class="cBlau P M" onclick="showCup(54,\'bCT\')" ><b>Steirischer Tarockcup</b> - Ergebnisse</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol\')" ><b>Tiroler Tarockcup (TTC)</b>, Tirol (Markus Mair), seit 2008/09</span><br>'
             + '<br>'
-            + '<span class="cBlau P M" onclick="showCup(81)" ><b>Sommer Schmankerl Tarock (SST)</b>, Altenhof (Alexandra Sabkovski)</span><br>'
+            + '<span class="cBlau P M" onclick="showCup(81,\'bLC\')" ><b>Sommer Schmankerl Tarock (SST)</b>, Altenhof (Alexandra Sabkovski)</span><br>'
             + '<br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-aktuell/tarockkalender.pdf\')" ><b>Turnierkalender - &Ouml;sterreich</b>, Markus Mair</span><br>'
-            + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-aktuell/tarock_medaillenspiegel_cups.pdf\')" ><b>Medaillenspiegel &uuml;ber alle Cups</b>, Markus Mair</span><br>'
-            + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-aktuell/vorrundenpunkte_zwischenstand.pdf\')" ><b>Vorrundenpunkte für das Ö-Finale</b>, Markus Mair</span><br>'
-            + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-weblinks.html\')" ><b>Tarock-Linksammlung</b>, Markus Mair</span><br>';
+            + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-aktuell/tarock-medaillenspiegel-cups.pdf\')" ><b>Medaillenspiegel &uuml;ber alle Cups</b>, Markus Mair</span><br>'
+            + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-aktuell/vorrundenpunkte-zwischenstand.pdf\')" ><b>Vorrundenpunkte für das Ö-Finale</b>, Markus Mair</span><br>'
+            + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol/tarock-weblinks.html\')" ><b>Tarock-Linksammlung</b>, Markus Mair</span><br>'
+            + '<br>'
+            + '<span class="cBlau P M" onclick="window.open(\'https://magicmoments.jetzt\')" ><b>Besinnliches</b>, &copy; by zitate.eu</span><br>';
 }
 
 function getEtikette() {
@@ -326,7 +328,7 @@ function getTippsUndTricks() {
             + 'Auch das Betreiben einer eigenen Runde oder eines eigenen Cups ist nur mit Registrierung möglich. '
 
             + '<p><b>Wo finde ich zus&auml;tzliche Informationen?</b><br>'
-            + 'Zu jeder Seite kannst du &uuml;ber die Seiten&uuml;berschrift zus&auml;tzliche Infos abrufen. '
+            + 'Zu jeder Seite kannst du &uuml;ber die Seitenüberschrift zusätzliche Infos abrufen. '
             + 'Tippe mal auf den &Uuml;berschriftsbalken und die Infos werden angezeigt. '
             + 'Nach einem weiteren Antippen verschwinden die Infos wieder. '
 
@@ -339,7 +341,7 @@ function getTippsUndTricks() {
 
             + (($(window).innerHeight() > $(window).innerWidth()) // Hochformat
                     ? '<p><b>Internetseite:</b><br>'
-                    + 'Diese App kann im Internet auch mit <b>https://tarock.firebaseapp.com</b> aufgerufen werden.'
+                    + 'Diese App kann im Internet auch mit <b>https://tarock.web.app</b> aufgerufen werden.'
 
                     + '<p><b>Bei fehlendem Minus:</b><br>'
                     + 'Falls bei der Eingabe eines Tisches auf der virtuellen Tastatur kein Minus vorhanden ist, müssen Minuspunkte mit einer führenden Null eingegeben werden.<br>'
@@ -351,7 +353,7 @@ function getTippsUndTricks() {
                     + 'Ja, du kannst sie dir kostenlos aus dem Android PlayStore herunterladen. '
                     + 'Ihr Name ist "<b>Die Tarock-App</b>". '
                     + 'Für iPhones ist leider keine App verfügbar. '
-                    + 'Du kannst jedoch die funktionsgleiche Internetseite "<b>tarock.firebaseapp.com</b>" verwenden. '
+                    + 'Du kannst jedoch die funktionsgleiche Internetseite "<b>tarock.web.app</b>" verwenden. '
                     : '')
 
             + '<p><b>Hast du weitere Fragen?</b>'

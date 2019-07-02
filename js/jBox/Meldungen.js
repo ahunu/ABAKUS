@@ -344,8 +344,10 @@ function writeLOG(pLog, pError) {
     var hLog = '<br>' + new Date().toISOString().substr(0, 10) + ' ' + new Date().toLocaleTimeString().substr(0, 5) + '<br>';
     if (pError) {
         var hHref = window.location.href;
-        if (hHref.indexOf('firebaseapp.com') >= 0) {
-            hHref = hHref.substr(hHref.indexOf('firebaseapp.com') + 15);
+        if (hHref.indexOf('.web.app') >= 0) {
+            hHref = hHref.substr(hHref.indexOf('.web.app') + 8);
+        } else if (hHref.indexOf('firebaseapp.com') >= 0) {
+            hHref = hHref.substr(hHref.indexOf('.firebaseapp.com') + 16);
         } else if (hHref.indexOf('ABAKUS/public_html') >= 0) {
             hHref = hHref.substr(hHref.indexOf('ABAKUS/public_html') + 18);
         } else if (hHref.indexOf('www') >= 0) {

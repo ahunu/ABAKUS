@@ -50,9 +50,6 @@ $(document).ready(function () {
 
     if (LS.ME === "3425" || LS.ME === "1000") {
         $('#dStatistikImport').removeClass('ui-disabled').show();
-    }
-
-    if (LS.ME === "3425" || LS.ME === "1000") {
         $('#dSpielerImport').removeClass('ui-disabled').show();
     }
 

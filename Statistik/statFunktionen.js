@@ -188,11 +188,13 @@ function getSpielerName(pNR, pOhneSterne) {
         if (SPIELER[pNR]) {
             var ret = SPIELER[pNR][0] + ' ' + SPIELER[pNR][1];
             if (SP[pNR] && SP[pNR][0][sp0Cupsiege] && !pOhneSterne) {
-                var nTimes = SP[pNR][0][sp0Cupsiege];
-                ret += ' ';
-                while (nTimes > 0) {
-                    ret += '*';
-                    nTimes--;
+                if (stCup !== 56 || window.location.href.toUpperCase().indexOf('OOV') < 0) { // OOV = Out Of Vienna
+                    var nTimes = SP[pNR][0][sp0Cupsiege];
+                    ret += ' ';
+                    while (nTimes > 0) {
+                        ret += '*';
+                        nTimes--;
+                    }
                 }
             }
             return ret;
@@ -230,11 +232,13 @@ function getName(pNR, pMax) {
                 }
             }
             if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
-                var nTimes = SP[pNR][0][sp0Cupsiege];
-                ret += ' ';
-                while (nTimes > 0) {
-                    ret += '*';
-                    nTimes--;
+                if (stCup !== 56 || window.location.href.toUpperCase().indexOf('OOV') < 0) { // OOV = Out Of Vienna
+                    var nTimes = SP[pNR][0][sp0Cupsiege];
+                    ret += ' ';
+                    while (nTimes > 0) {
+                        ret += '*';
+                        nTimes--;
+                    }
                 }
             }
             return ret;
@@ -248,11 +252,13 @@ function getName(pNR, pMax) {
             }
         }
         if (SP[pNR] && SP[pNR][0][sp0Cupsiege]) {
-            var nTimes = SP[pNR][0][sp0Cupsiege];
-            ret += ' ';
-            while (nTimes > 0) {
-                ret += '*';
-                nTimes--;
+            if (stCup !== 56 || window.location.href.toUpperCase().indexOf('OOV') < 0) { // OOV = Out Of Vienna
+                var nTimes = SP[pNR][0][sp0Cupsiege];
+                ret += ' ';
+                while (nTimes > 0) {
+                    ret += '*';
+                    nTimes--;
+                }
             }
         }
         return ret;

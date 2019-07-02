@@ -136,7 +136,7 @@ function showTeilnehmer(pSort) {
             jbSpieler.close();
         }
 
-        if (LS.ME.length === 4) {
+        if (LS.ME !== "NOBODY") {
             showIcons(['#iScrollToMe', '#iHideDetails', '#iShowDetails', '#iPrint']);
         }
 

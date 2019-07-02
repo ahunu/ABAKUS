@@ -30,7 +30,7 @@ function showTermine() {
         }
     }
 
-    if (ADMIN) {
+    if (LS.ME !== "NOBODY") {
         showIcons(['#iPrint']);
     }
 

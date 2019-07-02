@@ -80,7 +80,7 @@ $(document).bind('pageinit', function () {
         $('#bLayout').hide();
         $('#bEingabe').click();
     }
-    if (LS.ME === '3425' || LS.ME === '3590') {
+    if (LS.ME === '3425' || LS.ME === '3590' || LS.ME === '6136') { // Hans Hafner, Wolfgang Stein
         $('#bReaktionszeit').show();
     }
     $("#bDefaults").click(function () {

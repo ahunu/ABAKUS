@@ -74,14 +74,14 @@ function showTurnier(pTurnier) {
         }
     }
 
-    if (LS.ME.length === 4) {
+    if (LS.ME !== "NOBODY") {
         if (mMitgespielt) {
             if (LS.ME === '3425'
                     || LS.ME === '3757' && stCup === 56     // Erwin Haider
                     || LS.ME === '4731' && stCup === 81) {  // Alexandra Sabkovski
                 showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote', '#iDownload']);
             } else if (ADMIN
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
+                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')    // Hafner Hans, Timoschek Kurt
                     || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
                     || STAT[pTurnier]._ANEKDOTE) {
                 showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote']);
@@ -94,7 +94,7 @@ function showTurnier(pTurnier) {
                     || LS.ME === '4731' && stCup === 81) {  // Alexandra Sabkovski
                 showIcons(['#iPrint', '#iAnekdote', '#iDownload']);
             } else if (ADMIN
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
+                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')    // Hafner Hans, Timoschek Kurt
                     || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
                     || STAT[pTurnier]._ANEKDOTE) {
                 showIcons(['#iPrint', '#iAnekdote']);
@@ -148,9 +148,9 @@ function showTurnier(pTurnier) {
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
                 + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
-                + (stCup === 54 ? "<td class=TR>tarock.firebaseapp.com?St.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 56 ? "<td class=TR>tarock.firebaseapp.com?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 81 ? "<td class=TR>tarock.firebaseapp.com?Schmankerl Tarock&nbsp;</td>" : "")
+                + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
+                + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
+                + (stCup === 81 ? "<td class=TR>tarock.web.app?Schmankerl Tarock&nbsp;</td>" : "")
                 + "</tr></tbody></table><br>");
         $('#tStand').hide();
     } else {

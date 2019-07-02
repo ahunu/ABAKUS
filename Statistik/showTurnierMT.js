@@ -154,7 +154,7 @@ function showTurnierMW(pTurnier) {
         }
     }
 
-    if (LS.ME.length === 4) {
+    if (LS.ME !== "NOBODY") {
         if (mMitgespielt) {
             if (ADMIN
                     || LS.ME === '3425'

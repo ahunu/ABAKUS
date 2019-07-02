@@ -820,6 +820,7 @@ function toggleTechDetails() {
                 + 'navigator.platform: ' + navigator.platform + '<br>'
                 + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>'
                 + 'history.length: ' + history.length + '<br>'
+                + 'document.domain: ' + document.domain + '<br>'
                 + 'location.hash: ' + location.hash + '<br>').show();
         $('#pContent').scrollTop(9999999);
     } else {
@@ -1503,7 +1504,7 @@ function fINIT() {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
@@ -1516,7 +1517,7 @@ function fINIT() {
         CUPS.MEZULETZT = [];
     } else {
         CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-        if (typeof CUPS.MEZULETZT !== 'object') {
+        if (!CUPS.MEZULETZT || typeof CUPS.MEZULETZT !== 'object') {
             CUPS.MEANGEMELDET = [];
             CUPS.MEZULETZT = [];
             localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));

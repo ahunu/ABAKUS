@@ -109,7 +109,7 @@ function showCupwertung() {
         }
     }
 
-    if (LS.ME.length === 4) {
+    if (LS.ME !== "NOBODY") {
         if (CUP[LS.ME]) {
             if (LS.ME === '3425') {
                 showIcons(['#iScrollToMe', '#iPrint', '#iDownload']);
@@ -225,9 +225,9 @@ function showCupwertung() {
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
                 + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
-                + (stCup === 54 ? "<td class=TR>tarock.firebaseapp.com?St.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 56 ? "<td class=TR>tarock.firebaseapp.com?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 81 ? "<td class=TR>tarock.firebaseapp.com?Schmankerl Tarock&nbsp;</td>" : "")
+                + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
+                + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
+                + (stCup === 81 ? "<td class=TR>tarock.web.app?Schmankerl Tarock&nbsp;</td>" : "")
                 + "</tr></tbody></table>";
     } else {
         html += "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>";

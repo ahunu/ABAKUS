@@ -51,7 +51,7 @@ function getZitat() {
                     + '<br>und dann kam&nbsp;auch&nbsp;noch&nbsp;Pech&nbsp;dazu.',
             'Jürgen Wegmann, 1964-, dt.&nbsp;Fußballer'];
     } else if (iZitat === 6) {
-        return ['Eine Stolz getragene Niederlage'
+        return ['Eine stolz getragene Niederlage'
                     + '<br>ist auch ein Sieg.',
             'Marie von Ebner-Eschenbach, <span style="white-space: nowrap">1830-1916, österr. Schriftstellerin</span>'];
     } else if (iZitat === 7) {

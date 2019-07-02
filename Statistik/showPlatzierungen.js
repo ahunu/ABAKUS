@@ -241,7 +241,7 @@ function showPlatzierungen(pSort) {
 
         window.scrollTo(0, 0);
 
-        if (LS.ME.length === 4 && mMitgespielt) {
+        if (LS.ME !== "NOBODY" && mMitgespielt) {
             showIcons(['#iScrollToMe']);
         }
 

@@ -3,10 +3,6 @@
  *  License - http://zavoloklom.github.io/material-design-iconic-font/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
-
-/*! llll STANDARD - VERSION llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll */
-
-
 li {
     padding: 0; margin: 0
 }
@@ -48,7 +44,10 @@ input {
     margin-top: -0.72em;
 }
 
-@media only screen and (orientation : portrait) and (max-width: 360px) { /* Galaxy A3 */
+/* Galaxy Note 8:  360 x 616 */
+/* Galaxy S8 plus: 412 x 732 */
+
+@media only screen and (orientation : portrait) and (max-width: 412px) { /* Galaxy A3 */
 
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
@@ -127,7 +126,7 @@ input {
     }
 }       
 
-@media only screen and (orientation : portrait) and (min-width: 361px) and (max-width: 450px) {
+@media only screen and (orientation : portrait) and (min-width: 413px) and (max-width: 450px) {
 
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
@@ -206,7 +205,7 @@ input {
     }
 }       
 
-@media only screen and (orientation : portrait)  and (min-width: 450.000001px) {
+@media only screen and (orientation : portrait)  and (min-width: 451px) {
 
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }

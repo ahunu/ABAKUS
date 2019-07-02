@@ -34,7 +34,7 @@ function showTeilnehmerzahlen() {
         jbSpieler.close();
     }
 
-    if (ADMIN || LS.ME === '3425' || (LS.ME === '2037' && stCup === 56)) { // Robert Sedlaczek
+    if (LS.ME !== "NOBODY") {
         showIcons(['#iPrint']);
     }
 
@@ -55,7 +55,7 @@ function showTeilnehmerzahlen() {
 
     var html = "";
 
-   for (var iSaison = 1; iSaison < SAISON.length; iSaison++) {
+    for (var iSaison = 1; iSaison < SAISON.length; iSaison++) {
         nGesTeilnehmer += SAISON[iSaison][isAnzTeilnehmer];
         html += "<tr>"
                 + "<td class=TC>&nbsp;" + SAISON[iSaison][isSaison] + "</td>"

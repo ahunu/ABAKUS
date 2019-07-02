@@ -427,7 +427,6 @@ function loadSTATold(I, pCallback) {
             });
         }
 
-
         if (CUPS.ANMELDERF[I]) {
             if (typeof STAT.ANMELDUNGEN === 'undefined') {
                 STAT.ANMELDUNGEN = {};

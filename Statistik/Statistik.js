@@ -145,7 +145,7 @@ function whenSTATloaded() {
             if (STAT) {
                 showSaison(1);
             } else {
-                showUebersicht();
+                showInhalt();
                 showTermine();
             }
         }

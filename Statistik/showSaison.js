@@ -20,7 +20,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         jbSpieler.close();
     }
 
-    if (pStockerl || pAnekdoten) {
+    if (LS.ME !== "NOBODY" && (pStockerl || pAnekdoten)) {
         showIcons(['#iPrint']);
     } else {
         showIcons([]);

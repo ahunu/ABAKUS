@@ -23,8 +23,8 @@ var myJBox = null;
 const dHeute = new Date();
 
 function iNUTZUNGSBESTIMMUNGENonClick() {
-     $("#ueNutzungsbedingungen").toggleClass('L M');
-     $("#tNutzungsbedingungen").toggleClass('M S');
+    $("#ueNutzungsbedingungen").toggleClass('L M');
+    $("#tNutzungsbedingungen").toggleClass('M S');
     if ($("#iNUTZUNGSBESTIMMUNGEN").prop("checked")) {
         $("#iNUTZUNGSBESTIMMUNGEN").prop("checked", true).checkboxradio("refresh");
         $("#bAlleSpieler,#bAktiveSpieler,#bNeuOderGeaendert").removeClass('ui-disabled');
@@ -136,9 +136,9 @@ $(document).bind('pageinit', function () {
         };
     }
 
-    if (LS.ME !== "3425" && LS.ME !== "1014" && LS.ME !== "0124") { // Franz Kienast, Karl Haas jun.
-        $("#bAlleSpieler,#bNeuOderGeaendert").remove();
-    }
+//    if (LS.ME !== "3425" && LS.ME !== "1014" && LS.ME !== "0124") { // Franz Kienast, Karl Haas jun.
+//        $("#bAlleSpieler,#bNeuOderGeaendert").remove();
+//    }
 
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (LS.ME === '3425') { // Leo Luger
@@ -164,7 +164,7 @@ $(document).bind('pageinit', function () {
         kzAktiv = 'W';
     }
 
-$('#tAktiveSpieler').text(CUPS.NAME[mCup]);
+    $('#tAktiveSpieler').text(CUPS.NAME[mCup]);
 
     document.onselectstart = function () {
         return false;

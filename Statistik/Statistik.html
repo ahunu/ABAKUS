@@ -3,7 +3,9 @@
     <head>
         <meta charset='utf-8'/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <?php header('Access-Control-Allow-Origin: *'); ?>
+<!--        <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval';  img-src 'self' data:; media-src 'self'; frame-src https://utcklopeinersee.jimdofree.com; script-src-elem *" />
+-->
         <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
         <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
         <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
@@ -47,7 +49,7 @@
         </style>
         <script src="statFunktionen.js"></script>
         <script src='../Abakus/getZitat.js'></script>
-        <script src="showUebersicht.js"></script>
+        <script src="showInhalt.js"></script>
         <script src="showSaison.js"></script>
         <script src="showRegeln.js"></script>
         <script src="showTermine.js"></script>
@@ -98,7 +100,7 @@
                                 <a onclick="historyBack()"><i class="i zmdi-home"></i></a>
                             </li>
                             <li class="nb39 cCUP">
-                                <a id=nbUebersicht onClick="showUebersicht();">Übersicht</a>
+                                <a id=nbUebersicht onClick="showInhalt();">Inhalt</a>
                             </li>
                             <li class="nb35 cCUP">
                                 <a id=nbSaison onclick="showSaison()"><span id="tArchiv">Archiv</span></a>

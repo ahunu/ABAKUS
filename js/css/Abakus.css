@@ -49,6 +49,8 @@ input {
 
 @media only screen and (orientation : portrait) and (max-width: 412px) { /* Galaxy A3 */
 
+    #tMedia { background:red; font-weight:bold; }
+
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
 
@@ -128,6 +130,8 @@ input {
 
 @media only screen and (orientation : portrait) and (min-width: 413px) and (max-width: 450px) {
 
+    #tMedia { background:blue; font-weight:bold; }
+
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
 
@@ -205,7 +209,9 @@ input {
     }
 }       
 
-@media only screen and (orientation : portrait)  and (min-width: 451px) {
+@media only screen and (orientation : portrait) and (min-width: 451px) {
+    
+    #tMedia { background:green; font-weight:bold; }
 
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
@@ -284,6 +290,8 @@ input {
 }
 
 @media only screen and (orientation : landscape)  {
+
+    #tMedia { background:black; font-weight:bold; }
 
     .cLinks { width: 28% !important}
     .cRechts { display: block !important }

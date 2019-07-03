@@ -213,10 +213,7 @@ function showPlatzierungen(pSort) {
             $("#mTable tr:even").css('background-color', '#efefef');
             $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
         } else {
-            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
-            $('#sideContent').css('height', hx + 'px');
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-            hx = $(window).innerHeight() - $('#dContent').offset().top;
             html = '<table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
                     + '<thead>'
                     + '<tr ' + (QUERFORMAT() ? "id=L0P1" : "") + ' class=bHell>'
@@ -229,11 +226,12 @@ function showPlatzierungen(pSort) {
                     + '</thead>'
                     + htmlRumpf
                     + '</table>';
-            $('#sideTurniereMT').hide();
             $('#dContent').html(html + '<br>').show();
-            $('#sideContent').css('height', hx + 'px');
+            $('#sideTurniereMT').hide();
+            $('#sideTurniereMT').hide();
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-            $('#nbAllgemeines').removeClass('ui-btn-active');
+            var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
+            $('#sideContent').css('height', hx + 'px').scrollTop(0);
             setFont(3.8, true);
         }
 

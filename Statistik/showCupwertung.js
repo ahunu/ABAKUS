@@ -229,13 +229,9 @@ function showCupwertung() {
                 + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 81 ? "<td class=TR>tarock.web.app?Schmankerl Tarock&nbsp;</td>" : "")
                 + "</tr></tbody></table>";
-    } else {
-        html += "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>";
-    }
-
-    if (QUERFORMAT()) {
         $('#dRumpf').html(html);
     } else {
+        html += "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>";
         $('#dContent').html(html);
         $('#sideTurniereMT').hide();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');

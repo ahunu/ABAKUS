@@ -417,7 +417,7 @@ function showIcons(pIcons) {
     $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iAnekdote').hide();
     if (QUERFORMAT()) {
         for (var i = 0; i < pIcons.length; i++) {
-            $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (20 + (50 * i)) + 'px; font-size: 44px; cursor: pointer;').show();
+            $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (0.9 + (3.8 * i)) + 'vw; font-size: 3.3vw; cursor: pointer;').show();
         }
     } else {
         if (pIcons.length && pIcons[0] === '#iScrollToMe') {
@@ -444,10 +444,10 @@ function writeCanvas(pTitel) {
     $('#hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
     $('#hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
 
-    if (PC) {
-        $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
-        $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");
-    }
+//    if (PC) {
+//        $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
+//        $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");
+//    }
     // 51 H Hausruckcup
     // 52 R Raiffeisencup
     // 53 S Sauwaldcup

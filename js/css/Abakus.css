@@ -210,7 +210,7 @@ input {
 }       
 
 @media only screen and (orientation : portrait) and (min-width: 451px) {
-    
+
     #tMedia { background:green; font-weight:bold; }
 
     .cLinks { width: 100% !important }
@@ -287,7 +287,7 @@ input {
         border-radius: 0.3em;
         background-color: rgba(0, 0, 0, 0.133);  
     }
-}
+} 
 
 @media only screen and (orientation : landscape)  {
 
@@ -303,28 +303,32 @@ input {
     #pMenu, #hMenu { display: block !important }
     #pCup, #pCupFooter, #pTisch, hMix { display: none !important }
 
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(0.97vw + 12px) !important;}
+    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: 1.85vw !important;}
 
     .ui-btn {padding: .1em !important;}
 
-    .XXL {font-size: calc(1.1vw + 44px) !important;}  /* Abakus Balken */
-    .XL {font-size: calc(1.1vw + 15px) !important;}   /* Zur Statistik, Zur Anmeldung, Nächstes Turnier */
-    .L3 {font-size: calc(1.05vw + 14px) !important;}
-    .L2 {font-size: calc(1.01vw + 13px) !important;}
-    .L  {font-size: calc(0.97vw + 12px) !important;}
-    .M2, .Sbtn {font-size: calc(0.93vw + 11px) !important;}
-    .M  {font-size: calc(0.90vw + 10px) !important;}
-    .S2 {font-size: calc(0.89vw + 9px) !important;}
-    .S  {font-size: calc(0.88vw + 8px) !important;}
-    .XS {font-size: calc(0.87vw + 7px) !important;}
-    .XXS{font-size: calc(0.87vw + 6px) !important;}
+    .XXL {font-size: 4.35vw !important;}  /* Abakus Balken */
+    .XL {font-size: 2.22vw !important;}   /* Zur Statistik, Zur Anmeldung, Nächstes Turnier */
+    .L3 {font-size: 2.1vw !important;}
+    .L2 {font-size: 1.98vw !important;}
+    .L  {font-size: 1.85vw !important;}
+    .M2, .Sbtn {font-size: 1.74vw !important;}
+    .M  {font-size: 1.64vw !important;}
+    .S2 {font-size: 1.56vw !important;}
+    .S  {font-size: 1.47vw !important;}
+    .XS {font-size: 1.39vw !important;}
+    .XXS{font-size: 1.31vw !important;}
 
-    .LL3 {font-size: calc(1.1vw + 20px) !important;}  /* Buttons 4er und 5er Tische */
-    .LL2 {font-size: calc(1vw + 20px) !important;}    /* Buttons 6er Tische */
+    .LL3 {font-size: 1.1vw !important;}  /* Buttons 4er und 5er Tische */
+    .LL2 {font-size: 1vw !important;}    /* Buttons 6er Tische */
 
+    
+    .cA {font-size:  44px !important;}
+    .cB {font-size: 3.3vw !important;}
+    
     .i {    /* Edit */
         display: inline-block;   
-        font: normal normal normal calc(1.2vw + 10px) 'Material-Design-Iconic-Font';  /* Statistik Menüicons */
+        font: normal normal normal 1.95vw 'Material-Design-Iconic-Font';  /* Statistik Menüicons */
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -332,7 +336,7 @@ input {
 
     .iconL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal calc(2.3vw + 12px) 'Material-Design-Iconic-Font';
+        font: normal normal normal 2.3vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -340,7 +344,7 @@ input {
 
     .iconXL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal calc(2.8vw + 14px) 'Material-Design-Iconic-Font';
+        font: normal normal normal 3.8vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -348,7 +352,7 @@ input {
 
     .iSpinner {
         display: inline-block;
-        font: normal normal normal calc(1vw + 12px) 'Material-Design-Iconic-Font';
+        font: normal normal normal 1.9vw 'Material-Design-Iconic-Font';
         font-size: 3vw;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;

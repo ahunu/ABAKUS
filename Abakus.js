@@ -818,9 +818,13 @@ function toggleTechDetails() {
                         : '')
                 + 'navigator.userAgent: ' + navigator.userAgent + '<br>'
                 + 'navigator.platform: ' + navigator.platform + '<br>'
+                + 'pixelDepth: ' + screen.pixelDepth + '<br>'
+                + 'querformat: ' + QUERFORMAT() + '<br>'
+                + 'screensize: ' + screen.width + ' x ' + screen.height + '<br>'
                 + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>'
                 + 'history.length: ' + history.length + '<br>'
                 + 'document.domain: ' + document.domain + '<br>'
+                + 'screen: ' + JSON.stringify(screen) + '<br>'
                 + 'location.hash: ' + location.hash + '<br>').show();
         $('#pContent').scrollTop(9999999);
     } else {

@@ -105,9 +105,9 @@ function showPlatzierungen(pSort) {
 //                + "<div id='dFilter' class='noprint' style='width:20%'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>"
                     + '<tbody id=tbody>'
                     + '<tr class="bHell">'
-                    + '<th><span>&nbsp;&nbsp;Teilnehmer&nbsp;&nbsp;<span></th>'
-                    + '<td>-</td>'
-                    + (CUPS.TYP[stCup] !== 'MT' ? '<td>-</td>' : '');
+                    + '<th></th>'
+                    + '<td></td>'
+                    + (CUPS.TYP[stCup] !== 'MT' ? '<td></td>' : '');
             TEILNEHMER[0] = 0;
             for (var I = iTurnier; I >= 7; I--) {
                 htmlRumpf += '<th>' + TEILNEHMER[I] + '</th>';
@@ -176,42 +176,25 @@ function showPlatzierungen(pSort) {
 
         htmlRumpf += '<tbody>';
 
-        xhtml = '<div>'
-                + '<fieldset data-role="controlgroup">'
-                + '<input type="radio" name="iSORT" id="iSORT" value="Name"        onClick="showPlatzierungen(\'Name\')"' + (pSort === 'Name' ? ' checked="checked"' : '') + '>'
-                + '<label for="iSORT" class="XS K">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name</label>'
-                + '<input type="radio" name="iSORT" id="iSORT2" value="Stockerl"   onClick="showPlatzierungen(\'Stockerl\')"' + (pSort === 'Stockerl' ? ' checked="checked"' : '') + '>'
-                + '<label for="iSORT2" class="XS K">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beste&nbsp;Platzierung</label>'
-                + (CUPS.TYP[stCup] !== 'MT'
-                        ? '<input type="radio" name="iSORT" id="iSORT3" value="Cuppunkte"  onClick="showPlatzierungen(\'Cuppunkte\')"' + (pSort === 'Cuppunkte' ? ' checked="checked"' : '') + '>'
-                        + '<label for="iSORT3" class="XS K">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cuppunkte</label>'
-                        : '')
-                + '<input type="radio" name="iSORT" id="iSORT4" value="Teilnahmen" onClick="showPlatzierungen(\'Teilnahmen\')"' + (pSort === 'Teilnahmen' ? ' checked="checked"' : '') + '>'
-                + '<label for="iSORT4" class="XS K">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teilnahmen</label>'
-                + '</fieldset>'
-                + '</div>';
-
         if (QUERFORMAT()) {
-            var hx = $(window).innerHeight() - $('#dRumpf').offset().top;
+            var hx = $(window).innerHeight() - $('#qfHeader').height();
             html = '<div class="parent" style="margin-top: -0px; height: ' + hx + 'px;"><table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
                     + '<thead>'
                     + '<tr id=L0P1 class=bHell>'
-                    + '<th class="TL">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sortiert nach:<br><br><br><br></th>'
-                    + '<th class="rotate bottom">1.&nbsp;2.&nbsp;3.<br>beste<br>Platz.</th>'
-                    + (CUPS.TYP[stCup] !== 'MT' ? '<th class="rotate bottom">Cup-<br>punkte</th>' : '')
+                    + '<th class="rotate bottom C PT cBlau' + (pSort === 'Name' ? ' U' : '') + '" onclick="showPlatzierungen(\'Name\')">Teilnehmer</th>'
+                    + '<th class="rotate bottom C PT cBlau' + (pSort === 'Stockerl' ? ' U' : '') + '" onclick="showPlatzierungen(\'Stockerl\')">1.&nbsp;2.&nbsp;3.<br>beste<br>Platz.</th>'
+                    + (CUPS.TYP[stCup] !== 'MT' ? '<th class="rotate bottom C PT cBlau' + (pSort === 'Cuppunkte' ? ' U' : '') + '" onclick="showPlatzierungen(\'Cuppunkte\')">Cup-<br>punkte</th>' : '')
                     + html
-                    + '<th class="rotate bottom">Teil-<br>nahmen</th>'
+                    + '<th class="rotate bottom C PT cBlau' + (pSort === 'Teilnahmen' ? ' U' : '') + '" onclick="showPlatzierungen(\'Teilnahmen\')">Teil-<br>nahmen</th>'
                     + '</tr>'
                     + '</thead>'
                     + htmlRumpf
                     + '</table>'
                     + '</div>';
-            $('#dRumpf').html(html);
-            $('#dOver').html(xhtml).trigger('create');
+            $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
             setFont();
             $("#mTable").tableHeadFixer({"left": 1});
             $("#mTable tr:even").css('background-color', '#efefef');
-            $("#dOver").attr('style', "width:215px;position: absolute; top: 120px; left: 29vw;").show();
         } else {
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
             html = '<table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'

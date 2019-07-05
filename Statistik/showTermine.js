@@ -124,7 +124,8 @@ function showTermine() {
     }
 
     if (QUERFORMAT()) {
-        $('#dRumpf').html(htmlTE).trigger('create').show();
+//        $('#dRumpf').html(htmlTE).trigger('create').show();
+        $('#dRumpf').html(htmlTE).css('margin-top', $('#qfHeader').height() + 'px');
     } else {
         $('#dContent').html("<ul data-role='listview'>" + htmlTE + "</ul>").trigger('create').show();
         $('#sideTurniereMT').hide();

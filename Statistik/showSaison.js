@@ -184,12 +184,12 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                 + '<tr><td></td><th class="L K" colspan="3">Die ' + (pAnekdoten ? 'Anekdoten' : 'Turniere') + ' der Saison&nbsp;&nbsp;' + stSaison + ':</th></tr>'
                 + htmlTE
                 + "</tbody></table>";
-        $('#dRumpf').html(htmlTE).trigger('create').show();
+        $('#dRumpf').html(htmlTE).trigger('create').css('margin-top', $('#qfHeader').height() + 'px');
     } else {
         $('#sideTurniereMT').html(
                 '<li data-role="list-divider" onclick="toggleListen();">&nbsp;&nbsp;&nbsp;&nbsp;'
-                + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-plus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
-                + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-minus noprint"  style="position: absolute; top: -10px; right: 12px; font-size: 44px; cursor: pointer;"></i>'
+                + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-plus noprint"  style="position: absolute; top: -0.6vw; right: 12px; font-size: 3.3vw; cursor: pointer;"></i>'
+                + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-minus noprint"  style="position: absolute; top: -0.6vw; right: 12px; font-size: 3.3vw; cursor: pointer;"></i>'
                 + stSaison + ' - die Listen:</li>'
                 + '<li class="cListe" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a></li>'
                 + (window.location.href.toUpperCase().indexOf('OOV') < 0

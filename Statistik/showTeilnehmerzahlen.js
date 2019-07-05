@@ -113,7 +113,7 @@ function showTeilnehmerzahlen() {
             + "</div>";
 
     if (QUERFORMAT()) {
-        $('#dRumpf').html(html);
+        $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
     } else {
         $('#dContent').html(html);
     }

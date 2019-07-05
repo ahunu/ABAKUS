@@ -385,7 +385,7 @@ function fINIT(pCup) {
         $('#hfHeader').remove();
     } else {
         $('#dLinks').attr("style", "width:100%");
-        $('#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dMargin,#dRumpf,#dCopyright,#tStand').remove();
+        $('#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand').remove();
     }
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {

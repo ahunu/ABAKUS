@@ -103,7 +103,7 @@ function showCupsieger() {
                 + html
                 + "</tbody></table>";
         if (QUERFORMAT()) {
-            $('#dRumpf').html(html).show();
+            $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
         } else {
             $('#dContent').html(html).show();
         }

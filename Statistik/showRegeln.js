@@ -206,7 +206,8 @@ function showRegeln() {
             + '</div>';
 
     if (QUERFORMAT()) {
-        $('#dRumpf').html(html).trigger('create').show();
+//        $('#dRumpf').html(html).trigger('create').show();
+        $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
         setFont();
     } else {
         $('#dContent').html(html).trigger('create').show();

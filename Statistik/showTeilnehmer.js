@@ -250,12 +250,12 @@ function showTeilnehmer(pSort) {
             html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive ssssstable-stripe' data-column-btn-text=''><thead>"
                     + "<tr id='L0P1' class='bGrau'>"
                     + "<th></th>"
-                    + "<th id=CUP class='C P cBlau" + (pSort === 'NAME' ? ' U' : '') + "' onclick='showTeilnehmer(\"NAME\")'>Name</th>"
-                    + "<th id=CUP class='C P cBlau" + (pSort === 'CUP' ? ' U' : '') + "' onclick='showTeilnehmer(\"CUP\")'>Cup<br>1.2.3.</th>"
-                    + "<th id=TURNIER class='C P cBlau" + (pSort === 'TURNIER' ? ' U' : '') + "' onclick='showTeilnehmer(\"TURNIER\")'>Turnier<br>1.2.3.</th>"
-                    + "<th id=PLATZ class='TC P cBlau" + (pSort === 'PLATZ' ? ' U' : '') + "' onclick='showTeilnehmer(\"PLATZ\")'>&Oslash;<br>Platz</th>"
-                    + "<th id=TN class='TR P cBlau QUER" + (pSort === 'TN' ? ' U' : '') + "' onclick='showTeilnehmer(\"TN\")'>TN</th>"
-                    + (window.location.href[0] === 'f' ? "<th id=PUNKTE class='TR P cBlau QUER" + (pSort === 'PUNKTE' ? ' U' : '') + "' onclick='showTeilnehmer(\"PUNKTE\")'>Punkte</th>" : '')
+                    + "<th id=CUP class='C PT cBlau" + (pSort === 'NAME' ? ' U' : '') + "' onclick='showTeilnehmer(\"NAME\")'>Name</th>"
+                    + "<th id=CUP class='C PT cBlau" + (pSort === 'CUP' ? ' U' : '') + "' onclick='showTeilnehmer(\"CUP\")'>Cup<br>1.2.3.</th>"
+                    + "<th id=TURNIER class='C PT cBlau" + (pSort === 'TURNIER' ? ' U' : '') + "' onclick='showTeilnehmer(\"TURNIER\")'>Turnier<br>1.2.3.</th>"
+                    + "<th id=PLATZ class='TC PT cBlau" + (pSort === 'PLATZ' ? ' U' : '') + "' onclick='showTeilnehmer(\"PLATZ\")'>&Oslash;<br>Platz</th>"
+                    + "<th id=TN class='TR PT cBlau QUER" + (pSort === 'TN' ? ' U' : '') + "' onclick='showTeilnehmer(\"TN\")'>TN</th>"
+                    + (window.location.href[0] === 'f' ? "<th id=PUNKTE class='TR PT cBlau QUER" + (pSort === 'PUNKTE' ? ' U' : '') + "' onclick='showTeilnehmer(\"PUNKTE\")'>Punkte</th>" : '')
                     + "<th></th>"
                     + "</tr>"
                     + "</thead><tbody>"
@@ -278,7 +278,7 @@ function showTeilnehmer(pSort) {
                         + "<tr><td></td><td colspan=2>insgesamt mindestens 20 mal teilgenommen</th></tr>"
                         + "<tr><td></td><td colspan=2>oder mindestens einen Stockerlplatz erreicht haben.</th></tr>"
                         + "</tbody></table><br>";
-                $('#dRumpf').html(html).show();
+                $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
             } else {
                 html += "<br><table data-role=table>"
                         + "<tbody>"

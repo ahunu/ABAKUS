@@ -221,7 +221,7 @@ function showFotos() {
 
         if (QUERFORMAT()) {
             var hx = $(window).innerWidth() - $('#dRumpf').offset().left - 1;
-            $('#qfHeader,#dMargin').hide();
+            $('#qfHeader').hide();
 //            $('#dRumpf').html('<iframe src="https://utcklopeinersee.jimdofree.com" height=' + ($(window).innerHeight() - 10) + ' width=' + hx + '></iframe>').show();
             $('#dRumpf').html('<iframe id=myIFrame src="#" height=' + ($(window).innerHeight() - 10) + ' width=' + hx + '></iframe>').show();
 //var ifr = document.getElementById('myIFrame');

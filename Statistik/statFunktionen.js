@@ -505,8 +505,6 @@ function setFont(pFont, pStickyHeader) {
             jbArchiv.close();
         }
     }
-    $('#dOver').hide();
-
     if ($('#mTable').length) { // if exists
         if (QUERFORMAT()) {
             if ($(window).innerWidth() < 1360) {        // Mein 15 Zoll Laptop: 1344

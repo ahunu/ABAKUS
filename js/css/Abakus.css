@@ -53,6 +53,10 @@ input {
     .cTablet { display: none !important }
     .cSmartphone { display: none !important }
 
+    #p451 { display: none !important }
+    #p361 { display: none !important }
+    #p360 { display: none !important }
+
     #pMenu, #hMenu { display: block !important }
     #pCup, #pCupFooter, #pTisch, hMix { display: none !important }
 
@@ -136,6 +140,10 @@ input {
     .cTablet { display: block !important }
     .cSmartphone { display: none !important }
 
+    #p451 { display: block !important }
+    #p361 { display: none !important }
+    #p360 { display: none !important }
+
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(1.25vw + 20px) !important;}
     .ui-btn {padding: .5vh .2em !important;}
 
@@ -213,6 +221,10 @@ input {
     #dPC { display: none !important }
     .cTablet { display: none !important }
     .cSmartphone { display: block !important }
+
+    #p451 { display: none !important }
+    #p361 { display: block !important }
+    #p360 { display: none !important }
 
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.5vw + 4px) !important;} /* index Runden/Cups */
     .ui-btn {padding: .22em .2em !important;}
@@ -293,25 +305,29 @@ input {
     .cTablet { display: none !important }
     .cSmartphone { display: block !important }
 
+    #p451 { display: none !important }
+    #p361 { display: none !important }
+    #p360 { display: block !important }
+
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.22vw + 4px) !important;} /* index Runden/Cups */
     .ui-btn {padding: .21em .2em !important;}
 
-     /*   .XXL {font-size: calc(3.9vw + 35px) !important;} 
-    .XL {font-size: calc(1.38vw + 20px) !important;}
-    .L3 {font-size: calc(1.34vw + 18px) !important;} 
-    .L3 {font-size: 8vw !important;} 
-    .L2 {font-size: 7.2vw !important;}  
-    .L {font-size: 6.44vw !important;}
-    .M3 {font-size: 5.4vw !important;} 
-    .M2 {font-size: 5.4vw !important;}            
-    .M  {font-size: 5.33vw !important;}
-    .S2 {font-size: 5.2vw !important;}
-    .S  {font-size: 4.9vw !important;}
-    .XS {font-size: 4.8vw !important;}
+    /*   .XXL {font-size: calc(3.9vw + 35px) !important;} 
+   .XL {font-size: calc(1.38vw + 20px) !important;}
+   .L3 {font-size: calc(1.34vw + 18px) !important;} 
+   .L3 {font-size: 8vw !important;} 
+   .L2 {font-size: 7.2vw !important;}  
+   .L {font-size: 6.44vw !important;}
+   .M3 {font-size: 5.4vw !important;} 
+   .M2 {font-size: 5.4vw !important;}            
+   .M  {font-size: 5.33vw !important;}
+   .S2 {font-size: 5.2vw !important;}
+   .S  {font-size: 4.9vw !important;}
+   .XS {font-size: 4.8vw !important;}
 
-    .LL3 {font-size: 7.8vw !important;} 
-    .LL2 {font-size: 7.1vw !important;}   */    
-    
+   .LL3 {font-size: 7.8vw !important;} 
+   .LL2 {font-size: 7.1vw !important;}   */    
+
     .XXL {font-size: calc(3.7vw + 33px) !important;} /* Abakus Balken */
     .XL {font-size: calc(1.31vw + 19px) !important;}
     .L3 {font-size: 7.6vw !important;}  /* Vorhand */

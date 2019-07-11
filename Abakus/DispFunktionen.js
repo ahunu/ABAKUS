@@ -17,6 +17,9 @@ function showGR() {
 
     aktPos = DS.Game.length - 1;
 
+    $('#dHelp').hide();
+    $('#bChart').show();
+
     canvas = document.getElementById('bChart');
     if (window.location.search) {
         canvas.height = parseInt(window.location.search.substr(1)) - $('#NB').height() - $('#NB').height() - 2;
@@ -226,7 +229,7 @@ function getPraemien() {
         hSpiel = DS.Game[aktPos];
     }
     ret = hSpiel;
-    if (hSpiel.indexOf(' ') > 0 && hSpiel.indexOf(' ') < hSpiel.length -1) {
+    if (hSpiel.indexOf(' ') > 0 && hSpiel.indexOf(' ') < hSpiel.length - 1) {
         ret = 'Prämien: ' + hSpiel.substr(hSpiel.indexOf(' '));
     } else {
         ret = 'Keine Prämien:';

@@ -6,7 +6,7 @@ function getZitat() {
     var iZitat = 9999;
     do {
         NOK = false;
-        iZitat = Date.now() % 57;
+        iZitat = Date.now() % 58;
         for (var i = 0; i < stLastZitat.length; i++) {
             if (stLastZitat[i] === iZitat) {
                 NOK = true;
@@ -261,9 +261,9 @@ function getZitat() {
             'Charles Maurice de Talleyrand, 1754-1838'
         + '<br>fr. Staatsmann und Bischof'];
     } else if (iZitat === 57) {
-        return [''
-                    + '<br>',
-            ''];
+        return ['Wer Honig will,'
+                    + '<br>muß der Biene Summen erleiden.',
+            'Dale Carnegie, 1888-1955, amerik. Bestsellerautor'];
     } else if (iZitat === 58) {
         return [''
                     + '<br>',

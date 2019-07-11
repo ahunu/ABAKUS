@@ -1,7 +1,7 @@
 ///* global firebase */
 
 //  LOG  Funktionen  **************************************************************************
-function loadSPIELER() {
+function xxxloadSPIELER() {
 
     showEinenMoment('ABAKUS', 'Spieler&nbsp;werden&nbsp;geladen.');
 
@@ -9,7 +9,7 @@ function loadSPIELER() {
         firebase.initDB(0);
     }
 
-    firebase.database().ref('/00/SPIELERext').once('value')
+    firebase.database().ref('/00/Spieler/SPIELERext').once('value')
             .then(function (snapshot) {
                 SPIELERext = snapshot.val();
                 hideEinenMoment();

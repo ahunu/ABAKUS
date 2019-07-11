@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/firebase/firebase.js"></script>
+        <script type="text/javascript">
+            $(document).bind("mobileinit", function () {
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+                $.mobile.loadingMessage = true;
+            });
+        </script>
+        <style>
+            body.noScroll { overflow: hidden; }
+        </style>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus
+        </title>
+        <link  href="../js/css/Abakus.css"      rel="stylesheet" />
+        <script src="Spielerverwaltung.js"></script>
+        <script src="loadSPIELER.js"></script>
+    </head>
+    <body>
+        <div data-role="header" id="dHeader" class="ui-btn K" data-position="fixed" style="padding:0em; margin:0em;">
+            <div class="ui-grid-c" onClick="$('#hTipps').toggle('show');">
+                <div class="ui-block-a" style="width:1vw;"></div>
+                <div class="ui-block-b C" style="width:70px;margin-bottom:-8px">
+                    <img src='../Icons/Tools.png' id=logo height="70" width="70"/>
+                </div>
+                <div class="ui-block-c" style="width:1.5vw;"></div>
+                <div class="ui-block-d" style="width:auto">
+                    <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px; margin-top:-2px; font-style: italic;">Spielerverwaltung</div>
+                    <div id=hTitel2 style="width:auto; text-align:left; font-size: 28px; margin-top:-8px; font-weight: normal;">Spieler anzeigen, ändern, neu anlegen</div>
+                </div>
+            </div>
+            <div id='hTipps' onClick="$('#hTipps').hide();" style='margin:1em; text-align: left;' class='M N' hidden>
+                Unmittelbar nach dem Speichern k&ouml;nnen die neuen/ge&auml;nderten Spieler verwendet werden.
+            </div>
+        </div>
+        <div id='cupsLEG' style='margin:1em' class=M2 hidden> <b>Legende:</b>
+            <br>
+            <span class=N>Unmittelbar nach dem Speichern k&ouml;nnen die neuen/ge&auml;nderten Spieler verwendet werden.
+            </span>
+        </div>
+        <div id='main' class="ui-disabled">
+            <form onsubmit="event.preventDefault(); return onFinden();" style="padding:0">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a" style="width:45%;padding:0 1em">
+                        <br>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a L" style="width:25%;"> Nummer:
+                                <br>
+                            </div>
+                            <div class="ui-block-b" style="width:74%;">
+                                <input  id="F_NR"    type="text" data-role="none">
+                            </div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a L" style="width:25%;"> Nachname:
+                                <br>
+                            </div>
+                            <div class="ui-block-b" style="width:74%;">
+                                <input  id="F_NNAME" type="text" data-role="none">
+                            </div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a L" style="width:25%;"> Vorname:
+
+                                <br>
+                            </div>
+                            <div class="ui-block-b" style="width:74%;">
+                                <input  id="F_VNAME" type="text" data-role="none">
+                            </div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a L" style="width:25%;"> Ort:
+                                <br>
+                            </div>
+                            <div class="ui-block-b" style="width:74%;">
+                                <input  id="F_ORT"   type="text" data-role="none">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a L" style="width:25%;margin:.4em 0"> Sortierung:
+                                <br>
+                            </div>
+                            <div class="ui-block-b" style="width:74%;">
+                                <fieldset data-role=controlgroup data-mini='true' data-type="horizontal">
+                                    <input type=radio name=iSort id=iSortNr  value=0 >
+                                    <label class="btn btnM" for=iSortNr onClick='sSpieler = true;'>&nbsp;Nummer&nbsp;</label>
+                                    <input type=radio name=iSort id=iSortName value=1>
+                                    <label class="btn btnM" for=iSortName onClick='sSpieler = false;'>&nbsp;Nachname&nbsp;</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <input type="button" onclick="B_Clear()" value="clear">
+                            </div>
+                            <div class="ui-block-b">
+                                <input type="submit" data-theme="e" value="finden">
+                            </div>
+                        </div>
+                        <input type="button" onclick="$('#bOK').addClass('ui-disabled');$('#pWarnung').popup('open')" data-theme="e" value="Einen neuen Spieler anlegen">
+
+                    </div>
+                    <div class="ui-block-b" style="width:55%">
+                        <span class="M2">&nbsp;&nbsp;Cupzuordnung nach Postleitzahlzonen:</span>
+                        <div class="ui-grid-b">
+                            <div class="ui-block-a M2">
+                                <input type="button" onclick="onFinden('RTC')" value="RTC">
+                            </div>
+                            <div class="ui-block-b M2">
+                                <input type="button" onclick="onFinden('HRC')" value="HRC">
+                            </div>
+                            <div class="ui-block-c M2">
+                                <input type="button" onclick="onFinden('SWC')" value="SWC">
+                            </div>
+                        </div>
+                        <div class="ui-grid-c">
+                            <div class="ui-block-a M2">
+                                <input type="button" onclick="onFinden('WTC')" value="WTC">
+                            </div>
+                            <div class="ui-block-b M2">
+                                <input type="button" onclick="onFinden('STC')" value="STC">
+                            </div>
+                            <div class="ui-block-c M2">
+                                <input type="button" onclick="onFinden('TTC')" value="TTC">
+                            </div>
+                            <div class="ui-block-c M2">
+                                <input type="button" onclick="onFinden('Rest')" value="Rest">
+                            </div>
+                        </div>
+                        <input type="button" onclick="onFinden('Aktive Spieler')" value="Aktive Spieler">
+                        <a data-role="button" onclick="onFinden('Noch nicht gespeichert')" class="ui-disabled" id="bNichtGespeichert">Noch nicht gespeichert</a>
+                        <input type="button" onclick="onFinden('Zuletzt geändert / angelegt *')" value="Zuletzt geändert / angelegt *">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a M2 B" style="width:5%;">&nbsp;*)
+                                <br>
+                            </div>
+                            <div class="ui-block-b M2" style="width:95%;">
+                                <div class="ui-grid-b">
+                                    <div class="ui-block-a M2 N" style="width:35%;white-space:nowrap">Zuletzt, in den letzten
+                                    </div>
+                                    <div class="ui-block-b" style="width:12%;text-align:center;">
+                                        <input id="iNTage" type="number" pattern="\d*" min=1 max=99999 value=14 data-role="none">
+                                    </div>
+                                    <div class="ui-block-b M2 N" style="width:50%;">&nbsp;&nbsp;&nbsp;Tagen geänderte
+                                    </div>
+                                </div>
+                                oder neu angelegte Spieler werden rot angezeigt.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <p id="fMeldung" class="L2" style="padding:0 0.5em">
+            </p>
+            <div>
+                <div id=Liste>
+                </div>
+                <div class="ui-grid-a BG">
+                    <div class="ui-block-a" style="width:90%">
+                        <ul id="lvGefunden" data-role="listview">
+                        </ul>
+                    </div>
+                    <div class="ui-block-b" style="width:10%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="footer" id="footer" data-position="fixed">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li>
+                        <a data-icon=delete class="iconJQM" onClick="history.back();">&nbsp;&nbsp;&nbsp;&nbsp;abbrechen</a>
+                    </li>
+                    <li>
+                        <a data-icon=check  class="iconJQM ui-disabled" onclick="onSpeichern();" id=bSpeichern data-theme="e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speichern</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div data-role="popup" data-history=false id="pSpieler" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L2 ui-corner-all">
+            <div data-role="header" data-theme="c">
+                &nbsp;&nbsp;&nbsp;<span id=tUEBERSCHRIFT>
+                </span>
+            </div>
+            <div>
+
+                <div class="ui-grid-a">
+                    <div class="ui-block-a M2" style="width:70%;padding-left:.8em;margin-top:.5em;">
+
+                        <div class="ui-grid-c">
+                            <div class="ui-block-a L2" style="width:15%;margin-top:.2em;"> Nummer:
+                            </div>
+                            <div class="ui-block-b B C" style="width:8%;text-align:center;">
+                                <input id="iNR" type="text" data-role="none" class=C>
+                            </div>
+                            <div class="ui-block-c" style="width:1%">
+&nbsp;
+                            </div>
+                            <div class="ui-block-d"    style="width:76%;margin-top:-0.4em;">
+                                <div class="ui-grid-c">
+                                    <div class="ui-block-a"    style="width:15%;margin-top:-0.2em;">
+                                        <span id="sVip">
+                                            <label>
+                                                <input type='checkbox' id=iVIP data-theme="a" class=N>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <span id=tAktiv class=N>Vip
+                                                </span>
+                                            </label>
+                                        </span>
+                                        <span id="sNoVip">&nbsp;</span>
+                                    </div>
+                                    <div class="ui-block-b"    style="width:29.5%;margin-top:-0.2em;">
+                                        <label>
+                                            <input type='checkbox' id=iAKTIV data-theme="a" class=N>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span id=tAktiv class=N>aktiv/dsgvo
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="ui-block-c"    style="width:27%;margin-top:-0.2em;">
+                                        <label>
+                                            <input type='checkbox' id=iVERZOGEN data-theme="a" class=N>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span class=N>verzogen
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="ui-block-d"    style="width:28.5%;margin-top:-0.2em;">
+                                        <label>
+                                            <input type='checkbox' id=iVERSTORBEN data-theme="a" class=N>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span class=N>verstorben
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:15%;"></div>
+                            <div class="ui-block-b" style="width:85%;">
+                                <div class="ui-grid-d">
+                                    <div class="ui-block-a M" style="width:10%;margin-top:.25em;">Titel</div>
+                                    <div class="ui-block-b"   style="width:35%;">Familienname *</div>
+                                    <div class="ui-block-c"   style="width:35%;">Vorname *</div>
+                                    <div class="ui-block-d M" style="width:10%;margin-top:.25em;">jun./sen.</div>
+                                    <div class="ui-block-e S" style="width:9%;margin-top:.40em;">MA, BA</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:15%;"> Name:</div>
+                            <div class="ui-block-b" style="width:85%;">
+                                <div class="ui-grid-d">
+                                    <div class="ui-block-a"    style="width:10%;">
+                                        <input id="iTITEL1" type="text" data-role="none">
+                                    </div>
+                                    <div class="ui-block-b"    style="width:35%;">
+                                        <input id="iNNAME" type="text" data-role="none">
+                                    </div>
+                                    <div class="ui-block-c"    style="width:35%;">
+                                        <input id="iVNAME" type="text" data-role="none">
+                                    </div>
+                                    <div class="ui-block-d"    style="width:10%;">
+                                        <input id="iZUSATZ" type="text" data-role="none">
+                                    </div>
+                                    <div class="ui-block-e"    style="width:8.8%;">
+                                        <input id="iTITEL2" type="text" data-role="none">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a M2" style="width:15%;margin-top:.2em;"> Strasse Nr.:
+                                </div>
+                                <div class="ui-block-b"    style="width:84%;text-align:center;">
+                                    <input id="iSTRASSE" type="text" data-role="none">
+                                </div>
+                            </div>
+                            <div class="ui-grid-c">
+                                <div class="ui-block-a M2" style="width:15%;margin-top:.2em;"> PLZ / Ort: *
+                                </div>
+                                <div class="ui-block-b"    style="width:8.5%;">
+                                    <input id="iPLZ" type="text" data-role="none">
+                                </div>
+                                <div class="ui-block-c"    style="width:75.5%;">
+                                    <input id="iORT" type="text" data-role="none">
+                                </div>
+                            </div>
+                            <div class="ui-grid-a" style="margin-top:.4em;">
+                                <div class="ui-block-a M2" style="width:15%;margin-top:.2em;"> Startort:
+                                </div>
+                                <div class="ui-block-b"    style="width:84%;">
+                                    <input id="iSTARTORT" type="text" data-role="none">
+                                </div>
+                            </div>
+                            <div class="ui-grid-c" style="margin-top:.4em;">
+                                <div class="ui-block-a M2" style="width:15%;margin-top:.2em;"> Geb.Datum:
+                                </div>
+                                <div class="ui-block-b"    style="width:25%;text-align:center;">
+                                    <input id="iGEBDAT" type="date" data-role="none">
+                                </div>
+                                <div class="ui-block-c M2 R" style="width:55%;margin-top:.2em;"> Geschlecht (m/w): *&nbsp;&nbsp;
+                                </div>
+                                <div class="ui-block-d"    style="width:4%;text-align:center;">
+                                    <input id="iGESCHLECHT" type="text" data-role="none">
+                                </div>
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a M2" style="width:15%;margin-top:.2em;"> Email: **
+                                </div>
+                                <div class="ui-block-b"    style="width:84%;">
+                                    <input id="iEMAIL" type="email" data-role="none">
+                                </div>
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a M2" style="width:15%;margin-top:.2em;"> Telefon:
+                                </div>
+                                <div class="ui-block-b"    style="width:84%;">
+                                    <input id="iTELEFON" type="text" data-role="none">
+                                </div>
+                            </div>
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a M2" style="width:15%;margin-top:.2em;"> Festnetz:
+                                </div>
+                                <div class="ui-block-b"    style="width:84%;">
+                                    <input id="iFESTNETZ" type="text" data-role="none">
+                                </div>
+                                <div class="S">
+                                    *) Pflichtfelder,&nbsp;&nbsp;**) Wer &uuml;ber aktuelle Veranstaltungen informiert werden will, muss seine Email-Adresse bekannt geben.
+                                </div>
+                                <div class="M2 cRot B " id=fTEXT>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-b" style="padding:0em 0.8em;margin-top:-0.6em;">
+                            <div class="ui-block-a">
+                                <a data-role="button" data-theme="a" onclick="$('body').removeClass('noScroll');$('#iVNAME,#iNNAME,#iORT').filter(':input:focus').blur();$('#pSpieler').popup('close');" id="krZurueck" >abbrechen</a>
+                            </div>
+                            <div class="ui-block-b">
+                                <a data-role="button" data-theme="a" onclick="onOK(false)" id="bPruefen">prüfen</a>
+                            </div>
+                            <div class="ui-block-c">
+                                <a data-role="button" data-theme="e" onclick="onOK(true)" id="bOK">OK</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="ui-block-b"    style="width:30%;padding-left:.5em;margin-top:.4em;">
+                        <div id="aeTitel" class="L B"></div>
+                        <div style="overflow-y: scroll; height:444px;">
+
+                            <ul id="lvAehnlich" data-role="listview">
+                            </ul>
+
+                            <div id="aeText" style="text-align: justify" class="M2">
+                            </div>
+
+                            <a data-role="button" data-theme="e" id="bBestaetigen1" onclick="bBestaetigen(1)">Verstanden</a>
+                            <a data-role="button" data-theme="e" id="bBestaetigen2" onclick="bBestaetigen(2)">
+                                Ich bin sicher,<br>
+                                dass der neue Spieler noch<br>
+                                keine Spielernummer hat.
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div data-role="popup" data-history=false id="pWarnung" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L2">
+                <div data-role="header" data-theme="c" class="C" style="background-color:#dd1111">Spieler anlegen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kein Spieler darf zweimal angelegt werden!
+                </div>
+                <div style='padding:0.3em 0.8em'>Nur wenn du dir absolut sicher bist, dass der neue Spieler noch nie in
+                    <br> einem Cup gespielt hat, darfst du eine neue Spielernummer vergeben.
+                    <a data-role="button" data-theme="e" onclick="showNeuenSPIELER(true)">
+                        Einen Spieler mit neuer Spielernummer anlegen.
+                        <div class="N M2"><b>Die Spielernummer wird automatisch vergeben.</b></div>
+                        <div class="N M2">Ich bin absolut sicher, dass der Spieler noch nie in einem Cup gespielt hat.</div>
+                    </a>
+                    Willst du einen Spieler mit manueller Nummernvergabe anlegen,<br>
+                    musst du zuerst seine Nummer im entsprechenden Cup überprüfen.
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <a data-role="button" data-theme="a" onclick="window.open('http://www.tarockcup.at/fileadmin/Ablagebox/Dokumente/ergebnisse/Cupwertung.pdf')">Raiffeisencup</a>
+                            <a data-role="button" data-theme="a" onclick="window.open('https://tarockrunde-sauwald.jimdo.com/sauwald-cup')">Sauwaldcup</a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a data-role="button" data-theme="a" onclick="window.open('http://home.eduhi.at/user/tarock/wertungsliste_hausruckcup' + (new Date().getMonth() < 9 ? (new Date().getFullYear() - 2001) + '' + (new Date().getFullYear() - 2000) : (new Date().getFullYear() - 2000) + '' + (new Date().getFullYear() - 1999)) + '.pdf')">Hausruckcup</a>
+                            <a data-role="button" data-theme="a" onclick="window.open('http://www.tarock.tirol/tarock_aktuell/tarock_tirolcup_zwischenstand.pdf')">Tirolcup</a>
+                        </div>
+                    </div>
+                    <a data-role="button" data-theme="e" onclick="showNeuenSPIELER(false)">
+                        Einen Spieler mit seiner bestehenden Nummer erfassen.<br>
+                        <div class="N M2"><b>Die Spielernummer ist manuell einzugeben.</b></div>
+                        <div class="N M2">Ich habe die Nummer des Spielers sorgfältig überprüft.</div>
+                    </a>
+                    <a data-role="button" data-theme="a" onclick="$('#pWarnung').popup('close')">abbrechen</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

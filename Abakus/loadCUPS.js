@@ -51,7 +51,9 @@ function loadCUPS(pTitel, pText, pForce) {
 
         data.forEach(function (cup) {
 
-            if (cup.key === 'TERMINE') {
+            if (cup.key === 'ABVERSION') {
+                CUPS.ABVERSION = cup.val();
+            } else if (cup.key === 'TERMINE') {
                 CUPS.TERMINE = cup.val();
             } else if (cup.key === 'SPIELERnr') {
                 SPIELERnr = cup.val();
@@ -138,9 +140,13 @@ function loadCUPS(pTitel, pText, pForce) {
         }
         localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
 
+        function isVERSTORBEN(pSchalter) {
+            return ((pSchalter & 2) !== 0);
+        }
+
         SPIELERalpha = [];
         for (var spieler in SPIELERnr) {
-            if (SPIELERnr[spieler][4] !== true) { // Bereits verstorbene Spieler werden in SPIELERalpha nicht aufgenommen.
+            if (!isVERSTORBEN(SPIELERnr[spieler][4])) { // Bereits verstorbene Spieler werden in SPIELERalpha nicht aufgenommen.
                 SPIELERalpha[SPIELERalpha.length] = [spieler, SPIELERnr[spieler][0], SPIELERnr[spieler][1], SPIELERnr[spieler][2], SPIELERnr[spieler][5]]; // 5=Aktiv
             }
         }

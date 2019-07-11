@@ -60,7 +60,6 @@ var prozGewonnen = [];
 var iDiversesSpiel = 18;
 
 var stAnzSpalten = 1; // für statGauge
-var lastLine = 0;
 
 var SORT = null;
 
@@ -290,46 +289,10 @@ function showCanvas(pShow) {
         Deactivate("#nbHelp,#nbGR");
         Activate('#nbTarife');
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#eee';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#222";
-
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(canvas.width, 0);
-        ctx.closePath();
-        ctx.strokeStyle = '#bbb';
-        ctx.stroke();
-
-        ctx.font = 'bold ' + LS.Font[1] + 'pt Arial';
-        ctx.fillStyle = "#222";
-
-        if (QUERFORMAT()) {
-            var hRand = canvas.width * 0.35;
-        } else {
-            var hRand = canvas.width * 0.15;
-        }
-
-        lastLine = 0;
-        ctx.textAlign = 'left';
-        ctx.fillText('Spiele', hRand, lastLine * (LS.Font[2] * 1.4) + 33);
-        ctx.textAlign = 'right';
-        ctx.fillText('Punkte', canvas.width - hRand, lastLine * (LS.Font[2] * 1.4) + 33);
-        lastLine++;
-
-        ctx.beginPath();
-        ctx.moveTo(hRand, lastLine * (LS.Font[2] * 1.4) + 15, 0);
-        ctx.lineTo(canvas.width - hRand, lastLine * (LS.Font[2] * 1.4) + 15);
-        ctx.strokeStyle = '#333';
-        ctx.closePath();
-        ctx.stroke();
-
-        if (LS.Regeln === 'Ti.') {
-            ctx.font = (LS.Font[1] - 2) + 'pt Arial';
-        } else {
-            ctx.font = LS.Font[1] + 'pt Arial';
-        }
+        $('#bChart').hide();
+        $('#dHelp').show().attr("style", "height:" + ($(window).innerHeight() - ($('#NB').height() * 2)) + "px;overflow:auto;overflow-x:hidden;");
+        $("#tHelp tr").remove();
+        $('#tHelp').append('<tr><td>&nbsp;&nbsp;Spiele</td><td class="TR">Punkte&nbsp;&nbsp;</td></tr>');
 
         SORT = [];
         sortTarifZeile('pa1', 'Rufer', iRufer);
@@ -377,58 +340,34 @@ function showCanvas(pShow) {
         }
         SORT.sort();
         for (var ii = 0; ii < SORT.length; ii++) {
-            lastLine++;
-            ctx.textAlign = 'left';
-            ctx.fillText(SORT[ii].substr(8), hRand, lastLine * (LS.Font[2] * 1.4) + 10);
-            ctx.textAlign = 'right';
-            if (SORT[ii].substr(8) !== 'Besserrufer') {
-                ctx.fillText(parseInt(SORT[ii].substr(0, 4)), canvas.width - hRand, lastLine * (LS.Font[2] * 1.4) + 10);
-            } else {
-                ctx.fillText(LS.Tarif[iRufer], canvas.width - hRand, lastLine * (LS.Font[2] * 1.4) + 10);
-            }
+            $('#tHelp').append('<tr><td class="N">&nbsp;&nbsp;' + SORT[ii].substr(8) + '</td><td class="TR N">' + (SORT[ii].substr(8) === 'Besserrufer' ? LS.Tarif[iRufer] : parseInt(SORT[ii].substr(0, 4))) + '&nbsp;&nbsp;</td></tr>');
         }
 
     } else if (pShow === 'Hilfe') {
         Deactivate("#nbTarife,#nbGR");
         Activate('#nbHelp');
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#eee';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#222";
+        $('#bChart').hide();
+        $('#dHelp').show().attr("style", "height:" + ($(window).innerHeight() - ($('#NB').height() * 2)) + "px;overflow:auto;overflow-x:hidden;");
+        $("#tHelp tr").remove();
 
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(canvas.width, 0);
-        ctx.closePath();
-        ctx.strokeStyle = '#bbb';
-        ctx.stroke();
 
-        ctx.textAlign = 'left';
-        ctx.font = LS.Font[3] + 'pt Material-Design-Iconic-Font';
-
-        lastLine = 1;
-        printCanvas(false, null, 'Symbole oben:');
-
+        $('#tHelp').append('<tr><td></td><th colspan="3" class="S2">&nbsp;&nbsp;Symbole unten:</th></tr>');
         if (LS.AnzSpieler === 4) {
-            printCanvas('f366', null, 'zur' + eval('"\\u00FC"') + 'ck, Tisch speichern,', '5. Spieler anmelden, etc.');
+            printCanvas('f366', null, 'zurück, Tisch speichern,', '5. Spieler anmelden, etc.');
         } else if (LS.AnzSpieler === 5) {
-            printCanvas('f366', null, 'zur' + eval('"\\u00FC"') + 'ck, Tisch speichern,', '6. Spieler anmelden, etc.');
+            printCanvas('f366', null, 'zurück, Tisch speichern,', '6. Spieler anmelden, etc.');
         } else {
-            printCanvas('f366', null, 'zur' + eval('"\\u00FC"') + 'ck, Tisch speichern,', 'et cetera');
+            printCanvas('f366', null, 'zurück, Tisch speichern,', 'et cetera');
         }
-        if (LS.DoppelteRunden) {
-            printCanvas('f150', 'f14b', 'Tarife, doppelte Spiele');
-        } else {
-            printCanvas('f150', null, 'Tarife');
-        }
-        printCanvas('f3bc', 'f3bb', 'Punkte (nicht) ansagen');
-        printCanvas('f1c6', null, 'Einstellungen,', 'die Vorhand ' + eval('"\\u00E4"') + 'ndern, etc.');
-        printCanvas('f1f6', null, 'diese Zeichenerkl' + eval('"\\u00E4"') + 'rung');
+        printCanvas(null, null, 'Tarife');
+        printCanvas(null, null, 'Punkte (nicht) ansagen');
+        printCanvas('zmdi-settings', null, 'Einstellungen,', 'die Vorhand ' + eval('"\\u00E4"') + 'ndern, etc.');
+        printCanvas('zmdi-help', null, 'diese Zeichenerkl' + eval('"\\u00E4"') + 'rung');
         printCanvas('1111', null, 'ein Spiel korrigieren,', 'das letzte Spiel l' + eval('"\\u00F6"') + 'schen');
 
-        lastLine += 0.3;
-        printCanvas(false, null, 'Symbole Tischmitte:');
+
+        $('#tHelp').append('<tr><td></td><th colspan="3" class="S2">&nbsp;&nbsp;Symbole Tischmitte:</th></tr>');
         printCanvas('2447', null, 'Geber'); // Anstatt des Sterns (002a)
         printCanvas('2587', null, 'Vorhand');
         if (LS.AnzSpieler > 1) {
@@ -436,14 +375,14 @@ function showCanvas(pShow) {
         }
         printCanvas('Gewinn', null, 'Gewinn des Spielers');
 
-        lastLine += 0.3;
-        printCanvas(false, null, 'Symbole unten:');
-        printCanvas('f39e', null, 'Statistik');
-        printCanvas('f158', null, 'ein Spiel manuell eingeben');
-        printCanvas('f278', null, 'ein Positivspiel eingeben');
-        printCanvas('f182', null, 'ein Farbenspiel eingeben');
-        printCanvas('f273', null, 'ein Negativspiel eingeben');
-        printCanvas('f298', null, 'Tischgrafik');
+
+        $('#tHelp').append('<tr><td></td><th colspan="3" class="S2">&nbsp;&nbsp;Symbole unten:</th></tr>');
+        printCanvas('zmdi-equalizer', null, 'Statistik');
+        printCanvas('zmdi-edit', null, 'ein Spiel manuell eingeben');
+        printCanvas('zmdi-plus', null, 'ein Positivspiel eingeben');
+        printCanvas('zmdi-invert-colors', null, 'ein Farbenspiel eingeben');
+        printCanvas('zmdi-minus', null, 'ein Negativspiel eingeben');
+        printCanvas('zmdi-gamepad', null, 'Tischgrafik');
 
     } else {
         Deactivate("#nbTarife,#nbHelp");
@@ -453,72 +392,49 @@ function showCanvas(pShow) {
 
 function printCanvas(pUnicode, pUnicode2, pText, pText2) {
     'use strict';
-    lastLine++;
-
-    if (!pUnicode) { // Überschrift
-        ctx.font = 'bold ' + LS.Font[1] + 'pt Material-Design-Iconic-Font';
-        ctx.fillText(pText, LS.Font[3], lastLine * (LS.Font[1] * 1.4) - 20);
-        ctx.font = LS.Font[1] + 'pt Material-Design-Iconic-Font';
-    } else {
-        if (pUnicode2) {
-            if (pUnicode2 === '2587') { // Spieler setzt aus
-                ctx.fillStyle = '#bbb';
-                ctx.fillText(eval('"\\u' + pUnicode + '"'), LS.Font[3] - (LS.Font[1] * 0.7), lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.fillStyle = '#888';
-                ctx.fillText(eval('"\\u' + pUnicode2 + '"'), LS.Font[3] + (LS.Font[1] * 0.7), lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.fillStyle = '#222';
-            } else if (pUnicode2 === 'f14b') { // Doppelte Spiele
-                ctx.fillText(eval('"\\u' + pUnicode + '"'), LS.Font[3] - (LS.Font[1] * 0.7), lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.fillStyle = '#d11';
-                ctx.fillText(eval('"\\u' + pUnicode2 + '"'), LS.Font[3] + (LS.Font[1] * 0.7), lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.fillStyle = '#222';
-            } else {
-                ctx.fillText(eval('"\\u' + pUnicode + '"'), LS.Font[3] - (LS.Font[1] * 0.7), lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.fillText(eval('"\\u' + pUnicode2 + '"'), LS.Font[3] + (LS.Font[1] * 0.7), lastLine * (LS.Font[1] * 1.4) - 20);
-            }
-        } else {
-            if (pUnicode === '2587') { // Vorhand
-                ctx.fillStyle = "#efdf99";
-                ctx.fillText(eval('"\\u' + pUnicode + '"'), LS.Font[3], lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.fillStyle = '#222';
-            } else if (pUnicode === 'f366') { // Mein Tisch
-                var img = new Image();
-                img.src = "../Icons/MeinTisch.png";
-                img.alt = "ABAKUS";
-                ctx.drawImage(img, LS.Font[3] * 0.7, (lastLine - 1) * (LS.Font[1] * 1.4) - 15, LS.Font[1] * 2.2, LS.Font[1] * 2.2);
-            } else if (pUnicode === '1111') { // Mein Tisch
-                var img = new Image();
-                img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVGhD7Zo7TsQwFEWnAxbABvj/VgQ1BRIlBVTUNBQI9kELlLRAQ8Gv44/YAgjuLZ4UWXaIn58dI+VIpxkJZ46wPU5mRgMDA1UxBtfhMbyA53AfLsB/wzy8gz8ev+EOrJ4l+AF9EU33YLV0jRCrjImNEKuK0UaIVcSkRoi9xlhFiL3EWEeIRWNyRYhFYnJHiFljSkWI29AcHjtKRtAvuAzNmIJP0Hex3B5BE6bhI/RdpIQ8OSfTdwS9h0nMQt90+vS8ltMTqGYOPkN30Gs4CXcbr+V2A6rg7vQC3QElQigRcwvHYTS8DX2F7oBuhJAz5h1yekfDiDfoDhiKEHLE8H0swmj4R5oIwTKG70P1gIILm/9Gd8CuEYJFDKe1KmICcp92B4yNEFJiuMFwo1GxCd0BtRGCJoZbPWeGmjPYHPAGpkQIMTH80FXtTk0eYHPQVWhFlxgef3gMSuYSNgc+hJa0xZhFEB6R3QtsQSs4TX3bOqcTbw3MWIF8FuteyCKGEdw43LG51at3pzZ4O+lejKbEhCK4O2V9Gs8bffeiVBMTiuCaMJ1OISxiQhFcE2YLuwspMW0RM7A4mpi2NZH8YZdCTEwogmenpGOHFV1iQhE8xWbZYrWEYg7gGvR9T6i+n8hNKMan+s6uFF1i+IlddYTAr5R9xxnKpx1VrYm/4ANlHjSvINfHKeRzJ/44YGBgoApGo1+f4/OBDCGbMAAAAABJRU5ErkJggg==";
-                img.alt = "ABAKUS";
-                ctx.drawImage(img, LS.Font[3] * 0.8, (lastLine - 1) * (LS.Font[1] * 1.44) - 15, LS.Font[1] * 1.5, LS.Font[1] * 1.5);
-            } else if (pUnicode === '002a') { // Geber
-                ctx.font = (LS.Font[1] * 1.6) + 'pt Material-Design-Iconic-Font';
-                ctx.fillText(eval('"\\u' + pUnicode + '"'), LS.Font[3], (lastLine + 0.3) * (LS.Font[1] * 1.4) - 15);
-                ctx.font = LS.Font[1] + 'pt Material-Design-Iconic-Font';
-            } else if (pUnicode === 'Gewinn') { // Gewinn des Spielers
-                ctx.font = 'italic ' + LS.Font[1] + "pt sans-serif";
-                ctx.fillStyle = "#ffa500";
-                ctx.fillText('15', LS.Font[3] + LS.Font[1] / 9, lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.fillStyle = "#222";
-                ctx.fillText('15', LS.Font[3], lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.fillText('15', LS.Font[3] - LS.Font[1] / 20, lastLine * (LS.Font[1] * 1.4) - 20);
-                ctx.font = LS.Font[1] + 'pt Material-Design-Iconic-Font';
-            } else {
-                if (pText2) {
-                    ctx.font = (LS.Font[1] * 1.2) + 'pt Material-Design-Iconic-Font';
-                    ctx.fillText(eval('"\\u' + pUnicode + '"'), LS.Font[3], lastLine * (LS.Font[1] * 1.4) - 15);
-                    ctx.font = LS.Font[1] + 'pt Material-Design-Iconic-Font';
-                } else {
-                    ctx.fillText(eval('"\\u' + pUnicode + '"'), LS.Font[3], lastLine * (LS.Font[1] * 1.4) - 20);
-                }
-            }
+    var html = '';
+    if (pUnicode2) {
+        if (pUnicode2 === '2587') { // Spieler setzt aus
+            html = '<td class="TC"><span style="color: #bbb">&#x' + pUnicode + ';</span> <span style="color: #888"></span>&#x' + pUnicode2 + ';</span></td>';
+        } else if (pUnicode2 === 'f14b') { // Doppelte Spiele
+            html = '<td class="TC">&#x' + pUnicode + ';<span style="color: #d11">&#x' + pUnicode2 + ';</span></td>';
         }
-        ctx.fillText(pText, LS.Font[3] * 3, lastLine * (LS.Font[1] * 1.4) - 20);
-        if (pText2) {
-            lastLine += 0.9;
-            ctx.fillText(pText2, LS.Font[3] * 3, lastLine * (LS.Font[1] * 1.4) - 20);
+    } else {
+        if (pUnicode === '2587') { // Vorhand
+            html = '<td class="TC"><span style="color: #efdf99">&#x' + pUnicode + ';</span></td>';
+        } else if (pUnicode === 'f366') { // Mein Tisch
+            html = '<td class="TC"><img src="../Icons/MeinTisch.png" alt="Mein Tisch" style="height: 30px; width: 30px;"></td>';
+        } else if (pUnicode === '1111') { // Radiergummi
+            html = '<td class="TC"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVGhD7Zo7TsQwFEWnAxbABvj/VgQ1BRIlBVTUNBQI9kELlLRAQ8Gv44/YAgjuLZ4UWXaIn58dI+VIpxkJZ46wPU5mRgMDA1UxBtfhMbyA53AfLsB/wzy8gz8ev+EOrJ4l+AF9EU33YLV0jRCrjImNEKuK0UaIVcSkRoi9xlhFiL3EWEeIRWNyRYhFYnJHiFljSkWI29AcHjtKRtAvuAzNmIJP0Hex3B5BE6bhI/RdpIQ8OSfTdwS9h0nMQt90+vS8ltMTqGYOPkN30Gs4CXcbr+V2A6rg7vQC3QElQigRcwvHYTS8DX2F7oBuhJAz5h1yekfDiDfoDhiKEHLE8H0swmj4R5oIwTKG70P1gIILm/9Gd8CuEYJFDKe1KmICcp92B4yNEFJiuMFwo1GxCd0BtRGCJoZbPWeGmjPYHPAGpkQIMTH80FXtTk0eYHPQVWhFlxgef3gMSuYSNgc+hJa0xZhFEB6R3QtsQSs4TX3bOqcTbw3MWIF8FuteyCKGEdw43LG51at3pzZ4O+lejKbEhCK4O2V9Gs8bffeiVBMTiuCaMJ1OISxiQhFcE2YLuwspMW0RM7A4mpi2NZH8YZdCTEwogmenpGOHFV1iQhE8xWbZYrWEYg7gGvR9T6i+n8hNKMan+s6uFF1i+IlddYTAr5R9xxnKpx1VrYm/4ANlHjSvINfHKeRzJ/44YGBgoApGo1+f4/OBDCGbMAAAAABJRU5ErkJggg=="'
+                    + ' alt="Radiergummi" style="height: 30px; width: 30px;"></td>';
+        } else if (pUnicode === '2447') { // Geber
+            html = '<td class="TC">&#x' + pUnicode + ';</td>';
+        } else if (pUnicode === 'Gewinn') { // Gewinn des Spielers
+            html = '<td class="TC">15</td>';
+        } else if (pText === 'Tarife') { // Gewinn des Spielers
+            if (LS.DoppelteRunden || LS.doppelt) {
+                if (LS.doppelt) {
+                    if (LS.doppelt < 10) {
+                        pText = LS.doppelt + ' doppelte Spiele, Tarife';
+                        html = '<td class="TC"><i class="i zmdi-collection-item-' + LS.doppelt + ' cRot"></i> <i class="i zmdi-collection-text"></i></td>';
+                    } else {
+                        pText = LS.doppelt + '9+ doppelte Spiele, Tarife';
+                        html = '<td class="TC"><i class="i zmdi-collection-item-99 cRot"></i> <i class="i zmdi-collection-text"></i></td>';
+                    }
+                } else {
+                    html = '<td class="TC"><i class="i zmdi-collection-text"></i></td>';
+                }
+            } else {
+                html = '<td class="TC"><i class="i zmdi-collection-text"></td>';
+            }
+        } else if (pText === 'Punkte (nicht) ansagen') { // Gewinn des Spielers
+            html = '<td class="TC"><i class="i zmdi-volume-up"> <i class="i zmdi-volume-off"></td>';
+        } else {
+            html = '<td class="TC"><i class="i ' + pUnicode + '"></td>';
         }
     }
+    html += '<td colspan="2" class="N">' + pText + (pText2 ? '<br>' + pText2 : '') + '</td>';
+    $('#tHelp').append('<tr><td></td>' + html + '</tr>');
 }
 
 function sortTarifZeile(pTyp, pSpiel, pTarif1, pTarif2, pTarif3) {
@@ -548,14 +464,6 @@ function sortTarifZeile(pTyp, pSpiel, pTarif1, pTarif2, pTarif3) {
             SORT[SORT.length] = ' ' + hTarif + ';' + pTyp + ';' + pSpiel;
         }
     }
-}
-
-function showEinenTip(pTarget, pText) {
-    $(pTarget).focus();
-    myJTip.setContent('<span style="font-size: ' + LS.Font[3] + 'px; color:white; padding:0; margin:0">' + pText + '</span>');
-    myJTip.open({
-        target: pTarget
-    });
 }
 
 function selberruferSpeichern() {
@@ -847,7 +755,6 @@ function showSeite(pSeite) {
 
         $('#SPIELEallg').show();
         setEnter();
-//        $('#bEnter').attr('style', 'padding:0;sfont-size:' + (LS.Font[3] * 2) + 'px;text-decoration:none;').removeClass('ui-disabled').addClass('ui-disabled');
         $('#bEnter').removeClass('ui-disabled').addClass('ui-disabled');
         if (Seite === 'PS') {
             $('#nbPS').addClass('ui-btn-active');
@@ -890,7 +797,6 @@ function showDetails(pInit) {
 
     var ii = i = 0;
     var hPunkte = 0;
-    var ANZgesamt = 0;
 
     $('#LI').show();
 
@@ -994,7 +900,6 @@ function showDetails(pInit) {
                 PROZspiele[ii] = Math.round(ANZspiele[ii] / (ANZgespielt[ii - 20] / 100)) + '%';
             } else {
                 PROZspiele[ii] = Math.round(ANZspiele[ii] / (ANZgespielt[sI] / 100)) + '%';
-//                PROZspiele[ii] = Math.round(ANZspiele[ii] / (ANZspiele[0] / 100))+'%'
             }
             if (ANZgewonnen[ii] !== 0) {
                 PROZcol2[ii] = Math.round(ANZgewonnen[ii] / (ANZspiele[ii] / 100)) + '%';

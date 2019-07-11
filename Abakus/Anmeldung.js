@@ -1660,7 +1660,6 @@ $(document).ready(function () {
         var LS_SchriftG = LS.SchriftG;
         var LS_Padding = LS.Padding;
         var LS_Freunde = LS.Freunde;
-        var LS_Font = LS.Font;
         var LS_Version = LS.Version;
         var LS_tempVIPs = LS.tempVIPs;
         var LS_Timeout = LS.Timeout;
@@ -1682,7 +1681,6 @@ $(document).ready(function () {
         LS.SchriftG = LS_SchriftG;
         LS.Padding = LS_Padding;
         LS.Freunde = LS_Freunde;
-        LS.Font = LS_Font;
         LS.Version = LS_Version;
         LS.tempVIPs = LS_tempVIPs;
         LS.Timeout = LS_Timeout;

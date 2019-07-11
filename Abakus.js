@@ -896,9 +896,10 @@ function showCUPS() {
     var heute = new Date();
     var nTage = parseInt((heute - sync) / 86400000);
     if (LS.Version !== getVersion()) {
-        if (LS.Version < 932) {
-            LS.MeineCups = [56];
-            LS.AktTage = 30;
+        if (LS.Version < 932) { // später
+            if (LS.Font) {
+                delete LS.Font;
+            }
         }
         localStorage.setItem('Abakus.LOG', JSON.stringify(''));
         if (LS.Version === 0) {
@@ -1385,6 +1386,9 @@ function whenCUPSloaded() {
         $('#dMeldung').append("&nbsp;<img src='Icons/Achtung.png'  width='24' height='24'>&nbsp;<b>" + LS.Meldung + "</b>");
     }
     hideEinenMoment();
+    if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
+        showEinenFehler('Diese App ist veraltet!', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
+    }
     window.scrollTo(0, 0);
     if (QUERFORMAT()) {
         if (LS.LastBtn) {
@@ -1466,7 +1470,6 @@ function fINIT() {
         LS.Padding = 2;
         LS.Freunde = [];
         LS.Sterne = ['', '', '', '', '', '', ''];
-        LS.Font = [-1, -1, -1, -1, -1];
         LS.Ansagen = true;
         LS.TURCODE = 0;
         LS.TURADMIN = '';
@@ -1550,11 +1553,7 @@ function fINIT() {
         LS.Ansage = '';
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
-    if (LS.Version !== getVersion() || PC) {
-        optFont(1);
-    } else {
-        initSeite1();
-    }
+    initSeite1();
 
     listVersion();
     $('#tJJJJ,#tJJJJ2').text(new Date().getFullYear());

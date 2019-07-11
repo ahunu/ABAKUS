@@ -10,9 +10,6 @@ var SPIELERext = new Object();
 var kzAktiv = '?';
 var mCup = 0;
 
-const spANGELEGTvon = 20;
-const spGEAENDERTvon = 22;
-
 const spANGELEGTam = 19;
 const spGEAENDERTam = 21;
 
@@ -73,6 +70,26 @@ function downloadSpieler(pAktiv) {
     var blob = 'Nr.;Zuname;Vorname;Titel vor;Titel nach;Zusatz;Straße;PLZ;Ort;Festnetz;Mobil;Geburtsdatum;E-Mail;Geschlecht;Startort;Verstorben;Verzogen;Titel v. ign.;Titel n. ign.;Aktiv/dsgvo;Angelegt am;Angelegt von;Geaendert am;Geaendert von;\n';
     var nSpieler = 0;
 
+    function isMAENNLICH(pSchalter) {
+        return ((pSchalter & 1) !== 0);
+    }
+    function isVERSTORBEN(pSchalter) {
+        return ((pSchalter & 2) !== 0);
+    }
+    function isVERZOGEN(pSchalter) {
+        return ((pSchalter & 4) !== 0);
+    }
+    function isVIP(pSchalter) {
+        return ((pSchalter & 8) !== 0);
+    }
+    function isTITEL1IGN(pSchalter) {
+        return ((pSchalter & 16) !== 0);
+    }
+    function isTITEL2IGN(pSchalter) {
+        return ((pSchalter & 32) !== 0);
+    }
+
+
     for (var spieler in SPIELERext) {
         if (pAktiv && pAktiv === '*'
                 || pAktiv && SPIELERext[spieler][18] && SPIELERext[spieler][18].indexOf(kzAktiv) >= 0
@@ -86,25 +103,52 @@ function downloadSpieler(pAktiv) {
                     + SPIELERext[spieler][3] + ';'  // Titel2
                     + SPIELERext[spieler][4] + ';'  // Zusatz
                     + SPIELERext[spieler][5] + ';'  // Strasse
-                    + SPIELERext[spieler][6] + ';'  // Ort
-                    + SPIELERext[spieler][7] + ';'  // PLZ
+                    + SPIELERext[spieler][6] + ';'  // PLZ
+                    + SPIELERext[spieler][7] + ';'  // Ort
                     + SPIELERext[spieler][8] + ';'  // Telefon
                     + SPIELERext[spieler][9] + ';'  // Handy
                     + (getGEBDAT(SPIELERext[spieler][10])) + ';' // Geburtsdatum
                     + SPIELERext[spieler][11] + ';'  // eMail
-                    + (SPIELERext[spieler][12] === 'w' ? 'weiblich' : 'männlich') + ';' // Geschlecht (männlich)
+
+                    + (isMAENNLICH(SPIELERext[spieler][12]) ? 'männlich' : 'weiblich') + ';' // Geschlecht (männlich)
+
                     + SPIELERext[spieler][13] + ';'  // Startort
-                    + (SPIELERext[spieler][14] ? 'WAHR' : 'FALSCH') + ';' // Verstorben
-                    + (SPIELERext[spieler][15] ? 'WAHR' : 'FALSCH') + ';' // Verzogen
-                    + (SPIELERext[spieler][16] ? 'WAHR' : 'FALSCH') + ';' // Titel1 ignorieren
-                    + (SPIELERext[spieler][17] ? 'WAHR' : 'FALSCH') + ';' // Titel2 ingnorieren
-                    + (SPIELERext[spieler][18] ? SPIELERext[spieler][18] : '') + ';' // Aktiv/dsgvo
-                    + (SPIELERext[spieler][19] ? SPIELERext[spieler][19] : '') + ';' // Angelegt am
-                    + (SPIELERext[spieler][20] ? SPIELERext[spieler][20] : '') + ';' // Angelegt von
-                    + (SPIELERext[spieler][21] ? SPIELERext[spieler][21] : '') + ';' // Geaendert am
-                    + (SPIELERext[spieler][22] ? SPIELERext[spieler][22] : '') + ';\n'; // Geaendert von
+
+                    + (isVERSTORBEN(SPIELERext[spieler][12]) ? 'WAHR' : 'FALSCH') + ';' // Verstorben
+                    + (isVERZOGEN(SPIELERext[spieler][12]) ? 'WAHR' : 'FALSCH') + ';' // Verzogen
+                    + (isTITEL1IGN(SPIELERext[spieler][12]) ? 'WAHR' : 'FALSCH') + ';' // Titel1 ignorieren
+                    + (isTITEL2IGN(SPIELERext[spieler][12]) ? 'WAHR' : 'FALSCH') + ';' // Titel2 ingnorieren
+
+                    + (SPIELERext[spieler][14] ? SPIELERext[spieler][14] : '') + ';' // Aktiv/dsgvo
+                    + (SPIELERext[spieler][15] ? SPIELERext[spieler][15] : '') + ';' // Angelegt am
+                    + (SPIELERext[spieler][16] ? SPIELERext[spieler][16] : '') + ';' // Angelegt von
+                    + (SPIELERext[spieler][17] ? SPIELERext[spieler][17] : '') + ';' // Geaendert am
+                    + (SPIELERext[spieler][18] ? SPIELERext[spieler][18] : '') + ';\n'; // Geaendert von
         }
     }
+
+
+
+    const spNNAME = 0;
+    const spVNAME = 1;
+    const spTITEL1 = 2;
+    const spTITEL2 = 3;
+    const spZUSATZ = 4;
+    const spSTRASSE = 5;
+    const spPLZ = 6;
+    const spORT = 7;
+    const spFESTNETZ = 8;
+    const spTELEFON = 9;
+    const spGEBDAT = 10;
+    const spEMAIL = 11;
+    const spSCHALTER = 12;
+    const spSTARTORT = 13;
+    const spAKTIV = 14;
+    const spANGELEGTam = 15;
+    const spANGELEGTvon = 16;
+    const spGEAENDERTam = 17;
+    const spGEAENDERTvon = 18;
+
 
     $('#tMeldung').text('Es werden ' + nSpieler + ' Spieler exportiert.');
 

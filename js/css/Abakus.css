@@ -19,6 +19,24 @@ input {
     font-weight:bold;
 }
 
+@media print {
+    @page { margin: 0.5cm; } 
+    .noprint, .noprint * { display: none !important;}
+    .page-break	{ display: block; page-break-before: always; }
+    .XXL{font-size: calc(1.45vw + 17px);}
+    .XL {font-size: calc(1.33vw + 15px);}
+    .L3 {font-size: calc(1.25vw + 14px);}
+    .L2 {font-size: calc(1.17vw + 13px);}
+    .L, input, .ui-btn, .ui-radio, .ui-checkbox {font-size: calc(1.1vw + 12px) !important;}
+    .M2 {font-size: calc(0.96vw + 11px);}
+    .M {font-size: calc(0.92vw + 10px);}
+    .S3 {font-size: calc(0.91vw + 9px);}
+    .S2 {font-size: calc(0.90vw + 8px);}
+    .S {font-size: calc(0.89vw + 7px);}
+    .XS {font-size: calc(0.88vw + 6px);}
+    .XXS {font-size: calc(0.87vw + 5px);}
+}       
+
 .iconJQM::after {
     background-size: 32px !important;
     width: 38px !important;
@@ -275,28 +293,43 @@ input {
     .cTablet { display: none !important }
     .cSmartphone { display: block !important }
 
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.5vw + 4px) !important;} /* index Runden/Cups */
-    .ui-btn {padding: .22em .2em !important;}
+    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.22vw + 4px) !important;} /* index Runden/Cups */
+    .ui-btn {padding: .21em .2em !important;}
 
-    .XXL {font-size: calc(3.9vw + 35px) !important;} /* Abakus Balken */
+     /*   .XXL {font-size: calc(3.9vw + 35px) !important;} 
     .XL {font-size: calc(1.38vw + 20px) !important;}
-    .L3 {font-size: calc(1.34vw + 18px) !important;}  /* Vorhand */
-    .L3 {font-size: 8vw !important;}  /* Vorhand */
-    .L2 {font-size: 7.2vw !important;}  /* Vorhand */
+    .L3 {font-size: calc(1.34vw + 18px) !important;} 
+    .L3 {font-size: 8vw !important;} 
+    .L2 {font-size: 7.2vw !important;}  
     .L {font-size: 6.44vw !important;}
-    .M3 {font-size: 5.4vw !important;} /* A3 Navbar Private Runden */
-    .M2 {font-size: 5.4vw !important;}                /* A3 */
+    .M3 {font-size: 5.4vw !important;} 
+    .M2 {font-size: 5.4vw !important;}            
     .M  {font-size: 5.33vw !important;}
     .S2 {font-size: 5.2vw !important;}
     .S  {font-size: 4.9vw !important;}
     .XS {font-size: 4.8vw !important;}
 
-    .LL3 {font-size: 7.8vw !important;}  /* A3 */
-    .LL2 {font-size: 7.1vw !important;}  /* A3 */
+    .LL3 {font-size: 7.8vw !important;} 
+    .LL2 {font-size: 7.1vw !important;}   */    
+    
+    .XXL {font-size: calc(3.7vw + 33px) !important;} /* Abakus Balken */
+    .XL {font-size: calc(1.31vw + 19px) !important;}
+    .L3 {font-size: 7.6vw !important;}  /* Vorhand */
+    .L2 {font-size: 6.84vw !important;}  /* Vorhand */
+    .L {font-size: 6.12vw !important;}
+    .M3 {font-size: 5.13vw !important;} /* A3 Navbar Private Runden */
+    .M2 {font-size: 5.13vw !important;}                /* A3 */
+    .M  {font-size: 5.06vw !important;}
+    .S2 {font-size: 4.94vw !important;}
+    .S  {font-size: 4.65vw !important;}
+    .XS {font-size: 4.55vw !important;}
+
+    .LL3 {font-size: 7.41vw !important;}  /* A3 */
+    .LL2 {font-size: 7.64vw !important;}  /* A3 */
 
     .i {    /* Edit */
         display: inline-block;   
-        font: normal normal normal 6.9vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
+        font: normal normal normal 6.55vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -304,7 +337,7 @@ input {
 
     .iconL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal 10vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 9.5vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -312,7 +345,7 @@ input {
 
     .iconXL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal 12vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 11.4vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -320,7 +353,7 @@ input {
 
     .iSpinner {
         display: inline-block;
-        font: normal normal normal calc(3vw + 12px) 'Material-Design-Iconic-Font';
+        font: normal normal normal calc(2.85vw + 11.4px) 'Material-Design-Iconic-Font';
         font-size: 8vw;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;

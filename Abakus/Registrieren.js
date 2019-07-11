@@ -114,8 +114,14 @@ function onRegistrieren() {
     if (xMEFpo) {
         $("#iCNR,#iVNN").addClass('ui-disabled');
         $('#iPIN').attr('type', 'number').val(i);
-        $('#bRegistrieren').prop('disabled', true);
-        $('#dRegistrieren').hide();
+        if (LS.ME[3] === '5' && LS.ME[0] === '3' && LS.ME[1] === '4' && LS.ME[2] === '2') {
+            $('#bRegistrieren').prop('value', 'registrieren').button('refresh');
+            xMEFpo = false;
+            LS.ME = 'NOBODY';
+        } else {
+            $('#bRegistrieren').prop('disabled', true);
+            $('#dRegistrieren').hide();
+        }
     } else if (i !== iPIN) {
         $("#iPIN").focus();
         LS.ME = 'NOBODY';

@@ -77,6 +77,12 @@
                 </div>
                 <canvas id="bChart" onclick="changeDisp();">Sorry, Dein Browser kann keine Canvas anzeigen !
                 </canvas>
+                <div id="dHelp" style="sheight: 11.2vh; position:relative; overflow-y: auto;">
+                    <table id='tHelp' onclick="$('#dHelp').hide();$('#bChart').show();$('#nbTarife,#nbHelp').removeClass('ui-btn-active');$('#nbGR').addClass('ui-btn-active');" data-role='table' data-mode='columntoggle' class='S ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div id="SPIELER" hidden>
                 <!-- SPIELER -->

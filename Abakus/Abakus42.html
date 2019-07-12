@@ -82,11 +82,11 @@
                 </div>
                 <canvas id="bChart" onclick="showCanvas();">Sorry, Dein Browser kann keine Canvas anzeigen !
                 </canvas>
-                <div id=dLabel class="ui-corner-all" sstyle="background-color:#f34;border:28px #43a;">
-                    <div class="M cRot ui-corner-all"  style="background-color:#f34;border:228px #43a; width: 100%;">
-                        <div id="dLabZeile1" class="C" style="width: 100%;"></div>
-                        <div id="dLabZeile2" class="C"></div>
-                    </div>
+                <div id="dHelp" style="position:relative; overflow-y: auto;">
+                    <table id='tHelp' onclick="$('#dHelp').hide();$('#bChart').show();$('#nbTarife,#nbHelp').removeClass('ui-btn-active');$('#nbGR').addClass('ui-btn-active');" data-role='table' data-mode='columntoggle' class='S ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div id="SPIELER" hidden>

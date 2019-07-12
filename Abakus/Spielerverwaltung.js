@@ -236,8 +236,8 @@ function showSPIELER(i) {
     }
 
     if (SPIELERext[i][spGEAENDERTvon]) {
-        hFText += ((iGEAENDERTam === hThisSession || iGEAENDERTvon.indexOf(' VIP-Statusaenderung') >= 0) ? 'Zuvor' : 'Am ' + SPIELERext[i][spGEAENDERTam].substr(0, 10))
-                + ' von ' + ((iGEAENDERTvon === LS.MEname || iGEAENDERTvon.indexOf(' VIP-Statusaenderung') >= 0) ? 'mir' : SPIELERext[i][spGEAENDERTvon])
+        hFText += ((iGEAENDERTam === hThisSession || iGEAENDERTvon.indexOf(' Statusaenderung') >= 0) ? 'Zuvor' : 'Am ' + SPIELERext[i][spGEAENDERTam].substr(0, 10))
+                + ' von ' + ((iGEAENDERTvon === LS.MEname || iGEAENDERTvon.indexOf(' Statusaenderung') >= 0) ? 'mir' : SPIELERext[i][spGEAENDERTvon])
                 + ' geändert.';
     }
 
@@ -533,24 +533,23 @@ function onOK(pSpeichern) {
                 || iVERSTORBEN !== mVERSTORBEN
                 || iMAENNLICH !== mMAENNLICH
 
-                || iSTARTORT !== SPIELERext[iNR][spSTARTORT]
-                || iAKTIV !== SPIELERext[iNR][spAKTIV]) {
+                || iSTARTORT !== SPIELERext[iNR][spSTARTORT]) {
             iGEAENDERTam = hThisSession;
             iGEAENDERTvon = LS.MEname;
             hMeldung += iNR + ' <b> ' + iNNAME + ' ' + iVNAME + (iVERSTORBEN ? "&nbsp;&#134;" : "") + '</b> aus ' + iORT + ' wurde geändert.<br>';
             nGeaendert++;
         } else {
-            if (iVIP === mVIP) {
+            if (iVIP === mVIP && iAKTIV === SPIELERext[iNR][spAKTIV]) {
                 hMeldung += iNR + ' <b> ' + iNNAME + ' ' + iVNAME + (iVERSTORBEN ? "&nbsp;&#134;" : "") + '</b> aus ' + iORT + ' wurde nicht geändert.<br>';
             } else {
                 if (SPIELERext[iNR][spANGELEGTam] !== hThisSession && SPIELERext[iNR][spGEAENDERTam] !== hThisSession) {
                     if (SPIELERext[iNR][spGEAENDERTvon]) {
-                        iGEAENDERTvon = SPIELERext[iNR][spGEAENDERTvon] + ' VIP-Statusaenderung';
+                        iGEAENDERTvon = SPIELERext[iNR][spGEAENDERTvon] + ' Statusaenderung';
                     } else {
-                        iGEAENDERTvon = ' VIP-Statusaenderung';
+                        iGEAENDERTvon = ' Statusaenderung';
                     }
                 }
-                hMeldung += iNR + ' <b> ' + iNNAME + ' ' + iVNAME + (iVERSTORBEN ? "&nbsp;&#134;" : "") + '</b> aus ' + iORT + ' wurde ein ' + (iVIP ? 'VIP' : 'Normalo') + '.<br>';
+                hMeldung += iNR + ' <b> ' + iNNAME + ' ' + iVNAME + (iVERSTORBEN ? "&nbsp;&#134;" : "") + '</b> aus ' + iORT + ': Statusänderung.<br>';
                 nGeaendert++;
             }
         }
@@ -688,17 +687,17 @@ function onFinden(pUPDATEart) {
             } else if (pUPDATEart === 'Noch nicht gespeichert') {
                 if (SPIELERext[spieler][spANGELEGTam] === hThisSession
                         || SPIELERext[spieler][spGEAENDERTam] === hThisSession
-                        || SPIELERext[spieler][spGEAENDERTvon] && SPIELERext[spieler][spGEAENDERTvon].indexOf(' VIP-Statusaenderung') >= 0) {
+                        || SPIELERext[spieler][spGEAENDERTvon] && SPIELERext[spieler][spGEAENDERTvon].indexOf(' Statusaenderung') >= 0) {
                     SORT.push(spieler);
                 }
             } else if (pUPDATEart === 'Zuletzt geändert / angelegt *') {
                 if (SPIELERext[spieler][spANGELEGTam] >= dZuletzt
                         || SPIELERext[spieler][spGEAENDERTam] >= dZuletzt
-                        || SPIELERext[spieler][spGEAENDERTvon] && SPIELERext[spieler][spGEAENDERTvon].indexOf(' VIP-Statusaenderung') >= 0) {
+                        || SPIELERext[spieler][spGEAENDERTvon] && SPIELERext[spieler][spGEAENDERTvon].indexOf(' Statusaenderung') >= 0) {
                     if (ifAktiv(spieler)
                             || SPIELERext[spieler][spANGELEGTam] >= dZuletzt && SPIELERext[spieler][spANGELEGTvon] === LS.MEname
                             || SPIELERext[spieler][spGEAENDERTam] >= dZuletzt && SPIELERext[spieler][spGEAENDERTvon] === LS.MEname
-                            || SPIELERext[spieler][spGEAENDERTvon] && SPIELERext[spieler][spGEAENDERTvon].indexOf(' VIP-Statusaenderung') >= 0) {
+                            || SPIELERext[spieler][spGEAENDERTvon] && SPIELERext[spieler][spGEAENDERTvon].indexOf(' Statusaenderung') >= 0) {
                         SORT.push(spieler);
                     }
                 }
@@ -937,24 +936,21 @@ function onSpeichern() {
 
     var html = '';
     for (var spieler in SPIELERext) {
-        if (spieler === '3425') {
-            spieler = spieler;
-        }
         if (SPIELERext[spieler][spGEAENDERTvon]) {
             if (SPIELERext[spieler][spGEAENDERTam] === hThisSession) {
                 SPIELERext[spieler][spGEAENDERTam] = new Date().toJSON().substr(0, 10);
                 html += spieler + ' <b>' + SPIELERext[spieler][spNNAME] + ' ' + SPIELERext[spieler][spVNAME] + '</b> aus ' + SPIELERext[spieler][spORT] + ' wird ge&auml;ndert.<br>';
                 SPIELERnrUpdate[spieler] = getSPIELERnr(spieler);
                 SPIELERextUpdate[spieler] = SPIELERext[spieler];
-            } else if (SPIELERext[spieler][spGEAENDERTvon].indexOf(' VIP-Statusaenderung') >= 0) {
-                if (SPIELERext[spieler][spGEAENDERTvon] === ' VIP-Statusaenderung') {
+            } else if (SPIELERext[spieler][spGEAENDERTvon].indexOf(' Statusaenderung') >= 0) {
+                if (SPIELERext[spieler][spGEAENDERTvon] === ' Statusaenderung') {
                     if (SPIELERext[spieler][spANGELEGTam]) {
                         SPIELERext[spieler] = SPIELERext[spieler].slice(0, spGEAENDERTam);
                     } else {
                         SPIELERext[spieler] = SPIELERext[spieler].slice(0, spANGELEGTam);
                     }
                 } else {
-                    SPIELERext[spieler][spGEAENDERTvon] = SPIELERext[spieler][spGEAENDERTvon].substr(0, SPIELERext[spieler][spGEAENDERTvon].indexOf(' VIP-Statusaenderung'));
+                    SPIELERext[spieler][spGEAENDERTvon] = SPIELERext[spieler][spGEAENDERTvon].substr(0, SPIELERext[spieler][spGEAENDERTvon].indexOf(' Statusaenderung'));
                 }
                 html += spieler + ' <b>' + SPIELERext[spieler][spNNAME] + ' ' + SPIELERext[spieler][spVNAME] + '</b> aus ' + SPIELERext[spieler][spORT] + ' wird ' + (SPIELERext[iNR][spAKTIV].indexOf(kzAktiv) >= 0 ? '' : 'de') + 'aktiviert.<br>';
                 SPIELERnrUpdate[spieler] = getSPIELERnr(spieler);
@@ -966,8 +962,6 @@ function onSpeichern() {
                 html += spieler + ' <b>' + SPIELERext[spieler][spNNAME] + ' ' + SPIELERext[spieler][spVNAME] + '</b> aus ' + SPIELERext[spieler][spORT] + ' wird angelegt.<br>';
                 SPIELERnrUpdate[spieler] = getSPIELERnr(spieler);
                 SPIELERextUpdate[spieler] = SPIELERext[spieler];
-            } else {
-                SPIELERnrUpdate[spieler] = getSPIELERnr(spieler);
             }
         }
     }
@@ -1058,11 +1052,11 @@ $(document).bind('pageinit', function () {
     } else {
         $('#sVip').remove();
     }
-    if (SPIELERext && LS.ME === '3425') {
-        whenSPIELERloaded();
-    } else {
+//    if (SPIELERext && LS.ME === '3425') {
+//        whenSPIELERloaded();
+//    } else {
         loadSPIELER();
-    }
+//    }
 
     $("input:radio[name=iSort][value=1]").prop('checked', true).checkboxradio("refresh");
     $("input[name='iSort']").on("change", function () {

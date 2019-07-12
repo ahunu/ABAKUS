@@ -61,9 +61,6 @@ function showGR() {
             window.speechSynthesis.speak(hAnsage);
         }
     }
-    if (LS.ME === '3425' && LS.I === 1) { // llll
-        $('#dLabel').attr('style', 'background-color:#27a;border:8px solid #33a;color: white;position: fixed; top: 222px; font-size: 2vh; cursor: pointer; width: 100%;').show();
-    }
 }
 
 function setFontStyle(pPunkte, pArt, pTH, x, y, pI) {

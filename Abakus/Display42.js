@@ -161,19 +161,9 @@ function aDisp(pVName, pNName, pPunkte, pSumme, pI) {
         if (hDisp !== 1) {
             ctx.font = 'bold ' + (TH * 0.5) + "pt sans-serif-condensed";
             ctx.fillText(getTitel(), Breite / 2, (Hoehe + TH * 0.5) / 2);
-
-            if (LS.ME === '3425') { // llll
-                $('#dLabZeile1').text(getTitel());
-                $('#dLabZeile2').text('---');
-            }
-
         } else {
             ctx.font = 'bold ' + (TH * 0.6) + "pt sans-serif-condensed";
             ctx.fillText(getSpiel(), Breite / 2, (Hoehe + TH * 0.6) / 2);
-            if (LS.ME === '3425') { // llll
-                $('#dLabZeile1').text(getSpielneu());
-                $('#dLabZeile2').text(getPraemien());
-            }
         }
 
         ctx.translate(Breite / 4, Hoehe - BH);

@@ -1482,6 +1482,7 @@ function fINIT() {
         LS.Version = 0;
         LS.AnzGespeichert = 0;
         LS.Timeout = 0;
+        LS.VIP = false;
         if (QUERFORMAT()) {
             LS.ShowSpielerNr = true;
             LS.AnzSpalten = 2;
@@ -1501,7 +1502,9 @@ function fINIT() {
         LS.LastDate = hHeute;
         LS.LastBtn = '';
     }
-
+    if (LS.Version < 967) {
+        LS.VIP = false;
+    }
     if (LS.LastDate !== hHeute) {
         LS.LastDate = hHeute;
         LS.LastBtn = '';
@@ -1562,10 +1565,8 @@ function fINIT() {
     $('#tJJJJ,#tJJJJ2').text(new Date().getFullYear());
     if (LS.ME === 'NOBODY') {
         $('#tSpieler').html('Noch nicht registriert.');
-    } else if (LS.ME.length === 4) {
-        $('#tSpieler').html('Registriert für Spieler ' + LS.ME + '<br>' + LS.MEname + '.');
     } else {
-        $('#tSpieler').html('Registriert für Spieler<br>' + LS.MEname + '.');
+        $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
     }
 
     setTimeout(function () {

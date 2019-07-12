@@ -134,18 +134,25 @@ function loadCUPS(pTitel, pText, pForce) {
                 }
             }
         });
-        if (LS.LoadCups) {
-            LS.LoadCups = 0;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
+
         localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
 
+        function isVIP(pSchalter) {
+            return ((pSchalter & 8) !== 0);
+        }
         function isVERSTORBEN(pSchalter) {
             return ((pSchalter & 2) !== 0);
         }
 
+        var hVIP = false;
         SPIELERalpha = [];
         for (var spieler in SPIELERnr) {
+            if (spieler === '3425') {
+                spieler = spieler;
+            }
+            if (spieler === LS.ME) {
+                hVIP = isVIP(SPIELERnr[spieler][4]);
+            }
             if (!isVERSTORBEN(SPIELERnr[spieler][4])) { // Bereits verstorbene Spieler werden in SPIELERalpha nicht aufgenommen.
                 SPIELERalpha[SPIELERalpha.length] = [spieler, SPIELERnr[spieler][0], SPIELERnr[spieler][1], SPIELERnr[spieler][2], SPIELERnr[spieler][5]]; // 5=Aktiv
             }
@@ -160,6 +167,12 @@ function loadCUPS(pTitel, pText, pForce) {
         SPIELERalpha.sort(Comparator);
         localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
 
+        if (LS.VIP !== hVIP || LS.LoadCups) {
+            LS.VIP = hVIP;
+            LS.LoadCups = 0;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+
         CUPS.DATE = new Date();
         localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
         whenCUPSloaded();
@@ -168,3 +181,4 @@ function loadCUPS(pTitel, pText, pForce) {
         return false;
     });
 }
+

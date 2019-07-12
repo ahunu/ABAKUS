@@ -1666,6 +1666,7 @@ $(document).ready(function () {
         var LS_LastBtn = LS.LastBtn;
         var LS_LastDate = LS.LastDate;
         var LS_MeineCups = LS.MeineCups;
+        var LS_VIP = LS.VIP;
 
         LS.LoadCups = 0;
 
@@ -1687,6 +1688,7 @@ $(document).ready(function () {
         LS.LastBtn = LS_LastBtn;
         LS.LastDate = LS_LastDate;
         LS.MeineCups = LS_MeineCups;
+        LS.VIP = LS_VIP;
 
         if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') {
             SPIELERerweitern();

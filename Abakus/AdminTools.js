@@ -33,11 +33,7 @@ $(document).ready(function () {
             || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) {
-//        $('#bTurnierkalender,#bSpielerverwaltung').removeClass('ui-disabled');
-        if (LS.ME === '3425' || LS.ME === '3244') {
-            $('#bSpielerverwaltung').removeClass('ui-disabled');
-        }
-        $('#bTurnierkalender').removeClass('ui-disabled');
+        $('#bTurnierkalender,#bSpielerverwaltung').removeClass('ui-disabled');
         if (PC) {
             $('#bSpielerExport').removeClass('ui-disabled');
         }
@@ -54,7 +50,6 @@ $(document).ready(function () {
 
     if (LS.ME === "3425" || LS.ME === "1000") {
         $('#dStatistikImport').removeClass('ui-disabled').show();
-        $('#dSpielerImport').removeClass('ui-disabled').show();
     }
 
     var hDate = new Date(CUPS.TIMESTAMP);

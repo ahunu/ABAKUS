@@ -473,8 +473,9 @@ function fINIT(pCup) {
         } else {
             $('#dPrint').attr('style', 'width:72%');
             $('#tStand').css('position', 'fixed');
-            $('#qfHeader').removeClass('printHeader');
-            $('#qfHeader').addClass('fixHeader');
+            $('#qfHeader').removeClass('printHeader').addClass('fixHeader');
+            $('#qfHeaderZeile1').attr('style', 'font-size:2.27vw');
+            $('#qfHeaderZeile1').attr('style', 'font-size:2.08vw');
             $('#mTable').css('font-size', '1.5vw');
         }
     });

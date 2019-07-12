@@ -393,22 +393,14 @@ function listeDrucken() {
     if (stCup !== 54 && stCup !== 56 && stCup !== 4) {
         $("#iHeaderIcon").attr("src", "../Icons/icon-64.png");
     }
-    if ($('#iFilter').length) {
-        if ($('#iFilter').val()) {
-            $('#dFilter').removeClass('noprint');
-        } else {
-            $('#dFilter').addClass('noprint');
-        }
-    }
     $('#dPrint').attr('style', 'width:100%');
     $('#tStand').css('position', 'absolute');
-    $('#qfHeader').removeClass('fixHeader');
-    $('#qfHeader').addClass('printHeader');
+    $('#qfHeader').removeClass('fixHeader').addClass('printHeader');
+    $('#qfHeaderZeile1').attr('style', 'font-size:23pt');
+    $('#qfHeaderZeile1').attr('style', 'font-size:21pt');
     $('#mTable').css('font-size', '2.4vw');
-
     $('tr').removeClass('bBeige bBeige2'); // Markierung entfernen
     $('.cSchwarz').removeClass('cSchwarz').addClass('cBlau');
-
     javascript:window.print();
 }
 
@@ -416,6 +408,13 @@ function showIcons(pIcons) {
     'use strict';
     $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iAnekdote').hide();
     if (QUERFORMAT()) {
+        if (PC) {
+            for (var i = pIcons.length - 1; i >= 0; i--) {
+                if (pIcons[i] === '#iPrint' || pIcons[i] === '#iDownload') {
+                    pIcons.splice(i,1);
+                }
+            }
+        }
         for (var i = 0; i < pIcons.length; i++) {
             $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (0.9 + (3.8 * i)) + 'vw; font-size: 3.3vw; cursor: pointer;').show();
         }

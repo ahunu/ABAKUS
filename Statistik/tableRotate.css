@@ -1,37 +1,4 @@
 
-section {
-    padding-top: 33px;
-    background: #eee;
-}
-.container {
-    overflow-y: auto;
-    height: 400px;
-}
-.FH {
-    height: 0;
-    line-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    color: transparent;
-    white-space: nowrap;
-    background: #333;
-}
-.FH div{
-    position: absolute;
-    color: #111;
-    top: 5px;
-    line-height: normal;
-
-    position: absolute;
-    background: transparent;
-    color: #fff;
-    padding: 9px 25px;
-    top: 0;
-    margin-left: -25px;
-    line-height: normal;
-    border-left: 1px solid #800;
-}
-
 .table {width:100%}
 
 .left {
@@ -43,19 +10,16 @@ section {
 }
 
 th.rotate {
-    height: 160px; /* Höhe des Headers */
+    height: 18vh; /* Höhe des Headers */
     white-space: nowrap;
 }
 
 th.rotate > div {
     transform: 
         /* Magic Numbers */
-        translate(3px, 77px)
+        translate(3px, calc(8.5vh - 16px))
         /* 45 is really 360 - 45 */
         /*rotate(315deg);*/ 
         rotate(270deg);
     width: 30px;  /* Abstand zwischen den Turniernamen */
-}
-th.rotate > div > span {
-    padding: 0px 20px;  /* Position der Turniernamen */
 }

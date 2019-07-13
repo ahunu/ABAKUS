@@ -17,6 +17,10 @@ function whenSPIELERloaded() {
     $('#dRegistrieren').removeClass('ui-disabled');
 }
 
+function isVIP(pSchalter) {
+    return ((pSchalter & 8) !== 0);
+}
+
 function onRegistrieren() {
     'use strict';
     $.mobile.activePage.focus();
@@ -93,7 +97,7 @@ function onRegistrieren() {
     }
 
     if (LS.ME !== 'NOBODY' && !xMEFpo) { // Anmeldung erweitern
-        LS.Angemeldet = [];
+        LS.VIP = isVIP(SPIELERext[iCNR][12]);
         LS.MEname = $("#iVNN").val();
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         history.back();
@@ -138,11 +142,13 @@ function onRegistrieren() {
             history.back();
         }
     } else {
+        LS.VIP = false;
         LS.MEname = $("#iVNN").val();
         if (iCNRn) {
             if (iCNRn > 0) {
                 LS.ME = '0000' + iCNRn;
                 LS.ME = LS.ME.substr(LS.ME.length - 4);
+                LS.VIP = isVIP(SPIELERext[iCNR][12]);
             } else {
                 LS.ME = '' + iCNRn;
             }
@@ -191,7 +197,7 @@ function onRegistrieren() {
 $(document).bind('pageinit', function () {
 
     document.oncontextmenu = function () {
-        return false; // oncontextmenu
+//        return false; // oncontextmenu
     };
     document.onselectstart = function () {
         return false;

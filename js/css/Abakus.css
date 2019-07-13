@@ -152,7 +152,7 @@ input {
     .L3 {font-size: calc(1.34vw + 24px) !important;}
     .L2 {font-size: calc(1.30vw + 22px) !important;}
     .L  {font-size: calc(1.25vw + 20px) !important;}
-    .M3, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
+    .M3 {font-size: calc(1.15vw + 18px) !important;}
     .M2, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
     .M  {font-size: calc(0.95vw + 16px) !important;}
     .S2 {font-size: calc(0.93vw + 14px) !important;}
@@ -213,7 +213,7 @@ input {
     }
 }      
 
-@media screen and (orientation : portrait) and (min-width: 361px) and (max-width: 450px) {
+@media screen and (orientation : portrait) and (max-width: 450px) {
 
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
@@ -226,27 +226,27 @@ input {
     #p361 { display: block !important }
     #p360 { display: none !important }
 
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.2vw + 4px) !important;} /* index Runden/Cups */
-    .ui-btn {padding: .2em .2em !important;}
+    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.1vw + 3px) !important;} /* index Runden/Cups */
+    .ui-btn {padding: .18em .18em !important;}
 
-    .XXL {font-size: calc(3.7vw + 33px) !important;} /* Abakus Balken */
-    .XL {font-size: calc(1.31vw + 19px) !important;}
-    .L3 {font-size: 7.6vw !important;}  /* Vorhand */
-    .L2 {font-size: 6.84vw !important;}  /* Vorhand */
-    .L {font-size: 6.12vw !important;}
-    .M3 {font-size: 5.6vw !important;} /* RundenStatistik Navbar */
-    .M2 {font-size: 5.32vw !important;}
-    .M  {font-size: 5.06vw !important;}
-    .S2 {font-size: 4.94vw !important;}
-    .S  {font-size: 4.65vw !important;}
-    .XS {font-size: 4.56vw !important;}
+    .XXL {font-size: calc(3.63vw + 32.55px) !important;} /* Abakus Balken */
+    .XL {font-size: calc(1.284vw + 18px) !important;}
+    .L3 {font-size: 7.44vw !important;}  /* Vorhand */
+    .L2 {font-size: 6.7vw !important;}  /* Vorhand */
+    .L {font-size: 5.99vw !important;}
+    .M3 {font-size: 5.49vw !important;} /* RundenStatistik Navbar */
+    .M2, .Sbtn {font-size: 5.2vw !important;}
+    .M  {font-size: 4.95vw !important;}
+    .S2 {font-size: 4.83vw !important;}
+    .S  {font-size: 4.55vw !important;}
+    .XS {font-size: 4.46vw !important;}
 
-    .LL3 {font-size: 8.07vw !important;}  /* Spiele und Punkte */
-    .LL2 {font-size: 7.6vw !important;}
+    .LL3 {font-size: 7.9vw !important;}  /* Spiele und Punkte */
+    .LL2 {font-size: 7.4vw !important;}
 
     .i {    /* Edit */
         display: inline-block;   
-        font: normal normal normal 6.55vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
+        font: normal normal normal 6.415vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -254,7 +254,7 @@ input {
 
     .iconL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal 9.5vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 9.3vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -262,7 +262,7 @@ input {
 
     .iconXL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal 11.4vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 11.1vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -270,7 +270,7 @@ input {
 
     .iSpinner {
         display: inline-block;
-        font: normal normal normal 3.68vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 3.61vw 'Material-Design-Iconic-Font';
         font-size: 8vw;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -295,102 +295,11 @@ input {
     }
 }       
 
-@media only screen and (orientation : portrait) and (max-width: 360px) { /* Galaxy A3 */
-
-    .cLinks { width: 100% !important }
-    .cRechts { display: none !important }
-
-    #dPC { display: none !important }
-    .cTablet { display: none !important }
-    .cSmartphone { display: block !important }
-
-    #p451 { display: none !important }
-    #p361 { display: none !important }
-    #p360 { display: block !important }
-
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.22vw + 4px) !important;} /* index Runden/Cups */
-    .ui-btn {padding: .21em .2em !important;}
-
-    /*   .XXL {font-size: calc(3.9vw + 35px) !important;} 
-   .XL {font-size: calc(1.38vw + 20px) !important;}
-   .L3 {font-size: calc(1.34vw + 18px) !important;} 
-   .L3 {font-size: 8vw !important;} 
-   .L2 {font-size: 7.2vw !important;}  
-   .L {font-size: 6.44vw !important;}
-   .M3 {font-size: 5.4vw !important;} 
-   .M2 {font-size: 5.4vw !important;}            
-   .M  {font-size: 5.33vw !important;}
-   .S2 {font-size: 5.2vw !important;}
-   .S  {font-size: 4.9vw !important;}
-   .XS {font-size: 4.8vw !important;}
-
-   .LL3 {font-size: 7.8vw !important;} 
-   .LL2 {font-size: 7.1vw !important;}   */    
-
-    .XXL {font-size: calc(3.7vw + 33px) !important;} /* Abakus Balken */
-    .XL {font-size: calc(1.31vw + 19px) !important;}
-    .L3 {font-size: 7.6vw !important;}  /* Vorhand */
-    .L2 {font-size: 6.84vw !important;}  /* Vorhand */
-    .L {font-size: 6.12vw !important;}
-    .M3 {font-size: 5.13vw !important;} /* A3 Navbar Private Runden */
-    .M2 {font-size: 5.13vw !important;}                /* A3 */
-    .M  {font-size: 5.06vw !important;}
-    .S2 {font-size: 4.94vw !important;}
-    .S  {font-size: 4.65vw !important;}
-    .XS {font-size: 4.55vw !important;}
-
-    .LL3 {font-size: 7.41vw !important;}  /* A3 */
-    .LL2 {font-size: 7.64vw !important;}  /* A3 */
-
-    .i {    /* Edit */
-        display: inline-block;   
-        font: normal normal normal 6.55vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    .iconL {   /* Edit */
-        display: inline-block;   
-        font: normal normal normal 9.5vw 'Material-Design-Iconic-Font';
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    .iconXL {   /* Edit */
-        display: inline-block;   
-        font: normal normal normal 11.4vw 'Material-Design-Iconic-Font';
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    .iSpinner {
-        display: inline-block;
-        font: normal normal normal calc(2.85vw + 11.4px) 'Material-Design-Iconic-Font';
-        font-size: 8vw;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-animation: zmdi-spin-reverse 1.5s infinite linear;
-        animation: zmdi-spin-reverse 1.5s infinite linear;  
-    }
-    .iBtn {
-        background-color: rgba(0, 0, 0, 0.07);
-        padding: .1em .1em;
-        border: solid 0.05em #9e9e9e;
-        border-radius: 5px;  
-    }
-    .iDisk {
-        border-radius: 1em;
-        background-color: rgba(0, 0, 0, 0.33);
-        color: white;
-    }
-    .iOval {
-        border-radius: 0.3em;
-        background-color: rgba(0, 0, 0, 0.133);  
-    }
+@media only screen and (orientation : portrait) and (max-width: 360px) {
+    .M3 {font-size: 5.33vw !important;}
+    .M2 {font-size: 5.14vw !important;}
+    .LL3 {font-size: 7.25vw !important;}
+    .LL2 {font-size: 6.6vw !important;}
 }       
 
 /* stack all grids below 40em (640px) */

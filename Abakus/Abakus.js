@@ -292,7 +292,7 @@ function showCanvas(pShow) {
         $('#bChart').hide();
         $('#dHelp').show().attr("style", "height:" + ($(window).innerHeight() - ($('#NB').height() * 2)) + "px;overflow:auto;overflow-x:hidden;");
         $("#tHelp tr").remove();
-        $('#tHelp').append('<tr><td>&nbsp;&nbsp;Spiele</td><td class="TR">Punkte&nbsp;&nbsp;</td></tr>');
+        $('#tHelp').append('<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>Spiele</td><td class="TR">Punkte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>');
 
         SORT = [];
         sortTarifZeile('pa1', 'Rufer', iRufer);
@@ -340,7 +340,7 @@ function showCanvas(pShow) {
         }
         SORT.sort();
         for (var ii = 0; ii < SORT.length; ii++) {
-            $('#tHelp').append('<tr><td class="N">&nbsp;&nbsp;' + SORT[ii].substr(8) + '</td><td class="TR N">' + (SORT[ii].substr(8) === 'Besserrufer' ? LS.Tarif[iRufer] : parseInt(SORT[ii].substr(0, 4))) + '&nbsp;&nbsp;</td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">' + SORT[ii].substr(8) + '</td><td class="TR N">' + (SORT[ii].substr(8) === 'Besserrufer' ? LS.Tarif[iRufer] : parseInt(SORT[ii].substr(0, 4))) + '</td><td></td></tr>');
         }
 
     } else if (pShow === 'Hilfe') {

@@ -44,6 +44,9 @@ function showText(pText) {
     } else if (pText === 'Links') {
         hTitel2 = 'Die wichtigsten Tarocklinks';
         html += getLinks();
+    } else if (pText === 'Detailstatistik') {
+        hTitel2 = 'Eine Ankündigung';
+        html += getDetailstatistik();
     } else if (pText === 'Etikette') {
         hTitel2 = 'Benehmen ist gefragt';
         html += getEtikette();
@@ -135,6 +138,28 @@ function XXIIDevisen() {
 
             + '<p><b><span class=XXL>XXII. </span> Mit´n <span class=XL>Gstieß</span> nogl i an Kini on,</b><br>'
             + 'des mocht alani schon a drittl vom Spü. ';
+}
+
+function getDetailstatistik() {
+    return '<span class=M style="text-align:justify">'
+
+            + 'Liebe Tarockfreunde!'
+            + '<br>'
+            + '<p>In Kürze wird es an dieser Stelle eine Detailstatistik geben die einen ähnlichen Aufbau wie jene in den Wirtshausrunden und in den privaten Runden haben wird. '
+
+            + '<p>Da ich bei meiner Gratisdatenbank nur ein eingeschränktes Datenkontingent zur Verfügung habe, wird diese Statistik nur für jenen Spielern geführt, die dies ausdrücklich wünschen. '
+            + 'Für diese VIP\'s wird es zu einen späteren Zeitpunkt auch eine TQ-Statistik geben. '
+            + 'In Anlehnung an den IQ steht TQ für Tarockqoutient. '
+
+            + '<p>Da nicht auf allen Tischen mit einem Handy geschrieben wird, wird diese Statistik nicht vollständig sein. '
+            + 'Bestimmte Tendenzen wie Rufe ich mich immer selber, spiele ich zu riskante Dreier oder bin ich bei meiner Lizitation zu vorsichtig wird man jedoch sehr gut herauslesen können.  '
+
+            + '<p>Etwa ab September wird mit dem Sammeln der Detaildaten der VIP\'s begonnen werden. Ab Dezember werden dann erste, aussagekräftige Auswertungen möglich sein. Wer dabei sein will gibt mir bitte rechtzeitig Bescheid. '
+
+
+            + '</span><div class=M style="text-align:center">'
+            + '<br><p>Ich wünsche weiterhin gute Karten<br>und viel Spass mit der Appp<br> '
+            + '<b><i>Leo Luger</i></b></div>';
 }
 
 function getAnekdoten() {

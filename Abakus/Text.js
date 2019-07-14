@@ -50,6 +50,10 @@ $(document).ready(function () {
         $('#hTitel1').text("Anekdoten");
         $('#hTitel2').text("und Kurzweiliges");
         html += getAnekdoten();
+    } else if (window.location.href.indexOf('Detailstatistik') > 0) {
+        $('#hTitel1').text("Detailstatistik");
+        $('#hTitel2').text("Eine Ankündigung");
+        html += getDetailstatistik();
     } else if (window.location.href.indexOf('Zitate') > 0) {
         $('#DHeader').hide();
         html = '<div style="width:100%; margin-left: auto; margin-right: auto;">'

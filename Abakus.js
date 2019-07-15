@@ -1384,7 +1384,7 @@ function whenCUPSloaded() {
     if (nMeineRundenCups) {
         $('#dMeineRundenCups').html(htmlMR + '</ul></div>').trigger('create');
     }
-    htmlCT += "<li data-icon='false'><a id='bDetailstatistik' class='ui-btn' onclick='showText(\"Detailstatistik\")'>&nbsp;<span class=N>Detailstatistik</span></a></li>";
+    htmlCT += "<li data-icon='false'><a id='bCTDetailstatistik' class='ui-btn' onclick='showText(\"CTDetailstatistik\")'>&nbsp;<span class=\"N M3\">Detailstatistik</span></a></li>";
     $('#dRundenCups').html(htmlCT.replace(/bXX/g, 'bCT') + '</ul></div>' + htmlLC.replace(/bXX/g, 'bLC') + '</ul></div>' + htmlMT.replace(/bXX/g, 'bMT') + '</ul></div>' + htmlFC.replace(/bXX/g, 'bFC') + '</ul></div>' + htmlPR.replace(/bXX/g, 'bPR') + '</ul></div>' + htmlTR.replace(/bXX/g, 'bTR') + '</ul></div>' + htmlAR.replace(/bXX/g, 'bAR') + '</ul></div>').trigger('create').show();
     if (LS.Meldung) {
         $('#dMeldung').append("&nbsp;<img src='Icons/Achtung.png'  width='24' height='24'>&nbsp;<b>" + LS.Meldung + "</b>");

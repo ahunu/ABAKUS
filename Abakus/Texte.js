@@ -44,7 +44,7 @@ function showText(pText) {
     } else if (pText === 'Links') {
         hTitel2 = 'Die wichtigsten Tarocklinks';
         html += getLinks();
-    } else if (pText === 'Detailstatistik') {
+    } else if (pText === 'CTDetailstatistik') {
         hTitel2 = 'Eine Ankündigung';
         html += getDetailstatistik();
     } else if (pText === 'Etikette') {
@@ -158,7 +158,7 @@ function getDetailstatistik() {
 
 
             + '</span><div class=M style="text-align:center">'
-            + '<br><p>Ich wünsche weiterhin gute Karten<br>und viel Spass mit der Appp<br> '
+            + '<br><p>Ich wünsche gute Karten und<br>viel Spass mit der Appp<br> '
             + '<b><i>Leo Luger</i></b></div>';
 }
 

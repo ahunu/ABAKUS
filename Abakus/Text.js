@@ -50,7 +50,7 @@ $(document).ready(function () {
         $('#hTitel1').text("Anekdoten");
         $('#hTitel2').text("und Kurzweiliges");
         html += getAnekdoten();
-    } else if (window.location.href.indexOf('Detailstatistik') > 0) {
+    } else if (window.location.href.indexOf('CTDetailstatistik') > 0) {
         $('#hTitel1').text("Detailstatistik");
         $('#hTitel2').text("Eine Ankündigung");
         html += getDetailstatistik();

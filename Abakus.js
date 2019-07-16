@@ -819,9 +819,9 @@ function toggleTechDetails() {
                 + 'navigator.userAgent: ' + navigator.userAgent + '<br>'
                 + 'navigator.platform: ' + navigator.platform + '<br>'
                 + 'pixelDepth: ' + screen.pixelDepth + '<br>'
-        + '<span id="p451">portrait, min-width: 451px<br></span>'
-        + '<span id="p361">portrait: 361-450px<br></span>'
-        + '<span id="p360">portrait, max-width: 360px<br></span>'
+                + '<span id="p451">portrait, min-width: 451px<br></span>'
+                + '<span id="p361">portrait: 361-450px<br></span>'
+                + '<span id="p360">portrait, max-width: 360px<br></span>'
                 + 'querformat: ' + QUERFORMAT() + '<br>'
                 + 'screensize: ' + screen.width + ' x ' + screen.height + '<br>'
                 + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>'
@@ -1590,7 +1590,16 @@ function fINIT() {
     $('#ddRumpf').each(function () { // sonst funktioniert important nicht
         this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
     });
+
+
+    if ($('#hMenu').is(":visible")) {
+        $('.iMain').css('height', $('#hMenu').height() - 4);
+    }
+
     window.onresize = function (e) {
+        if ($('#hMenu').is(":visible")) {
+            $('.iMain').css('height', $('#hMenu').height() - 4);
+        }
         $('#pContent').each(function () { // sonst funktioniert important nicht
             this.style.setProperty('height', ($(window).innerHeight() - $('#pContent').offset().top - 1) + 'px', 'important');
         });

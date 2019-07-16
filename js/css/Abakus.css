@@ -226,27 +226,27 @@ input {
     #p361 { display: block !important }
     #p360 { display: none !important }
 
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.1vw + 3px) !important;} /* index Runden/Cups */
-    .ui-btn {padding: .18em .18em !important;}
+    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(49.95vw + 3px) !important;} /* index Runden/Cups */
+    .ui-btn {padding: .19em .18em !important;}
 
-    .XXL {font-size: calc(3.63vw + 32.55px) !important;} /* Abakus Balken */
-    .XL {font-size: calc(1.284vw + 18px) !important;}
-    .L3 {font-size: 7.44vw !important;}  /* Vorhand */
-    .L2 {font-size: 6.7vw !important;}  /* Vorhand */
-    .L {font-size: 5.99vw !important;}
-    .M3 {font-size: 5.49vw !important;} /* RundenStatistik Navbar */
-    .M2, .Sbtn {font-size: 5.2vw !important;}
-    .M  {font-size: 4.95vw !important;}
-    .S2 {font-size: 4.83vw !important;}
-    .S  {font-size: 4.55vw !important;}
-    .XS {font-size: 4.46vw !important;}
+    .XXL {font-size: calc(3.5vw + 31.5px) !important;} /* Abakus Balken */
+    .XL {font-size: calc(1.242vw + 18px) !important;}
+    .L3 {font-size: 7.2vw !important;}  /* Vorhand */
+    .L2 {font-size: 6.48vw !important;}  /* Vorhand */
+    .L {font-size: 5.8vw !important;}
+    .M3 {font-size: 5.31vw !important;} /* RundenStatistik Navbar */
+    .M2, .Sbtn {font-size: 5.04vw !important;}
+    .M  {font-size: 4.8vw !important;}
+    .S2 {font-size: 4.68vw !important;}
+    .S  {font-size: 4.41vw !important;}
+    .XS {font-size: 4.32vw !important;}
 
-    .LL3 {font-size: 7.9vw !important;}  /* Spiele und Punkte */
-    .LL2 {font-size: 7.4vw !important;}
+    .LL3 {font-size: 7.65vw !important;}  /* Spiele und Punkte */
+    .LL2 {font-size: 7.2vw !important;}
 
     .i {    /* Edit */
         display: inline-block;   
-        font: normal normal normal 6.415vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
+        font: normal normal normal 6.21vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -254,7 +254,7 @@ input {
 
     .iconL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal 9.3vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 9vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -262,7 +262,7 @@ input {
 
     .iconXL {   /* Edit */
         display: inline-block;   
-        font: normal normal normal 11.1vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 10.8vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -270,7 +270,7 @@ input {
 
     .iSpinner {
         display: inline-block;
-        font: normal normal normal 3.61vw 'Material-Design-Iconic-Font';
+        font: normal normal normal 3.5vw 'Material-Design-Iconic-Font';
         font-size: 8vw;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -296,10 +296,14 @@ input {
 }       
 
 @media only screen and (orientation : portrait) and (max-width: 360px) {
-    .M3 {font-size: 5.33vw !important;}
-    .M2 {font-size: 5.14vw !important;}
-    .LL3 {font-size: 7.25vw !important;}
-    .LL2 {font-size: 6.6vw !important;}
+
+    #p451 { display: none !important }
+    #p361 { display: none !important }
+    #p360 { display: block !important }
+
+    .M2, .M3 {font-size: 4.86vw !important;}
+    .LL3 {font-size: 7vw !important;}
+    .LL2 {font-size: 6.39vw !important;}
 }       
 
 /* stack all grids below 40em (640px) */

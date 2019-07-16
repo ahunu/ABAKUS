@@ -190,7 +190,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
                         + "<ul>"
                         + "<li class=nb18 id='bSt2'><a onclick='statShow(false,false,false,false,2);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"
                         + "<li class=nb18 id='bSt1'><a onclick='statShow(false,false,false,false,1);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 1 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[1] ? '' : ' ui-disabled') + "'>" + heute.getFullYear() + "</a></li>"
-                        + "<li class=nb27 id='bSt3'><a onclick='statShow(false,false,false,false,3);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 3 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[3] ? '' : ' ui-disabled') + "'>" + tZuletzt + "</a></li>"
+                        + "<li class=nb27 id='bSt3'><a onclick='statShow(false,false,false,false,3);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 3 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[3] ? '' : ' ui-disabled') + "'>s" + tZuletzt + "</a></li>"
                         + "<li class=nb26 id='bSt0'><a onclick='statShow(false,false,false,false,0);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 0 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Gesamt</a></li>"
                         + "<li class=nb11 id='bSt99'><a onclick='" + 'showNavbarExt();Deactivate(this);' + "' style=" + hStyle + " class='nbButton M3'>...</a></li>"
                         + "</ul>"

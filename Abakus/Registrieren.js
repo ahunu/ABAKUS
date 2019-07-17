@@ -197,7 +197,7 @@ function onRegistrieren() {
 $(document).bind('pageinit', function () {
 
     document.oncontextmenu = function () {
-//        return false; // oncontextmenu
+        return false; // oncontextmenu
     };
     document.onselectstart = function () {
         return false;

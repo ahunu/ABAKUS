@@ -147,6 +147,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
             } else {
                 var hStyle = "'padding:.0px; xxmargin:1.32em; text-decoration:none;'";
             }
+            hStyle = ''; // llllllll
             html += "</div>";
             if (QUERFORMAT()) {
                 html += '<div class=ui-block-b id=SP2 style="width:0%;"></div>'
@@ -168,13 +169,13 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
                         + "<canvas id='stHead' onclick='$(\"#sortUndLayout\").toggle(\"show\");' width='2000' height='66'></canvas>"
                         + "<div id=stNavbar data-role='navbar' class='noprint'>"
                         + "<ul>"
-                        + "<li class=nb11 id='bSt2'><a onclick='statShow(false,false,false,false,2);' style=" + hStyle + " class='nbButton " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"
-                        + "<li class=nb11 id='bSt1'><a onclick='statShow(false,false,false,false,1);' style=" + hStyle + " class='nbButton " + (stTurCupGes === 1 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[1] ? '' : ' ui-disabled') + "'>" + heute.getFullYear() + "</a></li>"
-                        + "<li class=nb6 id='bSt3'><a onclick='statShow(false,false,false,false,3);' style=" + hStyle + " class='nbButton " + (stTurCupGes === 3 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[3] ? '' : ' ui-disabled') + "'>" + tZuletzt + "</a></li>"
-                        + "<li class=nb6 id='bSt0'><a onclick='statShow(false,false,false,false,0);' style=" + hStyle + " class='nbButton " + (stTurCupGes === 0 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Gesamt</a></li>"
-                        + "<li class=nb6 id='bAnmeldung'><a id=aAnmeldung onclick='statShow(10);' style=" + hStyle + "    class='nbButton " + (stStat === 10 ? ' ui-btn-active' : '') + (CUPS.ANMELDERF[stCup] ? '' : ' ui-disabled') + "'>Anmeldungen</a></li>"
-                        + "<li class=nb6 id='bArchiv'><a onclick='showArchiv();' style=" + hStyle + (STAT.MAXSPIELE[1] + STAT.MAXSPIELE[2] < STAT.MAXSPIELE[0] ? '' : 'class="nbButton ui-disabled"') + ">Archiv</a></li>"
-                        + "<li class=nb11 id='bSt99'><a onclick='if ($(\"#hilfeText\").is(\":visible\")) {$(\"#hilfeText\").hide();} else {$(\"#hilfeText\").show();}' style=" + hStyle + " class='nbButton'>Hilfe</a></li>"
+                        + "<li class=nb11 id='bSt2'><a onclick='statShow(false,false,false,false,2);' class='nbButton " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"
+                        + "<li class=nb11 id='bSt1'><a onclick='statShow(false,false,false,false,1);' class='nbButton " + (stTurCupGes === 1 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[1] ? '' : ' ui-disabled') + "'>" + heute.getFullYear() + "</a></li>"
+                        + "<li class=nb6  id='bSt3'><a onclick='statShow(false,false,false,false,3);' class='nbButton " + (stTurCupGes === 3 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[3] ? '' : ' ui-disabled') + "'>" + tZuletzt + "</a></li>"
+                        + "<li class=nb6  id='bSt0'><a onclick='statShow(false,false,false,false,0);' class='nbButton " + (stTurCupGes === 0 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Gesamt</a></li>"
+                        + "<li class=nb6  id='bAnmeldung'><a id=aAnmeldung onclick='statShow(10);'    class='nbButton " + (stStat === 10 ? ' ui-btn-active' : '') + (CUPS.ANMELDERF[stCup] ? '' : ' ui-disabled') + "'>Anmeldungen</a></li>"
+                        + "<li class=nb6  id='bArchiv'><a onclick='showArchiv();'                     class='nbButton " + (STAT.MAXSPIELE[1] + STAT.MAXSPIELE[2] < STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Archiv</a></li>"
+                        + "<li class=nb11 id='bSt99'><a onclick='if ($(\"#hilfeText\").is(\":visible\")) {$(\"#hilfeText\").hide();} else {$(\"#hilfeText\").show();}' class='nbButton'>Hilfe</a></li>"
                         + "</ul>"
                         + "</div>"
                         + "</div>"
@@ -188,11 +189,11 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
                         + "<canvas id='stHead' onclick='$(\"#sortUndLayout\").toggle(\"show\");' width='2000' height='66'></canvas>"
                         + "<div id=stNavbar data-role='navbar' class='noprint'>"
                         + "<ul>"
-                        + "<li class=nb18 id='bSt2'><a onclick='statShow(false,false,false,false,2);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"
-                        + "<li class=nb18 id='bSt1'><a onclick='statShow(false,false,false,false,1);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 1 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[1] ? '' : ' ui-disabled') + "'>" + heute.getFullYear() + "</a></li>"
-                        + "<li class=nb27 id='bSt3'><a onclick='statShow(false,false,false,false,3);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 3 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[3] ? '' : ' ui-disabled') + "'>" + tZuletzt + "</a></li>"
-                        + "<li class=nb26 id='bSt0'><a onclick='statShow(false,false,false,false,0);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 0 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Gesamt</a></li>"
-                        + "<li class=nb11 id='bSt99'><a onclick='" + 'showNavbarExt();Deactivate(this);' + "' style=" + hStyle + " class='nbButton M3'>...</a></li>"
+                        + "<li class=nb20 id='bSt2'><a onclick='statShow(false,false,false,false,2);' class='nbButton M3 " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"
+                        + "<li class=nb20 id='bSt1'><a onclick='statShow(false,false,false,false,1);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 1 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[1] ? '' : ' ui-disabled') + "'>" + heute.getFullYear() + "</a></li>"
+                        + "<li class=nb28 id='bSt3'><a onclick='statShow(false,false,false,false,3);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 3 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[3] ? '' : ' ui-disabled') + "'>" + tZuletzt + "</a></li>"
+                        + "<li class=nb20 id='bSt0'><a onclick='statShow(false,false,false,false,0);' style=" + hStyle + " class='nbButton M3 " + (stTurCupGes === 0 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Ges.</a></li>"
+                        + "<li class=nb12 id='bSt99'><a onclick='showNavbarExt();Deactivate(this);' class='nbButton M3'>...</a></li>"
                         + "</ul>"
                         + "</div>"
                         + "</div>"

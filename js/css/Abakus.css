@@ -631,6 +631,10 @@ input {
     width: 18% !important;
     clear: none !important;
 }
+.nb20 {
+    width: 20% !important;
+    clear: none !important;
+}
 .nb23 {
     width: 23% !important;
     clear: none !important;
@@ -645,10 +649,6 @@ input {
 }
 .nb26 {
     width: 26% !important;
-    clear: none !important;
-}
-.nb27 {
-    width: 27% !important;
     clear: none !important;
 }
 .nb28 {

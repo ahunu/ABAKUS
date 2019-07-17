@@ -75,6 +75,15 @@ function QUERFORMAT() {
     }
 }
 
+function toggleLegende() {
+    if ($('#dLegende').is(":visible")) {
+        $('#dLegende').hide();
+    } else {
+        $('#dLegende').show();
+        $("#pContent").scrollTop(0);
+    }
+}
+
 function hrefStatistik(pCup, pParameter) {
     if (pCup) {
         I = pCup;
@@ -1594,11 +1603,15 @@ function fINIT() {
 
     if ($('#hMenu').is(":visible")) {
         $('.iMain').css('height', $('#hMenu').height() - 4);
+    } else if ($('#hMix').is(":visible")) {
+        $('.hfHeaderIcon').css('height', $('#hMix').height() - 4);
     }
 
     window.onresize = function (e) {
         if ($('#hMenu').is(":visible")) {
             $('.iMain').css('height', $('#hMenu').height() - 4);
+        } else if ($('#hMix').is(":visible")) {
+            $('.hfHeaderIcon').css('height', $('#hMix').height() - 4);
         }
         $('#pContent').each(function () { // sonst funktioniert important nicht
             this.style.setProperty('height', ($(window).innerHeight() - $('#pContent').offset().top - 1) + 'px', 'important');

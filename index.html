@@ -111,20 +111,6 @@
         <script src='Abakus.js'            ></script>
     </head>
     <body onclick="event.stopImmediatePropagation();">
-        <div id=dCopyright class="cRechts" onclick='showLogo();' style="width:72%;position: absolute; bottom: 0; left: 28%" hidden>
-            <div style="font-family:Segoe Print; font-style:italic; color:#0000bb" id='tWeisheit' class='C B L2'></div>
-            <br><br>
-            <div id='tWeiser' class='M C'></div>
-            <br><br><br>
-            <div class="ui-grid-a XS">
-                <div class="ui-block-a">
-                    &nbsp;&nbsp;<b><i>Abakus</i></b> die k&ouml;nigliche Tarock-App
-                </div>
-                <div class="ui-block-b" style="text-align:right;">
-                    &copy; 2015-<span id="tJJJJ">2099</span> by Leo Luger&nbsp;&nbsp;
-                </div>
-            </div>
-        </div>
 
         <div class="ui-grid-a">
 
@@ -133,10 +119,10 @@
                 <div id="dHeader">
                     <ul data-role=listview>
                         <li data-icon=false>
-                            <a onclick="$('#dLegende').toggle('show');" style="padding:.0em" class="K">
-                                <div id="hMenu">
+                            <a style="padding:.0em" class="K">
+                                <div id="hMenu" onclick="toggleLegende();" >
                                     <div class="ui-grid-a cSmartphone">
-                                        <div class="ui-block-a" style="width:25%; text-align:center;">
+                                        <div class="ui-block-a" style="width:25%;">
                                             <img class="iMain" src='Icons/icon-96-xhdpi.png' style="position: fixed; top: 2px; left: 2px; height:18vw; width:auto;" alt="Abakus"/>
                                         </div>
                                         <div class="ui-block-b C" style="width:75%;padding:0;margin:0;">
@@ -156,7 +142,7 @@
                                         </div>
                                     </div>
                                     <div class="ui-grid-a cTablet">
-                                        <div class="ui-block-a" style="width:15%; text-align:center;">
+                                        <div class="ui-block-a" style="width:15%;">
                                             <img class="iMain" src='Icons/icon-96-xhdpi.png' style="position: fixed; top: 2px; left: 2px; height:14vw; width:auto;" alt="Abakus"/>
                                         </div>
                                         <div class="ui-block-b C" style="width:85%;padding:0;margin:0;">
@@ -168,27 +154,30 @@
                                 </div>
                                 <div id="hMix" hidden>
                                     <div class="ui-grid-a cTablet">
-                                        <div class="ui-block-a" style="width:7vw; text-align:center;">
-                                            <img class="hfHeaderIcon" src='Icons/Tools.png' style="margin-top:.1vw;margin-bottom:-1vw;margin-left:2vw;height:13vw; width:13vw;" alt="Abakus"/>
+                                        <div class="ui-block-a" style="width:15vw;">
+                                            <img class="hfHeaderIcon" src='Icons/Tools.png' style="position: fixed; top: 2px; left: 6px; height:13vw; width:auto;" alt="Abakus"/>
                                         </div>
                                         <div class="ui-block-b" style="padding:0;margin:0;">
-                                            <div class=hfHeaderZeile1 style="width:auto; margin-left:12vw; font-size: 5.5vw; margin-top:-1px; font-style: italic;">ABAKUS die Tarock-App</div>
-                                            <div class=hfHeaderZeile2 style="width:auto; margin-left:12vw; font-size: 5.5vw; margin-top:-4px; font-weight: normal;">Meinem Tisch</div>
+                                            <div class="hfHeaderZeile1 M2" style="width:auto; margin-top:-1px; font-style: italic;">ABAKUS die Tarock-App</div>
+                                            <div class="hfHeaderZeile2 M2" style="width:auto; margin-top:-4px; font-weight: normal;">Meinem Tisch</div>
                                         </div>
                                     </div>
                                     <div class="ui-grid-a cSmartphone">
-                                        <div class="ui-block-a" style="width:7vw; text-align:center;">
-                                            <img class="hfHeaderIcon" src='Icons/Farben.png' style="margin-top:.8vw;margin-bottom:-1vw;margin-left:.2vw;height:16.8vw; width:16.8vw;" alt="Abakus"/>
+                                        <div class="ui-block-a" style="width:20vw;">
+                                            <img class="hfHeaderIcon" src='Icons/Tools.png' style="position: fixed; top: 2px; left: 2px; height:16vw; width:auto;" alt="Abakus"/>
                                         </div>
                                         <div class="ui-block-b" style="padding:0;margin:0;">
-                                            <div class=hfHeaderZeile1 style="width:auto; margin-left:12vw; font-size: 8vw; margin-top:-1px; font-style: italic;">ABAKUS die Tarock-App</div>
-                                            <div class=hfHeaderZeile2 style="width:auto; margin-left:12vw; font-size: 8vw; margin-top:-4px; font-weight: normal;">Meinem Tisch</div>
+                                            <div class="hfHeaderZeile1 L3" style="width:auto; margin-top:-1px; font-style: italic;">ABAKUS die Tarock-App</div>
+                                            <div class="hfHeaderZeile2 L3" style="width:auto; margin-top:-4px; font-weight: normal;">Meinem Tisch</div>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </li>
                     </ul>
+                </div>
+
+                <div id=pContent class='onExit' style="height: 24.2vh; position:relative; overflow-y: auto;">
 
                     <div id='dLegende' style='word-wrap: break-word; font-weight:normal;padding:.0em; margin:0em; zoom:90%' onclick="$('#dLegende').hide();" class=M hidden>
                         <br>
@@ -258,9 +247,7 @@
                         <br>
                         <br>
                     </div>
-                </div>
 
-                <div id=pContent class='onExit' style="height: 24.2vh; position:relative; overflow-y: auto;">
                     <div id=pMenu class='S'>
                         <div id=bZuMeinemTisch onClick="showCup(LS.I);" hidden>
                             <div class="ui-grid-a ui-btn k">
@@ -331,11 +318,6 @@
                         </div>
                     </div>
 
-
-
-
-
-
                     <div id=pCup hidden>
 
                         <div style="margin:.0em 10px;padding:.0em">
@@ -381,11 +363,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
 
                     <div id=pTisch hidden>
                         <div id=pSpiele>
@@ -499,7 +476,9 @@
 
                 </div>
             </div>
+
         </div>
+
 
         <div data-role="popup" data-history="false" id="pSTARTSTOP" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L3 ui-corner-all onExit" data-position-to="#dText">
             <div data-role="header" id=ssTitel data-theme="d" class="ui-corner-top XL" style="text-align:center">CupName
@@ -532,6 +511,8 @@
                 </div>
             </div>
         </div>
+
+
         <div data-role="popup" data-history=false id="pTISCHSPEICHERN" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="XL ui-corner-all">
             <div data-role="header" data-theme="d" class="ui-corner-top" style="text-align:center" id=tsNeuerTischTurnier>Ein neuer Tisch:
             </div>
@@ -550,6 +531,23 @@
                 <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='$("#pTISCHSPEICHERN").popup("close");'>abbrechen</a>?
             </div>
         </div>
+
+
+        <div id=dCopyright class="cRechts" onclick='showLogo();' style="width:72%;position: absolute; bottom: 0; left: 28%" hidden>
+            <div style="font-family:Segoe Print; font-style:italic; color:#0000bb" id='tWeisheit' class='C B L2'></div>
+            <br><br>
+            <div id='tWeiser' class='M C'></div>
+            <br><br><br>
+            <div class="ui-grid-a XS">
+                <div class="ui-block-a">
+                    &nbsp;&nbsp;<b><i>Abakus</i></b> die königliche Tarock-App
+                </div>
+                <div class="ui-block-b" style="text-align:right;">
+                    &copy; 2015-<span id="tJJJJ">2099</span> by Leo Luger&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+
 
     </body>
 </html>

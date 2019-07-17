@@ -63,6 +63,35 @@ var stAnzSpalten = 1; // für statGauge
 
 var SORT = null;
 
+function Activate(button) {
+    'use strict';
+    if (LS.Timeout) {
+        setTimeout(function () {
+            $(button).removeClass('ui-btn-active').addClass('ui-btn-active');
+        }, LS.Timeout);
+    } else {
+        setTimeout(function () {
+            $(button).removeClass('ui-btn-active').addClass('ui-btn-active');
+        }, 100);
+    }
+}
+
+function Deactivate(button) {
+    'use strict';
+    if (LS.Timeout) {
+        setTimeout(function () {
+            $(button).removeClass('ui-btn-active');
+        }, LS.Timeout);
+    } else {
+        setTimeout(function () {
+            $(button).removeClass('ui-btn-active');
+        }, 100);
+    }
+    if (myJTip) {
+        myJTip.close();
+    }
+}
+
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
@@ -556,35 +585,6 @@ function setFont() {
     }
     if (LS.ME === '3312') { // Christian Faltl
         $('.ui-btn').attr('style', 'padding: 0 0 !important;');
-    }
-}
-
-function Activate(button) {
-    'use strict';
-    if (LS.Timeout) {
-        setTimeout(function () {
-            $(button).removeClass('ui-btn-active').addClass('ui-btn-active');
-        }, LS.Timeout);
-    } else {
-        setTimeout(function () {
-            $(button).removeClass('ui-btn-active').addClass('ui-btn-active');
-        }, 100);
-    }
-}
-
-function Deactivate(button) {
-    'use strict';
-    if (LS.Timeout) {
-        setTimeout(function () {
-            $(button).removeClass('ui-btn-active');
-        }, LS.Timeout);
-    } else {
-        setTimeout(function () {
-            $(button).removeClass('ui-btn-active');
-        }, 100);
-    }
-    if (myJTip) {
-        myJTip.close();
     }
 }
 

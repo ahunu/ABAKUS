@@ -321,7 +321,7 @@ function showCanvas(pShow) {
         $('#bChart').hide();
         $('#dHelp').show().attr("style", "height:" + ($(window).innerHeight() - ($('#NB').height() * 2)) + "px;overflow:auto;overflow-x:hidden;");
         $("#tHelp tr").remove();
-        $('#tHelp').append('<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>Spiele</td><td class="TR">Punkte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>');
+        $('#tHelp').append('<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>Spiele</td><td class="TR">Punkte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>');
 
         SORT = [];
         sortTarifZeile('pa1', 'Rufer', iRufer);

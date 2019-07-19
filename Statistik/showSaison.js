@@ -1,5 +1,5 @@
 
-/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, stShowList, SAISON, isSaison, isVorlaeufig, is1, is1CupPunkte, is3, is2, is2CupPunkte, is3CupPunkte */
+/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, SAISON, isSaison, isVorlaeufig, is1, is1CupPunkte, is3, is2, is2CupPunkte, is3CupPunkte */
 
 function showSaison(pSaison, pStockerl, pAnekdoten) {
 
@@ -188,21 +188,18 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     } else {
         $('#sideTurniereMT').html(
         '<li data-role="list-divider"><div class="ui-grid-a">'
-                + '<div class="ui-block-a" style="width:88%">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Listen:</div>'
-                + '<div class="ui-block-b" style="width:12%">'
+                + '<div class="ui-block-a" style="width:90%">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Listen:</div>'
+                + '<div class="ui-block-b" style="width:10%">'
 
-                + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-plus-circle noprint XL"></i>'
-                + '<i onclick="event.stopPropagation(); toggleListen();" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-minus-circle noprint XL"></i>'
+                + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',false);" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-play zmdi-hc-rotate-90 noprint"></i>'
+                + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',true);" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-play zmdi-hc-rotate-270 noprint"></i>'
 
-                + '</div></div></li>'
-
-
-                + '<li class="cListe" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a></li>'
+                + '<li class="cDieListen" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a></li>'
                 + (window.location.href.toUpperCase().indexOf('OOV') < 0
-                        ? '<li class="cListe" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
+                        ? '<li class="cDieListen" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
                         + (QUERFORMAT()
-                                ? '<li class="cListe" data-icon="false"><a id=bStockerlliste onclick="showSaison(\'' + iSaison + '\', true)">&nbsp;Stockerlliste</a></li>'
-                                + '<li class="cListe" data-icon="false"><a id=bAnekdoten ' + (nAnekdoten ? '' : 'class="ui-disabled "') + 'onclick="showSaison(\'' + iSaison + '\', false, true)">&nbsp;Anekdoten</a></li>'
+                                ? '<li class="cDieListen" data-icon="false"><a id=bStockerlliste onclick="showSaison(\'' + iSaison + '\', true)">&nbsp;Stockerlliste</a></li>'
+                                + '<li class="cDieListen" data-icon="false"><a id=bAnekdoten ' + (nAnekdoten ? '' : 'class="ui-disabled "') + 'onclick="showSaison(\'' + iSaison + '\', false, true)">&nbsp;Anekdoten</a></li>'
                                 : '')
                         : '')
                 + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Turniere:</li>'
@@ -235,8 +232,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     } else {
         $("#sideContent,#dCopyright").show();
         setFont();
-        stShowList = !stShowList;
-        toggleListen();
+        showLi('.cDieListen',true);
     }
 
     if (LS.Meldung) {
@@ -247,16 +243,15 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
 
 }
 
-function toggleListen() {
+function showLi(pListe, pShow) {
     var elmnt = document.getElementById("sideContent");
     elmnt.scrollTop = 0;
-    stShowList = !stShowList;
-    if (stShowList) {
-        $('.cListe').show();
+    if (pShow) {
+        $(pListe).show();
         $('#iPlus').show();
         $('#iMinus').hide();
     } else {
-        $('.cListe').hide();
+        $(pListe).hide();
         $('#iPlus').hide();
         $('#iMinus').show();
     }

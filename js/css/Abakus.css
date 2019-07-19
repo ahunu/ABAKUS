@@ -123,7 +123,7 @@ input {
 }
 
 @media only screen and (orientation : portrait) and (min-width: 361px) and (max-width: 450px) { /* Galaxy S8+ */
-    
+
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
 
@@ -373,6 +373,11 @@ input {
 .zmdi-help:before {
     content: '\f1f6';
 }
+.zmdi-hc-rotate-270 {
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+} 
 .zmdi-hc-rotate-90 {
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);

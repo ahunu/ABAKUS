@@ -49,7 +49,6 @@ var stFontMax = 6;
 var stFontPlus = 0;
 var stLastZitat = [];
 var stStickyHeader = false;
-var stShowList = true;
 var jbAnekdote = null;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
@@ -352,6 +351,7 @@ function fINIT(pCup) {
     } else {
         PC = true;
     }
+    $('#dRumpf').css('margin-top', $('#qfHeader').height() + 'px');
     showLogo();
     var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
     $('#sideContent').css('height', hx + 'px');

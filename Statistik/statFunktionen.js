@@ -408,10 +408,10 @@ function showIcons(pIcons) {
     'use strict';
     $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iAnekdote').hide();
     if (QUERFORMAT()) {
-        if (PC) {
+        if (!PC) {
             for (var i = pIcons.length - 1; i >= 0; i--) {
                 if (pIcons[i] === '#iPrint' || pIcons[i] === '#iDownload') {
-                    pIcons.splice(i,1);
+                    pIcons.splice(i, 1);
                 }
             }
         }

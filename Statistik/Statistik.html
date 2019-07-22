@@ -3,9 +3,9 @@
     <head>
         <meta charset='utf-8'/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<!--        <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval';  img-src 'self' data:; media-src 'self'; frame-src https://utcklopeinersee.jimdofree.com; script-src-elem *" />
--->
+        <!--        <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+                <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval';  img-src 'self' data:; media-src 'self'; frame-src https://utcklopeinersee.jimdofree.com; script-src-elem *" />
+        -->
         <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
         <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
         <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
@@ -51,6 +51,7 @@
         <script src="showTermine.js"></script>
         <script src="showCupsieger.js"></script>
         <script src="showCupwertung.js"></script>
+        <script src="showOovwertung.js"></script>
         <script src="showPlatzierungen.js"></script>
         <script src="showTeilnehmerzahlen.js"></script>
         <script src="showTeilnehmer.js"></script>
@@ -110,20 +111,29 @@
                             </li>
                         </ul>
                     </div>
-                    <div id=hfHeader>
-                        <div onclick='event.stopPropagation();'>
-                            <div class="ui-grid-a">
-                                <div class="ui-block-a" id=hfHeaderLinks style="width:44px;margin-top:3px; text-align:center;">
-                                    <img id=hfHeaderIcon src='../Icons/Statistik.png' alt="Abakus" style="width:42px; height:42px;"/>
+                    <div id=hfHeader onclick='event.stopPropagation();'>
+                        <div class="ui-grid-a cSmartphone">
+                            <div class="ui-block-a" style="width:15vw; text-align:center;">
+                                <img class=hfHeaderIcon src='../Icons/Statistik.png' style="position: relative; top: 2px; height:1vw; width:auto;" alt="Abakus"/>
+                            </div>
+                            <div class="ui-block-b" style="padding:0;margin:0;">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a">
+                                        <div class="hfHeaderZeile1 L3" style="width:100%;margin:-1pt 0;white-space:nowrap;font-weight:bold;font-style:italic;"></div>
+                                        <div class="hfHeaderZeile2 L3" style="width:100%;margin:-4pt 0;white-space:nowrap;font-weight:normal;"></div>
+                                    </div>
                                 </div>
-                                <div class="ui-block-b" style="padding:0;margin:0;">
-                                    <div class="ui-grid-a">
-                                        <div class="ui-block-a">
-                                            <div id=hfHeaderZeile1 style="width:100%;margin:-2pt 0;font-size:22px;white-space:nowrap;font-style:italic;" class="B">
-                                            </div>
-                                            <div id=hfHeaderZeile2 style="width:100%;margin:-3pt 0;font-size:15pt;white-space:nowrap;font-weight:normal;">
-                                            </div>
-                                        </div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-a cTablet">
+                            <div class="ui-block-a" style="width:12vw; text-align:center;">
+                                <img class=hfHeaderIcon src='../Icons/Statistik.png' style="position: relative; top: 2px; height:1vw; width:auto;" alt="Abakus"/>
+                            </div>
+                            <div class="ui-block-b" style="padding:0;margin:0;">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a">
+                                        <div class="hfHeaderZeile1 M2" style="width:100%;margin:-1pt 0;white-space:nowrap;font-weight:bold;font-style:italic;"></div>
+                                        <div class="hfHeaderZeile2 M2" style="width:100%;margin:-4pt 0;white-space:nowrap;font-weight:normal;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -172,21 +182,16 @@
                 <div id=qfHeader class='fixHeader'>
                     <div onclick='event.stopPropagation();'>
                         <div class="ui-grid-a">
-                            <div class="ui-block-a" id=qfHeaderLinks style="width:5vw; smargin-top:3px; text-align:center;">
-                                <img id=qfHeaderIcon src='../Icons/Statistik.png' style="margin:0.42vw; height:4.2vw; width:4.2vw" alt="Abakus"/>
+                            <div class="ui-block-a" id=qfHeaderLinks style="width:6%; text-align:center;">
+                                <img id=qfHeaderIcon src='../Icons/Statistik.png' style="height:4vw; width:auto" alt="Abakus"/>
                             </div>
-                            <div class="ui-block-b" style="padding:0;margin:0;">
-                                <div class="ui-grid-a">
-                                    <div id=qfHeaderZeile1 style="width:100%;margin:-2pt 0;font-size:2.27vw;white-space:nowrap;font-style:italic;" class="B">
-                                    </div>
-                                    <div id=qfHeaderZeile2 style="width:100%;margin:-3pt 0;font-size:2.08vw;white-space:nowrap;font-weight:normal;">
-                                    </div>
-                                </div>
+                            <div class="ui-block-b" id=qfHeaderRechts style="width:94%; padding:0;margin:0;">
+                                <div id=qfHeaderZeile1 style="margin:-1pt 0;font-size:2.27vw;white-space:nowrap;font-family:Arial;font-style:italic;" class="B"></div>
+                                <div id=qfHeaderZeile2 style="margin:-5pt 0;font-size:2.08vw;white-space:nowrap;font-family:Arial;font-weight:normal;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id=tStand class="XS" hidden>Endstand:&nbsp;&nbsp;</div>
                 <div id=dRumpf></div>
             </div>
         </div>
@@ -198,5 +203,6 @@
             <i onclick="event.stopPropagation(); $('.trDet').show();" title="Die Saisonergebnisse einblenden."  id=iShowDetails class="i zmdi-blocks noprint"></i>
             <i onclick="event.stopPropagation(); $('.trDet').hide();" title="Die Saisonergebnisse ausblenden."  id=iHideDetails class="i zmdi-list noprint"></i>
         </div>
+        <div id=tStand class="XS" hidden>Endstand:&nbsp;&nbsp;</div>
     </body>
 </html>

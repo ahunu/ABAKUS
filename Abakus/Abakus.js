@@ -8,7 +8,6 @@ var DS = new Object();
 
 var sI = 0;
 var pI = 0;
-var iME = 0;
 var Seite = '';
 var sBasis = 0;
 var soloFaktor = 1;
@@ -1564,11 +1563,6 @@ function fINIT() {
             $('.NBedit').addClass('ui-disabled');
         }
     }
-    for (i = 1; i <= LS.AnzSpieler; i++) {
-        if (LS.NR[i] === LS.ME) {
-            iME = i;
-        }
-    }
 
     if (!LS.I) { // Spontaner Tisch
         $('#nbOptions').addClass('ui-disabled');
@@ -1742,7 +1736,6 @@ function fINIT() {
             } else if (s1 === 'x 8') {
                 $('#P5,#P6').addClass('ui-disabled');
                 $('#P5e,#P6e').hide();
-//                $('#P5e,#P6e').text('-');
             } else if (s1 === '' || s1 === '0') {
                 if ($('#P5').hasClass('ui-btn-c')) {
                     BtnSet('#P5e', LS.Tarif[pTrull]);

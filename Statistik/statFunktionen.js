@@ -132,8 +132,6 @@ function getCupPunkte(pTurnier, pSpieler) {
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
                     return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
                 } else {
-//                    return '-';
-//                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
                     if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
                             && (stCup === 54 && stSaison <= '2018/19'
                                     || stCup === 56 && stSaison <= '2018/19')) {
@@ -144,8 +142,6 @@ function getCupPunkte(pTurnier, pSpieler) {
                 }
             }
         } else {
-//  //            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0 && window.location.href.toUpperCase().indexOf('OOV') < 0) {
-//            return '-';
             if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
                     && (stCup === 54 && stSaison <= '2018/19'
                             || stCup === 56 && stSaison <= '2018/19')) {
@@ -396,8 +392,11 @@ function listeDrucken() {
     $('#dPrint').attr('style', 'width:100%');
     $('#tStand').css('position', 'absolute');
     $('#qfHeader').removeClass('fixHeader').addClass('printHeader');
-    $('#qfHeaderZeile1').attr('style', 'font-size:23pt');
-    $('#qfHeaderZeile1').attr('style', 'font-size:21pt');
+    $('#qfHeaderLinks').attr('style', 'width:12%;text-align:center;');
+    $('#qfHeaderRechts').attr('style', 'width:88%');
+    $('#qfHeaderZeile1').attr('style', 'margin:-4pt 0;font-size:32px;white-space:nowrap;font-style:italic;');
+    $('#qfHeaderZeile2').attr('style', 'margin:-6pt 0;font-size:30px;white-space:nowrap;font-weight:normal;');
+        $('#qfHeaderIcon').css('height', 63).show();
     $('#mTable').css('font-size', '2.4vw');
     $('tr').removeClass('bBeige bBeige2'); // Markierung entfernen
     $('.cSchwarz').removeClass('cSchwarz').addClass('cBlau');
@@ -436,17 +435,20 @@ function writeCanvas(pTitel) {
     }
     $('#tStand').hide();
     if (CUPS.TYP[stCup] === 'CUP' && stCup > 4) {
-        $("#hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
     } else {
-        $("#hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
     }
-    $('#hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
-    $('#hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
+    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 4).show();
+    $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
+    $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
 
-//    if (PC) {
-//        $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
-//        $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");
-//    }
+    if (PC) {
+        $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
+        $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");
+    }
+    $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
+
     // 51 H Hausruckcup
     // 52 R Raiffeisencup
     // 53 S Sauwaldcup

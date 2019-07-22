@@ -1,5 +1,5 @@
 
-/* global LS, pPagat, pUhu, pKakadu, pQuapil, pValat, iRufer, iPagatrufer, iUhurufer, iKakadurufer, iQuapilrufer, iSolorufer, i6er, i3er, iSolo3er, iME, sI, pI, jbSelberrufer, selberruferSpeichern, pXY, pAbsolut, pTrull, p4Koenige, pUltimo */
+/* global LS, pPagat, pUhu, pKakadu, pQuapil, pValat, iRufer, iPagatrufer, iUhurufer, iKakadurufer, iQuapilrufer, iSolorufer, i6er, i3er, iSolo3er, sI, pI, jbSelberrufer, selberruferSpeichern, pXY, pAbsolut, pTrull, p4Koenige, pUltimo */
 
 function PS_Init() {
     $('.cPS,#P1,#P2,#P3,#P4,#P5,#P6,#P7,#P8,#P9,#PValat').buttonMarkup({theme: 'a'});

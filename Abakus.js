@@ -301,7 +301,7 @@ function writeCanvas(pCup) {
     } else {
         $('#qfHeaderZeile1').attr("style", "font-size:4.5vw;white-space:nowrap;font-family:Arial;font-style:italic;");
     }
-    $('#qfHeaderIcon').show();
+    $('.hfHeaderIcon').css('height', $('#hMix').height() - 2).show();
 }
 
 function myDateString(pDate) {
@@ -1527,7 +1527,7 @@ function fINIT() {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

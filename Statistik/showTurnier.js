@@ -60,16 +60,12 @@ function showTurnier(pTurnier) {
 
     for (var iSpieler in STAT[pTurnier]) {
         if (iSpieler[0] !== '_') {
-            if (stCup !== 56
-                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && istFreund(iSpieler)) {
-                SORT[SORT.length] = ''
-                        + (5000 - STAT[pTurnier][iSpieler][4])
-                        + (5000 - Math.max(STAT[pTurnier][iSpieler][1], STAT[pTurnier][iSpieler][2], STAT[pTurnier][iSpieler][3]))
-                        + ';' + iSpieler;
-                if (iSpieler === LS.ME) {
-                    mMitgespielt = true;
-                }
+            SORT[SORT.length] = ''
+                    + (5000 - STAT[pTurnier][iSpieler][4])
+                    + (5000 - Math.max(STAT[pTurnier][iSpieler][1], STAT[pTurnier][iSpieler][2], STAT[pTurnier][iSpieler][3]))
+                    + ';' + iSpieler;
+            if (iSpieler === LS.ME) {
+                mMitgespielt = true;
             }
         }
     }

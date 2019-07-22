@@ -46,33 +46,29 @@ function showPlatzierungen(pSort) {
         for (var turnier in STAT) {
             if (turnier[0] !== '_') {
                 if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] === 'MT') {
-                    if (stCup !== 56
-                            || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                            || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
-                        html = '<th class="rotate W"><div><span>' + STAT[turnier]._NAME + '</span></div></th>' + html;
-                        iTurnier++;
-                        TEILNEHMER[iTurnier] = 0;
-                        for (var spieler in STAT[turnier]) {
-                            if (spieler[0] !== '_') {
-                                if (!DATA[spieler]) {
-                                    DATA[spieler] = [, 0, 0, 0, 0, 9999]; // 1. 2. 3. Plätze, Teilnahmen und beste Platzierung
-                                }
-                                DATA[spieler][iTurnier] = STAT[turnier][spieler][0];
-                                if (STAT[turnier][spieler][0] === 1) {
-                                    DATA[spieler][1]++;
-                                } else if (STAT[turnier][spieler][0] === 2) {
-                                    DATA[spieler][2]++;
-                                } else if (STAT[turnier][spieler][0] === 3) {
-                                    DATA[spieler][3]++;
-                                }
-                                DATA[spieler][4]++;
-                                if (DATA[spieler][5] > STAT[turnier][spieler][0]) {
-                                    DATA[spieler][5] = STAT[turnier][spieler][0];
-                                }
-                                TEILNEHMER[iTurnier]++;
-                                if (spieler === LS.ME) {
-                                    mMitgespielt = true;
-                                }
+                    html = '<th class="rotate W"><div><span>' + STAT[turnier]._NAME + '</span></div></th>' + html;
+                    iTurnier++;
+                    TEILNEHMER[iTurnier] = 0;
+                    for (var spieler in STAT[turnier]) {
+                        if (spieler[0] !== '_') {
+                            if (!DATA[spieler]) {
+                                DATA[spieler] = [, 0, 0, 0, 0, 9999]; // 1. 2. 3. Plätze, Teilnahmen und beste Platzierung
+                            }
+                            DATA[spieler][iTurnier] = STAT[turnier][spieler][0];
+                            if (STAT[turnier][spieler][0] === 1) {
+                                DATA[spieler][1]++;
+                            } else if (STAT[turnier][spieler][0] === 2) {
+                                DATA[spieler][2]++;
+                            } else if (STAT[turnier][spieler][0] === 3) {
+                                DATA[spieler][3]++;
+                            }
+                            DATA[spieler][4]++;
+                            if (DATA[spieler][5] > STAT[turnier][spieler][0]) {
+                                DATA[spieler][5] = STAT[turnier][spieler][0];
+                            }
+                            TEILNEHMER[iTurnier]++;
+                            if (spieler === LS.ME) {
+                                mMitgespielt = true;
                             }
                         }
                     }

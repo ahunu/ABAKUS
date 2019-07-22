@@ -3,21 +3,6 @@
 
 function showCupwertung() {
 
-
-//    if (LS.ME === '3425') {
-//        if (QUERFORMAT()) {
-//            $('#dRumpf').load('https://photos.app.goo.gl/AWuYWXxWMw6AZEiQ8');
-////            $('#dRumpf').html('<object data="https://photos.app.goo.gl/AWuYWXxWMw6AZEiQ8" width="400" height="300" type="text/html">Alternative Conten');
-//        } else {
-//            $('#dContent').load('https://photos.app.goo.gl/AWuYWXxWMw6AZEiQ8');
-//            $('#sideTurniereMT').hide();
-//            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-//            var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
-//            $('#sideContent').css('height', hx + 'px').scrollTop(0);
-//        }
-//        return;
-//    }
-
     if (QUERFORMAT()) {
         if (lastBtn) {
             $(lastBtn).removeClass('ui-btn-active');
@@ -55,43 +40,33 @@ function showCupwertung() {
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (STAT[turnier]._SAISON === stSaison) {
-                if (stCup !== 56
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
-                    nTurniere++;
-                    for (var spieler in STAT[turnier]) {
-                        if (spieler[0] !== '_') {
-
-                            if (stCup !== 56
-                                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && istFreund(spieler)) {
-
-                                nTeilnahmen++;
-                                if (CUP[spieler]) {
-                                    if (turnier !== stFinale) {
-                                        hCupPunkte = getCupPunkte(turnier, spieler);
-                                        if (getCupPunkte(turnier, spieler) === '-') {
-                                            CUP[spieler].push(hCupPunkte);
-                                        } else {
-                                            ii = CUP[spieler].length;
-                                            for (var i = 0; i < CUP[spieler].length; i++) {
-                                                if (CUP[spieler][i] === '-'
-                                                        || CUP[spieler][i] <= hCupPunkte) {
-                                                    ii = i;
-                                                    break;
-                                                }
-                                            }
-                                            CUP[spieler].splice(ii, 0, hCupPunkte);
+                nTurniere++;
+                for (var spieler in STAT[turnier]) {
+                    if (spieler[0] !== '_') {
+                        nTeilnahmen++;
+                        if (CUP[spieler]) {
+                            if (turnier !== stFinale) {
+                                hCupPunkte = getCupPunkte(turnier, spieler);
+                                if (getCupPunkte(turnier, spieler) === '-') {
+                                    CUP[spieler].push(hCupPunkte);
+                                } else {
+                                    ii = CUP[spieler].length;
+                                    for (var i = 0; i < CUP[spieler].length; i++) {
+                                        if (CUP[spieler][i] === '-'
+                                                || CUP[spieler][i] <= hCupPunkte) {
+                                            ii = i;
+                                            break;
                                         }
                                     }
-
-                                } else {
-                                    if (turnier !== stFinale) {
-                                        CUP[spieler] = [getCupPunkte(turnier, spieler)];
-                                    } else {
-                                        CUP[spieler] = [];
-                                    }
+                                    CUP[spieler].splice(ii, 0, hCupPunkte);
                                 }
+                            }
+
+                        } else {
+                            if (turnier !== stFinale) {
+                                CUP[spieler] = [getCupPunkte(turnier, spieler)];
+                            } else {
+                                CUP[spieler] = [];
                             }
                         }
                     }
@@ -102,7 +77,7 @@ function showCupwertung() {
 
     var SORTnachPlatz = [];
     var spieler = '';
-    var hKey = 0;
+
     for (var spieler in SP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
         if (SP[spieler][iSaison]) {
             SORTnachPlatz.push((100 + SP[spieler][iSaison][spRangImCup]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
@@ -158,7 +133,7 @@ function showCupwertung() {
 
         if (spieler === LS.ME) {
             hClass = 'bBeige';
-        } else if (window.location.href.toUpperCase().indexOf('OOV') < 0) {
+        } else {
             hClass = '';
             if (istFreund(spieler)) {
                 hClass = ' bBeige2';

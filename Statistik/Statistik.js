@@ -474,8 +474,11 @@ function fINIT(pCup) {
             $('#dPrint').attr('style', 'width:72%');
             $('#tStand').css('position', 'fixed');
             $('#qfHeader').removeClass('printHeader').addClass('fixHeader');
-            $('#qfHeaderZeile1').attr('style', 'font-size:2.27vw');
-            $('#qfHeaderZeile1').attr('style', 'font-size:2.08vw');
+            $('#qfHeaderLinks').attr('style', 'width:6%;text-align:center;');
+            $('#qfHeaderRechts').attr('style', 'width:94%');
+            $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:2.27vw;white-space:nowrap;font-family:Arial;font-style:italic;");
+            $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:2.08vw;white-space:nowrap;font-family:Arial;font-weight:normal;");
+            $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
             $('#mTable').css('font-size', '1.5vw');
         }
     });

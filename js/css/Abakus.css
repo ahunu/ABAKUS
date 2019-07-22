@@ -44,7 +44,22 @@ input {
     margin-top: -0.72em;
 }
 
-@media only screen and (orientation : portrait) and (max-width: 360px) { /* Galaxy A3, Note4 */
+/* innerSize:
+
+000 - 375
+
+Galaxy Nexus:  360 x 567
+Galaxy Note 4: 360 x 616
+Galaxy S8+:    412 x 774
+
+iPhone 6C:     320 x 548
+iPhone X:      375 x 768
+
+iPad 5. Gen.: 1024 x 748
+
+*/
+
+@media only screen and (orientation : portrait) and (max-width: 375px) { /* Galaxy A3, Note4 */
 
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
@@ -122,7 +137,7 @@ input {
     }
 }
 
-@media only screen and (orientation : portrait) and (min-width: 361px) and (max-width: 450px) { /* Galaxy S8+ */
+@media only screen and (orientation : portrait) and (min-width: 376px) and (max-width: 450px) { /* Galaxy S8+ */
 
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
@@ -208,7 +223,6 @@ input {
 
     .cTablet, #p451 { display: block !important }
     .cSmartphone, #dPC, #p360, #p361 { display: none !important }
-
 
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(1.25vw + 20px) !important;}
     .ui-btn {padding: .5vh .2em !important;}

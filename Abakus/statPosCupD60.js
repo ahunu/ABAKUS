@@ -2,7 +2,7 @@
 
 function statPosCupD60(pRunde) {
     'use strict';
-    var sKey, CupPunkte, hEIG, d60TP;
+    var sKey, CupPunkte, d60TP;
     var lastPUNKTE = -1234, aktRANG = 0;
     var tRANG = '';
     var pos = '';
@@ -155,7 +155,7 @@ function statPosCupD60(pRunde) {
     SORT.sort();  // muss sein
 
     if (stSort.indexOf('TIS') === 0) {
-        if (pRunde < CUPS.RUNDEN[LS.I]) {
+        if (pRunde < CUPS.RUNDEN[stCup]) {
             sortNachTischen(false);
         } else {
             sortNachReihung(false);

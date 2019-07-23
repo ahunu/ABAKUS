@@ -301,7 +301,7 @@ function writeCanvas(pCup) {
     } else {
         $('#qfHeaderZeile1').attr("style", "font-size:4.5vw;white-space:nowrap;font-family:Arial;font-style:italic;");
     }
-    $('.hfHeaderIcon').css('height', $('#hMix').height() - 2).show();
+    $('.hfHeaderIcon').css('height', $('#hMix').height() - 6).show();
 }
 
 function myDateString(pDate) {
@@ -1604,14 +1604,14 @@ function fINIT() {
     if ($('#hMenu').is(":visible")) {
         $('.iMain').css('height', $('#hMenu').height() - 4);
     } else if ($('#hMix').is(":visible")) {
-        $('.hfHeaderIcon').css('height', $('#hMix').height() - 4);
+        $('.hfHeaderIcon').css('height', $('#hMix').height() - 6);
     }
 
     window.onresize = function (e) {
         if ($('#hMenu').is(":visible")) {
             $('.iMain').css('height', $('#hMenu').height() - 4);
         } else if ($('#hMix').is(":visible")) {
-            $('.hfHeaderIcon').css('height', $('#hMix').height() - 4);
+            $('.hfHeaderIcon').css('height', $('#hMix').height() - 6);
         }
         $('#pContent').each(function () { // sonst funktioniert important nicht
             this.style.setProperty('height', ($(window).innerHeight() - $('#pContent').offset().top - 1) + 'px', 'important');

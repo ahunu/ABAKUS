@@ -386,6 +386,18 @@ function getName(pNR, pMax) {
 
 function listeDrucken() {
     'use strict';
+    function isChromium() { // Actually, isWithChromePDFReader
+        for (var i = 0; i < navigator.plugins.length; i++)
+            if (navigator.plugins[i].name === 'Chrome PDF Viewer')
+                return true;
+        return false;
+    }
+    if (!isChromium()) {
+        showEineMeldung('Achtung', 'Die Druckfunktion wird von deinem<br>Browser nicht ausreichend unterstützt.'
+                + '<br>Verwende einen der folgenden Browser:'
+                + '<br><b>Google Chrome</b>, <b>Opera</b> oder <b>Slimjet</b>.');
+        return;
+    }
     if (stCup !== 54 && stCup !== 56 && stCup !== 4) {
         $("#iHeaderIcon").attr("src", "../Icons/icon-64.png");
     }
@@ -396,7 +408,7 @@ function listeDrucken() {
     $('#qfHeaderRechts').attr('style', 'width:88%');
     $('#qfHeaderZeile1').attr('style', 'margin:-4pt 0;font-size:32px;white-space:nowrap;font-style:italic;');
     $('#qfHeaderZeile2').attr('style', 'margin:-6pt 0;font-size:30px;white-space:nowrap;font-weight:normal;');
-        $('#qfHeaderIcon').css('height', 63).show();
+    $('#qfHeaderIcon').css('height', 63).show();
     $('#mTable').css('font-size', '2.4vw');
     $('tr').removeClass('bBeige bBeige2'); // Markierung entfernen
     $('.cSchwarz').removeClass('cSchwarz').addClass('cBlau');
@@ -439,7 +451,7 @@ function writeCanvas(pTitel) {
     } else {
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
     }
-    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 4).show();
+    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 6).show();
     $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
     $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
 

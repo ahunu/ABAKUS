@@ -61,8 +61,8 @@ iPad 5. Gen.: 1024 x 748
 
 @media only screen and (orientation : portrait) and (max-width: 375px) { /* Galaxy A3, Note4 */
 
-    .cLinks { width: 100% !important }
-    .cRechts { display: none !important }
+    .cLinks,#dLinks { width: 100% !important }
+    .cRechts,#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand  { display: none !important }
 
     .cSmartphone, #p360 { display: block !important }
     .cTablet, #dPC, #p361, #p451 { display: none !important }
@@ -138,8 +138,8 @@ iPad 5. Gen.: 1024 x 748
 
 @media only screen and (orientation : portrait) and (min-width: 376px) and (max-width: 450px) { /* Galaxy S8+ */
 
-    .cLinks { width: 100% !important }
-    .cRechts { display: none !important }
+    .cLinks,#dLinks { width: 100% !important }
+    .cRechts,#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand  { display: none !important }
 
     .cSmartphone, #p361 { display: block !important }
     .cTablet, #dPC, #p360, #p451 { display: none !important }
@@ -217,12 +217,8 @@ iPad 5. Gen.: 1024 x 748
 
 @media screen and (orientation : portrait) and (min-width: 451px) {
 
-
-    #dLinks { width: 100% !important }
-    #qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand  { display: none !important }
-    
-    .cLinks { width: 100% !important }
-    .cRechts { display: none !important }
+    .cLinks,#dLinks { width: 100% !important }
+    .cRechts,#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand  { display: none !important }
 
     .cTablet, #p451 { display: block !important }
     .cSmartphone, #dPC, #p360, #p361 { display: none !important }

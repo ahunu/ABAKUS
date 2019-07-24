@@ -72,7 +72,6 @@ iPad 5. Gen.: 1024 x 748
 
     .XXL {font-size: calc(3.9vw + 35px) !important;} /* Abakus Balken */
     .XL {font-size: calc(1.38vw + 20px) !important;}
-    .L3 {font-size: calc(1.34vw + 18px) !important;}  /* Vorhand */
     .L3 {font-size: 8vw !important;}  /* Vorhand */
     .L2 {font-size: 7.2vw !important;}  /* Vorhand */
     .L {font-size: 6.44vw !important;}
@@ -233,7 +232,7 @@ iPad 5. Gen.: 1024 x 748
     .L2 {font-size: calc(1.30vw + 22px) !important;}
     .L  {font-size: calc(1.25vw + 20px) !important;}
     .M3 {font-size: calc(1.15vw + 18px) !important;}
-    .M2, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
+    .M2, .Sbtn {font-size: calc(1.05vw + 17px) !important;}
     .M  {font-size: calc(0.95vw + 16px) !important;}
     .S2 {font-size: calc(0.93vw + 14px) !important;}
     .S  {font-size: calc(0.91vw + 12px) !important;}

@@ -1,5 +1,5 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, iSaison, SP, spRangImCup, is1, SAISON, spTeilnahmen, spBestePlatz, spCuppunkte */
+/* global LS, stSaison, QUERFORMAT(), getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, iSaison, SP, spRangImCup, is1, SAISON, spTeilnahmen, spBestePlatz, spCuppunkte */
 
 function showOovwertung() {
 
@@ -51,28 +51,22 @@ function showOovwertung() {
                             if (istOOV(spieler)) {
                                 nTeilnahmen++;
                                 if (CUP[spieler]) {
-                                    if (turnier !== stFinale) {
-                                        hCupPunkte = getCupPunkte(turnier, spieler);
-                                        if (getCupPunkte(turnier, spieler) === '-') {
-                                            CUP[spieler].push(hCupPunkte);
-                                        } else {
-                                            ii = CUP[spieler].length;
-                                            for (var i = 0; i < CUP[spieler].length; i++) {
-                                                if (CUP[spieler][i] === '-'
-                                                        || CUP[spieler][i] <= hCupPunkte) {
-                                                    ii = i;
-                                                    break;
-                                                }
+                                    hCupPunkte = getCupPunkte(turnier, spieler);
+                                    if (getCupPunkte(turnier, spieler) === '-') {
+                                        CUP[spieler].push(hCupPunkte);
+                                    } else {
+                                        ii = CUP[spieler].length;
+                                        for (var i = 0; i < CUP[spieler].length; i++) {
+                                            if (CUP[spieler][i] === '-'
+                                                    || CUP[spieler][i] <= hCupPunkte) {
+                                                ii = i;
+                                                break;
                                             }
-                                            CUP[spieler].splice(ii, 0, hCupPunkte);
                                         }
+                                        CUP[spieler].splice(ii, 0, hCupPunkte);
                                     }
                                 } else {
-                                    if (turnier !== stFinale) {
-                                        CUP[spieler] = [getCupPunkte(turnier, spieler)];
-                                    } else {
-                                        CUP[spieler] = [];
-                                    }
+                                    CUP[spieler] = [getCupPunkte(turnier, spieler)];
                                 }
                             }
                         }
@@ -107,25 +101,24 @@ function showOovwertung() {
     }
 
     SORTnachPlatz.sort();
-    var html = (!QUERFORMAT() ? "<div id='dDummy'></div>" : "")
-//            + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
-            + "<table id=mTable style='swidth: 100% !important;' data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
+    var html = //  (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
+            "<table id=mTable style='swidth: 100% !important;' data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
             + (LS.ShowSpielerNr && QUERFORMAT() ? "<th class=TC>Nr.&nbsp;</th>" : "")
             + "<th class=TL>&nbsp;&nbsp;Name</th>"
             + (QUERFORMAT() ? "<th class='TL noprint'>&nbsp;&nbsp;Ort</th>" : "")
             + "<th class=TR>Ges&nbsp;</th>"
-            + (stFinale ? "<th class='TR'>Fin&nbsp;</th>" : "")
             + "<th class=C colspan='6'>Vorrundenpunkte</th>"
             + "</tr></thead><tbody id=tbody>";
-//            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
-//                    + "<td class=TC><i id='icFilter' onclick='$(this).addClass(\"ui-disabled\");$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-plus-bold zmdi-hc-rotate-45 ui-disabled'></i></td></tr>" : "");
 
     var nSpieler = 0;
     var hPlatz = 0;
     var hLastKey = 0;
     var hClass = '';
+    var hOovpunkte = 0;
+    var hVorrundenpunkte = '';
+
     for (var ii = 0; ii < SORTnachPlatz.length; ii++) {
         var spieler = SORTnachPlatz[ii].substring((SORTnachPlatz[ii].lastIndexOf(';') + 1));
         if (istOOV(spieler)) {
@@ -143,26 +136,27 @@ function showOovwertung() {
             }
             html += '<tr ' + (spieler === LS.ME ? 'id="tr' + LS.ME + '"' : '') + ' class="' + hClass + '">'
                     + '<td class="TR">' + hPlatz + '.&nbsp;</td>';
-            if (LS.ShowSpielerNr && QUERFORMAT()) {
-                html += '<td class=TC>' + (isNaN(spieler) ? '????' : spieler) + '&nbsp;</td>';
+            if (LS.ShowSpielerNr) {
+                html += '<td class="TC cQUER">' + (isNaN(spieler) ? '????' : spieler) + '&nbsp;</td>';
             }
-            html += '<td><span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
-            if (QUERFORMAT()) {
-                html += '<td class=noprint>' + getSpielerOrt(spieler, true) + '</td>';
-            }
-            html += '<th class="TR">' + SP[spieler][iSaison][spCuppunkte] + '&nbsp;</th>';
-            if (stFinale) {
-                html += "<td class='TR'>" + getCupPunkte(stFinale, spieler) + "&nbsp;</td>";
-            }
+            html += '<td><span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>'
+                    + '<td class="cQUER noprint">' + getSpielerOrt(spieler, true) + '</td>';
+
+            hOovpunkte = 0;
+            hVorrundenpunkte = '';
             for (var i = 0; i < 6; i++) {
                 if (CUP[spieler] && CUP[spieler][i]) {
-                    html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
+                    if (CUP[spieler][i] !== '-') {
+                        hOovpunkte += CUP[spieler][i];
+                    }
+                    hVorrundenpunkte += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
                 } else {
-                    html += '<td class="TR"></td>';
+                    hVorrundenpunkte += '<td class="TR"></td>';
                 }
             }
 
-            html += '</tr>';
+            html += '<th class="TR">' + hOovpunkte + '&nbsp;</th>'
+                    + hVorrundenpunkte + '</tr>';
         }
     }
 
@@ -195,11 +189,7 @@ function showOovwertung() {
     }
 
     hideEinenMoment();
-    if (stFinale) {
-        setFont(3.7, true);
-    } else {
-        setFont(4.1, true);
-    }
+    setFont(4.1, true);
 
     if (QUERFORMAT()) {
         window.scrollTo(0, 0);

@@ -217,6 +217,10 @@ iPad 5. Gen.: 1024 x 748
 
 @media screen and (orientation : portrait) and (min-width: 451px) {
 
+
+    #dLinks { width: 100% !important }
+    #qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand  { display: none !important }
+    
     .cLinks { width: 100% !important }
     .cRechts { display: none !important }
 
@@ -232,7 +236,7 @@ iPad 5. Gen.: 1024 x 748
     .L2 {font-size: calc(1.30vw + 22px) !important;}
     .L  {font-size: calc(1.25vw + 20px) !important;}
     .M3 {font-size: calc(1.15vw + 18px) !important;}
-    .M2, .Sbtn {font-size: calc(1.05vw + 17px) !important;}
+    .M2, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
     .M  {font-size: calc(0.95vw + 16px) !important;}
     .S2 {font-size: calc(0.93vw + 14px) !important;}
     .S  {font-size: calc(0.91vw + 12px) !important;}
@@ -294,7 +298,7 @@ iPad 5. Gen.: 1024 x 748
 
 @media screen and (orientation : landscape)  {
 
-    .cLinks { width: 28% !important}
+    .cLinks,#dLinks { width: 28% !important}
     .cRechts { display: block !important }
 
     #dPC { display: block !important }

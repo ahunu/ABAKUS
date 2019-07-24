@@ -451,7 +451,7 @@ function writeCanvas(pTitel) {
     } else {
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
     }
-    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 6).show();
+    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 8).show();
     $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
     $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
 
@@ -554,7 +554,6 @@ function optFont() {
                 $('#mTable').css('font-size', stFont + 'vw');
             }
             if (stStickyHeader) {
-                $('#dDummy').remove();
                 $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
             }
             return;
@@ -570,7 +569,6 @@ function optFont() {
                     $('#mTable').css('font-size', stFont + 'vw').show(optFont);
                 } else {
                     if (stStickyHeader) {
-                        $('#dDummy').remove();
                         $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
                     }
                 }
@@ -582,7 +580,6 @@ function optFont() {
                 }
                 $('#mTable').css('font-size', stFont + 'vw');
                 if (stStickyHeader) {
-                    $('#dDummy').remove();
                     $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
                 }
                 return;
@@ -604,7 +601,6 @@ function optFont() {
                 }
                 $('#mTable').css('font-size', stFont + 'vw');
                 if (stStickyHeader) {
-                    $('#dDummy').remove();
                     $("#mTable").stickyTableHeaders({scrollableArea: $("#dContent" + (CUPS.TYP[stCup] === "MT" ? "MT" : ""))[0], "fixedOffset": 0.01});
                 }
                 return;

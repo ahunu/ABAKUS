@@ -38,8 +38,7 @@ function showTurnier(pTurnier) {
 
     stNamenLen = 0.38;
 
-    var html = (!QUERFORMAT() ? "<div id='dDummy'>&nbsp;</div>" : "")
-            + getStatMeldungen()
+    var html = getStatMeldungen()
             + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
             + "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
@@ -150,7 +149,8 @@ function showTurnier(pTurnier) {
                 + "</tr></tbody></table><br>").css('margin-top', $('#qfHeader').height() + 'px');
         $('#tStand').hide();
     } else {
-        $('#sideContent').css('height', '2px');
+//        $('#sideContent').css('height', '2px');
+        $('#sideTurniereMT').hide();
         $("#dContent").html(html + "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>");
         $('#sideTurniereMT').hide();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
@@ -159,15 +159,27 @@ function showTurnier(pTurnier) {
         $('#nbTurniere').removeClass('ui-btn-active');
     }
 
+
+
+//
+//
+//            $('#dContent').html(html);
+//            $('#sideTurniereMT').hide();
+//            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
+//            var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
+//            $('#sideContent').css('height', hx + 'px').scrollTop(0);
+
+
+
     hideEinenMoment();
     setFont(4.7, true);
 
-    if (QUERFORMAT()) {
+//    if (QUERFORMAT()) {
         window.scrollTo(0, 0);
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
         }
-    }
+//    }
 }
 
 function popupSpieler(pSpieler, pSaison) {
@@ -297,9 +309,9 @@ function popupSpieler(pSpieler, pSaison) {
     $('#jbSpielerTitel').html(((isNaN(pSpieler) || !PC) ? '' : pSpieler + '&nbsp;&nbsp;') + getSpielerName(pSpieler).replace(' ', '&nbsp;') + (stSaison === pSaison ? '' : '&nbsp;&nbsp;-&nbsp;&nbsp;' + pSaison + ' ') + (!isNaN(pSpieler) && SPIELER[pSpieler][4] ? '&nbsp;&#134;' : '') + (QUERFORMAT() && stStat !== "Platzierungen" ? '' : '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + getSpielerOrt(pSpieler, true)));
     var hFont = 0;
     if (nTurniere <= 4) {
-        hFont = 3;
+        hFont = 2.8;
     } else {
-        hFont = 3 - ((nTurniere - 4) * 0.038);
+        hFont = 2.8 - ((nTurniere - 4) * 0.03);
     }
     hFont += 'vh';
     $('#jbSpielerContent').html(html).css('font-size', hFont);

@@ -89,80 +89,77 @@
 
         <div id=dLinks class="noprint" style="width:28%;position:fixed;">
 
-            <div id=sideCUP>
-                <div id=hfHeaderL>
-                    <div data-role="navbar">
-                        <ul>
-                            <li class="nb12">
-                                <!--  <a id=nbHome onClick="nbHome();"><img src="../Icons/icon-36-ldpi.png" height="32" width="32" style="margin:-8px;"></a> -->
-                                <a onclick="historyBack()"><i class="i zmdi-home"></i></a>
-                            </li>
-                            <li class="nb38 cCUP">
-                                <a id=nbUebersicht onClick="showInhalt();">Inhalt</a>
-                            </li>
-                            <li class="nb38 cCUP">
-                                <a id=nbSaison onclick="showSaison()"><span id="tArchiv">Archiv</span></a>
-                            </li>
-                            <li class="nb12 cCUP">
-                                <a id=nbArchiv onclick="nbArchiv()"><i class="i zmdi-play zmdi-hc-rotate-270"></i></a>
-                            </li>
-                            <li class="nb50 cMT">
-                                <a id=nbAllgemeines onClick="showUebersichtMT();">Allgemeines</a>
-                            </li>
-                            <li class="nb38 cMT">
-                                <a id=nbTurniere onclick="showUebersichtMT(true)"><span>Turniere</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id=hfHeader onclick='event.stopPropagation();'>
-                        <div class="ui-grid-a cSmartphone">
-                            <div class="ui-block-a" style="width:22vw; text-align:center;">
-                                <img class=hfHeaderIcon src='../Icons/Statistik.png' style="position: relative; top: 3px; height:1vw; width:auto;" alt="Abakus"/>
-                            </div>
-                            <div class="ui-block-b" style="padding:0;margin:0;">
-                                <div class="ui-grid-a">
-                                    <div class="ui-block-a">
-                                        <div class="hfHeaderZeile1 L2" style="width:100%;margin:-1pt 0;white-space:nowrap;font-weight:bold;font-style:italic;"></div>
-                                        <div class="hfHeaderZeile2 L2" style="width:100%;margin:-4pt 0;white-space:nowrap;font-weight:normal;"></div>
-                                    </div>
+            <div id=hfHeaderL>
+                <div data-role="navbar">
+                    <ul>
+                        <li class="nb12">
+                            <!--  <a id=nbHome onClick="nbHome();"><img src="../Icons/icon-36-ldpi.png" height="32" width="32" style="margin:-8px;"></a> -->
+                            <a onclick="historyBack()"><i class="i zmdi-home"></i></a>
+                        </li>
+                        <li class="nb38 cCUP">
+                            <a id=nbUebersicht onClick="showInhalt();">Inhalt</a>
+                        </li>
+                        <li class="nb38 cCUP">
+                            <a id=nbSaison onclick="showSaison()"><span id="tArchiv">Archiv</span></a>
+                        </li>
+                        <li class="nb12 cCUP">
+                            <a id=nbArchiv onclick="nbArchiv()"><i class="i zmdi-play zmdi-hc-rotate-270"></i></a>
+                        </li>
+                        <li class="nb50 cMT">
+                            <a id=nbAllgemeines onClick="showUebersichtMT();">Allgemeines</a>
+                        </li>
+                        <li class="nb38 cMT">
+                            <a id=nbTurniere onclick="showUebersichtMT(true)"><span>Turniere</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div id=hfHeader onclick='event.stopPropagation();'>
+                    <div class="ui-grid-a cSmartphone">
+                        <div class="ui-block-a" style="width:22vw; text-align:center;">
+                            <img class=hfHeaderIcon src='../Icons/Statistik.png' style="position: relative; top: 4px; height:1vw; width:auto;" alt="Abakus"/>
+                        </div>
+                        <div class="ui-block-b" style="padding:0;margin:0;">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">
+                                    <div class="hfHeaderZeile1 L2" style="width:100%;margin:-1pt 0;white-space:nowrap;font-weight:bold;font-style:italic;"></div>
+                                    <div class="hfHeaderZeile2 L2" style="width:100%;margin:-4pt 0;white-space:nowrap;font-weight:normal;"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ui-grid-a cTablet">
-                            <div class="ui-block-a" style="width:16vw; text-align:center;">
-                                <img class=hfHeaderIcon src='../Icons/Statistik.png' style="position: relative; top: 3px; height:1vw; width:auto;" alt="Abakus"/>
-                            </div>
-                            <div class="ui-block-b" style="padding:0;margin:0;">
-                                <div class="ui-grid-a">
-                                    <div class="ui-block-a">
-                                        <div class="hfHeaderZeile1 M2" style="width:100%;margin:-1pt 0;white-space:nowrap;font-weight:bold;font-style:italic;"></div>
-                                        <div class="hfHeaderZeile2 M2" style="width:100%;margin:-4pt 0;white-space:nowrap;font-weight:normal;"></div>
-                                    </div>
+                    </div>
+                    <div class="ui-grid-a cTablet">
+                        <div class="ui-block-a" style="width:16vw; text-align:center;">
+                            <img class=hfHeaderIcon src='../Icons/Statistik.png' style="position: relative; top: 4px; height:1vw; width:auto;" alt="Abakus"/>
+                        </div>
+                        <div class="ui-block-b" style="padding:0;margin:0;">
+                            <div class="ui-grid-a">
+                                <div class="ui-block-a">
+                                    <div class="hfHeaderZeile1 M2" style="width:100%;margin:-1pt 0;white-space:nowrap;font-weight:bold;font-style:italic;"></div>
+                                    <div class="hfHeaderZeile2 M2" style="width:100%;margin:-4pt 0;white-space:nowrap;font-weight:normal;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <ul id="sideTurniereMT" data-role="listview" data-inset="true" data-divider-theme="f" data-corners="false" hidden>
-                    <li class="cMTallg" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines:</li>
-                    <li class="cMTallg" data-icon="false"><a onClick="showPlatzierungen();">&nbsp;Einzelplatzierungen</a></li>
-                    <li class="cMTallg" data-icon="false"><a onClick="showAnekdotenMT();">&nbsp;Anekdoten</a></li>
-                    <li class="cMTallg" data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>
-                    <li class="cMTturn" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Wertung:</li>
-                    <li class="cMTturn" data-icon="false" style='padding:0;margin:0'>
-                        <fieldset data-role=controlgroup data-mini="true" data-theme="a" style='padding:0;margin:0'>
-                            <input type=radio name=iWERTUNG onClick="setMwEwWertung('MW')" id=iMW value='MW' >
-                            <label class=btn for=iMW >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mannschaftswertung</label>
-                            <input type=radio name=iWERTUNG onClick="setMwEwWertung('EW')" id=iEW value='EW'>
-                            <label class=btn for=iEW >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Einzelwertung</label>
-                        </fieldset>
-                    </li>
-                    <li class="cMTturn" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Die Turniere:</li>
-                    <br class="cMTallg">
-                </ul>
-
             </div>
+
+            <ul id="sideTurniereMT" data-role="listview" data-inset="true" data-divider-theme="f" data-corners="false" hidden>
+                <li class="cMTallg" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines:</li>
+                <li class="cMTallg" data-icon="false"><a onClick="showPlatzierungen();">&nbsp;Einzelplatzierungen</a></li>
+                <li class="cMTallg" data-icon="false"><a onClick="showAnekdotenMT();">&nbsp;Anekdoten</a></li>
+                <li class="cMTallg" data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>
+                <li class="cMTturn" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Wertung:</li>
+                <li class="cMTturn" data-icon="false" style='padding:0;margin:0'>
+                    <fieldset data-role=controlgroup data-mini="true" data-theme="a" style='padding:0;margin:0'>
+                        <input type=radio name=iWERTUNG onClick="setMwEwWertung('MW')" id=iMW value='MW' >
+                        <label class=btn for=iMW >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mannschaftswertung</label>
+                        <input type=radio name=iWERTUNG onClick="setMwEwWertung('EW')" id=iEW value='EW'>
+                        <label class=btn for=iEW >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Einzelwertung</label>
+                    </fieldset>
+                </li>
+                <li class="cMTturn" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Die Turniere:</li>
+                <br class="cMTallg">
+            </ul>
 
             <div id=sideContent hidden style="overflow-x: hidden; overflow-y: auto;-webkit-overflow-scrolling: touch;">
                 <ul  id="dContent" class='K' data-role="listview" data-inset="true" data-divider-theme="f" data-corners="false">

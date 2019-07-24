@@ -195,7 +195,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                 + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',true);" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-play zmdi-hc-rotate-270 noprint"></i>'
 
                 + '<li class="cDieListen" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a></li>'
-                + ((LS.ME === "3425" || LS.ME === "-56" || LS.ME === "2037") && pSaison === 1 ? '<li class="cDieListen" data-icon=false><a id=bOovwertung onclick="showOovwertung();">&nbsp;OOV-Wertung</a></li>' : '')
+                + ((LS.ME === "3425" || LS.ME === "-56" || LS.ME === "2037") && stCup === 56 && pSaison === 1 ? '<li class="cDieListen" data-icon=false><a id=bOovwertung onclick="showOovwertung();">&nbsp;OOV-Wertung</a></li>' : '')
 
                 + (window.location.href.toUpperCase().indexOf('OOV') < 0
                         ? '<li class="cDieListen" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'

@@ -101,8 +101,7 @@ function showCupwertung() {
     }
 
     SORTnachPlatz.sort();
-    var html = (!QUERFORMAT() ? "<div id='dDummy'></div>" : "")
-            + (stCup === 81 // Schmankerl Tarock
+    var html = (stCup === 81 // Schmankerl Tarock
                     ? "&nbsp;<img src='../Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Cupwertung.</b><br></span>"
                     + "&nbsp;<img src='../Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>"
                     : ''

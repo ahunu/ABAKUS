@@ -28,6 +28,8 @@ function showText(pText) {
     var hTitel2 = '';
     if (pText === 'TippsUndTricks') {
         writeCanvas('Tipps und Tricks');
+    } else if (pText === 'CTDetailstatistik') {
+        writeCanvas('Detailstatistik');
     } else {
         writeCanvas(pText);
     }

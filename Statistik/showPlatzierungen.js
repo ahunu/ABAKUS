@@ -192,7 +192,6 @@ function showPlatzierungen(pSort) {
             $("#mTable").tableHeadFixer({"left": 1});
             $("#mTable tr:even").css('background-color', '#efefef');
         } else {
-            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
             html = '<table id=mTable data-role="table" data-mode="columntoggle" cellspacing="0" class="table C ui-body-d ui-shadow ui-responsive data-column-btn-text=\'\'">'
                     + '<thead>'
                     + '<tr ' + (QUERFORMAT() ? "id=L0P1" : "") + ' class=bHell>'
@@ -206,7 +205,6 @@ function showPlatzierungen(pSort) {
                     + htmlRumpf
                     + '</table>';
             $('#dContent').html(html + '<br>').show();
-            $('#sideTurniereMT').hide();
             $('#sideTurniereMT').hide();
             $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
             var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;

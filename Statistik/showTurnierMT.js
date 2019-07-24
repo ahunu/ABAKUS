@@ -39,8 +39,7 @@ function showTurnierMW(pTurnier) {
     var hClass = '';
     stNamenLen = 0.41;
 
-    var html = (!QUERFORMAT() ? "<div id='dDummy'>&nbsp;</div>" : "")
-            + "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
+    var html = "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
             + (QUERFORMAT() && LS.ShowSpielerNr ? "<th class=TC>Nr.&nbsp;</th>" : '')
@@ -197,9 +196,8 @@ function showTurnierEW(pTurnier) {
     var nSpieler = 0;
     var hClass = '';
     stNamenLen = 0.41;
-    var html = (!QUERFORMAT() ? "<div id='dDummy'>&nbsp;</div>" : "")
-//            + getStatMeldungen()
-            + "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
+    var html = // getStatMeldungen()
+             "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
             + (QUERFORMAT() && LS.ShowSpielerNr ? "<th class=TC>Nr.&nbsp;</th>" : "")

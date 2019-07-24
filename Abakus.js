@@ -301,7 +301,7 @@ function writeCanvas(pCup) {
     } else {
         $('#qfHeaderZeile1').attr("style", "font-size:4.5vw;white-space:nowrap;font-family:Arial;font-style:italic;");
     }
-    $('.hfHeaderIcon').css('height', $('#hMix').height() - 6).show();
+    $('.hfHeaderIcon').css('height', $('#hMix').height() - 8).show();
 }
 
 function myDateString(pDate) {
@@ -1111,9 +1111,9 @@ function whenCUPSloaded() {
     var hBtnName = 'b??';
     var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
     for (var termin in TERMINE) {
-        if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4) !== "Test") {
+        if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST") {
             if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
-                    || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4) !== "Test" || LS.ME === "3425")) {
+                    || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4).toUpperCase() !== "TEST" || LS.ME === "3425")) {
                 if (TERMINE[termin].CUP === 8 || TERMINE[termin].CUP === 10) {
                     hTemp = '';
                 }
@@ -1604,14 +1604,14 @@ function fINIT() {
     if ($('#hMenu').is(":visible")) {
         $('.iMain').css('height', $('#hMenu').height() - 4);
     } else if ($('#hMix').is(":visible")) {
-        $('.hfHeaderIcon').css('height', $('#hMix').height() - 6);
+        $('.hfHeaderIcon').css('height', $('#hMix').height() - 8);
     }
 
     window.onresize = function (e) {
         if ($('#hMenu').is(":visible")) {
             $('.iMain').css('height', $('#hMenu').height() - 4);
         } else if ($('#hMix').is(":visible")) {
-            $('.hfHeaderIcon').css('height', $('#hMix').height() - 6);
+            $('.hfHeaderIcon').css('height', $('#hMix').height() - 8);
         }
         $('#pContent').each(function () { // sonst funktioniert important nicht
             this.style.setProperty('height', ($(window).innerHeight() - $('#pContent').offset().top - 1) + 'px', 'important');

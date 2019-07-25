@@ -403,7 +403,7 @@ function listeDrucken() {
     }
     $('#dPrint').attr('style', 'width:100%');
     $('#tStand').css('position', 'absolute');
-    $('#qfHeader').removeClass('fixHeader').addClass('printHeader');
+    $('#qfHeader').attr('style', 'position: absolute; top: 0; width: 100%; padding:0em; margin:0px; background:#ffffff');
     $('#qfHeaderLinks').attr('style', 'width:12%;text-align:center;');
     $('#qfHeaderRechts').attr('style', 'width:88%');
     $('#qfHeaderZeile1').attr('style', 'margin:-4pt 0;font-size:32px;white-space:nowrap;font-style:italic;');

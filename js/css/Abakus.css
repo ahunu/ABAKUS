@@ -62,10 +62,8 @@ iPad 5. Gen.: 1024 x 748
 @media only screen and (orientation : portrait) and (max-width: 375px) { /* Galaxy A3, Note4 */
 
     .cLinks,#dLinks { width: 100% !important }
-    .cRechts,#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand  { display: none !important }
-
     .cSmartphone, #p360 { display: block !important }
-    .cTablet, #dPC, #p361, #p451 { display: none !important }
+    .cQUER, .cTablet, #dPC, #p361, #p451 { display: none !important }
 
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.5vw + 4px) !important;} /* index Runden/Cups */
     .ui-btn {padding: .22em .2em !important;}
@@ -138,11 +136,9 @@ iPad 5. Gen.: 1024 x 748
 
 @media only screen and (orientation : portrait) and (min-width: 376px) and (max-width: 450px) { /* Galaxy S8+ */
 
-    .cLinks,#dLinks { width: 100% !important }
-    .cRechts,#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand  { display: none !important }
-
+    .cLinks, #dLinks { width: 100% !important }
     .cSmartphone, #p361 { display: block !important }
-    .cTablet, #dPC, #p360, #p451 { display: none !important }
+    .cQUER, .cTablet, #dPC, #p360, #p451 { display: none !important }
 
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(4.9vw + 3px) !important;} /* index Runden/Cups */
     .ui-btn {padding: .19em .18em !important;}
@@ -212,16 +208,13 @@ iPad 5. Gen.: 1024 x 748
         border-radius: 0.3em;
         background-color: rgba(0, 0, 0, 0.133);  
     }
-}       
-
+}
 
 @media screen and (orientation : portrait) and (min-width: 451px) {
 
-    .cLinks,#dLinks { width: 100% !important }
-    .cRechts,#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand  { display: none !important }
-
+    .cLinks, #dLinks { width: 100% !important }
     .cTablet, #p451 { display: block !important }
-    .cSmartphone, #dPC, #p360, #p361 { display: none !important }
+    .cQUER, .cSmartphone, #dPC, #p360, #p361 { display: none !important }
 
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(1.25vw + 20px) !important;}
     .ui-btn {padding: .5vh .2em !important;}
@@ -295,7 +288,6 @@ iPad 5. Gen.: 1024 x 748
 @media screen and (orientation : landscape)  {
 
     .cLinks,#dLinks { width: 28% !important}
-    .cRechts { display: block !important }
 
     #dPC { display: block !important }
     .cSmartphone, .cTablet, #p360, #p361, #p451 { display: none !important }

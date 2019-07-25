@@ -20,7 +20,6 @@ function showInhalt() {
             + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();">&nbsp;Cupsieger</a></li>'
             + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();">&nbsp;Teilnehmerzahlen</a></li>'
             + '<li data-icon="false"><a id="bTeilnehmer" onClick="showTeilnehmer();" ' + (LS.ME === '3425' || LS.ME === '3244' ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmer</a></li>'
-//            + (stCup === 56 || stCup === 82 ? '<li data-icon="false"><a id="bFotos" onClick="showFotos();">&nbsp;Fotos</a></li>' : '')
             + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
             + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
             + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>'
@@ -54,8 +53,6 @@ function showInhalt() {
 }
 
 function showUebersichtMT(pTurniere) {
-
-
 
     if (jbSpieler.isOpen) {
         jbSpieler.close();
@@ -185,53 +182,4 @@ function showLogo() {
     $('#tWeiser').html(hZitat[1]);
 
     $("#dCopyright").attr('style', "width:" + ($(window).innerWidth() * 0.72) + "px;position: absolute; top: " + ($(window).innerHeight() - $('#dCopyright').height() - 2) + "px; left: " + ($(window).innerWidth() / 100 * 28) + "px;").show();
-}
-
-function showFotos() {
-
-        if (QUERFORMAT()) {
-            if (lastBtn) {
-                $(lastBtn).removeClass('ui-btn-active');
-            }
-            lastBtn = '#bFotos';
-            $(lastBtn).addClass('ui-btn-active');
-        }
-
-        if (jbSpieler.isOpen) {
-            jbSpieler.close();
-        }
-
-        if (LS.ME !== "NOBODY") {
-            showIcons([]);
-        }
-
-        stStat = 'Fotos';
-//        stNamenLen = 99;
-//        writeCanvas(stStat);
-        $("#dCopyright").hide();
-//        if (QUERFORMAT()) {
-//            $('#dRumpf').html('');
-//        } else {
-//            $('#dContent').html('');
-//            $('#sideTurniereMT').hide();
-//            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-//            var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
-//            $('#sideContent').css('height', hx + 'px').scrollTop(0);
-//        }
-
-        if (QUERFORMAT()) {
-            var hx = $(window).innerWidth() - $('#dRumpf').offset().left - 1;
-            $('#qfHeader').hide();
-//            $('#dRumpf').html('<iframe src="https://utcklopeinersee.jimdofree.com" height=' + ($(window).innerHeight() - 10) + ' width=' + hx + '></iframe>').show();
-            $('#dRumpf').html('<iframe id=myIFrame src="#" height=' + ($(window).innerHeight() - 10) + ' width=' + hx + '></iframe>').show();
-//var ifr = document.getElementById('myIFrame');
-//if (ifr) {
-//  ifr.contentWindow.location.replace('https://utcklopeinersee.jimdofree.com');
-//}
-$("#myIFrame").get(0).contentWindow.location.replace('https://utcklopeinersee.jimdofree.com');
-        } else {
-            var hx = $(window).innerHeight() - $('#hfHeaderL').offset().top - 1;
-            $('#hfHeader,#sideContent').hide();
-            $('#sideTurniereMT').html('<iframe src="https://utcklopeinersee.jimdofree.com" height=' + hx + ' width=' + $(window).innerWidth() + '></iframe>').show();
-        }
 }

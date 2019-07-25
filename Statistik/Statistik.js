@@ -473,7 +473,7 @@ function fINIT(pCup) {
         } else {
             $('#dPrint').attr('style', 'width:72%');
             $('#tStand').css('position', 'fixed');
-            $('#qfHeader').removeClass('printHeader').addClass('fixHeader');
+            $('#qfHeader').attr('style', 'position: fixed; top: 0; width: 100%; padding:0em; margin:0px; background:#f5f5f5');
             $('#qfHeaderLinks').attr('style', 'width:6%;text-align:center;');
             $('#qfHeaderRechts').attr('style', 'width:94%');
             $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:2.27vw;white-space:nowrap;font-family:Arial;font-style:italic;");

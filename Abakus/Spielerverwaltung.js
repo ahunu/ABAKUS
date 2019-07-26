@@ -966,6 +966,10 @@ function onSpeichern() {
         }
     }
 
+//    for (var spieler in SPIELERext) {
+//                SPIELERnrUpdate[spieler] = getSPIELERnr(spieler);
+//    }
+
     showEinenMoment('Spieler speichern:', html);
     firebase.database().ref('/00/SPIELERext')
             .update(SPIELERextUpdate)

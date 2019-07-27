@@ -37,7 +37,7 @@ function initSAISON() {
         }
     }
 
-    for (var i = SORT.length - 1; i > 0; i--) { // die letzen zuerst
+    for (var i = SORT.length - 1; i >= 0; i--) { // die letzen zuerst
         if (STAT[SORT[i]]._SAISON !== stSaison) {
             if (stSaison) {
                 bereSaison();

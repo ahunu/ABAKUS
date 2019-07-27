@@ -75,13 +75,27 @@ function showOovwertung() {
             }
         }
     }
+//
+//    var SORTnachPlatz = [];
+//    var spieler = '';
+//    for (var spieler in SP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
+//        if (SP[spieler][iSaison]) {
+//            SORTnachPlatz.push((100 + SP[spieler][iSaison][spRangImCup]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+//        }
+//    }
+
 
     var SORTnachPlatz = [];
     var spieler = '';
-    for (var spieler in SP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
-        if (SP[spieler][iSaison]) {
-            SORTnachPlatz.push((100 + SP[spieler][iSaison][spRangImCup]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+    var hGesamt = 0;
+    for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
+        hGesamt = 0;
+        for (i = 0; i < 6 && i < CUP[spieler].length; i++) {
+            if (CUP[spieler][i] !== '-') {
+                hGesamt += CUP[spieler][i];
+            }
         }
+            SORTnachPlatz.push((9999 - hGesamt) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
     }
 
     if (LS.ME !== "NOBODY") {

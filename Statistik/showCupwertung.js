@@ -102,10 +102,10 @@ function showCupwertung() {
 
     SORTnachPlatz.sort();
     var html = (stCup === 81 // Schmankerl Tarock
-                    ? "&nbsp;<img src='../Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Cupwertung.</b><br></span>"
-                    + "&nbsp;<img src='../Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>"
-                    : ''
-                    )
+            ? "&nbsp;<img src='../Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Cupwertung.</b><br></span>"
+            + "&nbsp;<img src='../Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>"
+            : ''
+            )
             + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
             + "<table id=mTable style='swidth: 100% !important;' data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
@@ -161,12 +161,19 @@ function showCupwertung() {
         if (stFinale) {
             html += "<td class='TR'>" + getCupPunkte(stFinale, spieler) + "&nbsp;</td>";
         }
-        for (var i = 0; i < 6; i++) {
-            if (CUP[spieler][i]) {
-                html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
-            } else {
-                html += '<td class="TR"></td>';
-            }
+//        for (var i = 0; i < 6; i++) { Sollte eigentlich funktionieren !!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+//            if (i < CUP[spieler].lenght) {
+//                html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
+//            } else {
+//                html += '<td class="TR"></td>';
+//            }
+//        }
+
+        for (i = 0; i < 6 && i < CUP[spieler].length; i++) {
+            html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
+        }
+        for (i = CUP[spieler].length; i < 6; i++) {
+            html += '<td class="TR"></td>';
         }
 
         if (QUERFORMAT()) {

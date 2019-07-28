@@ -95,7 +95,7 @@ function showOovwertung() {
                 hGesamt += CUP[spieler][i];
             }
         }
-            SORTnachPlatz.push((9999 - hGesamt) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+        SORTnachPlatz.push((9999 - hGesamt) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
     }
 
     if (LS.ME !== "NOBODY") {

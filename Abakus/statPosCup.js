@@ -91,12 +91,10 @@ function statPosCup(pRunde) {
             if (STAT.S[i].SPIELE[stTurCupGes] >= (STAT.MAXSPIELE[stTurCupGes] * CUPS.DISPAB[stCup][stTurCupGes] / 100)
                     || stGelegenheitsspieler
                     || STAT.S[i].NR === '0000') {
-
                 if (STAT.S[i].NR === '0000'
                         || stSort.indexOf('TIS') !== 0
-                        || STAT.TURRUNDE === 2 && STAT.S[i].PUNKTERx[0]
-                        || STAT.TURRUNDE === 3 && STAT.S[i].PUNKTERx[1]) {  // nur wenn TIS oder in der letzten Runde mitgespielt
-
+                        || STAT.TURRUNDE === 2 && STAT.S[i].SCHREIBER[0]
+                        || STAT.TURRUNDE === 3 && STAT.S[i].SCHREIBER[1]) {  // nur wenn TIS oder in der letzten Runde mitgespielt
                     if (STAT.S[i].NR === '0000') {
                         sKey = '00000000000;' + i;
                     } else if (stSort === 'NAM') {

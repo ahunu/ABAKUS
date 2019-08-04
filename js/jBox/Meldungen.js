@@ -15,13 +15,13 @@ function showEineNotiz(pText, pColor) {
         },
         color: pColor,
         content: '<span class="M N">' + pText + '</span>',
-        autoClose: 6000
+        autoClose: 15000
     });
 }
 
 function showEinenTip(pTarget, pText) {
     $(pTarget).focus();
-    myJTip.setContent('<span class="M N">' + pText + '</span>');
+    myJTip.setContent('<span class="L N">' + pText + '</span>');
     myJTip.open({
         target: pTarget
     });

@@ -154,10 +154,6 @@ function showTeilnehmer(pSort) {
             $('#sideContent').css('height', hx + 'px').scrollTop(0);
         }
 
-
-
-
-
         var hTN = 0;
         var sKey = '';
         var SORT = [];
@@ -246,7 +242,9 @@ function showTeilnehmer(pSort) {
             }
         }
 
-        if (html) {
+        if (!html) {
+            hideEinenMoment();
+        } else {
             html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive ssssstable-stripe' data-column-btn-text=''><thead>"
                     + "<tr id='L0P1' class='bGrau'>"
                     + "<th></th>"
@@ -255,7 +253,7 @@ function showTeilnehmer(pSort) {
                     + "<th id=TURNIER class='C PT cBlau" + (pSort === 'TURNIER' ? ' U' : '') + "' onclick='showTeilnehmer(\"TURNIER\")'>Turnier<br>1.2.3.</th>"
                     + "<th id=PLATZ class='TC PT cBlau" + (pSort === 'PLATZ' ? ' U' : '') + "' onclick='showTeilnehmer(\"PLATZ\")'>&Oslash;<br>Platz</th>"
                     + "<th id=TN class='TR PT cBlau QUER" + (pSort === 'TN' ? ' U' : '') + "' onclick='showTeilnehmer(\"TN\")'>TN</th>"
-                    + (window.location.href[0] === 'f' ? "<th id=PUNKTE class='TR PT cBlau QUER" + (pSort === 'PUNKTE' ? ' U' : '') + "' onclick='showTeilnehmer(\"PUNKTE\")'>Punkte</th>" : '')
+                    + (window.location.href[0] === 'f' ? "<th id=PUNKTE class='TR PT cBlau QUER" + (pSort === 'PUNKTE' ? ' U' : '') + "' onclick='showTeilnehmer(\"PUNKTE\")'>Punkte</th>" : '') // Nur ich zuhause
                     + "<th></th>"
                     + "</tr>"
                     + "</thead><tbody>"

@@ -446,12 +446,12 @@ function writeCanvas(pTitel) {
         }
     }
     $('#tStand').hide();
-    if (CUPS.TYP[stCup] === 'CUP' && stCup > 4) {
-        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
-    } else {
-        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
-    }
-    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 8).show();
+//    if (CUPS.TYP[stCup] === 'CUP' && stCup > 4) {
+//        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
+//    } else {
+//        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
+//    }
+//    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 8).show();
     $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
     $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
 

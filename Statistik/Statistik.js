@@ -31,7 +31,6 @@ var tFIXPUNKTE = [, 223, 198, 180, 168, 156, 147, 138, 131, 124, // 0 - 9
 
 var onValueInit = false;
 var myJBox = null;
-var myJTip = null;
 var jbSpieler = null;
 var jbArchiv = null;
 var I = -1;
@@ -111,6 +110,14 @@ function nbArchiv() {
 function getSTAT(pCup) {
     stCup = pCup;
     stSynchron = false;
+
+    if (CUPS.TYP[stCup] === 'CUP' && stCup > 4) {
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
+    } else {
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
+    }
+    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 8).show();
+
     STAT = JSON.parse(localStorage.getItem("Abakus.STAT" + ("000" + stCup).substr(-3)));
     if (STAT === null) {
         loadInProgress = true;
@@ -130,9 +137,6 @@ function whenSTATloaded() {
         $('#tZumTurnier').html('Zurück');
     }
 
-//    if (CUPS.TYP[stCup] === 'MT') {
-//        showUebersichtMT('*');
-//    }
     if (!stStat) {
         if (CUPS.TYP[stCup] === 'MT') {
             if (STAT) {
@@ -141,7 +145,7 @@ function whenSTATloaded() {
                 showUebersichtMT(false);
             }
         } else {
-            if (STAT) {
+            if (STAT && STAT._ANZSAISONEN) {
                 showSaison(1);
             } else {
                 showInhalt();
@@ -208,7 +212,6 @@ function getDateString(pDate) {
 }
 
 function scrollToMe() {
-//    $('#iScrollToMe').removeClass('ui-btn-active');
     if (jbSpieler) {
         if (jbSpieler.isOpen) {
             jbSpieler.close();
@@ -381,13 +384,6 @@ function fINIT(pCup) {
         $('.cCUP').remove();
     }
 
-//    if (QUERFORMAT()) {
-//        $('#hfHeader').remove();
-//    } else {
-//        $('#dLinks').attr("style", "width:100%");
-//        $('#qfHeader,#dDummy,#dPrint,#qfHeaderLinks,#qfHeaderZeile1,#qfHeaderZeile2,#dRumpf,#dCopyright,#tStand').remove();
-//    }
-
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
 //            return false; // oncontextmenu
@@ -425,16 +421,6 @@ function fINIT(pCup) {
 
     $('#tJJJJ').text(new Date().getFullYear());
     setFont();
-    myJTip = new jBox('Tooltip', {
-        theme: 'TooltipSmall',
-        Class: 'TooltipError',
-        target: '#iVNN',
-        content: '?',
-        delayClose: 20,
-        closeOnClick: true,
-        closeOnEsc: true,
-        zIndex: 8000
-    });
     var hx = 0;
     var hy = 0;
     if (QUERFORMAT()) {

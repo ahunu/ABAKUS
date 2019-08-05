@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.phonegap.ABAKUSst" 
-        versionCode = "9680000"
-        version     = "9680000">     <!-- ABAKUSst -->
+        id          = "com.phonegap.ABAKUS" 
+        versionCode = "972"
+        version     = "972">     <!-- ABAKUS -->
 
-    <name>ABAKUS für Tablets</name>
+    <name>ABAKUS</name>
     
     <!-- ACHTUNG Die config.xml muss auf _Standard und _Tablet geaendert werden. -->
 
@@ -27,6 +27,7 @@
     <preference name="splashscreen"      value="Icons/AbakusSplash.png" />
     <preference name="permissions"       value="none"      />
     <preference name="phonegap-version"  value="cli-7.1.0" />
+    <preference name="orientation"       value="portrait"  />
     <preference name="target-device"     value="universal" />
     <preference name="fullscreen"        value="false"     /> 
 

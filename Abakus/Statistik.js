@@ -98,9 +98,13 @@ function QUERFORMAT() {
 function historyBack() {
     $('body').addClass('ui-disabled');
     if (!QUERFORMAT()) {
-        LS.ShowCups = stCup;
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         $('#bMeinTisch').addClass('ui-disabled');
+        if (window.location.search === '?Anmeldungen') {
+            LS.ShowCups = stCup * -1;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            window.location.replace('../index.html');
+            return;
+        }
     }
     history.back();
 }

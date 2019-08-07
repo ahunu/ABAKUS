@@ -392,6 +392,7 @@ function Speichern() {
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 CUPS.TERMINE = TERMINE;
                 localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+                nGeaendert = 0; // Sonst kein history.back();
                 window.history.back();
             })
             .catch(function (error) {
@@ -512,5 +513,13 @@ $(document).bind('pageinit', function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     SPIELERext = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
 
-//    whenCUPSloaded(true);
+    window.addEventListener('beforeunload', (event) => {
+        if (nGeaendert) {
+            // Cancel the event as stated by the standard.
+            event.preventDefault();
+            // Chrome requires returnValue to be set.
+            event.returnValue = '';
+        }
+    });
+
 });

@@ -1008,6 +1008,7 @@ function onSpeichern() {
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                             localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
                             localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
+                            nGeaendert = 0; // Sonst kein history.back();
                             window.history.back();
                         })
                         .catch(function (error) {
@@ -1059,7 +1060,7 @@ $(document).bind('pageinit', function () {
 //    if (SPIELERext && LS.ME === '3425') {
 //        whenSPIELERloaded();
 //    } else {
-        loadSPIELER();
+    loadSPIELER();
 //    }
 
     $("input:radio[name=iSort][value=1]").prop('checked', true).checkboxradio("refresh");
@@ -1083,10 +1084,16 @@ $(document).bind('pageinit', function () {
         dZuletzt = new Date(dZuletzt).toJSON().substr(0, 10);
     });
 
-    if (/iPad|iPhone/.test(navigator.userAgent)) {
-        window.onbeforeunload = function (event) {
+    window.onbeforeunload = function (event) {
+        if (/iPad|iPhone/.test(navigator.userAgent)) {
             $('body').addClass('ui-disabled');
-        };
-    }
+        }
+        if (nGeaendert) {
+            // Cancel the event as stated by the standard.
+            event.preventDefault();
+            // Chrome requires returnValue to be set.
+            event.returnValue = '';
+        }
+    };
 
 });

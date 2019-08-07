@@ -28,6 +28,8 @@ var stLastZitat = [];
 var mTischNeuLoeschen = '';
 var mHref = false;
 var meinStellvertreter = '3244';
+var mHash = false;
+
 const iRufer = 1;
 const iSolorufer = 2;
 const iPagatrufer = 3;
@@ -56,6 +58,15 @@ const iUltimo = 25;
 const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
+
+
+function historyBack() {
+    if (LS.ShowCups) {
+        LS.ShowCups = 0;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
+    history.back();
+}
 
 function fHref(pHref) {
     $('body').addClass('ui-disabled');
@@ -156,10 +167,20 @@ function hrefStatistikPR() {
 }
 
 function initSeite1() {
-    I = LS.ShowCups;
+
+    if (LS.ShowCups < 0) {
+        mHash = true;
+        I = LS.ShowCups * -1;
+
+        LS.ShowCups = 0;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    } else {
+        I = LS.ShowCups;
+    }
+
     showCUPS();
     if (QUERFORMAT()) {
-        if (LS.ShowCups) {
+        if (I) {
             showCup(I, false, false, '?');
         } else {
             showLogo(true);
@@ -782,7 +803,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
         }
     }
     setTimeout(function () {
-        if (!window.location.hash) {
+        if (!window.location.hash && !mHash) {
             if (!QUERFORMAT || !window.location.search)
                 window.location.href = "#" + Date.now();
         }
@@ -1688,5 +1709,14 @@ $(document).ready(function () {
             }
         };
     }
+
+
+    window.onbeforeunload = function (event) {
+        if (LS.ShowCups && window.location.search === '?fromAnmeldungen') {
+            LS.ShowCups = 0;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    };
+
 
 });

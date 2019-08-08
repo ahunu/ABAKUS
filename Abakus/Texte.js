@@ -55,9 +55,6 @@ function showText(pText) {
     } else if (pText === 'TippsUndTricks') {
         hTitel2 = 'Gewusst wie';
         html += getTippsUndTricks();
-    } else if (pText === 'XXIIDevisen') {
-        hTitel2 = 'Fia aufgweckte Spüla';
-        html += XXIIDevisen();
     }
     html += '</html></html>';
     $('#qfHeaderZeile2').html(hTitel2);
@@ -111,35 +108,6 @@ function getGeschichte() {
             + '<br><br><br><p>Mit freundlicher Genehmigung, stark gekürzt aus dem Buch TAROCK von Friedrich Flendrovsky.'
 
             + '</div>';
-}
-
-function XXIIDevisen() {
-    return '<span class=M style="text-align:justify">'
-
-
-            + '<b><span class=XXL>I. </span> Den <span class=XL>Pagat</span> schmier i,</b><br>'
-            + 'glei beim erstn Stich, wons geht. '
-
-            + '<p><b><span class=XXL>II. </span> Den <span class=XL>Uhu</span> heb i mir auf,</b><br>'
-            + 'zan Unterfuzzeln. '
-
-            + '<p><b><span class=XXL>IIII. </span> Den <span class=XL>Quapil</span> spü i söwa,</b><br>'
-            + 'mei Partner hod si jo den Uhu zum unterfuzzeln aufghobn. '
-
-            + '<p><b><span class=XXL>XII. </span> In <span class=XL>XII</span>er nim i bei der ersten Forb,</b><br>'
-            + 'waun i hinten sitz. Beim zweiten Moi nimm i a Klans Tarock, daun kon i leichta üwastochn werden.'
-
-            + '<p><b><span class=XXL>XIII. </span> Nie unter <span class=XL>XIII</span></b><br>'
-            + 'lautet die Devise für den Dreierspüla beim erstn Ausspün. '
-
-            + '<p><b><span class=XXL>X </span> Nie unter <span class=XL>X</span></b><br>'
-            + '. '
-
-            + '<p><b><span class=XXL>XXI. </span> Mit´n <span class=XL>Mond</span> rette mein Partner sei Vogerl.</b><br>'
-            + 'Solln´s de Trull hom. '
-
-            + '<p><b><span class=XXL>XXII. </span> Mit´n <span class=XL>Gstieß</span> nogl i an Kini on,</b><br>'
-            + 'des mocht alani schon a drittl vom Spü. ';
 }
 
 function getDetailstatistik() {

@@ -1657,7 +1657,6 @@ $(document).ready(function () {
         var LS_Ansagen = LS.Ansagen;
         var LS_AktTage = LS.AktTage;
         var LS_I = LS.LoadCups * -1; // - ist Kennung für neuen Tisch
-        var LS_SchriftG = LS.SchriftG;
         var LS_Padding = LS.Padding;
         var LS_Freunde = LS.Freunde;
         var LS_Version = LS.Version;
@@ -1679,7 +1678,6 @@ $(document).ready(function () {
         LS.AktTage = LS_AktTage;
         LS.I = LS_I;
         LS.ShowCups = LS_I;
-        LS.SchriftG = LS_SchriftG;
         LS.Padding = LS_Padding;
         LS.Freunde = LS_Freunde;
         LS.Version = LS_Version;

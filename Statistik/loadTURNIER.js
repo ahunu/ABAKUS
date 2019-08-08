@@ -24,6 +24,8 @@ function loadTURNIER(pCup, pTurnier, pTitel, pLastturnier, pCallback) {
 
         stSynchron = true;
 
+        var mNewTurnier = false;
+
         if (data.val()) {
             STAT[pTurnier] = data.val();
             var spieler = '';
@@ -99,6 +101,10 @@ function loadTURNIER(pCup, pTurnier, pTitel, pLastturnier, pCallback) {
                 }
             }
 
+            if (STAT._LASTTURNIER.substr(0, 10) !== pLastturnier.substr(0, 10)) {
+                mNewTurnier = true;
+            }
+
             STAT._LASTTURNIER = pLastturnier;
 
             localStorage.setItem("Abakus.STAT" + ("000" + pCup).substr(-3), JSON.stringify(STAT));
@@ -124,7 +130,7 @@ function loadTURNIER(pCup, pTurnier, pTitel, pLastturnier, pCallback) {
         if (typeof pCallback === "function") {
             pCallback();
         } else {
-            whenSTATloaded();
+            whenSTATloaded(mNewTurnier);
         }
 
     }, function (error) {

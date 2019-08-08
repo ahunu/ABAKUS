@@ -127,7 +127,7 @@ function getSTAT(pCup) {
     }
 }
 
-function whenSTATloaded() {
+function whenSTATloaded(pNewTurnier) {
 
     initSAISON();
 
@@ -137,7 +137,10 @@ function whenSTATloaded() {
         $('#tZumTurnier').html('Zurück');
     }
 
-    if (!stStat) {
+    if (pNewTurnier) {
+        iSaison = 1;
+        showSaison();
+    } else if (!stStat) {
         if (CUPS.TYP[stCup] === 'MT') {
             if (STAT) {
                 showUebersichtMT(true);
@@ -171,6 +174,7 @@ function whenSTATloaded() {
             showTurnier();
         }
     }
+
     setTimeout(function () {
         hideEinenMoment();
         if (!onValueInit) {

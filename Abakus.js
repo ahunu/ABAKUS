@@ -915,10 +915,6 @@ function initExtraButtons() {
         $('#bAdminTools').show();
     }
 
-    if (LS.ME !== '3425') { // Alex Sabkovski --- Turnierkalender
-        $('#bXXIIDevisen').hide();
-    }
-
     if (!QUERFORMAT()) {
         $('#bLinks,#bAdminTools').hide();
     }
@@ -1500,7 +1496,6 @@ function fINIT() {
         LS.LastBtn = '';
         LS.LastDate = hHeute;
         LS.LoadCups = 0;
-        LS.SchriftG = 1;
         LS.Padding = 2;
         LS.Freunde = [];
         LS.Sterne = ['', '', '', '', '', '', ''];

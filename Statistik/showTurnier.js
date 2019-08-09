@@ -223,7 +223,7 @@ function popupSpieler(pSpieler, pSaison) {
         }
         if (aCuppunkte.length) {
             aCuppunkte.sort();
-            for (var i = 0; i < aCuppunkte.length && i <= 5; i++) {
+            for (var i = 0; i < aCuppunkte.length && i < parseInt(CUPS.TURNIER[stCup]); i++) {
                 cuppunkte += (parseInt(aCuppunkte[i][0]) - 900) * -1;
                 if (cuppunkte > 0) {
                     oCuppunkte[aCuppunkte[i][1]] = (parseInt(aCuppunkte[i][0]) - 900) * -1;

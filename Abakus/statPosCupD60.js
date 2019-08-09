@@ -61,14 +61,14 @@ function statPosCupD60(pRunde) {
             + "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau M'>"
             + (stSort !== 'NAM' && stSort !== 'STO'
-                    ? "<td colspan=2>&nbsp;" + (CUPS.TURNIER[stCup] !== 'PC' || stTurCupGes !== 3 ? "Voll ab " + stVollAb + "%" : "") + "</td>"
-                    : "<td>&nbsp;" + (CUPS.TURNIER[stCup] !== 'PC' || stTurCupGes !== 3 ? "Voll ab " + stVollAb + "%" : "") + "</td>"
+                    ? "<td colspan=2>&nbsp;" + (CUPS.TURNIER[stCup] === 'Handy' || stTurCupGes !== 3 ? "Voll ab " + stVollAb + "%" : "") + "</td>"
+                    : "<td>&nbsp;" + (CUPS.TURNIER[stCup] === 'Handy' || stTurCupGes !== 3 ? "Voll ab " + stVollAb + "%" : "") + "</td>"
                     )
             + ((stCup !== 11)
                     ? "<th colspan=3 class=TC>&nbsp;&nbsp;Punkte</th>"
                     : "<th colspan=2 class=TR>&nbsp;&nbsp;Punkte</th>"
                     )
-            + (((stTurCupGes !== 3 || CUPS.TURNIER[stCup] !== 'PC') && (QUERFORMAT() || stSort !== 'STO')) ? "<th class='TR" + cNoSTO + ">Anz.</th>" : "")
+            + (((stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') && (QUERFORMAT() || stSort !== 'STO')) ? "<th class='TR" + cNoSTO + ">Anz.</th>" : "")
             + ((stTurCupGes !== 3 && CUPS.TURNIER[stCup] && (QUERFORMAT() || stSort === 'STO')) ? "<th class='TC" + cSTO + ">Stockerl</th>" : "")
             + ((CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 && stSort === 'STO' && stTurCupGes === 3) ? "<th class=TR>&euro;</th>" : "")
             + "</tr>"
@@ -84,7 +84,7 @@ function statPosCupD60(pRunde) {
                     )
             + "<th class=TR>&nbsp;&nbsp;D60</th>"
             + "<th class=TR>&nbsp;&nbsp;Ges</th>"
-            + (((stTurCupGes !== 3 || CUPS.TURNIER[stCup] !== 'PC') && (QUERFORMAT() || stSort !== 'STO')) ? "<th class='TR" + cNoSTO + ">Spiel</th>" : "")
+            + (((stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') && (QUERFORMAT() || stSort !== 'STO')) ? "<th class='TR" + cNoSTO + ">Spiel</th>" : "")
             + ((stTurCupGes !== 3 && CUPS.TURNIER[stCup] && (QUERFORMAT() || stSort === 'STO')) ? "<th class='TC" + cSTO + ">pl&auml;tze</th>" : "")
             + ((CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 && stSort === 'STO' && stTurCupGes === 3) ? "<th></th>" : "")
             + "</tr>"
@@ -249,7 +249,7 @@ function statPosCupD60(pRunde) {
                 pos = pos + '<tr id=L0P' + j + ' class="L0' + hBackground + '">' + (stSort !== 'NAM' && stSort !== 'STO' ? '<td class=TR>' + tRANG + '</td>' : '') + '<td>&nbsp;<span id=Z0P' + j + ' class="' + (STAT.S[i].NR === LS.ME ? '' : 'Z0 ') + sNAM + '">' + (getName(i).replace(' ', '&nbsp;')) + '</span></td>'
                         + (stCup !== 11 ? '<td class="TR ' + sCUP + '">' + (STAT.S[i].PUNKTE[stTurCupGes] >= 0 ? CupPunkte : '') + '</td>' : '') + '<td class="TR ' + sD60 + '" nowrap>' + d60TP + '</td><td class="TR ' + sGES + '" nowrap>' + STAT.S[i].PUNKTE[stTurCupGes] + '</td>';
             }
-            if (stTurCupGes !== 3 || CUPS.TURNIER[stCup] !== 'PC') {
+            if (stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') {
                 if (stSort !== 'STO') {
                     pos = pos + '<td class="TR ' + sANZ + '">&nbsp;' + STAT.S[i].SPIELE[stTurCupGes] + '</td>';
                 } else if (QUERFORMAT()) {
@@ -284,7 +284,7 @@ function statPosCupD60(pRunde) {
         ret = ret + (nGelegenheitsspieler ? '<div class=M>&nbsp;' + nGelegenheitsspieler + ' Gelegenheitsspieler wurden nicht gelistet.</div>' : '');
     }
     if (stStat !== 11) {
-        ret = ret + (nAbzuege && ((stTurCupGes !== 3 || CUPS.TURNIER[stCup] !== 'PC') || stVollAb === 0)
+        ret = ret + (nAbzuege && ((stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') || stVollAb === 0)
                 ? "<div class=M>"
                 + "&nbsp;Maximal gespielt: " + STAT.MAXSPIELE[stTurCupGes] + " Spiele.<br>"
                 + "&nbsp;" + stVollAb + " % davon sind " + (Math.round(STAT.MAXSPIELE[stTurCupGes] * stVollAb) / 100) + " Spiele.<br>"

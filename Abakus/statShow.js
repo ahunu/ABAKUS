@@ -16,7 +16,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
 
     hWait = 500;
 
-    if (CUPS.TURNIER[stCup] === 'PC' && stOption === 2) {
+    if (CUPS.TURNIER[stCup] !== 'Handy' && stOption === 2) {
         stOption = 1;
     }
 

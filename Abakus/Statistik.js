@@ -461,7 +461,7 @@ $(document).ready(function () {
         if (CUPS.TURNIER[stCup]) {
             if (stStat === -1) {
                 $('#SP1Rumpf').html(statPosCupD60()).trigger('create').show(setFont);
-            } else if (stStat === 1 || stSort === 'STO' || CUPS.TURNIER[stCup] === 'PC') {
+            } else if (stStat === 1 || stSort === 'STO' || CUPS.TURNIER[stCup] !== 'Handy') {
                 $('#SP1Rumpf').html(statPosCup()).trigger('create').show(setFont);
             } else {
                 $('#SP1Rumpf').html(statPosDiv()).trigger('create').show(setFont);

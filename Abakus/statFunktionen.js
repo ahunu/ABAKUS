@@ -278,7 +278,7 @@ function setAnzSpalten(pSpalten) {
 }
 
 function compStNamenLen() {  // Mit Google Nexus 5 geprüft
-    if (CUPS.TURNIER[stCup] === 'PC') {
+    if (CUPS.TURNIER[stCup] !== 'Handy') {
         if (stSort === 'STO') {
             if (stTurCupGes === 3) {
                 stNamenLen = 0.45; // OK
@@ -564,7 +564,7 @@ function getHilfeText() {
                     + "<hr>"
                     : ""
                     )
-            + (true || CUPS.TURNIER[stCup] !== 'PC' && stTurCupGes !== 3
+            + (true || CUPS.TURNIER[stCup] === 'Handy' && stTurCupGes !== 3
                     ? ''
                     : "<a style='padding:.0em' data-role='button' data-icon='plus' data-iconpos='notext' data-inline='true'>Info</a><b> - vollst&auml;ndige Liste</b>"
                     + "<hr>"
@@ -592,7 +592,7 @@ function getSortUndLayout() {
                     + "</ul>"
                     + "</div>"
                     : "")
-            + (CUPS.TURNIER[stCup] === 'PC' && STAT.TURRUNDE > 0
+            + (CUPS.TURNIER[stCup] !== 'Handy' && STAT.TURRUNDE > 0
                     ? "<div class='L B'><br>&nbsp;Zum aktuellen Turnier:</div>"
                     + "<div data-role=navbar>"
                     + "<ul>"
@@ -623,7 +623,7 @@ function getSortUndLayout() {
                             ? "<li><a onclick='statShow(2," + '"STO"' + ");'" + (stSort === 'STO' ? ' class=ui-btn-active' : '') + ">Stockerlliste</a></li>"
                             : "")
                     + "<li><a onclick='statShow(8," + '"DIA"' + ");'" + (stSort === 'DIA' ? ' class=ui-btn-active' : '') + ">Die Positiven</a></li>"
-                    + (CUPS.TURNIER[stCup] !== 'PC'
+                    + (CUPS.TURNIER[stCup] === 'Handy'
                             ? "<li><a onclick='statShow(7," + '"3er"' + ");'" + (stSort === '3er' ? ' class=ui-btn-active' : '') + ">3er-Liste</a></li>"
                             + "<li><a onclick='statShow(3," + '"GEW-"' + ");'" + (stSort === 'GEW-' ? ' class=ui-btn-active' : '') + ">Gewinner</a></li>"
                             + "<li><a onclick='statShow(4," + '"GEW+"' + ");'" + (stSort === 'GEW+' ? ' class=ui-btn-active' : '') + ">Verlierer</a></li>"

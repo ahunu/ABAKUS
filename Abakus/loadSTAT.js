@@ -5,7 +5,7 @@ function akku0000rec(pI, I, iSTAT) {
     if (STAT.S[iSTAT].SPIELE[pI]) {
         STAT.S[0].SPIELE[pI] += STAT.S[iSTAT].SPIELE[pI];
         STAT.S[0].PUNKTE[pI] += STAT.S[iSTAT].PUNKTE[pI];
-        if (CUPS.TURNIER[I] !== 'PC') {
+        if (CUPS.TURNIER[I] === 'Handy') {
             for (var ii = 0; ii <= 19; ii++) {
                 STAT.S[0].ANZSPIELE[pI][ii] += STAT.S[iSTAT].ANZSPIELE[pI][ii];
                 STAT.S[0].ANZGEWONNEN[pI][ii] += STAT.S[iSTAT].ANZGEWONNEN[pI][ii];
@@ -201,7 +201,7 @@ function loadSTATold(I, pCallback) {
             STAT.S[0].ORT = "(ORT)";
             STAT.S[0].SPIELE = [0, 0, 0, 0];
             STAT.S[0].PUNKTE = [0, 0, 0, 0];
-            if (CUPS.TURNIER[I] !== 'PC') {
+            if (CUPS.TURNIER[I] === 'Handy') {
                 STAT.S[0].ANZSPIELE = [[], [], [], []];
                 STAT.S[0].ANZGEWONNEN = [[], [], [], []];
                 STAT.S[0].PKTGEWONNEN = [[], [], [], []];
@@ -347,12 +347,12 @@ function loadSTATold(I, pCallback) {
                             // 0 = Gesamt, 1 = laufendes Jahr, 2 = Vorjahr, 3 = Turnier
                             STAT.S[iSTAT].PUNKTE[2] = STAT.S[iSTAT].PUNKTE[1];
                             STAT.S[iSTAT].SPIELE[2] = STAT.S[iSTAT].SPIELE[1];
-                            if (CUPS.TURNIER[I] !== 'PC') {
-                                STAT.S[iSTAT].ANZSPIELE[2] = STAT.S[iSTAT].ANZSPIELE[1];
-                                STAT.S[iSTAT].ANZGEWONNEN[2] = STAT.S[iSTAT].ANZGEWONNEN[1];
-                                STAT.S[iSTAT].PKTGEWONNEN[2] = STAT.S[iSTAT].PKTGEWONNEN[1];
-                            }
                             if (CUPS.TURNIER[I]) {
+                                if (CUPS.TURNIER[I] === 'Handy') {
+                                    STAT.S[iSTAT].ANZSPIELE[2] = STAT.S[iSTAT].ANZSPIELE[1];
+                                    STAT.S[iSTAT].ANZGEWONNEN[2] = STAT.S[iSTAT].ANZGEWONNEN[1];
+                                    STAT.S[iSTAT].PKTGEWONNEN[2] = STAT.S[iSTAT].PKTGEWONNEN[1];
+                                }
                                 STAT.S[iSTAT].STOCKERL[2] = STAT.S[iSTAT].STOCKERL[1];
                                 STAT.S[iSTAT].CUPPUNKTE[2] = STAT.S[iSTAT].CUPPUNKTE[1];
                             }
@@ -360,24 +360,24 @@ function loadSTATold(I, pCallback) {
                             // 0 = Gesamt, 1 = laufendes Jahr, 2 = Vorjahr, 3 = Turnier
                             STAT.S[iSTAT].PUNKTE[2] = 0;
                             STAT.S[iSTAT].SPIELE[2] = 0;
-                            if (CUPS.TURNIER[I] !== 'PC') {
-                                STAT.S[iSTAT].ANZSPIELE[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                STAT.S[iSTAT].ANZGEWONNEN[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                                STAT.S[iSTAT].PKTGEWONNEN[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                            }
                             if (CUPS.TURNIER[I]) {
+                                if (CUPS.TURNIER[I] === 'Handy') {
+                                    STAT.S[iSTAT].ANZSPIELE[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                    STAT.S[iSTAT].ANZGEWONNEN[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                    STAT.S[iSTAT].PKTGEWONNEN[2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                }
                                 STAT.S[iSTAT].STOCKERL[2] = '';
                                 STAT.S[iSTAT].CUPPUNKTE[2] = [];
                             }
                         }
                         STAT.S[iSTAT].PUNKTE[1] = 0;
                         STAT.S[iSTAT].SPIELE[1] = 0;
-                        if (CUPS.TURNIER[I] !== 'PC') {
-                            STAT.S[iSTAT].ANZSPIELE[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                            STAT.S[iSTAT].ANZGEWONNEN[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                            STAT.S[iSTAT].PKTGEWONNEN[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                        }
                         if (CUPS.TURNIER[I]) {
+                            if (CUPS.TURNIER[I] === 'Handy') {
+                                STAT.S[iSTAT].ANZSPIELE[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].ANZGEWONNEN[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].PKTGEWONNEN[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                            }
                             STAT.S[iSTAT].STOCKERL[1] = '';
                             STAT.S[iSTAT].CUPPUNKTE[1] = [];
                         }
@@ -388,12 +388,12 @@ function loadSTATold(I, pCallback) {
                             || new Date(STAT.S[iSTAT].TIMESTAMP).getDate() !== new Date(STAT.ZULETZT).getDate()) {
                         STAT.S[iSTAT].PUNKTE[3] = 0;
                         STAT.S[iSTAT].SPIELE[3] = 0;
-                        if (CUPS.TURNIER[I] !== 'PC') {
-                            STAT.S[iSTAT].ANZSPIELE[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                            STAT.S[iSTAT].ANZGEWONNEN[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                            STAT.S[iSTAT].PKTGEWONNEN[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                        }
                         if (CUPS.TURNIER[I]) {
+                            if (CUPS.TURNIER[I] === 'Handy') {
+                                STAT.S[iSTAT].ANZSPIELE[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].ANZGEWONNEN[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                STAT.S[iSTAT].PKTGEWONNEN[3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                            }
                             STAT.S[iSTAT].STOCKERL[3] = '';
                             STAT.S[iSTAT].CUPPUNKTE[3] = [];
                         }

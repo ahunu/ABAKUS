@@ -123,7 +123,7 @@ function getSTAT(pCup) {
         loadInProgress = true;
         loadSTAT(stCup, 'Statistik wird geladen.');
     } else {
-        whenSTATloaded(true);
+        whenSTATloaded();
     }
 }
 

@@ -707,7 +707,7 @@ function onOK() {
         NEXT.Seite = 'GR';
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
         window.location.replace('Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
-    } else if (STAT.TURRUNDE === LS.AktRunde && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] === 'PC')) {
+    } else if (STAT.TURRUNDE === LS.AktRunde && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] !== 'Handy')) {
         var NEXT = new Object();
         NEXT.Seite = 'GR';
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
@@ -908,7 +908,7 @@ function onSubmitCode() {
     } else {
         $.mobile.activePage.focus();
         $('#fCode').hide();
-        if (CUPS.TURNIER[LS.I] === "PC") {
+        if (CUPS.TURNIER[LS.I] !== 'Handy') {
             showStatuszeile(true, '<b>Tische für PC-Turniere werden in funcTisch angemeldet.</b>');
             // pcTurnierAnmelden();
         } else {
@@ -1493,7 +1493,7 @@ function onSubmitFinden(pNeu) {
 function blert(pNR, pVNAME, pNNAME, pORT, pSTERNE, pDUMMY, pCLICK) {
     'use strict';
 
-    if (CUPS.TURNIER[LS.I] === 'PC') {
+    if (CUPS.TURNIER[LS.I] !== 'Handy') {
         if (pCLICK) {
             showEineNotiz('An- abmelden ist bei PC-Turnieren nicht m&ouml;glich.');
             return;
@@ -1761,7 +1761,7 @@ $(document).ready(function () {
 
         if (CUPS.TURNIER[LS.I]) {            // ``???? LLLL
             if (LS.TURADMIN === LS.ME || true) {
-                if (CUPS.TURNIER[LS.I] === "PC") {
+                if (CUPS.TURNIER[LS.I] !== 'Handy') {
                     $('#dRumpf').hide();
                     showStatuszeile(true, '<b>Tische f&uuml;r PC-Turniere werden in funcTisch angemeldet.</b>');
                     // pcTurnierAnmelden();

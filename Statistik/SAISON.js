@@ -69,11 +69,13 @@ function bereSaison() {
                         || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
                     SAISON[iSaison][isAnzTurniere]++;
                     if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
-                        stFinale = turnier;
                         if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
                             stEndstand = false;
                         } else {
                             stEndstand = true;
+                        }
+                        if (CUPS.TURNIER[stCup] % 1) {
+                            stFinale = turnier;
                         }
                     }
                 }
@@ -176,7 +178,7 @@ function bereSaison() {
 
         aSP = CUP[spieler];
         for (var i in aSP[5]) {
-            if (i < 6) {
+            if (i < parseInt(CUPS.TURNIER[stCup])) {
                 if (!isNaN(aSP[5][i])) {
                     aSP[0] += aSP[5][i];
                 }

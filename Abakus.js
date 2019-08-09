@@ -457,7 +457,7 @@ function initSeite2() {
     $('#bWeiter,#bSpieler,#bSpeichern').removeClass('ui-disabled'); // Wegen iOS entfernen
 
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
-    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC') {
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
         $('#bSpieler').addClass('ui-disabled');
         if (LS.SpieleJeRunde > LS.gespielt) {
             $('#bSpeichern').addClass('ui-disabled');
@@ -474,7 +474,7 @@ function initSeite2() {
     if (!LS.Spieler           // nicht nach dem allerersten Aufruf
             || LS.gespielt === -1    // nach dem allererster Aufruf
             || LS.AnzSpieler < 4
-            || CUPS.TURNIER[I] === 'PC' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)) { // Am PC zum Turnier
+            || CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)) { // Am PC zum Turnier
         $('#bWeiter').addClass('ui-disabled');
         $('#bSpieler').addClass('ui-disabled');
         $('#bSpeichern').addClass('ui-disabled');
@@ -720,11 +720,11 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
-                        + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3 || I === 55 && LS.ME === "3425")
+                        + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3 || I === 55 && LS.ME === "3425")
                                 ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
-                        + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] !== 'PC') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
+                        + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] === 'Handy') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
                                 ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
@@ -747,7 +747,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                 + hVorschub + getCupText()
                 + '</div></div>'
                 + hVorschub + html
-                + (CUPS.TURNIER[I] && CUPS.TURNIER[I] === 'PC' && (isNaN(pTermin) || pTermin === false)
+                + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (isNaN(pTermin) || pTermin === false)
                         ? '<br>' + getTurnierkalender()
                         : ''
                         )
@@ -761,7 +761,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                 + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
                 + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7
                         ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" >'
-                        + (CUPS.TURNIER[I] === 'PC' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
+                        + (CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
                                 ? '<b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : (LS.I === I
                                         ? '<b>Zu meinem Tisch</b></span><br>Es wurden ' + LS.gespielt + ' Spiele gespielt.<br>'

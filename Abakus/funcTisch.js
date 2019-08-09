@@ -110,7 +110,7 @@ function TischNeu(pNeu) {
 //        if (LS.I !== I || !CUPS.TURNIER[LS.I]) {
 //            LS.I = 0;
 //        }
-        if (CUPS.TURNIER[I] === 'PC' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
+        if (CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
             if (I > 4 && (navigator.appName === 'Microsoft Internet Explorer'
                     || navigator.userAgent.match(/Trident/)
                     || navigator.userAgent.match(/MSIE /))) {
@@ -872,7 +872,7 @@ function whenSTATloaded() {
 
     if (CUPS.TURNIER[I]) {
 
-        if (PC && CUPS.TURNIER[I] === 'PC') {
+        if (PC && CUPS.TURNIER[I] !== 'Handy') {
         } else {
             if (STAT.TURRUNDE === 0) {
                 showEineWarnung(I, "Turnier noch nicht gestartet!", "Informiere den Veranstalter.");

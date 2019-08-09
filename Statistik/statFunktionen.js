@@ -47,11 +47,6 @@ function getStatMeldungen() {
     var ret = "";
     var Pfad = "../";
 
-    if (stCup === 81) {
-        ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Dies ist nicht die offizielle Turnierwertung.</b><br></span>";
-        ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Die offizielle Liste (nach Tischpunkten) kannst du bei Alexandra Sabkovski erfragen.</b><br></span>";
-    }
-
     if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === stStat) {
         if (STAT._AKTTURNIER._RUNDE) {
             var nMinSeitRundeStart = parseInt((Date.now() - STAT._AKTTURNIER._RUNDESTART) / 60000);
@@ -126,7 +121,7 @@ function getSpielerOrt(pNR, pSTANDORT) {
 
 function getCupPunkte(pTurnier, pSpieler) {
 
-    if (stCup < 60) {
+    if (stCup >= 50 && stCup <= 60) {
         if (STAT[pTurnier][pSpieler]) {
             if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
                 if (STAT[pTurnier][pSpieler][0] <= 50) {

@@ -285,12 +285,12 @@ function wrtSPIELER(I) {
         'use strict';
         STAT.S[ii].PUNKTE[pI] = 0;
         STAT.S[ii].SPIELE[pI] = 0;
-        if (CUPS.TURNIER[LS.I] !== 'PC') {
-            STAT.S[ii].ANZSPIELE[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            STAT.S[ii].ANZGEWONNEN[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            STAT.S[ii].PKTGEWONNEN[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        }
         if (CUPS.TURNIER[LS.I]) {
+            if (CUPS.TURNIER[LS.I] === 'Handy') {
+                STAT.S[ii].ANZSPIELE[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                STAT.S[ii].ANZGEWONNEN[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                STAT.S[ii].PKTGEWONNEN[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            }
             STAT.S[ii].STOCKERL[pI] = '-';
             if (pI === 1 || pI === 2) {
                 STAT.S[ii].CUPPUNKTE[pI] = [];
@@ -323,7 +323,7 @@ function wrtSPIELER(I) {
         STAT.S[ii].VNAME = LS.VName[I];
         STAT.S[ii].PUNKTE = [0, 0, 0, 0];
         STAT.S[ii].SPIELE = [0, 0, 0, 0];
-        if (CUPS.TURNIER[LS.I] !== 'PC') {
+        if (CUPS.TURNIER[LS.I] === 'Handy') {
             STAT.S[ii].ANZSPIELE = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
             STAT.S[ii].ANZGEWONNEN = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
             STAT.S[ii].PKTGEWONNEN = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
@@ -353,7 +353,7 @@ function wrtSPIELER(I) {
                 STAT.S[ii].SPIELE[iJahr] = LS.Spiele[I];
             }
         }
-        if (CUPS.TURNIER[LS.I] !== 'PC') {
+        if (CUPS.TURNIER[LS.I] === 'Handy') {
             STAT.S[ii].ANZSPIELE[pI] = addDetails(STAT.S[ii].ANZSPIELE[pI], aANZSPIELE[I]);
             STAT.S[ii].ANZGEWONNEN[pI] = addDetails(STAT.S[ii].ANZGEWONNEN[pI], aANZGEWONNEN[I]);
             STAT.S[ii].PKTGEWONNEN[pI] = addDetails(STAT.S[ii].PKTGEWONNEN[pI], aPKTGEWONNEN[I]);
@@ -378,7 +378,7 @@ function wrtSPIELER(I) {
                     STAT.S[ii].SCHREIBER[iRUNDE] = LS.ME;
                 }
             }
-        } else if (CUPS.TURNIER[LS.I] === 'PC') {
+        } else if (CUPS.TURNIER[LS.I] !== 'Handy') {
             STAT.S[ii].PUNKTERx[iRUNDE] = DS.Punkte[I][0];
             STAT.S[ii].SCHREIBER[iRUNDE] = LS.ME;
         }

@@ -130,7 +130,7 @@ function copyCUPS() {
     } else if (iNeu === 4) {
         if (CUPS.TURNIER[I] === 'Handy') {
             iName = "Spontanturnier - Test";
-        } else if (CUPS.TURNIER[I] === 'PC') {
+        } else if (CUPS.TURNIER[I] !== 'Handy') {
             iName = "PC-Turnier - Test";
         } else {
             iName = "Private Runde - Test";
@@ -652,7 +652,7 @@ $(document).bind('pageinit', function () {
     if (CUPS.TURNIER[I] === 'Handy') {
         hRundeTurnier = "Spontanturnier";
         $('#fsWoche').show();
-    } else if (CUPS.TURNIER[I] === 'PC') {
+    } else if (CUPS.TURNIER[I] !== 'Handy') {
         hRundeTurnier = "PC-Turnier";
         $('#fsWoche').show();
     } else {
@@ -792,7 +792,7 @@ $(document).bind('pageinit', function () {
     $("#iVOLLAB3").val(CUPS.VOLLAB[I][3]);
     $("#iSPJERUNDE").val(CUPS.SPJERUNDE[I]);
     if (CUPS.TURNIER[I]) {
-        if (CUPS.TURNIER[I] === 'PC') {
+        if (CUPS.TURNIER[I] !== 'Handy') {
             $("#tTYP").text('PC-Turnier');
         } else {
             $("#tTYP").text('Spontanturnier');

@@ -121,7 +121,7 @@ function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
 
     html += htmlUebersicht(pKolonne, pI);
 
-    if (CUPS.TURNIER[stCup] === 'PC') {
+    if (CUPS.TURNIER[stCup] !== 'Handy') {
         html = html
                 + "<div data-role=navbar class='noprint'>"
                 + "<ul>"

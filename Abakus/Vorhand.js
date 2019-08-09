@@ -295,7 +295,7 @@ window.onload = function () {
     }
 
     if (window.location.search === '?Init' && CUPS.TURNIER[LS.I]) {
-//     else if (STAT.TURRUNDE === LS.AktRunde && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] === 'PC')) {
+//     else if (STAT.TURRUNDE === LS.AktRunde && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] !== 'Handy')) {
         onOK();
     }
 

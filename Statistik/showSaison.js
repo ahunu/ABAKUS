@@ -74,11 +74,13 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                             cBG = 'background-color: #f0f0f0';
                         }
                         if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
-                            stFinale = turnier;
                             if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
                                 stEndstand = false;
                             } else {
                                 stEndstand = true;
+                            }
+                            if (CUPS.TURNIER[stCup] % 1) {
+                                stFinale = turnier;
                             }
                         }
                         if (QUERFORMAT() && (pStockerl || pAnekdoten)) {
@@ -187,7 +189,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         $('#dRumpf').html(htmlTE).trigger('create').css('margin-top', $('#qfHeader').height() + 'px');
     } else {
         $('#sideTurniereMT').html(
-        '<li data-role="list-divider"><div class="ui-grid-a">'
+                '<li data-role="list-divider"><div class="ui-grid-a">'
                 + '<div class="ui-block-a" style="width:90%">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Listen:</div>'
                 + '<div class="ui-block-b" style="width:10%">'
 
@@ -234,7 +236,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
     } else {
         $("#sideContent,#dCopyright").show();
         setFont();
-        showLi('.cDieListen',true);
+        showLi('.cDieListen', true);
     }
 
     if (LS.Meldung) {

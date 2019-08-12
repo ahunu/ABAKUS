@@ -381,13 +381,7 @@ function getName(pNR, pMax) {
 
 function listeDrucken() {
     'use strict';
-    function isChromium() { // Actually, isWithChromePDFReader
-        for (var i = 0; i < navigator.plugins.length; i++)
-            if (navigator.plugins[i].name === 'Chrome PDF Viewer')
-                return true;
-        return false;
-    }
-    if (!isChromium()) {
+    if (!window.chrome) {
         showEineMeldung('Achtung', 'Die Druckfunktion wird von deinem<br>Browser nicht ausreichend unterstützt.'
                 + '<br>Verwende einen der folgenden Browser:'
                 + '<br><b>Google Chrome</b>, <b>Opera</b> oder <b>Slimjet</b>.');

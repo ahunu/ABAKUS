@@ -34,7 +34,7 @@ input {
     .S2 {font-size: calc(0.90vw + 8px);}
     .S {font-size: calc(0.89vw + 7px);}
     .XS {font-size: calc(0.88vw + 6px);}
-    .XXS {font-size: calc(0.87vw + 5px);}
+    .XXS {font-size: calc(0.88vw + 6px);}
 }       
 
 .iconJQM::after {

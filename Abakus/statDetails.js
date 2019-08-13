@@ -54,8 +54,6 @@ function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
         }
     }
 
-    var fDatum, fZeit;
-    var daysOfWeek = ["SO", "MO", "DI", "MI", "DO", "FR", "SA"];
     var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
     if (STAT.ZULETZT.getDate() >= 20) {
         var tZuletzt = STAT.ZULETZT.getDate() + "." + monthsOfYear[STAT.ZULETZT.getMonth()];
@@ -119,28 +117,15 @@ function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
                 + "</div>";
     }
 
-    html += htmlUebersicht(pKolonne, pI);
-
-    if (CUPS.TURNIER[stCup] !== 'Handy') {
-        html = html
-                + "<div data-role=navbar class='noprint'>"
-                + "<ul>"
-                + "<li><a onclick='stOption=1;stDetOption[" + pKolonne + "]=1;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 1 ? ' ui-btn-active' : '') + "'>Grafik</a></li>"
-                + "<li><a onclick='stOption=4;stDetOption[" + pKolonne + "]=4;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 4 ? ' ui-btn-active' : '') + (STAT.S[aDET[stDetI[pKolonne]]].NR === '0000' ? ' ui-disabled' : '') + "'>gespielt am</a></li>"
-                + "</ul>"
-                + "</div>";
-    } else {
-        html = html
-                + "<div data-role=navbar class='noprint'>"
-                + "<ul>"
-                + "<li><a onclick='stOption=2;stDetOption[" + pKolonne + "]=2;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 2 ? ' ui-btn-active' : '') + "'>Spiele</a></li>"
-                + "<li><a onclick='stOption=3;stDetOption[" + pKolonne + "]=3;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 3 ? ' ui-btn-active' : '') + "'>Punkte</a></li>"
-                + "<li><a onclick='stOption=1;stDetOption[" + pKolonne + "]=1;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 1 ? ' ui-btn-active' : '') + "'>D60</a></li>"
-                + "</ul>"
-                + "</div>";
-    }
-
-    html = html + "<div id=Kolonne" + pKolonne + "></div></div>";
+    html += htmlUebersicht(pKolonne, pI)
+            + "<div data-role=navbar class='noprint'>"
+            + "<ul>"
+            + "<li><a id='bSpiele' onclick='stOption=2;stDetOption[" + pKolonne + "]=2;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 2 ? ' ui-btn-active' : '') + "'>Spiele</a></li>"
+            + "<li><a id='bPunkte' onclick='stOption=3;stDetOption[" + pKolonne + "]=3;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 3 ? ' ui-btn-active' : '') + "'>Punkte</a></li>"
+            + "<li><a id='bD60'    onclick='stOption=1;stDetOption[" + pKolonne + "]=1;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 1 ? ' ui-btn-active' : '') + "'>D60</a></li>"
+            + "</ul>"
+            + "</div>"
+            + "<div id=Kolonne" + pKolonne + "></div></div>";
 
     if ($(window).innerWidth() < $(window).innerHeight()
             || stAnzSpalten === 1) {
@@ -207,18 +192,12 @@ function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
 
 function htmlUebersicht(pKolonne, pI) {
     'use strict';
-    var sI = 0;
-    var i = 0;
-    var ii = 0;
-    var hPunkte = 0;
     var D60, GesPunkte;
 
-    var fDatum, fZeit;
-    var daysOfWeek = ["SO", "MO", "DI", "MI", "DO", "FR", "SA"];
+    var fDatum;
     var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 
     var html = '';
-    var heute = new Date();
     var hPeriode = '';
     var hZeile = '';
 
@@ -343,6 +322,17 @@ function htmlUebersicht(pKolonne, pI) {
 function showDetailStat3(pKolonne, pI) {
     'use strict';
 
+    $('#bSpiele,#bPunkte,#bD60').removeClass('ui-btn-active');
+    if (stOption === 2) {
+        $('#bSpiele').addClass('ui-btn-active');
+    }
+    if (stOption === 3) {
+        $('#bPunkte').addClass('ui-btn-active');
+    }
+    if (stOption === 1) {
+        $('#bD60').addClass('ui-btn-active');
+    }
+
     if (pI) {
         $('.L' + pKolonne).removeClass('B');
         $('#L' + pKolonne + 'P' + pI).addClass('B');
@@ -389,7 +379,6 @@ function showDetailStat3(pKolonne, pI) {
 function htmlText(pKolonne) {
     'use strict';
     var hName, hWann;
-    var daysOfWeek = ["SO", "MO", "DI", "MI", "DO", "FR", "SA"];
     var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 
     var html = '';
@@ -511,7 +500,6 @@ function htmlText(pKolonne) {
 function htmlText0000(pKolonne) {
     'use strict';
     var hName, hWann, hPer, hWer;
-    var daysOfWeek = ["SO", "MO", "DI", "MI", "DO", "FR", "SA"];
     var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 
     var html = '';
@@ -555,9 +543,7 @@ function htmlSpielePunkte(pKolonne, pGauge) {
     var BTRGcol2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var PROZcol2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    var sI = 0;
     var ii = i = 0;
-    var hPunkte = 0;
     var html = '';
 
     STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][20] = STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][0] + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][19];
@@ -753,7 +739,6 @@ function htmlSpielePunkte(pKolonne, pGauge) {
         html = html + '<tr><th>&nbsp;Bet.Ov. </th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][17] + '</td><td class=TR>' + PROZspiele[17] + '</td><td class=TR>' + BTRGcol2[17] + '</td><td class=TR>' + PROZcol2[17] + '</td></tr>';
 
     }
-
 
     if (STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][18] > 0) {
         html += '<tr><th>&nbsp;Diverse </th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][18] + '</td><td class=TR>' + PROZspiele[18] + '</td><td class=TR>' + BTRGcol2[18] + '</td><td class=TR>' + PROZcol2[18] + '</td></tr>';

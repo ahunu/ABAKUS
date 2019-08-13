@@ -1173,27 +1173,27 @@ function whenCUPSloaded() {
                     if (QUERFORMAT()) {
                         hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
                         hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
-                    } else if (TERMINE[termin].DATUM === hHeute && (TERMINE[termin].CUP === 54 || TERMINE[termin].CUP === 56)) {
+                    } else {
                         hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
-                        if (LS.ME.length === 4) {
-                            hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\',' + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                    + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Hilfe</a></li>'
+                        if (TERMINE[termin].CUP === 51 || TERMINE[termin].CUP === 52 || TERMINE[termin].CUP === 53 || TERMINE[termin].CUP === 55 || TERMINE[termin].CUP === 57 || TERMINE[termin].CUP === 58 || TERMINE[termin].CUP === 59) {
+                            hTemp = '<li data-icon=info><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showEineMeldung(' + TERMINE[termin].CUP + ',\'Für den ' + hCupName + ' ist<br>keine Statistik verfügbar.\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                    + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Info</a></li>'
+                                    + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
+                                    + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
+                                    + '</div>';
+                        } else if (LS.ME.length === 4 && TERMINE[termin].DATUM === hHeute) {
+                            hTemp = '<li data-icon=info><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\',' + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                    + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Info</a></li>'
                                     + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                                     + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                     + '</div>';
                         } else {
-                            hTemp = '<li><a id="b' + hBtnName + '" class="K' + hCupFarbe + '"  onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
-                                    + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Hilfe</a></li>'
+                            hTemp = '<li data-icon=info><a id="b' + hBtnName + '" class="K' + hCupFarbe + '" onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                                    + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Info</a></li>'
                                     + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                                     + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                     + '</div>';
                         }
-                    } else {
-                        hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
-                        hTemp = '<li data-icon=info><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="toggleShow(\'#tgl' + hBtnName + '\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
-                                + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
-                                + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
-                                + '</div>';
                     }
                     htmlALLE += hTemp;
                     if (TERMINE[termin].DATUM <= hAktuellBis) {
@@ -1210,13 +1210,12 @@ function whenCUPSloaded() {
                     if (QUERFORMAT()) {
                         hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                     } else {
-                        if (CUPS.TYP[iii] === 'PR'
-                                || !CUPS.TEXT1[iii]) {
+                        if (!CUPS.TEXT1[iii]) {
                             hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                         } else {
-                            hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#togglebTE' + iii + '\');">Hilfe</a></li>'
-                                    + '<div id="togglebTE' + iii + '" class="M TGL" style=margin-left:10px; hidden>'
-                                    + (CUPS.TEXT1[iii] ? CUPS.TEXT1[iii] + '<br>' : '')
+                            hTemp = '<li data-icon=info>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#togglebAL' + iii + '\');">Info</a></li>'
+                                    + '<div id="togglebAL' + iii + '" class="M TGL" style=margin-left:10px; hidden>'
+                                    + CUPS.TEXT1[iii]
                                     + '</div>';
                         }
                     }
@@ -1271,7 +1270,7 @@ function whenCUPSloaded() {
                             + '</div>';
                 } else {
                     htmlMR += '<li><a  id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a>'
-                            + '<a onclick="toggleShow(\'#togglebMR' + i + '\');">Hilfe</a></li>'
+                            + '<a onclick="toggleShow(\'#togglebMR' + i + '\');">Info</a></li>'
                             + '<div id="togglebMR' + i + '" class="TGL M" style=margin-left:10px; hidden>'
                             + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
                             + '</div>';
@@ -1289,7 +1288,7 @@ function whenCUPSloaded() {
                 htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
             } else {
                 htmlMR += '<li><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a>'
-                        + '<a onclick="toggleShow(\'#togglebMR' + i + '\');">Hilfe</a></li>'
+                        + '<a onclick="toggleShow(\'#togglebMR' + i + '\');">Info</a></li>'
                         + '<div id="togglebMR' + i + '" class="TGL M" style=margin-left:10px; hidden>'
                         + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
                         + '</div>';
@@ -1318,7 +1317,7 @@ function whenCUPSloaded() {
                         htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
                     } else {
                         htmlMR += '<li><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a>'
-                                + '<a onclick="toggleShow(\'#hToggle1' + i + '\');">Hilfe</a></li>'
+                                + '<a onclick="toggleShow(\'#hToggle1' + i + '\');">Info</a></li>'
                                 + '<div id="hToggle1' + i + '" class="TGL M" style=margin-left:10px; hidden>'
                                 + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
                                 + '</div>';
@@ -1382,7 +1381,7 @@ function whenCUPSloaded() {
                         + '</div>';
             } else {
                 html = '<li><a id="bXX' + i + '" class="' + (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? 'cDIV ' : '') + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a>'
-                        + '<a onclick="toggleShow(\'#hToggle2' + i + '\');">Hilfe</a></li>'
+                        + '<a onclick="toggleShow(\'#hToggle2' + i + '\');">Info</a></li>'
                         + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
                         + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
                         + '</div>';
@@ -1559,18 +1558,6 @@ function fINIT() {
         if (!CUPS.MEZULETZT || typeof CUPS.MEZULETZT !== 'object') {
             CUPS.MEANGEMELDET = [];
             CUPS.MEZULETZT = [];
-            localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
-        }
-        if (typeof CUPS.MEZULETZTVOR === 'object') {
-            for (var iii = 0; iii < CUPS.NAME.length; iii++) {
-                if (CUPS.MEZULETZTVOR[iii]) {
-                    CUPS.MEZULETZT[iii] = new Date().valueOf();
-                } else {
-                    CUPS.MEZULETZT[iii] = 0;
-                }
-            }
-            CUPS.MEZULETZTVOR = null;
-            delete CUPS.MEZULETZTVOR;
             localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
         }
     }

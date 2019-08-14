@@ -16,10 +16,6 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
 
     hWait = 500;
 
-    if (CUPS.TURNIER[stCup] !== 'Handy' && stOption === 2) {
-        stOption = 1;
-    }
-
     if (stStat === 10 || stTurCupGes > 3) { // Anmeldungen || Archiv
         if (typeof pTurCupGes !== 'number') {
             pTurCupGes = 3;

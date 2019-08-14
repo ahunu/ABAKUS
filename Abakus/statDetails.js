@@ -77,7 +77,7 @@ function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
                 + "</div>"
                 + "<div data-role=navbar>"
                 + "<ul>"
-                + "<li class=nb13 id=bZruck><a onclick='stDetTurCupGes[" + pKolonne + "]=stDetTurCupGes[" + pKolonne + "];showDetailStat2(" + pKolonne + "," + (pI - 1) + ",false,true);' class=" + ((stDetI[pKolonne] === 0 || pKolonne !== stKolonne) ? "'ui-disabled M3'" : "M3") + ">&lt;</a></li>"
+                + "<li class=nb13 id=bZruck><a onclick='stDetTurCupGes[" + pKolonne + "]=stDetTurCupGes[" + pKolonne + "];showDetailStat2(" + pKolonne + "," + (pI - 1) + ",false,true);' class=" + ((stDetI[pKolonne] === 0 || pKolonne !== stKolonne || (!CUPS.TURNIER[stCup] && stDetI[pKolonne] === 1)) ? "'ui-disabled M3'" : "M3") + ">&lt;</a></li>"
                 + "<li class=nb74><a onclick='Deactivate(this);' id=stDet" + pKolonne + " class='ui-btn-c M3'>" + [stDetI[pKolonne]] + ". " + getName(aDET[stDetI[pKolonne]], 99) + '</a></li>'
                 + "<li class=nb13 id=bVorw><a onclick='stDetTurCupGes[" + pKolonne + "]=stDetTurCupGes[" + pKolonne + "];showDetailStat2(" + pKolonne + "," + (pI + 1) + ",false,true);' class=" + ((stDetI[pKolonne] === (aDET.length - 1) || pKolonne !== stKolonne) ? "'ui-disabled M3'" : "M3") + ">&gt;</a></li>"
                 + "</ul>"

@@ -323,6 +323,7 @@ function writeCanvas(pCup) {
         $('#qfHeaderZeile1').attr("style", "font-size:4.5vw;white-space:nowrap;font-family:Arial;font-style:italic;");
     }
     $('.hfHeaderIcon').css('height', $('#hMix').height() - 8).show();
+    $('#qfHeaderIcon').show();
 }
 
 function myDateString(pDate) {

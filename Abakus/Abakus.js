@@ -320,29 +320,29 @@ function showCanvas(pShow) {
         $('#bChart').hide();
         $('#dHelp').show().attr("style", "height:" + ($(window).innerHeight() - ($('#NB').height() * 2)) + "px;overflow:auto;overflow-x:hidden;");
         $("#tHelp tr").remove();
-        $('#tHelp').append('<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>Spiele</td><td class="TR">Punkte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>');
+        $('#tHelp').append('<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>Spiele</td><td class="TC">Punkte</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>');
 
         if (LS.Regeln === 'Ti.') {
-            $('#tHelp').append('<tr><td></td><td class="N">Rufer</td><td class="TR N">1</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Trischaken</td><td class="TR N">2</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Piccolo</td><td class="TR N">2</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Solorufer</td><td class="TR N">2</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Besserrufer</td><td class="TR N">1</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Bettler</td><td class="TR N">4</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Sechserdreier</td><td class="TR N">4</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Farbendreier</td><td class="TR N">5</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Dreier</td><td class="TR N">5</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Piccolo semi-ouvert</td><td class="TR N">6</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Bettel semi-ouvert</td><td class="TR N">6</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Farbeneiner</td><td class="TR N">6</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Einer</td><td class="TR N">6</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Groß-/Solobesser</td><td class="TR N">1</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Triccolo ouvert</td><td class="TR N">8</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Zwiccolo ouvert</td><td class="TR N">8</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Piccolo ouvert</td><td class="TR N">8</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Bettel ouvert</td><td class="TR N">8</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Farbensolo</td><td class="TR N">10</td><td></td></tr>');
-            $('#tHelp').append('<tr><td></td><td class="N">Farbendreier</td><td class="TR N">10</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Rufer</td><td class="TC N">1</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Trischaken</td><td class="TC N">2</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Piccolo</td><td class="TC N">2</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Solorufer</td><td class="TC N">2</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Besserrufer</td><td class="TC N">1</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Bettler</td><td class="TC N">4</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Sechserdreier</td><td class="TC N">4</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Farbendreier</td><td class="TC N">5</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Dreier</td><td class="TC N">5</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Piccolo semi-ouvert</td><td class="TC N">6</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Bettel semi-ouvert</td><td class="TC N">6</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Farbeneiner</td><td class="TC N">6</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Einer</td><td class="TC N">6</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Groß-/Solobesser</td><td class="TC N">1/2</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Triccolo ouvert</td><td class="TC N">8</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Zwiccolo ouvert</td><td class="TC N">8</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Piccolo ouvert</td><td class="TC N">8</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Bettel ouvert</td><td class="TC N">8</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Farbensolo</td><td class="TC N">10</td><td></td></tr>');
+            $('#tHelp').append('<tr><td></td><td class="N">Farbendreier</td><td class="TC N">10</td><td></td></tr>');
             return;
         }
 

@@ -16,10 +16,6 @@ function showDetailStat(pInd) {
 function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
     'use strict';
 
-    if (pI < 0) {
-        $("#bZruck").removeClass('ui-btn-active');
-    }
-
     if (stDetI[pKolonne] !== pI) {
         stDetI[pKolonne] = pI;
         if (stAnzSpalten !== 1) {
@@ -77,7 +73,7 @@ function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
                 + "</div>"
                 + "<div data-role=navbar>"
                 + "<ul>"
-                + "<li class=nb13 id=bZruck><a onclick='stDetTurCupGes[" + pKolonne + "]=stDetTurCupGes[" + pKolonne + "];showDetailStat2(" + pKolonne + "," + (pI - 1) + ",false,true);' class=" + ((stDetI[pKolonne] === 0 || pKolonne !== stKolonne || (!CUPS.TURNIER[stCup] && stDetI[pKolonne] === 1)) ? "'ui-disabled M3'" : "M3") + ">&lt;</a></li>"
+                + "<li class=nb13 id=bZruck><a onclick='stDetTurCupGes[" + pKolonne + "]=stDetTurCupGes[" + pKolonne + "];showDetailStat2(" + pKolonne + "," + (pI - 1) + ",false,true);' class=" + ((stDetI[pKolonne] === 0 || (stDetI[pKolonne] === 1 && !CUPS.TURNIER[stCup]) || pKolonne !== stKolonne) ? "'ui-disabled M3'" : "M3") + ">&lt;</a></li>"
                 + "<li class=nb74><a onclick='Deactivate(this);' id=stDet" + pKolonne + " class='ui-btn-c M3'>" + [stDetI[pKolonne]] + ". " + getName(aDET[stDetI[pKolonne]], 99) + '</a></li>'
                 + "<li class=nb13 id=bVorw><a onclick='stDetTurCupGes[" + pKolonne + "]=stDetTurCupGes[" + pKolonne + "];showDetailStat2(" + pKolonne + "," + (pI + 1) + ",false,true);' class=" + ((stDetI[pKolonne] === (aDET.length - 1) || pKolonne !== stKolonne) ? "'ui-disabled M3'" : "M3") + ">&gt;</a></li>"
                 + "</ul>"
@@ -117,15 +113,22 @@ function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
                 + "</div>";
     }
 
-    html += htmlUebersicht(pKolonne, pI)
-            + "<div data-role=navbar class='noprint'>"
-            + "<ul>"
-            + "<li><a id='bSpiele' onclick='stOption=2;stDetOption[" + pKolonne + "]=2;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 2 ? ' ui-btn-active' : '') + "'>Spiele</a></li>"
-            + "<li><a id='bPunkte' onclick='stOption=3;stDetOption[" + pKolonne + "]=3;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 3 ? ' ui-btn-active' : '') + "'>Punkte</a></li>"
-            + "<li><a id='bD60'    onclick='stOption=1;stDetOption[" + pKolonne + "]=1;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 1 ? ' ui-btn-active' : '') + "'>D60</a></li>"
-            + "</ul>"
-            + "</div>"
-            + "<div id=Kolonne" + pKolonne + "></div></div>";
+    html += htmlUebersicht(pKolonne, pI);
+    if (CUPS.TURNIER[stCup]) {
+        html = html
+                + "<div data-role=navbar class='noprint'>"
+                + "<ul>"
+                + "<li><a onclick='stOption=2;stDetOption[" + pKolonne + "]=2;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 2 ? ' ui-btn-active' : '') + "'>Spiele</a></li>"
+                + "<li><a onclick='stOption=3;stDetOption[" + pKolonne + "]=3;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 3 ? ' ui-btn-active' : '') + "'>Punkte</a></li>"
+                + "<li><a onclick='stOption=1;stDetOption[" + pKolonne + "]=1;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 1 ? ' ui-btn-active' : '') + "'>D60</a></li>"
+                + "</ul>"
+                + "</div>";
+    } else {
+        stOption = 1;
+        stDetOption[pKolonne] = 1;
+    }
+
+    html = html + "<div id=Kolonne" + pKolonne + "></div></div>";
 
     if ($(window).innerWidth() < $(window).innerHeight()
             || stAnzSpalten === 1) {
@@ -317,21 +320,9 @@ function htmlUebersicht(pKolonne, pI) {
     html = html + "</tbody></table>";
     return html;
 }
-;
 
 function showDetailStat3(pKolonne, pI) {
     'use strict';
-
-    $('#bSpiele,#bPunkte,#bD60').removeClass('ui-btn-active');
-    if (stOption === 2) {
-        $('#bSpiele').addClass('ui-btn-active');
-    }
-    if (stOption === 3) {
-        $('#bPunkte').addClass('ui-btn-active');
-    }
-    if (stOption === 1) {
-        $('#bD60').addClass('ui-btn-active');
-    }
 
     if (pI) {
         $('.L' + pKolonne).removeClass('B');
@@ -409,7 +400,6 @@ function htmlText(pKolonne) {
         var hD60Rund = Math.round(hPunkte * 60 / hSpiele);
         var hProz = Math.round(hSpiele / (STAT.MAXSPIELE[stDetTurCupGes[pKolonne]] / 100) * 100) / 100;
         var hFehlProz = Math.round((CUPS.VOLLAB[stCup][stDetTurCupGes[pKolonne]] - hProz) * 100) / 100;
-        var hRestProz = Math.round((100 - hFehlProz * 2) * 100) / 100;
 
         html = "<table data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text=''>"
                 + "<thead>"
@@ -529,9 +519,9 @@ function htmlText0000(pKolonne) {
     hName = getName(hWer);
 
     html = "<div style='margin:0.4em;'>"
-            + "Mit " + STAT.MAXSPIELE[stDetTurCupGes[pKolonne]] + " Spielen war <b>" + hName + "</b>  " + hWann + " der/die fleißigste Spieler/in.<br>"
+            + "Mit " + STAT.MAXSPIELE[stDetTurCupGes[pKolonne]] + " Spielen war <b>" + hName + "</b>  " + hWann + " der/die fleiÃŸigste Spieler/in.<br>"
             + hPer + " werden die Cuppunkte ab " + CUPS.VOLLAB[stCup][stDetTurCupGes[pKolonne]] + " Prozent der maximal gespielten Spiele voll gerechnet.<br>"
-            + "Somit gibt es ab " + Math.round((STAT.MAXSPIELE[stDetTurCupGes[pKolonne]] * CUPS.VOLLAB[stCup][stDetTurCupGes[pKolonne]] / 100) + 0.5) + " Spielen keine Abzüge.<br>"
+            + "Somit gibt es ab " + Math.round((STAT.MAXSPIELE[stDetTurCupGes[pKolonne]] * CUPS.VOLLAB[stCup][stDetTurCupGes[pKolonne]] / 100) + 0.5) + " Spielen keine AbzÃ¼ge.<br>"
             + "</div>";
 
     return html;
@@ -739,6 +729,7 @@ function htmlSpielePunkte(pKolonne, pGauge) {
         html = html + '<tr><th>&nbsp;Bet.Ov. </th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][17] + '</td><td class=TR>' + PROZspiele[17] + '</td><td class=TR>' + BTRGcol2[17] + '</td><td class=TR>' + PROZcol2[17] + '</td></tr>';
 
     }
+
 
     if (STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][18] > 0) {
         html += '<tr><th>&nbsp;Diverse </th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][18] + '</td><td class=TR>' + PROZspiele[18] + '</td><td class=TR>' + BTRGcol2[18] + '</td><td class=TR>' + PROZcol2[18] + '</td></tr>';

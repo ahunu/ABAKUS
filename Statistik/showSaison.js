@@ -135,22 +135,9 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                             } else {
                                 hDataTheme = '';
                             }
-                            htmlTE = '<li ' + hDataTheme + ' data-icon=info><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span></a>'
-                                    + '<a onclick="$(\'#hToggle' + nTurniere + '\').toggle(\'show\');">Stockerpl&auml;tze</a></li>'
-                                    + (STAT[turnier]._ANEKDOTE && pAnekdoten
-                                            ? '<div id="hToggle' + nTurniere + '" class="N S2 sui-content"  style="text-align:justify;margin: 0 5px 0 8px;">'
-                                            + STAT[turnier]._ANEKDOTE + '</div>'
-                                            : ''
-                                            )
-                                    + (STAT[turnier]._STOCKERL && pStockerl
-                                            ? '<li data-icon=false id="hToggle' + nTurniere + '" class="M"><a><span class="N S2" style="margin:0;padding:0">'
-                                            + '&nbsp;&nbsp;1. <b><span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[1] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[1]) + '</span></b>, ' + STAT[turnier][STAT[turnier]._STOCKERL[1]][4] + ' Punkte<br>'
-                                            + '&nbsp;&nbsp;2. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[2] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[2]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[2]][4] + ' Punkte<br>'
-                                            + '&nbsp;&nbsp;3. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[3] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[3]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[3]][4] + ' Punkte<br>'
-                                            + '</span></a></li>'
-                                            : ''
-                                            )
-                                    + htmlTE;
+                            htmlTE = '<li ' + hDataTheme + ' data-icon="false"><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span></a>'
+                                    + (STAT[turnier]._ANEKDOTE ? '<a onclick="$(showAnekdote(\'' + turnier + '\')).toggle(\'show\');">Anekdote</a>' : '')
+                                    + '</li>' + htmlTE;
                         }
                     }
                 }

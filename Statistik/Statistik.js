@@ -236,7 +236,7 @@ function scrollToMe() {
     }
 }
 
-function showAnekdote() {
+function showAnekdote(pTurnier) {
     if (jbSpieler) {
         if (jbSpieler.isOpen) {
             jbSpieler.close();
@@ -244,9 +244,9 @@ function showAnekdote() {
     }
     if (!jbAnekdote) {
         jbAnekdote = new jBox('Modal', {
-            title: '<div class=L2 style="background-color:#27a;border:8px solid #27a;color: white;">&nbsp;Eine Anekdote zum Turnier <b><span id=jbAnekdoteTitle></span></b>:</div>',
+            title: '<div id=jbAnekdoteTitle class=L2 style="background-color:#27a;border:8px solid #27a;color: white;"></div>',
             content: '<div>'
-                    + '<div id="editor" class="M" style="width: 300px; ddheight: ' + ($(window).innerHeight() / 4 - 11) + 'px; width:' + ($(window).innerWidth() * (QUERFORMAT() ? 0.7 : 0.9)) + 'px;background:#eee; border-width:6px; border-style:double;border-color:#ddd; text-align: justify;"></div>'
+                    + '<div id="editor" class="M" style="dwidth: 300px; width:' + ($(window).innerWidth() * (QUERFORMAT() ? 0.7 : 0.9)) + 'px;background:#eee; border-width:6px; border-style:double;border-color:#ddd; text-align: justify;"></div>'
 //+ '<div id="editor" class="M" style="background-color:#eee; border-width:5px; border-style:groove; text-align:left"></div>'
                     + '<div class="ui-grid-b">'
                     + '<div class="ui-block-a" style="padding:11px 8px 0px 4px;">'
@@ -287,16 +287,23 @@ function showAnekdote() {
     }
     jbAnekdote.open();
     setTimeout(function () {
+        if (!pTurnier) {
+            pTurnier = stStat;
+        }
         editor.content.innerHTML = '';
-        $('#jbAnekdoteTitle').text(STAT[stStat]._NAME);
-        if (STAT[stStat]._ANEKDOTE) {
-            $('.pell-content').html(STAT[stStat]._ANEKDOTE).focus();
+        if (QUERFORMAT()) {
+            $('#jbAnekdoteTitle').html('&nbsp;Eine Anekdote zum Turnier <b>' + STAT[pTurnier]._NAME + '</b>');
+        } else {
+            $('#jbAnekdoteTitle').html('&nbsp;<b>' + STAT[pTurnier]._NAME + '</b>');
+        }
+        if (STAT[pTurnier]._ANEKDOTE) {
+            $('.pell-content').html(STAT[pTurnier]._ANEKDOTE).focus();
         } else {
             $('.pell-content').html('').focus();
         }
 
-        if (STAT[stStat]._ANEKDOTE) {
-            editor.content.innerHTML = STAT[stStat]._ANEKDOTE;
+        if (STAT[pTurnier]._ANEKDOTE) {
+            editor.content.innerHTML = STAT[pTurnier]._ANEKDOTE;
         } else {
             editor.content.innerHTML = '';
         }

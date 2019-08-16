@@ -246,25 +246,27 @@ function showAnekdote(pTurnier) {
         jbAnekdote = new jBox('Modal', {
             title: '<div id=jbAnekdoteTitle class=L2 style="background-color:#27a;border:8px solid #27a;color: white;"></div>',
             content: '<div>'
-                    + '<div id="editor" class="M" style="dwidth: 300px; width:' + ($(window).innerWidth() * (QUERFORMAT() ? 0.7 : 0.9)) + 'px;background:#eee; border-width:6px; border-style:double;border-color:#ddd; text-align: justify;"></div>'
-//+ '<div id="editor" class="M" style="background-color:#eee; border-width:5px; border-style:groove; text-align:left"></div>'
-                    + '<div class="ui-grid-b">'
-                    + '<div class="ui-block-a" style="padding:11px 8px 0px 4px;">'
-                    + '<button class="L2 ui-corner-all" onClick="writeAnekdote(false);" style="width:100%;" data-theme="a">abbrechen</button>'
-                    + '</div>'
-                    + '<div class="ui-block-b" style="padding:11px 4px 0px 4px;">'
-                    + '<button id=bAClear class="L2 ui-corner-all" onClick="$(\'.pell-content\').html(\'\').focus();" style="width:100%;">clear</button>'
-                    + '</div>'
-                    + '<div class="ui-block-c" style="padding:11px 4px 0px 8px;">'
-                    + '<button id=bASpeichern class="L3 ui-corner-all" onClick="writeAnekdote(true);" style="width:100%;background-color:#efcc44;font-weight:bold;" data-theme="e">speichern</button>'
-                    + '</div>'
+                    + '<div id="editor" class="M" style="width:' + ($(window).innerWidth() * (QUERFORMAT() ? 0.7 : 0.9)) + 'px;background:#eee; border-width:6px; border-style:double;border-color:#ddd; text-align: justify;"></div>'
+                    + (QUERFORMAT() ? '<div class="ui-grid-b">'
+                            + '<div class="ui-block-a" style="padding:11px 8px 0px 4px;">'
+                            + '<button class="L2 ui-corner-all" onClick="writeAnekdote(false);" style="width:100%;" data-theme="a">abbrechen</button>'
+                            + '</div>'
+                            + '<div class="ui-block-b" style="padding:11px 4px 0px 4px;">'
+                            + '<button id=bAClear class="L2 ui-corner-all" onClick="$(\'.pell-content\').html(\'\').focus();" style="width:100%;">clear</button>'
+                            + '</div>'
+                            + '<div class="ui-block-c" style="padding:11px 4px 0px 8px;">'
+                            + '<button id=bASpeichern class="L3 ui-corner-all" onClick="writeAnekdote(true);" style="width:100%;background-color:#efcc44;font-weight:bold;" data-theme="e">speichern</button>'
+                            + '</div>' : '')
                     + '</div>',
-            closeButton: false
+            closeButton: 'box',
+            closeOnEsc: true,
+            overlay: false,
+            draggable: 'title'
         });
         setTimeout(function () {
-            if (ADMIN
+            if (QUERFORMAT() && (ADMIN
                     || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
-                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')) {    // Braun Sigi, Sedlacek Robert
+                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037'))) {    // Braun Sigi, Sedlacek Robert
                 editor = pell.init({
                     element: document.getElementById('editor'),
                     actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'undo', 'redo'],
@@ -297,17 +299,15 @@ function showAnekdote(pTurnier) {
             $('#jbAnekdoteTitle').html('&nbsp;<b>' + STAT[pTurnier]._NAME + '</b>');
         }
         if (STAT[pTurnier]._ANEKDOTE) {
-            $('.pell-content').html(STAT[pTurnier]._ANEKDOTE).focus();
-        } else {
-            $('.pell-content').html('').focus();
-        }
-
-        if (STAT[pTurnier]._ANEKDOTE) {
+            $('.pell-content').html(STAT[pTurnier]._ANEKDOTE);
             editor.content.innerHTML = STAT[pTurnier]._ANEKDOTE;
         } else {
+            $('.pell-content').html('');
             editor.content.innerHTML = '';
         }
-
+        if (QUERFORMAT()) {
+            $('.pell-content').focus();
+        }
     }, 100);
 }
 

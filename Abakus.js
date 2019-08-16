@@ -1177,19 +1177,19 @@ function whenCUPSloaded() {
                     } else {
                         hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
                         if (TERMINE[termin].CUP === 51 || TERMINE[termin].CUP === 52 || TERMINE[termin].CUP === 53 || TERMINE[termin].CUP === 55 || TERMINE[termin].CUP === 57 || TERMINE[termin].CUP === 58 || TERMINE[termin].CUP === 59) {
-                            hTemp = '<li data-icon=info><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showEineMeldung(' + TERMINE[termin].CUP + ',\'Für den ' + hCupName + ' ist<br>keine Statistik verfügbar.\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                            hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showEineMeldung(' + TERMINE[termin].CUP + ',\'Für den ' + hCupName + ' ist<br>keine Statistik verfügbar.\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
                                     + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Info</a></li>'
                                     + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                                     + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                     + '</div>';
                         } else if (LS.ME.length === 4 && TERMINE[termin].DATUM === hHeute) {
-                            hTemp = '<li data-icon=info><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\',' + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                            hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ',\'bAL\',' + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
                                     + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Info</a></li>'
                                     + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                                     + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                                     + '</div>';
                         } else {
-                            hTemp = '<li data-icon=info><a id="b' + hBtnName + '" class="K' + hCupFarbe + '" onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
+                            hTemp = '<li><a id="b' + hBtnName + '" class="K' + hCupFarbe + '" onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
                                     + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Info</a></li>'
                                     + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
                                     + TERMINE[termin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
@@ -1214,7 +1214,7 @@ function whenCUPSloaded() {
                         if (!CUPS.TEXT1[iii]) {
                             hTemp = '<li data-icon=false>' + getMeinTerminBarZeile(iii) + '</li>';
                         } else {
-                            hTemp = '<li data-icon=info>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#togglebAL' + iii + '\');">Info</a></li>'
+                            hTemp = '<li>' + getMeinTerminBarZeile(iii) + '<a onclick="toggleShow(\'#togglebAL' + iii + '\');">Info</a></li>'
                                     + '<div id="togglebAL' + iii + '" class="M TGL" style=margin-left:10px; hidden>'
                                     + CUPS.TEXT1[iii]
                                     + '</div>';

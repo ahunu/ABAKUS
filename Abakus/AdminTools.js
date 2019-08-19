@@ -38,7 +38,7 @@ $(document).ready(function () {
             $('#bSpielerExport').removeClass('ui-disabled');
         }
     }
-    if (LS.ME === '4731'                                  // Alex Sabkovski
+    if (LS.ME === '4731' || LS.ME === '2553' // Alex Sabkovski, Arno Peter
             || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0 // Administrator-Stellvertreter
             || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0
             || CUPS.BEREschreiben[53].indexOf(LS.ME) >= 0

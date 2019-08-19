@@ -1,5 +1,5 @@
 
-/* global STAT, CUPS, stCup, QUERFORMAT(), stFinale, jbSpieler, SPIELER, PC, LS, getName, getSpielerName, stSaison, ADMIN */
+/* global STAT, CUPS, stCup, QUERFORMAT(), stFinale, jbSpieler, SPIELER, PC, LS, getName, getSpielerName, stSaison, ADMIN, SAISON, iSaison */
 
 function showTurnier(pTurnier) {
 
@@ -17,6 +17,12 @@ function showTurnier(pTurnier) {
         stStat = pTurnier;
     } else {
         pTurnier = stStat;
+    }
+    stSaison = STAT[pTurnier]._SAISON;
+    for (var i = 1; i < SAISON.length; i++) {
+        if (SAISON[i][0] === stSaison) {
+            iSAISON = SAISON[i][0];
+        }
     }
 
     if (jbSpieler.isOpen) {
@@ -70,33 +76,24 @@ function showTurnier(pTurnier) {
     }
 
     if (LS.ME !== "NOBODY") {
-        if (mMitgespielt) {
-            if (LS.ME === '3425'
-                    || LS.ME === '3757' && stCup === 56     // Erwin Haider
-                    || LS.ME === '4731' && stCup === 81) {  // Alexandra Sabkovski
-                showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote', '#iDownload']);
-            } else if (ADMIN
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')    // Hafner Hans, Timoschek Kurt
-                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
-                    || STAT[pTurnier]._ANEKDOTE) {
-                showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote']);
-            } else {
-                showIcons(['#iScrollToMe', '#iPrint']);
-            }
+        var hIcons = [];
+        if (LS.ME === '3425'
+                || LS.ME === '3757' && stCup === 56     // Erwin Haider
+                || LS.ME === '4731' && stCup === 81     // Alexandra Sabkovski
+                || LS.ME === '2553' && stCup === 83) {  // Arno Peter
+            hIcons = ['#iPrint', '#iAnekdote', '#iDownload'];
+        } else if (ADMIN
+                || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')    // Hafner Hans, Timoschek Kurt
+                || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
+                || STAT[pTurnier]._ANEKDOTE) {
+            hIcons = ['#iPrint', '#iAnekdote'];
         } else {
-            if (LS.ME === '3425'
-                    || LS.ME === '3757' && stCup === 56     // Erwin Haider
-                    || LS.ME === '4731' && stCup === 81) {  // Alexandra Sabkovski
-                showIcons(['#iPrint', '#iAnekdote', '#iDownload']);
-            } else if (ADMIN
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')    // Hafner Hans, Timoschek Kurt
-                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
-                    || STAT[pTurnier]._ANEKDOTE) {
-                showIcons(['#iPrint', '#iAnekdote']);
-            } else {
-                showIcons(['#iPrint']);
-            }
+            hIcons = ['#iPrint'];
         }
+        if (mMitgespielt) {
+            hIcons.unshift('#iScrollToMe'); // #iScrollToMe auf [0].
+        }
+        showIcons(hIcons);
     }
 
     SORT.sort();
@@ -175,10 +172,10 @@ function showTurnier(pTurnier) {
     setFont(4.7, true);
 
 //    if (QUERFORMAT()) {
-        window.scrollTo(0, 0);
-        if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
-            $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
-        }
+    window.scrollTo(0, 0);
+    if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
+        $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
+    }
 //    }
 }
 
@@ -306,9 +303,9 @@ function popupSpieler(pSpieler, pSaison) {
         jbSpieler.open();
     }
 
-function isVERSTORBEN(pSchalter) {
-    return ((pSchalter & 2) !== 0);
-}
+    function isVERSTORBEN(pSchalter) {
+        return ((pSchalter & 2) !== 0);
+    }
 
     $('#jbSpielerTitel').html(((isNaN(pSpieler) || !PC) ? '' : pSpieler + '&nbsp;&nbsp;') + getSpielerName(pSpieler).replace(' ', '&nbsp;') + (stSaison === pSaison ? '' : '&nbsp;&nbsp;-&nbsp;&nbsp;' + pSaison + ' ') + (!isNaN(pSpieler) && isVERSTORBEN(SPIELER[pSpieler][4]) ? '&nbsp;&#134;' : '') + (QUERFORMAT() && stStat !== "Platzierungen" ? '' : '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + getSpielerOrt(pSpieler, true)));
     var hFont = 0;

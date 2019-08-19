@@ -56,6 +56,7 @@ function onRegistrieren() {
                 || iCNRn === 3244 // Markus Mair
                 || iCNRn === 4506 // Sepp Lang
                 || iCNRn === 4731 // Alex Sabkovski
+                || iCNRn === 2553 // Arno Peter
                 ) {
             showEinenTip("#iCNR", 'Der PIN eines Admins kann nicht berechnet werden.');
             return;

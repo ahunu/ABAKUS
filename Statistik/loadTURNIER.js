@@ -110,6 +110,15 @@ function loadTURNIER(pCup, pTurnier, pTitel, pLastturnier, pCallback) {
         if (STAT[pTurnier]._AKTTURNIER) {
             if (pTurnier === pLastturnier.substr(0, 10)) {
                 STAT._AKTTURNIER = STAT[pTurnier]._AKTTURNIER;
+                if (STAT._AKTTURNIER._RUNDE === 1) {
+                    mNewTurnier = true; // nach dem Speichern der Anmeldungen
+                    for (var iItem in STAT._AKTTURNIER) {
+                        if (iItem.substr(0, 4) === '_R1_') {
+                            mNewTurnier = false; // fals bereits Tische eingegeben
+                            break;
+                        }
+                    }
+                }
             }
             delete STAT[pTurnier]._AKTTURNIER;
         } else {
@@ -122,10 +131,6 @@ function loadTURNIER(pCup, pTurnier, pTitel, pLastturnier, pCallback) {
                 loadTURNIER(pCup, STAT[pTurnier]._PRETURNIER, pTitel, pLastturnier, pCallback);
                 return;
             }
-        }
-
-        if (STAT._LASTTURNIER.substr(0, 10) !== pLastturnier.substr(0, 10)) {
-            mNewTurnier = true;
         }
 
         if (STAT._LASTTURNIER) {

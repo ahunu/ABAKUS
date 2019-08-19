@@ -50,7 +50,11 @@ function initSAISON() {
     if (stSaison) {
         bereSaison();
     }
-    iSaison = 0;
+    if (iSaison === 0) {
+        $('#nbSaison').addClass('ui-disabled');
+    } else {
+        iSaison = 0;
+    }
 }
 
 function bereSaison() {

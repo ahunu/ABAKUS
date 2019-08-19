@@ -138,8 +138,7 @@ function whenSTATloaded(pNewTurnier) {
     }
 
     if (pNewTurnier) {
-        iSaison = 1;
-        showSaison();
+        showSaison(1);
     } else if (!stStat) {
         if (CUPS.TYP[stCup] === 'MT') {
             if (STAT) {

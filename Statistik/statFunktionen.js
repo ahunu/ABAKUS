@@ -58,7 +58,7 @@ function getStatMeldungen() {
                 } else if (nMinSeitRundeStart < 90) {
                     ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wird noch <wbr>gespielt.</b><br></span>";
                 } else {
-                    ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " wurde noch <wbr>nicht <wbr>gespeichert.</b><br></span>";
+                    ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png'  width='24' height='24'><span class=M>&nbsp;<b>Runde " + STAT._AKTTURNIER._RUNDE + " noch <wbr>nicht <wbr>gespeichert.</b><br></span>";
                 }
             } else {
                 ret += "<div class=noprint>";

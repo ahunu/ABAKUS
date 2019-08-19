@@ -912,7 +912,7 @@ function initExtraButtons() {
         $('#bAdminTools,#bFindSpieler').show();
     }
 
-    if (LS.ME === '4731') { // Alex Sabkovski --- Turnierkalender
+    if (LS.ME === '4731' || LS.ME === '2553') { // Alex Sabkovski, Arno Peter --- Turnierkalender
         $('#bAdminTools').show();
     }
 
@@ -938,7 +938,7 @@ function showCUPS() {
             writeLOG('ABAKUS: Update auf Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ').');
         }
         initCUPSdelAllSTAT();
-    } else if (LS.LoadCups > 0 || nTage > 2) {
+    } else if (LS.LoadCups > 0 || nTage > 2 || isNaN(nTage)) {
         loadCUPS(false, false, true);
     } else {
         whenCUPSloaded();
@@ -1549,18 +1549,12 @@ function fINIT() {
     document.onselectstart = function () {
         return false;
     };
-    if (localStorage.getItem("Abakus.CUPS") === null) {
+    CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+    if (CUPS === null) {
         CUPS = new Object();
         CUPS.NAME = [];
         CUPS.MEANGEMELDET = [];
         CUPS.MEZULETZT = [];
-    } else {
-        CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-        if (!CUPS.MEZULETZT || typeof CUPS.MEZULETZT !== 'object') {
-            CUPS.MEANGEMELDET = [];
-            CUPS.MEZULETZT = [];
-            localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
-        }
     }
 
     if (LS.ShowCups && !QUERFORMAT()) {

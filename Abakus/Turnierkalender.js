@@ -9,6 +9,7 @@
 // 56 Wr. Tarockcup
 // 81 Schmankerl Tarock
 // 82 UTC Klobainersee
+// 83 Villacher Cup
 
 var FB = undefined;
 var LS = new Object();
@@ -241,7 +242,7 @@ function showTermin(pTermin) {
         $('#iNAME').val('');
         $('#iVERANSTALTER').val('');
         if ($('#tCUP').text().indexOf("Steirischer Tarockcup") < 0) {
-            $('#tVERANSTALTER').html('(-1 = Präsidium, -2 = Alle Veranstalter)').removeClass('B');
+            $('#tVERANSTALTER').html('(-1 = Präsidium, -2 = Alle Veranstalter, -3 = Alle Cups)').removeClass('B');
         } else {
             $('#tVERANSTALTER').html('');
         }
@@ -276,7 +277,7 @@ function onAendern() {
     var hCUP = parseInt($('#iCUP').val().trim());
 
     if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'MT')) {
-        showEinenTip('#iCUP', 'Österreichfinale = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Wr. Marathon = 80,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+        showEinenTip('#iCUP', 'Österreichfinale = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Wr. Marathon = 80,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
 
@@ -302,16 +303,6 @@ function onAendern() {
         return;
     }
 
-//    if ($('#iVERANSTALTER').val().trim() === "") {
-//        showEinenTip('#iVERANSTALTER', 'Wer veranstaltes das Turnier?');
-//        return;
-//    }
-//    if ($('#iVERANSTALTER').val() !== "-1"
-//            && !/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iVERANSTALTER').val())) {
-//        showEinenTip('#iVERANSTALTER', 'Der <b>Veranstalter</b> enth&auml;lt ein ung&uuml;ltiges Sonderzeichen.');
-//        $('input[id=iVERANSTALTER]').css("color", "red").focus();
-//        return;
-//    }
     var iVERANSTALTER = parseInt($('#iVERANSTALTER').val());
     if (iVERANSTALTER === -1 && $('#tCUP').text().indexOf("Steirischer Tarockcup") < 0) {
         iVERANSTALTER = 'Präsidium';
@@ -323,6 +314,9 @@ function onAendern() {
     } else if (iVERANSTALTER === -2 && $('#tCUP').text().indexOf("Steirischer Tarockcup") < 0) {
         iVERANSTALTER = 'Alle Veranstalter';
         $('#tVERANSTALTER').text('Alle Veranstalter');
+    } else if (iVERANSTALTER === -3) {
+        iVERANSTALTER = 'Alle Cups';
+        $('#tVERANSTALTER').text('Alle Cups');
     } else if (iVERANSTALTER < 1) {
         showEinenTip('#iVERANSTALTER', iVERANSTALTER + ' ist keine gültige Spielernummer');
         $('input[id=iVERANSTALTER]').css("color", "red").focus();
@@ -459,6 +453,11 @@ $(document).bind('pageinit', function () {
         $('#iCUP').val(81);
         $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
         $('#tDIV,#tCUP').html('Sommer Schmankerl Tarock').show();
+    }
+    if (CUPS.BEREadmin[83].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[83].indexOf(LS.ME) >= 0) {
+        $('#iCUP').val(83);
+        $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
+        $('#tDIV,#tCUP').html('Villacher Cup').show();
     }
 
     if (LS.ME === '3425') {

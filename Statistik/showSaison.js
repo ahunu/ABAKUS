@@ -138,7 +138,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                             htmlTE = '<li ' + hDataTheme + ' data-icon="false"><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span></a>'
                                     + (STAT[turnier]._ANEKDOTE ? '<a onclick="$(\'#tAnek' + nAnekdoten + '\').toggle(\'show\');">Anekdote</a>' : '')
                                     + '</li>'
-                                    + (STAT[turnier]._ANEKDOTE ? '<div id=tAnek' + nAnekdoten + ' style="text-align:justify;margin:.2em .6em"  onclick="$(\'#tAnek' + nAnekdoten + '\').hide();" hidden>' + STAT[turnier]._ANEKDOTE + '</div>' : '')
+                                    + (STAT[turnier]._ANEKDOTE ? '<div id=tAnek' + nAnekdoten + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#tAnek' + nAnekdoten + '\').hide();" hidden>' + STAT[turnier]._ANEKDOTE + '</div>' : '')
                                     + htmlTE;
                         }
                     }

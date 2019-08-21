@@ -1019,7 +1019,6 @@ function getMeinTerminBarZeile(pCup) {
 function whenCUPSloaded() {
 
     initExtraButtons();
-//    if (LS.I && (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT')) {
     if (LS.I) { // ????
         if (LS.gespielt > 0) {
             $('#tCupName').html(CUPS.NAME[LS.I] + '<br>' + (LS.gespielt === 1 ? 'Ein Spiel' : LS.gespielt + ' Spiele') + ' gespielt');
@@ -1520,7 +1519,7 @@ function fINIT() {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     }
 
-    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "0124") {
+    if (LS.ME === "3425" || LS.ME === "1000") {
         mTirolAktiv = true;
     }
 

@@ -114,19 +114,19 @@ function showDetailStat2(pKolonne, pI, pNeu, pAkt) {
     }
 
     html += htmlUebersicht(pKolonne, pI);
-    if (CUPS.TURNIER[stCup]) {
-        html = html
-                + "<div data-role=navbar class='noprint'>"
-                + "<ul>"
-                + "<li><a onclick='stOption=2;stDetOption[" + pKolonne + "]=2;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 2 ? ' ui-btn-active' : '') + "'>Spiele</a></li>"
-                + "<li><a onclick='stOption=3;stDetOption[" + pKolonne + "]=3;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 3 ? ' ui-btn-active' : '') + "'>Punkte</a></li>"
-                + "<li><a onclick='stOption=1;stDetOption[" + pKolonne + "]=1;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 1 ? ' ui-btn-active' : '') + "'>D60</a></li>"
-                + "</ul>"
-                + "</div>";
-    } else {
-        stOption = 1;
-        stDetOption[pKolonne] = 1;
-    }
+//    if (CUPS.TURNIER[stCup]) {
+    html = html
+            + "<div data-role=navbar class='noprint'>"
+            + "<ul>"
+            + "<li><a id=nbSpiele onclick='stOption=2;stDetOption[" + pKolonne + "]=2;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 2 ? ' ui-btn-active' : '') + "'>Spiele</a></li>"
+            + "<li><a id=nbPunkte onclick='stOption=3;stDetOption[" + pKolonne + "]=3;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 3 ? ' ui-btn-active' : '') + "'>Punkte</a></li>"
+            + "<li><a id=nbD60    onclick='stOption=1;stDetOption[" + pKolonne + "]=1;showDetailStat3(" + pKolonne + ");' class='M3" + (stOption === 1 ? ' ui-btn-active' : '') + "'>D60</a></li>"
+            + "</ul>"
+            + "</div>";
+//    } else {
+//        stOption = 1;
+//        stDetOption[pKolonne] = 1;
+//    }
 
     html = html + "<div id=Kolonne" + pKolonne + "></div></div>";
 
@@ -324,6 +324,14 @@ function htmlUebersicht(pKolonne, pI) {
 function showDetailStat3(pKolonne, pI) {
     'use strict';
 
+    $('#nbSpiele,#nbPunkte,#nbD60').removeClass('ui-btn-active');
+    if (stOption === 2) {
+        $('#nbSpiele').addClass('ui-btn-active');
+    } else if (stOption === 3) {
+        $('#nbPunkte').addClass('ui-btn-active');
+    } else if (stOption === 1) {
+        $('#nbD60').addClass('ui-btn-active');
+    }
     if (pI) {
         $('.L' + pKolonne).removeClass('B');
         $('#L' + pKolonne + 'P' + pI).addClass('B');

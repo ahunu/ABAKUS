@@ -180,10 +180,6 @@ $(document).bind('pageinit', function () {
         };
     }
 
-//    if (LS.ME !== "3425" && LS.ME !== "1014" && LS.ME !== "0124") { // Franz Kienast, Karl Haas jun.
-//        $("#bAlleSpieler,#bNeuOderGeaendert").remove();
-//    }
-
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (LS.ME === '3425') { // Leo Luger
         mCup = 56;

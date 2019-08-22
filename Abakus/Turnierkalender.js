@@ -95,9 +95,12 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                 } else if (TERMINE[termin].CUP === 31) {
                     hCupName = 'Drumlinger MT';
                     hClass = ' cDIV';
-                } else if (TERMINE[termin].CUP === 50) {
+                } else if (TERMINE[termin].CUP === 49) {
                     hCupName = 'Österreichfinale';
                     hClass = ' cWTC';
+                } else if (TERMINE[termin].CUP === 50) {
+                    hCupName = 'Hausruckcup';
+                    hClass = ' cHRC';
                 } else if (TERMINE[termin].CUP === 51) {
                     hCupName = 'Hausruckcup';
                     hClass = ' cHRC';
@@ -184,7 +187,7 @@ function showTermin(pTermin) {
         I = pTermin;
         $('#bNeu').hide();
         $('#bAendern').show();
-        $('#tTitel').html('Turnier &auml;ndern:');
+        $('#tTitel').html('Turnier ändern:');
         $('#iDATUM').val(TERMINE[I].DATUM);
         $('#iCUP').val(TERMINE[pTermin].CUP).hide();
         if (LS.ME === '3425') {
@@ -194,20 +197,23 @@ function showTermin(pTermin) {
         }
         $('#iNAME').val(TERMINE[I].NAME);
         var iVERANSTALTER = TERMINE[I].VERANSTALTER;
-        if (TERMINE[I].VERANSTALTER === "Präsidium" || TERMINE[I].VERANSTALTER === "0000") {
+        if (TERMINE[I].VERANSTALTER === "Präsidium") {
             $('#iVERANSTALTER').val(-1);
             if (TERMINE[pTermin].CUP === 56) {
                 $('#tVERANSTALTER').html('Präsidium, Tel. 0699/10360228, 0664/8598867');
             } else {
                 $('#tVERANSTALTER').html('Präsidium');
             }
-        } else if (TERMINE[I].VERANSTALTER === "Alle Veranstalter" || TERMINE[I].VERANSTALTER === "9999") {
+        } else if (TERMINE[I].VERANSTALTER === "Alle Veranstalter") {
             $('#iVERANSTALTER').val(-2);
             $('#tVERANSTALTER').text('Alle Veranstalter');
+        } else if (TERMINE[I].VERANSTALTER === "Alle Cups") {
+            $('#iVERANSTALTER').val(-3);
+            $('#tVERANSTALTER').text('Alle Cups');
         } else if (SPIELERext[iVERANSTALTER]) {
             $('#iVERANSTALTER').val(TERMINE[I].VERANSTALTER);
             $('#tVERANSTALTER').text(SPIELERext[iVERANSTALTER][0] + ' ' + SPIELERext[iVERANSTALTER][1] + ', Tel. ' + SPIELERext[iVERANSTALTER][9]);
-        } else if (TERMINE[pTermin].CUP === 50) {
+        } else if (TERMINE[pTermin].CUP === 80) { // Wiener Marathon
             $('#iVERANSTALTER').val(TERMINE[I].VERANSTALTER);
             $('#tVERANSTALTER').html('Promotor ' + iVERANSTALTER + ' existiert nicht.');
         } else {
@@ -277,7 +283,7 @@ function onAendern() {
     var hCUP = parseInt($('#iCUP').val().trim());
 
     if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'MT')) {
-        showEinenTip('#iCUP', 'Österreichfinale = 50,<br>Hausruckcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Wr. Marathon = 80,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+        showEinenTip('#iCUP', 'Österreichfinale = 49,<br>Hausruckcup = 50,<br>Ktn. Tarockcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Wr. Marathon = 80,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
 
@@ -414,11 +420,11 @@ $(document).bind('pageinit', function () {
 
     firebase.initDB(0, 'admin');
 
-    if (CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[50].indexOf(LS.ME) >= 0) {
-        $('#iCUP').val(50);
-        $('#cb50').prop('checked', true).checkboxradio("refresh");
-        $('#tWMA,#tCUP').text('Wr. Marathon').show();
-    }
+//    if (CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[50].indexOf(LS.ME) >= 0) {
+//        $('#iCUP').val(50);
+//        $('#cb50').prop('checked', true).checkboxradio("refresh");
+//        $('#tWMA,#tCUP').text('Hausruckcup').show();
+//    }
     if (CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(51);
         $('#cb51').prop('checked', true).checkboxradio("refresh");
@@ -492,6 +498,9 @@ $(document).bind('pageinit', function () {
         } else if (parseInt(iVERANSTALTER) === -2) {
             iVERANSTALTER = 'Alle Veranstalter';
             $('#tVERANSTALTER').text('Alle Veranstalter');
+        } else if (parseInt(iVERANSTALTER) === -3) {
+            iVERANSTALTER = 'Alle Cups';
+            $('#tVERANSTALTER').text('Alle Cups');
         } else if (parseInt(iVERANSTALTER) < 1) {
             showEinenTip('#iVERANSTALTER', iVERANSTALTER + ' ist keine gültige Spielernummer.');
             $('input[id=iVERANSTALTER]').css("color", "red").focus();

@@ -273,10 +273,14 @@ function writeCanvas(pCup) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Farben.png");
         }
         if (QUERFORMAT()) {
-            if (pCup === 50) {
+            if (pCup === 49) {
                 hTitel = 'Tarock-Österreich-Finale';
                 document.title = 'Österreichfinale';
                 hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://tarockoesterreich.jimdo.com\')" >tarockoesterreich.jimdo.com</span>';
+            } else if (pCup === 50) {
+                hTitel = 'Hausruckviertler Tarockcup';
+                document.title = 'HRC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" >hausruckcup1.jimdo.com</span>';
             } else if (pCup === 51) {
                 hTitel = 'Hausruckviertler Tarockcup';
                 document.title = 'HRC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
@@ -530,10 +534,12 @@ function initSeite2() {
 function resetLastBtn() {
     if (LS.LastBtn) {
         $(LS.LastBtn).removeClass('ui-btn-active');
-        if (LS.LastBtn[4] === '5') {
+        if (LS.LastBtn[4] === '5' || LS.LastBtn.substr(4, 2) === '49') {
             if (LS.LastBtn.length > 6) {
-                if (LS.LastBtn.substr(4, 3) === '50T') {
+                if (LS.LastBtn.substr(4, 3) === '49T') {
                     $(LS.LastBtn).addClass('cTOF');
+                } else if (LS.LastBtn.substr(4, 3) === '50T') {
+                    $(LS.LastBtn).addClass('cHRC');
                 } else if (LS.LastBtn.substr(4, 3) === '51T') {
                     $(LS.LastBtn).addClass('cHRC');
                 } else if (LS.LastBtn.substr(4, 3) === '52T') {
@@ -549,7 +555,8 @@ function resetLastBtn() {
                 } else {
                     $(LS.LastBtn).addClass('cDIV');
                 }
-            } else if (LS.LastBtn.substr(4, 2) === '50'
+            } else if (LS.LastBtn.substr(4, 2) === '49'
+                    || LS.LastBtn.substr(4, 2) === '50'
                     || LS.LastBtn.substr(4, 2) === '51'
                     || LS.LastBtn.substr(4, 2) === '52'
                     || LS.LastBtn.substr(4, 2) === '53'
@@ -617,7 +624,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
             } else if (pTermin) {
                 $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen');
             } else if (pBtn) {
-                if (i === 50 || i === 51 || i === 52 || i === 53 || i === 55) {
+                if (i === 49 || i === 51 || i === 52 || i === 53 || i === 55) {
                     $(LS.LastBtn).removeClass('cDIV');
                 }
                 $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen');
@@ -687,7 +694,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                 + '<br>'
                 + '<div class="ui-grid-a"><div class="ui-block-a M" style="width:47%">'
 
-                + (I === 50
+                + (I === 49
                         ? hVorschub + '<div class="M" style="width:92%;text-align:justify;">Seit 2008 findet jedes Jahr im April das Tarock-Österreich-Finale im Königrufen statt. Die besten Tarockspieler aus ganz Österreich treffen sich im Casino Linz zu einem Tarockevent der Extraklasse.</div>'
                         : ''
                         )
@@ -717,7 +724,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         : ''
                         )
 
-                + (I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv
+                + (I !== 49 && I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
@@ -1139,9 +1146,12 @@ function whenCUPSloaded() {
                     var hCupFarbe = '';
                     if (CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
                         hCupName = 'Wr. Tarockcup';
-                    } else if (TERMINE[termin].CUP === 50) {
+                    } else if (TERMINE[termin].CUP === 49) {
                         hCupName = 'Österreichfinale';
                         hCupFarbe = ' cTOF';
+                    } else if (TERMINE[termin].CUP === 50) {
+                        hCupName = 'Hausruckcup';
+                        hCupFarbe = ' cHRC';
                     } else if (TERMINE[termin].CUP === 51) {
                         hCupName = 'Hausruckcup';
                         hCupFarbe = ' cHRC';
@@ -1198,7 +1208,7 @@ function whenCUPSloaded() {
                     htmlALLE += hTemp;
                     if (TERMINE[termin].DATUM <= hAktuellBis) {
                         for (var iMC in LS.MeineCups) {
-                            if (TERMINE[termin].CUP === 50 || TERMINE[termin].CUP === LS.MeineCups[iMC]) {
+                            if (TERMINE[termin].CUP === 49 || TERMINE[termin].CUP === LS.MeineCups[iMC]) {
                                 nAktTermine++;
                                 htmlAKT += hTemp.replace(/bAL/g, 'bAK');
                                 break;
@@ -1230,20 +1240,27 @@ function whenCUPSloaded() {
     var SORT = [];
     for (i = 0; i < CUPS.NAME.length; i++) {
         if (CUPS.NAME[i]) {
-            if (i === 50) { // Österreichfinale
-                SORT[SORT.length] = '0' + CUPS.NAME[i] + '  ;' + i;
-            } else if (i === 51) { // Hausruckcup
-                SORT[SORT.length] = '1' + CUPS.NAME[i] + '  ;' + i;
-            } else if (i === 52) { // Raiffeisencup
-                SORT[SORT.length] = '2' + CUPS.NAME[i] + '  ;' + i;
-            } else if (i === 53) { // Sauwaldcup
-                SORT[SORT.length] = '3' + CUPS.NAME[i] + '  ;' + i;
-            } else if (i === 54) { // Steirischer Tarockcup
-                SORT[SORT.length] = '4' + CUPS.NAME[i] + '  ;' + i;
-            } else if (i === 55) { // Tiroler Tarockcup
-                SORT[SORT.length] = '5' + CUPS.NAME[i] + '  ;' + i;
-            } else if (i === 56) { // Wiener Tarockcup
-                SORT[SORT.length] = '6' + CUPS.NAME[i] + '  ;' + i;
+//            if (i === 49) { // Österreichfinale
+//                SORT[SORT.length] = '0' + CUPS.NAME[i] + '  ;' + i;
+//            } else if (i === 50) { // Hausruckcup
+//                SORT[SORT.length] = '1' + CUPS.NAME[i] + '  ;' + i;
+//            } else if (i === 51) { // Ktn. Tarockcup
+//                SORT[SORT.length] = '2' + CUPS.NAME[i] + '  ;' + i;
+//            } else if (i === 52) { // Raiffeisencup
+//                SORT[SORT.length] = '3' + CUPS.NAME[i] + '  ;' + i;
+//            } else if (i === 53) { // Sauwaldcup
+//                SORT[SORT.length] = '4' + CUPS.NAME[i] + '  ;' + i;
+//            } else if (i === 54) { // Steirischer Tarockcup
+//                SORT[SORT.length] = '5' + CUPS.NAME[i] + '  ;' + i;
+//            } else if (i === 55) { // Tiroler Tarockcup
+//                SORT[SORT.length] = '6' + CUPS.NAME[i] + '  ;' + i;
+//            } else if (i === 56) { // Wiener Tarockcup
+//                SORT[SORT.length] = '7' + CUPS.NAME[i] + '  ;' + i;
+//            } else {
+//                SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
+//            }
+            if (i >= 49 && i <= 59) {
+                SORT[SORT.length] = i + CUPS.NAME[i] + '  ;' + i;
             } else {
                 SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
             }
@@ -1259,7 +1276,7 @@ function whenCUPSloaded() {
             if (QUERFORMAT() || !CUPS.TEXT1[i]) {
                 htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
             } else {
-                if (i === 50
+                if (i === 49
                         || i === 51 && !mHausruckAktiv
                         || i === 52 && !mRaiffeisenAktiv
                         || i === 53 && !mSauwaldAktiv
@@ -1330,13 +1347,13 @@ function whenCUPSloaded() {
     for (var s = 0; s < SORT.length; s++) {
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
         if (QUERFORMAT() || !CUPS.TEXT1[i] || CUPS.TYP[i] === 'PR') {
-            html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + (i === 50 || i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? ' cDIV' : '') + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a></li>';
+            html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + (i === 49 || i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? ' cDIV' : '') + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a></li>';
         } else {
-            if (!QUERFORMAT() && (i === 50 || i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv)) {
+            if (!QUERFORMAT() && (i === 49 || i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv)) {
                 html = '<li data-icon=false><a id="bXX' + i + '" class="cDIV' + getClass(i) + '" onClick="toggleShow(\'#hToggle2' + i + '\');">&nbsp;' + getCupName(i) + '</a></li>'
                         + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
                         + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] : '')
-                        + (i === 50
+                        + (i === 49
                                 ? '<div class=S2><br>'
                                 + '<div class="ui-grid-a">'
                                 + '<div class="ui-block-a" style="width:20%"></div>'
@@ -1389,7 +1406,7 @@ function whenCUPSloaded() {
         }
         if (CUPS.NAME[i].substr(0, 4) === "Test" || CUPS.TYP[i] === 'TR' || i <= 4) { // 4te TestRunde / TestCup
             htmlTR = htmlTR + html;
-        } else if (CUPS.TYP[i] === 'CUP' && (i >= 50 && i <= 57)) {
+        } else if (CUPS.TYP[i] === 'CUP' && (i >= 49 && i <= 57)) {
             htmlCT = htmlCT + html;
         } else if (CUPS.TYP[i] === 'CUP' || CUPS.TYP[i] === 'TC') {
             htmlLC = htmlLC + html;

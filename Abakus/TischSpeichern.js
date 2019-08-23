@@ -285,17 +285,6 @@ function wrtSPIELER(I) {
         'use strict';
         STAT.S[ii].PUNKTE[pI] = 0;
         STAT.S[ii].SPIELE[pI] = 0;
-//        if (CUPS.TURNIER[LS.I]) {
-//            if (CUPS.TURNIER[LS.I] === 'Handy') {
-//                STAT.S[ii].ANZSPIELE[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-//                STAT.S[ii].ANZGEWONNEN[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-//                STAT.S[ii].PKTGEWONNEN[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-//            }
-//            STAT.S[ii].STOCKERL[pI] = '-';
-//            if (pI === 1 || pI === 2) {
-//                STAT.S[ii].CUPPUNKTE[pI] = [];
-//            }
-//        }
         STAT.S[ii].ANZSPIELE[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         STAT.S[ii].ANZGEWONNEN[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         STAT.S[ii].PKTGEWONNEN[pI] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -314,7 +303,6 @@ function wrtSPIELER(I) {
         }
         return ret;
     }
-
     if (ii >= 0) {
         if (!CUPS.TURNIER[LS.I]) {
             STAT.S[ii].TIMESTAMP = new Date(STAT.S[ii].TIMESTAMP);

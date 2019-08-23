@@ -953,7 +953,8 @@ function showDetails(pInit) {
     } else {
         var hHoehe = $(window).innerWidth() / 3;
     }
-    var html = "<div class=L>&nbsp;Details: <b>" + LS.VName[sI] + " " + LS.NName[sI] + "</b></div>"
+    var html = "<div style='height:" + ($('#SPIELER').height() + 2) + "px'></div>"
+            + "<div class=L>&nbsp;Details: <b>" + LS.VName[sI] + " " + LS.NName[sI] + "</b></div>"
             + "<div id='container-ges' style='width: 50%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
             + "<div id='container-gew' style='width: 50%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
             + "<div id='container-pyramid' style='width:100%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
@@ -1251,9 +1252,7 @@ function showSchreibzettel() {
 
     $(".TR").attr('style', 'padding:.03em 0em;text-align:right;');
 
-//    if (typeof $("#tLI").stickyTableHeaders === "function") { // ist Android < 4.0 nicht verfügbar
     $("#tLI").stickyTableHeaders();
-//    }
     $(document).scrollTop($(document).height());
 }
 
@@ -1271,7 +1270,8 @@ function showChronik(pInit) {
         Deactivate('#nbLI');
     }
     Seite = 'LI1';
-    var html = "<div class=L>&nbsp;Chronik: <b>" + LS.VName[sI] + " " + LS.NName[sI] + "</b></div>"
+    var html = "<div style='height:" + ($('#SPIELER').height() + 2) + "px'></div>"
+            + "<div class=L>&nbsp;Chronik: <b>" + LS.VName[sI] + " " + LS.NName[sI] + "</b></div>"
             + "<div data-role='navbar'><ul>"
             + "<li><a onclick='" + '$(".fremdSpiel").show();' + "' class=ui-btn-active>alle</a></li>"
             + "<li><a onclick='" + '$(".fremdSpiel").hide();' + "'>" + LS.VName[sI] + "'s</a></li>"

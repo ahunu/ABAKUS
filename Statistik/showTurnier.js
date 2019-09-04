@@ -104,7 +104,7 @@ function showTurnier(pTurnier) {
 
         if (iSpieler === LS.ME) {
             hClass = 'bBeige';
-        } else if (window.location.href.toUpperCase().indexOf('OOV') < 0) {
+        } else {
             hClass = '';
             if (istFreund(iSpieler)) {
                 hClass = ' bBeige2';
@@ -155,18 +155,6 @@ function showTurnier(pTurnier) {
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
         $('#nbTurniere').removeClass('ui-btn-active');
     }
-
-
-
-//
-//
-//            $('#dContent').html(html);
-//            $('#sideTurniereMT').hide();
-//            $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-//            var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
-//            $('#sideContent').css('height', hx + 'px').scrollTop(0);
-
-
 
     hideEinenMoment();
     setFont(4.7, true);

@@ -40,6 +40,7 @@ var iSaison = 0;
 var stSaison = '';
 var stFinale = false;
 var stFinalTeilnehmer = 0;
+var stFilter = '';
 var stStat = 0;
 var stNamenLen = 0.45;
 var stHeute = "2017-04-04";
@@ -413,6 +414,9 @@ function fINIT(pCup) {
     };
     if (stCup === 0) {
         history.go(-1);
+    }
+    if (stCup !== 53) {
+        $('#nb53').remove();
     }
     if (QUERFORMAT() && (CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 || LS.ME === '2037' && I === 56 || LS.ME[0] === '-')) {
         ADMIN = true;

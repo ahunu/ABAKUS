@@ -24,11 +24,27 @@ const sp0Cup2ter = 2;
 const sp0Cup3ter = 3;
 const sp0BestePlatz = 0;
 
-function initSAISON() {
+function initSAISON(pFilter, pShowSaison) {
+    if (pShowSaison) {
+        pShowSaison = iSaison;
+    }
     iSaison = 0;
     stSaison = '';
     SP = {};
     SAISON = [];
+
+    $('#nbNoFilter,#nbBBTC,#nbSKUES').removeClass('ui-btn-active');
+    if (pFilter) {
+        stFilter = pFilter;
+        if (pFilter === 'BBTC') {
+            $('#nbBBTC').addClass('ui-btn-active');
+        } else {
+            $('#nbSKUES').addClass('ui-btn-active');
+        }
+    } else {
+        stFilter = '';
+        $('#nbNoFilter').addClass('ui-btn-active');
+    }
 
     var SORT = [];
     for (var turnier in STAT) {
@@ -55,6 +71,45 @@ function initSAISON() {
     } else {
         iSaison = 0;
     }
+    if (stCup === 53) {
+        var hTitel = 'Sauwald Tarockcup';
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i53" + stFilter + ".png");
+        if (stFilter) {
+            if (stFilter === 'BBTC') {
+                hTitel = 'Baumgartner Bier Tarockcup';
+            } else {
+                hTitel = 'Sauwald Sküs';
+            }
+        }
+        $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
+    }
+    if (pShowSaison) {
+        var hStat = stStat;
+        iSaison = pShowSaison;
+        stSaison = SAISON[iSaison][isSaison];
+//        showSaison(pShowSaison, false, false, true);
+        if (hStat === 'Cupwertung') {
+            showSaison(pShowSaison, false, false, true);
+            showCupwertung();
+        } else if (hStat === 'Platzierungen') {
+            showSaison(pShowSaison, false, false, true);
+            showPlatzierungen();
+        } else if (hStat === 'Stockerlliste') {
+            showSaison(pShowSaison, false, false, true);
+            showSaison(pShowSaison, true, false);
+        } else if (hStat === 'Anekdoten') {
+            showSaison(pShowSaison, false, false, true);
+            showSaison(pShowSaison, false, true);
+        } else if (hStat === 'Cupsieger') {
+            showCupsieger();
+        } else if (hStat === 'Teilnehmerzahlen') {
+            showTeilnehmerzahlen();
+        } else if (hStat === 'Teilnehmer') {
+            showTeilnehmer();
+        } else {
+            showSaison(pShowSaison);
+        }
+    }
 }
 
 function bereSaison() {
@@ -68,9 +123,7 @@ function bereSaison() {
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (STAT[turnier]._SAISON === stSaison) {
-                if (stCup !== 56
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
+                if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                     SAISON[iSaison][isAnzTurniere]++;
                     if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
                         if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
@@ -104,70 +157,62 @@ function bereSaison() {
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (STAT[turnier]._SAISON === stSaison) {
-                if (stCup !== 56
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                        || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
+                if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                     for (var spieler in STAT[turnier]) {
                         if (spieler[0] !== '_') {
 
+                            SAISON[iSaison][isAnzTeilnahmen]++;
 
-                            if (stCup !== 56
-                                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && istFreund(spieler)) {
-
-                                SAISON[iSaison][isAnzTeilnahmen]++;
-
-                                if (CUP[spieler]) {
-                                    aSP = CUP[spieler];
-                                    if (STAT[turnier][spieler][0] === 1) {
-                                        aSP[1]++;
-                                    } else if (STAT[turnier][spieler][0] === 2) {
-                                        aSP[2]++;
-                                    } else if (STAT[turnier][spieler][0] === 3) {
-                                        aSP[3]++;
-                                    }
-                                    aSP[4]++;
-
-                                    if (aSP[6] > STAT[turnier][spieler][0]) {
-                                        aSP[6] = STAT[turnier][spieler][0];  // Beste Platzierung
-                                    }
-                                    aSP[7] += STAT[turnier][spieler][0]; // Durch. Platzierung
-                                    aSP[8] += STAT[turnier][spieler][4]; // Punkte
-
-                                    if (turnier !== stFinale) {
-                                        hCupPunkte = getCupPunkte(turnier, spieler);
-                                        if (getCupPunkte(turnier, spieler) === '-') {
-                                            aSP[5].push(hCupPunkte);
-                                        } else {
-                                            ii = aSP[5].length;
-                                            for (var i = 0; i < aSP[5].length; i++) {
-                                                if (aSP[5][i] === '-'
-                                                        || aSP[5][i] <= hCupPunkte) {
-                                                    ii = i;
-                                                    break;
-                                                }
-                                            }
-                                            aSP[5].splice(ii, 0, hCupPunkte);
-                                        }
-                                    }
-                                    CUP[spieler] = aSP;
-                                } else {
-                                    SAISON[iSaison][isAnzTeilnehmer]++;
-                                    aSP = [0, 0, 0, 0, 1, [], STAT[turnier][spieler][0], STAT[turnier][spieler][0], STAT[turnier][spieler][4]];
-                                    if (STAT[turnier][spieler][0] === 1) {
-                                        aSP[1]++;
-                                    } else if (STAT[turnier][spieler][0] === 2) {
-                                        aSP[2]++;
-                                    } else if (STAT[turnier][spieler][0] === 3) {
-                                        aSP[3]++;
-                                    }
-
-                                    if (turnier !== stFinale) {
-                                        aSP[5] = [getCupPunkte(turnier, spieler)];
-                                    }
-
-                                    CUP[spieler] = aSP;
+                            if (CUP[spieler]) {
+                                aSP = CUP[spieler];
+                                if (STAT[turnier][spieler][0] === 1) {
+                                    aSP[1]++;
+                                } else if (STAT[turnier][spieler][0] === 2) {
+                                    aSP[2]++;
+                                } else if (STAT[turnier][spieler][0] === 3) {
+                                    aSP[3]++;
                                 }
+                                aSP[4]++;
+
+                                if (aSP[6] > STAT[turnier][spieler][0]) {
+                                    aSP[6] = STAT[turnier][spieler][0];  // Beste Platzierung
+                                }
+                                aSP[7] += STAT[turnier][spieler][0]; // Durch. Platzierung
+                                aSP[8] += STAT[turnier][spieler][4]; // Punkte
+
+                                if (turnier !== stFinale) {
+                                    hCupPunkte = getCupPunkte(turnier, spieler);
+                                    if (getCupPunkte(turnier, spieler) === '-') {
+                                        aSP[5].push(hCupPunkte);
+                                    } else {
+                                        ii = aSP[5].length;
+                                        for (var i = 0; i < aSP[5].length; i++) {
+                                            if (aSP[5][i] === '-'
+                                                    || aSP[5][i] <= hCupPunkte) {
+                                                ii = i;
+                                                break;
+                                            }
+                                        }
+                                        aSP[5].splice(ii, 0, hCupPunkte);
+                                    }
+                                }
+                                CUP[spieler] = aSP;
+                            } else {
+                                SAISON[iSaison][isAnzTeilnehmer]++;
+                                aSP = [0, 0, 0, 0, 1, [], STAT[turnier][spieler][0], STAT[turnier][spieler][0], STAT[turnier][spieler][4]];
+                                if (STAT[turnier][spieler][0] === 1) {
+                                    aSP[1]++;
+                                } else if (STAT[turnier][spieler][0] === 2) {
+                                    aSP[2]++;
+                                } else if (STAT[turnier][spieler][0] === 3) {
+                                    aSP[3]++;
+                                }
+
+                                if (turnier !== stFinale) {
+                                    aSP[5] = [getCupPunkte(turnier, spieler)];
+                                }
+
+                                CUP[spieler] = aSP;
                             }
                         }
                     }

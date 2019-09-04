@@ -1,4 +1,6 @@
 
+/* global STAT, SAISON, isAnzTeilnehmer, isSaison, isAnzTeilnahmen, isAnzTurniere, jbSpieler, LS */
+
 function showTeilnehmerzahlen() {
 
     var nGesTeilnehmer = 0;

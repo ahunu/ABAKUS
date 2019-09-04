@@ -1,5 +1,5 @@
 
-/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbArchiv, stFinalTeilnehmer, stNamenLen, stSaison, iSaison, sp0Cupsiege, SP */
+/* global stStat, stCup, QUERFORMAT(), LS, stFont, STAT, PC, stSynchron, CUPS, stNextTerminDat, SPIELER, tFIXPUNKTE, stSort, stTurCupGes, context, canvas, jbArchiv, stFinalTeilnehmer, stNamenLen, stSaison, iSaison, sp0Cupsiege, SP, stFilter, QUERFORMAT */
 
 function sortNumber(a, b) {
     return a - b;
@@ -121,7 +121,7 @@ function getSpielerOrt(pNR, pSTANDORT) {
 
 function getCupPunkte(pTurnier, pSpieler) {
 
-    if (stCup >= 50 && stCup <= 60) {
+    if (stCup >= 50 && stCup <= 60 || stCup === 125) { // 125 wurde als Testcup verwendet!
         if (STAT[pTurnier][pSpieler]) {
             if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
@@ -129,6 +129,7 @@ function getCupPunkte(pTurnier, pSpieler) {
                 } else {
                     if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
                             && (stCup === 54 && stSaison <= '2018/19'
+                                    || stCup === 125 && stSaison <= '2018/19'
                                     || stCup === 56 && stSaison <= '2018/19')) {
                         return (STAT[pTurnier][pSpieler][0] - 50) * -1;
                     } else {
@@ -139,6 +140,7 @@ function getCupPunkte(pTurnier, pSpieler) {
         } else {
             if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
                     && (stCup === 54 && stSaison <= '2018/19'
+                            || stCup === 125 && stSaison <= '2018/19'
                             || stCup === 56 && stSaison <= '2018/19')) {
                 return stFinalTeilnehmer * -1 + 49;
             } else {
@@ -427,20 +429,19 @@ function showIcons(pIcons) {
 
 function writeCanvas(pTitel) {
     var hTitel = CUPS.NAME[stCup];
-    if (stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0) {
-        if (QUERFORMAT()) {
-            hTitel = 'Wr. Tarockcup - out of Vienna';
+    if (stCup === 53) {
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i53" + stFilter + ".png");
+        if (stFilter) {
+            if (stFilter === 'BBTC') {
+                hTitel = 'Baumgartner Bier Tarockcup';
+            } else {
+                hTitel = 'Sauwald Sküs';
+            }
         } else {
-            hTitel = 'Wr. Tarockcup - ooV';
+            hTitel = 'Sauwald Tarockcup';
         }
     }
     $('#tStand').hide();
-//    if (CUPS.TYP[stCup] === 'CUP' && stCup > 4) {
-//        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
-//    } else {
-//        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");
-//    }
-//    $('.hfHeaderIcon').css('height', $('#hfHeader').height() - 8).show();
     $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
     $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
 

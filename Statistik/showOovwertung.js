@@ -24,7 +24,7 @@ function showOovwertung() {
         jbSpieler.close();
     }
 
-    stStat = 'Cupwertung';
+    stStat = 'Oovwertung';
     stNamenLen = 0.3;
     writeCanvas('OOV - Wertung  ' + stSaison);
     $("#dCopyright").hide();

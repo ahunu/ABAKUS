@@ -194,7 +194,9 @@ function readCUPWERTUNG(event) {
 
     for (i = iFrom; i < aCSV.length; i++) {
         zeile = aCSV[i].splitCSV(';');
-        if (zeile[1]) { // Turnier
+        I = parseInt(zeile[0]);
+//        if (zeile[1]) { // Turnier
+        if (I > 0) { // Turnier
             I = parseInt(zeile[0]);
             $('#tdTN' + I).html(zeile[1] + '&nbsp;&nbsp;&nbsp;');
             if (!DATA[tDATUM[I]]) {
@@ -274,6 +276,7 @@ function Speichern(pSpeichern) {
             }
             DATA[tDATUM[i]]._VERANSTALTER = iVERANSTALTER;
             DATA[tDATUM[i]]._SAISON = hDatMin + '/' + hDatMax.substr(2, 2);
+            DATA[tDATUM[i]]._SAISON = tDATUM[i].substr(0,4); // SWC
             DATA[tDATUM[i]]._NAME = $('#iN' + i).val();
         }
     }
@@ -284,6 +287,11 @@ function Speichern(pSpeichern) {
         sCUP3 = '056'; // WTC
     }
 
+    if (LS.ME === "4506") {
+        sCUP3 = '053'; // SWC
+    }
+
+    sCUP3 = '053'; // SWC
 
     firebase.database().ref('/00/' + sCUP3)
             .update(DATA)
@@ -304,7 +312,7 @@ $(document).bind('pageinit', function () {
     SPIELER = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

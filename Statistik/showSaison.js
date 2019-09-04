@@ -1,7 +1,7 @@
 
 /* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, SAISON, isSaison, isVorlaeufig, is1, is1CupPunkte, is3, is2, is2CupPunkte, is3CupPunkte */
 
-function showSaison(pSaison, pStockerl, pAnekdoten) {
+function showSaison(pSaison, pStockerl, pAnekdoten, pFix) {
 
     if (QUERFORMAT()) {
         if (lastBtn) {
@@ -32,9 +32,11 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
         compCUPPUNKTE();
     }
 
-    $('#nbUebersicht,#nbArchiv').removeClass('ui-btn-active');
-    $('#nbSaison').addClass('ui-btn-active');
-    $('#tArchiv').text(stSaison);
+    if (!pFix) {
+        $('#nbUebersicht,#nbArchiv').removeClass('ui-btn-active');
+        $('#nbSaison').addClass('ui-btn-active');
+        $('#tArchiv').text(stSaison);
+    }
 
     if (pStockerl) {
         stStat = 'Stockerlliste';
@@ -64,9 +66,7 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                     if (STAT[turnier]._ANEKDOTE) {
                         nAnekdoten++;
                     }
-                    if (stCup !== 56
-                            || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                            || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
+                    if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                         nTurniere++;
                         if (nTurniere % 2 === 0) {
                             cBG = '';
@@ -188,12 +188,10 @@ function showSaison(pSaison, pStockerl, pAnekdoten) {
                 + '<li class="cDieListen" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a></li>'
                 + ((LS.ME === "3425" || LS.ME === "-56" || LS.ME === "2037") && stCup === 56 && pSaison === 1 ? '<li class="cDieListen" data-icon=false><a id=bOovwertung onclick="showOovwertung();">&nbsp;OOV-Wertung</a></li>' : '')
 
-                + (window.location.href.toUpperCase().indexOf('OOV') < 0
-                        ? '<li class="cDieListen" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
-                        + (QUERFORMAT()
-                                ? '<li class="cDieListen" data-icon="false"><a id=bStockerlliste onclick="showSaison(\'' + iSaison + '\', true)">&nbsp;Stockerlliste</a></li>'
-                                + '<li class="cDieListen" data-icon="false"><a id=bAnekdoten ' + (nAnekdoten ? '' : 'class="ui-disabled "') + 'onclick="showSaison(\'' + iSaison + '\', false, true)">&nbsp;Anekdoten</a></li>'
-                                : '')
+                + '<li class="cDieListen" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
+                + (QUERFORMAT()
+                        ? '<li class="cDieListen" data-icon="false"><a id=bStockerlliste onclick="showSaison(\'' + iSaison + '\', true)">&nbsp;Stockerlliste</a></li>'
+                        + '<li class="cDieListen" data-icon="false"><a id=bAnekdoten ' + (nAnekdoten ? '' : 'class="ui-disabled "') + 'onclick="showSaison(\'' + iSaison + '\', false, true)">&nbsp;Anekdoten</a></li>'
                         : '')
                 + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Turniere:</li>'
                 ).listview('refresh').show();
@@ -258,9 +256,7 @@ function compCUPPUNKTE() {
     var hPunkte = 0;
     for (var turnier in STAT) {
         if (turnier[0] !== '_') {
-            if (stCup !== 56
-                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
+            if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                 if (STAT[turnier]._SAISON === stSaison) {
                     if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') < 0) {
                         for (var spieler in STAT[turnier]) {
@@ -297,9 +293,7 @@ function compCUPPUNKTE() {
 
     for (var turnier in STAT) {
         if (turnier[0] !== '_') {
-            if (stCup !== 56
-                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') < 0 // OOV = Out Of Vienna
-                    || stCup === 56 && window.location.href.toUpperCase().indexOf('OOV') > 0 && STAT[turnier]._NAME.toUpperCase().indexOf('OOV') > 0) {
+            if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                 if (STAT[turnier]._SAISON === stSaison) {
                     if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
                         for (var spieler in STAT[turnier]) {

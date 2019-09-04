@@ -48,7 +48,7 @@ $(document).ready(function () {
         $('#bTurnierkalender').removeClass('ui-disabled');
     }
 
-    if (LS.ME === "3425" || LS.ME === "1000") {
+    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "4506") {
         $('#dStatistikImport').removeClass('ui-disabled').show();
     }
 

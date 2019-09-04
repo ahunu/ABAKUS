@@ -430,7 +430,7 @@ function showIcons(pIcons) {
 function writeCanvas(pTitel) {
     var hTitel = CUPS.NAME[stCup];
     if (stCup === 53) {
-        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i53" + stFilter + ".png");
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i53" + (stFilter.replace(/Ü/g, 'UE')) + ".png");
         if (stFilter) {
             if (stFilter === 'BBTC') {
                 hTitel = 'Baumgartner Bier Tarockcup';

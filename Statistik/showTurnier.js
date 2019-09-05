@@ -153,7 +153,7 @@ function showTurnier(pTurnier) {
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
-        $('#nbTurniere').removeClass('ui-btn-active');
+        $('#nbTurniere,.nbFilter').removeClass('ui-btn-active');
     }
 
     hideEinenMoment();

@@ -88,16 +88,18 @@ function showTermine() {
             } else if (CUPS.TERMINE[iTermin].CUP === 81) {
                 hCupName = 'Schmankerl Tarock';
             }
-            if (CUPS.TERMINE[iTermin].DATUM >= stHeute) {
-                nTermine++;
-                if (QUERFORMAT()) {
-                    htmlTE += '<tr><td class=M>&nbsp;&nbsp;<span class=M>' + getDateString(CUPS.TERMINE[iTermin].DATUM) + '</span><br>&nbsp;&nbsp;<b class=L>' + CUPS.TERMINE[iTermin].NAME + '</b></td><td>' + getTerminText(iTermin) + '&nbsp;&nbsp;</td></tr>';
-                } else {
-                    htmlTE += '<li data-icon=false><a class="Sbtn" onclick="$(\'#txt' + iTermin + '\').toggle()">&nbsp;<span class="M N">' + getDateString(CUPS.TERMINE[iTermin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;<span class="L">' + CUPS.TERMINE[iTermin].NAME + '</span>'
-                            + '<div style="margin-left:10px" class="ui-block-b S N" id=txt' + iTermin + ' hidden>'
-                            + CUPS.TERMINE[iTermin].TEXT
-                            + '</div>'
-                            + '</a></li>';
+            if (!stFilter || CUPS.TERMINE[iTermin].NAME.toUpperCase().indexOf(stFilter) >= 0) {
+                if (CUPS.TERMINE[iTermin].DATUM >= stHeute) {
+                    nTermine++;
+                    if (QUERFORMAT()) {
+                        htmlTE += '<tr><td class=M>&nbsp;&nbsp;<span class=M>' + getDateString(CUPS.TERMINE[iTermin].DATUM) + '</span><br>&nbsp;&nbsp;<b class=L>' + CUPS.TERMINE[iTermin].NAME + '</b></td><td>' + getTerminText(iTermin) + '&nbsp;&nbsp;</td></tr>';
+                    } else {
+                        htmlTE += '<li data-icon=false><a class="Sbtn" onclick="$(\'#txt' + iTermin + '\').toggle()">&nbsp;<span class="M N">' + getDateString(CUPS.TERMINE[iTermin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;<span class="L">' + CUPS.TERMINE[iTermin].NAME + '</span>'
+                                + '<div style="margin-left:10px" class="ui-block-b S N" id=txt' + iTermin + ' hidden>'
+                                + CUPS.TERMINE[iTermin].TEXT
+                                + '</div>'
+                                + '</a></li>';
+                    }
                 }
             }
         }

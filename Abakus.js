@@ -724,7 +724,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         : ''
                         )
 
-                + (I !== 49 && I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && (mSauwaldAktiv || LS.ME === '3425') || I === 53 && (mSauwaldAktiv || LS.ME === '4506') || I === 55 && mTirolAktiv
+                + (I !== 49 && I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
@@ -1185,7 +1185,10 @@ function whenCUPSloaded() {
                         hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>';
                     } else {
                         hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
-                        if (TERMINE[termin].CUP === 51 || TERMINE[termin].CUP === 52 || TERMINE[termin].CUP === 53 || TERMINE[termin].CUP === 55 || TERMINE[termin].CUP === 57 || TERMINE[termin].CUP === 58 || TERMINE[termin].CUP === 59) {
+                        if (TERMINE[termin].CUP === 53) {
+                            TERMINE[termin].CUP = 53;
+                        }
+                        if (TERMINE[termin].CUP === 51 || TERMINE[termin].CUP === 52 || (TERMINE[termin].CUP === 53 && !mSauwaldAktiv) || TERMINE[termin].CUP === 55 || TERMINE[termin].CUP === 57 || TERMINE[termin].CUP === 58 || TERMINE[termin].CUP === 59) {
                             hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showEineMeldung(' + TERMINE[termin].CUP + ',\'Für den ' + hCupName + ' ist<br>keine Statistik verfügbar.\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
                                     + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Info</a></li>'
                                     + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
@@ -1396,6 +1399,12 @@ function whenCUPSloaded() {
                                 + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div></div>'
                                 : '')
                         + '</div>';
+            } else if (i === 53 && mSauwaldAktiv) {
+                html = '<li><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;' + getCupName(i) + '</a>'
+                        + '<a onclick="toggleShow(\'#hToggle2' + i + '\');">Info</a></li>'
+                        + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
+                        + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
+                        + '</div>';
             } else {
                 html = '<li><a id="bXX' + i + '" class="' + (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? 'cDIV ' : '') + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a>'
                         + '<a onclick="toggleShow(\'#hToggle2' + i + '\');">Info</a></li>'
@@ -1565,6 +1574,9 @@ function fINIT() {
     document.onselectstart = function () {
         return false;
     };
+    if (LS.ME === '3425' || LS.ME === '4506') {
+        mSauwaldAktiv = true;
+    }
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (CUPS === null) {
         CUPS = new Object();

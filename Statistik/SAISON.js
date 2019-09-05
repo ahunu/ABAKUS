@@ -106,6 +106,8 @@ function initSAISON(pFilter, pShowSaison) {
             showTeilnehmerzahlen();
         } else if (hStat === 'Teilnehmer') {
             showTeilnehmer();
+        } else if (hStat === 'Termine') {
+            showTermine();
         } else {
             showSaison(pShowSaison);
         }

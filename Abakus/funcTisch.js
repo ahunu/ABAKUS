@@ -111,17 +111,13 @@ function TischNeu(pNeu) {
 //            LS.I = 0;
 //        }
         if (CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
-            if (I > 4 && (navigator.appName === 'Microsoft Internet Explorer'
-                    || navigator.userAgent.match(/Trident/)
-                    || navigator.userAgent.match(/MSIE /))) {
-                showEineWarnung("HTML5 Object Fehler:",
-                        "<b>ACHTUNG:</b> Der Internet Explorer wird seit<br>"
-                        + "geraumer Zeit nicht mehr weiterentwickelt.<br>"
-                        + "Benutze einen der folgenden Browser:<br>"
-                        + "<b>Chrome</b>, <b>Firefox</b>, <b>Edge</b> oder <b>Opera</b>.");
+            if (!window.chrome) {
+                showEineMeldung('Achtung', 'HTML5 und Javascript werden von deinem<br>Browser nicht ausreichend unterstützt.'
+                        + '<br>Verwende einen der folgenden Browser:'
+                        + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>, <b>Slimjet</b>'
+                        + '<br>oder einen anderen kompatiblen Browser.');
                 return;
             }
-
             LS.ShowCups = I;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             fHref('_Turnier/TU_1_Anmeldung.html?init');

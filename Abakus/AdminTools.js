@@ -48,9 +48,13 @@ $(document).ready(function () {
         $('#bTurnierkalender').removeClass('ui-disabled');
     }
 
-    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "4506") {
+    if (LS.ME === "3425" || LS.ME === "1000") {
         $('#dStatistikImport').removeClass('ui-disabled').show();
     }
+
+//    if (LS.ME === "3425" || LS.ME === "1000" || LS.ME === "4506") {
+//        $('#dTurnierImport').removeClass('ui-disabled').show();
+//    }
 
     var hDate = new Date(CUPS.TIMESTAMP);
     $('#tSystemfreigabe').html('Von ' + hDate.toLocaleDateString() + ' bis 31.12.' + hDate.getFullYear() + ' freigegeben.');

@@ -19,6 +19,17 @@ function showSaison(pSaison, pStockerl, pAnekdoten, pFix) {
     if (jbSpieler.isOpen) {
         jbSpieler.close();
     }
+    if (stCup === 53) {
+        if (stFilter) {
+            if (stFilter === 'BBTC') {
+                $('#nbBBTC').addClass('ui-btn-active');
+            } else {
+                $('#nbSKUES').addClass('ui-btn-active');
+            }
+        } else {
+            $('#nbNoFilter').addClass('ui-btn-active');
+        }
+    }
 
     if (LS.ME !== "NOBODY" && (pStockerl || pAnekdoten)) {
         showIcons(['#iPrint']);

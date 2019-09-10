@@ -18,7 +18,7 @@ var mTischTurnier = '';
 var mHausruckAktiv = false;
 var mRaiffeisenAktiv = false;
 var mTirolAktiv = false;
-var mSauwaldAktiv = false;
+var mSauwaldAktiv = true;
 var hHeute = myDateString(new Date());
 var anzVersuche = 0;
 var myJBox = null;
@@ -740,6 +740,10 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                                 ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(false, \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
+                        + (I === 53 && LS.ME === '4506' && PC
+                                ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
+                                : ''
+                                )
                         : ''
                         )
 
@@ -1442,7 +1446,7 @@ function whenCUPSloaded() {
     }
     hideEinenMoment();
     if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
-        showEinenFehler('Diese App ist veraltet!', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
+        showEinenFehler('Diese App ist veraltet!&nbsp;&nbsp;&nbsp;&nbsp;', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
     }
     window.scrollTo(0, 0);
     if (QUERFORMAT()) {
@@ -1574,9 +1578,7 @@ function fINIT() {
     document.onselectstart = function () {
         return false;
     };
-    if (LS.ME === '3425' || LS.ME === '4506') {
-        mSauwaldAktiv = true;
-    }
+
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (CUPS === null) {
         CUPS = new Object();

@@ -33,19 +33,6 @@ function initSAISON(pFilter, pShowSaison) {
     SP = {};
     SAISON = [];
 
-    $('#nbNoFilter,#nbBBTC,#nbSKUES').removeClass('ui-btn-active');
-    if (pFilter) {
-        stFilter = pFilter;
-        if (pFilter === 'BBTC') {
-            $('#nbBBTC').addClass('ui-btn-active');
-        } else {
-            $('#nbSKUES').addClass('ui-btn-active');
-        }
-    } else {
-        stFilter = '';
-        $('#nbNoFilter').addClass('ui-btn-active');
-    }
-
     var SORT = [];
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
@@ -72,6 +59,18 @@ function initSAISON(pFilter, pShowSaison) {
         iSaison = 0;
     }
     if (stCup === 53) {
+        $('#nbNoFilter,#nbBBTC,#nbSKUES').removeClass('ui-btn-active');
+        if (pFilter) {
+            stFilter = pFilter;
+            if (pFilter === 'BBTC') {
+                $('#nbBBTC').addClass('ui-btn-active');
+            } else {
+                $('#nbSKUES').addClass('ui-btn-active');
+            }
+        } else {
+            stFilter = '';
+            $('#nbNoFilter').addClass('ui-btn-active');
+        }
         var hTitel = 'Sauwald Tarockcup';
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i53" + stFilter + ".png");
         if (stFilter) {

@@ -33,31 +33,6 @@ function initSAISON(pFilter, pShowSaison) {
     SP = {};
     SAISON = [];
 
-    var SORT = [];
-    for (var turnier in STAT) {
-        if (turnier[0] === '2') {
-            SORT.push(turnier);
-        }
-    }
-
-    for (var i = SORT.length - 1; i >= 0; i--) { // die letzen zuerst
-        if (STAT[SORT[i]]._SAISON !== stSaison) {
-            if (stSaison) {
-                bereSaison();
-            }
-            iSaison++;
-            stSaison = STAT[SORT[i]]._SAISON;
-        }
-    }
-
-    if (stSaison) {
-        bereSaison();
-    }
-    if (iSaison === 0) {
-        $('#nbSaison').addClass('ui-disabled');
-    } else {
-        iSaison = 0;
-    }
     if (stCup === 53) {
         $('#nbNoFilter,#nbBBTC,#nbSKUES').removeClass('ui-btn-active');
         if (pFilter) {
@@ -72,7 +47,7 @@ function initSAISON(pFilter, pShowSaison) {
             $('#nbNoFilter').addClass('ui-btn-active');
         }
         var hTitel = 'Sauwald Tarockcup';
-        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i53" + stFilter + ".png");
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i53" + (stFilter.replace(/Ü/g, 'UE')) + ".png");
         if (stFilter) {
             if (stFilter === 'BBTC') {
                 hTitel = 'Baumgartner Bier Tarockcup';
@@ -81,7 +56,36 @@ function initSAISON(pFilter, pShowSaison) {
             }
         }
         $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
+        compSTAT();
     }
+
+    var SORT = [];
+    for (var turnier in STAT) {
+        if (turnier[0] === '2') {
+            SORT.push(turnier);
+        }
+    }
+
+    for (var i = SORT.length - 1; i >= 0; i--) { // die letzen zuerst
+        if (STAT[SORT[i]]._SAISON !== stSaison) {
+//            if (stSaison) {
+//                bereSaison();
+//            }
+            iSaison++;
+            stSaison = STAT[SORT[i]]._SAISON;
+            bereSaison();
+        }
+    }
+
+//    if (stSaison) {
+//        bereSaison();
+//    }
+    if (iSaison === 0) {
+        $('#nbSaison').addClass('ui-disabled');
+    } else {
+        iSaison = 0;
+    }
+
     if (pShowSaison) {
         var hStat = stStat;
         iSaison = pShowSaison;

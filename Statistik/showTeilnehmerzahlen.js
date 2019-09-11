@@ -58,16 +58,18 @@ function showTeilnehmerzahlen() {
     var html = "";
 
     for (var iSaison = 1; iSaison < SAISON.length; iSaison++) {
-        nGesTeilnehmer += SAISON[iSaison][isAnzTeilnehmer];
-        html += "<tr>"
-                + "<td class=TC>&nbsp;" + SAISON[iSaison][isSaison] + "</td>"
-                + "<td class=TC>" + SAISON[iSaison][isAnzTurniere] + "</td>"
-                + (QUERFORMAT() ? "<td class=TR>" + SAISON[iSaison][isAnzTeilnehmer] + "&nbsp;&nbsp;&nbsp;</td>" : "")
-                + "<td class=TR>" + SAISON[iSaison][isAnzTeilnahmen] + "&nbsp;&nbsp;&nbsp;</td>"
-                + "<td class=TR>" + parseInt((SAISON[iSaison][isAnzTeilnahmen] / SAISON[iSaison][isAnzTurniere]) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
-                + "<td class=TR>" + getAbweichung(iSaison) + "&nbsp;&nbsp;</td>"
-                + (QUERFORMAT() ? "<td></td>" : "")
-                + "</tr>";
+        if (SAISON[iSaison][isAnzTurniere]) {
+            nGesTeilnehmer += SAISON[iSaison][isAnzTeilnehmer];
+            html += "<tr>"
+                    + "<td class=TC>&nbsp;" + SAISON[iSaison][isSaison] + "</td>"
+                    + "<td class=TC>" + SAISON[iSaison][isAnzTurniere] + "</td>"
+                    + (QUERFORMAT() ? "<td class=TR>" + SAISON[iSaison][isAnzTeilnehmer] + "&nbsp;&nbsp;&nbsp;</td>" : "")
+                    + "<td class=TR>" + SAISON[iSaison][isAnzTeilnahmen] + "&nbsp;&nbsp;&nbsp;</td>"
+                    + "<td class=TR>" + parseInt((SAISON[iSaison][isAnzTeilnahmen] / SAISON[iSaison][isAnzTurniere]) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+                    + "<td class=TR>" + getAbweichung(iSaison) + "&nbsp;&nbsp;</td>"
+                    + (QUERFORMAT() ? "<td></td>" : "")
+                    + "</tr>";
+        }
     }
 
     html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"

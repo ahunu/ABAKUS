@@ -80,6 +80,7 @@ function fPruefenSpeichern(pSpeichern) {
             iSAISON++;
         }
     }
+    iSAISON = '' + iSAISON;
 
     iDATUM = myDateString(iDATUM);
 

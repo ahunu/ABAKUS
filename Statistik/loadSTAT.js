@@ -16,41 +16,14 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
 
         stSynchron = true;
 
-        var hSaison = '';
-        var anzSaisonen = 0;
-        var anzTurniere = 0;
-        var anzTeilnahmen = 0;
-
         if (data.val()) {
+
             STAT = data.val();
-            for (var turnier in STAT) {
+
+            for (var turnier in STAT) { // Turnier aufbereiten
                 if (turnier[0] === '2') {
-
-                    anzTurniere++;
-                    if (hSaison !== STAT[turnier]._SAISON) {
-                        hSaison = STAT[turnier]._SAISON;
-                        anzSaisonen++;
-                    }
-
-                    var spieler = '';
-                    if (STAT[turnier]._AKTTURNIER) { // Handyeingaben in STAT übertragen
-                        for (var iSpieler in STAT[turnier]._AKTTURNIER) {
-                            if (iSpieler.substr(0, 4) === '_R' + STAT[turnier]._AKTTURNIER._RUNDE + '_') {
-                                spieler = iSpieler.substr(4);
-                                if (!STAT[turnier][spieler]) {
-                                    STAT[turnier][spieler] = ['-', '-', '-'];
-                                }
-                                STAT[turnier][spieler][STAT[turnier]._AKTTURNIER._RUNDE - 1] = STAT[turnier]._AKTTURNIER[iSpieler];
-                            }
-                        }
-                    }
-
                     for (var spieler in STAT[turnier]) {
-
                         if (spieler[0] !== '_') {
-
-                            anzTeilnahmen++;
-
                             if (CUPS.TYP[I] === 'MT') {
                                 STAT[turnier][spieler][5] = STAT[turnier][spieler][3]; // Mannschaft shiften
                             }
@@ -71,29 +44,18 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
                             }
                         }
                     }
-
-                    var SORT = [];
-                    for (var spieler in STAT[turnier]) {
-                        if (spieler[0] !== '_') {
-                            SORT.push(['' + (5000 - STAT[turnier][spieler][4])
-                                        + (5000 - Math.max(STAT[turnier][spieler][1], STAT[turnier][spieler][2], STAT[turnier][spieler][3]))
-                                        , spieler]);
-                        }
-                    }
-
-                    SORT.sort();
-
-                    for (var i = 0; i < SORT.length; i++) { // Rang eintragen
-                        STAT[turnier][SORT[i][1]][0] = i + 1;
-                    }
-                    if (SORT.length) {
-                        STAT[turnier]._STOCKERL = [, SORT[0][1], SORT[1][1], SORT[2][1]];
-                    }
                 }
             }
 
+            compSTAT();
+
         } else {
-            STAT = {_LASTTURNIER: null};
+            STAT = {
+                _ANZSAISONEN: 0,
+                _ANZTURNIERE: 0,
+                _ANZTEILNAHMEN: 0,
+                _LASTTURNIER: null
+            };
         }
 
         if (STAT._LASTTURNIER) {
@@ -105,9 +67,7 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
             }
         }
 
-        STAT._ANZSAISONEN = anzSaisonen;
-        STAT._ANZTURNIERE = anzTurniere;
-        STAT._ANZTEILNAHMEN = anzTeilnahmen;
+
 
         localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
 
@@ -138,4 +98,63 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
         showEineDBWarnung(error, 'loadSTAT()', 'STAT once');
         return false;
     });
+}
+
+function compSTAT(pFilter) {
+    'use strict';
+
+    var hSaison = '';
+    STAT._ANZSAISONEN = 0;
+    STAT._ANZTURNIERE = 0;
+    STAT._ANZTEILNAHMEN = 0;
+
+    for (var turnier in STAT) {
+        if (turnier[0] === '2') {
+            if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
+
+                STAT._ANZTURNIERE++;
+                if (hSaison !== STAT[turnier]._SAISON) {
+                    hSaison = STAT[turnier]._SAISON;
+                    STAT._ANZSAISONEN++;
+                }
+
+                var spieler = '';
+                if (STAT[turnier]._AKTTURNIER) { // Handyeingaben in STAT übertragen
+                    for (var iSpieler in STAT[turnier]._AKTTURNIER) {
+                        if (iSpieler.substr(0, 4) === '_R' + STAT[turnier]._AKTTURNIER._RUNDE + '_') {
+                            spieler = iSpieler.substr(4);
+                            if (!STAT[turnier][spieler]) {
+                                STAT[turnier][spieler] = ['-', '-', '-'];
+                            }
+                            STAT[turnier][spieler][STAT[turnier]._AKTTURNIER._RUNDE - 1] = STAT[turnier]._AKTTURNIER[iSpieler];
+                        }
+                    }
+                }
+
+                for (var spieler in STAT[turnier]) {
+                    if (spieler[0] !== '_') {
+                        STAT._ANZTEILNAHMEN++;
+                    }
+                }
+
+                var SORT = [];
+                for (var spieler in STAT[turnier]) {
+                    if (spieler[0] !== '_') {
+                        SORT.push(['' + (5000 - STAT[turnier][spieler][4])
+                                    + (5000 - Math.max(STAT[turnier][spieler][1], STAT[turnier][spieler][2], STAT[turnier][spieler][3]))
+                                    , spieler]);
+                    }
+                }
+
+                SORT.sort();
+
+                for (var i = 0; i < SORT.length; i++) { // Rang eintragen
+                    STAT[turnier][SORT[i][1]][0] = i + 1;
+                }
+                if (SORT.length) {
+                    STAT[turnier]._STOCKERL = [, SORT[0][1], SORT[1][1], SORT[2][1]];
+                }
+            }
+        }
+    }
 }

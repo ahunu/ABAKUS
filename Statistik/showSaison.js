@@ -73,11 +73,11 @@ function showSaison(pSaison, pStockerl, pAnekdoten, pFix) {
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
             if (STAT[turnier]._SAISON === stSaison) {
-                if (STAT[turnier]._ANEKDOTE || !pAnekdoten) {
-                    if (STAT[turnier]._ANEKDOTE) {
-                        nAnekdoten++;
-                    }
-                    if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
+                if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
+                    if (STAT[turnier]._ANEKDOTE || !pAnekdoten) {
+                        if (STAT[turnier]._ANEKDOTE) {
+                            nAnekdoten++;
+                        }
                         nTurniere++;
                         if (nTurniere % 2 === 0) {
                             cBG = '';

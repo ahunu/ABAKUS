@@ -24,90 +24,42 @@ function loadTURNIER(I, pTurnier, pTitel, pLastturnier, pCallback) {
 
         stSynchron = true;
 
-        var hSaison = '';
-        var anzSaisonen = 0;
-        var anzTurniere = 0;
-        var anzTeilnahmen = 0;
-
-        var mNewTurnier = false;
-
         if (data.val()) {
+
             STAT[pTurnier] = data.val();
-            for (var turnier in STAT) {
-                if (turnier[0] === '2') {
 
-                    anzTurniere++;
-                    if (hSaison !== STAT[turnier]._SAISON) {
-                        hSaison = STAT[turnier]._SAISON;
-                        anzSaisonen++;
+            for (var spieler in STAT[turnier]) {
+                if (spieler[0] !== '_') {
+                    if (CUPS.TYP[I] === 'MT') {
+                        STAT[turnier][spieler][5] = STAT[turnier][spieler][3]; // Mannschaft shiften
                     }
+                    STAT[turnier][spieler][3] = STAT[turnier][spieler][2]; // Punkte je Runde auf 1, 2, 3 shiften
+                    STAT[turnier][spieler][2] = STAT[turnier][spieler][1];
+                    STAT[turnier][spieler][1] = STAT[turnier][spieler][0];
+                    STAT[turnier][spieler][0] = 0;
 
-                    var spieler = '';
-                    if (STAT[turnier]._AKTTURNIER) { // Handyeingaben in STAT übertragen
-                        for (var iSpieler in STAT[turnier]._AKTTURNIER) {
-                            if (iSpieler.substr(0, 4) === '_R' + STAT[turnier]._AKTTURNIER._RUNDE + '_') {
-                                spieler = iSpieler.substr(4);
-                                if (!STAT[turnier][spieler]) {
-                                    STAT[turnier][spieler] = ['-', '-', '-'];
-                                }
-                                STAT[turnier][spieler][STAT[turnier]._AKTTURNIER._RUNDE - 1] = STAT[turnier]._AKTTURNIER[iSpieler];
-                            }
-                        }
+                    STAT[turnier][spieler][4] = 0; // Gesamtpunkte errechnen
+                    if (STAT[turnier][spieler][1] !== '-') {
+                        STAT[turnier][spieler][4] += STAT[turnier][spieler][1];
                     }
-
-                    for (var spieler in STAT[turnier]) {
-
-                        if (spieler[0] !== '_') {
-
-                            anzTeilnahmen++;
-
-                            if (turnier === pTurnier) { // nur das aktuelle Turnier shiften
-                                if (CUPS.TYP[I] === 'MT') {
-                                    STAT[turnier][spieler][5] = STAT[turnier][spieler][3]; // Mannschaft shiften
-                                }
-                                STAT[turnier][spieler][3] = STAT[turnier][spieler][2]; // Punkte je Runde auf 1, 2, 3 shiften
-                                STAT[turnier][spieler][2] = STAT[turnier][spieler][1];
-                                STAT[turnier][spieler][1] = STAT[turnier][spieler][0];
-                                STAT[turnier][spieler][0] = 0;
-
-                                STAT[turnier][spieler][4] = 0; // Gesamtpunkte errechnen
-                                if (STAT[turnier][spieler][1] !== '-') {
-                                    STAT[turnier][spieler][4] += STAT[turnier][spieler][1];
-                                }
-                                if (STAT[turnier][spieler][2] !== '-') {
-                                    STAT[turnier][spieler][4] += STAT[turnier][spieler][2];
-                                }
-                                if (STAT[turnier][spieler][3] !== '-') {
-                                    STAT[turnier][spieler][4] += STAT[turnier][spieler][3];
-                                }
-                            }
-                        }
+                    if (STAT[turnier][spieler][2] !== '-') {
+                        STAT[turnier][spieler][4] += STAT[turnier][spieler][2];
                     }
-
-                    var SORT = [];
-                    for (var spieler in STAT[turnier]) {
-                        if (spieler[0] !== '_') {
-                            SORT.push(['' + (5000 - STAT[turnier][spieler][4])
-                                        + (5000 - Math.max(STAT[turnier][spieler][1], STAT[turnier][spieler][2], STAT[turnier][spieler][3]))
-                                        , spieler]);
-                        }
-                    }
-
-                    SORT.sort();
-
-                    for (var i = 0; i < SORT.length; i++) { // Rang eintragen
-                        STAT[turnier][SORT[i][1]][0] = i + 1;
-                    }
-                    if (SORT.length) {
-                        STAT[turnier]._STOCKERL = [, SORT[0][1], SORT[1][1], SORT[2][1]];
+                    if (STAT[turnier][spieler][3] !== '-') {
+                        STAT[turnier][spieler][4] += STAT[turnier][spieler][3];
                     }
                 }
             }
+
+            compSTAT();
 
         } else {
             loadSTAT(I, pTitel, false, pCallback);
             return;
         }
+
+
+        var mNewTurnier = false;
 
         if (STAT[pTurnier]._AKTTURNIER) {
             if (pTurnier === pLastturnier.substr(0, 10)) {
@@ -145,10 +97,6 @@ function loadTURNIER(I, pTurnier, pTitel, pLastturnier, pCallback) {
         }
 
         STAT._LASTTURNIER = pLastturnier;
-
-        STAT._ANZSAISONEN = anzSaisonen;
-        STAT._ANZTURNIERE = anzTurniere;
-        STAT._ANZTEILNAHMEN = anzTeilnahmen;
 
         localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
 

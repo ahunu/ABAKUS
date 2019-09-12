@@ -66,8 +66,9 @@ function showTurnier(pTurnier) {
     for (var iSpieler in STAT[pTurnier]) {
         if (iSpieler[0] !== '_') {
             SORT[SORT.length] = ''
-                    + (5000 - STAT[pTurnier][iSpieler][4])
-                    + (5000 - Math.max(STAT[pTurnier][iSpieler][1], STAT[pTurnier][iSpieler][2], STAT[pTurnier][iSpieler][3]))
+                    + (2000 - STAT[pTurnier][iSpieler][4])
+                    + (2000 - Math.max(STAT[pTurnier][iSpieler][1], STAT[pTurnier][iSpieler][2], STAT[pTurnier][iSpieler][3]))
+                    + (2000 + Math.min(STAT[pTurnier][iSpieler][1], STAT[pTurnier][iSpieler][2], STAT[pTurnier][iSpieler][3]))
                     + ';' + iSpieler;
             if (iSpieler === LS.ME) {
                 mMitgespielt = true;
@@ -170,7 +171,11 @@ function showTurnier(pTurnier) {
 function popupSpieler(pSpieler, pSaison) {
 
     if (!pSaison) {
-        pSaison = stSaison;
+        if (stSaison) {
+            pSaison = stSaison;
+        } else {
+            pSaison = SAISON[1][0];
+        }
     }
     var html = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr class='bGrau sM'>"

@@ -140,8 +140,9 @@ function compSTAT(pFilter) {
                 var SORT = [];
                 for (var spieler in STAT[turnier]) {
                     if (spieler[0] !== '_') {
-                        SORT.push(['' + (5000 - STAT[turnier][spieler][4])
-                                    + (5000 - Math.max(STAT[turnier][spieler][1], STAT[turnier][spieler][2], STAT[turnier][spieler][3]))
+                        SORT.push(['' + (2000 - STAT[turnier][spieler][4])
+                                    + (2000 - Math.max(STAT[turnier][spieler][1], STAT[turnier][spieler][2], STAT[turnier][spieler][3]))
+                                    + (2000 + Math.min(STAT[turnier][spieler][1], STAT[turnier][spieler][2], STAT[turnier][spieler][3]))
                                     , spieler]);
                     }
                 }

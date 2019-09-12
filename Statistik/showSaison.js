@@ -37,6 +37,10 @@ function showSaison(pSaison, pStockerl, pAnekdoten, pFix) {
         showIcons([]);
     }
 
+    if (!pSaison && CUPS.TYP[stCup] === 'CUP') {
+        stSaison = SAISON[iSaison][isSaison];
+    }
+
     if (pSaison && iSaison !== pSaison && CUPS.TYP[stCup] === 'CUP') {
         iSaison = pSaison;
         stSaison = SAISON[iSaison][isSaison];

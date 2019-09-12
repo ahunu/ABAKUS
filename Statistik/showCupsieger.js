@@ -1,7 +1,7 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, CUP, is2, SP, spTeilnahmen, spCuppunkte, spBestePlatz, is3, is1, isSaison, getSpielerName */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, CUP, is2, SP, spTeilnahmen, spCuppunkte, spBestePlatz, is3, is1, isSaison, getSpielerName, isVorlaeufig */
 
-function addPosition(pSaison) {
+function addSaison(pSaison) {
 
     var hBG = (pSaison % 2) ? 'bSehrHell' : '';
 
@@ -81,12 +81,14 @@ function showCupsieger() {
     }
 
     for (var iSaison = 1; iSaison < SAISON.length; iSaison++) {
-        if (iSaison === 1) {
-            if (!SAISON[1][isVorlaeufig]) {
-                html += addPosition(iSaison);
+        if (SAISON[iSaison][isAnzTurniere]) {
+            if (iSaison === 1) {
+                if (!SAISON[1][isVorlaeufig]) {
+                    html += addSaison(iSaison);
+                }
+            } else {
+                html += addSaison(iSaison);
             }
-        } else {
-            html += addPosition(iSaison);
         }
     }
 

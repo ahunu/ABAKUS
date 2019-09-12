@@ -157,6 +157,10 @@ function bereSaison() {
         }
     }
 
+    if (iSaison === 3) {
+        iSaison = iSaison;
+    }
+
     var CUP = {};
     var hCupPunkte = 0;
     for (var turnier in STAT) {
@@ -241,8 +245,12 @@ function bereSaison() {
             }
         }
 
-        if (stFinale) {
-            hCupPunkte = getCupPunkte(stFinale, spieler);
+        if (stFinale || iSaison > 1) {
+            if (stFinale) {
+                hCupPunkte = getCupPunkte(stFinale, spieler);
+            } else {
+                hCupPunkte = '-';
+            }
             if (!isNaN(hCupPunkte)) {
                 aSP[0] += parseInt(hCupPunkte);
             }
@@ -296,7 +304,7 @@ function bereSaison() {
         }
         SP[spieler][iSaison][0] = hPlatz;
 
-        if (stFinale) {
+        if (stFinale || iSaison > 1) {
             if (SP[spieler][0][sp0BestePlatz] > hPlatz) {
                 SP[spieler][0][sp0BestePlatz] = hPlatz;
             }

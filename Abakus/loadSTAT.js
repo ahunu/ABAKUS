@@ -293,10 +293,6 @@ function loadSTATold(I, pCallback) {
                         hMEZULETZT = new Date(STAT.S[iSTAT].TIMESTAMP).valueOf();
                     }
 
-                    if (STAT.S[iSTAT].NR === LS.ME && LS.ME === '3425') {
-                        console.log(STAT.S[iSTAT].NR + ':   DB: ' + new Date(hMEZULETZT).toString() + ',  Korr: ' + STAT.S[iSTAT].TIMESTAMP.toString());
-                    }
-
                     if (typeof STAT.S[iSTAT].STERNE === 'undefined') {
                         STAT.S[iSTAT].STERNE = '';
                     }

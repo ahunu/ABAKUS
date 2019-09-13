@@ -28,25 +28,25 @@ function loadTURNIER(I, pTurnier, pTitel, pLastturnier, pCallback) {
 
             STAT[pTurnier] = data.val();
 
-            for (var spieler in STAT[turnier]) {
+            for (var spieler in STAT[pTurnier]) {
                 if (spieler[0] !== '_') {
                     if (CUPS.TYP[I] === 'MT') {
-                        STAT[turnier][spieler][5] = STAT[turnier][spieler][3]; // Mannschaft shiften
+                        STAT[pTurnier][spieler][5] = STAT[pTurnier][spieler][3]; // Mannschaft shiften
                     }
-                    STAT[turnier][spieler][3] = STAT[turnier][spieler][2]; // Punkte je Runde auf 1, 2, 3 shiften
-                    STAT[turnier][spieler][2] = STAT[turnier][spieler][1];
-                    STAT[turnier][spieler][1] = STAT[turnier][spieler][0];
-                    STAT[turnier][spieler][0] = 0;
+                    STAT[pTurnier][spieler][3] = STAT[pTurnier][spieler][2]; // Punkte je Runde auf 1, 2, 3 shiften
+                    STAT[pTurnier][spieler][2] = STAT[pTurnier][spieler][1];
+                    STAT[pTurnier][spieler][1] = STAT[pTurnier][spieler][0];
+                    STAT[pTurnier][spieler][0] = 0;
 
-                    STAT[turnier][spieler][4] = 0; // Gesamtpunkte errechnen
-                    if (STAT[turnier][spieler][1] !== '-') {
-                        STAT[turnier][spieler][4] += STAT[turnier][spieler][1];
+                    STAT[pTurnier][spieler][4] = 0; // Gesamtpunkte errechnen
+                    if (STAT[pTurnier][spieler][1] !== '-') {
+                        STAT[pTurnier][spieler][4] += STAT[pTurnier][spieler][1];
                     }
-                    if (STAT[turnier][spieler][2] !== '-') {
-                        STAT[turnier][spieler][4] += STAT[turnier][spieler][2];
+                    if (STAT[pTurnier][spieler][2] !== '-') {
+                        STAT[pTurnier][spieler][4] += STAT[pTurnier][spieler][2];
                     }
-                    if (STAT[turnier][spieler][3] !== '-') {
-                        STAT[turnier][spieler][4] += STAT[turnier][spieler][3];
+                    if (STAT[pTurnier][spieler][3] !== '-') {
+                        STAT[pTurnier][spieler][4] += STAT[pTurnier][spieler][3];
                     }
                 }
             }

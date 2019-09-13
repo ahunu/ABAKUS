@@ -107,8 +107,8 @@ function initSAISON(pFilter, pShowSaison) {
             showCupsieger();
         } else if (hStat === 'Teilnehmerzahlen') {
             showTeilnehmerzahlen();
-        } else if (hStat === 'Teilnehmer') {
-            showTeilnehmer();
+        } else if (hStat === 'Bestenliste') {
+            showBestenliste();
         } else if (hStat === 'Termine') {
             showTermine();
         } else {

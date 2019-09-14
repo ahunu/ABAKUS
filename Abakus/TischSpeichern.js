@@ -16,6 +16,8 @@ var hTISCHP = [, 0, 0, 0, 0, 0, 0];
 var hCUPP = [, 0, 0, 0, 0, 0, 0];
 var hMAXSPIELE = 0;
 
+var stFilter = '';
+
 var sBasis = 0;
 var nLog = 0;
 

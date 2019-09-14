@@ -11,6 +11,8 @@ var loadInProgress = false;
 
 var hHeute = myDateString(new Date());
 
+var stFilter = '';
+
 var nTurniere = 0;
 var tDATUM = [];
 var DATA = {};

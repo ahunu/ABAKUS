@@ -100,8 +100,7 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
     });
 }
 
-function compSTAT(pFilter) {
-    'use strict';
+function compSTAT() {
 
     var hSaison = '';
     STAT._ANZSAISONEN = 0;

@@ -30,6 +30,8 @@ var mHref = false;
 var meinStellvertreter = '3244';
 var mHash = false;
 
+var stFilter = '';
+
 const iRufer = 1;
 const iSolorufer = 2;
 const iPagatrufer = 3;

@@ -123,9 +123,20 @@ function compSTAT() {
                         if (iSpieler.substr(0, 4) === '_R' + STAT[turnier]._AKTTURNIER._RUNDE + '_') {
                             spieler = iSpieler.substr(4);
                             if (!STAT[turnier][spieler]) {
-                                STAT[turnier][spieler] = ['-', '-', '-'];
+                                STAT[turnier][spieler] = [0, '-', '-', '-'];
                             }
-                            STAT[turnier][spieler][STAT[turnier]._AKTTURNIER._RUNDE - 1] = STAT[turnier]._AKTTURNIER[iSpieler];
+                            STAT[turnier][spieler][STAT[turnier]._AKTTURNIER._RUNDE] = STAT[turnier]._AKTTURNIER[iSpieler];
+
+                            STAT[turnier][spieler][4] = 0; // Gesamtpunkte errechnen
+                            if (STAT[turnier][spieler][1] !== '-') {
+                                STAT[turnier][spieler][4] += STAT[turnier][spieler][1];
+                            }
+                            if (STAT[turnier][spieler][2] !== '-') {
+                                STAT[turnier][spieler][4] += STAT[turnier][spieler][2];
+                            }
+                            if (STAT[turnier][spieler][3] !== '-') {
+                                STAT[turnier][spieler][4] += STAT[turnier][spieler][3];
+                            }
                         }
                     }
                 }

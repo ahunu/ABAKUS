@@ -36,7 +36,7 @@ function showTurnier(pTurnier) {
         writeCanvas(STAT[pTurnier]._NAME);
     }
 
-    $('#iAnekdote').removeClass('cBlau B');
+    $('#iEdit').removeClass('cBlau B');
 
     var i = 0;
     var nSpieler = 0;
@@ -82,12 +82,12 @@ function showTurnier(pTurnier) {
                 || LS.ME === '3757' && stCup === 56     // Erwin Haider
                 || LS.ME === '4731' && stCup === 81     // Alexandra Sabkovski
                 || LS.ME === '2553' && stCup === 83) {  // Arno Peter
-            hIcons = ['#iPrint', '#iAnekdote', '#iDownload'];
+            hIcons = ['#iPrint', '#iEdit', '#iDownload'];
         } else if (ADMIN
                 || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')    // Hafner Hans, Timoschek Kurt
                 || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
                 || STAT[pTurnier]._ANEKDOTE) {
-            hIcons = ['#iPrint', '#iAnekdote'];
+            hIcons = ['#iPrint', '#iEdit'];
         } else {
             hIcons = ['#iPrint'];
         }

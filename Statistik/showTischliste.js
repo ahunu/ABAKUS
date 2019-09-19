@@ -25,7 +25,7 @@ function showTischliste() {
         jbSpieler.close();
     }
 
-    $('#iAnekdote').removeClass('cBlau B');
+    $('#iEdit').removeClass('cBlau B');
 
     var i = 0;
 

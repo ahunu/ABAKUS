@@ -86,9 +86,9 @@ function fPruefenSpeichern(pSpeichern) {
     } else {
         if ((iDATUM.getMonth() === 3 && iDATUM.getDate() > 15)
                 || iDATUM.getMonth() > 3) {
-            iSAISON = '' + iSAISON + '/' + (iSAISON - 2001);
+            iSAISON = '' + iSAISON + '/' + (iSAISON - 1999);
         } else {
-            iSAISON = '' + (iSAISON - 1) + '/' + (iSAISON - 1999);
+            iSAISON = '' + (iSAISON - 1) + '/' + (iSAISON - 2000);
         }
     }
 

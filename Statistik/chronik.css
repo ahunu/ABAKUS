@@ -1,13 +1,7 @@
 
-.cFName {font-size: 3vw !important;
-         font-weight: bold;
-}  
-.cFDatum {font-size: 2vw !important;}  
-
-
 .foto-titel {
     font-size: 2.5vw;
-    color: #aaa;
+    color: #888;
     text-shadow: 0px 1px 1px #fff;
     padding: 5vh 0 0 0;
 }
@@ -15,30 +9,29 @@
 .ss-row{
     width: 100%;
     clear: both;
-    float: left;
-    position: relative;
     padding: 30px 0;
 }
+
+
 .ss-left{
     float: left;
-    width: 48%;
-    position: relative;
-    padding-right: 2%;
+    width: 51%;
     text-align: right;
 }
 .ss-right{
     float: left;
-    width: 48%;
-    position: relative;
-    padding-left: 2%;
+    width: 45%;
+    padding-left: 4%;
 }
 .ss-center{
     float: left;
     width: 82%;
-    position: relative;
     padding-left: 10%;
 }
 
+.ss-relative{
+    position: relative;
+}
 
 .ss-circle{
     border-radius: 50%;
@@ -61,6 +54,10 @@
     background-position: center center;
     position: static;
 }
+.ss-mini .ss-circle{
+    width: 150px;
+    height: 100px;
+}
 .ss-small .ss-circle{
     width: 270px;
     height: 170px;
@@ -72,6 +69,9 @@
 .ss-large .ss-circle{
     width: 333px;
     height: 222px;
+}
+.ss-container .ss-mini-mag{
+    margin-top: 22px;
 }
 .ss-container .ss-small-mag{
     margin-top: 34px;

@@ -245,6 +245,15 @@ function showAnekdote(pTurnier) {
             jbSpieler.close();
         }
     }
+    if (LS.ME === '3425') {
+        $('.ss-row').removeClass('ss-large').addClass('ss-mini');
+        $('.ss-right').removeClass('ss-large-mag').addClass('ss-mini-mag');
+
+
+
+
+        return;
+    }
     if (!jbAnekdote) {
         jbAnekdote = new jBox('Modal', {
             title: '<div id=jbAnekdoteTitle class=L2 style="background-color:#27a;border:8px solid #27a;color: white;"></div>',
@@ -354,7 +363,7 @@ $(document).ready(function () {
     fINIT();
 });
 function fINIT(pCup) {
-    $('#iDownload,#iPrint,#iAnekdote,#iScrollToMe,#iShowDetails,#iHideDetails').hide();
+    $('#iDownload,#iPrint,#iEdit,#iScrollToMe,#iShowDetails,#iHideDetails').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
             || navigator.userAgent.match(/iPhone/i)

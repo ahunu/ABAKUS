@@ -409,7 +409,7 @@ function listeDrucken() {
 
 function showIcons(pIcons) {
     'use strict';
-    $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iAnekdote').hide();
+    $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iEdit').hide();
     if (QUERFORMAT()) {
         if (!PC) {
             for (var i = pIcons.length - 1; i >= 0; i--) {

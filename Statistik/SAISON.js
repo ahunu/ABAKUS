@@ -68,18 +68,12 @@ function initSAISON(pFilter, pShowSaison) {
 
     for (var i = SORT.length - 1; i >= 0; i--) { // die letzen zuerst
         if (STAT[SORT[i]]._SAISON !== stSaison) {
-//            if (stSaison) {
-//                bereSaison();
-//            }
             iSaison++;
             stSaison = STAT[SORT[i]]._SAISON;
             bereSaison();
         }
     }
 
-//    if (stSaison) {
-//        bereSaison();
-//    }
     if (iSaison === 0) {
         $('#nbSaison').addClass('ui-disabled');
     } else {
@@ -90,12 +84,9 @@ function initSAISON(pFilter, pShowSaison) {
         var hStat = stStat;
         iSaison = pShowSaison;
         stSaison = SAISON[iSaison][isSaison];
-//        showSaison(pShowSaison, false, false, true);
         if (hStat === 'Cupwertung') {
-            showSaison(pShowSaison, false, false, true);
             showCupwertung();
         } else if (hStat === 'Platzierungen') {
-            showSaison(pShowSaison, false, false, true);
             showPlatzierungen();
         } else if (hStat === 'Chronik') {
             showChronik();

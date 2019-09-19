@@ -7,7 +7,11 @@ function showChronik(pTurnier) {
         if (lastBtn) {
             $(lastBtn).removeClass('ui-btn-active');
         }
-        lastBtn = '#bChronik';
+        if (pTurnier) {
+            lastBtn = '#sb' + pTurnier;
+        } else {
+            lastBtn = '#bChronik';
+        }
         $(lastBtn).addClass('ui-btn-active');
     }
 
@@ -19,21 +23,38 @@ function showChronik(pTurnier) {
     stStat = 'Chronik';
 
     if (pTurnier) {
+        stStat = '???';
         writeCanvas('Vivat Valat!');
-    } else if (CUPS.TYP[stCup] === 'MT') {
-        writeCanvas('Chronik');
+        if (ADMIN || LS.ME === '3425') {
+            showIcons(['#iEdit']);
+        } else {
+            showIcons([]);
+        }
     } else {
-        writeCanvas('Chronik ' + stSaison);
+        showIcons([]);
+        if (CUPS.TYP[stCup] === 'MT') {
+            writeCanvas('Chronik');
+        } else {
+            writeCanvas('Chronik ' + stSaison);
+        }
     }
 
     var html = '';
     var nTurniere = 0;
-    var foto = ['fotos/15.jpg', 'fotos/16.jpg', 'fotos/17.jpg', 'fotos/18.jpg', 'fotos/19.jpg', 'fotos/20.jpg', 'fotos/21.jpg', 'fotos/22.jpg', 'fotos/23.jpg', 'fotos/24.jpg', 'fotos/25.jpg', 'fotos/26.jpg', 'fotos/27.jpg', 'fotos/28.jpg', 'fotos/29.jpg', 'fotos/30.jpg'];
+    var foto = ['../Foto/images/15.jpg', '../Foto/images/16.jpg', '../Foto/images/17.jpg', '../Foto/images/18.jpg', '../Foto/images/19.jpg', '../Foto/images/20.jpg', '../Foto/images/21.jpg', '../Foto/images/22.jpg', '../Foto/images/23.jpg', '../Foto/images/24.jpg', '../Foto/images/25.jpg', '../Foto/images/26.jpg', '../Foto/images/27.jpg', '../Foto/images/28.jpg', '../Foto/images/29.jpg', '../Foto/images/30.jpg'];
     var hSize = ['large', 'medium', 'small'];
 
+    var hAnimieren = new Date();
+    if (hAnimieren.getHours() < 15) {
+        hAnimieren = true;
+    } else {
+        hAnimieren = false;
+    }
+
     if (pTurnier) {
+        hAnimieren = false;
         nTurniere++;
-        html = '<div id="r' + pTurnier + '" class="ss-row XL">'
+        html = '<div class="ss-row XL">'
                 + '<div class="ss-left foto-titel">' + pTurnier + '</div>'
                 + '<div class="ss-right foto-titel B">' + STAT[pTurnier]._NAME + '</div>'
                 + '</div>' // + html;
@@ -53,7 +74,7 @@ function showChronik(pTurnier) {
                 + '</div>'
                 + '</div>'
                 + (STAT[pTurnier]._ANEKDOTE
-                        ? '<div class=ss-row><div class="ss-center M3" style="text-align:justify;">' + STAT[pTurnier]._ANEKDOTE + '</div></div>'
+                        ? '<div class=ss-row><div class="ss-center' + (pTurnier ? '' : '-relative') + ' M3" style="text-align:justify;">' + STAT[pTurnier]._ANEKDOTE + '</div></div>'
                         : ''
                         )
                 + html;
@@ -64,15 +85,15 @@ function showChronik(pTurnier) {
                     if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                         nTurniere++;
                         html = '<div id="r' + turnier + '" class="ss-row XL">'
-                                + '<div class="ss-left foto-titel">' + turnier + '</div>'
-                                + '<div class="ss-right foto-titel B">' + STAT[turnier]._NAME + '</div>'
+                                + '<div class="ss-left' + (hAnimieren ? ' ss-relative' : '') + ' foto-titel">' + turnier + '</div>'
+                                + '<div class="ss-right' + (hAnimieren ? ' ss-relative' : '') + ' foto-titel B">' + STAT[turnier]._NAME + '</div>'
                                 + '</div>' // + html;
 
                                 + '<div class="ss-row ss-' + hSize[(nTurniere - 1) % 3] + ' XL">'
-                                + '<div class="ss-left">'
+                                + '<div class="ss-left' + (hAnimieren ? ' ss-relative' : '') + '">'
                                 + '<a href="#" class="ss-circle" style="background-image: url(' + foto[nTurniere % 10] + ')"></a>'
                                 + '</div>'
-                                + '<div class="ss-right ss-' + hSize[(nTurniere - 1) % 3] + '-mag M3">'
+                                + '<div class="ss-right' + (hAnimieren ? ' ss-relative' : '') + ' ss-' + hSize[(nTurniere - 1) % 3] + '-mag M3">'
                                 + (STAT[turnier]._STOCKERL
                                         ? '<div>1. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[1] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[1]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[1]][4] + ' Punkte</div>'
                                         + '<div>2. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[2] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[2]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[2]][4] + ' Punkte</div>'
@@ -83,7 +104,7 @@ function showChronik(pTurnier) {
                                 + '</div>'
                                 + '</div>'
                                 + (STAT[turnier]._ANEKDOTE
-                                        ? '<div class=ss-row><div class="ss-center M3" style="text-align:justify;">' + STAT[turnier]._ANEKDOTE + '</div></div>'
+                                        ? '<div class=ss-row><div class="ss-center' + (pTurnier ? '' : '-relative') + ' M3" style="text-align:justify;">' + STAT[turnier]._ANEKDOTE + '</div></div>'
                                         : ''
                                         )
                                 + html;
@@ -112,7 +133,7 @@ function showChronik(pTurnier) {
     }
     $("#dCopyright").hide();
 
-    if (!pTurnier) {
+    if (hAnimieren) {
 
         var $sidescroll = (function () {
 
@@ -120,8 +141,6 @@ function showChronik(pTurnier) {
             var $rows = $('#ss-container > div.ss-row'),
                     // we will cache the inviewport rows and the outside viewport rows
                     $rowsViewport, $rowsOutViewport,
-                    // navigation menu links
-                    $links = $('#ss-links > a'),
                     // the window element
                     $win = $(window),
                     // we will store the window sizes here
@@ -172,17 +191,6 @@ function showChronik(pTurnier) {
                     },
                     // initialize some events
                     initEvents = function () {
-
-                        // navigation menu links.
-                        // scroll to the respective section.
-                        $links.on('click.Scrolling', function (event) {
-
-                            // scroll to the element that has id = menu's href
-                            $('html, body').stop().animate({
-                                scrollTop: $($(this).attr('href')).offset().top
-                            }, scollPageSpeed, scollPageEasing);
-                            return false;
-                        });
                         $(window).on({
                             // when scrolling the page change the position of each row
                             'scroll.Scrolling': function (event) {
@@ -253,4 +261,12 @@ function showChronik(pTurnier) {
         $sidescroll.init();
     }
 
+}
+
+function bTurnierSec(pTurnier) {
+    if (QUERFORMAT()) {
+        showChronik(pTurnier);
+    } else {
+        $('#tAnek' + pTurnier).toggle('show');
+    }
 }

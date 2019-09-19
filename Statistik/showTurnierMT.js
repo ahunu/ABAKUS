@@ -155,25 +155,9 @@ function showTurnierMW(pTurnier) {
 
     if (LS.ME !== "NOBODY") {
         if (mMitgespielt) {
-            if (ADMIN
-                    || LS.ME === '3425'
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
-                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
-                    || STAT[pTurnier]._ANEKDOTE) {
-                showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote']);
-            } else {
-                showIcons(['#iScrollToMe', '#iPrint']);
-            }
+            showIcons(['#iScrollToMe', '#iPrint']);
         } else {
-            if (ADMIN
-                    || LS.ME === '3425'
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
-                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
-                    || STAT[pTurnier]._ANEKDOTE) {
-                showIcons(['#iPrint', '#iAnekdote']);
-            } else {
-                showIcons(['#iPrint']);
-            }
+            showIcons(['#iPrint']);
         }
     }
 
@@ -197,7 +181,7 @@ function showTurnierEW(pTurnier) {
     var hClass = '';
     stNamenLen = 0.41;
     var html = // getStatMeldungen()
-             "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
+            "<table id=mTable data-role='table' data-mode='columntoggle' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
             + (QUERFORMAT() && LS.ShowSpielerNr ? "<th class=TC>Nr.&nbsp;</th>" : "")
@@ -282,25 +266,9 @@ function showTurnierEW(pTurnier) {
 
     if (LS.ME.length === 4) {
         if (mMitgespielt) {
-            if (ADMIN
-                    || LS.ME === '3425'
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
-                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
-                    || STAT[pTurnier]._ANEKDOTE) {
-                showIcons(['#iScrollToMe', '#iPrint', '#iAnekdote']);
-            } else {
-                showIcons(['#iScrollToMe', '#iPrint']);
-            }
+            showIcons(['#iScrollToMe', '#iPrint']);
         } else {
-            if (ADMIN
-                    || LS.ME === '3425'
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
-                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
-                    || STAT[pTurnier]._ANEKDOTE) {
-                showIcons(['#iPrint', '#iAnekdote']);
-            } else {
-                showIcons(['#iPrint']);
-            }
+            showIcons(['#iPrint']);
         }
     }
 }

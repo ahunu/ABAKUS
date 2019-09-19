@@ -1,0 +1,95 @@
+
+.cFName {font-size: 3vw !important;
+         font-weight: bold;
+}  
+.cFDatum {font-size: 2vw !important;}  
+
+
+.foto-titel {
+    font-size: 2.5vw;
+    color: #aaa;
+    text-shadow: 0px 1px 1px #fff;
+    padding: 5vh 0 0 0;
+}
+
+.ss-row{
+    width: 100%;
+    clear: both;
+    float: left;
+    position: relative;
+    padding: 30px 0;
+}
+.ss-left{
+    float: left;
+    width: 48%;
+    position: relative;
+    padding-right: 2%;
+    text-align: right;
+}
+.ss-right{
+    float: left;
+    width: 48%;
+    position: relative;
+    padding-left: 2%;
+}
+.ss-center{
+    float: left;
+    width: 82%;
+    position: relative;
+    padding-left: 10%;
+}
+
+
+.ss-circle{
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    text-indent: -9000px;
+    text-align: left;
+    -webkit-box-shadow: 
+        0px 2px 5px rgba(0,0,0,0.7) inset, 
+        0px 0px 0px 12px rgba(61,64,85,0.3);
+    -moz-box-shadow: 
+        0px 2px 5px rgba(0,0,0,0.7) inset, 
+        0px 0px 0px 12px rgba(61,64,85,0.3);
+    box-shadow: 
+        0px 2px 5px rgba(0,0,0,0.7) inset, 
+        0px 0px 0px 12px rgba(61,64,85,0.3);
+    background-size: cover;
+    background-color: #f0f0f0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: static;
+}
+.ss-small .ss-circle{
+    width: 270px;
+    height: 170px;
+}
+.ss-medium .ss-circle{
+    width: 300px;
+    height: 200px;
+}
+.ss-large .ss-circle{
+    width: 333px;
+    height: 222px;
+}
+.ss-container .ss-small-mag{
+    margin-top: 34px;
+}
+.ss-container .ss-medium-mag{
+    margin-top: 47px;
+}
+.ss-container .ss-large-mag {
+    margin-top: 62px;
+}
+
+.ss-circle:hover {
+    width: 440px;
+    height: 300px;
+    margin-right: -222%;
+}
+
+.ss-left .ss-circle{
+    float: right;
+    margin-right: 5%;
+}

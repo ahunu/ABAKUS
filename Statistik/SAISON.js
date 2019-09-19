@@ -97,12 +97,8 @@ function initSAISON(pFilter, pShowSaison) {
         } else if (hStat === 'Platzierungen') {
             showSaison(pShowSaison, false, false, true);
             showPlatzierungen();
-        } else if (hStat === 'Stockerlliste') {
-            showSaison(pShowSaison, false, false, true);
-            showSaison(pShowSaison, true, false);
-        } else if (hStat === 'Anekdoten') {
-            showSaison(pShowSaison, false, false, true);
-            showSaison(pShowSaison, false, true);
+        } else if (hStat === 'Chronik') {
+            showChronik();
         } else if (hStat === 'Cupsieger') {
             showCupsieger();
         } else if (hStat === 'Teilnehmerzahlen') {

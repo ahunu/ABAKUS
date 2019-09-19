@@ -170,9 +170,12 @@ function whenSTATloaded(pNewTurnier) {
             showTischliste();
         } else if (stStat === 'Termine') {
             showTermine();
-        } else {
+        } else if (stStat[0] === '2') {
             showTurnier();
+        } else {
+            showLogo();
         }
+
     }
 
     setTimeout(function () {
@@ -330,7 +333,6 @@ function writeAnekdote(pWrite) {
                                 var vAnekdote = editor.content.innerHTML;
                                 if (vAnekdote) {
                                     STAT[stStat]._ANEKDOTE = vAnekdote;
-                                    $('#bAnekdoten').removeClass('ui-disabled');
                                 } else {
                                     delete STAT[stStat]._ANEKDOTE;
                                 }
@@ -515,6 +517,7 @@ function fINIT(pCup) {
         }
     });
     getSTAT(stCup);
+
     window.onbeforeunload = function (event) {
         if (/iPad|iPhone/.test(navigator.userAgent)) {
             $('body').addClass('ui-disabled');

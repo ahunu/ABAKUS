@@ -258,14 +258,18 @@ function showBestenliste(pSort) {
                     + "</thead><tbody>"
                     + html
                     + "</tbody></table>";
+
+            html += "<br><table data-role=table>"
+                    + "<tbody>"
+                    + "<tr class=S><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></td><th>Legende:</th><td></td></tr>"
+                    + "<tr class=S><td></td><td><b>1.2.3.</b></td><td>Stockerlplätze / beste Platzierung</td></tr>"
+                    + "<tr class=S><td></td><td><b>&Oslash; Platz</b></td><td>Durchschnittliche Platzierung</td></tr>"
+                    + "<tr class=S><td></td><td><b>TN</b></td><td>Teilnahmen</td></tr>"
+                    + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
+                    + "<tr class=S><td></td></td><td></td></tr>"
+                    + "<tr class=S><td></td><td colspan=2>Wie auch im Schiweltcup üblich zählen für die Ewige Bestenliste nur die Siege. Lediglich bei Gleichstand sind zweite und dritte Plätze relevant.</th></tr>";
             if (QUERFORMAT()) {
-                html += "<br><table data-role=table>"
-                        + "<tbody>"
-                        + "<tr class=XS><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></td><th>Legende:</th><td></td></tr>"
-                        + "<tr class=XS><td></td><td><b>1.2.3.</b></td><td>Stockerlplätze / beste Platzierung</td></tr>"
-                        + "<tr class=XS><td></td><td><b>&Oslash; Platz</b></td><td>Durchschnittliche Platzierung</td></tr>"
-                        + "<tr class=XS><td></td><td><b>TN</b></td><td>Teilnahmen</td></tr>"
-                        + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
+                html += "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
                         + "<tr><td></td><td colspan=2>Mit einen Klick auf eine Spaltenüberschrift kannst du die Sortierung ändern.</th></tr>"
                         + "<tr><td></td><td colspan=2>Durch das Anklicken einer Zeile kannst du die Saisonergebnisse ein- oder ausblenden.</th></tr>"
                         + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
@@ -273,18 +277,10 @@ function showBestenliste(pSort) {
                         + "<tr><td></td><td colspan=2>in der aktuellen Saison schon teilgenommen,</th></tr>"
                         + "<tr><td></td><td colspan=2>in der letzten Saison mindestens fünfmal teilgenommen,</th></tr>"
                         + "<tr><td></td><td colspan=2>insgesamt mindestens 20 mal teilgenommen</th></tr>"
-                        + "<tr><td></td><td colspan=2>oder mindestens einen Stockerlplatz erreicht haben.</th></tr>"
-                        + "</tbody></table><br>";
-                $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
+                        + "<tr><td></td><td colspan=2>oder mindestens einen Stockerlplatz erreicht haben.</th></tr>";
+                $('#dRumpf').html(html + "</tbody></table><br>").css('margin-top', $('#qfHeader').height() + 'px');
             } else {
-                html += "<br><table data-role=table>"
-                        + "<tbody>"
-                        + "<tr class=S><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></td><th>Legende:</th><td></td></tr>"
-                        + "<tr class=S><td></td><td><b>1.2.3.</b></td><td>Stockerlplätze / beste Platzierung</td></tr>"
-                        + "<tr class=S><td></td><td><b>&Oslash; Platz</b></td><td>Durchschnittliche Platzierung</td></tr>"
-                        + "<tr class=S><td></td><td><b>TN</b></td><td>Teilnahmen</td></tr>";
-                +"</tbody></table><br><br>";
-                $('#dContent').html(html).show();
+                $('#dContent').html(html + "</tbody></table><br><br>").show();
             }
             hideEinenMoment();
             setFont(4.8, true);

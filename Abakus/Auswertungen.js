@@ -25,7 +25,6 @@ function showUebersicht() {
         scrollTop: $("#LIste").offset().top
     });
 }
-;
 
 function showChart() {
     'use strict';

@@ -110,7 +110,7 @@ function TischNeu(pNeu) {
 //        if (LS.I !== I || !CUPS.TURNIER[LS.I]) {
 //            LS.I = 0;
 //        }
-        if (CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
+        if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
             if (!window.chrome) {
                 showEineMeldung('Achtung', 'HTML5 und Javascript werden von deinem<br>Browser nicht ausreichend unterstützt.'
                         + '<br>Verwende einen der folgenden Browser:'

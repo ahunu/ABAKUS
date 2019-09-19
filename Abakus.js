@@ -726,7 +726,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         : ''
                         )
 
-                + (I !== 49 && I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv
+                + (I !== 49 && I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv || I === 77
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
@@ -742,7 +742,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                                 ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(false, \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
-                        + (I === 53 && LS.ME === '4506' && PC
+                        + (((I === 53 && LS.ME === '4506') || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425')) && PC
                                 ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
                                 : ''
                                 )
@@ -775,12 +775,9 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                 + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
                 + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7
                         ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" >'
-                        + (CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
-                                ? '<b>Zum Turnier</b></span><br>Vivat Valat!<br>'
-                                : (LS.I === I
-                                        ? '<b>Zu meinem Tisch</b></span><br>Es wurden ' + LS.gespielt + ' Spiele gespielt.<br>'
-                                        : '<b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
-                                        )
+                        + (LS.I === I
+                                ? '<b>Zu meinem Tisch</b></span><br>Es wurden ' + LS.gespielt + ' Spiele gespielt.<br>'
+                                : '<b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 )
                         : ''
                         )
@@ -1551,7 +1548,7 @@ function fINIT() {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     }
 
-    if (LS.ME === "3425" || LS.ME === "1000") {
+    if (LS.ME === "3425" || LS.ME === "3244" || LS.ME === "1000") { // Mair Markus
         mTirolAktiv = true;
     }
 

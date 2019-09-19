@@ -13,7 +13,6 @@ var hHeute = myDateString(new Date());
 
 var stFilter = '';
 
-var nTurniere = 0;
 var tDATUM = [];
 var DATA = {};
 var myJBox = null;
@@ -52,8 +51,8 @@ function fPruefenSpeichern(pSpeichern) {
         showEinenTip('#iNAME', 'Bitte den vollständigen Turniername eingeben.');
         return;
     }
-    if (iNAME.length > 28) {
-        showEinenTip('#iNAME', 'Der Turniername darf nur 28 Zeichen lang sein.');
+    if (iNAME.length > 24) {
+        showEinenTip('#iNAME', 'Der Turniername darf nur 24 Zeichen lang sein.');
         return;
     }
 
@@ -77,18 +76,27 @@ function fPruefenSpeichern(pSpeichern) {
     }
 
     var iSAISON = iDATUM.getFullYear();
-    if (iDATUM.getMonth() === 11) {
-        if (iDATUM.getDate() >= 24) {
-            iSAISON++;
+    if (iCUP === 53) {
+        if (iDATUM.getMonth() === 11) {
+            if (iDATUM.getDate() >= 24) {
+                iSAISON++;
+            }
+        }
+        iSAISON = '' + iSAISON;
+    } else {
+        if ((iDATUM.getMonth() === 3 && iDATUM.getDate() > 15)
+                || iDATUM.getMonth() > 3) {
+            iSAISON = '' + iSAISON + '/' + (iSAISON - 2001);
+        } else {
+            iSAISON = '' + (iSAISON - 1) + '/' + (iSAISON - 1999);
         }
     }
-    iSAISON = '' + iSAISON;
 
     iDATUM = myDateString(iDATUM);
 
     var iVERANSTALTER = parseInt($('#iVERANSTALTER').val());
     if (Number.isNaN(iVERANSTALTER)) {
-        iVERANSTALTER = "4506";
+        iVERANSTALTER = LS.ME;
         if (SPIELERnr[iVERANSTALTER]) {
             $('#iVERANSTALTER').val(iVERANSTALTER);
             $('#tVERANSTALTER').text(SPIELERnr[iVERANSTALTER][0] + ' ' + SPIELERnr[iVERANSTALTER][1]);
@@ -149,7 +157,6 @@ function fPruefenSpeichern(pSpeichern) {
         _SAISON: iSAISON,
         _VERANSTALTER: iVERANSTALTER};
 
-
     var oDATEN = '';
     var iSPIELER = 0;
     var nSPIELER = 0;
@@ -161,7 +168,7 @@ function fPruefenSpeichern(pSpeichern) {
     var pos = 0;
     for (var i = 0; i < iDATEN.length; i++) {
         iLine = iDATEN[i];
-        if (i === 0) {
+        if (i === 0 && iCUP === 53) {
             if (iNAME === '') {
                 $('#iNAME').val(iLine);
             }
@@ -199,14 +206,13 @@ function fPruefenSpeichern(pSpeichern) {
         return;
     }
 
-
-    showEinenMoment('Vorjahre einspielen:', nTurniere + ' Turniere werden eingespielt.');
+    showEinenMoment('Turnier einspielen:', iNAME + ' wird eingespielt.');
 
     firebase.database().ref('/00/' + ("000" + iCUP).slice(-3))
             .update(DATA)
             .then(function () {
                 hideEinenMoment();
-                LS.Meldung = (nTurniere + ' Turniere wurden eingespielt!');
+                LS.Meldung = ('Es wurde ein Turnier eingespielt!');
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 window.history.back();
             })
@@ -222,15 +228,23 @@ $(document).bind('pageinit', function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
 
-    if (LS.ME === "4506" || LS.ME === "3425") {
+    if (LS.ME === "4506") {
         iCUP = 53; // SWC
     }
 
+    if (LS.ME === "3244") {
+        iCUP = 55; // TTC
+    }
+
+    if (LS.ME === "3425") {
+        iCUP = 77; // Test
+   }
+
     $('#hTitel1').text(CUPS.NAME[iCUP]);
 
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425" && LS.ME !== "3244") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

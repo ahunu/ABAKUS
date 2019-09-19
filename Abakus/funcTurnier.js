@@ -204,8 +204,12 @@ function TurnierSTARTEN(pI) {
 function TurnierSTARTENend() {
     'use strict';
     var hSTAT = new Object();
-    hSTAT.ZULETZT = new Date(new Date(STAT.ZULETZT).getTime() - 60000 * new Date(STAT.ZULETZT).getTimezoneOffset() + 1).toISOString();
     hSTAT.ZULETZTupd = new Date().toISOString();
+    if (STAT.ZULETZT) {
+        hSTAT.ZULETZT = new Date(new Date(STAT.ZULETZT).getTime() - 60000 * new Date(STAT.ZULETZT).getTimezoneOffset() + 1).toISOString();
+    } else {
+        hSTAT.ZULETZT= new Date().toISOString();
+    }
     hSTAT.TURCODE = iTURCODE;
     hSTAT.TURADMIN = LS.ME;
     hSTAT.TURRUNDE = 1;

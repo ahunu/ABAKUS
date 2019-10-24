@@ -121,7 +121,7 @@ function getSpielerOrt(pNR, pSTANDORT) {
 
 function getCupPunkte(pTurnier, pSpieler) {
 
-    if (stCup >= 50 && stCup <= 60 || stCup === 125) { // 125 wurde als Testcup verwendet!
+    if (stCup >= 50 && stCup <= 60 && stCup !== 55 || stCup === 125) { // 125 wurde als Testcup verwendet!
         if (STAT[pTurnier][pSpieler]) {
             if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
@@ -390,20 +390,17 @@ function listeDrucken() {
                 + '<br>oder einen anderen kompatiblen Browser.');
         return;
     }
+    window.scrollTo(0, 0);
     if (stCup !== 54 && stCup !== 56 && stCup !== 4) {
         $("#iHeaderIcon").attr("src", "../Icons/icon-64.png");
     }
-    $('#dPrint').attr('style', 'width:100%');
     $('#tStand').css('position', 'absolute');
-    $('#qfHeader').attr('style', 'position: absolute; top: 0; width: 100%; padding:0em; margin:0px; background:#ffffff');
+    $('#qfHeader').attr('style', 'position: absolute; top: 0; width: 100%; padding:0; margin:0; background:#ffffff');
     $('#qfHeaderLinks').attr('style', 'width:12%;text-align:center;');
     $('#qfHeaderRechts').attr('style', 'width:88%');
     $('#qfHeaderZeile1').attr('style', 'margin:-4pt 0;font-size:32px;white-space:nowrap;font-style:italic;');
     $('#qfHeaderZeile2').attr('style', 'margin:-6pt 0;font-size:30px;white-space:nowrap;font-weight:normal;');
     $('#qfHeaderIcon').css('height', 63).show();
-    $('#mTable').css('font-size', '2.4vw');
-    $('tr').removeClass('bBeige bBeige2'); // Markierung entfernen
-    $('.cSchwarz').removeClass('cSchwarz').addClass('cBlau');
     javascript:window.print();
 }
 
@@ -411,15 +408,20 @@ function showIcons(pIcons) {
     'use strict';
     $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iEdit').hide();
     if (QUERFORMAT()) {
-        if (!PC) {
-            for (var i = pIcons.length - 1; i >= 0; i--) {
-                if (pIcons[i] === '#iPrint' || pIcons[i] === '#iDownload') {
-                    pIcons.splice(i, 1);
+        if (pIcons.length) {
+            if (!PC) {
+                for (var i = pIcons.length - 1; i >= 0; i--) {
+                    if (pIcons[i] === '#iPrint' || pIcons[i] === '#iDownload') {
+                        pIcons.splice(i, 1);
+                    }
                 }
             }
-        }
-        for (var i = 0; i < pIcons.length; i++) {
-            $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (0.9 + (3.8 * i)) + 'vw; font-size: 3.3vw; cursor: pointer;').show();
+            for (var i = 0; i < pIcons.length; i++) {
+                $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (0.9 + (3.8 * i)) + 'vw; font-size: 3.3vw; cursor: pointer;').show();
+            }
+            $('#qfHeader').attr('style', 'position: fixed; top: 0;  width: 72%; padding:0; margin:0; background:#f5f5f5;');
+        } else {
+            $('#qfHeader').attr('style', 'position: fixed; top: 0;  width: 72%; padding:0; margin:0; background:#f5f5f5; z-index: 999999');
         }
     } else {
         if (pIcons.length && pIcons[0] === '#iScrollToMe') {

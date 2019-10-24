@@ -1,5 +1,5 @@
 
-/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, SAISON, isSaison, isVorlaeufig, is1, is1CupPunkte, is3, is2, is2CupPunkte, is3CupPunkte */
+/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, SAISON, isSaison, is1, is1CupPunkte, is3, is2, is2CupPunkte, is3CupPunkte, stFilter, isFinale */
 
 function showSaison(pSaison) {
 
@@ -48,7 +48,6 @@ function showSaison(pSaison) {
     var nTurniere = 0;
     var nAnekdoten = 0;
     var hDataTheme = '';
-    var hSpieler = '';
     stFinale = false;
     stFinalTeilnehmer = 0;
     stEndstand = false;
@@ -91,9 +90,9 @@ function showSaison(pSaison) {
                     }
                     htmlTE = '<li ' + hDataTheme + ' data-icon="false"><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span></a>'
 //                            + (STAT[turnier]._ANEKDOTE ? '<a onclick="$(\'#tAnek' + nAnekdoten + '\').toggle(\'show\');">Anekdote</a>' : '')
-                            + '<a id="sb' + turnier + '" onclick="bTurnierSec(\'' + turnier + '\');">Anekdote</a>'
+                            + (LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT()) ? '<a id="sb' + turnier + '" onclick="bTurnierSec(\'' + turnier + '\');">Anekdote</a>' : '')
                             + '</li>'
-                            + (STAT[turnier]._ANEKDOTE ? '<div id=tAnek' + nAnekdoten + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#tAnek' + nAnekdoten + '\').hide();" hidden>' + STAT[turnier]._ANEKDOTE + '</div>' : '')
+                            + (LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT()) ? '<div id=hf' + turnier + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#hf' + turnier + '\').hide();$(\'#sb' + turnier + '\').removeClass(\'ui-btn-active\');" hidden></div>' : '')
                             + htmlTE;
                 }
             }
@@ -116,12 +115,13 @@ function showSaison(pSaison) {
             + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',false);" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-play zmdi-hc-rotate-90 noprint"></i>'
             + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',true);" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-play zmdi-hc-rotate-270 noprint"></i>'
 
-            + '<li class="cDieListen" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a></li>'
-            + ((LS.ME === "3425" || LS.ME === "-56" || LS.ME === "2037") && stCup === 56 && pSaison === 1 ? '<li class="cDieListen" data-icon=false><a id=bOovwertung onclick="showOovwertung();">&nbsp;OOV-Wertung</a></li>' : '')
+            + '<li class="cDieListen" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a>' + (SAISON[iSaison][isFinale] ? '<a id=sbCupwertung onclick="showChronik(' + iSaison + ');"></a>' : '') + '</li>'
+            + (stCup === 56 && pSaison === 1 ? '<li class="cDieListen" data-icon=false><a id=bOovwertung onclick="showOovwertung();">&nbsp;OOV-Wertung</a></li>' : '')
 
             + '<li class="cDieListen" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
-            + (QUERFORMAT() && LS.ME === '3425'
-                    ? '<li class="cDieListen" data-icon="false"><a id=bChronik onclick="showChronik()">&nbsp;Chronik</a></li>'
+            + (QUERFORMAT() && true && LS.ME !== '3425x' || true
+                    ? '<li class="cDieListen" data-icon="foto"><a id=bChronik onclick="showChronik()">&nbsp;Chronik</a><a id="bParallaxCh" onclick="showParallax(true);"></a></li>'
+                    + '<li class="cDieListen" data-icon="foto"><a id=bFotos onclick="showFotos()">&nbsp;Fotos</a><a id="bParallax" onclick="showParallax();"></a></li>'
                     : '')
             + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Turniere:</li>'
             ).listview('refresh').show();

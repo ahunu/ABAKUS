@@ -600,13 +600,13 @@ function getSortUndLayout() {
                     + "</ul>"
                     + "</div>"
                     : "")
-            + "<div class='L B'><br>&nbsp;Standardliste &nbsp;sortiert&nbsp;nach:</div>"
+            + "<div class='L B'><br>&nbsp;Sortierung:</div>"
             + "<div data-role=navbar>"
             + "<ul>"
             + (CUPS.TURNIER[stCup]
-                    ? "<li><a onclick='statShow(-1," + '"GES"' + ");'" + (stSort === 'GES' && stStat === -1 ? ' class=ui-btn-active' : '') + ">Cuppunkte</a></li>"
-                    + "<li><a onclick='statShow( 1," + '"CUP"' + ");'" + (stSort === 'CUP' && stStat === 1 ? ' class=ui-btn-active' : '') + ">Cuppunkte D60</a></li>"
-                    : "<li><a onclick='statShow( 1," + '"CUP"' + ");'" + (stSort === 'CUP' ? ' class=ui-btn-active' : '') + ">Cuppunkte</a></li>"
+                    ? "<li><a onclick='statShow(-1," + '"GES"' + ");'" + (stSort === 'GES' && stStat === -1 ? ' class=ui-btn-active' : '') + ">Standardliste</a></li>"
+                    + "<li><a onclick='statShow( 1," + '"CUP"' + ");'" + (stSort === 'CUP' && stStat === 1 ? ' class=ui-btn-active' : '') + ">D60 gewichtet</a></li>"
+                    : "<li><a onclick='statShow( 1," + '"CUP"' + ");'" + (stSort === 'CUP' ? ' class=ui-btn-active' : '') + ">Standardliste</a></li>"
                     )
             + "<li><a onclick='statShow(1," + '"D60"' + ");'" + (stSort === 'D60' ? ' class=ui-btn-active' : '') + ">D60-Punkte</a></li>"
             + "<li><a onclick='statShow(1," + '"GES"' + ");'" + (stSort === 'GES' && stStat === 1 ? ' class=ui-btn-active' : '') + ">Gesamtpunkte</a></li>"

@@ -11,7 +11,7 @@ const is3CupPunkte = 6;
 const isAnzTurniere = 7;
 const isAnzTeilnehmer = 8;
 const isAnzTeilnahmen = 9;
-const isVorlaeufig = 10;
+const isFinale = 10;
 
 const spRangImCup = 0;
 const spCuppunkte = 1;
@@ -106,7 +106,7 @@ function initSAISON(pFilter, pShowSaison) {
 
 function bereSaison() {
 
-    SAISON[iSaison] = [stSaison, '', '', '', 0, 0, 0, 0, 0, 0];
+    SAISON[iSaison] = [stSaison, '', '', '', 0, 0, 0, 0, 0, 0, false];
 
     stFinale = false;
     stFinalTeilnehmer = 0;
@@ -118,6 +118,7 @@ function bereSaison() {
                 if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                     SAISON[iSaison][isAnzTurniere]++;
                     if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
+                        SAISON[iSaison][isFinale] = turnier;
                         if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === turnier) {
                             stEndstand = false;
                         } else {
@@ -138,14 +139,6 @@ function bereSaison() {
                 stFinalTeilnehmer++;
             }
         }
-    } else {
-        if (CUPS.TYP[stCup] === "CUP" && iSaison === 1) {
-            SAISON[1][isVorlaeufig] = true; // Vorläufige Reihung
-        }
-    }
-
-    if (iSaison === 3) {
-        iSaison = iSaison;
     }
 
     var CUP = {};

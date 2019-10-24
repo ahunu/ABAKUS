@@ -298,8 +298,12 @@ function onAendern() {
         showEinenTip('#iNAME', 'Wie willst du das Turnier nennen?');
         return;
     }
-    if ($('#iNAME').val().length > 28) {
-        showEinenTip('#iNAME', 'Der Turniername darf nur 28 Zeichen lang sein.');
+    if ($('#iNAME').val().length < 4) {
+        showEinenTip('#iNAME', 'Bitte den vollständigen Turniername eingeben.');
+        return;
+    }
+    if ($('#iNAME').val().length > 24) {
+        showEinenTip('#iNAME', 'Der Turniername darf nur 24 Zeichen lang sein.');
         return;
     }
 

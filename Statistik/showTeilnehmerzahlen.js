@@ -67,6 +67,7 @@ function showTeilnehmerzahlen() {
                     + "<td class=TR>" + SAISON[iSaison][isAnzTeilnahmen] + "&nbsp;&nbsp;&nbsp;</td>"
                     + "<td class=TR>" + parseInt((SAISON[iSaison][isAnzTeilnahmen] / SAISON[iSaison][isAnzTurniere]) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
                     + "<td class=TR>" + getAbweichung(iSaison) + "&nbsp;&nbsp;</td>"
+                    + (QUERFORMAT() ? "<td class=TC>" + STAT._PUNKTEPOTENTIAL[iSaison] + "</td>" : "")
                     + (QUERFORMAT() ? "<td></td>" : "")
                     + "</tr>";
         }
@@ -80,8 +81,10 @@ function showTeilnehmerzahlen() {
             + (QUERFORMAT() ? "<th class=TR>Teil-&nbsp;&nbsp;&nbsp;</th>" : "")
             + "<th class=TR>&#216; pro&nbsp;</th>"
             + "<th class=TR>Abwei.&nbsp;&nbsp;</th>"
+            + (QUERFORMAT() ? "<th class=TC>&#216;&nbsp;</th>" : "")
             + (QUERFORMAT() ? "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>" : "")
             + "</tr>"
+
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TL></th>"
             + "<th xclass=TR>" + (QUERFORMAT() ? "Turniere" : "Turn.") + "</th>"
@@ -89,6 +92,7 @@ function showTeilnehmerzahlen() {
             + "<th class=TR>nahmen</th>"
             + "<th class=TR>Turnier</th>"
             + "<th class=TR>vom &#216;&nbsp;&nbsp;</th>"
+            + (QUERFORMAT() ? "<th class=TC>Gewinn&nbsp;</th>" : "")
             + (QUERFORMAT() ? "<td></td>" : "")
             + "</tr>"
             + html;
@@ -100,6 +104,7 @@ function showTeilnehmerzahlen() {
             + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
             + "<td class=TR></td>"
             + (QUERFORMAT() ? "<td></td>" : "")
+            + (QUERFORMAT() ? "<td></td>" : "")
             + "</tr>";
     html += "<tr class='bGrau'>"
             + "<th class=TC>&nbsp;Im&nbsp;Schnitt</th>"
@@ -108,10 +113,22 @@ function showTeilnehmerzahlen() {
             + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</td>"
             + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
             + "<td class=TR></td>"
+            + (QUERFORMAT() ? "<td class=TC>" + STAT._PUNKTEPOTENTIAL[0] + "</td>" : "")
             + (QUERFORMAT() ? "<td></td>" : "")
             + "</tr>"
             + "</tbody></table>"
             + "<br>"
+
+
+            + '<div class=XS style="margin: 2vw;text-align:justify"><b>Legende:</b><br>'
+            + 'Der <b>durchschnittliche Gewinn</b> ist eine statistische Größe der Turnierergebnisse, welche '
+            + 'in verschiedenen Cups nach unterschiedlichen Regeln erreicht wurden, vergleichbar machen soll. '
+            + 'Er markiert jene Punktezahl die für einen guten Spieler, ohne den sprichwörtlichen Erdäpfeln in der Tasche, erreichbar sein sollte. '
+            + 'Der durchschnittliche Gewinn darf nicht mit dem durchschnittlichen Turnierergebnis verwechselt werden. Letzterer ist nämlich immer Null.'
+            + '<br><br></div>'
+
+
+
             + "<div style='font-size:1.2vw;font-weight: normal;text-align:center'>"
             + (QUERFORMAT() ? "&mdash;&mdash; &copy; 2015-2019 by Leo Luger &mdash;&mdash;" : "")
             + "</div>";

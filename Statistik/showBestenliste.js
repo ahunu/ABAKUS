@@ -265,19 +265,18 @@ function showBestenliste(pSort) {
                     + "<tr class=S><td></td><td><b>1.2.3.</b></td><td>Stockerlplätze / beste Platzierung</td></tr>"
                     + "<tr class=S><td></td><td><b>&Oslash; Platz</b></td><td>Durchschnittliche Platzierung</td></tr>"
                     + "<tr class=S><td></td><td><b>TN</b></td><td>Teilnahmen</td></tr>"
-                    + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
-                    + "<tr class=S><td></td></td><td></td></tr>"
-                    + "<tr class=S><td></td><td colspan=2>Wie auch im Schiweltcup üblich zählen für die Ewige Bestenliste nur die Siege. Lediglich bei Gleichstand sind zweite und dritte Plätze relevant.</th></tr>";
+                    + "<tr><td colspan=3>&nbsp;</td></tr>"
+                    + "<tr class=S><td></td><td colspan=2 style='text-align:justify'>Wie auch im Schiweltcup üblich zählen für die Ewige Bestenliste nur die Siege. Lediglich bei Gleichstand sind zweite und dritte Plätze relevant. Nach den Besten (Turniersiegern) erfolgt die Reihunng nach der besten jemals erreichten Platzierung.</th><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"
+                    + "<tr><td colspan=3>&nbsp;</td></tr>"
+                    + "<tr class=XS><td></td><td colspan=2 style='text-align:justify'>Mit einen Klick auf eine Spaltenüberschrift kannst du die Sortierung ändern. Durch das Anklicken einer Zeile kannst du die Saisonergebnisse ein- oder ausblenden.</td></tr>"
+                    + "<tr><td colspan=3>&nbsp;</td></tr>"
+                    + "<tr class=XS><td></td><td colspan=2 style='text-align:justify'>Es sind alle jene Spieler gelistet welche in der aktuellen Saison schon teilgenommen, in der letzten Saison mindestens fünfmal teilgenommen, insgesamt mindestens 20 mal teilgenommen oder mindestens einen Stockerlplatz erreicht haben.</td></tr>";
             if (QUERFORMAT()) {
-                html += "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
-                        + "<tr><td></td><td colspan=2>Mit einen Klick auf eine Spaltenüberschrift kannst du die Sortierung ändern.</th></tr>"
-                        + "<tr><td></td><td colspan=2>Durch das Anklicken einer Zeile kannst du die Saisonergebnisse ein- oder ausblenden.</th></tr>"
-                        + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
-                        + "<tr><td></td><td colspan=2>Es sind alle jene Spieler gelistet welche</th></tr>"
-                        + "<tr><td></td><td colspan=2>in der aktuellen Saison schon teilgenommen,</th></tr>"
-                        + "<tr><td></td><td colspan=2>in der letzten Saison mindestens fünfmal teilgenommen,</th></tr>"
-                        + "<tr><td></td><td colspan=2>insgesamt mindestens 20 mal teilgenommen</th></tr>"
-                        + "<tr><td></td><td colspan=2>oder mindestens einen Stockerlplatz erreicht haben.</th></tr>";
+//                html += "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
+//                        + "<tr><td></td><td colspan=2>Mit einen Klick auf eine Spaltenüberschrift kannst du die Sortierung ändern.</th></tr>"
+//                        + "<tr><td></td><td colspan=2>Durch das Anklicken einer Zeile kannst du die Saisonergebnisse ein- oder ausblenden.</th></tr>"
+//                        + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
+//                        + "<tr><td></td><td colspan=2>Es sind alle jene Spieler gelistet welche in der aktuellen Saison schon teilgenommen, in der letzten Saison mindestens fünfmal teilgenommen, insgesamt mindestens 20 mal teilgenommen oder mindestens einen Stockerlplatz erreicht haben.</th></tr>";
                 $('#dRumpf').html(html + "</tbody></table><br>").css('margin-top', $('#qfHeader').height() + 'px');
             } else {
                 $('#dContent').html(html + "</tbody></table><br><br>").show();

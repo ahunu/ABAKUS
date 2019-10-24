@@ -25,8 +25,20 @@ var iFrom = 0;
 
 function whenSTATloaded() {
 
-    hideEinenMoment();
+    function myDateString(pDate) {
+        var hDate = new Date(pDate);
+        return hDate.getFullYear() + '-' + ('00' + (hDate.getMonth() + 1)).substr(-2) + '-' + ('00' + (hDate.getDate())).substr(-2);
+    }
+    var hHeute = myDateString(new Date());
 
+    for (var iTurnier in CUPS.TERMINE) {
+        if (CUPS.TERMINE[iTurnier].CUP === iCUP && CUPS.TERMINE[iTurnier].DATUM === hHeute) {
+            $('#iDATUM').val(CUPS.TERMINE[iTurnier].DATUM);
+            $('#iNAME').val(CUPS.TERMINE[iTurnier].NAME);
+            $('#iVERANSTALTER').val(CUPS.TERMINE[iTurnier].VERANSTALTER);
+        }
+    }
+    hideEinenMoment();
 }
 
 function myDateString(pDate) {
@@ -47,7 +59,7 @@ function fPruefenSpeichern(pSpeichern) {
     if (pos > 0) {
         iNAME = iNAME.substr(0, pos);
     }
-    if (iNAME.length < 8 & pSpeichern) {
+    if (iNAME.length < 4) {
         showEinenTip('#iNAME', 'Bitte den vollständigen Turniername eingeben.');
         return;
     }
@@ -61,7 +73,6 @@ function fPruefenSpeichern(pSpeichern) {
         $('input[id=iNAME]').css("color", "red").focus();
         return;
     }
-
 
     var iDATUM = $('#iDATUM').val();
     if ($('#iDATUM').val() === "") {
@@ -84,8 +95,8 @@ function fPruefenSpeichern(pSpeichern) {
         }
         iSAISON = '' + iSAISON;
     } else {
-        if ((iDATUM.getMonth() === 3 && iDATUM.getDate() > 15)
-                || iDATUM.getMonth() > 3) {
+//      if (iDATUM.getMonth() > 3 || (iDATUM.getMonth() === 3 && iDATUM.getDate() > 15)) {
+        if (iDATUM.getMonth() > 3) {
             iSAISON = '' + iSAISON + '/' + (iSAISON - 1999);
         } else {
             iSAISON = '' + (iSAISON - 1) + '/' + (iSAISON - 2000);
@@ -179,10 +190,19 @@ function fPruefenSpeichern(pSpeichern) {
                 iSPIELER = ('0000' + iSPIELER).slice(-4);
                 pos = iLine.lastIndexOf('\t');
                 r3 = parseInt(iLine.substr(pos));
+                if (isNaN(r3)) {
+                    r3 = '-';
+                }
                 pos = iLine.substr(0, pos - 1).lastIndexOf('\t');
                 r2 = parseInt(iLine.substr(pos));
+                if (isNaN(r2)) {
+                    r2 = '-';
+                }
                 pos = iLine.substr(0, pos - 1).lastIndexOf('\t');
                 r1 = parseInt(iLine.substr(pos));
+                if (isNaN(r1)) {
+                    r1 = '-';
+                }
                 if (SPIELERnr[iVERANSTALTER]) {
                     oLine = iSPIELER + ' ' + SPIELERnr[iSPIELER][0] + ' ' + SPIELERnr[iSPIELER][1];
                 } else {
@@ -228,6 +248,10 @@ $(document).bind('pageinit', function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
 
+    if (LS.ME === "1014") {
+        iCUP = 51; // HRC
+    }
+
     if (LS.ME === "4506") {
         iCUP = 53; // SWC
     }
@@ -237,8 +261,8 @@ $(document).bind('pageinit', function () {
     }
 
     if (LS.ME === "3425") {
-        iCUP = 77; // Test
-   }
+        iCUP = 125; // Test
+    }
 
     $('#hTitel1').text(CUPS.NAME[iCUP]);
 

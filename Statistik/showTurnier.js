@@ -79,15 +79,10 @@ function showTurnier(pTurnier) {
     if (LS.ME !== "NOBODY") {
         var hIcons = [];
         if (LS.ME === '3425'
-                || LS.ME === '3757' && stCup === 56     // Erwin Haider
-                || LS.ME === '4731' && stCup === 81     // Alexandra Sabkovski
-                || LS.ME === '2553' && stCup === 83) {  // Arno Peter
-            hIcons = ['#iPrint', '#iEdit', '#iDownload'];
-        } else if (ADMIN
-                || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')    // Hafner Hans, Timoschek Kurt
-                || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037')    // Braun Sigi, Sedlacek Robert
-                || STAT[pTurnier]._ANEKDOTE) {
-            hIcons = ['#iPrint', '#iEdit'];
+                || LS.ME === 'xx3757' && stCup === 56     // Erwin Haider
+                || LS.ME === 'xx4731' && stCup === 81     // Alexandra Sabkovski
+                || LS.ME === 'xx2553' && stCup === 83) {  // Arno Peter
+            hIcons = ['#iPrint', '#iDownload'];
         } else {
             hIcons = ['#iPrint'];
         }
@@ -136,15 +131,25 @@ function showTurnier(pTurnier) {
 
     html += "</tbody></table><br>";
 
+    if (stCup === 55) {
+        html += '<div class=XS style="margin-left: 1vw"><b>Cupwertung nach Heinepunkten:</b><br>'
+                + 'Die Schriftpunkte werden als Cuppunkte übernommen. '
+                + 'Von den Pluspunkten über 100 zählt nur jeder zweite Punkt. '
+                + 'Die Minuspunkte werden nicht gewertet.'
+                + '<br><br></div>';
+    }
+
     if (QUERFORMAT()) {
         $('#dRumpf').html(html + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
                 + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
+                + (stCup === 53 ? "<td class=TR>tarock.web.app?Sauwaldcup&nbsp;</td>" : "")
                 + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
+                + (stCup === 55 ? "<td class=TR>tarock.web.app?Tirolcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 81 ? "<td class=TR>tarock.web.app?Schmankerl Tarock&nbsp;</td>" : "")
-                + "</tr></tbody></table><br>").css('margin-top', $('#qfHeader').height() + 'px');
+                + "</tr></tbody></table>").css('margin-top', $('#qfHeader').height() + 'px');
         $('#tStand').hide();
     } else {
 //        $('#sideContent').css('height', '2px');

@@ -1667,6 +1667,8 @@ $(document).ready(function () {
         var LS_LastDate = LS.LastDate;
         var LS_MeineCups = LS.MeineCups;
         var LS_VIP = LS.VIP;
+        var LS_FotoAnimieren = LS.FotoAnimieren;
+        var LS_FotoStyle = LS.FotoStyle;
 
         LS.LoadCups = 0;
 
@@ -1688,6 +1690,8 @@ $(document).ready(function () {
         LS.LastDate = LS_LastDate;
         LS.MeineCups = LS_MeineCups;
         LS.VIP = LS_VIP;
+        LS.FotoAnimieren = LS_FotoAnimieren;
+        LS.FotoStyle = LS_FotoStyle;
 
         if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') {
             SPIELERerweitern();

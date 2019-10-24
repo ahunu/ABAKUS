@@ -1,5 +1,5 @@
 
-/* global firebase, showCupwertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, MPPUtils, isSaison, pell */
+/* global firebase, showCupwertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, MPPUtils, isSaison, pell, editor, isFinale */
 
 // 51 Hausruckcup
 // 52 Raiffeisencup
@@ -31,6 +31,7 @@ var tFIXPUNKTE = [, 223, 198, 180, 168, 156, 147, 138, 131, 124, // 0 - 9
 
 var onValueInit = false;
 var myJBox = null;
+var myJTip = null;
 var jbSpieler = null;
 var jbArchiv = null;
 var I = -1;
@@ -49,10 +50,11 @@ var stFontMax = 6;
 var stFontPlus = 0;
 var stLastZitat = [];
 var stStickyHeader = false;
-var jbAnekdote = null;
+var stFotoCount = 0;
+var stFotoStyle = 0;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["J&auml;n.", "Feb.", "M&auml;rz", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
-var anz = 0;
+var anz = 1;
 var html = '';
 
 var lastBtn = '';
@@ -239,123 +241,270 @@ function scrollToMe() {
     }
 }
 
-function showAnekdote(pTurnier) {
+function turnierPruefenSpeichern(pSpeichern) {
+
+    hideEinenTip();
+
+    $('#bASpeichern').addClass('ui-disabled');
+
+    var DATA = {};
+
+    if (Number.isInteger(stStat)) {
+        DATA._CUPANEKDOTE = editor.content.innerHTML;
+        if (DATA._CUPANEKDOTE) {
+            if (DATA._CUPANEKDOTE.substr(0, 23) === '<span style="font-size:') {
+                DATA._CUPANEKDOTE = '<div>' + DATA._CUPANEKDOTE.substr(DATA._CUPANEKDOTE.indexOf('px;">') + 5);
+                DATA._CUPANEKDOTE = DATA._CUPANEKDOTE.substr(0, DATA._CUPANEKDOTE.lastIndexOf('</span>')) + '</div>';
+            }
+        } else {
+            DATA._CUPANEKDOTE = null;
+        }
+        DATA._CUPFOTOS = [];
+    } else {
+        DATA._ANEKDOTE = editor.content.innerHTML;
+        if (DATA._ANEKDOTE) {
+            if (DATA._ANEKDOTE.substr(0, 23) === '<span style="font-size:') {
+                DATA._ANEKDOTE = '<div>' + DATA._ANEKDOTE.substr(DATA._ANEKDOTE.indexOf('px;">') + 5);
+                DATA._ANEKDOTE = DATA._ANEKDOTE.substr(0, DATA._ANEKDOTE.lastIndexOf('</span>')) + '</div>';
+            }
+        } else {
+            DATA._ANEKDOTE = null;
+        }
+        DATA._FOTOS = [];
+    }
+
+    var val = '';
+
+    var nFehler = 0;
+
+    $('.ciFOTO').each(function (i, obj) {
+        val = $(obj).val();
+        if (val) {
+
+            var testImg = new Image();
+            testImg.complete = false;
+            testImg.src = "https://drive.google.com/uc?id=" + val;
+            if (!testImg.complete) {
+                showEinenTip(obj, 'Das Foto wurde noch nicht vollständig geladen.<br>Versuche es später nochmal.');
+                nFehler++;
+                return false;
+            }
+            if (testImg.width < 500 || testImg.width > 800) {
+                showEinenTip(obj, 'Es sind nur Fotos mit einer Breit<br>von 500 bis 800 Pixel erlaubt.');
+                nFehler++;
+                return false;
+            }
+            if (testImg.width <= testImg.height) {
+                showEinenTip(obj, 'Es sind nur Fotos im Querformat erlaupt.');
+                nFehler++;
+                return false;
+            }
+
+            if (Number.isInteger(stStat)) {
+                DATA._CUPFOTOS[i] = val;
+            } else {
+                DATA._FOTOS[i] = val;
+            }
+
+        } else {
+            $(obj).parent().remove();
+        }
+    });
+
+    if (nFehler) {
+        return;
+    }
+
+    $('#bASpeichern').removeClass('ui-disabled');
+
+    if (!pSpeichern) {
+        return;
+    }
+
+    var dbRef = '';
+    if (Number.isInteger(stStat)) {
+        dbRef = '/00/' + ("000" + stCup).slice(-3) + '/' + SAISON[iSaison][isFinale];
+        if (DATA._CUPFOTOS.length === 0) {
+            DATA._CUPFOTOS = null;
+        }
+    } else {
+        dbRef = '/00/' + ("000" + stCup).slice(-3) + '/' + stStat;
+        if (DATA._FOTOS.length === 0) {
+            DATA._FOTOS = null;
+        }
+    }
+
+    showEinenMoment(stCup, 'Die Änderung wird gespeichert.');
+
+    firebase.database().ref(dbRef)
+            .update(DATA)
+            .then(function () {
+                if (Number.isInteger(stStat)) {
+                    if (DATA._CUPANEKDOTE) {
+                        STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE = DATA._CUPANEKDOTE;
+                    } else {
+                        delete STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE;
+                    }
+                    if (DATA._CUPFOTOS) {
+                        STAT[SAISON[iSaison][isFinale]]._CUPFOTOS = DATA._CUPFOTOS;
+                    } else {
+                        delete STAT[SAISON[iSaison][isFinale]]._CUPFOTOS;
+                    }
+                } else {
+                    if (DATA._ANEKDOTE) {
+                        STAT[stStat]._ANEKDOTE = DATA._ANEKDOTE;
+                    } else {
+                        delete STAT[stStat]._ANEKDOTE;
+                    }
+                    if (DATA._FOTOS) {
+                        STAT[stStat]._FOTOS = DATA._FOTOS;
+                    } else {
+                        delete STAT[stStat]._FOTOS;
+                    }
+                }
+                localStorage.setItem("Abakus.STAT" + ("000" + stCup).substr(-3), JSON.stringify(STAT));
+                if (STAT._LASTTURNIER && STAT._LASTTURNIER.substr(0, 10) === stStat) {
+                    STAT._LASTTURNIER = stStat + ', ' + Date.now();
+                    firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
+                            .update({
+                                _LASTTURNIER: STAT._LASTTURNIER
+                            })
+                            .then(function () {
+                                localStorage.setItem("Abakus.STAT" + ("000" + stCup).substr(-3), JSON.stringify(STAT));
+                                hideEinenMoment();
+                                showChronik(stStat);
+                            })
+                            .catch(function (error) {
+                                showEineDBWarnung(error, 'writeAnekdote()');
+                            });
+                } else {
+                    hideEinenMoment();
+                    showChronik(stStat);
+                }
+            })
+            .catch(function (e) {
+                showEineDBWarnung(e, 'writeAnekdote()');
+            });
+
+}
+
+function newFoto() {
+    $('<div><input class="ciFOTO" type="text" data-role="none" value="" ><img class=cFotoImg hidden src="???" width="100%"></div>').insertBefore($('#iNewFoto'));
+    $(".ciFOTO").focusout(function () {
+        $('.ciFOTO').each(function (i, obj) {
+            val = $(obj).val();
+            if (val) {
+                if (val.indexOf('/file/d/') > 1) {
+                    val = val.substr(val.indexOf('/file/d/') + 8);
+                }
+                if (val.indexOf('/open?id=') > 1) {
+                    val = val.substr(val.indexOf('/open?id=') + 9);
+                }
+                if (val.indexOf('/view?') > 1) {
+                    val = val.substr(0, val.indexOf('/view?'));
+                }
+                $(obj).val(val);
+                $(obj).next().attr("src", "https://drive.google.com/uc?id=" + val).show();
+            } else {
+                $(obj).next().hide();
+            }
+        });
+    });
+}
+
+function showAnekdote() {
     if (jbSpieler) {
         if (jbSpieler.isOpen) {
             jbSpieler.close();
         }
     }
-    if (LS.ME === '3425') {
-        $('.ss-row').removeClass('ss-large').addClass('ss-mini');
-        $('.ss-right').removeClass('ss-large-mag').addClass('ss-mini-mag');
 
+    showIcons([]);
 
+    var html = '<div class="M2" style="padding:3vw">'
+            + 'Anekdote:'
+            + '<div id="editor" class="M" style="background:#eee; border-width:6px; border-style:double;border-color:#ddd; text-align: justify;"></div>'
+            + '<br>Fotos:'
+            + '<div id="fotoedit-grid">';
 
-
-        return;
+    if (Number.isInteger(stStat) && STAT[SAISON[iSaison][isFinale]]._CUPFOTOS) {
+        for (var i = 0, len = STAT[SAISON[iSaison][isFinale]]._CUPFOTOS.length; i < len; i++) {
+            html += '<div><input class="ciFOTO" type="text" data-role="none" value="' + STAT[SAISON[iSaison][isFinale]]._CUPFOTOS[i] + '" >'
+                    + '<img class=cFotoImg src="https://drive.google.com/uc?id=' + STAT[SAISON[iSaison][isFinale]]._CUPFOTOS[i] + '" width="100%"></div>';
+        }
+    } else if (!Number.isInteger(stStat) && STAT[stStat]._FOTOS) {
+        for (var i = 0, len = STAT[stStat]._FOTOS.length; i < len; i++) {
+            html += '<div><input class="ciFOTO" type="text" data-role="none" value="' + STAT[stStat]._FOTOS[i] + '" >'
+                    + '<img class=cFotoImg src="https://drive.google.com/uc?id=' + STAT[stStat]._FOTOS[i] + '" width="100%"></div>';
+        }
+    } else {
+        html += '<div><input class="ciFOTO" type="text" data-role="none" value="" ><img class=cFotoImg hidden src="???" width="100%"></div>';
     }
-    if (!jbAnekdote) {
-        jbAnekdote = new jBox('Modal', {
-            title: '<div id=jbAnekdoteTitle class=L2 style="background-color:#27a;border:8px solid #27a;color: white;"></div>',
-            content: '<div>'
-                    + '<div id="editor" class="M" style="width:' + ($(window).innerWidth() * (QUERFORMAT() ? 0.7 : 0.9)) + 'px;background:#eee; border-width:6px; border-style:double;border-color:#ddd; text-align: justify;"></div>'
-                    + (QUERFORMAT() ? '<div class="ui-grid-b">'
-                            + '<div class="ui-block-a" style="padding:11px 8px 0px 4px;">'
-                            + '<button class="L2 ui-corner-all" onClick="writeAnekdote(false);" style="width:100%;" data-theme="a">abbrechen</button>'
-                            + '</div>'
-                            + '<div class="ui-block-b" style="padding:11px 4px 0px 4px;">'
-                            + '<button id=bAClear class="L2 ui-corner-all" onClick="$(\'.pell-content\').html(\'\').focus();" style="width:100%;">clear</button>'
-                            + '</div>'
-                            + '<div class="ui-block-c" style="padding:11px 4px 0px 8px;">'
-                            + '<button id=bASpeichern class="L3 ui-corner-all" onClick="writeAnekdote(true);" style="width:100%;background-color:#efcc44;font-weight:bold;" data-theme="e">speichern</button>'
-                            + '</div>' : '')
-                    + '</div>',
-            closeButton: 'box',
-            closeOnEsc: true,
-            overlay: false,
-            draggable: 'title'
-        });
-        setTimeout(function () {
-            if (QUERFORMAT() && (ADMIN
-                    || stCup === 54 && (LS.ME === '3590' || LS.ME === '3629')       // Hafner Hans, Timoschek Kurt
-                    || stCup === 56 && (LS.ME === '3322' || LS.ME === '2037'))) {    // Braun Sigi, Sedlacek Robert
-                editor = pell.init({
-                    element: document.getElementById('editor'),
-                    actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'undo', 'redo'],
-                    classes: {actionbar: 'pell-actionbar-custom-name'},
-                    onChange: function () {
-                    }
-                });
-            } else {
-                editor = pell.init({
-                    element: document.getElementById('editor'),
-                    actions: [],
-                    classes: {actionbar: 'pell-actionbar-custom-name'},
-                    onChange: function () {
-                    }
-                });
-                $('#bAClear,#bASpeichern').hide();
-            }
-            $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
-        });
-    }
-    jbAnekdote.open();
+
+    html += '<i onclick="newFoto();"  title="Ein Foto einfügen." id=iNewFoto class="i zmdi-plus noprint cQUER XXL"></i>'
+            + '</div>'
+            + '<br>'
+            + '<div class="ui-grid-b">'
+            + '<div class="ui-block-a" style="padding:11px 8px 0px 4px;">'
+            + '<button class="L2 ui-corner-all" onClick="hideEinenTip();showChronik(stStat);" style="width:100%;" data-theme="a">abbrechen</button>'
+            + '</div>'
+            + '<div class="ui-block-b" style="padding:11px 4px 0px 4px;">'
+            + '<button id=bAClear class="L2 ui-corner-all" onClick="turnierPruefenSpeichern(false)" style="width:100%;">prüfen</button>'
+            + '</div>'
+            + '<div class="ui-block-c" style="padding:11px 4px 0px 8px;">'
+            + '<button id=bASpeichern class="L3 ui-corner-all ui-disabled" onClick="turnierPruefenSpeichern(true)" style="width:100%;background-color:#efcc44;font-weight:bold;" data-theme="e">speichern</button>'
+            + '</div>'
+            + '</div>'
+            + '</div>';
+
+    $('#dRumpf').html(html);
+
     setTimeout(function () {
-        if (!pTurnier) {
-            pTurnier = stStat;
-        }
+        editor = pell.init({
+            element: document.getElementById('editor'),
+            actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'undo', 'redo'],
+            classes: {actionbar: 'pell-actionbar-custom-name'},
+            onChange: function () {
+            }
+        });
+        $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
+    });
+    setTimeout(function () {
         editor.content.innerHTML = '';
-        if (QUERFORMAT()) {
-            $('#jbAnekdoteTitle').html('&nbsp;Eine Anekdote zum Turnier <b>' + STAT[pTurnier]._NAME + '</b>');
-        } else {
-            $('#jbAnekdoteTitle').html('&nbsp;<b>' + STAT[pTurnier]._NAME + '</b>');
-        }
-        if (STAT[pTurnier]._ANEKDOTE) {
-            $('.pell-content').html(STAT[pTurnier]._ANEKDOTE);
-            editor.content.innerHTML = STAT[pTurnier]._ANEKDOTE;
+        if (Number.isInteger(stStat) && STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE) {
+            $('.pell-content').html(STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE);
+            editor.content.innerHTML = STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE;
+        } else if (!Number.isInteger(stStat) && STAT[stStat]._ANEKDOTE) {
+            $('.pell-content').html(STAT[stStat]._ANEKDOTE);
+            editor.content.innerHTML = STAT[stStat]._ANEKDOTE;
         } else {
             $('.pell-content').html('');
             editor.content.innerHTML = '';
         }
-        if (QUERFORMAT()) {
-            $('.pell-content').focus();
-        }
+        $('.pell-content').focus();
     }, 100);
-}
 
-function writeAnekdote(pWrite) {
-    if (pWrite) {
-        var vAnekdote = editor.content.innerHTML;
-        if (!vAnekdote) {
-            vAnekdote = null;
-        }
-        firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/' + stStat)
-                .update({
-                    _ANEKDOTE: vAnekdote
-                })
-                .then(function () {
-                    firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
-                            .update({
-                                _LASTTURNIER: (STAT._LASTTURNIER.substr(0, 10) + ', ' + Date.now())
-                            })
-                            .then(function () {
-                                var vAnekdote = editor.content.innerHTML;
-                                if (vAnekdote) {
-                                    STAT[stStat]._ANEKDOTE = vAnekdote;
-                                } else {
-                                    delete STAT[stStat]._ANEKDOTE;
-                                }
-                                hideEinenMoment();
-                            })
-                            .catch(function (error) {
-                                showEineDBWarnung(error, 'writeAnekdote()');
-                            });
-                })
-                .catch(function (e) {
-                    showEineDBWarnung(e, 'writeAnekdote()');
-                });
-    }
-    jbAnekdote.close();
+    $(".ciFOTO").focusout(function () {
+        $('.ciFOTO').each(function (i, obj) {
+            val = $(obj).val();
+            if (val) {
+                if (val.indexOf('/file/d/') > 1) {
+                    val = val.substr(val.indexOf('/file/d/') + 8);
+                }
+                if (val.indexOf('/open?id=') > 1) {
+                    val = val.substr(val.indexOf('/open?id=') + 9);
+                }
+                if (val.indexOf('/view?') > 1) {
+                    val = val.substr(0, val.indexOf('/view?'));
+                }
+                $(obj).val(val);
+                $(obj).next().attr("src", "https://drive.google.com/uc?id=" + val).show();
+            } else {
+                $(obj).next().hide();
+            }
+        });
+    });
+
 }
 
 // I N I T  ************************************************************************************
@@ -413,16 +562,19 @@ function fINIT(pCup) {
     }
 
     document.onselectstart = function () {
-        if (jbAnekdote) {
-            if (jbAnekdote.isOpen) {
+        if (document.activeElement.className && document.activeElement.className === 'pell-content') {
 // Ansonst funktioniert der htmlEditor nicht
-            } else {
-                return false;
-            }
         } else {
             return false;
         }
     };
+
+    if (LS.FotoStyle) {
+        stFotoStyle = LS.FotoStyle;
+    } else {
+        stFotoStyle = (new Date() % 4) + 1;
+    }
+
     if (stCup === 0) {
         history.go(-1);
     }
@@ -431,6 +583,12 @@ function fINIT(pCup) {
     }
     if (QUERFORMAT() && (CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 || LS.ME === '2037' && I === 56 || LS.ME[0] === '-')) {
         ADMIN = true;
+        myJTip = new jBox('Tooltip', {
+            theme: 'TooltipError',
+            delayClose: 20,
+            closeOnClick: true,
+            closeOnEsc: true
+        });
     }
     STAT = JSON.parse(localStorage.getItem('Abakus.STAT' + (("000" + stCup).slice(-3))));
     SPIELER = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
@@ -482,15 +640,13 @@ function fINIT(pCup) {
         if (mql.matches) {
 // onbeforeprint equivalent
         } else {
-            $('#dPrint').attr('style', 'width:72%');
             $('#tStand').css('position', 'fixed');
             $('#qfHeader').attr('style', 'position: fixed; top: 0; width: 100%; padding:0em; margin:0px; background:#f5f5f5');
-            $('#qfHeaderLinks').attr('style', 'width:6%;text-align:center;');
-            $('#qfHeaderRechts').attr('style', 'width:94%');
+            $('#qfHeaderLinks').attr('style', 'width:8%;text-align:center;');
+            $('#qfHeaderRechts').attr('style', 'width:92%');
             $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:2.27vw;white-space:nowrap;font-family:Arial;font-style:italic;");
             $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:2.08vw;white-space:nowrap;font-family:Arial;font-weight:normal;");
             $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
-            $('#mTable').css('font-size', '1.5vw');
         }
     });
     $(document).on('keyup', '#iFilter', function () {

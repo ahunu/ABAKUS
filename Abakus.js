@@ -1,5 +1,5 @@
 
-/* global getVersionsDatum, firebase, pSeite, pCUP */
+/* global getVersionsDatum, firebase, pSeite, pCUP, SPIELERext */
 
 var PC = false;
 var DB = new Object();
@@ -17,7 +17,7 @@ var rPfad = '';
 var mTischTurnier = '';
 var mHausruckAktiv = false;
 var mRaiffeisenAktiv = false;
-var mTirolAktiv = false;
+var mTirolAktiv = true;
 var mSauwaldAktiv = true;
 var hHeute = myDateString(new Date());
 var anzVersuche = 0;
@@ -304,7 +304,7 @@ function writeCanvas(pCup) {
             } else if (pCup === 56) {
                 document.title = 'WTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
                 hTitel = 'Wiener Tarockcup';
-                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'http://wienertarockcup.at\')" >www.WienerTarockcup.at</span>';
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span>www.tarock.wien</span>';
             } else if (pCup === 80) {
                 hTitel = '1. Wiener Tarockmarathon';
                 document.title = '1. Wr. Marathon';
@@ -372,13 +372,6 @@ function getDateString(pDate) {
 
 function initCUPSdelAllSTAT(pMeldung) {
     'use strict';
-    if (QUERFORMAT()) {
-//        if (LS.LastBtn) {
-//            resetLastBtn();
-//            $('#bInitialisieren').addClass('ui-btn-active'); // nicht beim ersten Mal
-//            LS.LastBtn = '#bInitialisieren';
-//        }
-    }
     $('#pContent').scrollTop(0);
     var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
     var TU = JSON.parse(localStorage.getItem('Abakus.TU'));
@@ -560,9 +553,7 @@ function resetLastBtn() {
             } else if (LS.LastBtn.substr(4, 2) === '49'
                     || LS.LastBtn.substr(4, 2) === '50'
                     || LS.LastBtn.substr(4, 2) === '51'
-                    || LS.LastBtn.substr(4, 2) === '52'
-                    || LS.LastBtn.substr(4, 2) === '53'
-                    || LS.LastBtn.substr(4, 2) === '55') {
+                    || LS.LastBtn.substr(4, 2) === '52') {
                 $(LS.LastBtn).addClass('cDIV');
             }
         } else {
@@ -730,7 +721,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
-                        + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3 || I === 55 && LS.ME === "3425")
+                        + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3)
                                 ? hVorschub + '<span class="cBlau P XL" onclick="TischNeu(true)" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
@@ -742,7 +733,7 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                                 ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(false, \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
-                        + (((I === 53 && LS.ME === '4506') || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425')) && PC
+                        + (((I === 51 && LS.ME === '1014') || (I === 53 && LS.ME === '4506') || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
                                 ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
                                 : ''
                                 )
@@ -758,7 +749,9 @@ function showCup(i, pBtn, pTermin, pAnmeldungen) {
                         )
 
                 + '</div><div class="ui-block-b M" style="width:50%;text-align:justify;">'
-                + hVorschub + getCupText()
+
+                + hVorschub + (I === 56 ? '<img src="Icons/LogoWTC.jpg" align="left" style="fload:left;width:120px;height:160px;margin-left:-60px;margin-right:10px">' : '') + getCupText()
+
                 + '</div></div>'
                 + hVorschub + html
                 + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (isNaN(pTermin) || pTermin === false)
@@ -931,14 +924,26 @@ function initExtraButtons() {
     }
 }
 
+function whenSPIELERloaded() {
+    LS.VIP = isVIP(SPIELERext[LS.ME][12]); // VIP-Status eintragen
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+}
+
 function showCUPS() {
     var sync = new Date(CUPS.DATE);
     var heute = new Date();
     var nTage = parseInt((heute - sync) / 86400000);
     if (LS.Version !== getVersion()) {
-        if (LS.Version < 932) { // später
+        if (LS.Version < 989) { // später
+            LS.FotoStyle = 0;
+            LS.FotoAnimieren = false;
             if (LS.Font) {
                 delete LS.Font;
+            }
+        }
+        if (LS.Version < 990) {
+            if (LS.ME.length === 4 && !LS.VIP) {
+                loadSPIELER(); // VIP-Status holen
             }
         }
         localStorage.setItem('Abakus.LOG', JSON.stringify(''));
@@ -1191,7 +1196,7 @@ function whenCUPSloaded() {
                         if (TERMINE[termin].CUP === 53) {
                             TERMINE[termin].CUP = 53;
                         }
-                        if (TERMINE[termin].CUP === 51 || TERMINE[termin].CUP === 52 || (TERMINE[termin].CUP === 53 && !mSauwaldAktiv) || TERMINE[termin].CUP === 55 || TERMINE[termin].CUP === 57 || TERMINE[termin].CUP === 58 || TERMINE[termin].CUP === 59) {
+                        if (TERMINE[termin].CUP === 51 || TERMINE[termin].CUP === 52 || TERMINE[termin].CUP === 57 || TERMINE[termin].CUP === 58 || TERMINE[termin].CUP === 59) {
                             hTemp = '<li><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showEineMeldung(' + TERMINE[termin].CUP + ',\'Für den ' + hCupName + ' ist<br>keine Statistik verfügbar.\')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a>'
                                     + '<a onclick="toggleShow(\'#tgl' + hBtnName + '\');">Info</a></li>'
                                     + '<div id="tgl' + hBtnName + '" class="S TGL" style=margin-left:10px; hidden>'
@@ -1522,7 +1527,7 @@ function fINIT() {
         LS.AktTage = 30;
         LS.ShowCups = 0;
         LS.LastBtn = '';
-        LS.LastDate = hHeute;
+        LS.LastDate = new Date().getTime();
         LS.LoadCups = 0;
         LS.Padding = 2;
         LS.Freunde = [];
@@ -1537,6 +1542,8 @@ function fINIT() {
         LS.AnzGespeichert = 0;
         LS.Timeout = 0;
         LS.VIP = false;
+        LS.FotoAnimieren = false;
+        LS.FotoStyle = 0;
         if (QUERFORMAT()) {
             LS.ShowSpielerNr = true;
             LS.AnzSpalten = 2;
@@ -1548,25 +1555,27 @@ function fINIT() {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     }
 
-    if (LS.ME === "3425" || LS.ME === "3244" || LS.ME === "1000") { // Mair Markus
-        mTirolAktiv = true;
-    }
-
     if (LS.Version < 932) {
-        LS.LastDate = hHeute;
         LS.LastBtn = '';
     }
     if (LS.Version < 967) {
         LS.VIP = false;
     }
-    if (LS.LastDate !== hHeute) {
-        LS.LastDate = hHeute;
+    if (LS.Version < 991) {
+        LS.LastDate = new Date().getTime();
+    }
+    if (!LS.MeineCups) {
+        LS.MeineCups = [];
+    }
+    if (new Date().getTime() > LS.LastDate + 60000 * 60 * 12) { // + 6 Stunden Differenz
+        if (LS.MeineCups.length === 1 && LS.MeineCups[0]) {
+            LS.ShowCups = LS.MeineCups[0]; // Auf Standardcup wegen Lesezeichen zurücksetzen
+        }
         LS.LastBtn = '';
     }
 
     if (window.location.href.toUpperCase().indexOf('?VIPS') > 0) {
         LS.tempVIPs = window.location.href.substr(window.location.href.toUpperCase().indexOf('?VIPS'));
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
@@ -1594,8 +1603,13 @@ function fINIT() {
 
     if (LS.Ansage) {  // verhindert einen mehrfachen Aufruf von Seite2
         LS.Ansage = '';
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
+
+    LS.LastDate = new Date().getTime();
+
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+
+
     initSeite1();
 
     listVersion();
@@ -1716,13 +1730,11 @@ $(document).ready(function () {
         };
     }
 
-
     window.onbeforeunload = function (event) {
         if (LS.ShowCups && window.location.search === '?fromAnmeldungen') {
             LS.ShowCups = 0;
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         }
     };
-
 
 });

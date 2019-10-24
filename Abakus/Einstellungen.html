@@ -58,7 +58,7 @@
                         <div class="ui-grid-a">
                             <div class="ui-block-a" style="width:25%;margin:0;ddtext-align:right;">
                                 <br>
-                                <input type="number" id="iAKTTAGE">
+                                <input type="number" id="iAKTTAGE" data-role="none">
                             </div>
                             <div class="ui-block-b"  style="width:2%;margin:0;dtext-align:right;">
                             </div>
@@ -89,16 +89,71 @@
                                 <input type='checkbox' id=iMC56>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wiener Tarockcup
                             </label>
                         </fieldset>
-                  <!--      <br>
-                        <fieldset data-role=controlgroup data-mini=true data-theme="a">
-                            <label class=btn>
-                                <input type='checkbox' id=iMC58>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schmankerl Tarock
-                            </label>
-                        </fieldset> -->
+                        <!--      <br>
+                              <fieldset data-role=controlgroup data-mini=true data-theme="a">
+                                  <label class=btn>
+                                      <input type='checkbox' id=iMC58>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schmankerl Tarock
+                                  </label>
+                              </fieldset> -->
                         <br>
                     </div>
                 </div>
                 <hr>
+
+                <div class='cQUER'>
+                    <div class="L B C">Stil der Fotos:
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe" style="text-align:center;">
+                            <br>
+                            <br>
+                            <span class='M'><br><br>Wähle einen dieser Stile.
+                            </span>
+                        </div>
+                        <div class="ui-block-b daten" style="text-align:center;">
+                            <fieldset data-role="controlgroup" data-mini="true" class='Radio'>
+                                <input type="radio" name="FotoStyle" id="FotoStyle0" value=0>
+                                <label for="FotoStyle0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wechselnder Stil *
+                                </label>
+                                <input type="radio" name="FotoStyle" id="FotoStyle1" value=1>
+                                <label for="FotoStyle1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ohne Rand
+                                </label>
+                                <input type="radio" name="FotoStyle" id="FotoStyle4" value=4>
+                                <label for="FotoStyle4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ohne Rand, schräg gestellt
+                                </label>
+                                <input type="radio" name="FotoStyle" id="FotoStyle2" value=2>
+                                <label for="FotoStyle2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mit Rand
+                                </label>
+                                <input type="radio" name="FotoStyle" id="FotoStyle5" value=5>
+                                <label for="FotoStyle5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mit Rand, schräg gestellt
+                                </label>
+                                <input type="radio" name="FotoStyle" id="FotoStyle3" value=3>
+                                <label for="FotoStyle3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mit Rand, oval
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a hilfe" style="text-align:center;">
+                            <span class='M'>
+                                Mit dieser Option können die Fotos der Chronik<br>
+                                und der Fotoschau animiert werden.<br>
+                                Dies ist <b>bei schwachen PC's</b> und Tablets<br>
+                                <b>nicht zu empfehlen</b>.
+                            </span>
+                        </div>
+                        <div class="ui-block-b daten" style="text-align:center;">
+                            <br>
+                            <fieldset data-role=controlgroup data-mini=true data-theme="a">
+                                <label class=btn>
+                                    <input type='checkbox' id=iFotoAnimieren onclick="LS.FotoAnimieren = !LS.FotoAnimieren;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fotos animieren
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
                 <div class="L B C">Persönliche VIP's:
                 </div>
                 <div class="ui-grid-a">
@@ -110,7 +165,7 @@
                         </span>
                     </div>
                     <div class="ui-block-b daten" style="text-align:center;">
-                        <input type=text id=iFREUNDE>
+                        <input type=text id=iFREUNDE data-role="none">
                         <div style='text-align:left'>z.B.: <b>3343, 4823, 3493, ...</b>
                         </div>
                     </div>
@@ -126,7 +181,7 @@
                             </span>
                         </div>
                         <div class="ui-block-b daten" style="text-align:center;">
-                            <input type=number min="60" max="600" id=iTIMEOUT>
+                            <input type=number min="60" max="600" id=iTIMEOUT data-role="none">
                             <div style='text-align:left'>60=schnell, 100=normal, 600=langsam
                             </div>
                         </div>
@@ -209,7 +264,7 @@
                         <span class='M'>Hier kannst du mit einem Klick die mit '*' markierten Defaultwerte wiederherstellen.
                         </span>
                     </div>
-                    <div class="ui-block-b daten" sstyle="text-align:center;">
+                    <div class="ui-block-b daten">
                         <a class="ui-btn ui-btn-inline ui-corner-all Sbtn" id="bDefaults">&nbsp;&nbsp;&nbsp;&nbsp;Defaultwerte&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     </div>
                 </div>

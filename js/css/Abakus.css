@@ -76,6 +76,7 @@ iPad 5. Gen.: 1024 x 748
     .M3 {font-size: 5.4vw !important;} /* A3 Navbar Private Runden */
     .M2 {font-size: 5.4vw !important;}                /* A3 */
     .M  {font-size: 5.33vw !important;}
+    .S3 {font-size: 5.26vw !important;}
     .S2 {font-size: 5.2vw !important;}
     .S  {font-size: 4.9vw !important;}
     .XS {font-size: 4.8vw !important;}
@@ -152,6 +153,7 @@ iPad 5. Gen.: 1024 x 748
     .M3 {font-size: 5.2vw !important;} /* RundenStatistik Navbar */
     .M2 {font-size: 4.8vw !important;}  /* 5.04vw */
     .M  {font-size: 4.7vw !important;}
+    .S3 {font-size: 4.59vw !important;}
     .S2 {font-size: 4.58vw !important;}
     .S  {font-size: 4.31vw !important;}
     .XS {font-size: 4.22vw !important;}
@@ -227,6 +229,7 @@ iPad 5. Gen.: 1024 x 748
     .M3 {font-size: calc(1.15vw + 18px) !important;}
     .M2, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
     .M  {font-size: calc(0.95vw + 16px) !important;}
+    .S3 {font-size: calc(0.94vw + 15px) !important;}
     .S2 {font-size: calc(0.93vw + 14px) !important;}
     .S  {font-size: calc(0.91vw + 12px) !important;}
     .XS {font-size: calc(0.90vw + 10px) !important;}
@@ -306,6 +309,7 @@ iPad 5. Gen.: 1024 x 748
     .L  {font-size: 1.85vw !important;}
     .M3, .M2, .Sbtn {font-size: 1.74vw !important;}
     .M  {font-size: 1.64vw !important;}
+    .S3 {font-size: 1.61vw !important;}
     .S2 {font-size: 1.56vw !important;}
     .S  {font-size: 1.47vw !important;}
     .XS {font-size: 1.39vw !important;}
@@ -835,6 +839,9 @@ iPad 5. Gen.: 1024 x 748
 .R {
     text-align: right;
 }
+.J {
+    text-align: justify;
+}
 
 @media only screen and (orientation : landscape)  {
     i.noprint:hover {
@@ -901,12 +908,6 @@ input[type="number"] {
 
 textarea {
     background:Gainsboro;
-}
-
-.BOX {
-    background: #f5f5f5;
-    border: 1px solid #DDD;
-    box-shadow: 3px 3px 0px rgba(0,0,0, .2);
 }
 
 .Sbtn {

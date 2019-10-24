@@ -1,5 +1,5 @@
 
-/* global CUPS, stCup, firebase, LS */
+/* global CUPS, stCup, firebase, LS, stFilter */
 
 //  STAT  Funktionen  **************************************************************************
 function loadSTAT(I, pTitel, pWarning, pCallback) {
@@ -54,7 +54,8 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
                 _ANZSAISONEN: 0,
                 _ANZTURNIERE: 0,
                 _ANZTEILNAHMEN: 0,
-                _LASTTURNIER: null
+                _LASTTURNIER: null,
+                _PUNKTEPOTENTIAL: [0]
             };
         }
 
@@ -103,9 +104,11 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
 function compSTAT() {
 
     var hSaison = '';
+    var hSaisonTeilnahmen = 0;
     STAT._ANZSAISONEN = 0;
     STAT._ANZTURNIERE = 0;
     STAT._ANZTEILNAHMEN = 0;
+    STAT._PUNKTEPOTENTIAL = [0];
 
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
@@ -114,7 +117,12 @@ function compSTAT() {
                 STAT._ANZTURNIERE++;
                 if (hSaison !== STAT[turnier]._SAISON) {
                     hSaison = STAT[turnier]._SAISON;
+                    if (STAT._ANZSAISONEN) {
+                        STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] = parseInt((STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] * 100) / hSaisonTeilnahmen) / 50;
+                    }
                     STAT._ANZSAISONEN++;
+                    STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] = 0;
+                    hSaisonTeilnahmen = 0;
                 }
 
                 var spieler = '';
@@ -141,9 +149,16 @@ function compSTAT() {
                     }
                 }
 
+                STAT[turnier]._TEILNEHMER = 0;
                 for (var spieler in STAT[turnier]) {
                     if (spieler[0] !== '_') {
+                        hSaisonTeilnahmen++;
                         STAT._ANZTEILNAHMEN++;
+                        STAT[turnier]._TEILNEHMER++;
+                        if (STAT[turnier][spieler][4] > 0) {
+                            STAT._PUNKTEPOTENTIAL[0] += STAT[turnier][spieler][4];
+                            STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] += STAT[turnier][spieler][4];
+                        }
                     }
                 }
 
@@ -168,4 +183,8 @@ function compSTAT() {
             }
         }
     }
+
+    STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] = parseInt((STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] * 100) / hSaisonTeilnahmen) / 50;
+    STAT._PUNKTEPOTENTIAL[0] = parseInt((STAT._PUNKTEPOTENTIAL[0] * 100) / STAT._ANZTEILNAHMEN) / 50;
+
 }

@@ -23,6 +23,7 @@ $(document).bind('pageinit', function () {
 //        return false;
     };
 
+    $("#iFotoAnimieren").prop("checked", LS.FotoAnimieren).checkboxradio("refresh");
     $("#iShowSpielerNr").prop("checked", LS.ShowSpielerNr).checkboxradio("refresh");
     $("#iAKTTAGE").val(LS.AktTage);
 
@@ -57,6 +58,19 @@ $(document).bind('pageinit', function () {
         $('#Schreibzetteltrue').prop('checked', false).checkboxradio('refresh');
         $('#Schreibzettelfalse').prop('checked', false).checkboxradio('refresh');
         $('#Schreibzettel' + LS.Schreibzettel).prop('checked', true).checkboxradio('refresh');
+    });
+
+
+    $('#FotoStyle' + LS.FotoStyle).prop('checked', true).checkboxradio('refresh');
+    $('#FotoStyle0,#FotoStyle1,#FotoStyle2,#FotoStyle3,#FotoStyle4,#FotoStyle5').click(function () {
+        LS.FotoStyle = parseInt($("input[name='FotoStyle']:checked").val());
+        $('#FotoStyle0').prop('checked', false).checkboxradio('refresh');
+        $('#FotoStyle1').prop('checked', false).checkboxradio('refresh');
+        $('#FotoStyle2').prop('checked', false).checkboxradio('refresh');
+        $('#FotoStyle3').prop('checked', false).checkboxradio('refresh');
+        $('#FotoStyle4').prop('checked', false).checkboxradio('refresh');
+        $('#FotoStyle5').prop('checked', false).checkboxradio('refresh');
+        $('#FotoStyle' + LS.FotoStyle).prop('checked', true).checkboxradio('refresh');
     });
 
 
@@ -97,6 +111,8 @@ $(document).bind('pageinit', function () {
             LS.AnzSpalten = 1;
             $('#AnzSpalten1').prop('checked', true).checkboxradio('refresh');
         }
+        $('#FotoStyle1,#FotoStyle2,#FotoStyle3,#FotoStyle4,#FotoStyle5').prop('checked', false).checkboxradio('refresh');
+        $('#FotoStyle0').prop('checked', true).checkboxradio('refresh');
         $("#iTIMEOUT").val(100);
     });
 

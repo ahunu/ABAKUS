@@ -225,8 +225,7 @@ function getLinks() {
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarockcup.at\')" ><b>Raiffeisen Tarockcup Austria (RTC)</b>, M&uuml;hlviertel (Karl Haas), seit 1995/96</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" ><b>Hausruckviertler Tarockcup (HRC)</b>, Hausruck (Franz Kienast), seit 1997/98</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://tarockrunde-sauwald.jimdo.com\')" ><b>Sauwaldcup (SWC)</b>, Innviertel (Sepp Lang), seit 2016</span><br>'
-            + '<span class="cBlau P M" onclick="window.open(\'http://www.wienertarockcup.at\')" ><b>Wiener Tarockcup (WTC)</b>, Wien/NÖ (Siegfried Braun), seit 2003</span><br>'
-            + '<span class="cBlau P M" onclick="showCup(56,\'bCT\')" ><b>Wiener Tarockcup</b> - Ergebnisse</span><br>'
+            + '<span class="cBlau P M" onclick="showCup(56,\'bCT\')" ><b>Wiener Tarockcup (WTC)</b>, Wien/NÖ (Siegfried Braun), seit 2003</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://steirercup.webnode.at\')" ><b>Steirischer Tarockcup (STC)</b>, Steiermark (Peter Baumann), seit 2013/14</span><br>'
             + '<span class="cBlau P M" onclick="showCup(54,\'bCT\')" ><b>Steirischer Tarockcup</b> - Ergebnisse</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarock.tirol\')" ><b>Tiroler Tarockcup (TTC)</b>, Tirol (Markus Mair), seit 2008/09</span><br>'
@@ -403,6 +402,18 @@ function getTurnierkalender() {
     } else {
         html = '<span class=L>Die nächsten Turniere sind:</span><br><br>' + html;
     }
+
+    if (I === 56) {
+        html += '<br><div class="ui-grid-a">'
+                + '<div class="ui-block-a L" style="width:30%">Unsere Sponsoren:</div>'
+                + '<div class="ui-block-c L" style="width:70%">'
+                + '<img class=P src="Icons/LogoGregor.png" height="80px" onclick="window.open(\'http://www.allfinag.com/afs/home-afs\')">&nbsp;&nbsp;'
+                + '<img class=P src="Icons/LogoPiatnik.png" height="80px" onclick="window.open(\'https://www.piatnik.com\')">&nbsp;&nbsp;'
+                + '<img class=P src="Icons/LogoTextil.jpg" height="80px" onclick="window.open(\'http://picpanzee.com/textilveredelungsteyr\')">'
+                + '</div>'
+                + '</div>';
+    }
+
     if (I === 50) {
         html += '<br><div class="ui-grid-b">'
                 + '<div class="ui-block-a" style="width:20%"></div>'
@@ -566,7 +577,6 @@ function getTurnierkalender() {
                 + '</div>'
                 + '</div><br>'
                 + "<span class='XXS'>&copy; 2008-" + new Date().getFullYear() + " by Franz Kienast<br></span>";
-        ;
     }
     return html;
 }

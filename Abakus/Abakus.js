@@ -1883,6 +1883,7 @@ function fINIT() {
         Summieren();
     });
 
+
     if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') < 0) {
         $(":mobile-pagecontainer").pagecontainer("load", "Edit" + LS.AnzSpieler + LS.JeSeite + ".html");
     }
@@ -1921,7 +1922,9 @@ if (/iPad|iPhone/.test(navigator.userAgent)) {
             } else {
                 $('body').removeClass('ui-disabled');
                 $('#nbOptions').removeClass('ui-btn-active');
-                fINIT();
+//                fINIT();
+                NEXT = JSON.parse(localStorage.getItem('Abakus.NEXT'));
+                showSeite(NEXT.Seite);
             }
         }
     };

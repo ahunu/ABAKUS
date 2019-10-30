@@ -387,6 +387,11 @@ iPad 5. Gen.: 1024 x 748
     -ms-transform: rotate(270deg);
     transform: rotate(270deg);
 } 
+.zmdi-hc-rotate-180 {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+} 
 .zmdi-hc-rotate-90 {
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
@@ -504,6 +509,9 @@ iPad 5. Gen.: 1024 x 748
 .zmdi-collection-text:before {
     content: '\f150';
 }
+.zmdi-portrait:before {
+    content: '\25ae';
+}
 .zmdi-mood:before {
     content: '\f214';
 }
@@ -513,7 +521,12 @@ iPad 5. Gen.: 1024 x 748
 .zmdi-thumb-up:before {
     content: '\f1de';
 }
-
+.zmdi-view-list:before {
+    content: '\f320';
+}
+.zmdi-tab-unselected:before {
+    content: '\f1d7';
+}
 .BG {
     background-color: #888;
     background-image: linear-gradient(transparent 0%, #ddd 100%),

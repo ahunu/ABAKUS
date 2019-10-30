@@ -1483,9 +1483,9 @@ function whenCUPSloaded() {
 // I N I T  ************************************************************************************
 function fINIT() {
     'use strict';
-    if (typeof localStorage !== 'object') {
-        return;
-    }
+//    if (typeof localStorage !== 'object') {
+//        return;
+//    }
     $('#pFehler').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)

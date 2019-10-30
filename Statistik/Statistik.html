@@ -113,7 +113,7 @@
                             <a id=nbSaison onclick="showSaison()"><span id="tArchiv">Archiv</span></a>
                         </li>
                         <li class="nb12 cCUP">
-                            <a id=nbArchiv onclick="nbArchiv()"><i class="i zmdi-play zmdi-hc-rotate-270"></i></a>
+                            <a id=nbArchiv onclick="nbArchiv()"><i class="i zmdi-play zmdi-hc-rotate-90"></i></a>
                         </li>
                         <li class="nb50 cMT">
                             <a id=nbAllgemeines onClick="showUebersichtMT();">Allgemeines</a>
@@ -221,12 +221,16 @@
             </div>
         </div>
         <div id=qfHeaderIcons style="width:0%;text-align:right;">
-            <i onclick="event.stopPropagation(); downloadExcel();"    style="z-index:99999" title="Die Daten herunterladen." id=iDownload class="i zmdi-download noprint cQUER"></i>
-            <i onclick="event.stopPropagation(); listeDrucken();"     style="z-index:99999" title="Die Statistik drucken."   id=iPrint class="i zmdi-print noprint cQUER"></i>
-            <i onclick="event.stopPropagation(); showAnekdote();"     title="Die Anekdoten anzeigen."  id=iEdit class="i zmdi-edit noprint"></i>
-            <i onclick="event.stopPropagation(); scrollToMe();"       style="z-index:99999" title="Zu meiner Zeile scrollen."  id=iScrollToMe class="i zmdi-dot-circle noprint"></i>
-            <i onclick="event.stopPropagation(); $('.trDet').show();" title="Saisonergebnisse einblenden."  id=iShowDetails class="i zmdi-blocks noprint cQUER"></i>
-            <i onclick="event.stopPropagation(); $('.trDet').hide();" title="Saisonergebnisse ausblenden."  id=iHideDetails class="i zmdi-list noprint cQUER"></i>
+            <i onclick="event.stopPropagation(); downloadExcel();"    title="Die Daten herunterladen."     id=iDownload    class="i zmdi-download noprint cQUER" style="z-index:99999" ></i>
+            <i onclick="event.stopPropagation(); listeDrucken();"     title="Die Statistik drucken."       id=iPrint       class="i zmdi-print noprint cQUER" style="z-index:99999"></i>
+            <i onclick="event.stopPropagation(); showAnekdote();"     title="Die Anekdoten anzeigen."      id=iEdit        class="i zmdi-edit noprint"></i>
+            <i onclick="event.stopPropagation(); scrollToMe();"       title="Zu meiner Zeile scrollen."    id=iScrollToMe  class="i zmdi-dot-circle noprint" style="z-index:99999"></i>
+            <i onclick="event.stopPropagation(); $('.trDet').show();" title="Saisonergebnisse einblenden." id=iShowDetails class="i zmdi-blocks noprint cQUER"></i>
+            <i onclick="event.stopPropagation(); $('.trDet').hide();" title="Saisonergebnisse ausblenden." id=iHideDetails class="i zmdi-list noprint cQUER"></i>
+            <i onclick="event.stopPropagation(); showSPhFotos(1);"    title="Die Fotos anzeigen."          id=iLandscape   class="i zmdi-portrait zmdi-hc-rotate-90 noprint" style="z-index:99999" ></i>
+            <i onclick="event.stopPropagation(); showSPhFotos(2);"    title="Die Fotos anzeigen."          id=iPortrait    class="i zmdi-portrait noprint" style="z-index:99999" ></i>
+            <i onclick="event.stopPropagation(); showTabFotos(1);"    title="Die Daten herunterladen."     id=iFotos       class="i zmdi-view-module zmdi-hc-rotate-90 noprint" style="z-index:99999" ></i>
+            <i onclick="event.stopPropagation(); showTabFotos(2);"    title="Die Daten herunterladen."     id=iChronik     class="i zmdi-tab-unselected zmdi-hc-rotate-270 noprint" style="z-index:99999" ></i>
         </div>
         <div id=tStand class="XXS cQUER" hidden>Endstand:&nbsp;&nbsp;</div>
     </body>

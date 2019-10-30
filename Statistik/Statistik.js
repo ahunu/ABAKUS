@@ -74,9 +74,9 @@ function historyBack() {
             || STAT._AKTTURNIER && STAT._AKTTURNIER._RUNDE && STAT._AKTTURNIER._RUNDE <= 3 && LS.ME.length === 4) {
         history.back();
     } else {
-        LS.ShowCups = 0;
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        LS.ShowCups = stCup; // for after Bottom-Forward
+//        LS.ShowCups = 0;
+//        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//        LS.ShowCups = stCup; // for after Bottom-Forward
         history.back();
     }
 }
@@ -88,7 +88,7 @@ function defArchiv() {
     }
     hContent += '<button class="L" data-role=none style="width:100%;" onclick="resetNB();jbArchiv.close();">zurück</button>';
     jbArchiv = new jBox('Modal', {
-        title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center>Archiv&nbsp;&nbsp;&nbsp;<i class="i zmdi-play zmdi-hc-rotate-90"></i></center></div>',
+        title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center>Archiv&nbsp;&nbsp;&nbsp;<i class="i zmdi-play zmdi-hc-rotate-270"></i></center></div>',
         content: hContent,
         target: $('#nbArchiv'),
         position: {x: 'right', y: 'top'},
@@ -289,8 +289,8 @@ function turnierPruefenSpeichern(pSpeichern) {
                 nFehler++;
                 return false;
             }
-            if (testImg.width < 500 || testImg.width > 800) {
-                showEinenTip(obj, 'Es sind nur Fotos mit einer Breit<br>von 500 bis 800 Pixel erlaubt.');
+            if (testImg.width < 500 || testImg.width > 1024) {
+                showEinenTip(obj, 'Es sind nur Fotos mit einer Breit<br>von 500 bis 1024 Pixel erlaubt.');
                 nFehler++;
                 return false;
             }
@@ -512,7 +512,7 @@ $(document).ready(function () {
     fINIT();
 });
 function fINIT(pCup) {
-    $('#iDownload,#iPrint,#iEdit,#iScrollToMe,#iShowDetails,#iHideDetails').hide();
+    $('#iDownload,#iPrint,#iEdit,#iScrollToMe,#iShowDetails,#iHideDetails,#iLandscape,#iPortrait,#iFotos,#iChronik').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
             || navigator.userAgent.match(/iPhone/i)
@@ -692,9 +692,9 @@ function fINIT(pCup) {
         }
         if (STAT && STAT._AKTTURNIER && STAT._AKTTURNIER._RUNDE && STAT._AKTTURNIER._RUNDE <= 3 && LS.ME.length === 4) {
         } else if (!QUERFORMAT() && LS.I !== LS.ShowCups) {
-            LS.ShowCups = 0;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            LS.ShowCups = stCup; // for after Bottom-Forward
+//            LS.ShowCups = 0;
+//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//            LS.ShowCups = stCup; // for after Bottom-Forward
         }
     };
 }

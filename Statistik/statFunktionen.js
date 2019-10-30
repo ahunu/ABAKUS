@@ -406,7 +406,7 @@ function listeDrucken() {
 
 function showIcons(pIcons) {
     'use strict';
-    $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iEdit').hide();
+    $('#iHideDetails,#iShowDetails,#iScrollToMe,#iDownload,#iPrint,#iEdit,#iPortrait,#iLandscape,#iFotos,#iChronik').hide();
     if (QUERFORMAT()) {
         if (pIcons.length) {
             if (!PC) {
@@ -424,8 +424,11 @@ function showIcons(pIcons) {
             $('#qfHeader').attr('style', 'position: fixed; top: 0;  width: 72%; padding:0; margin:0; background:#f5f5f5; z-index: 999999');
         }
     } else {
-        if (pIcons.length && pIcons[0] === '#iScrollToMe') {
-            $('#iScrollToMe').attr('style', 'position: fixed; top: ' + ($("#hfHeader").offset().top + 7) + 'px; right: 8px; font-size: 34px; cursor: pointer;').show();
+//        if (pIcons.length && pIcons[0] === '#iScrollToMe') {
+//            $('#iScrollToMe').attr('style', 'position: fixed; top: ' + ($("#hfHeader").offset().top + 7) + 'px; right: 8px; font-size: 34px; cursor: pointer;').show();
+//        }
+        if (pIcons.length) {
+            $(pIcons[0]).attr('style', 'position: fixed; top: ' + ($("#hfHeader").offset().top + 7) + 'px; right: 8px; font-size: 34px; cursor: pointer;').show();
         }
     }
 }

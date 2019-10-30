@@ -91,7 +91,7 @@ $(document).bind('pageinit', function () {
     if (QUERFORMAT()) {
         $('#nbHilfeEingabe').hide();
     } else {
-        $('#bLayout').hide();
+//        $('#bLayout').hide();
         $('#bEingabe').click();
     }
     if (LS.ME === '3425' || LS.ME === '3590' || LS.ME === '6136') { // Hans Hafner, Wolfgang Stein

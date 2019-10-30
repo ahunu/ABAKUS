@@ -115,6 +115,46 @@
         object-fit: cover;
         transition: transform .25s ease;
     }
+    
+    
+    #foto-container {
+        display: grid;
+        grid-template-columns: 49vw 49vw;
+        grid-gap: .5vw;
+        padding: .5vw;
+    }
+
+    #foto-container > img {
+        width: 46vw;
+        height: 36.75vw;
+        border-radius: 3px;
+        border: 1.5vw solid #fff;
+        -webkit-box-shadow: 0 0 3px 3px #ddd;
+        box-shadow: 0 0 3px 3px #ddd;
+        float: left;
+        object-fit: cover;
+        transition: transform .25s ease;
+        cursor: pointer;
+    }
+
+    #foto-container-flat {
+        display: grid;
+        grid-template-columns: 49vw 49vw;
+        grid-gap: .5vw;
+        padding: .5vw;
+    }
+
+    #foto-container-flat > img {
+        width: 49vw;
+        height: 36.75vw;
+        border-radius: 2px;
+        -webkit-box-shadow: 0 0 3px 3px #ddd;
+        box-shadow: 0 0 1px 1px #666;
+        float: left;
+        object-fit: cover;
+        transition: transform .25s ease;
+        cursor: pointer;
+    }
 
 }
 
@@ -161,13 +201,24 @@
     object-fit: cover;
 }
 
+
+.llf_Image {
+    wwidth: 100%;
+    height: 100%;
+    sobject-fit: cover;
+        width: 240vw;
+    height: 100vw;
+    transform: translateY(-100%) rotate(90deg);
+    transform-origin: left bottom;
+}
+
 .llf_Container {
     width: 22vw;
     height: 15vw;
     -webkit-box-shadow: 0 0 3px 3px #ddd;
     box-shadow: 0 0 3px 3px #ddd;
     float: left;
-    object-fit: cover;
+    sobject-fit: cover;
     margin-left: 22%;
     transition: transform .25s ease;
     border: 0.6vw solid #fff;
@@ -196,16 +247,6 @@
     object-fit: cover;
     transition: transform .25s ease;
     margin-left: 22%;
-}
-
-.sllf_Container_flat_ZF {
-    width: 20vw;
-    min-height: 12vw;
-    background-color: #fff;
-    -webkit-box-shadow: 0 0 3px 3px #ddd;
-    box-shadow: 0 0 3px 3px #ddd;
-    margin-left: 0;
-    transition: transform .25s ease;
 }
 
 .llf_Container_flat_ZF {

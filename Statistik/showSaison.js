@@ -27,14 +27,10 @@ function showSaison(pSaison, pFotos) {
     if (QUERFORMAT()) {
         showIcons([]);
     } else {
-        if ($(window).innerWidth() < 11) {
-            showIcons(['#iFotos']);
+        if (!pFotos) {
+            showIcons(['#iLandscape']);
         } else {
-            if (!pFotos) {
-                showIcons(['#iLandscape']);
-            } else {
-                showIcons(['#iPortrait']);
-            }
+            showIcons(['#iPortrait']);
         }
     }
 
@@ -129,21 +125,16 @@ function showSaison(pSaison, pFotos) {
                                     + '<div>&nbsp;&nbsp;1. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[1] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[1]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[1]][4] + ' Punkte</div>'
                                     + '<div>&nbsp;&nbsp;2. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[2] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[2]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[2]][4] + ' Punkte</div>'
                                     + '<div>&nbsp;&nbsp;3. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[3] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[3]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[3]][4] + ' Punkte</div></span>')
+                            + (pFotos && STAT[turnier]._FOTOS ? '<p class="llf_PhContainer"><img class="llf_Image" src="https://drive.google.com/uc?id=' + STAT[turnier]._FOTOS[0] + '"/></p>'
+                                    : (LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT()) ? '<div id=hf' + turnier + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#hf' + turnier + '\').hide();$(\'#sb' + turnier + '\').removeClass(\'ui-btn-active\');" hidden></div>' : ''))
 
                             + '</a>'
 
 //                            + (STAT[turnier]._ANEKDOTE ? '<a onclick="$(\'#tAnek' + nAnekdoten + '\').toggle(\'show\');">Anekdote</a>' : '')
                             + ((LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT())) && !pFotos ? '<a id="sb' + turnier + '" onclick="bTurnierSec(\'' + turnier + '\');">Anekdote</a>' : '')
                             + '</li>'
-                    + (pFotos && STAT[turnier]._FOTOS ? '<img class="llf_Image" src="https://drive.google.com/uc?id=' + STAT[turnier]._FOTOS[0] + '"/>'
-
-
-
-
-
-//                        if (STAT[pTurnier]._FOTOS && STAT[pTurnier]._FOTOS.length >= 1) {
-
-                            : (LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT()) ? '<div id=hf' + turnier + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#hf' + turnier + '\').hide();$(\'#sb' + turnier + '\').removeClass(\'ui-btn-active\');" hidden></div>' : ''))
+//                            + (pFotos && STAT[turnier]._FOTOS ? '<p class="llf_Container"><img class="llf_Image" src="https://drive.google.com/uc?id=' + STAT[turnier]._FOTOS[0] + '"/></p>'
+//                                    : (LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT()) ? '<div id=hf' + turnier + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#hf' + turnier + '\').hide();$(\'#sb' + turnier + '\').removeClass(\'ui-btn-active\');" hidden></div>' : ''))
                             + htmlTE;
                 }
             }

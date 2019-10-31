@@ -77,7 +77,10 @@ function showChronik(pTurnier) {
                 + '</div>';
         $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
     } else {
+        $('#sideTurniereMT').hide();
         $('#dContent').html(html);
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
+        $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
     $("#dCopyright").hide();
 

@@ -509,8 +509,8 @@ iPad 5. Gen.: 1024 x 748
 .zmdi-collection-text:before {
     content: '\f150';
 }
-.zmdi-portrait:before {
-    content: '\25ae';
+.zmdi-smartphone:before {
+    content: '\f2d4';
 }
 .zmdi-mood:before {
     content: '\f214';

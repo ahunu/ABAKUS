@@ -74,9 +74,9 @@ function historyBack() {
             || STAT._AKTTURNIER && STAT._AKTTURNIER._RUNDE && STAT._AKTTURNIER._RUNDE <= 3 && LS.ME.length === 4) {
         history.back();
     } else {
-//        LS.ShowCups = 0;
-//        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-//        LS.ShowCups = stCup; // for after Bottom-Forward
+        LS.ShowCups = 0;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        LS.ShowCups = stCup; // for after Bottom-Forward
         history.back();
     }
 }

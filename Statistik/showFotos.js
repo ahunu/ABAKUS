@@ -1,5 +1,5 @@
 
-/* global STAT, stSaison, stFilter, stFotoStyle, stCup, CUPS, jbSpieler, stFotoCount */
+/* global STAT, stSaison, stFilter, stFotoStyle, stCup, CUPS, jbSpieler, stFotoCount, iSaison */
 
 function showTabFotos(pIndex) {
 
@@ -48,7 +48,10 @@ function showTabFotos(pIndex) {
                 + '</div>';
     }
 
-    if (pIndex === 1) {
+    showChronik();
+    return;
+
+    if (pIndex === 2) {
         $('#nbSaison').removeClass('ui-btn-active');
         showFotos();
 //        showIcons(['#iChronik']);
@@ -94,48 +97,21 @@ function showTabFotos(pIndex) {
 function showSPhFotos(pIndex) {
 
     if (pIndex === 1) { // Smartphone
-        $('#nbSaison').removeClass('ui-btn-active');
         showIcons(['#iPortrait']);
         showSaison(iSaison, true);
-
-//        $('#sideTurniereMT').hide();
-//        for (var turnier in STAT) {
-//            if (turnier[0] === '2') {
-//                if (STAT[turnier]._SAISON === stSaison) {
-//                    if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
-//                        $('#sb' + turnier).addClass('ui-btn-active');
-//                        var html = '';
-//                        if (STAT[turnier]._STOCKERL) {
-//                            html += '<div>1. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[1] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[1]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[1]][4] + ' Punkte</div>'
-//                                    + '<div>2. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[2] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[2]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[2]][4] + ' Punkte</div>'
-//                                    + '<div>3. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[3] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[3]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[3]][4] + ' Punkte</div>';
-//                        }
-//                        if (STAT[turnier]._CUPFOTOS) {
-//                            for (var i = STAT[turnier]._CUPFOTOS.length - 1; i >= 0; i--) {
-//                                html = getHtmlPhoto(STAT[turnier]._CUPFOTOS[i], turnier) + html;
-//                            }
-//                        }
-//                        if (STAT[turnier]._FOTOS) {
-//                            for (var i = STAT[turnier]._FOTOS.length - 1; i >= 0; i--) {
-//                                html = getHtmlPhoto(STAT[turnier]._FOTOS[i], turnier) + html;
-//                            }
-//                        }
-//                        $('#hf' + turnier).html(html).show();
-//                    }
-//                }
-//            }
-//        }
-//        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
-//        $('#sideContent').css('height', hx + 'px').scrollTop(0);
+        $('#nbSaison').removeClass('ui-btn-active');
+    } else if (pIndex === 2) {
+//        showIcons(['#iLandscape']);
+        showIcons(['#iFotos']);
+        $('.llf_Image').addClass('llf_ImageRotate');
+        $('.llf_PhContainer').addClass('llf_PhContainerRotate');
     } else {
         showIcons(['#iLandscape']);
+//        $('.llf_Image').addClass('llf_ImageRotate');
+//        $('.llf_PhContainer').addClass('llf_PhContainerRotate');
     }
-
-//        $('#sideTurniereMT').show();
-//        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
-//        $('#sideContent').css('height', hx + 'px').scrollTop(0);
-
 }
+
 
 function showFotos() {
 
@@ -147,7 +123,7 @@ function showFotos() {
         lastBtn = '#bFotos';
         $(lastBtn).addClass('ui-btn-active');
     } else {
-        showIcons(['#iChronik']);
+        showIcons(['#iLandscape']);
     }
 
     stFotoCount = 0;
@@ -172,14 +148,14 @@ function showFotos() {
             if (STAT[turnier]._SAISON === stSaison) {
                 if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                     nTurniere++;
-                    if (STAT[turnier]._CUPFOTOS) {
-                        for (var i = STAT[turnier]._CUPFOTOS.length - 1; i >= 0; i--) {
-                            html = getHtmlPhoto(STAT[turnier]._CUPFOTOS[i], turnier) + html;
-                        }
-                    }
                     if (STAT[turnier]._FOTOS) {
                         for (var i = STAT[turnier]._FOTOS.length - 1; i >= 0; i--) {
                             html = getHtmlPhoto(STAT[turnier]._FOTOS[i], turnier) + html;
+                        }
+                    }
+                    if (STAT[turnier]._CUPFOTOS) {
+                        for (var i = STAT[turnier]._CUPFOTOS.length - 1; i >= 0; i--) {
+                            html = getHtmlPhoto(STAT[turnier]._CUPFOTOS[i], turnier, true) + html;
                         }
                     }
                 }
@@ -311,7 +287,7 @@ function showFotos() {
         }
 
         if (pCupsieger) {
-            return '<img src="https://drive.google.com/uc?id=' + pFoto + '" alt="' + pTurnier + ' ' + STAT[pTurnier]._NAME + '"' + hStyle + ' onclick="showChronik(\'' + pTurnier + '\')">';
+            return '<img src="https://drive.google.com/uc?id=' + pFoto + '" alt="Cupsieger ' + stSaison + '"' + hStyle + ' onclick="showChronik(\'' + stSaison + '\')">';
         } else {
             return '<img src="https://drive.google.com/uc?id=' + pFoto + '" alt="' + pTurnier + ' ' + STAT[pTurnier]._NAME + '"' + hStyle + ' onclick="showChronik(\'' + pTurnier + '\')">';
         }

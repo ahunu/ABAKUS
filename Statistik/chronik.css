@@ -211,7 +211,7 @@
         width: 46vw;
         height: 36.75vw;
         border-radius: 3px;
-        border: 1.5vw solid #fff;
+        border: 1vw solid #fff;
         -webkit-box-shadow: 0 0 3px 3px #ddd;
         box-shadow: 0 0 3px 3px #ddd;
         float: left;
@@ -330,7 +330,9 @@
 .llf_Container:hover,
 .llf_Container_ZF:hover,
 .llf_Container_flat:hover,
-.llf_Container_flat_ZF:hover {
+.llf_Container_flat_ZF:hover,
+.llf_PhContainer:hover,
+.llf_PhContainer_flat:hover {
     transform: rotate(0deg) scale(1.6);
 }
 
@@ -367,7 +369,28 @@
     float: left;
     object-fit: cover;
     transition: transform .25s ease;
-    border: 0.6vw solid #fff;
+    border: 1vw solid #fff;
+}
+
+    .sllf_PhContainer > img {
+        border-radius: 3px;
+        border: 0.5vw solid #fff;
+        -webkit-box-shadow: 0 0 3px 3px #ddd;
+        box-shadow: 0 0 3px 3px #ddd;
+        float: left;
+        object-fit: cover;
+        transition: transform .25s ease;
+        cursor: pointer;
+    }
+
+.llf_PhContainer_flat {
+    width: 100vw;
+    height: auto;
+    -webkit-box-shadow: 0 0 3px 3px #ddd;
+    box-shadow: 0 0 3px 3px #ddd;
+    float: left;
+    object-fit: cover;
+    transition: transform .25s ease;
 }
 
 .llf_PhContainerRotate {

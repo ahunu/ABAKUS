@@ -68,6 +68,20 @@ var mAnmelden = true;
 
 var jbNachricht = null;
 
+function historyBack() {
+    $('body').addClass('ui-disabled');
+    if (!QUERFORMAT()) {
+        $('#bMeinTisch').addClass('ui-disabled');
+        if (window.location.search === '?Anmeldungen') {
+            LS.ShowCups = stCup * -1;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            window.location.replace('../index.html');
+            return;
+        }
+    }
+    history.back();
+}
+
 function seiteUeberspringen(pCup) {
     if (pCup === 1 || pCup === 5 || pCup === 6 || pCup === 7) { // Private Runde, oö. Regeln, wr. Regeln, tir. Regeln
         return false;
@@ -93,20 +107,6 @@ function QUERFORMAT() {
     } else {
         return false;
     }
-}
-
-function historyBack() {
-    $('body').addClass('ui-disabled');
-    if (!QUERFORMAT()) {
-        $('#bMeinTisch').addClass('ui-disabled');
-        if (window.location.search === '?Anmeldungen') {
-            LS.ShowCups = stCup * -1;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            window.location.replace('../index.html');
-            return;
-        }
-    }
-    history.back();
 }
 
 function AnAbmelden(pAnmelden) {
@@ -528,4 +528,18 @@ $(document).ready(function () {
             LS.ShowCups = stCup; // for after Bottom-Forward
         }
     };
+//    window.onbeforeunload = function (event) {
+//        if (/iPad|iPhone/.test(navigator.userAgent)) {
+//            $('body').addClass('ui-disabled');
+//        }
+//        if (QUERFORMAT()
+//                || LS.ME === '3425' && window.location.origin === 'file://'
+//                || !seiteUeberspringen(stCup)) {
+//        } else {
+//            LS.ShowCups = 0;
+//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//            $('#bMeinTisch').addClass('ui-disabled');
+//            LS.ShowCups = stCup; // for after Bottom-Forward
+//        }
+//    };
 });

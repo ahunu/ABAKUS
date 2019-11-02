@@ -22,10 +22,18 @@
                     if (CUPS && window.location.search) {
                         var hCupName = window.location.search.replace(/\%20|_| /g, '').substr(1).toUpperCase();
                         var newCup = 0;
-                        if (hCupName === 'WR.TAROCKCUP' || hCupName === '?WR.TAROCKCUP') { // '?WR... = über Wiener Zeitung
-                            newCup = 56;
-                        } else if (hCupName === 'ST.TAROCKCUP' || hCupName === '?ST.TAROCKCUP') { // '?WR... = über Wiener Zeitung
+                        if (hCupName === 'HAUSRUCKCUP') {
+                            newCup = 51;
+                        } else if (hCupName === 'RAIFFEISENCUP') {
+                            newCup = 52;
+                        } else if (hCupName === 'SAUWALDCUP') {
+                            newCup = 53;
+                        } else if (hCupName === 'ST.TAROCKCUP') {
                             newCup = 54;
+                        } else if (hCupName === 'TIROLCUP') {
+                            newCup = 55;
+                        } else if (hCupName === 'WR.TAROCKCUP') {
+                            newCup = 56;
                         } else if (hCupName === 'WR.MARATHON') {
                             newCup = 80;
                         } else if (hCupName === 'CAFEHEINECUP') {

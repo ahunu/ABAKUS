@@ -77,6 +77,9 @@ function showSaison(pSaison, pFotos) {
     var nTurniere = 0;
     var nAnekdoten = 0;
     var hDataTheme = '';
+    var hContainer = 'llf_PhContainer' + (stFotoStyle === 1 || stFotoStyle === 4 ? '_flat' : '');
+    var hStyle = (stFotoStyle === 3 ? ' style="border-radius: 50%;"' : '');
+
     stFinale = false;
     stFinalTeilnehmer = 0;
     stEndstand = false;
@@ -121,11 +124,13 @@ function showSaison(pSaison, pFotos) {
                             + '<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
                             + (!pFotos ? '<span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span>'
 
-                                    : '<span class="S2 N">'
-                                    + '<div>&nbsp;&nbsp;1. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[1] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[1]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[1]][4] + ' Punkte</div>'
-                                    + '<div>&nbsp;&nbsp;2. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[2] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[2]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[2]][4] + ' Punkte</div>'
-                                    + '<div>&nbsp;&nbsp;3. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[3] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[3]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[3]][4] + ' Punkte</div></span>')
-                            + (pFotos && STAT[turnier]._FOTOS ? '<p class="llf_PhContainer"><img class="llf_Image" src="https://drive.google.com/uc?id=' + STAT[turnier]._FOTOS[0] + '"/></p>'
+                                    : (STAT[turnier]._STOCKERL ? '<span class="S2 N">'
+                                            + '<div>&nbsp;&nbsp;1. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[1] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[1]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[1]][4] + ' Punkte</div>'
+                                            + '<div>&nbsp;&nbsp;2. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[2] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[2]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[2]][4] + ' Punkte</div>'
+                                            + '<div>&nbsp;&nbsp;3. <span onclick="event.stopPropagation();popupSpieler(\'' + STAT[turnier]._STOCKERL[3] + '\');" class="P cBlau">' + getSpielerName(STAT[turnier]._STOCKERL[3]) + '</span>, ' + STAT[turnier][STAT[turnier]._STOCKERL[3]][4] + ' Punkte</div></span>'
+                                            : '')
+                                    )
+                            + (pFotos && STAT[turnier]._FOTOS ? '<p class="' + hContainer + '"><img class="llf_Image" src="https://drive.google.com/uc?id=' + STAT[turnier]._FOTOS[0] + '"' + hStyle + '/></p>'
                                     : (LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT()) ? '<div id=hf' + turnier + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#hf' + turnier + '\').hide();$(\'#sb' + turnier + '\').removeClass(\'ui-btn-active\');" hidden></div>' : ''))
 
                             + '</a>'

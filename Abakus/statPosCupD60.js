@@ -65,10 +65,10 @@ function statPosCupD60(pRunde) {
                     : "<td>&nbsp;" + (CUPS.TURNIER[stCup] === 'Handy' || stTurCupGes !== 3 ? "Voll ab " + stVollAb + "%" : "") + "</td>"
                     )
             + ((stCup !== 11)
-                    ? "<th class=TR>D60</th>"
+                    ? "<th class=TR></th>"
                     : ""
                     )
-            + "<th colspan=2 class=TC>&nbsp;&nbsp;Punkte</th>"
+            + "<th colspan=2 class=TC>Punkte</th>"
             + (((stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') && (QUERFORMAT() || stSort !== 'STO')) ? "<th class='TR" + cNoSTO + ">Anz.</th>" : "")
             + ((stTurCupGes !== 3 && CUPS.TURNIER[stCup] && (QUERFORMAT() || stSort === 'STO')) ? "<th class='TC" + cSTO + ">Stockerl</th>" : "")
             + ((CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 && stSort === 'STO' && stTurCupGes === 3) ? "<th class=TR>&euro;</th>" : "")
@@ -80,7 +80,7 @@ function statPosCupD60(pRunde) {
                     )
             + "<th>&nbsp;Name</th>"
             + ((stCup !== 11)
-                    ? "<th class=TR>gew</th>"
+                    ? "<th class=TR>G60</th>"
                     : ""
                     )
             + "<th class=TR>&nbsp;&nbsp;D60</th>"

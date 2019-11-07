@@ -1025,7 +1025,8 @@ function listStammspieler() {
         while (i < STAT.S.length) {
             if (STAT.S[i].NR !== "0000" && STAT.S[i].SPIELE[3] > 0) {  // nur wenn bereits mitgespielt
                 if (STAT.TURRUNDE === 2
-                        || STAT.TURRUNDE === 3 && (STAT.S[i].PUNKTERx[0] === 0 || STAT.S[i].PUNKTERx[1] !== 0 || (STAT.S[i].SPIELE[3] > LS.SpieleJeRunde * 4 / LS.AnzSpieler))
+//                        || STAT.TURRUNDE === 3 && (STAT.S[i].PUNKTERx[0] === 0 || STAT.S[i].PUNKTERx[1] !== 0 || (STAT.S[i].SPIELE[3] > LS.SpieleJeRunde * 4 / LS.AnzSpieler))
+                        || STAT.TURRUNDE === 3 && typeof STAT.S[i].PUNKTERx[1] !== 'undefined'
                         ) {
                     SORT[SORT.length] = (STAT.S[i].SCHREIBER[0] + ',' + STAT.S[i].NNAME + ' ' + STAT.S[i].VNAME + ';' + i).replace(/Ä/g, 'Ae').replace(/Ü/g, 'Ue').replace(/Ö/g, 'Oe').replace(/ä/g, 'ae').replace(/ü/g, 'ue').replace(/ö/g, 'oe');
                 }

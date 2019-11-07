@@ -24,10 +24,9 @@ function showRegeln() {
 
     writeCanvas('Tarife und Regeln');
 
-    html = '<div sclass="XS">'
-            + '<br>'
-            + '<div class="ui-grid-b ui-responsive S">'
-            + '<div class="ui-block-a" style="width:' + (QUERFORMAT() ? 48 : 100) + '%;">'
+    html = '<div class="J">'
+            + '<div class="ui-grid-b ui-responsive S" style="padding: 4vw 6vw 2vw 6vw">'
+            + '<div class="ui-block-a" style="width:' + (QUERFORMAT() ? 45 : 100) + '%;">'
             + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr class='bGrau'><th>&nbsp;&nbsp;Die Spiele</th><th class=TR>Punkte&nbsp;</th></tr></thead>"
             + "<tbody>"
@@ -51,9 +50,9 @@ function showRegeln() {
             + "<br>*) Rufer und Trischaken kann nur gespielt werden, wenn die anderen Spieler weiter gesagt haben.<br>"
             + "<br>**) Der Sechserdreier muss von der Vorhand sofort lizitiert werden.<br><br>"
             + '</div>'
-            + '<div class="ui-block-b" style="width:4%;">'
+            + '<div class="ui-block-b" style="width:9%;">'
             + '</div>'
-            + '<div class="ui-block-c" style="width:' + (QUERFORMAT() ? 48 : 100) + '%;">'
+            + '<div class="ui-block-c" style="width:' + (QUERFORMAT() ? 45 : 100) + '%;">'
             + "<table swidth=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr class='bGrau'><th>&nbsp;&nbsp;Die Prämien</th><th class=TR>still / angesagt&nbsp;</th></tr></thead>"
             + "<tbody>"
@@ -70,8 +69,9 @@ function showRegeln() {
             + "<br>Kontras zählen nicht für die Turnierwertung (nicht „für die Schrift“), werden aber gleich nach dem Spiel ausbezahlt.<br>"
             + "<br>Kaiserstich / Märchenstich: Fallen Sküs, Mond und Pagat, egal in welcher Reihenfolge, in einem Stich, so sticht der Pagat.<br>"
             + "<br>In Negativspielen wird der Kaiserstich nicht gespielt.<br>"
-            + '</div>'
-            + '</div>'
+            + '</div></div>'
+
+            + '<div class="ui-grid-b ui-responsive S" style="padding: 1vw 6vw 3vw 3vw">'
 
             + '<ul>'
             + '<b class=S>§&nbsp;&nbsp;&nbsp;Allgemeines:</b>'
@@ -202,11 +202,13 @@ function showRegeln() {
             + '<li>Der Rechtsweg ist ausgeschlossen. Mit der Teilnahme erklärt sich jeder Spieler damit ausdrücklich einverstanden und auch Entscheidungen der Cup-Leitung und der Schiedsrichter zu akzeptieren. Der Cupleitung und den Veranstaltern steht es frei, ohne Angabe von Gründen Spieler von der Teilnahme auszuschließen. Es besteht kein Rechtsanspruch auf Teilnahme an einzelnen Turnierveranstaltungen.</li>'
             + '</ul>'
             + '<br>'
-            + '</div>'
             + '</div>';
 
+    if (stCup === 53 || stCup === 55) {
+        html = REGELN(stCup);
+    }
+
     if (QUERFORMAT()) {
-//        $('#dRumpf').html(html).trigger('create').show();
         $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
         setFont();
     } else {

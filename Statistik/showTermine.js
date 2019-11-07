@@ -72,7 +72,6 @@ function showTermine() {
     var htmlTE = '';
     var hCupName = '';
 
-
     if (QUERFORMAT()) {
         htmlTE = '<div id=dBlockB class="S" style="text-align: justify;">'
                 + "<table swidth=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''>"
@@ -92,7 +91,7 @@ function showTermine() {
                 if (CUPS.TERMINE[iTermin].DATUM >= stHeute) {
                     nTermine++;
                     if (QUERFORMAT()) {
-                        htmlTE += '<tr><td class=M>&nbsp;&nbsp;<span class=M>' + getDateString(CUPS.TERMINE[iTermin].DATUM) + '</span><br>&nbsp;&nbsp;<b class=L>' + CUPS.TERMINE[iTermin].NAME + '</b></td><td>' + getTerminText(iTermin) + '&nbsp;&nbsp;</td></tr>';
+                        htmlTE += '<tr><td class=M>&nbsp;&nbsp;<span class=M>' + getDateString(CUPS.TERMINE[iTermin].DATUM) + (CUPS.TERMINE[iTermin].BEGINN ? ',&nbsp;&nbsp;&nbsp;&nbsp;' + CUPS.TERMINE[iTermin].BEGINN : '') + '</span><br>&nbsp;&nbsp;<b class=L>' + CUPS.TERMINE[iTermin].NAME + '</b></td><td>' + getTerminText(iTermin) + '&nbsp;&nbsp;</td></tr>';
                     } else {
                         htmlTE += '<li data-icon=false><a class="Sbtn" onclick="$(\'#txt' + iTermin + '\').toggle()">&nbsp;<span class="M N">' + getDateString(CUPS.TERMINE[iTermin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;<span class="L">' + CUPS.TERMINE[iTermin].NAME + '</span>'
                                 + '<div style="margin-left:10px" class="ui-block-b S N" id=txt' + iTermin + ' hidden>'

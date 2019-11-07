@@ -1,5 +1,5 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, hRet, SP */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, hRet, SP, stStat */
 
 const isSaison = 0;
 const is1 = 1;
@@ -84,6 +84,9 @@ function initSAISON(pFilter, pShowSaison) {
         var hStat = stStat;
         iSaison = pShowSaison;
         stSaison = SAISON[iSaison][isSaison];
+        if (QUERFORMAT()) {
+            showSaison(pShowSaison);
+        }
         if (hStat === 'Cupwertung') {
             showCupwertung();
         } else if (hStat === 'Platzierungen') {
@@ -98,7 +101,7 @@ function initSAISON(pFilter, pShowSaison) {
             showBestenliste();
         } else if (hStat === 'Termine') {
             showTermine();
-        } else {
+        } else if (!QUERFORMAT()) {
             showSaison(pShowSaison);
         }
     }
@@ -127,6 +130,8 @@ function bereSaison() {
                         if (CUPS.TURNIER[stCup] % 1) {
                             stFinale = turnier;
                         }
+                    } else if (iSaison > 1) {
+                        SAISON[iSaison][isFinale] = turnier;
                     }
                 }
             }

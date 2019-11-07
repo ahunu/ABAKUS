@@ -211,12 +211,35 @@ function whenSTATloaded(pNewTurnier) {
     defArchiv();
 }
 
-function getDateString(pDate) {
+function sgetDateString(pDate) {
     var hDate = new Date(parseInt(pDate), (parseInt(pDate.substr(5, 2)) - 1), parseInt(pDate.substr(-2))); // Safari versteht "var hDate = new Date(pDate);" nicht
     if (typeof hDate === 'object') {
         return daysOfWeek[hDate.getDay()] + ' ' + hDate.getDate() + ". " + monthsOfYear[hDate.getMonth()] + " " + hDate.getFullYear();
     } else {
         return pDate;
+    }
+}
+function getDateString(pDate) {
+    if (typeof pDate === 'string' && pDate[4] === '-') {
+        var hJar = parseInt(pDate);
+        if (pDate[5] === '0') {
+            var hMon = parseInt(pDate.substr(6, 1)) - 1;
+        } else {
+            var hMon = parseInt(pDate.substr(5, 2)) - 1;
+        }
+        if (pDate[8] === '0') {
+            var hTag = parseInt(pDate.substr(9, 1));
+        } else {
+            var hTag = parseInt(pDate.substr(8, 2));
+        }
+        var hDate = new Date(hJar, hMon, hTag);
+    } else {
+        var hDate = new Date(pDate);
+    }
+    if (new Date().getFullYear() === hDate.getFullYear()) {
+        return daysOfWeek[hDate.getDay()] + ' ' + hDate.getDate() + ". " + monthsOfYear[hDate.getMonth()];
+    } else {
+        return daysOfWeek[hDate.getDay()] + ' ' + hDate.getDate() + ". " + monthsOfYear[hDate.getMonth()] + " <span style='text-decoration: overline;zoom: .9; -moz-transform:scale(.9)'>" + (hDate.getFullYear() - 2000) + "</span>";
     }
 }
 

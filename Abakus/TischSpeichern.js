@@ -521,7 +521,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
 
@@ -550,9 +550,9 @@ $(document).ready(function () {
     var html = '';
     for (var i = 1; i <= 6; i++) {
         if (LS.Spieler[i] === 'ok') {
-            html = html + '<tr><td>' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TR>gespeichert&nbsp;</td></tr>';
+            html = html + '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TR>gespeichert&nbsp;</td></tr>';
         } else if (LS.Spieler[i]) {
-            html = html + '<tr><td>' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+            html = html + '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
         } else if (LS.Spiele[i] !== 0) {
             html = html + '<tr><td class="cRot B">???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
         }

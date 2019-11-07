@@ -151,14 +151,6 @@
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
 @media only screen and (orientation : portrait) {
 
     #foto-container {
@@ -371,17 +363,6 @@
     transition: transform .25s ease;
     border: 1vw solid #fff;
 }
-
-    .sllf_PhContainer > img {
-        border-radius: 3px;
-        border: 0.5vw solid #fff;
-        -webkit-box-shadow: 0 0 3px 3px #ddd;
-        box-shadow: 0 0 3px 3px #ddd;
-        float: left;
-        object-fit: cover;
-        transition: transform .25s ease;
-        cursor: pointer;
-    }
 
 .llf_PhContainer_flat {
     width: 100vw;

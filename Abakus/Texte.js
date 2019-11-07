@@ -378,6 +378,7 @@ function getTurnierkalender() {
                 html += '<div class="ui-grid-a">'
                         + '<div class="ui-block-a M" style="width:20%;padding-top:.2em">'
                         + getDateString(CUPS.TERMINE[iTermin].DATUM)
+                        + (CUPS.TERMINE[iTermin].BEGINN ? '<div class=S>Beginn: ' + CUPS.TERMINE[iTermin].BEGINN + '</div>' : '')
                         + '</div>'
                         + '<div class="ui-block-b S" style="width:80%">'
                         + '<span class=L><b>' + CUPS.TERMINE[iTermin].NAME + '</b></span><br>'
@@ -405,16 +406,16 @@ function getTurnierkalender() {
 
     if (I === 56) {
         html += '<br><div class="ui-grid-a">'
-                + '<div class="ui-block-a L" style="width:30%">Unsere Sponsoren:</div>'
+                + '<div class="ui-block-a M" style="width:30%">Unsere Sponsoren:</div>'
                 + '<div class="ui-block-c L" style="width:70%">'
-                + '<img class=P src="Icons/LogoGregor.png" height="80px" onclick="window.open(\'http://www.allfinag.com/afs/home-afs\')">&nbsp;&nbsp;'
-                + '<img class=P src="Icons/LogoPiatnik.png" height="80px" onclick="window.open(\'https://www.piatnik.com\')">&nbsp;&nbsp;'
-                + '<img class=P src="Icons/LogoTextil.jpg" height="80px" onclick="window.open(\'http://picpanzee.com/textilveredelungsteyr\')">'
+                + '<img class=P src="Icons/LogoGregor.png"  height="80px" onclick="window.open(\'http://www.allfinag.com/afs/home-afs\')" alt="ALLFINAG FINANCIAL SERVICES" >&nbsp;&nbsp;'
+                + '<img class=P src="Icons/LogoPiatnik.png" height="80px" onclick="window.open(\'https://www.piatnik.com\')" alt="Piatnik.com">&nbsp;&nbsp;'
+                + '<img class=P src="Icons/LogoTextil.jpg"  height="80px" onclick="window.open(\'http://picpanzee.com/textilveredelungsteyr\')" alt="Textilveredelung Steyr">'
                 + '</div>'
                 + '</div>';
     }
 
-    if (I === 50) {
+    if (I === 49) {
         html += '<br><div class="ui-grid-b">'
                 + '<div class="ui-block-a" style="width:20%"></div>'
                 + '<div class="ui-block-b L" style="width:40%">Gesamtwertung</div>'

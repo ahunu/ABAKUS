@@ -43,7 +43,7 @@ var mTITEL2IGN = null;
 var mMAENNLICH = null;
 
 var iAKTIV = null;
-
+var nNummernkreis = 9001;
 
 var iANGELEGTam = null;
 var iANGELEGTvon = null;
@@ -277,17 +277,7 @@ function showNeuenSPIELER(pNeu) {
     $('#bPruefen').addClass('ui-disabled');
     $('#pWarnung').popup('close');
     if (pNeu) {
-        var hNummernkreis = 9001;
-        if (LS.ME === "-54" || LS.ME === '3590') { // STC: Hans Hafner
-            hNummernkreis = 6001;
-        } else if (LS.ME === "-56" || LS.ME === '3757' || LS.ME === '3425') { // WTC: Erwin Haider
-            hNummernkreis = 3761;
-        } else if (LS.ME === "-55" || LS.ME === '3244') { // WTC: Markus Mair
-            hNummernkreis = 4001;
-        } else if (LS.ME === "-53" || LS.ME === '4506') { // WTC: Sepp Lang
-            hNummernkreis = 5750;
-        }
-        for (var ii = hNummernkreis; ii < 9999; ii++) {
+        for (var ii = nNummernkreis; ii < 9999; ii++) {
             var iii = '' + ('000' + ii).substr(-4); // Interessanterweise ist das ''+ für die deployed Version erforderlich
             if (!SPIELERext[iii]) {
                 iNR = iii;
@@ -1035,21 +1025,30 @@ $(document).bind('pageinit', function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (LS.ME === '3425') { // Leo Luger
         kzAktiv = 'W';
+        nNummernkreis = 3761;
     } else if (LS.ME === "-51" || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) { // Franz Kienast
         kzAktiv = 'H';
+        nNummernkreis = 6300;
     } else if (LS.ME === "-52" || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) { // Karl Haas
         kzAktiv = 'R';
+        nNummernkreis = 6500;
     } else if (LS.ME === "-53" || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0) { // Sepp Lang
         kzAktiv = 'S';
+        nNummernkreis = 5750;
     } else if (LS.ME === "-54" || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0) { // Hans Hafner
         kzAktiv = 'G';
+        nNummernkreis = 6001;
     } else if (LS.ME === "-55" || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0) { // Markus Mair
         kzAktiv = 'T';
+        nNummernkreis = 4001;
     } else if (LS.ME === "-56" || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) { // Erwin Haider
         kzAktiv = 'W';
+        nNummernkreis = 3761;
     }
 
-    firebase.initDB(0, 'admin');
+    if (kzAktiv) {
+        firebase.initDB(0, 'admin');
+    }
 
     if (LS.ME === '3425') {
         SPIELERext = JSON.parse(localStorage.getItem('Abakus.SPIELERext'));

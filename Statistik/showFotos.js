@@ -104,7 +104,7 @@ function showSPhFotos(pIndex) {
 //        showIcons(['#iLandscape']);
         showIcons(['#iFotos']);
         $('.llf_Image').addClass('llf_ImageRotate');
-        $('.llf_PhContainer').addClass('llf_PhContainerRotate');
+        $('.llf_PhContainer, .llf_PhContainer_flat').addClass('llf_PhContainerRotate');
     } else {
         showIcons(['#iLandscape']);
 //        $('.llf_Image').addClass('llf_ImageRotate');

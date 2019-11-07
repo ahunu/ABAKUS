@@ -228,11 +228,11 @@ iPad 5. Gen.: 1024 x 748
     .L  {font-size: calc(1.25vw + 20px) !important;}
     .M3 {font-size: calc(1.15vw + 18px) !important;}
     .M2, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
-    .M  {font-size: calc(0.95vw + 16px) !important;}
-    .S3 {font-size: calc(0.94vw + 15px) !important;}
-    .S2 {font-size: calc(0.93vw + 14px) !important;}
-    .S  {font-size: calc(0.91vw + 12px) !important;}
-    .XS {font-size: calc(0.90vw + 10px) !important;}
+    .M  {font-size: calc(1.10vw + 16px) !important;}
+    .S3 {font-size: calc(1.07vw + 15px) !important;}
+    .S2 {font-size: calc(1.04vw + 14px) !important;}
+    .S  {font-size: calc(1.01vw + 13px) !important;}
+    .XS {font-size: calc(0.98vw + 12px) !important;}
 
     .LL3 {font-size: calc(3vw + 19px) !important;}   /* Buttons 4er und 5er Tische */
     .LL2 {font-size: calc(1.5vw + 22px) !important;} /* Buttons 6er Tische */
@@ -708,6 +708,10 @@ iPad 5. Gen.: 1024 x 748
 }
 .nb18 {
     width: 18% !important;
+    clear: none !important;
+}
+.nb19 {
+    width: 19% !important;
     clear: none !important;
 }
 .nb20 {

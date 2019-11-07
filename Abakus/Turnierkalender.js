@@ -147,7 +147,7 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                         htmlTE += '<li  id=li' + TERMINE[termin].DATUM + ' data-icon=false><a class="Sbtn" onClick="showTermin(' + termin + ');">'
                                 + '<div class="ui-grid-a' + hClass + '">'
                                 + '<div class="ui-block-a">'
-                                + '&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;<span class="L">' + TERMINE[termin].NAME + '</span>'
+                                + '&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;' + (TERMINE[termin].BEGINN ? TERMINE[termin].BEGINN : '') + '&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;<span class="L">' + TERMINE[termin].NAME + '</span>'
                                 + '</div>'
                                 + '<div class="ui-block-b S N">'
                                 + TERMINE[termin].TEXT.replace(/;/g, '<br>')
@@ -157,7 +157,7 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                     } else {
                         htmlTE += '<li id=li' + TERMINE[termin].DATUM + ' data-icon=false><a class="Sbtn" onClick="showTermin(' + termin + ');">'
                                 + '<div class="' + hClass + '">'
-                                + '&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;<span class="L">' + TERMINE[termin].NAME + '</span>'
+                                + '&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;' + (TERMINE[termin].BEGINN ? TERMINE[termin].BEGINN : '') + '&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;<span class="L">' + TERMINE[termin].NAME + '</span>'
                                 + '</div>'
                                 + '</a></li>';
                     }
@@ -177,7 +177,7 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
 
 function showTermin(pTermin) {
     'use strict';
-    $("#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
+    $("#iDATUM,#iBEGINN,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
     $('input[id=iVERANSTALTER]').css("color", "black");
     if (pTermin >= 0) {
         if (CUPS.BEREadmin[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0 && CUPS.BEREschreiben[TERMINE[pTermin].CUP].indexOf(LS.ME) < 0) {
@@ -189,6 +189,7 @@ function showTermin(pTermin) {
         $('#bAendern').show();
         $('#tTitel').html('Turnier ändern:');
         $('#iDATUM').val(TERMINE[I].DATUM);
+        $('#iBEGINN').val(TERMINE[I].BEGINN);
         $('#iCUP').val(TERMINE[pTermin].CUP).hide();
         if (LS.ME === '3425') {
             $('#tCUP').html(TERMINE[pTermin].CUP + '&nbsp;&nbsp;' + CUPS.NAME[TERMINE[pTermin].CUP]).show();
@@ -241,6 +242,7 @@ function showTermin(pTermin) {
         $('#bAendern').hide();
         $('#tTitel').text('Ein Turnier einplanen:');
         $('#iDATUM').val(null);
+        $('#iBEGINN').val(null);
         if (LS.ME === '3425') {
             $('#iCUP').val('').show();
             $('#tCUP').val('').hide();
@@ -263,7 +265,7 @@ function showTermin(pTermin) {
 function onAendern() {
     'use strict';
     nGeaendert++;
-    $("#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
+    $("#iDATUM,#iBEGINN,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
     $('input[id=iVERANSTALTER]').css("color", "black");
     if (I < 0) {
         I = TERMINE.length;
@@ -360,6 +362,7 @@ function onAendern() {
 
     TERMINE[I] = {};
     TERMINE[I].DATUM = $('#iDATUM').val();
+    TERMINE[I].BEGINN = $('#iBEGINN').val();
     TERMINE[I].CUP = parseInt($('#iCUP').val().trim());
     TERMINE[I].NAME = $('#iNAME').val().trim();
     TERMINE[I].VERANSTALTER = iVERANSTALTER;
@@ -372,7 +375,7 @@ function onAendern() {
 function onLoeschen() {
     'use strict';
     nGeaendert++;
-    $("#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
+    $("#iDATUM,#iBEGINN,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT").filter(':input:focus').blur();
     TERMINE.splice(I, 1);
     $('#pTermin').popup("close");
     whenCUPSloaded(true);

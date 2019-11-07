@@ -33,6 +33,9 @@ function loadSTAT(I, pTitel, pSkip, pCallback) {
             I = stCup;
         }
     }
+    if (typeof FB !== 'object') {
+        firebase.initDB(I);
+    }
     if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
         loadSTATnew(I, pCallback, pSkip);
     } else {
@@ -142,10 +145,6 @@ function loadSTATold(I, pCallback) {
     var hMEZULETZT = 0;
     var hMEANGEMELDET = 0;
     var hZuletztGespielt = 0;
-
-    if (typeof FB !== 'object') {
-        firebase.initDB(I);
-    }
 
     firebase.database().ref('/00/' + ("000" + I).slice(-3)).once('value').then(function (data) {
 
@@ -494,9 +493,11 @@ function loadSTATold(I, pCallback) {
 function compSTAT() {
 
     var hSaison = '';
+    var hSaisonTeilnahmen = 0;
     STAT._ANZSAISONEN = 0;
     STAT._ANZTURNIERE = 0;
     STAT._ANZTEILNAHMEN = 0;
+    STAT._PUNKTEPOTENTIAL = [0];
 
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
@@ -505,7 +506,12 @@ function compSTAT() {
                 STAT._ANZTURNIERE++;
                 if (hSaison !== STAT[turnier]._SAISON) {
                     hSaison = STAT[turnier]._SAISON;
+                    if (STAT._ANZSAISONEN) {
+                        STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] = parseInt((STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] * 100) / hSaisonTeilnahmen) / 50;
+                    }
                     STAT._ANZSAISONEN++;
+                    STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] = 0;
+                    hSaisonTeilnahmen = 0;
                 }
 
                 var spieler = '';
@@ -514,16 +520,34 @@ function compSTAT() {
                         if (iSpieler.substr(0, 4) === '_R' + STAT[turnier]._AKTTURNIER._RUNDE + '_') {
                             spieler = iSpieler.substr(4);
                             if (!STAT[turnier][spieler]) {
-                                STAT[turnier][spieler] = ['-', '-', '-'];
+                                STAT[turnier][spieler] = [0, '-', '-', '-'];
                             }
-                            STAT[turnier][spieler][STAT[turnier]._AKTTURNIER._RUNDE - 1] = STAT[turnier]._AKTTURNIER[iSpieler];
+                            STAT[turnier][spieler][STAT[turnier]._AKTTURNIER._RUNDE] = STAT[turnier]._AKTTURNIER[iSpieler];
+
+                            STAT[turnier][spieler][4] = 0; // Gesamtpunkte errechnen
+                            if (STAT[turnier][spieler][1] !== '-') {
+                                STAT[turnier][spieler][4] += STAT[turnier][spieler][1];
+                            }
+                            if (STAT[turnier][spieler][2] !== '-') {
+                                STAT[turnier][spieler][4] += STAT[turnier][spieler][2];
+                            }
+                            if (STAT[turnier][spieler][3] !== '-') {
+                                STAT[turnier][spieler][4] += STAT[turnier][spieler][3];
+                            }
                         }
                     }
                 }
 
+                STAT[turnier]._TEILNEHMER = 0;
                 for (var spieler in STAT[turnier]) {
                     if (spieler[0] !== '_') {
+                        hSaisonTeilnahmen++;
                         STAT._ANZTEILNAHMEN++;
+                        STAT[turnier]._TEILNEHMER++;
+                        if (STAT[turnier][spieler][4] > 0) {
+                            STAT._PUNKTEPOTENTIAL[0] += STAT[turnier][spieler][4];
+                            STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] += STAT[turnier][spieler][4];
+                        }
                     }
                 }
 
@@ -548,4 +572,8 @@ function compSTAT() {
             }
         }
     }
+
+    STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] = parseInt((STAT._PUNKTEPOTENTIAL[STAT._ANZSAISONEN] * 100) / hSaisonTeilnahmen) / 50;
+    STAT._PUNKTEPOTENTIAL[0] = parseInt((STAT._PUNKTEPOTENTIAL[0] * 100) / STAT._ANZTEILNAHMEN) / 50;
+
 }

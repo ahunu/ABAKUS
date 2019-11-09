@@ -1,9 +1,18 @@
 
 function REGELN(pCup) {
+    if (QUERFORMAT()) {
+        var hTableWidth = 45;
+        var hTablePadding = '4vw 6vw 2vw 6vw';
+        var hTextPadding = '1vw 6vw 3vw 3vw';
+    } else {
+        var hTableWidth = 100;
+        var hTablePadding = '4vw 4vw 2vw 4vw';
+        var hTextPadding = '1vw 4vw 2vw 0vw';
+    }
     if (pCup === 55) { // Tirolcup
         return '<div class="J">'
-                + '<div class="ui-grid-b ui-responsive S" style="padding: 4vw 6vw 2vw 6vw">'
-                + '<div class="ui-block-a" style="width:' + (QUERFORMAT() ? 45 : 100) + '%;">'
+                + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTablePadding + '">'
+                + '<div class="ui-block-a" style="width:' + hTableWidth + '%;">'
                 + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
                 + "<tr class='bGrau'><th>&nbsp;&nbsp;Spiele</th><th class=TR>Punkte&nbsp;</th></tr></thead>"
                 + "<tbody>"
@@ -22,11 +31,11 @@ function REGELN(pCup) {
                 + "<tr><th>&nbsp;&nbsp;Farbensolo</th><th class=TR>10&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Solodreier</th><th class=TR>10&nbsp;&nbsp;</th></tr>"
                 + "</tbody></table>"
-                + '</div>'
                 + '<br>'
+                + '</div>'
                 + '<div class="ui-block-b" style="width:9%;">'
                 + '</div>'
-                + '<div class="ui-block-c" style="width:' + (QUERFORMAT() ? 45 : 100) + '%;">'
+                + '<div class="ui-block-c" style="width:' + hTableWidth + '%;">'
                 + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
                 + "<tr class='bGrau'><th>&nbsp;&nbsp;Zusätze</th><th class=TR>still / angesagt&nbsp;</th></tr></thead>"
                 + "<tbody>"
@@ -42,44 +51,50 @@ function REGELN(pCup) {
                 + "<tr><th>&nbsp;&nbsp;2. Sack</th><th class=TR>1 / 2&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Valat</th><th class=TR>10 / 20&nbsp;&nbsp;</th></tr>"
                 + "</tbody></table>"
-                + "<br>*) Vorhandspiele<br>"
+                + '<br><br>'
+                + "*) Vorhandspiele"
                 + '</div></div>'
 
-                + '<div class="ui-grid-b ui-responsive S" style="padding: 1vw 6vw 3vw 3vw">'
+                + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTextPadding + '">'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">1)&nbsp;&nbsp;Allgemeines</div>'
+                + '<div class="M B C" style="padding: 1vh 0 1vh 0">1) Allgemeines</div>'
                 + '<li><b>Königrufen</b> wird mit 54 Karten, zu viert und gegen den Uhrzeigersinn gespielt - zu fünft setzt der Geber aus. Es muss abgehoben werden (links oder gegenüber). Jeder Spieler erhält zweimal sechs Karten, der Talon wird in der Mitte oder zu Beginn gegeben.</li>'
                 + '<li><b>Mit jedem Blatt</b> muss gespielt werden. In positiven Spielen spielt die Vorhand zum ersten Stich aus, in negativen der Spieler. Es gilt Farbzwang (eine ausgespielte Farbe muss bedient werden) und Tarockzwang (auf eine Fehlfarbe muss man Tarock spielen).</li>'
                 + '<li><b>Was liegt, pickt.</b> Eine regelwidrig gespielte Karte darf jedoch ausnahmsweise zurückgenommen werden, solange der Stich noch nicht umgedreht bzw. nicht schon zum nächsten Stich ausgespielt wurde. Jeder darf den letzten Stich sehen, alle anderen Stiche und der Talon sind tabu (nachwassern verboten).</li>'
-                + '<li><b>Gezählt</b> wird immer in Lagen zu drei Karten mit zwei Punkten Abzug pro Lage, bei unvollständigen Lagen wird nur ein Punkt abgezogen. Um zu gewinnen, sind 36 Punkte erforderlich (= 35/2 Blatt bei blattgenauer Zählweise).</li>'
+                + '<li><b>Gezählt</b> wird immer in Lagen zu drei Karten mit zwei Punkten Abzug pro Lage, bei unvollständigen Lagen wird nur ein Punkt abgezogen. Um zu gewinnen, sind 36 Punkte erforderlich (\= 35/2 Blatt bei blattgenauer Zählweise).</li>'
                 + '<li><b>Kontra</b> (Re-/Subkontra) verdoppelt den Spielwert. Spiel und Zusätze können getrennt kontriert werden. In Negativspielen kontriert jeder Gegner individuell, ansonsten gilt ein Kontra immer für alle Spieler.</li>'
                 + '<li><b>Kaiserstich:</b> fällt die Trull zusammen, sticht der Pagat (nur in der Reihenfolge Mond, Sküs und Pagat).</li>'
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">2)&nbsp;&nbsp;Lizitation</div>'
-                + '<li><b>Ersteigerung:</b> Die Vorhand beginnt mit <i>Vorhand</i> oder einer Spielansage. Die Vorhandspiele stehen nur der Vorhand offen. Den Sechserdreier kann sie nur vorneweg ansagen, alle anderen Spiele auch im Nachhinein. Angesagte Spiele dürfen nur durch höherrangige Spiele überboten werden. Eine eigene Spielansage darf nicht  erhöht werden, außer sie wurde zuvor überboten. Wer einmal gepasst hat, darf nicht mehr mitbieten.</li>'
-                + '<li><b>Ansagen:</b> Der Spieler kann jetzt einen König rufen, den Talon aufnehmen und eventuelle Zusätze ansagen. Hat er drei Könige im Blatt, kann er â€žden Viertenâ€œ rufen (ohne die Farbe zu nennen). Sich selber rufen ist nicht erlaubt. Beim Solodreier müssen die Zusätze gleich nach dem Spiel angesagt werden, da dieses nicht überboten werden kann. Das Liegen beendet die Ansage. Erst dann können die anderen Spieler reihum entweder weitere Zusätze ansagen oder die bisherigen Ansagen kontrieren bzw. mit <i>gut</i> quittieren. Auf jede Ansage darf so lange mit weiteren Ansagen reagiert werden, bis drei Spieler hintereinander <i>gut</i> gesagt haben (nachbessern erlaubt).</li>'
+                + '<div class="M B C" style="padding: 1vh 0 1vh 0">2) Lizitation</div>'
+                + '<li><b>Ersteigerung:</b> Die Vorhand beginnt mit <em>Vorhand</em> oder einer Spielansage. Die Vorhandspiele stehen nur der Vorhand offen. Den Sechserdreier kann sie nur vorneweg ansagen, alle anderen Spiele auch im Nachhinein. Angesagte Spiele dürfen nur durch höherrangige Spiele überboten werden. Eine eigene Spielansage darf nicht erhöht werden, außer sie wurde zuvor überboten. Wer einmal gepasst hat, darf nicht mehr mitbieten.</li>'
+                + '<li><b>Ansagen:</b> Der Spieler kann jetzt einen König rufen, den Talon aufnehmen und eventuelle Zusätze ansagen. Hat er drei Könige im Blatt, kann er <i>den Vierten</i> rufen (ohne die Farbe zu nennen). Sich selber rufen ist nicht erlaubt. Beim Solodreier müssen die Zusätze gleich nach dem Spiel angesagt werden, da dieses nicht überboten werden kann. Das Liegen beendet die Ansage. Erst dann können die anderen Spieler reihum entweder weitere Zusätze ansagen oder die bisherigen Ansagen kontrieren bzw. mit <i>gut</i> quittieren. Auf jede Ansage darf so lange mit weiteren Ansagen reagiert werden, bis drei Spieler hintereinander <i>gut</i> gesagt haben (nachbessern erlaubt).</li>'
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">3)&nbsp;&nbsp;Positivspiele</div>'
+                + '<div class="M B C" style="padding: 1vh 0 1vh 0">3) Positivspiele</div>'
                 + '<li><b>Spiele mit Talon:</b> Der Spieler darf eine Hälfte aufnehmen und drei Karten ablegen. Die Ablage gehört zu den eigenen Stichen, die andere Hälfte zu den Stichen der Gegner. Könige und Trullstücke dürfen nie abgelegt werden, Tarock erst wenn erzwungen und dann nur offen. Beim Sechserdreier wird der ganze Talon verdeckt aufgenommen und der Spielverlust zählt doppelt (nur das Spiel). Wenn der gerufene König im Talon liegt, kann man das Spiel schleifen (aufgeben). Die Hälfte mit dem gerufenen König darf liegengelassen werden.</li>'
                 + '<li><b>Solospiele (ohne Talon):</b> Der Talon bleibt verdeckt liegen und gehört am Ende zu den Stichen der Gegner. Liegt der gerufene König im Talon, gehört diese Hälfte dem Spieler. Alle Zusätze zählen doppelt.</li>'
                 + '<li><b>Farbenspiele:</b> Tarock sticht nicht. So lange man Farbkarten hat, darf man kein Tarock ausspielen. Kann man eine Farbe nicht bedienen, muss man Tarock zugeben. Statt der Farbkarten sind Tarock zu verlegen (verdeckt und keine Fünferzähler; Farbkarten nur erzwungen und offen). Als Zusätze gelten nur Könige, Säcke und Valat.</li>'
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">4)&nbsp;&nbsp;Negativspiele</div>'
-                + '<li>Keine Zusätze; der Pagat darf erst als letztes Tarock gespielt werden (außer bei Kaiserstich mit Stichzwang).</li>'
-                + '<li><b>Trischaken:</b> bunt gemischt; ohne Kontra. Die Vorhand kann bestimmen, ob mit oder ohne Stichzwang gespielt wird und ob der Talon zu den ersten sechs Stichen (offen) oder zum letzten Stich dazugegeben wird. Es wird blattgenau abgerechnet. Die zwei Spieler mit den meisten Punkten zahlen an die beiden anderen je zwei Punkte (2 x 2). Ein Bürgermeister (â‰¥ 35/2 Blatt) zahlt sechs Punkte (3 x 2). Eine Jungfrau (kein Stich) kassiert sechs Punkte (3 x 2). Hat die Vorhand die meisten Punkte, zahlt sie ebenfalls sechs Punkte (3 x 2), als Bürgermeister doppelt (3 x 4). Punktegleiche Spieler teilen sich die Punkte, haben die beiden mittleren Spieler gleichviel Punkte, gehen beide leer aus. Bei einer Renonce ist an die anderen der Fixwert von je vier Punkten zu zahlen (3 x 4).</li>'
-                + '<li><b>Bettler, Piccolo & Co:</b> Stichzwang; kein Talon. Der Spieler spielt aus. Bei-Spiele sind nicht erlaubt.</li>'
-                + '<li><b>Ouvert:</b> Die Karten werden nach dem ersten Stich aufgedeckt. Wird mit Reden gespielt, dürfen sich die Gegenspieler über die Spielstrategie unterhalten. Gilt Schweigepflicht, dürfen sie sich weder beraten noch gegenseitig beeinflussen und es gilt <i>berührt, geführt</i>. Legt der Veranstalter nichts fest, darf geredet werden.</li>'
+                + '<div class="M B C" style="padding: 1vh 0 1vh 0">4) Negativspiele</div>'
+                + '<li>Keine Zusätze; kein Talon; Stichzwang. Der Spielansager spielt aus. Bei-Spiele sind nicht erlaubt. Der Pagat darf erst als letztes Tarock gespielt werden (außer beim Kaiserstich).</li>'
+                + '<li><b>Ouvertspiele:</b> Die Karten werden nach dem ersten Stich aufgedeckt. Wird mit Reden gespielt, dürfen sich die Gegenspieler über die Spielstrategie unterhalten. Gilt Schweigepflicht, dürfen sie sich weder beraten noch gegenseitig beeinflussen und es gilt berührt, geführt. Legt der Veranstalter nichts fest, darf geredet werden.</li>'
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">5)&nbsp;&nbsp;Zusätze (Prämien)</div>'
+                + '<div class="M B C" style="padding: 1vh 0 1vh 0">5) Trischaken</div>'
+                + '<li>Nur bunt gemischt; ohne Kontra; Pagat als letztes Tarock (außer bei Kaiserstich mit Stichzwang).</li>'
+                + '<li>Die Vorhand kann bestimmen, ob <b>mit oder ohne Stichzwang</b> gespielt wird und ob der <b>Talon</b> zu den ersten sechs Stichen (offen) oder zum letzten Stich dazugegeben wird. Es wird blattgenau abgerechnet.</li>'
+                + '<li>Die <b>zwei Spieler</b> mit den meisten Punkten <b>zahlen</b> an die beiden anderen je zwei Punkte (2 x 2). Ein Bürgermeister (ab 35/2 Blatt) zahlt sechs Punkte (3 x 2). Eine Jungfrau (kein Stich) kassiert sechs Punkte (3 x 2). Hat die Vorhand die meisten Punkte, zahlt sie ebenfalls sechs Punkte (3 x 2), als Bürgermeister doppelt (3 x 4). Punktegleiche Spieler teilen sich die Punkte, haben die beiden mittleren Spieler gleichviel Punkte, gehen beide leer aus. Bei einer Renonce ist an die anderen der Fixwert von je vier Punkten zu zahlen (3 x 4).</li>'
+                + '</ul>'
+
+                + '<ul>'
+                + '<div class="M B C" style="padding: 1vh 0 1vh 0">6) Zusätze (Prämien)</div>'
                 + '<li><b>Spiel</b> und Prämien werden getrennt verrechnet. Auch die Gegenpartei kann Zusätze ansagen oder still spielen.</li>'
                 + '<li><b>Vögel und König ultimo:</b> Die Vögel müssen selber stechen, bei König Ultimo genügt es auch, wenn der Partner sticht. Vögel kann man nur ansagen, wenn man sie selbst im Blatt hat (kein kommandieren). Beide Ansagen dürfen nicht freiwillig aufgegeben werden. Müssen angesagte Vögel vorzeitig gespielt werden, muss zuerst immer der höchste Vogel aufgegeben werden.</li>'
                 + '<li><b>Fänge:</b> Wird der Mond von den Gegnern gefangen, zählt das als Mondfang. Alle anderen Fänge zählen nicht.</li>'
@@ -87,14 +102,14 @@ function REGELN(pCup) {
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">6)&nbsp;&nbsp;Renonce</div>'
+                + '<div class="M B C" style="padding: 1vh 0 1vh 0">7) Renonce</div>'
                 + '<li>Begeht jemand einen <b>Regelverstoß</b> (z. B. Missachtung von Farb-, Tarock- oder Stichzwang, Talonfehler, Spiel mit falscher Kartenanzahl, Besserrufer ohne Vogel im Blatt, Spielverrat etc.), muss er alle regulären Spieler so stellen, als ob sie Spiel und angesagte Zusätze gewonnen hätten.</li>'
                 + '<li>Entsteht einem regulären Spieler darüber hinaus ein weiterer offensichtlicher Punkteverlust, ist er schadlos zu halten. Er und seine Partner können diese Punkte zusätzlich einfordern, solange ihr Verlust nicht ohnehin durch den Renoncewert abgedeckt ist.</li>'
                 + '<li>Neben den Cupregeln gelten auch die <b>Tarocketikette</b> und die <b>Richtlinien</b> zur Regelauslegung. Die Entschei-dungen der Schiedsrichter bzw. Turnierleiter sind zu akzeptieren. Grobe Unsportlichkeiten (z. B. betrügerisches Falschspiel) können mit Ausschluss und Sperren geahndet werden.</li>'
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">7)&nbsp;&nbsp;Modus</div>'
+                + '<div class="M B C" style="padding: 1vh 0 1vh 0">8) Modus</div>'
                 + '<li>Üblicherweise werden <b>drei Runden</b> mit je 16 Spielen ausgetragen (20 Spiele an Fünfertischen). Es gibt ein Zeitlimit, d. h. der Turnierleiter kann bei Bedarf ausständige Tische vorzeitig beenden.</li>'
                 + '<li>Pro Punkt werden <b>zehn Cent</b> abgerechnet. Es gibt keine doppelten Runden und etwaige Kontras zählen nicht zur Turnierwertung. Die Sitzordnung wird durch Kartenziehen festgelegt (Tarock ist erste Vorhand). Der Schreiber ist für die korrekte und vollständige Mitschrift verantwortlich.</li>'
                 + '<li>Die <b>Schriftpunkte</b> aus allen Runden werden addiert. Der Spieler mit den meisten Punkten gewinnt. Bei ex aequo gelten der Reihe nach folgende Kriterien: die bessere beste Runde, die besseren Tischränge und zuletzt das Los.</li>'
@@ -102,18 +117,17 @@ function REGELN(pCup) {
                 + '</ul>'
 
                 + '<ul>'
+                + '<div class="M C" style="padding: 1vh 0 1vh 0">Viel Vergnügen!</div>'
                 + '<br>'
-                + '<b class=S>&nbsp;&nbsp;&nbsp;Viel Vergnügen!</b>'
-                + '<br>'
-                + '<p class=S>&nbsp;&nbsp;&nbsp;(c) Markus Mair 2019, www.tarock.tirol</p>'
+                + '<p class=S>(c) Markus Mair 2019, www.tarock.tirol</p>'
                 + '</ul>'
                 + '<br>'
                 + '</div>';
 
     } else if (pCup === 53) { // Sauwaldcup
         return '<div class="J">'
-                + '<div class="ui-grid-b ui-responsive S" style="padding: 4vw 6vw 2vw 6vw">'
-                + '<div class="ui-block-a" style="width:' + (QUERFORMAT() ? 45 : 100) + '%;">'
+                + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTablePadding + '">'
+                + '<div class="ui-block-a" style="width:' + hTableWidth + '%;">'
                 + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
                 + "<tr class='bGrau'><th>&nbsp;&nbsp;Spiele</th><th class=TR>Punkte&nbsp;</th></tr></thead>"
                 + "<tbody>"
@@ -122,19 +136,19 @@ function REGELN(pCup) {
                 + "<tr><th>&nbsp;&nbsp;Piccolo</th><th class=TR>2&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Bettel</th><th class=TR>2&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Solorufer</th><th class=TR>2&nbsp;&nbsp;</th></tr>"
-                + "<tr><th>&nbsp;&nbsp;A-Rufer</th><th class=TR>3&nbsp;&nbsp;</th></tr>"
-                + "<tr><th>&nbsp;&nbsp;Dreier</th><th class=TR>5&nbsp;&nbsp;</th></tr>"
+                + "<tr><th>&nbsp;&nbsp;A-Rufer</th><th class=TR>1+&nbsp;&nbsp;</th></tr>"
+                + "<tr><th>&nbsp;&nbsp;Dreier</th><th class=TR>4&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Sechserdreier *</th><th class=TR>4&nbsp;&nbsp;</th></tr>"
-                + "<tr><th>&nbsp;&nbsp;Farbensolo</th><th class=TR>4&nbsp;&nbsp;</th></tr>"
+                + "<tr><th>&nbsp;&nbsp;Farbensolo</th><th class=TR>5&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Piccolo ouvert</th><th class=TR>6&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Bettel ouvert</th><th class=TR>7&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Solodreier</th><th class=TR>8&nbsp;&nbsp;</th></tr>"
                 + "</tbody></table>"
-                + '</div>'
                 + '<br>'
+                + '</div>'
                 + '<div class="ui-block-b" style="width:9%;">'
                 + '</div>'
-                + '<div class="ui-block-c" style="width:' + (QUERFORMAT() ? 45 : 100) + '%;">'
+                + '<div class="ui-block-c" style="width:' + hTableWidth + '%;">'
                 + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
                 + "<tr class='bGrau'><th>&nbsp;&nbsp;Zusätze</th><th class=TR>still / angesagt&nbsp;</th></tr></thead>"
                 + "<tbody>"
@@ -143,18 +157,18 @@ function REGELN(pCup) {
                 + "<tr><th>&nbsp;&nbsp;Uhu (II)</th><th class=TR>2 / 4&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Kakadu (III)</th><th class=TR>3 / 6&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Quapil (IIII)</th><th class=TR>4 / 8&nbsp;&nbsp;</th></tr>"
-                + "<tr><th>&nbsp;&nbsp;Mondfang</th><th class=TR>1 / 2&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Trull</th><th class=TR>1 / 2&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;4 Könige</th><th class=TR>1 / 2&nbsp;&nbsp;</th></tr>"
                 + "<tr><th>&nbsp;&nbsp;Valat</th><th class=TR>4-/8fach&nbsp;&nbsp;</th></tr>"
                 + "</tbody></table>"
-                + "<br>*) Vorhandspiele<br><br>"
+                + '<br><br><br>'
+                + "*) Vorhandspiele"
                 + '</div></div>'
 
-                + '<div class="ui-grid-b ui-responsive S" style="padding: 1vw 6vw 3vw 3vw">'
+                + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTextPadding + '">'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">&nbsp;&nbsp;Allgemeines:</div>'
+                + '<div class="M B" style="padding: 1vh 0 1vh 0">Allgemeines:</div>'
                 + '<li>Es muss mit Geld gespielt werden (1 Punkt = 10 Cent), und es wird plus und minus geschrieben.</li>'
                 + '<li>Jedes Spiel muss gespielt bzw. gewertet werden. Ein Blatt ohne Tarock und Könige darf nicht abgelegt werden.</li>'
                 + '<li>Wer die höchste Karte hebt, beginnt mit der Abgabe der Karten. Es muss gründlich gemischt und abgehoben werden. Der Talon wird in der Mitte gegeben.</li>'
@@ -167,14 +181,14 @@ function REGELN(pCup) {
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">&nbsp;&nbsp;Vorhand:</div>'
+                + '<div class="M B" style="padding: 1vh 0 1vh 0">Vorhand:</div>'
                 + '<li>Der Vorhandspieler hat einen Sechser-Dreier sofort anzumelden, alle anderen Spiele können auch im Nachhinein gemeldet werden. Wird der Sechser-Dreier verloren, wird nur das Spiel (nicht aber die Ansagen) doppelt (vom Spieler aus) gewertet (Verlorener Valat beim Sechser-Dreier - 8 mal 8 Punkte).</li>'
                 + '<li>Ein weiteres Recht des Vorhandspielers ist es, ein bereits lizitiertes Spiel zu halten (also selbst zu spielen).</li>'
                 + '<li>Hat der Vorhandspieler alle vier Könige im Blatt und sieht er keine Möglichkeit ein Spiel zu spielen, so muss die Vorhand an den nächsten Spieler mit "ich gebe die Vorhand weiter" abgegeben werden. Alle Rechte der Vorhand gehen somit auf den nächsten Spieler über, auch das Recht einen Sechser-Dreier zu spielen. Auf das nächste Spiel hat dies aber keine Auswirkung, d.h. ein Spieler hat zweimal hintereinander die Vorhand.</li>'
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">&nbsp;&nbsp;Trischaken:</div>'
+                + '<div class="M B" style="padding: 1vh 0 1vh 0">Trischaken:</div>'
                 + '<li>Es besteht Farb- und Stichzwang, aber es muss nicht austarockiert werden.</li>'
                 + '<li>Der Pagat darf nur als letzter Tarock aus- bzw. zugegeben werden.</li>'
                 + '<li>Der Spieler, der den letzten Stich erzielt, erhält den Talon.</li>'
@@ -186,15 +200,15 @@ function REGELN(pCup) {
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">&nbsp;&nbsp;Negativspiele:</div>'
+                + '<div class="M B" style="padding: 1vh 0 1vh 0">Negativspiele:</div>'
                 + '<li>Negativspiele sind: Piccolo, Bettel, Piccolo-Ouvert, Bettel-Ouvert. Nicht die Vorhand, sondern der Spieler selbst spielt aus.</li>'
                 + '<li>Der Pagat darf nur als letzter Tarock aus- bzw. zugegeben werden. Es herrscht Stichzwang.</li>'
                 + '<li>Bei den Ouvertspielen werden nach dem ersten und vor dem zweiten Ausspielen alle Karten offen auf den Tisch gelegt. Die drei Gegenspieler dürfen untereinander über die Spiestrategie beraten.</li>'
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">&nbsp;&nbsp;Farbensolo:</div>'
-                + '<li>Die Tarock als „5. Farbe“ zu sehen, man muss mindestens 6 Farbkarten im Blatt haben. Die Vorhand spielt aus.</li>'
+                + '<div class="M B" style="padding: 1vh 0 1vh 0">Farbensolo:</div>'
+                + '<li>Hier sind Tarock als „5. Farbe“ zu sehen, man muss mindestens 6 Farbkarten im Blatt haben. Die Vorhand spielt aus.</li>'
                 + '<li>Es darf erst Tarock gespielt werden, wenn man keine Farbkarten mehr im Blatt hat.</li>'
                 + '<li>Wenn eine Farbe nicht in den Karten ist, muss Tarock zugegeben werden. Hat man keine Tarock mehr im Blatt, kann eine beliebige Karte zugegeben werden.</li>'
                 + '<li>Es besteht kein Stichzwang und nur der Valat und alle Könige sind zulässige Ansagen.</li>'
@@ -202,7 +216,7 @@ function REGELN(pCup) {
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">&nbsp;&nbsp;Ansagen:</div>'
+                + '<div class="M B" style="padding: 1vh 0 1vh 0">Ansagen:</div>'
                 + '<li>Alle Ansagen gelten heimlich jeweils die Hälfte, bei den Solospielen doppelt (außer dem Valat).</li>'
                 + '<li>Jeder Spieler kann nur einmal eine „Ansage“ tätigen.</li>'
                 + '<li>Die Figuren Pagat, Uhu, Kakadu, Quapil sowie König Ultimo können nicht für andere Spieler (z.B. Partner) angesagt werden.</li>'
@@ -217,7 +231,7 @@ function REGELN(pCup) {
                 + '</ul>'
 
                 + '<ul>'
-                + '<div class="M B" style="padding: 1vh 0 1vh 0">&nbsp;&nbsp;Renonceregelung:</div>'
+                + '<div class="M B" style="padding: 1vh 0 1vh 0">Renonceregelung:</div>'
                 + '<li>Die Renonceregelung kann nicht alle möglichen Fälle berücksichtigen. Hier muss immer an die Fairness der einzelnen Spieler appelliert werden. Oberstes Gebot ist Kollegialität und Freude am Tarockspiel.</li>'
                 + '<li>Alle regulären Spieler erhalten die Punkte als hätten sie das Spiel und alle angesagten Ansagen gewonnen (Ausnahme: Trischaken, siehe dort). Der Spieler, der das Renonce begangen hat, erhält die Punkte der drei Mitspieler als Minuspunkte eingetragen.</li>'
                 + '<li>Wird eine falsche Abgabe der Karten noch vor der ersten Ansage bzw. nach Beendigung der Abgabe bemerkt, ist die Abgabe zu wiederholen. Ansonsten ist für den/die Spieler mit falscher Kartenzahl ein Renoncespiel zu werten.</li>'
@@ -228,7 +242,9 @@ function REGELN(pCup) {
 
                 + '<ul>'
                 + '<br>'
-                + '<p class=S>&nbsp;&nbsp;Regelwerk der TarockRunde Sauwald – Stand 2019, Autor: Sepp LANG</p>'
+                + '<p class=S>Regelwerk der TarockRunde Sauwald – Stand 2019, Autor: Sepp LANG</p>'
+
+
                 + '</ul>'
                 + '<br>'
                 + '</div>';

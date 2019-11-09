@@ -19,7 +19,6 @@ var CUPS = new Object();
 var STAT = new Object();
 var SPIELER = new Object();
 var SAISON = [];
-var CUPD = new Object();
 
 var SP = new Object();
 
@@ -447,7 +446,7 @@ function showAnekdote() {
     var html = '<div class="M2" style="padding:3vw">'
             + 'Anekdote:'
             + '<div id="editor" class="M" style="background:#eee; border-width:6px; border-style:double;border-color:#ddd; text-align: justify;"></div>'
-            + '<br>Fotos:'
+            + '<br>Fotos:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=XS>Abakus ist für Fotos mit einer Breite von 1024 Pixel optimiert.</span>'
             + '<div id="fotoedit-grid">';
 
     if (Number.isInteger(stStat) && STAT[SAISON[iSaison][isFinale]]._CUPFOTOS) {

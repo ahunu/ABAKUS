@@ -915,7 +915,7 @@ function initExtraButtons() {
         $('#bAdminTools,#bFindSpieler').show();
     }
 
-    if (LS.ME === '4731' || LS.ME === '2553') { // Alex Sabkovski, Arno Peter --- Turnierkalender
+    if (LS.ME === '4731' || LS.ME === '0197' || LS.ME === '2553') { // Alex Sabkovski, Manfred Huemer, Arno Peter --- Turnierkalender
         $('#bAdminTools').show();
     }
 
@@ -1279,9 +1279,39 @@ function whenCUPSloaded() {
     }
 
     SORT.sort();
+
+    for (var i = 51; i <= 56; i++) { // Meine Runden/Cups --- Bei Xxxxxx
+        var hShow = false;
+        if (CUPS.BEREadmin[i].indexOf(LS.ME) >= 0
+                || CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
+            hShow = true;
+        }
+        for (var ii = 0; ii < LS.MeineCups.length; ii++) {
+            if (LS.MeineCups[ii] === i) {
+                hShow = true;
+            }
+        }
+        if (CUPS.MEZULETZT[i]) {
+            if (CUPS.MEZULETZT[i] + (90 * 86400000) > Date.now()) { // Nur wenn in den letzten 90 Tagen gespielt
+                hShow = true;
+            }
+        }
+        if (hShow) {
+            nMeineRundenCups++;
+            if (QUERFORMAT() || !CUPS.TEXT1[i]) {
+                htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>';
+            } else {
+                htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="toggleShow(\'#hToggle9' + i + '\');">&nbsp;' + getCupName(i) + '</a></li>'
+                        + '<div id="hToggle9' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
+                        + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] : '')
+                        + '</div>';
+            }
+        }
+    }
     for (var s = 0; s < SORT.length; s++) { // Meine Runden/Cups --- Bei Xxxxxx
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
-        if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
+        if (i >= 50 && i <= 59) {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
             nMeineRundenCups++;
             if (QUERFORMAT() || !CUPS.TEXT1[i]) {
@@ -1308,7 +1338,8 @@ function whenCUPSloaded() {
     }
     for (var s = 0; s < SORT.length; s++) { // mit Schreibberechtigung >>>>>>>>>> später eventuell entfernen
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
-        if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
+        if (i >= 50 && i <= 59) {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
         } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
             nMeineRundenCups++;
@@ -1325,7 +1356,8 @@ function whenCUPSloaded() {
     }
     for (var s = 0; s < SORT.length; s++) { // Meine Runden/Cups --- Bei Xxxxxx
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
-        if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
+        if (i >= 50 && i <= 59) {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
         } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
         } else {
@@ -1517,7 +1549,7 @@ function fINIT() {
         LS = new Object();
         LS.ME = "NOBODY";
         LS.MEname = 'Nicht registriert';
-        LS.MeineCups = [56];
+        LS.MeineCups = [];
         LS.Schreibzettel = false;
         LS.I = 0;
         LS.gespielt = 0; // -1

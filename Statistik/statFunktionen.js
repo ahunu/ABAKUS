@@ -121,7 +121,7 @@ function getSpielerOrt(pNR, pSTANDORT) {
 
 function getCupPunkte(pTurnier, pSpieler) {
 
-    if (stCup >= 50 && stCup <= 60 && stCup !== 55 || stCup === 125) { // 125 wurde als Testcup verwendet!
+    if (stCup >= 50 && stCup <= 60 && stCup !== 55 || stCup === 125 || stCup === 181) { // 125 wurde als Testcup verwendet!
         if (STAT[pTurnier][pSpieler]) {
             if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
@@ -155,6 +155,8 @@ function getCupPunkte(pTurnier, pSpieler) {
     var hPunkte = STAT[pTurnier][pSpieler][4]; // Meine Cuppunkte
     if (hPunkte <= 0) {
         return '-';
+//    } else if (hPunkte >= 200) {
+//        return 150;
     } else if (hPunkte > 100) {
         return parseInt((hPunkte - 100) / 2) + 100;
     } else {

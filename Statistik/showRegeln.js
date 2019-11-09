@@ -24,9 +24,19 @@ function showRegeln() {
 
     writeCanvas('Tarife und Regeln');
 
+    if (QUERFORMAT()) {
+        var hTableWidth = 45;
+        var hTablePadding = '4vw 6vw 2vw 6vw';
+        var hTextPadding = '1vw 6vw 3vw 3vw';
+    } else {
+        var hTableWidth = 100;
+        var hTablePadding = '4vw 4vw 2vw 4vw';
+        var hTextPadding = '1vw 4vw 2vw 0vw';
+    }
+
     html = '<div class="J">'
-            + '<div class="ui-grid-b ui-responsive S" style="padding: 4vw 6vw 2vw 6vw">'
-            + '<div class="ui-block-a" style="width:' + (QUERFORMAT() ? 45 : 100) + '%;">'
+            + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTablePadding + '">'
+            + '<div class="ui-block-a" style="width:' + hTableWidth + '%;">'
             + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr class='bGrau'><th>&nbsp;&nbsp;Die Spiele</th><th class=TR>Punkte&nbsp;</th></tr></thead>"
             + "<tbody>"
@@ -52,7 +62,7 @@ function showRegeln() {
             + '</div>'
             + '<div class="ui-block-b" style="width:9%;">'
             + '</div>'
-            + '<div class="ui-block-c" style="width:' + (QUERFORMAT() ? 45 : 100) + '%;">'
+            + '<div class="ui-block-c" style="width:' + hTableWidth + '%;">'
             + "<table swidth=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr class='bGrau'><th>&nbsp;&nbsp;Die Prämien</th><th class=TR>still / angesagt&nbsp;</th></tr></thead>"
             + "<tbody>"
@@ -65,19 +75,18 @@ function showRegeln() {
             + "<tr><th>&nbsp;&nbsp;Quapil (IIII)</th><th class=TR>4 / 8&nbsp;&nbsp;</th></tr>"
             + "<tr><th>&nbsp;&nbsp;Valat</th><th class=TR>4-fach / 8-fach&nbsp;&nbsp;</th></tr>"
             + "</tbody></table>"
+            + "<br>Bei Solospielen zählen die Prämien doppelt.<br>"
             + "<br>Mondfang, Absolut und Honneurs werden nicht honoriert.<br>"
-            + "<br>Kontras zählen nicht für die Turnierwertung (nicht „für die Schrift“), werden aber gleich nach dem Spiel ausbezahlt.<br>"
-            + "<br>Kaiserstich / Märchenstich: Fallen Sküs, Mond und Pagat, egal in welcher Reihenfolge, in einem Stich, so sticht der Pagat.<br>"
-            + "<br>In Negativspielen wird der Kaiserstich nicht gespielt.<br>"
+            + "<br>Kaiserstich / Märchenstich: Fallen Sküs, Mond und Pagat, egal in welcher Reihenfolge, in einem Stich, so sticht der Pagat. In Negativspielen gibt es keine Kaiserstich.<br>"
             + '</div></div>'
 
-            + '<div class="ui-grid-b ui-responsive S" style="padding: 1vw 6vw 3vw 3vw">'
+            + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTextPadding + '">'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Allgemeines:</b>'
-            + '<li>Es muss um Geld gespielt werden, 1 Punkt = 10 Cent. und es wird plus und minus geschrieben.</li>'
-            + '<li>Jedes Spiel muss gespielt werden. Ein Blatt ohne Tarock und Könige wird nicht zusammengeworfen.</li>'
-            + '<li>Kontrierungen wirken sich nur auf die Auszahlung aus, nicht auf die Schrift. Es gibt nur Kontra (doppelt), Re (vierfach) und Sub (achtfach). Kontra vor Talonkauf (Mutterleib, Hüttenfleck) ist nicht möglich. Es gibt keine Verdoppelungsradln (z.B. nach Mondfang).</li>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Allgemeines:</div>'
+            + '<li>Nach jedem Spiel wird das Ergebnis auf dem Schreibzettel oder per App notiert. Am Ende jeder Runde erhalten die Gewinnerinnen von den Verlierern jeweils 10 Cent pro Punkt.</li>'
+            + '<li>Jedes Spiel muss gespielt werden. Kein Blatt wird zusammengeworfen.</li>'
+            + '<li>Kontra (doppelt), Re (vierfach) und Sub (achtfach) haben keine Auswirkung auf die Schrift, werden aber nach jedem Spiel sofort ausbezahlt.</li>'
             + '<li>Bei positiven Spielen gilt das Kontra für alle Spieler, bei negativen Spielen wird individuell kontriert; bei Trischaken gibt es kein Kontra.</li>'
             + '<li>Gespielt wird gegen den Uhrzeigersinn. Der linkssitzende Spieler hebt ab (mind. 5 Karten). Nach der ersten Austeilrunde (zu je 6 Karten pro Spieler) wird der Talon (zweimal 3 Karten) gegeben, danach erfolgt die zweite Austeilrunde.</li>'
             + '<li>Zum Gewinn braucht der Spielaufnehmer eines positiven Spiels 35 Punkte und 2 Blatt.</li>'
@@ -85,15 +94,15 @@ function showRegeln() {
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Wie werden die Spieler an die Tische gelost und wie ist die Sitzordnung am Tisch?</b>'
-            + '<li>Es entscheidet ein Zufallsgenerator über die Tischzulosung in allen 3 Runden (Ausnahme: Saisonfinale).</li>'
-            + '<li>Vor einer Runde ist am Tisch zu vereinbaren, wer die Punkte schreibt. Dieser Spieler wird am Schreibzettel als „Schreiber“ vermerkt. Er ist für die korrekten Eintragungen der Ergebnisse in den Schreibzettel verantwortlich.</li>'
-            + '<li>Die Sitzordnung wird durch die Reihenfolge der Namen der Spieler am länglichen Zettel mit den Tischzulosungen festgelegt: Derjenige Spieler A, der zuerst am Tisch seinen Platz eingenommen hat, darf diesen behalten. Derjenige Spieler B, der am Tischzulosungszettel unterhalb des ersten Spielers A angeführt ist, sitzt rechts von A. Derjenige Spieler C, der am Tischzulosungszettel unterhalb des zweiten Spielers B angeführt ist, sitzt rechts von B usw. Dementsprechend sitzt der oberste Spieler rechts vom untersten.</li>'
-            + '<li>Erster Geber (= linke Spalte am Schreibzettel) ist derjenige Spieler, der die höchste Karte aus dem Kartenstapel zieht.</li>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Platzwahl und erster Geber:</div>'
+            + '<li>Die Sitzordung wird vom Tischzettel (der längliche Streifen) vorgegen. Diese ist mit der Reihenfolge auf der App ident.</li>'
+            + '<li>Der erste Spieler am Tisch kann seinen Platz frei wählen. Die restliche Spieler setzen sich laut Tischzettel/App entgegen dem Uhrzeigersinn auf den entspechenden Platz.</li>'
+            + '<li>Ist kein Tischzettel verfügbar und sitzt auch niemand mit einer App am Tisch, besteht freie Platzwahl.</li>'
+            + '<li>Wird mit der App geschrieben, ist der erste Geber von dieser vorgegeben. Andernfalls zieht jeder Spieler eine Karte. Wer die höchste Karte zieht der Geber.</li>'
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Vorhand & Sechserdreier:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Vorhand & Sechserdreier:</div>'
             + '<li>Der Vorhandspieler sagt entweder Sechserdreier! oder Mein Spiel! bzw. Vorhand! Der Vorhandspieler darf zu Beginn nicht Weiter! sagen und darf nicht ein anderes Spiel halten.</li>'
             + '<li>Beim Sechserdreier werden alle 6 Talonkarten verdeckt aufgenommen und 6 Karten verlegt. Ein verlorener Sechserdreier zählt doppelt.</li>'
             + '<li>Wenn der Vorhandspieler Mein Spiel! bzw. Vorhand! gesagt hat, und alle anderen Spieler Weiter! gesagt haben, kann der Vorhandspieler zusätzlich zu den anderen Spielen auch Rufer oder Trischaken spielen, aber keinen Sechserdreier mehr!</li>'
@@ -101,7 +110,7 @@ function showRegeln() {
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Trischaken:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Trischaken:</div>'
             + '<li>Die 6 Karten des Talons werden einzeln zu den ersten 6 Stichen vor deren Einziehen offen dazugegeben („Zuwaage“).</li>'
             + '<li>Die Vorhand (= Spielaufnehmer) ist verantwortlich für die richtige Zugabe der Zuwaage zu den ersten 6 Stichen. Es gilt Stichzwang.</li>'
             + '<li>Verlierer des Trischakens ist der Spieler mit den meisten Punkten. Sind 2 oder 3 Spieler punktegleich, so teilen sie sich die an die anderen Spieler zu verteilenden Punkte. Ist aber die Vorhand punktegleich, so verliert sie allein; punktegleiche Spieler werden so behandelt, als ob sie weniger Punkte hätten.</li>'
@@ -112,7 +121,7 @@ function showRegeln() {
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Ruferspiele:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Ruferspiele:</div>'
             + '<li>Ein Ruferspiel mit Vogerl muss sofort unter Nennung des Vogerls lizitiert werden, also Pagatrufer, Uhurufer, Kakadurufer oder Quapilrufer. Nach dem Verlegen kann der Spieler weitere Vogerln ansagen.</li>'
             + '<li>Liegt beim Rufer, Pagatrufer etc. der gerufene König im Talon, kann sich der Spieler frei entscheiden, welche Talonhälfte er aufnimmt, es gibt also keine Strafprämie für einen liegengelassenen König. Wer sich selbst ruft, kann „schleifen“. In diesem Fall werden die Punkte des normalen Spiels für die Schrift gewertet (z.B. Pagatrufer 3 Punkte). Entscheidet sich der Spieler zu spielen, kann er kontriert werden. Das Kontra zählt nicht für die Schrift, wird aber am Tisch sofort ausbezahlt.</li>'
             + '<li>Liegt beim Solorufer der gerufene König im Talon, erhält der Alleinspieler die Talonhälfte mit dem König. Kontras zählen in diesem Fall nicht, egal ob das Spiel bzw. allfällige Prämien gewonnen oder verloren sind.</li>'
@@ -120,14 +129,14 @@ function showRegeln() {
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Negativspiele:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Negativspiele:</div>'
             + '<li>Bei Trischaken, Piccolo (ouvert), Zwiccolo (ouvert) und Bettler (ouvert) spielt der Spielaufnehmer aus. „Bei“-Spiele sind nicht zulässig. Ist Piccolo/Zwiccolo lizitiert worden, ist kein zweiter Piccolo/Zwiccolo möglich. Piccolo/Zwiccolo und Bettler sind nicht kombinierbar.</li>'
             + '<li>Es gilt Stichzwang. Der Pagat darf nur als letztes Tarock gespielt werden. Kein Märchenstich in Negativspielen.</li>'
             + '<li>Bei den Ouvertspielen legen alle Spieler vor dem zweiten Ausspielen ihre Karten offen auf den Tisch. Die 3 Gegenspieler dürfen sich beraten („plaudern“). Die gespielten Karten/Stiche werden entweder eingezogen oder bleiben vor jedem Spieler offen am Tisch liegen.</li>'
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Prämien:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Prämien:</div>'
             + '<li>Jeder Spieler kann nur einmal Prämien ansagen, und er muss zuvor angesagte Prämien anderer Spieler gleich kontrieren, später kann er nur noch jene Prämien, die nach ihm angesagt wurden, kontrieren.</li>'
             + '<li>Ein Spieler darf ein Vogerl oder König ultimo nur dann ansagen, wenn er die jeweilige Karte im Blatt hat.</li>'
             + '<li>Im Solorufer, Solodreier und Farbensolo gelten alle Prämien doppelt (Valat bleibt aber 8-fach/4-fach). Im Solodreier (höchstes Spiel) müssen die Prämien gleich mit der Spielansage gemeldet werden. Dies gilt auch für eine allfällige Valatansage.</li>'
@@ -138,14 +147,14 @@ function showRegeln() {
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Valat:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Valat:</div>'
             + '<li>Im angesagten und stillen Valat zählen alle Vogerln und der König ultimo (egal ob angesagt oder still), werden aber nicht vervielfacht. Im angesagten Valat kann man Trull oder 4 Könige nicht ansagen. Im stillen Valat zählen angesagte Trull und angesagte 4 Könige.</li>'
             + '<li>Bei Pagatrufer, Uhurufer etc. wird im Fall eines Valats nur das Spiel vervielfacht, nicht auch das Vogerl.</li>'
             + '<li>In einem angesagten Valat kann das Spiel nicht kontriert werden, der Valat hingegen schon. Wurde ein Spiel kontriert und es kommt zu einem stillen Valat, so zählt das Kontra nicht.</li>'
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Farbspiele:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Farbspiele:</div>'
             + '<li>Zunächst müssen Tarock verlegt werden, und zwar verdeckt (keine Trullstücke!), erst dann dürfen Farben verlegt werden, und zwar offen. Der Farbspieler muss nach dem Verlegen mindestens 6 Farbkarten im Blatt haben. Zum ersten Ausspielen kommt immer die Vorhand.</li>'
             + '<li>Alle Spieler dürfen erst dann Tarock ausspielen, wenn sie keine Farbkarten mehr haben.</li>'
             + '<li>Kann ein Spieler eine Farbe nicht bedienen, muss er Tarock zugeben. Wer in diesem Fall kein Tarock hat, gibt beliebig zu.</li>'
@@ -154,21 +163,14 @@ function showRegeln() {
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Wie lange wird gespielt:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Wie lange wird gespielt:</div>'
             + '<li>Es werden insgesamt 3 Runden (Tische) zu je fünf Radln (= 20 Spiele) gespielt. Die Auslosung über alle 3 Runden wird zu Beginn nach dem Zufallsprinzip erstellt. Nach der ersten Runde werden am zweiten Tisch wieder fünf Radln gespielt. Dann wird wieder gewechselt. Dies ergibt insgesamt 15 Radln (= 60 Spiele).</li>'
             + '<li>Pro Runde gibt es ein Zeitlimit von 2 Stunden. Bei zeitlicher Überschreitung kann der Schiedsrichter die Runde vorzeitig abbrechen.</li>'
             + '<li>Ein unentschuldigtes Verlassen eines Turniers führt zu einer Sperre! Die Dauer der Sperre wird individuell festgelegt.</li>'
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Es wird aber nicht nur geschrieben, sondern auch ausbezahlt:</b>'
-            + '<li>Es wird jedes Spiel sofort geschrieben. Nach 20 Spielen, also am Ende einer jeden Runde, wird das Ergebnis dann in Summe ausbezahlt (wobei 1 Punkt = 10 Cent). Kontras werden nicht geschrieben, gelten nur für die Auszahlung und sind sofort nach dem jeweiligen Spiel zu zahlen. Dadurch soll verhindert werden, dass durch heftiges Kontrieren der Punktestand an einem Tisch in die Höhe getrieben wird.</li>'
-            + '<li>Für das Turnierergebnis ist nur die Schrift am Schreibzettel ausschlaggebend.</li>'
-            + '<li>Die Ergebnisse der Einzelturniere werden in fixe Cuppunkte umgerechnet (erster Platz 223 Fixpunkte, zweiter 198, dritter 180 …. 50. Platz 1 Fixpunkt). Für den Gesamtturniersieg werden die sechs besten Ergebnisse plus das Finalergebnis gewertet.</li>'
-            + '</ul>'
-
-            + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Wie sehen die Regeln für Renonce aus?</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Wie sehen die Regeln für Renonce aus?</div>'
             + '<li>Begeht ein Spieler Renonce, erhalten die anderen Spieler so viele Punkte, als hätten sie das Spiel und die angesagten Prämien gewonnen (der renoncierende Ruferspieler zahlt also auch dem eigenen Partner; der renoncierende Gegner eines Dreierspielers zahlt den anderen 2 Gegnern je 1 Mal, dem Dreierspieler 3 Mal, also in Summe 5 Mal).</li>'
             + '<li>Verstöße gegen Farbzwang/Stichzwang gelten dann als Renonce, wenn jener Spieler, der den Stich gemacht hat, die Karten schon eingezogen hat. Liegen die Karten noch am Tisch, darf bei Verstößen gegen Farbzwang/Stichzwang korrigiert werden. Ein Ausspiel zum nächsten Stich gilt als „eingezogen“, auch wenn der vorige Stich noch offen am Tisch liegt.</li>'
             + '<li>Bei Ouvertspielen gilt ein Verstoß gegen den Farbzwang/Stichzwang dann als eingetreten, wenn entweder zum nächsten Stich ausgespielt worden ist (wenn die Karten/Stiche vor jedem Spieler offen liegenbleiben) oder wenn der Stich umgedreht worden ist (wenn die Karten/Stiche eingezogen werden). Davor ist eine Korrektur des Verstoßes noch möglich, sofern er entdeckt wird.</li>'
@@ -185,7 +187,7 @@ function showRegeln() {
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Was ist die Tarock-Etikette:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Die Tarock-Etikette:</div>'
             + '<li>Auf einen fairen Spielablauf wird großer Wert gelegt. Wir bitten um einen freundlichen und kollegialen Umgang unter den Spielern, um höfliches, korrektes und ruhiges Verhalten.</li>'
             + '<li>Störendes Reden während des Spielablaufs ist unerwünscht (insbesondere Kommentare zum Spiel und Kritik an den Mitspielern) und hat auf Aufforderung gänzlich zu unterbleiben. Nach der Abrechnung eines Spiels kann eine kurze, konstruktive Nachbesprechung tattfinden, da wechselseitiges Lernen im Interesse aller ist.</li>'
             + '<li>Es herrscht an den Spielorten Rauchverbot. Der Alkoholkonsum ist bitte in solchen Maßen zu halten, dass Umgangsformen und Spielfähigkeit nicht beeinträchtigt sind.</li>'
@@ -198,7 +200,7 @@ function showRegeln() {
             + '</ul>'
 
             + '<ul>'
-            + '<b class=S>§&nbsp;&nbsp;&nbsp;Ausschluss des Rechtsweges:</b>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">$&nbsp;&nbsp;Ausschluss des Rechtsweges:</div>'
             + '<li>Der Rechtsweg ist ausgeschlossen. Mit der Teilnahme erklärt sich jeder Spieler damit ausdrücklich einverstanden und auch Entscheidungen der Cup-Leitung und der Schiedsrichter zu akzeptieren. Der Cupleitung und den Veranstaltern steht es frei, ohne Angabe von Gründen Spieler von der Teilnahme auszuschließen. Es besteht kein Rechtsanspruch auf Teilnahme an einzelnen Turnierveranstaltungen.</li>'
             + '</ul>'
             + '<br>'

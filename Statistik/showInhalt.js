@@ -12,6 +12,7 @@ function showInhalt() {
         jbSpieler.close();
     }
 
+
     $('#iPlus,#iMinus').hide();
 
     $("#sideContent").show();
@@ -34,9 +35,9 @@ function showInhalt() {
 
     $('#nbUebersicht').addClass('ui-btn-active');
     $('#nbSaison,#nbArchiv').removeClass('ui-btn-active');
-    if (QUERFORMAT()) {
-        showIcons([]);
-    }
+
+    showIcons([]);
+
 
     stStat = 'Uebersicht';
     writeCanvas('Vivat Valat!');

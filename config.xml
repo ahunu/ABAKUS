@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.phonegap.ABAKUS" 
-        versionCode = "993"
-        version     = "993">     <!-- ABAKUS -->
+        id          = "com.phonegap.ABAKUSst" 
+        versionCode = "9930001"
+        version     = "9930001">     <!-- ABAKUSst -->
 
-    <name>ABAKUS</name>
+    <name>ABAKUS für Tablets</name>
     
-    <!-- ACHTUNG Die config.xml muss auf _Standard und _Tablet geaendert werden.yy -->
+    <!-- ACHTUNG Die config.xml muss auf _Standard und _Tablet geaendert werden. -->
 
     <description>
         ABAKUS die königliche Tarock-App.
@@ -27,7 +27,6 @@
     <preference name="splashscreen"      value="Icons/AbakusSplash.png" />
     <preference name="permissions"       value="none"      />
     <preference name="phonegap-version"  value="cli-9.0.0" />
-    <preference name="orientation"       value="portrait"  />
     <preference name="target-device"     value="universal" />
     <preference name="fullscreen"        value="false"     /> 
 

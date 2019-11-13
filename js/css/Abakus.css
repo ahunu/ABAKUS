@@ -291,12 +291,14 @@ iPad 5. Gen.: 1024 x 748
 @media screen and (orientation : landscape)  {
 
     .cLinks,#dLinks { width: 28% !important}
-
+    
+    .TGL { display: none !important }
+    
     #dPC { display: block !important }
     .cSmartphone, .cTablet, #p360, #p361, #p451 { display: none !important }
 
     #pMenu, #hMenu { display: block !important }
-    #pCup, #pCupFooter, #pTisch, hMix { display: none !important }
+    hMix { display: none !important }
 
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: 1.85vw !important;}
 

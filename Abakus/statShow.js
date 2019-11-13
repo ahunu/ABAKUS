@@ -107,7 +107,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
             if (stSort === 'TZU') {
                 html = html + statPosDivPCtur();
             } else if ((stStat === -1 || stStat === 2) && (stTurCupGes === 1 || stTurCupGes === 2 || stTurCupGes === 3 || stTurCupGes > 3) || stSort[0] === 'T') {
-                if ((CUPS.TYP[stCup] === 'MT' || stCup === 11) && (stTurCupGes === 1 || stTurCupGes === 2)) { // 1 === akt. Jahr, 2 === Vorjahr
+                if ((CUPS.TYP[stCup] === 'MT') && (stTurCupGes === 1 || stTurCupGes === 2)) { // 1 === akt. Jahr, 2 === Vorjahr
                     html = html + statPosCupD60(pRunde);
                 } else {
                     html = html + statPosCup(pRunde);

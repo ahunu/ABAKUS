@@ -51,11 +51,7 @@ function statPosCup(pRunde) {
     }
 
     if (stTurCupGes === 3) {
-        if (stCup !== 11) {
-            ret += "<th class='TR QUER' hidden>Cup</th>";
-        } else {
-            ret += "<th class='TR QUER' hidden>D60</th>";
-        }
+        ret += "<th class='TR QUER' hidden>Cup</th>";
         ret += "<th class=TR>Ges</th>";
         ret += "<th class=TR>R1</th><th class=TR>R2</th><th class=TR>R3&nbsp;</th>";
         if (stSort === 'STO') {
@@ -265,11 +261,7 @@ function statPosCup(pRunde) {
             }
 
             if (stTurCupGes === 3) {
-                if (stCup !== 11) {
-                    pos += '<td class="TR QUER ' + sCUP + '" hidden>' + CupPunkte + '</td>';
-                } else {
-                    pos += '<td class="TR QUER ' + sD60 + '" hidden>' + parseInt(STAT.S[i].PUNKTE[stTurCupGes] * 60 / STAT.S[i].SPIELE[stTurCupGes]) + '</td>';
-                }
+                pos += '<td class="TR QUER ' + sCUP + '" hidden>' + CupPunkte + '</td>';
                 pos += '<td class="TR ' + sGES + '" nowrap>' + GesPunkte + '</td>';
                 if (typeof STAT.S[i].PUNKTERx === 'object') {
                     pos += '<td class="TR" nowrap>&nbsp;' + (typeof STAT.S[i].PUNKTERx[0] === 'number' ? STAT.S[i].PUNKTERx[0] : '---') + '</td><td class="TR" nowrap>&nbsp;' + (typeof STAT.S[i].PUNKTERx[1] === 'number' ? STAT.S[i].PUNKTERx[1] : (STAT.TURRUNDE === 1 ? '' : '---')) + '</td><td class="TR" nowrap>&nbsp;' + (typeof STAT.S[i].PUNKTERx[2] === 'number' ? STAT.S[i].PUNKTERx[2] : (STAT.TURRUNDE === 1 || STAT.TURRUNDE === 2 ? '' : '---')) + '&nbsp;</td>';

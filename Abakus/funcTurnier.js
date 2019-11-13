@@ -1,6 +1,21 @@
 
 /* global LS, CUPS, I, firebase, STAT, rPfad, FB */
 
+function zumTurnier() {
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
+        if (!window.chrome) {
+            showEineMeldung('Achtung', 'HTML5 und Javascript werden von deinem<br>Browser nicht ausreichend unterstützt.'
+                    + '<br>Verwende einen der folgenden Browser:'
+                    + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>, <b>Slimjet</b>'
+                    + '<br>oder einen anderen kompatiblen Browser.');
+            return;
+        }
+        LS.ShowCups = I;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        fHref('_Turnier/TU_1_Anmeldung.html?init');
+    }
+}
+
 function iStartStop(pPruefen) {
     'use strict';
     mTischTurnier = 'Turnier';
@@ -208,7 +223,7 @@ function TurnierSTARTENend() {
     if (STAT.ZULETZT) {
         hSTAT.ZULETZT = new Date(new Date(STAT.ZULETZT).getTime() - 60000 * new Date(STAT.ZULETZT).getTimezoneOffset() + 1).toISOString();
     } else {
-        hSTAT.ZULETZT= new Date().toISOString();
+        hSTAT.ZULETZT = new Date().toISOString();
     }
     hSTAT.TURCODE = iTURCODE;
     hSTAT.TURADMIN = LS.ME;

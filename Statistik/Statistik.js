@@ -68,16 +68,7 @@ function QUERFORMAT() {
 
 function historyBack() {
     $('body').addClass('ui-disabled');
-    if (QUERFORMAT()
-            || window.location.href.indexOf('?FromTurnier') > 0
-            || STAT._AKTTURNIER && STAT._AKTTURNIER._RUNDE && STAT._AKTTURNIER._RUNDE <= 3 && LS.ME.length === 4) {
-        history.back();
-    } else {
-        LS.ShowCups = 0;
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        LS.ShowCups = stCup; // for after Bottom-Forward
-        history.back();
-    }
+    history.back();
 }
 
 function defArchiv() {
@@ -711,12 +702,6 @@ function fINIT(pCup) {
         }
         if (firebaseRef) {
             firebaseRef.off();
-        }
-        if (STAT && STAT._AKTTURNIER && STAT._AKTTURNIER._RUNDE && STAT._AKTTURNIER._RUNDE <= 3 && LS.ME.length === 4) {
-        } else if (!QUERFORMAT() && LS.I !== LS.ShowCups) {
-//            LS.ShowCups = 0;
-//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-//            LS.ShowCups = stCup; // for after Bottom-Forward
         }
     };
 }

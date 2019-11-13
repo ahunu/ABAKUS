@@ -110,18 +110,8 @@ function TischNeu(pNeu) {
 //        if (LS.I !== I || !CUPS.TURNIER[LS.I]) {
 //            LS.I = 0;
 //        }
-        if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
-            if (!window.chrome) {
-                showEineMeldung('Achtung', 'HTML5 und Javascript werden von deinem<br>Browser nicht ausreichend unterstützt.'
-                        + '<br>Verwende einen der folgenden Browser:'
-                        + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>, <b>Slimjet</b>'
-                        + '<br>oder einen anderen kompatiblen Browser.');
-                return;
-            }
-            LS.ShowCups = I;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            fHref('_Turnier/TU_1_Anmeldung.html?init');
-        } else if (!CUPS.TURNIER[I] && (CUPS.TYP[I] === 'PR' || I === 1) && localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3))) {
+
+        if (!CUPS.TURNIER[I] && (CUPS.TYP[I] === 'PR' || I === 1) && localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3))) {
             LS.LoadCups = I * -1; // - = neuer Tisch
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             fHref('Abakus/Anmeldung.html');
@@ -266,7 +256,7 @@ function getCupText() {
     return html;
 }
 
-function getCupButtons() {
+function getTurnierButtons() {
     var html = '';
     if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3) {
         if (CUPS.TURNIER[I] === 'Handy') {

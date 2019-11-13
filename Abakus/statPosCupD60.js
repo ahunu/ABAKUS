@@ -23,11 +23,7 @@ function statPosCupD60(pRunde) {
     if (stSort === 'NAM') {
         sNAM = ' B';
     } else if (stSort === 'CUP' || -1) {
-        if (stCup !== 11) {
-            sCUP = ' B';
-        } else {
-            sGES = ' B';
-        }
+        sCUP = ' B';
     } else if (stSort === 'D60') {
         sD60 = ' B';
     } else if (stSort === 'GES') {
@@ -64,10 +60,7 @@ function statPosCupD60(pRunde) {
                     ? "<td colspan=2>&nbsp;" + (CUPS.TURNIER[stCup] === 'Handy' || stTurCupGes !== 3 ? "Voll ab " + stVollAb + "%" : "") + "</td>"
                     : "<td>&nbsp;" + (CUPS.TURNIER[stCup] === 'Handy' || stTurCupGes !== 3 ? "Voll ab " + stVollAb + "%" : "") + "</td>"
                     )
-            + ((stCup !== 11)
-                    ? "<th class=TR></th>"
-                    : ""
-                    )
+            + "<th class=TR></th>"
             + "<th colspan=2 class=TC>Punkte</th>"
             + (((stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') && (QUERFORMAT() || stSort !== 'STO')) ? "<th class='TR" + cNoSTO + ">Anz.</th>" : "")
             + ((stTurCupGes !== 3 && CUPS.TURNIER[stCup] && (QUERFORMAT() || stSort === 'STO')) ? "<th class='TC" + cSTO + ">Stockerl</th>" : "")
@@ -79,10 +72,7 @@ function statPosCupD60(pRunde) {
                     : ""
                     )
             + "<th>&nbsp;Name</th>"
-            + ((stCup !== 11)
-                    ? "<th class=TR>G60</th>"
-                    : ""
-                    )
+            + "<th class=TR>G60</th>"
             + "<th class=TR>&nbsp;&nbsp;D60</th>"
             + "<th class=TR>&nbsp;&nbsp;Ges</th>"
             + (((stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') && (QUERFORMAT() || stSort !== 'STO')) ? "<th class='TR" + cNoSTO + ">Spiel</th>" : "")
@@ -110,7 +100,7 @@ function statPosCupD60(pRunde) {
             if (STAT.S[i].SPIELE[stTurCupGes] >= (STAT.MAXSPIELE[stTurCupGes] * CUPS.DISPAB[stCup][stTurCupGes] / 100)
                     || stGelegenheitsspieler
                     || STAT.S[i].NR === '0000') {
-                if (stSort === 'CUP' || (stStat === -1 && stCup !== 11)) {
+                if (stSort === 'CUP' || stStat === -1) {
                     sKey = Math.round(getCupPunkte(i));
                 } else if (stSort === 'D60') {
                     sKey = STAT.S[i].PUNKTE[stTurCupGes] * 60 / STAT.S[i].SPIELE[stTurCupGes];
@@ -193,12 +183,12 @@ function statPosCupD60(pRunde) {
             if (stSort !== 'NAM') {
                 if (stSort === 'CUP' || stSort === 'STO' || stSort === 'D60' || stSort === 'GES') {
                     aktRANG++;
-                    if (((stSort === 'CUP' || (stStat === -1 && stCup !== 11)) && CupPunkte !== "" && CupPunkte !== lastPUNKTE)
-                            || ((stSort === 'CUP' || (stStat === -1 && stCup !== 11)) && CupPunkte === "" && d60TP !== lastPUNKTE)
+                    if (((stSort === 'CUP' || stStat === -1) && CupPunkte !== "" && CupPunkte !== lastPUNKTE)
+                            || ((stSort === 'CUP' || stStat === -1) && CupPunkte === "" && d60TP !== lastPUNKTE)
                             || (stSort === 'STO' && CupPunkte !== lastPUNKTE)
                             || (stSort === 'D60' && d60TP !== lastPUNKTE)
                             || (stSort === 'GES' && STAT.S[i].PUNKTE[stTurCupGes] !== lastPUNKTE)) {
-                        if (stSort === 'CUP' || (stStat === -1 && stCup !== 11)) {
+                        if (stSort === 'CUP' || stStat === -1) {
                             if (CupPunkte !== "") {
                                 lastPUNKTE = CupPunkte;
                             } else {
@@ -245,10 +235,10 @@ function statPosCupD60(pRunde) {
             }
             if (stTurCupGes <= 3 && stAktiv) {
                 pos = pos + '<tr id=L0P' + j + ' class="L0' + hBackground + '">' + (stSort !== 'NAM' && stSort !== 'STO' ? '<td class=TR>' + tRANG + '</td>' : '') + '<td>&nbsp;<span id=Z0P' + j + ' class="' + (STAT.S[i].NR === LS.ME ? '' : 'Z0 P cBlau ') + sNAM + '" onclick="showDetailStat(' + j + ')">' + (getName(i).replace(' ', '&nbsp;')) + '</span></td>'
-                        + (stCup !== 11 ? '<td class="TR ' + sCUP + '">' + (STAT.S[i].PUNKTE[stTurCupGes] >= 0 ? CupPunkte : '') + '</td>' : '') + '<td class="TR ' + sD60 + '" nowrap>' + d60TP + '</td><td class="TR ' + sGES + '" nowrap>' + STAT.S[i].PUNKTE[stTurCupGes] + '</td>';
+                        + '<td class="TR ' + sCUP + '">' + (STAT.S[i].PUNKTE[stTurCupGes] >= 0 ? CupPunkte : '') + '</td><td class="TR ' + sD60 + '" nowrap>' + d60TP + '</td><td class="TR ' + sGES + '" nowrap>' + STAT.S[i].PUNKTE[stTurCupGes] + '</td>';
             } else { // Archiv
                 pos = pos + '<tr id=L0P' + j + ' class="L0' + hBackground + '">' + (stSort !== 'NAM' && stSort !== 'STO' ? '<td class=TR>' + tRANG + '</td>' : '') + '<td>&nbsp;<span id=Z0P' + j + ' class="' + (STAT.S[i].NR === LS.ME ? '' : 'Z0 ') + sNAM + '">' + (getName(i).replace(' ', '&nbsp;')) + '</span></td>'
-                        + (stCup !== 11 ? '<td class="TR ' + sCUP + '">' + (STAT.S[i].PUNKTE[stTurCupGes] >= 0 ? CupPunkte : '') + '</td>' : '') + '<td class="TR ' + sD60 + '" nowrap>' + d60TP + '</td><td class="TR ' + sGES + '" nowrap>' + STAT.S[i].PUNKTE[stTurCupGes] + '</td>';
+                        + '<td class="TR ' + sCUP + '">' + (STAT.S[i].PUNKTE[stTurCupGes] >= 0 ? CupPunkte : '') + '</td><td class="TR ' + sD60 + '" nowrap>' + d60TP + '</td><td class="TR ' + sGES + '" nowrap>' + STAT.S[i].PUNKTE[stTurCupGes] + '</td>';
             }
             if (stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') {
                 if (stSort !== 'STO') {
@@ -284,14 +274,12 @@ function statPosCupD60(pRunde) {
     } else {
         ret = ret + (nGelegenheitsspieler ? '<div class=M>&nbsp;' + nGelegenheitsspieler + ' Gelegenheitsspieler wurden nicht gelistet.</div>' : '');
     }
-    if (stStat !== 11) {
-        ret = ret + (nAbzuege && ((stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') || stVollAb === 0)
-                ? "<div class=M>"
-                + "&nbsp;Maximal gespielt: " + STAT.MAXSPIELE[stTurCupGes] + " Spiele.<br>"
-                + "&nbsp;" + stVollAb + " % davon sind " + (Math.round(STAT.MAXSPIELE[stTurCupGes] * stVollAb) / 100) + " Spiele.<br>"
-                + "&nbsp;Somit keine Abz&uuml;ge ab " + Math.round((STAT.MAXSPIELE[stTurCupGes] * stVollAb / 100) + 0.5) + " Spiele.</div></div>"
-                : "</div>"
-                );
-    }
+    ret = ret + (nAbzuege && ((stTurCupGes !== 3 || CUPS.TURNIER[stCup] === 'Handy') || stVollAb === 0)
+            ? "<div class=M>"
+            + "&nbsp;Maximal gespielt: " + STAT.MAXSPIELE[stTurCupGes] + " Spiele.<br>"
+            + "&nbsp;" + stVollAb + " % davon sind " + (Math.round(STAT.MAXSPIELE[stTurCupGes] * stVollAb) / 100) + " Spiele.<br>"
+            + "&nbsp;Somit keine Abz&uuml;ge ab " + Math.round((STAT.MAXSPIELE[stTurCupGes] * stVollAb / 100) + 0.5) + " Spiele.</div></div>"
+            : "</div>"
+            );
     return ret;
 }

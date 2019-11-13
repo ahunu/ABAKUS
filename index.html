@@ -109,7 +109,7 @@
         <script src='Abakus/getZitat.js'   ></script>
         <script src='Abakus/loadCUPS.js'   ></script>
         <script src='Abakus/loadSTAT.js'   ></script>
-                <script src="Abakus/loadSPIELER.js"></script>
+        <script src="Abakus/loadSPIELER.js"></script>
         <script src='Statistik/loadTURNIER.js'></script>
         <script src='Abakus/AaVersion.js'  ></script>
         <script src='Abakus/Texte.js'      ></script>
@@ -253,7 +253,7 @@
                         <br>
                     </div>
                     <div id=pMenu class='S'>
-                        <div id=bZuMeinemTisch onClick="showCup(LS.I);" hidden>
+                        <div id=bZuMeinemTisch onClick="hrefTisch(LS.I);" hidden>
                             <div class="ui-grid-a ui-btn k">
                                 <div class="ui-block-a" style="text-align:left;width:66px;">
                                     <img src='Icons/MeinTisch.png' height="56" width="56"/>
@@ -320,139 +320,6 @@
                         </div>
                     </div>
 
-                    <div id=pCup hidden>
-
-                        <div style="margin:.0em 10px;padding:.0em">
-                            <div id=hfText  class=M>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="ui-grid-a ui-btn" onClick="hrefStatistik();">
-                            <div class="ui-block-a" style="width:10%; text-align:center;">
-                                <img src='Icons/Statistik.png' style="margin-top:0.5vw;margin-bottom:-0.5vw;margin-left:.2vw;height:11vw; width:11vw;" alt="Cup/Runde"/>
-                            </div>
-                            <div class="ui-block-b" style="width:90%; text-align:center;padding:0;margin:0;">
-                                <div class="L">Zur Statistik</div>
-                                <div class="M N">Punktelisten, Diagramme, etc.</div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="ui-grid-a ui-btn" onClick="TischNeu();">
-                            <div class="ui-block-a" style="width:10%; text-align:center;">
-                                <img src='Icons/MeinTisch.png' style="margin-top:0.5vw;margin-bottom:-0.5vw;margin-left:.2vw;height:11vw; width:11vw;" alt="Cup/Runde"/>
-                            </div>
-                            <div class="ui-block-b" style="width:90%; text-align:center;padding:0;margin:0;">
-                                <div class="L">Ein neuer Tisch</div>
-                                <div class="M N">Vivat Valat!</div>
-                            </div>
-                        </div>
-                        <br>
-                        <span id=cupButtons style="margin-left:1.5em"></span>
-
-                        <div data-role="navbar" data-iconpos="left">
-                            <div class="ui-grid-solo">
-                                <div class="ui-block-a">
-                                    <div class="ui-grid-a ui-btn" onClick="historyBack();">
-                                        <div class="ui-block-a" style="width:25%;padding:4px 0px 0px 0px">
-                                            <img src='Icons/icon-48-mdpi.png' height="40" width="40" style="margin:-15px"/>
-                                        </div>
-                                        <div class="ui-block-b" style="width:75%;padding:8px 0px 8px 0px">
-                                            <div class=M>Abakus
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id=pTisch hidden>
-                        <div id=pSpiele>
-                            <table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='M ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >
-                                <thead>
-                                    <tr class='ui-bar-d'>
-                                        <th>&nbsp;Spieler
-                                        </th>
-                                        <th class=TC>Punkte&nbsp;
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>        &nbsp;
-                            <span id="tGespielt" class='M'>
-                            </span>
-                        </div>
-                        <br>
-                        <ul data-role="listview" data-split-icon="info" data-ll-inset="true">
-                            <li>
-                                <a id="bWeiter" style="padding:1em" onclick="Weiterspielen();">Weiterspielen</a>
-                                <a onclick="$('#hWeiter').toggle('show');">Hilfe</a>
-                                <div id='hWeiter' style='margin:1em;' class='M' hidden>Mit <strong>'Weiterspielen'</strong> wird der Tisch dort fortgesetzt, wo er zuvor unterbrochen wurde.
-                                </div>
-                            </li>
-                            <li>
-                                <a id="bSpieler" style="padding:.1em" onclick="fHref('Abakus/Anmeldung.html')">Spieler anmelden</a>
-                                <a onclick="$('#hSpieler').toggle('show');">Hilfe</a>
-                                <div id='hSpieler' style='margin:1em;' class='M' hidden>Mit <strong>'Spieler anmelden'</strong> kannst du einen fünften oder sechsten Spieler eintragen sowie Anmeldungen korrigieren.
-                                </div>
-                            </li>
-                            <li>
-                                <a id="bSpeichern" style="padding:.1em" onclick="fHref('Abakus/TischSpeichern.html')">Tisch speichern</a>
-                                <a onclick="$('#hSpeichern').toggle('show');">Hilfe</a>
-                                <div id='hSpeichern' style='margin:1em;' class='M' hidden>Erst mit <strong>'Tisch speichern'</strong> werden deine Daten in den verschiedenen Statistiken ber&uuml;cksichtigt.
-                                </div>
-                                <div id='hFehler' style='margin:1em;' class='M cRot' hidden>Der/die Name(n) der Spieler
-                                    <br>f&uuml;nf und/oder sechs fehlen.
-                                    <br><strong>Bitte die Spieler erg&auml;nzen.</strong>
-                                </div>
-                            </li>
-                            <li>
-                                <a id="bTischLoeschen" onClick="TischLoeschen();" style="padding:.1em" >Tisch löschen</a>
-                                <a onclick="$('#hTischLoeschen').toggle('show');">Hilfe</a>
-                                <div id='hTischLoeschen' style='margin:1em;' class='M' hidden>Mit <strong>Tisch löschen</strong> wird der Tisch gelöscht.
-                                </div>
-                            </li>
-                            <li>
-                                <a id="bNeuerTisch" onClick="TischNeu();" style="padding:.1em" >Neuer Tisch</a>
-                                <a onclick="$('#hNeueRunde').toggle('show');">Hilfe</a>
-                                <div id='hNeueRunde' style='margin:1em;' class='M' hidden>Einen <strong>neuen Tisch</strong> kannst du erst beginnen, wenn du den alten Tisch zuvor gespeichert oder gel&ouml;scht hast.
-                                    <br>
-                                    <br><strong>Vivat Valat !</strong>
-                                </div>
-                            </li>
-                        </ul>
-                        <br>
-                        <span id=tischButtons style="margin-left:1.5em"></span>
-
-                        <div data-role="navbar" data-iconpos="left">
-                            <div class="ui-grid-a">
-                                <div class="ui-block-a">
-                                    <div class="ui-grid-a ui-btn" onClick="history.back();">
-                                        <div class="ui-block-a" style="width:25%;padding:4px 0px 0px 0px">
-                                            <img src='Icons/icon-48-mdpi.png' height="40" width="40" style="margin:-15px"/>
-                                        </div>
-                                        <div class="ui-block-b" style="width:75%;padding:8px 0px 8px 0px">
-                                            <div class=M>Abakus
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ui-block-b">
-                                    <div class="ui-grid-a ui-btn" onClick="hrefStatistik();">
-                                        <div class="ui-block-a" style="width:25%;padding:4px 0px 0px 0px">
-                                            <img src='Icons/Statistik.png' height="40" width="40" style="margin:-15px"/>
-                                        </div>
-                                        <div class="ui-block-b" style="width:75%;padding:8px 0px 8px 0px">
-                                            <div class=M>Statistik
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
@@ -481,6 +348,79 @@
 
         </div>
 
+        <div data-role="popup" data-history="false" id="pMEINTISCH" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L3 ui-corner-all onExit" data-position-to="#dText">
+            <div data-role="header" id=ssTitel data-theme="d" class="ui-corner-top XL" style="text-align:center">CupName
+            </div>
+
+
+
+            <div id=pSpiele>
+                <table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='M ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >
+                    <thead>
+                        <tr class='ui-bar-d'>
+                            <th>&nbsp;Spieler
+                            </th>
+                            <th class=TC>Punkte&nbsp;
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>        &nbsp;
+                <span id="tGespielt" class='M'>
+                </span>
+            </div>
+            <br>
+            <ul data-role="listview" data-split-icon="info" data-ll-inset="true">
+                <li>
+                    <a id="bWeiter" style="padding:1em" onclick="Weiterspielen();">Weiterspielen</a>
+                    <a onclick="$('#hWeiter').toggle('show');">Hilfe</a>
+                    <div id='hWeiter' style='margin:1em;' class='M' hidden>Mit <strong>'Weiterspielen'</strong> wird der Tisch dort fortgesetzt, wo er zuvor unterbrochen wurde.
+                    </div>
+                </li>
+                <li>
+                    <a id="bSpieler" style="padding:.1em" onclick="fHref('Abakus/Anmeldung.html')">Spieler anmelden</a>
+                    <a onclick="$('#hSpieler').toggle('show');">Hilfe</a>
+                    <div id='hSpieler' style='margin:1em;' class='M' hidden>Mit <strong>'Spieler anmelden'</strong> kannst du einen fünften oder sechsten Spieler eintragen sowie Anmeldungen korrigieren.
+                    </div>
+                </li>
+                <li>
+                    <a id="bSpeichern" style="padding:.1em" onclick="fHref('Abakus/TischSpeichern.html')">Tisch speichern</a>
+                    <a onclick="$('#hSpeichern').toggle('show');">Hilfe</a>
+                    <div id='hSpeichern' style='margin:1em;' class='M' hidden>Erst mit <strong>'Tisch speichern'</strong> werden deine Daten in den verschiedenen Statistiken ber&uuml;cksichtigt.
+                    </div>
+                    <div id='hFehler' style='margin:1em;' class='M cRot' hidden>Der/die Name(n) der Spieler
+                        <br>f&uuml;nf und/oder sechs fehlen.
+                        <br><strong>Bitte die Spieler erg&auml;nzen.</strong>
+                    </div>
+                </li>
+                <li>
+                    <a id="bTischLoeschen" onClick="TischLoeschen();" style="padding:.1em" >Tisch löschen</a>
+                    <a onclick="$('#hTischLoeschen').toggle('show');">Hilfe</a>
+                    <div id='hTischLoeschen' style='margin:1em;' class='M' hidden>Mit <strong>Tisch löschen</strong> wird der Tisch gelöscht.
+                    </div>
+                </li>
+                <li>
+                    <a id="bNeuerTisch" onClick="TischNeu();" style="padding:.1em" >Neuer Tisch</a>
+                    <a onclick="$('#hNeueRunde').toggle('show');">Hilfe</a>
+                    <div id='hNeueRunde' style='margin:1em;' class='M' hidden>Einen <strong>neuen Tisch</strong> kannst du erst beginnen, wenn du den alten Tisch zuvor gespeichert oder gel&ouml;scht hast.
+                        <br>
+                        <br><strong>Vivat Valat !</strong>
+                    </div>
+                </li>
+            </ul>
+            <br>
+            <div data-role="footer" data-theme="a">
+                <div data-role="navbar">
+                    <ul>
+                        <li>
+                            <button type="button" data-rel=back data-theme="d" onclick="$('#pMEINTISCH').popup('close');">Abbrechen
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <div data-role="popup" data-history="false" id="pSTARTSTOP" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L3 ui-corner-all onExit" data-position-to="#dText">
             <div data-role="header" id=ssTitel data-theme="d" class="ui-corner-top XL" style="text-align:center">CupName

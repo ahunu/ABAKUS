@@ -167,10 +167,6 @@ function getCupPunkte(i, pTurCupGes) {
         pTurCupGes = stTurCupGes;
     }
 
-    if (stCup === 11) { // Skoty Throphy
-        return STAT.S[i].PUNKTE[pTurCupGes];
-    }
-
     var ret = STAT.S[i].PUNKTE[pTurCupGes] * 60 / STAT.S[i].SPIELE[pTurCupGes];
     if (STAT.S[i].SPIELE[pTurCupGes] < (STAT.MAXSPIELE[pTurCupGes] * stVollAb / 100)) {
         if (STAT.S[i].PUNKTE[pTurCupGes] >= 0) {

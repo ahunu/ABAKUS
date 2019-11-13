@@ -155,8 +155,8 @@ function getCupPunkte(pTurnier, pSpieler) {
     var hPunkte = STAT[pTurnier][pSpieler][4]; // Meine Cuppunkte
     if (hPunkte <= 0) {
         return '-';
-//    } else if (hPunkte >= 200) {
-//        return 150;
+    } else if (hPunkte >= 300) {
+        return 200;
     } else if (hPunkte > 100) {
         return parseInt((hPunkte - 100) / 2) + 100;
     } else {

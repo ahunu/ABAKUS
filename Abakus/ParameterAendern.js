@@ -12,7 +12,6 @@ var hRundeTurnier = 'Runde';
 var editor = null;
 var myJBox = null;
 var myJTip = null;
-
 function myJBoxClose() {
     myJBox.close();
 }
@@ -294,10 +293,8 @@ function copyEND() {
 
 function onSubmit() {
     'use strict';
-
     var hBEREadmin = $("#iBEREadmin").val().trim();
     var hBEREschreiben = $("#iBEREschreiben").val().trim();
-
     if (hBEREadmin.indexOf(LS.ME) >= 0 && hBEREschreiben.indexOf(LS.ME) >= 0) {
         showEinenTip("#iBEREschreiben", 'Du kannst nicht gleichzeitig<br>Admin und Stellvertreter sein.');
         return;
@@ -308,7 +305,10 @@ function onSubmit() {
         return;
     }
 
-
+    if ($("#iBEREadmin").val().trim().length < 4) {
+        showEinenTip("#iBEREadmin", 'Es muss mindestens ein Administrator angegeben werden.');
+        return;
+    }
 
     if (mCupLoeschen === 1) {
         if (CUPS.NAME[I] !== $("#iCupLoeschen").val()) {
@@ -326,7 +326,9 @@ function onSubmit() {
         showEinenMoment(CUPS.NAME[I], 'Daten&nbsp;werden&nbsp;gespeichert.');
     }
 
-    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {
+    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT'
+            || (LS.ME === '3425' || LS.ME === '3244') && CUPS.BEREadmin[I].indexOf(LS.ME) > 0) {
+        $("#iBEREadmin").removeClass('ui-disabled');
         CUPS.BEREadmin[I] = $("#iBEREadmin").val().trim();
         if (CUPS.BEREadmin[I] === '') {
             CUPS.BEREadmin[I] = '-';
@@ -434,7 +436,7 @@ function onSubmit() {
     hCUPS.ANMELDERF = CUPS.ANMELDERF[I];
     hCUPS.BEREadmin = CUPS.BEREadmin[I];
     hCUPS.BEREschreiben = CUPS.BEREschreiben[I];
-    hCUPS.BERElesen = null;              // wird nicht mehr benötigt
+    hCUPS.BERElesen = null; // wird nicht mehr benötigt
     hCUPS.DISPAB = CUPS.DISPAB      [I];
     hCUPS.NAME = CUPS.NAME          [I];
     hCUPS.NAME2LEN = CUPS.NAME2LEN  [I];
@@ -575,8 +577,14 @@ $(document).bind('pageinit', function () {
     }
     if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {
         $('#dRundenBerechtigungen').remove();
+        if (CUPS.BEREadmin[I].indexOf(LS.ME) < 0 && CUPS.BEREschreiben[I].indexOf(LS.ME) < 0 && LS.ME !== '3425') {
+            $("#editor,#iBEREadmin,#iBEREschreiben,#bSpeichern").addClass('ui-disabled');
+        }
     } else {
         $('#dCupBerechtigungen').remove();
+        if ((LS.ME === '3425' || LS.ME === '3244') && CUPS.BEREadmin[I].indexOf(LS.ME) > 0) {
+            $("#iBEREadmin").removeClass('ui-disabled');
+        }
     }
     if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === "Handy") {
     } else {
@@ -586,12 +594,6 @@ $(document).bind('pageinit', function () {
     $("#tNAME2").text(CUPS.NAME[I]);
     $("#iBEREadmin").val(CUPS.BEREadmin[I]);
     $("#iBEREschreiben").val(CUPS.BEREschreiben[I]);
-
-    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {
-        if (CUPS.BEREadmin[I].indexOf(LS.ME) < 0 && CUPS.BEREschreiben[I].indexOf(LS.ME) < 0 && LS.ME !== '3425') {
-            $("#editor,#iBEREadmin,#iBEREschreiben,#bSpeichern").addClass('ui-disabled');
-        }
-    }
     editor = pell.init({
         element: document.getElementById('editor'),
         actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
@@ -606,7 +608,6 @@ $(document).bind('pageinit', function () {
         editor.content.innerHTML = '';
     }
     $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
-
     $("input:radio[name=iREGELN][value='Wr.']").prop('checked', (CUPS.REGELN[I] === 'Wr.')).checkboxradio("refresh");
     $("input:radio[name=iREGELN][value='Ooe.']").prop('checked', (CUPS.REGELN[I] === 'Ooe.')).checkboxradio("refresh");
     $("input:radio[name=iREGELN][value='Ti.']").prop('checked', (CUPS.REGELN[I] === 'Ti.')).checkboxradio("refresh");
@@ -818,7 +819,6 @@ $(document).bind('pageinit', function () {
         CUPS.REGELN[I] = $("input:radio[name=iREGELN]:checked").val();
     });
     $('#hTitel1').text(CUPS.NAME[I]);
-
     myJTip = new jBox('Tooltip', {
         theme: 'TooltipError',
         delayClose: 20,

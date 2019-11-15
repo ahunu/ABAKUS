@@ -253,7 +253,7 @@
                         <br>
                     </div>
                     <div id=pMenu class='S'>
-                        <div id=bZuMeinemTisch onClick="hrefTisch(LS.I);" hidden>
+                        <div id=bZuMeinemTisch onClick="fZuMeinemTisch();" hidden>
                             <div class="ui-grid-a ui-btn k">
                                 <div class="ui-block-a" style="text-align:left;width:66px;">
                                     <img src='Icons/MeinTisch.png' height="56" width="56"/>
@@ -348,12 +348,13 @@
 
         </div>
 
-        <div data-role="popup" data-history="false" id="pMEINTISCH" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L3 ui-corner-all onExit" data-position-to="#dText">
-            <div data-role="header" id=ssTitel data-theme="d" class="ui-corner-top XL" style="text-align:center">CupName
+        <div data-role="popup" data-history="false" id="pMEINTISCH" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="TL XS ui-corner-all onExit" data-position-to="#dText">
+            <div data-role="header" data-theme="a" class="ui-corner-top M2" style="text-align:center">
+                <img src='Icons/MeinTisch.png' style="float: left; top: 2px; left: 2px; height:58px; width:auto; margin-right: 4px" alt="Mein Tisch"/>
+                <div id="tMeinTischName" class="B TL" style="white-space: nowrap"></div>
+                <div class="N TL">Mein Tisch</div>
             </div>
-
-
-
+            <br>
             <div id=pSpiele>
                 <table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='M ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >
                     <thead>
@@ -375,50 +376,41 @@
                 <li>
                     <a id="bWeiter" style="padding:1em" onclick="Weiterspielen();">Weiterspielen</a>
                     <a onclick="$('#hWeiter').toggle('show');">Hilfe</a>
-                    <div id='hWeiter' style='margin:1em;' class='M' hidden>Mit <strong>'Weiterspielen'</strong> wird der Tisch dort fortgesetzt, wo er zuvor unterbrochen wurde.
-                    </div>
                 </li>
+                <div id='hWeiter' style='margin:1em;' class='M' hidden>Mit <strong>'Weiterspielen'</strong> wird der Tisch dort fortgesetzt, wo er zuvor unterbrochen wurde.
+                </div>
                 <li>
                     <a id="bSpieler" style="padding:.1em" onclick="fHref('Abakus/Anmeldung.html')">Spieler anmelden</a>
                     <a onclick="$('#hSpieler').toggle('show');">Hilfe</a>
-                    <div id='hSpieler' style='margin:1em;' class='M' hidden>Mit <strong>'Spieler anmelden'</strong> kannst du einen fünften oder sechsten Spieler eintragen sowie Anmeldungen korrigieren.
-                    </div>
                 </li>
+                <div id='hSpieler' style='margin:1em;' class='M' hidden>Mit <strong>'Spieler anmelden'</strong> kannst du einen fünften oder sechsten Spieler eintragen sowie Anmeldungen korrigieren.
+                </div>
                 <li>
                     <a id="bSpeichern" style="padding:.1em" onclick="fHref('Abakus/TischSpeichern.html')">Tisch speichern</a>
                     <a onclick="$('#hSpeichern').toggle('show');">Hilfe</a>
-                    <div id='hSpeichern' style='margin:1em;' class='M' hidden>Erst mit <strong>'Tisch speichern'</strong> werden deine Daten in den verschiedenen Statistiken ber&uuml;cksichtigt.
-                    </div>
-                    <div id='hFehler' style='margin:1em;' class='M cRot' hidden>Der/die Name(n) der Spieler
-                        <br>f&uuml;nf und/oder sechs fehlen.
-                        <br><strong>Bitte die Spieler erg&auml;nzen.</strong>
-                    </div>
                 </li>
+                <div id='hSpeichern' style='margin:1em;' class='M' hidden>Erst mit <strong>'Tisch speichern'</strong> werden deine Daten in den verschiedenen Statistiken ber&uuml;cksichtigt.
+                </div>
+                <div id='hFehler' style='margin:1em;' class='M cRot' hidden>Der/die Name(n) der Spieler
+                    <br>f&uuml;nf und/oder sechs fehlen.
+                    <br><strong>Bitte die Spieler erg&auml;nzen.</strong>
+                </div>
                 <li>
                     <a id="bTischLoeschen" onClick="TischLoeschen();" style="padding:.1em" >Tisch löschen</a>
                     <a onclick="$('#hTischLoeschen').toggle('show');">Hilfe</a>
-                    <div id='hTischLoeschen' style='margin:1em;' class='M' hidden>Mit <strong>Tisch löschen</strong> wird der Tisch gelöscht.
-                    </div>
                 </li>
+                <div id='hTischLoeschen' style='margin:1em;' class='M' hidden>Mit <strong>Tisch löschen</strong> wird der Tisch gelöscht.</div>
                 <li>
-                    <a id="bNeuerTisch" onClick="TischNeu();" style="padding:.1em" >Neuer Tisch</a>
+                    <a id="bNeuerTisch" onClick='$("#pMEINTISCH").popup("close");fEinNeuerTisch();' style="padding:.1em" >Neuer Tisch</a>
                     <a onclick="$('#hNeueRunde').toggle('show');">Hilfe</a>
-                    <div id='hNeueRunde' style='margin:1em;' class='M' hidden>Einen <strong>neuen Tisch</strong> kannst du erst beginnen, wenn du den alten Tisch zuvor gespeichert oder gel&ouml;scht hast.
-                        <br>
-                        <br><strong>Vivat Valat !</strong>
-                    </div>
                 </li>
-            </ul>
-            <br>
-            <div data-role="footer" data-theme="a">
-                <div data-role="navbar">
-                    <ul>
-                        <li>
-                            <button type="button" data-rel=back data-theme="d" onclick="$('#pMEINTISCH').popup('close');">Abbrechen
-                            </button>
-                        </li>
-                    </ul>
+                <div id='hNeueRunde' style='margin:1em;' class='M' hidden>Einen <strong>neuen Tisch</strong> kannst du erst beginnen, wenn du den alten Tisch zuvor gespeichert oder gel&ouml;scht hast.
+                    <br>
+                    <br><strong>Vivat Valat !</strong>
                 </div>
+            </ul>
+            <div class="C">
+                <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='$("#pMEINTISCH").popup("close");'>Abbrechen</a>
             </div>
         </div>
 
@@ -455,8 +447,11 @@
         </div>
 
 
-        <div data-role="popup" data-history=false id="pTISCHSPEICHERN" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="XL ui-corner-all">
-            <div data-role="header" data-theme="d" class="ui-corner-top" style="text-align:center" id=tsNeuerTischTurnier>Ein neuer Tisch:
+        <div data-role="popup" data-history=false id="pTISCHWASNUN" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="XL ui-corner-all">
+            <div data-role="header" data-theme="a" class="ui-corner-top M2" style="text-align:center">
+                <img src='Icons/MeinTisch.png' style="float: left; top: 2px; left: 2px; height:58px; width:auto; margin-right: 4px" alt="Mein Tisch"/>
+                <div id="tTischWasNunName" class="B TL" style="white-space: nowrap"></div>
+                <div id="tTischWasNunTitel" class="N TL"></div>
             </div>
             <div style='margin:0.5em;' data-theme="a" class=L>
                 <span id=tsTitel data-theme="d" class="L B cRot" hidden>Meine Runde:
@@ -466,11 +461,11 @@
                 <br>Willst du
                 <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='Weiterspielen();'>weiterspielen</a>,
                 <br>die
-                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleSpeichern onclick='$("#pTISCHSPEICHERN").popup("close");fHref("Abakus/TischSpeichern.html")'>Spiele speichern</a>,
+                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleSpeichern onclick='$("#pTISCHWASNUN").popup("close");fHref("Abakus/TischSpeichern.html")'>Spiele speichern</a>,
                 <br><span id="tsDieDen">die</span>
-                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleLoeschen onclick='$("#pTISCHSPEICHERN").popup("close").show(TischNeuLoeschen);'>Spiele löschen und neuen Tisch</a>,
+                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleLoeschen onclick='$("#pTISCHWASNUN").popup("close").show(TischNeuLoeschen);'>Spiele löschen und neuen Tisch</a>,
                 <br>oder
-                <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='$("#pTISCHSPEICHERN").popup("close");'>abbrechen</a>?
+                <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='$("#pTISCHWASNUN").popup("close");'>abbrechen</a>?
             </div>
         </div>
 

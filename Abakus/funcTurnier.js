@@ -49,7 +49,7 @@ function iStartStop(pPruefen) {
                         + '&nbsp;<b>' + CUPS.NAME[LS.I] + '</b>&nbsp;beenden.');
                 return;
             } else if (pPruefen && LS.gespielt) {
-                $('#tsNeuerTischTurnier').html('Das Turnier starten:');
+                $('#tTischWasNunTitel').html('Das Turnier starten:');
                 if (LS.I !== I) {
                     $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
                     $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
@@ -57,7 +57,7 @@ function iStartStop(pPruefen) {
                     $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
                 }
                 $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
-                $("#pTISCHSPEICHERN").popup("open").show();
+                $("#pTISCHWASNUN").popup("open").show();
                 return;
             }
         }
@@ -77,7 +77,7 @@ function iStartStop(pPruefen) {
         LS.I = 0;
     }
 
-    $("#ssTitel").html('&nbsp&nbsp;' + CUPS.NAME[I] + '&nbsp&nbsp;');
+    $("#ssTitel").html('&nbsp;' + CUPS.NAME[I] + '&nbsp&nbsp;');
     if (LS.I === 0) {
         if (new Date(CUPS.NEXTTERMIN[I]).toDateString() !== new Date().toDateString()) {
             var iWochentag = (new Date).getDay();
@@ -118,7 +118,7 @@ function iStartStop(pPruefen) {
     $("#ssMELD").hide();
     $('#bSSja,#bSSnein').removeClass('ui-btn-active');
 
-    setTimeout(function () { // warten auf close von pTISCHSPEICHERN
+    setTimeout(function () { // warten auf close von pTISCHWASNUN
         $("#pSTARTSTOP").popup("open").show();
         $("#iTURCODE").val('').focus();
         if (!FB) {

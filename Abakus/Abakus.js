@@ -636,7 +636,7 @@ function ErgChange(btn) {
             showEinenTip(btn, 'Beim Trischaken<br>zahlt der "Gewinner".');
             return;
         }
-        i1 = parseInt($(btn).text()) * -1;
+        var i1 = parseInt($(btn).text()) * -1;
         if (aktSpiel === i6er && btn === '#gWert') {
             if (i1 < 0) {
                 i1 *= 2;
@@ -1575,6 +1575,9 @@ function fINIT() {
         return false;
     };
 
+    LS.showMeinenTisch = true;
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+
     if (LS.Ansagen) {
         $('#iAudio').addClass('zmdi-volume-up');
     } else {
@@ -1591,16 +1594,6 @@ function fINIT() {
     if (!LS.I) { // Spontaner Tisch
         $('#nbOptions').addClass('ui-disabled');
     }
-
-    var i1 = 0;
-    var i2 = 0;
-    var i3 = 0;
-    var i4 = 0;
-    var i5 = 0;
-    var i6 = 0;
-    var i7 = 0;
-    var i8 = 0;
-    var i9 = 0;
 
     initGames();
 // #Positivspiele

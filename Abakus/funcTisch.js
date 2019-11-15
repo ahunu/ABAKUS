@@ -3,13 +3,13 @@
 
 function TischNeuLoeschen() {
     if (mTischNeuLoeschen === "N") {
-        TischNeu(true);
+        fEinNeuerTisch(true);
     } else {
         TischLoeschen(true);
     }
 }
 
-function TischNeu(pNeu) {
+function fEinNeuerTisch(pOK) {
     'use strict';
     if (LS.I && LS.I !== I) {
         if (CUPS.TURNIER[I] === 'Handy'
@@ -96,7 +96,7 @@ function TischNeu(pNeu) {
         }
     }
 
-    if (pNeu || LS.gespielt < 1) {
+    if (pOK || LS.gespielt < 1) {
 //        LS.AnzGespeichert = 0;
 //        LS.AnzSpieler = 0;
 //        LS.gespielt = 0;
@@ -129,6 +129,7 @@ function TischNeu(pNeu) {
         }
     } else {
         mTischNeuLoeschen = "N";
+        $('#tTischWasNunName').html(CUPS.NAME[I] + '&nbsp&nbsp;');
         if (LS.I !== I) {
             $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
             $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
@@ -136,15 +137,15 @@ function TischNeu(pNeu) {
             $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
         }
         if (mTischTurnier === 'Turnier') {
-            $('#tsNeuerTischTurnier').html('Das Turnier starten:');
+            $('#tTischWasNunTitel').html('Das Turnier starten:');
             $('#tsDieDen').html('die');
             $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
         } else {
-            $('#tsNeuerTischTurnier').html('Ein neuer Tisch:');
+            $('#tTischWasNunTitel').html('Ein neuer Tisch:');
             $('#tsDieDen').html('die');
             $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und neuen Tisch');
         }
-        $("#pTISCHSPEICHERN").popup("open").show();
+        $("#pTISCHWASNUN").popup("open").show();
     }
 }
 
@@ -202,6 +203,9 @@ function TischLoeschen(pLoeschen) {
         showCup(h);
         $('#bZuMeinemTisch').hide();
         $('a').removeClass('cAktiv');
+
+//        showCUPS(); // Um "Zu meinem Tisch" auf "Ein neuer Tisch" zu ändern
+        whenCUPSloaded();
     } else {
         mTischNeuLoeschen = "L";
         if (LS.I !== I) {
@@ -210,13 +214,14 @@ function TischLoeschen(pLoeschen) {
         } else {
             $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
         }
-        $('#tsNeuerTischTurnier').html('Den Tisch löschen:');
+        $('#tTischWasNunTitel').html('Den Tisch löschen:');
         if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
             $('#tsSpieleSpeichern').addClass('ui-disabled');
         }
         $('#tsDieDen').html('den');
         $('#tsSpieleLoeschen').html('Tisch löschen');
-        $("#pTISCHSPEICHERN").popup("open").show();
+        $("#pMEINTISCH").popup("close");
+        $("#pTISCHWASNUN").popup("open").show();
     }
 }
 

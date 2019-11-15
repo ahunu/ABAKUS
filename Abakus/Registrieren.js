@@ -260,7 +260,7 @@ $(document).bind('pageinit', function () {
             $('#iVNN').val(hName).addClass('ui-disabled');
             $('#iPIN').focus();
         } else {
-            $('#iVNN').val('').removeClass('ui-disabled');
+            $('#iVNN').removeClass('ui-disabled').attr("placeholder", "Vorname Nachname, Ort");
         }
     });
 

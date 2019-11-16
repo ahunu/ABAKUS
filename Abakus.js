@@ -994,6 +994,20 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
     if (pCup !== 49 && pCup !== 51 && pCup !== 52) {
 
+//        if (pCup === 56) {
+//
+//            hReturn += (LS.I !== pCup
+//                    ? '<div class="ui-btn S ' + (pCup === 5 || pCup === 6 || pCup === 7 ? '' : ' ui-disabled') + '" onClick="fEinNeuerTisch();">'
+//                    + '<img src=\'Icons/MeinTisch.png\' height="40" width="40" style="float:left"><br>Ein neuer Tisch</div>'
+//                    : '<div class="ui-btn S ' + (pCup === 5 || pCup === 6 || pCup === 7 ? '' : ' ui-disabled') + '" onClick="fZuMeinemTisch();">'
+//                    + '<img src=\'Icons/MeinTisch.png\' height="40" width="40" style="float:left"><br>Zu meinem Tisch</div>'
+//                    )
+//                    + '<div class="ui-btn M TL" onClick="hrefStatistik(' + pCup + ');" sstyle="vertical-align:middle">'
+//                    + '<img src=\'Icons/Statistik.png\' height="40" width="40" style="float:left"><div style="vertical-align:middle">Zur Statistik</div>'
+//                    + '</div>';
+//
+//        } else
+            
 
         if (LS.ME === 'NOBODY' || pCup === 5 || pCup === 6 || pCup === 7) {
 // ein neuer Tisch          ZUR STATISTIK
@@ -1045,8 +1059,8 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 var hHeuteTurnier = true;
             } else {
                 if (LS.ME.length === 4 && pCup !== 53 && pCup !== 55) {
-                    for (var termin in TERMINE) {
-                        if (TERMINE[termin].CUP === pCup && TERMINE[termin].DATUM === hHeute) {
+                    for (var termin in CUPS.TERMINE) {  //  llll llll
+                        if (CUPS.TERMINE[termin].CUP === pCup && CUPS.TERMINE[termin].DATUM === hHeute) {
                             hHeuteTurnier = true;
                             break;
                         }
@@ -1397,8 +1411,9 @@ function whenCUPSloaded() {
                     }
 
                     hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
-                    htmlALLE += '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;' + (TERMINE[termin].BEGINN ? TERMINE[termin].BEGINN : '') + '&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
+                    hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;' + (TERMINE[termin].BEGINN ? TERMINE[termin].BEGINN : '') + '&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
                             + getCupToggleDiv('bAL', TERMINE[termin].CUP, termin);
+                    htmlALLE += hTemp;
                     if (TERMINE[termin].DATUM <= hAktuellBis) {
                         for (var iMC in LS.MeineCups) {
                             if (TERMINE[termin].CUP === 49 || TERMINE[termin].CUP === LS.MeineCups[iMC]) {

@@ -21,11 +21,18 @@ function showGR() {
     $('#bChart').show();
 
     canvas = document.getElementById('bChart');
-    if (window.location.search) {
-        canvas.height = parseInt(window.location.search.substr(1)) - $('#NB').height() - $('#NB').height() - 2;
+//    if (window.location.search) { // llll llll
+//        canvas.height = parseInt(window.location.search.substr(1)) - $('#NB').height() - $('#NB').height() - 2;
+//    } else {
+//        canvas.height = $(window).innerHeight() - $('#NB').height() - $('#NB').height() - 2;
+//    }
+
+    if (screen.height < $(window).innerHeight()) {
+        canvas.height = screen.height - $('#NB').height() - $('#NB').height() - 2;
     } else {
         canvas.height = $(window).innerHeight() - $('#NB').height() - $('#NB').height() - 2;
     }
+
     canvas.width = $(window).width();
     ctx = canvas.getContext('2d');
     ctx.textAlign = "center";

@@ -994,30 +994,6 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
     if (pCup !== 49 && pCup !== 51 && pCup !== 52) {
 
-        if (pCup === 11) {
-
-
-            hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Anmeldungen\');">'
-                    + '<img src=\'Icons/Anmeldung.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Anmeldung<div class="S N">Sich an- oder abmelden</div>'
-                    + '</div>'
-                    + '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
-                    + '<img src=\'Icons/Turnier.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Turnier starten<div class="S N">Turnier starten und beenden</div>'
-                    + '</div>'
-                    + (LS.I !== pCup
-                            ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch();">'
-                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
-                            : '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
-                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zu meinem Tisch<div class="S N">Weiterspielen, speichern, etc.</div>'
-                            )
-                    + '</div>'
-                    + '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
-                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">Statistiken und Fotos ansehen</div>'
-                    + '</div>'
-                    + '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern();">'
-                    + '<img src=\'Icons/Optionen.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Parameter ändern<div class="S N">Beschreibung und Berechtigungen ändern</div>'
-                    + '</div>';
-        } else
-
 
         if (LS.ME === 'NOBODY' || pCup === 5 || pCup === 6 || pCup === 7) { // Allgemeine Runden, NOBODY
 // Ein neuer Tisch / Zu meinem Tisch

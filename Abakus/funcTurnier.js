@@ -16,7 +16,7 @@ function zumTurnier() {
     }
 }
 
-function iStartStop(pPruefen) {
+function fStartStop(pPruefen) {
     'use strict';
     mTischTurnier = 'Turnier';
     if (LS.I) {

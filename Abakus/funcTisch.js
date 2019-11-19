@@ -15,7 +15,7 @@ function fEinNeuerTisch(pOK) {
         if (CUPS.TURNIER[I] === 'Handy'
                 && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
                 && mTischTurnier === 'Turnier') {
-            iStartStop(false); // der Admin will das Turnier starten
+            fStartStop(false); // der Admin will das Turnier starten
             return; // very important
         }
     }
@@ -150,7 +150,7 @@ function fEinNeuerTisch(pOK) {
 }
 
 function TischLoeschen(pLoeschen) {
-    if (pLoeschen || LS.gespielt < 1) {
+    if (pLoeschen) {
         var hLog = CUPS.NAME[LS.I];
         hLog += '<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.';
         if (LS.gespielt) {
@@ -188,7 +188,7 @@ function TischLoeschen(pLoeschen) {
         LS.Sterne = ['', '', '', '', '', '', ''];
         LS.Ort = ['', '', '', '', '', '', ''];
         LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
-        LS.TURRUNDE = 0;
+//        LS.TURRUNDE = 0; // Bei Spontanturnier nach Tisch löschen nicht erlaupt llll llll
         if ('TURTISCH' in LS) {
             delete LS.TURTISCH;
         }
@@ -200,14 +200,15 @@ function TischLoeschen(pLoeschen) {
             LS.I = 0;
         }
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        showCup(h);
         $('#bZuMeinemTisch').hide();
-        $('a').removeClass('cAktiv');
+//        $('a').removeClass('cAktiv');
 
-//        showCUPS(); // Um "Zu meinem Tisch" auf "Ein neuer Tisch" zu ändern
-        whenCUPSloaded();
+        showCUPS(); // Um "Zu meinem Tisch" auf "Ein neuer Tisch" zu ändern
+        showCup(h);
+//        whenCUPSloaded();
     } else {
         mTischNeuLoeschen = "L";
+        $('#tTischWasNunName').html(CUPS.NAME[LS.I] + '&nbsp&nbsp;');
         if (LS.I !== I) {
             $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
             $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
@@ -299,12 +300,12 @@ function getTurnierButtons() {
             }
 
             if (LS.I === 0 && !LS.TURRUNDE || (LS.I !== 0 && LS.I !== I)) {
-                html += "<a onclick='iStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bStartbutton>&nbsp;Turnier starten&nbsp;</a>";
+                html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bStartbutton>&nbsp;Turnier starten&nbsp;</a>";
             } else if (LS.I === I && (LS.TURADMIN === LS.ME || LS.I < 5)) {
                 if (LS.TURRUNDE < CUPS.RUNDEN[I]) {
-                    html += "<a onclick='iStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bRundeXbeenden>&nbsp;Runde " + LS.TURRUNDE + " beenden&nbsp;</a>";
+                    html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bRundeXbeenden>&nbsp;Runde " + LS.TURRUNDE + " beenden&nbsp;</a>";
                 } else {
-                    html += "<a onclick='iStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bTurnierBeenden>&nbsp;Turnier beenden&nbsp;</a>";
+                    html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bTurnierBeenden>&nbsp;Turnier beenden&nbsp;</a>";
                 }
             }
         }

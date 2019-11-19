@@ -33,15 +33,8 @@ function showHeinewertung() {
 
     stStat = 'Heinewertung';
     stNamenLen = 0.3;
-    if (stCup === 55) {
-        if (QUERFORMAT()) {
-            writeCanvas('Cupwertung  ' + stSaison + '  nach Heinepunkten');
-        } else {
-            writeCanvas('Cupwertung  ' + stSaison);
-        }
-    } else {
-        writeCanvas('Cupwertung  ' + stSaison);
-    }
+    writeCanvas('Heinewertung  ' + stSaison);
+
     $("#dCopyright").hide();
     if (stEndstand) {
         $('#tStand').html('Endstand:').attr('style', 'position: fixed; top: 44px; right: 5px; cursor: pointer;').show();
@@ -104,11 +97,23 @@ function showHeinewertung() {
     }
 
     var SORTnachPlatz = [];
-    var spieler = '';
 
     for (var spieler in SP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
+        var hCuppunkte = 0;
+        if (stFinale) {
+            if (Number.isInteger(getCupPunkte(stFinale, spieler))) {
+                hCuppunkte += getCupPunkte(stFinale, spieler);
+            }
+        }
+        if (CUP[spieler]) {
+            for (i = 0; i < parseInt(CUPS.TURNIER[stCup]) && i < CUP[spieler].length; i++) {
+                if (Number.isInteger(CUP[spieler][i])) {
+                    hCuppunkte += CUP[spieler][i];
+                }
+            }
+        }
         if (SP[spieler][iSaison]) {
-            SORTnachPlatz.push((100 + SP[spieler][iSaison][spRangImCup]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+            SORTnachPlatz.push((9000 - hCuppunkte) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         }
     }
 
@@ -194,8 +199,6 @@ function showHeinewertung() {
             }
         }
         html += '<th class="TR">' + hCuppunkte + '&nbsp;</th>';
-//        html += '<th class="TR">' + SP[spieler][iSaison][spCuppunkte] + '&nbsp;</th>';
-
 
         if (stFinale) {
             html += "<td class='TR'>" + getCupPunkte(stFinale, spieler) + "&nbsp;</td>";

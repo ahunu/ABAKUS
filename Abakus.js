@@ -550,12 +550,34 @@ function resetLastBtn() {
     }
 }
 
-function toggleShow(pToggle) {
-    if ($(pToggle).is(":visible")) {
-        $(pToggle).toggle('show');
-    } else {
-        $('.TGL').hide();
-        $(pToggle).toggle('show');
+
+function fScrollToView() {
+
+    if (LS.LastBtn) {
+        setTimeout(function () {
+
+            var elementTop = parseInt($(LS.LastBtn).offset().top);
+            var elementBottom = elementTop + $(this).outerHeight();
+
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+
+            console.log(LS.LastBtn + ': ', elementTop, viewportTop);
+
+//    return elementTop > viewportTop && elementTop < viewportBottom;
+            if (elementTop < 0) {
+                console.log(LS.LastBtn + ': ', elementTop, viewportTop);
+//                $("#pContent").scrollTo(LS.LastBtn,1000);
+//                $('#pContent').scrollTop(elementTop * -1 + 55);
+                $('#pContent').scrollTop(22);
+//                $('#pContent').scrollTop($(LS.LastBtn).offset().top);
+//            if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
+//                if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
+//                    $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
+//                }
+//            }
+            }
+        }, 1300);
     }
 }
 
@@ -596,9 +618,19 @@ function showCup(i, pBtn, pTermin) {
         }
     }
     if (LS.LastBtn) {
-        if (pTermin === -1) {
+        var resetTermin = LS.LastBtn.lastIndexOf('T');
+        if (resetTermin > 3) {
+            if (resetTermin + 1 === LS.LastBtn.length) {
+                resetTermin = -1;
+            } else {
+                resetTermin = 1;
+            }
+        } else {
+            resetTermin = 0;
+        }
+        if (pTermin === -1 || resetTermin === -1) {
             $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen').removeClass('cDIV');
-        } else if (pTermin) {
+        } else if (pTermin || resetTermin) {
             $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen');
         } else {
             if (i === 49 || i === 51 || i === 52) {
@@ -607,6 +639,40 @@ function showCup(i, pBtn, pTermin) {
             $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen');
         }
         $('#tgl' + LS.LastBtn.substr(1)).toggle('show');
+//        $('#tgl' + LS.LastBtn.substr(1)).toggle('show', fScrollToView);
+
+//        if (!QUERFORMAT()) {
+//            $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
+//            if ($(LS.LastBtn).length) {
+//                if (QUERFORMAT()) {
+//                    $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
+//                }
+//                if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
+//                    $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
+//                    if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
+//                        if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
+//                            $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
+//                        }
+//                    }
+//                }
+//            }
+//        }
+
+//        $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
+//        if ($(LS.LastBtn).length) {
+//            if (QUERFORMAT()) {
+//                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
+//            }
+//            if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
+//                $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
+//                if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
+//                    if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
+//                        $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
+//                    }
+//                }
+//            }
+//        }
+
     }
 
     writeCanvas(I);
@@ -765,6 +831,22 @@ function showCup(i, pBtn, pTermin) {
         $('#hfText').html('<div class="B cRot">' + hMeldung + '</div>' + CUPS.TEXT1[i] + htmlNaechstTermin);
     } else {
         $('#hfText').html(CUPS.TEXT1[i] + htmlNaechstTermin);
+    }
+
+    if (LS.LastBtn) {
+
+//        if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
+//            $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
+//            if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
+//                if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
+//                    $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
+//                }
+//            }
+//        }
+
+
+
+
     }
 
 }
@@ -1078,7 +1160,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                         hStartStopText = 'Turnier beenden<div class="S N">Turnier starten und beenden</div>';
                     }
                 }
-                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="iStartStop(true);">'
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fStartStop(true);">'
                         + '<img src=\'Icons/Turnier.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">' + hStartStopText
                         + '</div>';
             }
@@ -1120,8 +1202,8 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                         + '</div>';
             }
             if (LS.I === pCup
-                    || CUPS.SPIELTAGE[I][iWochentag] === 'J'
-                    || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 4) {
+                    || CUPS.SPIELTAGE[pCup][iWochentag] === 'J'
+                    || CUPS.SPIELTAGE[pCup][iVortag] === 'J' && (new Date()).getHours() <= 4) {
                 if (LS.I !== pCup || LS.AnzSpieler === 0) {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch();">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
@@ -1145,7 +1227,52 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
         }
     }
     if (!pTermin && CUPS.TEXT1[pCup]) {
-        hReturn += '<div class="M J S2" style="margin:6px;">' + CUPS.TEXT1[pCup] + '</div>';
+        if (pCup !== 49) {
+            hReturn += '<div class="M J S2" style="margin:6px;">' + CUPS.TEXT1[pCup] + '</div>';
+        } else {
+            hReturn += '<div class="M J S2" style="margin:6px;">'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a" style="width:20%"></div>'
+                    + '<div class="ui-block-b M" style="width:80%">Die Tarockmeister:</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2019</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2018</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Wimmer Anton</b><br>Puchkirchen</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2017</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Christian Rieseneder</b><br>Wien</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2016</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Mülleder Josef</b><br>Bad Leonfelden</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2015</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Zauner Hubert</b><br>Bad Ischl</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2014</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Stürmer Rudi</b><br>Bad Leonfelden</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2013</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Ebner Florian</b><br>Linz</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2012</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Böckl Josef</b><br>Neukirchen/V.</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2011</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Leimhofer Markus</b><br>Neustadl</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2010</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Manzenreiter Hermann</b><br>Bad Leonfelden</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2009</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Doppler Manfred</b><br>Ampflwang</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2008</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div>'
+                    + '</div>';
+        }
+
     } else {
         hReturn += '<div style="margin-top:10px;"></div>';
     }
@@ -1247,7 +1374,7 @@ function whenCUPSloaded() {
     var i = 0;
     var nAktTermine = 0;
     var nMeineRundenCups = 0;
-    var htmlAKT = '<div id="bAT" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Aktuelle Termine:</h2><ul data-role="listview">';
+    var htmlAKT = '<div id="bAK" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Aktuelle Termine:</h2><ul data-role="listview">';
     var htmlALLE = '<div id="bAL" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Alle Termine:</h2><ul data-role="listview">';
     var htmlMR = '<div id="bMR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class=" "><h2>&nbsp;Meine Cups/Runden:</h2><ul data-role="listview">';
     var htmlCT = '<div id="bCT" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"' + (LS.Quickstart ? ' data-collapsed="false"' : '') + '><h2>&nbsp;Cups:</h2><ul data-role="listview">';
@@ -1265,7 +1392,7 @@ function whenCUPSloaded() {
     var hBtnName = 'b??';
     var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
     for (var termin in TERMINE) {
-        if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "xxxTEST") { // llll
+        if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST" && TERMINE[termin].CUP > 8) {
             if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
                     || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4).toUpperCase() !== "TEST" || LS.ME === "3425")) {
                 if (TERMINE[termin].CUP === 8 || TERMINE[termin].CUP === 10) {
@@ -1343,7 +1470,7 @@ function whenCUPSloaded() {
 
                     htmlALLE += hTemp;
                     nAktTermine++;
-                    htmlAKT += hTemp.replace(/bAL/g, 'bAT');
+                    htmlAKT += hTemp.replace(/bAL/g, 'bAK');
                 }
             }
         }
@@ -1452,70 +1579,6 @@ function whenCUPSloaded() {
 
     for (var s = 0; s < SORT.length; s++) {
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
-        if (QUERFORMAT() || !CUPS.TEXT1[i] || CUPS.TYP[i] === 'PR') {
-            html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + (i === 49 || i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? ' cDIV' : '') + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a></li>';
-        } else {
-            if (!QUERFORMAT() && (i === 49 || i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv)) {
-                html = '<li data-icon=false><a id="bXX' + i + '" class="cDIV' + getClass(i) + '" onClick="toggleShow(\'#hToggle2' + i + '\');">&nbsp;' + getCupName(i) + '</a></li>'
-                        + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
-                        + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] : '')
-                        + (i === 49
-                                ? '<div class=S2><br>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a" style="width:20%"></div>'
-                                + '<div class="ui-block-b M" style="width:80%">Die Tarockmeister:</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2019</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2018</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Wimmer Anton</b><br>Puchkirchen</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2017</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Christian Rieseneder</b><br>Wien</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2016</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Mülleder Josef</b><br>Bad Leonfelden</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2015</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Zauner Hubert</b><br>Bad Ischl</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2014</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Stürmer Rudi</b><br>Bad Leonfelden</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2013</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Ebner Florian</b><br>Linz</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2012</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Böckl Josef</b><br>Neukirchen/V.</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2011</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Leimhofer Markus</b><br>Neustadl</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2010</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Manzenreiter Hermann</b><br>Bad Leonfelden</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2009</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Doppler Manfred</b><br>Ampflwang</div></div>'
-                                + '<div class="ui-grid-a">'
-                                + '<div class="ui-block-a C M3" style="width:20%">2008</div>'
-                                + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div></div>'
-                                : '')
-                        + '</div>';
-            } else if (i === 53 && mSauwaldAktiv) {
-                html = '<li><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="hrefStatistik(' + TERMINE[termin].CUP + ')">&nbsp;' + getCupName(i) + '</a>'
-                        + '<a onclick="toggleShow(\'#hToggle2' + i + '\');">Info</a></li>'
-                        + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
-                        + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
-                        + '</div>';
-            } else {
-                html = '<li><a id="bXX' + i + '" class="' + (i === 51 && !mHausruckAktiv || i === 52 && !mRaiffeisenAktiv || i === 53 && !mSauwaldAktiv || i === 55 && !mTirolAktiv ? 'cDIV ' : '') + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')">#####&nbsp;' + getCupName(i) + '</a>'
-                        + '<a onclick="toggleShow(\'#hToggle2' + i + '\');">Info</a></li>'
-                        + '<div id="hToggle2' + i + '" class="TGL M" style="margin:8px;text-align:justify;" hidden>'
-                        + (CUPS.TEXT1[i] ? CUPS.TEXT1[i] + '<br>' : '')
-                        + '</div>';
-            }
-        }
         html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a></li>'
                 + getCupToggleDiv('bXX', i, false);
         if (CUPS.NAME[i].substr(0, 4) === "Test" || CUPS.TYP[i] === 'TR' || i <= 4) { // 4te TestRunde / TestCup
@@ -1766,4 +1829,5 @@ $(document).ready(function () {
         };
     }
 
-});
+}
+);

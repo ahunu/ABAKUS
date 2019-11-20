@@ -585,6 +585,25 @@ function showCup(i, pBtn, pTermin) {
     'use strict';
     if (!QUERFORMAT()) {
         if (LS.LastBtn) {
+            if (pBtn) {
+                var lastBtn = LS.LastBtn;
+                var newBtn = '';
+                if (pTermin === -1) {
+                    newBtn = '#' + pBtn + i + 'T';
+                } else if (pTermin && pTermin !== -1) {
+                    newBtn = '#' + pBtn + i + 'T' + pTermin;
+                } else if (pBtn) {
+                    newBtn = '#' + pBtn + i;
+                }
+                var lastTop = parseInt($(lastBtn).offset().top);
+                var newTop = parseInt($(newBtn).offset().top);
+                var viewTop = parseInt($('#pContent').scrollTop());
+                var tglHeight = parseInt($('#tgl' + LS.LastBtn.substr(1)).height());
+//              console.log('Tops: View: ', viewTop, ' Last: ', lastTop, (lastTop < newTop ? ' <<< ' : '>>>'), ' New: ', newTop, 'Toggle: ',tglHeight);
+                if (lastTop < newTop && lastTop < 60) {
+                    $('#pContent').scrollTop(viewTop + newTop - tglHeight - 100); // 100 === Header
+                }
+            }
             if ($('#tgl' + LS.LastBtn.substr(1)).is(":visible")) {
                 $('#tgl' + LS.LastBtn.substr(1)).toggle('show');
                 resetLastBtn();
@@ -1392,12 +1411,9 @@ function whenCUPSloaded() {
     var hBtnName = 'b??';
     var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
     for (var termin in TERMINE) {
-        if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST" && TERMINE[termin].CUP > 8) {
+        if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST" && TERMINE[termin].CUP >= 8) {
             if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
                     || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4).toUpperCase() !== "TEST" || LS.ME === "3425")) {
-                if (TERMINE[termin].CUP === 8 || TERMINE[termin].CUP === 10) {
-                    hTemp = '';
-                }
                 if (CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
                     var hCupName = '';
                     var hCupFarbe = '';

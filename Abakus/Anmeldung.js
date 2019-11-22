@@ -1769,7 +1769,7 @@ $(document).ready(function () {
             if (LS.TURADMIN === LS.ME || true) {
                 if (CUPS.TURNIER[LS.I] !== 'Handy') {
                     $('#dRumpf').hide();
-                    showStatuszeile(true, '<b>Tische f&uuml;r PC-Turniere werden in funcTisch angemeldet.</b>');
+                    showStatuszeile(true, '<b>Tische für PC-Turniere werden in funcTisch angemeldet.</b>');
                     // pcTurnierAnmelden();
                 } else {
                     listStammspieler();

@@ -594,20 +594,34 @@ $(document).bind('pageinit', function () {
     $("#tNAME2").text(CUPS.NAME[I]);
     $("#iBEREadmin").val(CUPS.BEREadmin[I]);
     $("#iBEREschreiben").val(CUPS.BEREschreiben[I]);
-    editor = pell.init({
-        element: document.getElementById('editor'),
-        actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
-        classes: {actionbar: 'pell-actionbar-custom-name'},
-        onChange: function (html) {
-            CUPS.TEXT1[I] = html;
-        }
-    });
+
+    if (/iPad|iPhone/.test(navigator.userAgent) && !window.MSStream) {
+        $("#editor").addClass('ui-disabled'); // Wenn auf iOS editierbar dann JS-Fehler!!!
+        editor = pell.init({
+            element: document.getElementById('editor'),
+            actions: [],
+            classes: {actionbar: 'pell-actionbar-custom-name'},
+            onChange: function (html) {
+                CUPS.TEXT1[I] = html;
+            }
+        });
+    } else {
+        editor = pell.init({
+            element: document.getElementById('editor'),
+            actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
+            classes: {actionbar: 'pell-actionbar-custom-name'},
+            onChange: function (html) {
+                CUPS.TEXT1[I] = html;
+            }
+        });
+        $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
+    }
     if (CUPS.TEXT1[I]) {
         editor.content.innerHTML = CUPS.TEXT1[I];
     } else {
         editor.content.innerHTML = '';
     }
-    $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
+
     $("input:radio[name=iREGELN][value='Wr.']").prop('checked', (CUPS.REGELN[I] === 'Wr.')).checkboxradio("refresh");
     $("input:radio[name=iREGELN][value='Ooe.']").prop('checked', (CUPS.REGELN[I] === 'Ooe.')).checkboxradio("refresh");
     $("input:radio[name=iREGELN][value='Ti.']").prop('checked', (CUPS.REGELN[I] === 'Ti.')).checkboxradio("refresh");

@@ -58,6 +58,1470 @@ const iUltimo = 25;
 const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
+
+/* global LS, CUPS, I, iPfad, hHeute, STAT, mTischTurnier, PC, QUERFORMAT() */
+
+
+/* global LS, CUPS, I, firebase, STAT, rPfad, FB */
+
+function zumTurnier() {
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
+        if (!window.chrome) {
+            showEineMeldung('Achtung', 'HTML5 und Javascript werden von deinem<br>Browser nicht ausreichend unterstützt.'
+                    + '<br>Verwende einen der folgenden Browser:'
+                    + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>, <b>Slimjet</b>'
+                    + '<br>oder einen anderen kompatiblen Browser.');
+            return;
+        }
+        LS.ShowCups = I;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        fHref('_Turnier/TU_1_Anmeldung.html?init');
+    }
+}
+
+function fStartStop(pPruefen) {
+    'use strict';
+    mTischTurnier = 'Turnier';
+    if (LS.I) {
+        if (LS.I === I) {
+            if (LS.TURADMIN !== LS.ME) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        'Nur&nbsp;derjenige,&nbsp;der&nbsp;das&nbsp;&nbsp;&nbsp;&nbsp;<br>'
+                        + 'Turnier&nbsp;gestartet&nbsp;hat<br>'
+                        + 'kann&nbsp;es&nbsp;administrieren.');
+                return;
+            }
+            if (LS.gespielt) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        'Der letzte Tisch wurde<br>'
+                        + 'noch nicht gespeichert.');
+                return;
+            }
+            if (LS.TURRUNDE <= CUPS.RUNDEN[I]) {
+                if (!LS.TURGESPIELT) {
+                    showEineMeldung((CUPS.NAME[I] + ':'),
+                            'Runde ' + LS.TURRUNDE + ' ist noch<br>'
+                            + 'ausständig.');
+                    return;
+                }
+            }
+        } else {
+            if (CUPS.TURNIER[LS.I]) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        '&nbsp;Bitte&nbsp;zuerst&nbsp;das&nbsp;Turnier&nbsp;&nbsp;&nbsp;<br>'
+                        + '&nbsp;<b>' + CUPS.NAME[LS.I] + '</b>&nbsp;beenden.');
+                return;
+            } else if (pPruefen && LS.gespielt) {
+                $('#tTischWasNunTitel').html('Das Turnier starten:');
+                if (LS.I !== I) {
+                    $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+                    $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+                } else {
+                    $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+                }
+                $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
+                $("#pTISCHWASNUN").popup("open").show();
+                return;
+            }
+        }
+    }
+
+    if (LS.I !== I) {
+        LS.AnzGespeichert = 0;
+        LS.AnzSpieler = 0;
+        LS.gespielt = 0;
+        LS.Spieler = ['', '', '', '', '', '', ''];
+        LS.NR = ['', '', '', '', '', '', ''];
+        LS.VName = ['', '', '', '', '', '', ''];
+        LS.NName = ['', '', '', '', '', '', ''];
+        LS.Sterne = ['', '', '', '', '', '', ''];
+        LS.Ort = ['', '', '', '', '', '', ''];
+        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+        LS.I = 0;
+    }
+
+    $("#ssTitel").html('&nbsp;' + CUPS.NAME[I] + '&nbsp&nbsp;');
+    if (LS.I === 0) {
+        if (new Date(CUPS.NEXTTERMIN[I]).toDateString() !== new Date().toDateString()) {
+            var iWochentag = (new Date).getDay();
+            if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date).getHours() >= CUPS.SPIELEAB[I] - 1) {
+                if (CUPS.TURNIER[I]) {
+                    var iWoche = parseInt((new Date().getDate() - 1) / 7);
+                    if (CUPS.WOCHEN[I][iWoche] !== 'J') {
+                        var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+                        showEineMeldung(I, 'Diesen ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+                        return;
+                    }
+                }
+
+                if (CUPS.SPIELTAGE[I][iWochentag] !== 'J') {
+                    var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+                    showEineMeldung(I, 'Diesen ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+                    return;
+                }
+            } else {
+                if (CUPS.SPIELTAGE[I][iWochentag] === 'J') {
+                    showEineMeldung(I, 'Es wird erst ab<br>' + CUPS.SPIELEAB[I] + ' Uhr gespielt.');
+                } else {
+                    var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+                    showEineMeldung(I, 'An einem ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+                }
+                return;
+            }
+        }
+        $("#ssText").text('Turnier starten ?');
+    } else if (LS.TURRUNDE === CUPS.RUNDEN[I]) {
+        $("#ssText").text('Turnier beenden ?');
+    } else if (LS.TURRUNDE === 1) {
+        $("#ssText").text('Runde 1 beenden ?');
+    } else if (LS.TURRUNDE === 2) {
+        $("#ssText").text('Runde 2 beenden ?');
+    }
+
+    $("#ssMELD").hide();
+    $('#bSSja,#bSSnein').removeClass('ui-btn-active');
+
+    setTimeout(function () { // warten auf close von pTISCHWASNUN
+        $("#pSTARTSTOP").popup("open").show();
+        $("#iTURCODE").val('').focus();
+        if (!FB) {
+            firebase.initDB(I, 'rw');
+        }
+    }, 200);
+}
+
+function onStartStop() {
+    'use strict';
+    iTURCODE = getINT($('#iTURCODE').val());
+    if (iTURCODE === false) {
+        $('#iTURCODE').focus();
+        $('#ssMELD').show().html('Der Code ist ung&uuml;ltig!');
+        return false;
+    }
+    if (iTURCODE < 1 || iTURCODE > 9999) {
+        $('#iTURCODE').focus();
+        $('#ssMELD').show().html('Der Code ist ung&uuml;ltig!');
+        return false;
+    }
+    if (LS.I === 0) {
+        $('#iTURCODE').filter(':input:focus').blur();
+        $("#pSTARTSTOP").popup("close");
+        loadSTAT(I, 'Turnier&nbsp;wird&nbsp;gestartet.', false, TurnierSTARTEN, 0);
+    } else {
+        if (LS.I === I) {
+            if (LS.TURCODE !== iTURCODE) {
+                $('#iTURCODE').focus();
+                $('#ssMELD').show().html('Der Code ist ung&uuml;ltig!');
+                return false;
+            }
+            $('#iTURCODE').filter(':input:focus').blur();
+            $("#pSTARTSTOP").popup("close");
+            if (LS.TURRUNDE < CUPS.RUNDEN[LS.I]) {
+                showEinenMoment(CUPS.NAME[LS.I], 'Runde&nbsp;' + LS.TURRUNDE + '&nbsp;wird&nbsp;beendet.');
+                RundeXbeenden(LS.TURCODE);
+            } else {
+                loadSTAT(I, 'Turnier&nbsp;wird&nbsp;beendet.', false, TurnierBEENDEN);
+            }
+        } else {
+            showEinenMoment(CUPS.NAME[LS.I], 'Turnier&nbsp;noch&nbsp;nicht&nbsp;beendet.');
+        }
+    }
+    return false;
+}
+
+function TurnierSTARTEN(pI) {
+    'use strict';
+    if (typeof pI === 'undefined') { // beim 1. Aufrug (Callback)
+        pI = 1;
+    }
+    for (; pI < STAT.S.length; pI++) {
+        if (STAT.S[pI].SPIELE[3] > 0) {
+            break;
+        }
+    }
+
+    if (pI >= STAT.S.length) {
+        TurnierSTARTENend();
+        return;
+    }
+
+    STAT.S[pI].PUNKTE      [3] = 0;
+    STAT.S[pI].SPIELE      [3] = 0;
+    STAT.S[pI].ANZSPIELE   [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    STAT.S[pI].ANZGEWONNEN [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    STAT.S[pI].PKTGEWONNEN [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    STAT.S[pI].STOCKERL    [3] = '-';
+    STAT.S[pI].PUNKTERx = [];
+    STAT.S[pI].SCHREIBER = [];
+
+    var hSTAT = new Object();
+    hSTAT.PUNKTE = STAT.S[pI].PUNKTE;
+    hSTAT.SPIELE = STAT.S[pI].SPIELE;
+    hSTAT.ANZSPIELE = STAT.S[pI].ANZSPIELE;
+    hSTAT.ANZGEWONNEN = STAT.S[pI].ANZGEWONNEN;
+    hSTAT.PKTGEWONNEN = STAT.S[pI].PKTGEWONNEN;
+    if (STAT.S[pI].STOCKERL[0] !== "-") {
+        hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
+    }
+    hSTAT.PUNKTERx = null;
+    hSTAT.SCHREIBER = null;
+
+    firebase.database().ref('/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR)
+            .update({
+                PUNKTERx: null,
+                SCHREIBER: null
+            })
+            .then(function () {
+                TurnierSTARTEN(pI + 1);
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'TurnierSTARTEN()', 'update ' + '/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR);
+            });
+}
+
+function TurnierSTARTENend() {
+    'use strict';
+    var hSTAT = new Object();
+    hSTAT.ZULETZTupd = new Date().toISOString();
+    if (STAT.ZULETZT) {
+        hSTAT.ZULETZT = new Date(new Date(STAT.ZULETZT).getTime() - 60000 * new Date(STAT.ZULETZT).getTimezoneOffset() + 1).toISOString();
+    } else {
+        hSTAT.ZULETZT = new Date().toISOString();
+    }
+    hSTAT.TURCODE = iTURCODE;
+    hSTAT.TURADMIN = LS.ME;
+    hSTAT.TURRUNDE = 1;
+    hSTAT.TURTIMESTAMP = firebase.database.ServerValue.TIMESTAMP;
+
+    firebase.database().ref('/00/' + ("000" + I).slice(-3))
+            .update(hSTAT)
+            .then(function () {
+                $('#bStartbutton').addClass('ui-disabled'); //.text("Turnier wurde gestartet");
+                $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Das Turnier wurde gestartet.</span><br>");
+                LS.I = I;
+                LS.TURCODE = iTURCODE;
+                LS.TURADMIN = LS.ME;
+                LS.TURTIMESTAMP = new Date();
+                LS.TURRUNDE = 1;
+                LS.TURSPIELER = 0;
+                LS.TURGESPIELT = 0;
+                LS.AnzGespeichert = 0;
+                LS.AnzSpieler = 0;
+                LS.ShowCups = I;
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                // Vorerst muss STAT nicht neu geladen werden
+                STAT.TURCODE = iTURCODE;
+                STAT.TURADMIN = LS.ME;
+                STAT.TURRUNDE = 1;
+                STAT.TURTIMESTAMP = new Date();
+                localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
+                whenSTATloaded(); // neuer Tisch
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'TurnierSTARTENend()', 'STAT update');
+            });
+}
+
+function RundeXbeenden() {
+    'use strict';
+    var hSTAT = new Object();
+//    hSTAT.ZULETZT  = new Date(new Date().getTime() - 60000 * new Date().getTimezoneOffset()).toISOString();
+    hSTAT.ZULETZTupd = new Date().toISOString();
+    hSTAT.TURRUNDE = LS.TURRUNDE + 1;
+
+    firebase.database().ref('/00/' + ("000" + I).slice(-3))
+            .update(hSTAT)
+            .then(function () {
+                $('#bRundeXbeenden').addClass('ui-disabled'); //.text("Turnier wurde gestartet");
+                $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Runde " + LS.TURRUNDE + " wurde beendet.</span><br>");
+                LS.TURRUNDE++;
+                LS.TURGESPIELT = 0;
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
+                hideEinenMoment();
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'RundeXbeenden()', 'STAT update');
+            });
+}
+
+function TurnierBEENDEN(pI) {
+    'use strict';
+    if (typeof pI === 'undefined') { // beim 1. Aufrug (Callback)
+        pI = 1;
+    }
+    if (STAT.MAXSPIELE[3] === 0) {  // es wurde kein Spiel gespielt
+        TurnierBEENDENendEnd();
+        return;
+    }
+
+    for (; pI < STAT.S.length; pI++) {
+        if (STAT.S[pI].NR !== '0000' && STAT.S[pI].SPIELE[3] > 0) {
+            break;
+        }
+    }
+
+    if (pI >= STAT.S.length) {
+        TurnierBEENDENend();
+        return;
+    }
+
+    var hPunkte1ter = -9999;
+    var hPunkte2ter = -9999;
+    var hPunkte3ter = -9999;
+    var hPunkteAkt = -9999;
+    var hPunkteZwi = 0;
+//  var aCupPunkte  = [];
+
+    for (var ii = 1; ii < STAT.S.length; ii++) { // Punkte der Stockerplätze errechnen
+
+        if (STAT.S[ii].SPIELE[3] > 0) {
+
+            hPunkteAkt = STAT.S[ii].PUNKTE[3];
+
+            if (hPunkteAkt > hPunkte3ter) {
+                hPunkte3ter = hPunkteAkt;
+            }
+            if (hPunkte3ter > hPunkte2ter) {
+                hPunkteZwi = hPunkte2ter;
+                hPunkte2ter = hPunkte3ter;
+                hPunkte3ter = hPunkteZwi;
+            }
+            if (hPunkte2ter > hPunkte1ter) {
+                hPunkteZwi = hPunkte1ter;
+                hPunkte1ter = hPunkte2ter;
+                hPunkte2ter = hPunkteZwi;
+            }
+        }
+    }
+
+    function akkSTOCKERL(pString, pPlatz) {
+        'use strict';
+        var nPlaetze = [0, 0, 0, 0];
+        if (pString.length < 5) {
+            pString = '0-0-0';
+        }
+
+        nPlaetze[1] = parseInt(pString.substr(0, (pString.indexOf('-'))));
+
+        pString = pString.substr(pString.indexOf('-') + 1);
+        nPlaetze[2] = parseInt(pString.substr(0, (pString.indexOf('-'))));
+
+        pString = pString.substr(pString.indexOf('-') + 1);
+        nPlaetze[3] = parseInt(pString);
+
+        nPlaetze[pPlatz]++;
+
+        return nPlaetze[1].toString() + '-' + nPlaetze[2].toString() + '-' + nPlaetze[3].toString();
+    }
+
+    hPunkteAkt = STAT.S[pI].PUNKTE[3];
+
+    var hSTAT = new Object();
+    var iJahr = new Date(LS.Von).getFullYear() - 2010;
+
+    if (hPunkteAkt === hPunkte1ter) {
+        STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 1);
+        STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 1);
+        STAT.S[pI].STOCKERL[3] = '1-0-0';
+        hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
+    } else if (hPunkteAkt === hPunkte2ter) {
+        STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 2);
+        STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 2);
+        STAT.S[pI].STOCKERL[3] = '0-1-0';
+        hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
+    } else if (hPunkteAkt === hPunkte3ter) {
+        STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 3);
+        STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 3);
+        STAT.S[pI].STOCKERL[3] = '0-0-1';
+        hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
+    }
+    STAT.S[pI].STOCKERL[iJahr] = STAT.S[pI].STOCKERL[1];
+
+    if (typeof STAT.S[pI].CUPPUNKTE[1] !== "object") {
+        STAT.S[pI].CUPPUNKTE[1] = [];
+    }
+    if (STAT.S[pI].CUPPUNKTE[1].length === 0) {
+        STAT.S[pI].CUPPUNKTE[1][0] = hPunkteAkt;
+    } else {
+        if (STAT.S[pI].CUPPUNKTE[1][STAT.S[pI].CUPPUNKTE[1].length - 1] >= hPunkteAkt) {
+            STAT.S[pI].CUPPUNKTE[1][STAT.S[pI].CUPPUNKTE[1].length] = hPunkteAkt;
+        } else {
+            for (var ii = STAT.S[pI].CUPPUNKTE[1].length; ii > 0; ii--) {
+                if (STAT.S[pI].CUPPUNKTE[1][ii - 1] < hPunkteAkt) {
+                    STAT.S[pI].CUPPUNKTE[1][ii] = STAT.S[pI].CUPPUNKTE[1][ii - 1];
+                    STAT.S[pI].CUPPUNKTE[1][ii - 1] = hPunkteAkt;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    STAT.S[pI].CUPPUNKTE[iJahr] = STAT.S[pI].CUPPUNKTE[1];
+
+    hSTAT.CUPPUNKTE = STAT.S[pI].CUPPUNKTE;
+
+    firebase.database().ref('/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR)
+            .update(hSTAT)
+            .then(function () {
+                TurnierBEENDEN(pI + 1);
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'TurnierBEENDEN()', 'STAT update');
+            });
+}
+
+function TurnierBEENDENend() {  // Monatssicherung
+    'use strict';
+    function getCUPname(pI) {
+        'use strict';
+        var ret = ("000" + pI).substr(-3) + ' ' + CUPS.NAME[pI];
+        return ret.replace(/\.|\#|\$|\[|\]/g, "");
+    }
+
+//    STAT.ZULETZT  = new Date(new Date().getTime() - 60000 * new Date().getTimezoneOffset()).toISOString();
+    STAT.ZULETZTupd = new Date().toISOString();
+    STAT.ANMELDUNGEN = null;
+    STAT.TURRUNDE = 0;
+    STAT.TURCODE = 0;
+    STAT.TURTIMESTAMP = null;
+
+    var hSTAT = new Object();
+    hSTAT.ZULETZT = STAT.ZULETZT;
+    hSTAT.ZULETZTupd = STAT.ZULETZTupd;
+    hSTAT.ANMELDUNGEN = STAT.ANMELDUNGEN;
+    hSTAT.TURRUNDE = STAT.TURRUNDE;
+    hSTAT.TURCODE = STAT.TURCODE;
+    hSTAT.TURTIMESTAMP = STAT.TURTIMESTAMP;
+
+    for (var ii = 1; ii < STAT.S.length; ii++) { // 0000 nicht kopieren
+        if (STAT.S[ii]) {
+            hSTAT[STAT.S[ii].NR] = STAT.S[ii];
+            hSTAT[STAT.S[ii].NR].TIMESTAMP = new Date(new Date(STAT.S[ii].TIMESTAMP).getTime() - 60000 * new Date(STAT.S[ii].TIMESTAMP).getTimezoneOffset()).toISOString();
+        }
+    }
+    firebase.database().ref('/' + ('00' + (((new Date()).getMonth()) + 1)).slice(-2) + '/' + getCUPname(I))
+            .set(hSTAT, function (error) {   // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+                if (error) {
+                    showEineDBWarnung(error, 'TurnierBEENDENend()', 'STAT set');
+                } else {
+                    TurnierBEENDENendEnd();
+                }
+            });
+}
+
+function TurnierBEENDENendEnd() {
+    'use strict';
+    var hSTAT = new Object();
+//    hSTAT.ZULETZT   = new Date(new Date().getTime() - 60000 * new Date().getTimezoneOffset()).toISOString();
+    hSTAT.ZULETZTupd = new Date().toISOString();
+    hSTAT.ANMELDUNGEN = null;
+    hSTAT.TURCODE = 0;
+    hSTAT.TURADMIN = '';
+    hSTAT.TURRUNDE = 0;
+    hSTAT.TURTIMESTAMP = null;
+
+    firebase.database().ref('/00/' + ("000" + I).slice(-3))
+            .update(hSTAT)
+            .then(function () {
+                $('#bTurnierBeenden').addClass('ui-disabled'); //.text("Turnier wurde gestartet");
+                if (STAT.MAXSPIELE[3] > 0) {  // es wurde kein Spiel gespielt
+                    $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Das Turnier wurde beendet.</span><br>");
+                } else {
+                    $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/Achtung.png'  width='24' height='24'><span class='L B'>&nbsp;Es wurde kein Spiel gespielt.</span><br>"
+                            + "&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Das Turnier wurde beendet.</span><br>");
+                }
+                LS.I = 0;
+                LS.TURCODE = 0;
+                LS.TURADMIN = '';
+                LS.TURRUNDE = 0;
+                LS.TURSPIELER = 0;
+                LS.TURGESPIELT = 0;
+                LS.ShowCups = I;
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
+                $('#bZuMeinemTisch').hide();
+                hideEinenMoment();
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'TurnierBEENDENendEnd()', 'STAT update');
+            });
+}
+
+function TischNeuLoeschen() {
+    if (mTischNeuLoeschen === "N") {
+        fEinNeuerTisch(true);
+    } else {
+        TischLoeschen(true);
+    }
+}
+
+function fEinNeuerTisch(pOK) {
+    'use strict';
+    if (LS.I && LS.I !== I) {
+        if (CUPS.TURNIER[I] === 'Handy'
+                && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
+                && mTischTurnier === 'Turnier') {
+            fStartStop(false); // der Admin will das Turnier starten
+            return; // very important
+        }
+    }
+
+    var iWochentag = (new Date()).getDay();
+    var iVortag = iWochentag - 1;
+    if (iWochentag === 0) {
+        iVortag = 6;
+    } else {
+        iVortag = iWochentag - 1;
+    }
+
+    if ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && !QUERFORMAT()) {
+        if (I > 4) {
+            var hOK = false;
+            for (var termin in CUPS.TERMINE) {
+                if (CUPS.TERMINE[termin].CUP === I && CUPS.TERMINE[termin].DATUM === hHeute) {
+                    hOK = true;
+                    break;
+                }
+            }
+            if (!hOK) {
+                showEineMeldung(I, 'Laut Turnierkalender findet<br>heute kein Turnier statt.');
+                return;
+            }
+        }
+    } else if (new Date(CUPS.NEXTTERMIN[I]).toDateString() === new Date().toDateString()) {
+        if (new Date().getHours() >= CUPS.SPIELEAB[I] - 1) {
+        } else {
+            showEineMeldung(I, 'Es wird erst ab<br>' + CUPS.SPIELEAB[I] + ' Uhr gespielt.');
+            return;
+        }
+    } else {
+        if (CUPS.SPIELTAGE[I][iWochentag] === 'J'
+                || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+            if (CUPS.TURNIER[I]) {
+                var iWoche = parseInt((new Date().getDate() - 1) / 7);
+                if (CUPS.WOCHEN[I][iWoche] !== 'J') {
+                    var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+                    showEineMeldung(I, 'Diesen ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+                    $(this).removeClass('ui-disabled');
+                    return;
+                }
+            }
+            if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date()).getHours() >= CUPS.SPIELEAB[I] - 1
+                    || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+            } else {
+                showEineMeldung(I, 'Es wird erst ab<br>' + CUPS.SPIELEAB[I] + ' Uhr gespielt.');
+                return;
+            }
+        } else {
+            var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+            showEineMeldung(I, 'An einem ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+            return;
+        }
+    }
+
+    if (LS.I && LS.I !== I) {
+        if (CUPS.TURNIER[LS.I]) {
+            if (CUPS.TURNIER[LS.I] === 'Handy') {
+                showEineMeldung(I, '&nbsp;Bitte&nbsp;zuerst&nbsp;das&nbsp;Turnier&nbsp;&nbsp;&nbsp;<br>'
+                        + '&nbsp;<b>' + CUPS.NAME[LS.I] + '</b>&nbsp;beenden.');
+                return;
+            } else {
+                var hNAME = '';
+                for (var termin in CUPS.TERMINE) {
+                    if (CUPS.TERMINE[termin].CUP === LS.I && CUPS.TERMINE[termin].DATUM === hHeute) {
+                        hNAME = CUPS.TERMINE[termin].NAME;
+                        break;
+                    }
+                }
+                if (hNAME) {
+                    showEineMeldung(I, '&nbsp;Bitte&nbsp;zuerst&nbsp;den&nbsp;Tisch&nbsp;des&nbsp;Turniers&nbsp;<br>'
+                            + '&nbsp;<b>' + hNAME + '</b>&nbsp;speichern.');
+                    return;
+                }
+            }
+        }
+    }
+
+    if (pOK || LS.gespielt < 1) {
+//        LS.AnzGespeichert = 0;
+//        LS.AnzSpieler = 0;
+//        LS.gespielt = 0;
+//        LS.Spieler = ['', '', '', '', '', '', ''];
+//        LS.NR = ['', '', '', '', '', '', ''];
+//        LS.VName = ['', '', '', '', '', '', ''];
+//        LS.NName = ['', '', '', '', '', '', ''];
+//        LS.Sterne = ['', '', '', '', '', '', ''];
+//        LS.Ort = ['', '', '', '', '', '', ''];
+//        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+//        if (LS.I !== I || !CUPS.TURNIER[LS.I]) {
+//            LS.I = 0;
+//        }
+
+        if (!CUPS.TURNIER[I] && (CUPS.TYP[I] === 'PR' || I === 1) && localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3))) {
+            LS.LoadCups = I * -1; // - = neuer Tisch
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            fHref('Abakus/Anmeldung.html');
+        } else {
+            if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
+                loadTURNIER(I, hHeute, 'Das Turnier wird geladen.', hHeute + ', neuer Tisch');
+            } else {
+//              if (CUPS.TURNIER[I] || (CUPS.BEREadmin[I].indexOf(LS.ME) < 0 && I > 3)) {
+                if (CUPS.TURNIER[I]) {
+                    loadSTAT(I, 'Spieler werden geladen.');
+                } else {
+                    loadSTAT(I, 'Spieler werden aktualisiert.', I);
+                }
+            }
+        }
+    } else {
+        mTischNeuLoeschen = "N";
+        $('#tTischWasNunName').html(CUPS.NAME[I] + '&nbsp&nbsp;');
+        if (LS.I !== I) {
+            $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+            $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        } else {
+            $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        }
+        if (mTischTurnier === 'Turnier') {
+            $('#tTischWasNunTitel').html('Das Turnier starten:');
+            $('#tsDieDen').html('die');
+            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
+        } else {
+            $('#tTischWasNunTitel').html('Ein neuer Tisch:');
+            $('#tsDieDen').html('die');
+            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und neuen Tisch');
+        }
+        $("#pTISCHWASNUN").popup("open").show();
+    }
+}
+
+function TischLoeschen(pLoeschen) {
+    if (pLoeschen) {
+        var hLog = CUPS.NAME[LS.I];
+        hLog += '<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.';
+        if (LS.gespielt) {
+            DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+            hLog += "<table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text=''>"
+                    + "<thead>"
+                    + "<tr sclass='ui-bar-d'>"
+                    + "<th>&nbsp;Spieler"
+                    + "</th>"
+                    + "<th class=TC>Punkte&nbsp;"
+                    + "</th>"
+                    + "</tr>";
+            for (var i = 1; i <= 6; i++) {
+                if (LS.Spieler[i]) {
+                    hLog += '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TC>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+                } else if (LS.Spiele[i] !== 0) {
+                    hLog += '<tr><td class="cRot B">&nbsp;???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+                }
+            }
+            hLog += "<tbody>"
+                    + "</tbody>"
+                    + "</table>"
+                    + 'Der Tisch wurde gelöscht.';
+        } else {
+            hLog += '<br>Der Tisch wurde gelöscht.';
+        }
+        writeLOG(hLog);
+        LS.AnzGespeichert = 0;
+        LS.AnzSpieler = 0;
+        LS.gespielt = 0;
+        LS.Spieler = ['', '', '', '', '', '', ''];
+        LS.NR = ['', '', '', '', '', '', ''];
+        LS.VName = ['', '', '', '', '', '', ''];
+        LS.NName = ['', '', '', '', '', '', ''];
+        LS.Sterne = ['', '', '', '', '', '', ''];
+        LS.Ort = ['', '', '', '', '', '', ''];
+        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+//        LS.TURRUNDE = 0; // Bei Spontanturnier nach Tisch löschen nicht erlaupt llll llll
+        if ('TURTISCH' in LS) {
+            delete LS.TURTISCH;
+        }
+        LS.Meldung = "Der Tisch wurde gelöscht!";
+        var h = LS.I;
+        if (CUPS.TURNIER[I] === 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)) {
+            // Sonst kann der Admin das Turnier nicht beenden.
+        } else {
+            LS.I = 0;
+        }
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        $('#bZuMeinemTisch').hide();
+//        $('a').removeClass('cAktiv');
+
+        showCUPS(); // Um "Zu meinem Tisch" auf "Ein neuer Tisch" zu ändern
+        showCup(h);
+//        whenCUPSloaded();
+    } else {
+        mTischNeuLoeschen = "L";
+        $('#tTischWasNunName').html(CUPS.NAME[LS.I] + '&nbsp&nbsp;');
+        if (LS.I !== I) {
+            $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+            $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        } else {
+            $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        }
+        $('#tTischWasNunTitel').html('Den Tisch löschen:');
+        if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
+            $('#tsSpieleSpeichern').addClass('ui-disabled');
+        }
+        $('#tsDieDen').html('den');
+        $('#tsSpieleLoeschen').html('Tisch löschen');
+        $("#pMEINTISCH").popup("close");
+        $("#pTISCHWASNUN").popup("open").show();
+    }
+}
+
+function getCupText() {
+    var html = '';
+    if (LS.Meldung) {
+        html += '<div class="cRot B">' + LS.Meldung + '</div><br>';
+        LS.Meldung = '';
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
+    if (!(I === LS.I && LS.AnzSpieler) || QUERFORMAT()) {
+        if (CUPS.TEXT1[I]) {
+            html += CUPS.TEXT1[I];
+        }
+    }
+    if (LS.I === I && LS.TURRUNDE > 0) {
+        if (LS.TURRUNDE === 1) {
+            if (LS.TURGESPIELT === 0) {
+                html += "<br><img src='" + iPfad + "OK.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>Turnier wurde gestartet.</b></span>";
+            } else {
+                html += "<br><img src='" + iPfad + "Achtung.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>Runde 1 noch nicht beendet.</b></span>";
+            }
+        } else if (LS.TURGESPIELT === 0) {
+            html += "<br><img src='" + iPfad + "OK.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>Runde " + LS.TURRUNDE + " wird gespielt.</b></span>";
+        } else if (LS.TURSPIELER === LS.TURGESPIELT) {
+            html += "<br><img src='" + iPfad + "Achtung.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>" + ((LS.TURRUNDE === 3) ? "Turnier" : "Runde " + LS.TURRUNDE) + " noch nicht beendet.</b></span>";
+        } else {
+            var hText;
+            if (LS.TURSPIELER - LS.TURGESPIELT < 8) {
+                hText = "Ein Tisch ausst&auml;ndig.";
+            } else {
+                hText = parseInt((LS.TURSPIELER - LS.TURGESPIELT) / 4) + " Tische ausst&auml;ndig.";
+            }
+            html += "<br><img src='" + iPfad + "Achtung.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>Runde " + LS.TURRUNDE + ":&nbsp;&nbsp;&nbsp;" + hText + "</b></span>";
+        }
+    }
+    return html;
+}
+
+function getTurnierButtons() {
+    var html = '';
+    if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3) {
+        if (CUPS.TURNIER[I] === 'Handy') {
+
+            var iWochentag = (new Date()).getDay();
+            var iVortag = iWochentag - 1;
+            if (iWochentag === 0) {
+                iVortag = 6;
+            } else {
+                iVortag = iWochentag - 1;
+            }
+
+            var cClass = '';
+            if (LS.I === I && LS.TURADMIN === LS.ME) {
+            } else {
+                if (new Date(CUPS.NEXTTERMIN[I]).toDateString() !== new Date().toDateString()) {
+                    if (CUPS.SPIELTAGE[I][iWochentag] === 'J'
+                            || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+                        var iWoche = parseInt((new Date().getDate() - 1) / 7);
+                        //                  if (I ===  8 && new Date().getDate() >= 15) {
+                        if (CUPS.WOCHEN[I][iWoche] !== 'J') {
+                            cClass = ' ui-disabled';  // nicht in dieser Woche
+                        }
+                        if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date()).getHours() + 1 >= CUPS.SPIELEAB[I] // 1 Stunde Toleranz
+                                || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+                        } else {
+                            cClass = ' ui-disabled';
+                            // Es wird erst ab "17" Uhr gespielt.
+                        }
+                    } else {
+                        cClass = ' ui-disabled';
+                        // An einen "Freitag" wird nicht gespielt.
+                    }
+                }
+            }
+
+            if (LS.I === 0 && !LS.TURRUNDE || (LS.I !== 0 && LS.I !== I)) {
+                html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bStartbutton>&nbsp;Turnier starten&nbsp;</a>";
+            } else if (LS.I === I && (LS.TURADMIN === LS.ME || LS.I < 5)) {
+                if (LS.TURRUNDE < CUPS.RUNDEN[I]) {
+                    html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bRundeXbeenden>&nbsp;Runde " + LS.TURRUNDE + " beenden&nbsp;</a>";
+                } else {
+                    html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bTurnierBeenden>&nbsp;Turnier beenden&nbsp;</a>";
+                }
+            }
+        }
+    }
+    if ((CUPS.TYP[I] !== 'CUP' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0)
+            || LS.ME === '3425'
+            || I <= 2) {
+        html += "<a onclick='hrefParameterAendern();' data-role='button' data-inline='true' data-mini='true' >&nbsp;Parameter ändern&nbsp;</a>";
+    }
+    return html + '<br><br>';
+}
+
+function hrefParameterAendern() {
+    'use strict';
+    LS.ShowCups = I;
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    fHref('Abakus/ParameterAendern.html');
+}
+
+function checkNeuerTisch() {
+    'use strict';
+    var hGefunden = false;
+    if (I !== 3) {  // Ein PC-Turnier kann an jeden Tag stattfinden
+        for (var termin in CUPS.TERMINE) {
+            if (CUPS.TERMINE[termin].CUP === I && CUPS.TERMINE[termin].DATUM === hHeute) {
+                hGefunden = true;
+                break;
+            }
+        }
+        if (!hGefunden) {
+            showEineWarnung(I, 'Laut Turnierkalender findet<br>heute kein Turnier statt.');
+            return false;
+        }
+    }
+    if (!STAT._AKTTURNIER) {
+        if (STAT[hHeute]) {
+            showEineWarnung(I, 'Das Turnier wurde bereits beendet.');
+            return false;
+        } else {
+            showEineWarnung(I, 'Das Turnier wurde noch nicht gestartet.', 'Hab etwas Geduld.');
+            return false;
+        }
+    }
+    if (STAT._AKTTURNIER._RUNDE > 3) {
+        showEineWarnung(I, 'Das Turnier wurde bereits beendet.');
+        return;
+    }
+    if (!STAT._AKTTURNIER[LS.ME]) {
+        showEineWarnung(I, 'Du bist nich angemeldet.', 'Informiere den Veranstalter.');
+        return false;
+    }
+    if (STAT._AKTTURNIER._RUNDE === 3 && STAT._AKTTURNIER[LS.ME][3] !== '-') {
+        showEineWarnung(I, 'Du hast bereits alle Runden gespielt.');
+        return false;
+    }
+    var nMinSeitRundeStart = parseInt((Date.now() - STAT._AKTTURNIER._RUNDESTART) / 60000);
+    if (nMinSeitRundeStart < -35) {
+        showEineWarnung(I, ' Die Uhr am Handy geht nach<br>oder die am Turnier-PC vor.', 'Korrigiere die Uhrzeit.');
+        return false;
+    }
+    if (nMinSeitRundeStart > 240) {
+        showEineWarnung(I, ' Die Uhr am Handy geht vor<br>oder die am Turnier-PC nach.', 'Korrigiere die Uhrzeit.');
+        return false;
+    }
+    if (STAT._AKTTURNIER._RUNDE === 3 && nMinSeitRundeStart > 75) {
+        showEineWarnung(I, 'Das Turnier wird bald beendet.');
+        return;
+    }
+
+    LS.I = I;
+    LS.CupName = CUPS.NAME[LS.I];
+    LS.Regeln = CUPS.REGELN[LS.I];
+    LS.Spieltyp = CUPS.TYP[LS.I];
+    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+    LS.DoppelteRunden = false;
+    LS.Tarif = new Array(19);
+    LS.Vorhand = 0;
+    LS.Geber = 0;
+    LS.INA1 = 0;
+    LS.INA2 = 0;
+    LS.AnzSpieler = 0;
+    LS.Pausierer1 = 0;
+    LS.Pausierer2 = 0;
+    LS.gespielt = 0;
+    LS.AnzGespeichert = 0;
+    LS.doppelt = 0;
+    LS.JeSeite = '';
+    LS.NR = ['', '', '', '', '', '', ''];
+    LS.Spieler = ['', '', '', '', '', '', ''];
+    LS.VName = ['', '', '', '', '', '', ''];
+    LS.NName = ['', '', '', '', '', '', ''];
+    LS.Sterne = ['', '', '', '', '', '', ''];
+    LS.Ort = ['', '', '', '', '', '', ''];
+    LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+    LS.Von = new Date();
+    LS.Bis = new Date();
+    LS.TURRUNDE = STAT._AKTTURNIER._RUNDE;
+    LS.TURTISCH = 0;
+    var hTurnier = STAT._AKTTURNIER._TURNIER;
+    var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
+    if (nMinSeitRundeStart > 60) {
+        LS.TURRUNDE++;
+    }
+
+    if (STAT[hTurnier][LS.ME]) {
+        if (STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '?'
+                && STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '-') {
+            if (LS.TURRUNDE === 3) {
+                showEineWarnung(I, 'Du hast Runde ' + LS.TURRUNDE + ' bereits gespielt.');
+                return;
+            } else {
+                LS.TURRUNDE++;
+            }
+        }
+    }
+
+    if (STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === 0
+            || STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === '-') {
+        showEineWarnung(I, 'Du bist nicht angemeldet.', 'Informiere den Veranstalter.');
+        return;
+    }
+
+    if (STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === '?') {
+        showEineWarnung(I, 'Die Runde ' + LS.TURRUNDE + ' wurde<br>noch nicht freigegeben.',
+                'Warte auf das OK<br>der Turnierleitung.');
+        return;
+    }
+
+    LS.TURTISCH = STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6];
+    var SORT = [];
+    for (var spieler in STAT._AKTTURNIER) {
+        if (spieler[0] !== '_') {
+            SORT[SORT.length] = STAT._AKTTURNIER[spieler][0] + ';' + spieler;
+        }
+    }
+    SORT.sort();
+    var nAngemeldet = 0;
+    for (var i = 0; i < SORT.length; i++) {
+        spieler = SORT[i].substr(SORT[i].lastIndexOf(';') + 1);
+        if (spieler === LS.ME || nAngemeldet) { // Mich und Spieler nach mir anmelden
+            nAngemeldet++;
+            if (STAT._AKTTURNIER[spieler][LS.TURRUNDE + 6] === LS.TURTISCH) {
+                if (STAT._AKTTURNIER[spieler][LS.TURRUNDE] !== '-') {
+                    showEineWarnung(I, spieler + ' hat Runde ' + LS.TURRUNDE + ' bereits gespielt.');
+                    return;
+                }
+                if (spieler.length === 4) {
+                    blert(spieler, SPIELERnr[spieler][1], SPIELERnr[spieler][0], STAT._AKTTURNIER[spieler][6], '');
+                } else {
+                    blert(spieler, STAT._AKTTURNIER[spieler][0].substr(0, STAT._AKTTURNIER[spieler][0].indexOf(' ')), STAT._AKTTURNIER[spieler][6], STAT._AKTTURNIER[spieler][6], '');
+                }
+            }
+        }
+    }
+
+    for (var i = 0; i < SORT.length; i++) {
+        spieler = SORT[i].substr(SORT[i].lastIndexOf(';') + 1);
+        if (spieler !== LS.ME) { // Die Spieler vor mir anmelden
+            if (STAT._AKTTURNIER[spieler][LS.TURRUNDE + 6] === LS.TURTISCH) {
+                if (STAT._AKTTURNIER[spieler][LS.TURRUNDE] !== '-') {
+                    showEineWarnung(I, spieler + ' hat Runde ' + LS.TURRUNDE + ' bereits gespielt.');
+                    return;
+                }
+                if (spieler.length === 4) {
+                    blert(spieler, SPIELERnr[spieler][1], SPIELERnr[spieler][0], STAT._AKTTURNIER[spieler][6], '');
+                } else {
+                    blert(spieler, STAT._AKTTURNIER[spieler][0].substr(0, STAT._AKTTURNIER[spieler][0].indexOf(' ')), STAT._AKTTURNIER[spieler][6], STAT._AKTTURNIER[spieler][6], '');
+                }
+            }
+        } else {
+            break;
+        }
+    }
+
+
+    LS.Vorhand = (Date.now() % (LS.AnzSpieler) + 1);
+// onOK aus Anmeldung.js
+
+    LS.VName[1] = LS.VName[1].trim();
+    LS.VName[2] = LS.VName[2].trim();
+    LS.VName[3] = LS.VName[3].trim();
+    LS.VName[4] = LS.VName[4].trim();
+    LS.VName[5] = LS.VName[5].trim();
+    LS.VName[6] = LS.VName[6].trim();
+    LS.Spieler[1] = LS.VName[1];
+    LS.Spieler[2] = LS.VName[2];
+    LS.Spieler[3] = LS.VName[3];
+    LS.Spieler[4] = LS.VName[4];
+    LS.Spieler[5] = LS.VName[5];
+    LS.Spieler[6] = LS.VName[6];
+    if ((LS.VName[1].substr(0, 3) === LS.VName[2].substr(0, 3))
+            || (LS.VName[1].substr(0, 3) === LS.VName[3].substr(0, 3))
+            || (LS.VName[1].substr(0, 3) === LS.VName[4].substr(0, 3))
+            || (LS.VName[1].substr(0, 3) === LS.VName[5].substr(0, 3))
+            || (LS.VName[1].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+        if (LS.VName[1].substr(0, 3) === LS.VName[2].substr(0, 3)) {
+            LS.Spieler[2] = LS.NName[2].substr(0, 1) + '.' + LS.VName[2];
+        }
+        if (LS.VName[1].substr(0, 3) === LS.VName[3].substr(0, 3)) {
+            LS.Spieler[3] = LS.NName[3].substr(0, 1) + '.' + LS.VName[3];
+        }
+        if (LS.VName[1].substr(0, 3) === LS.VName[4].substr(0, 3)) {
+            LS.Spieler[4] = LS.NName[4].substr(0, 1) + '.' + LS.VName[4];
+        }
+        if (LS.VName[1].substr(0, 3) === LS.VName[5].substr(0, 3)) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+        }
+        if (LS.VName[1].substr(0, 3) === LS.VName[6].substr(0, 3)) {
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+        LS.Spieler[1] = LS.NName[1].substr(0, 1) + '.' + LS.VName[1];
+    }
+
+    if ((LS.VName[2].substr(0, 3) === LS.VName[3].substr(0, 3))
+            || (LS.VName[2].substr(0, 3) === LS.VName[4].substr(0, 3))
+            || (LS.VName[2].substr(0, 3) === LS.VName[5].substr(0, 3))
+            || (LS.VName[2].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+        if (LS.VName[2].substr(0, 3) === LS.VName[3].substr(0, 3)) {
+            LS.Spieler[3] = LS.NName[3].substr(0, 1) + '.' + LS.VName[3];
+        }
+        if (LS.VName[2].substr(0, 3) === LS.VName[4].substr(0, 3)) {
+            LS.Spieler[4] = LS.NName[4].substr(0, 1) + '.' + LS.VName[4];
+        }
+        if (LS.VName[2].substr(0, 3) === LS.VName[5].substr(0, 3)) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+        }
+        if (LS.VName[2].substr(0, 3) === LS.VName[6].substr(0, 3)) {
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+        LS.Spieler[2] = LS.NName[2].substr(0, 1) + '.' + LS.VName[2];
+    }
+
+    if ((LS.VName[3].substr(0, 3) === LS.VName[4].substr(0, 3))
+            || (LS.VName[3].substr(0, 3) === LS.VName[5].substr(0, 3))
+            || (LS.VName[3].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+        if (LS.VName[3].substr(0, 3) === LS.VName[4].substr(0, 3)) {
+            LS.Spieler[4] = LS.NName[4].substr(0, 1) + '.' + LS.VName[4];
+        }
+        if (LS.VName[3].substr(0, 3) === LS.VName[5].substr(0, 3)) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+        }
+        if (LS.VName[3].substr(0, 3) === LS.VName[6].substr(0, 3)) {
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+        LS.Spieler[3] = LS.NName[3].substr(0, 1) + '.' + LS.VName[3];
+    }
+
+    if ((LS.VName[4].substr(0, 3) === LS.VName[5].substr(0, 3))
+            || (LS.VName[4].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+        if (LS.VName[4].substr(0, 3) === LS.VName[5].substr(0, 3)) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+        }
+        if (LS.VName[4].substr(0, 3) === LS.VName[6].substr(0, 3)) {
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+        LS.Spieler[4] = LS.NName[4].substr(0, 1) + '.' + LS.VName[4];
+    }
+
+    if (LS.VName[6]) {
+        if ((LS.VName[5].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+    }
+
+    if (LS.Spieler[2].substr(3, 1) === '.') {
+        LS.Spieler[2] = LS.VName[2].substr(0, 1) + '.' + LS.NName[2];
+    }
+    if (LS.Spieler[3].substr(3, 1) === '.') {
+        LS.Spieler[3] = LS.VName[3].substr(0, 1) + '.' + LS.NName[3];
+    }
+    if (LS.Spieler[4].substr(3, 1) === '.') {
+        LS.Spieler[4] = LS.VName[4].substr(0, 1) + '.' + LS.NName[4];
+    }
+    if (LS.Spieler[5].substr(3, 1) === '.') {
+        LS.Spieler[5] = LS.VName[5].substr(0, 1) + '.' + LS.NName[5];
+    }
+    if (LS.Spieler[6].substr(3, 1) === '.') {
+        LS.Spieler[6] = LS.VName[6].substr(0, 1) + '.' + LS.NName[6];
+    }
+
+    LS.Spieler[1] = LS.Spieler[1] + LS.Sterne[1];
+    LS.Spieler[2] = LS.Spieler[2] + LS.Sterne[2];
+    LS.Spieler[3] = LS.Spieler[3] + LS.Sterne[3];
+    LS.Spieler[4] = LS.Spieler[4] + LS.Sterne[4];
+    LS.Spieler[5] = LS.Spieler[5] + LS.Sterne[5];
+    LS.Spieler[6] = LS.Spieler[6] + LS.Sterne[6];
+
+    if (LS.Spieler[5] === '') {
+        LS.JeSeite = '1';
+        if (LS.AnzSpieler !== 4) {
+            LS.AnzSpieler = 4;
+            LS.Pausierer1 = 5;
+            LS.Pausierer2 = 6;
+        }
+    } else if (LS.Spieler[6] === '') {
+        if (LS.AnzSpieler !== 5) {
+            LS.AnzSpieler = 5;
+            LS.Pausierer1 = 0;
+            LS.Pausierer2 = 6;
+        }
+    } else {
+        if (LS.AnzSpieler !== 6) {
+            LS.AnzSpieler = 6;
+            LS.Pausierer1 = 0;
+            LS.Pausierer2 = 0;
+        }
+    }
+
+    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+    if (LS.I === 54 || LS.I === 77) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+        if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
+            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler);
+        }
+    } else {           // Rest - 5er-Tische spielen mehr
+        if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
+            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+        }
+    }
+
+    SetGeberPausierer();
+    setTarif();
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    var DS = new Object();
+    DS.GameI = [0];
+    DS.Game = [''];
+    DS.Spieler = [''];
+    DS.Partner = [''];
+    DS.Punkte = [[0], [0], [0], [0], [0], [0], [0]];
+    DS.Korr = [false];
+    DS.Storno = [false];
+    localStorage.setItem('Abakus.DS', JSON.stringify(DS));
+    var NEXT = new Object();
+    NEXT.Seite = 'GR';
+    localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
+    fHref('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
+}
+
+function blert(pNR, pVNAME, pNNAME, pORT, pSTERNE) {
+    LS.AnzSpieler++;
+    LS.NR    [LS.AnzSpieler] = pNR;
+    LS.VName [LS.AnzSpieler] = pVNAME.trim();
+    LS.NName [LS.AnzSpieler] = pNNAME.trim();
+    if (typeof pORT === "string") {
+        LS.Ort   [LS.AnzSpieler] = pORT.trim();
+    } else {
+        LS.Ort   [LS.AnzSpieler] = pORT;
+    }
+    LS.Sterne[LS.AnzSpieler] = pSTERNE;
+}
+
+function SetGeberPausierer() {
+
+    LS.Geber = LS.Vorhand - 1;
+    if (LS.Geber === 0) {
+        LS.Geber = LS.AnzSpieler;
+    }
+    if (LS.Geber === LS.Pausierer1 || LS.Geber === LS.Pausierer2) {
+        LS.Geber = LS.Geber - 1;
+        if (LS.Geber === 0) {
+            LS.Geber = LS.AnzSpieler;
+        }
+        if (LS.Geber === LS.Pausierer1 || LS.Geber === LS.Pausierer2) {
+            LS.Geber = LS.Geber - 1;
+            if (LS.Geber === 0) {
+                LS.Geber = LS.AnzSpieler;
+            }
+        }
+    }
+
+    LS.INA1 = 0;
+    LS.INA2 = 0;
+    if (LS.AnzSpieler === 4) {
+        LS.INA1 = 5;
+        LS.INA2 = 6;
+    } else if (LS.AnzSpieler === 5) {
+        if (LS.Pausierer1 > 0) {
+            LS.INA1 = LS.Pausierer1;
+        } else {
+            LS.INA1 = LS.Geber;
+        }
+        LS.INA2 = 6;
+    } else if (LS.AnzSpieler === 6) {
+        if (LS.Pausierer1 === 0 && LS.Pausierer2 === 0) {
+            LS.INA1 = LS.Geber;
+            if (LS.Geber <= 3) {
+                LS.INA2 = LS.Geber + 3;
+            } else {
+                LS.INA2 = LS.Geber - 3;
+            }
+        } else if (LS.Pausierer1 !== 0 && LS.Pausierer2 !== 0) {
+            LS.INA1 = LS.Pausierer1;
+            LS.INA2 = LS.Pausierer2;
+            LS.Geber = 0;
+        } else {
+            LS.INA1 = LS.Pausierer1;
+            LS.INA2 = LS.Geber;
+            LS.Geber = 0;
+        }
+    }
+}
+
+function setTarif() {
+    'use strict';
+    LS.Tarif = new Array(19);
+    if (CUPS.TARIF[LS.I].length >= 18) {
+        LS.Tarif[iRufer          ] = CUPS.TARIF[LS.I][1 ]; // Rufer
+        LS.Tarif[iSolorufer      ] = CUPS.TARIF[LS.I][1 ] * 2; // Solorufer
+        LS.Tarif[iPagatrufer     ] = CUPS.TARIF[LS.I][1 ]; // Pagat
+        LS.Tarif[iUhurufer       ] = CUPS.TARIF[LS.I][1 ]; // Uhu
+        LS.Tarif[iKakadurufer    ] = CUPS.TARIF[LS.I][1 ]; // Kakadu
+        LS.Tarif[iQuapilrufer    ] = CUPS.TARIF[LS.I][1 ]; // Quapil
+        LS.Tarif[i6er            ] = CUPS.TARIF[LS.I][2 ]; // 6er
+        LS.Tarif[i3er            ] = CUPS.TARIF[LS.I][3 ]; // 3er
+        LS.Tarif[iSolo3er        ] = CUPS.TARIF[LS.I][3 ] * 2; // Solo3er
+        LS.Tarif[iFarben3er      ] = CUPS.TARIF[LS.I][4 ]; // Farben-3er
+        LS.Tarif[iFarbensolo     ] = CUPS.TARIF[LS.I][5 ]; // Farbensolo
+        LS.Tarif[iTrischaker     ] = CUPS.TARIF[LS.I][6 ]; // Trischaken
+        LS.Tarif[iPiZwiccolo     ] = CUPS.TARIF[LS.I][7 ]; // Pi/Zwiccolo
+        LS.Tarif[iBettler        ] = CUPS.TARIF[LS.I][8 ]; // Bettler
+        LS.Tarif[iPiZwiccoloOvert] = CUPS.TARIF[LS.I][9 ]; // Pi/Zwiccolo overt
+        LS.Tarif[iBettlerOvert   ] = CUPS.TARIF[LS.I][10]; // Bettler overt
+        LS.Tarif[iPagat          ] = CUPS.TARIF[LS.I][11]; // Pagat
+        LS.Tarif[iUhu            ] = CUPS.TARIF[LS.I][12]; // Uhu
+        LS.Tarif[iKakadu         ] = CUPS.TARIF[LS.I][13]; // Kakadu
+        LS.Tarif[iQuapil         ] = CUPS.TARIF[LS.I][14]; // Quapil
+        LS.Tarif[iV              ] = CUPS.TARIF[LS.I][15]; // V
+        LS.Tarif[iTrull          ] = CUPS.TARIF[LS.I][16]; // Trull
+        LS.Tarif[i4Koenige       ] = CUPS.TARIF[LS.I][17]; // Vier Könige
+        LS.Tarif[iUltimo         ] = CUPS.TARIF[LS.I][18]; // König ultimo
+        LS.Tarif[iValat          ] = CUPS.TARIF[LS.I][19]; // Valat
+        if (CUPS.TARIF[LS.I][20]) {
+            LS.Tarif[iAbsolut    ] = CUPS.TARIF[LS.I][20]; // Prämie 20
+            LS.Tarif20T = CUPS.TARIF20T[LS.I];
+        } else {
+            LS.Tarif[iAbsolut    ] = 0;
+            LS.Tarif20T = '';
+        }
+        if (CUPS.TARIF[LS.I][21]) {
+            LS.Tarif[iXY         ] = CUPS.TARIF[LS.I][21]; // Prämie 21
+            LS.Tarif21T = CUPS.TARIF21T[LS.I];
+        } else {
+            LS.Tarif[iXY         ] = 0;
+            LS.Tarif21T = '';
+        }
+    } else if (CUPS.REGELN[LS.I] === 'Wr.') {
+        LS.Tarif[iRufer          ] = 1; // Rufer
+        LS.Tarif[iSolorufer      ] = 2; // Solorufer
+        LS.Tarif[iPagatrufer     ] = 1; // Pagat
+        LS.Tarif[iUhurufer       ] = 1; // Uhu
+        LS.Tarif[iKakadurufer    ] = 1; // Kakadu
+        LS.Tarif[iQuapilrufer    ] = 1; // Quapil
+        LS.Tarif[i6er            ] = 4; // 6er
+        LS.Tarif[i3er            ] = 5; // 3er
+        LS.Tarif[iSolo3er        ] = 10; // Solo3er
+        LS.Tarif[iFarben3er      ] = 5; // Farben-3er
+        LS.Tarif[iFarbensolo     ] = 10; // Farbensolo
+        LS.Tarif[iTrischaker     ] = 2; // Trischaken
+        LS.Tarif[iPiZwiccolo     ] = 2; // Pi/Zwiccolo
+        LS.Tarif[iBettler        ] = 4; // Bettler
+        LS.Tarif[iPiZwiccoloOvert] = 6; // Pi/Zwiccolo overt
+        LS.Tarif[iBettlerOvert   ] = 8; // Bettler overt
+        LS.Tarif[iPagat          ] = 1; // Pagat
+        LS.Tarif[iUhu            ] = 2; // Uhu
+        LS.Tarif[iKakadu         ] = 3; // Kakadu
+        LS.Tarif[iQuapil         ] = 4; // Quapil
+        LS.Tarif[iV              ] = 0; // V
+        LS.Tarif[iTrull          ] = 1; // Trull
+        LS.Tarif[i4Koenige       ] = 1; // Vier Könige
+        LS.Tarif[iUltimo         ] = 1; // König ultimo
+        LS.Tarif[iValat          ] = 0; // Valat
+        LS.Tarif[iAbsolut        ] = 0; // Absolut
+        LS.Tarif[iXY             ] = 0; // Prämie XY
+        LS.Tarif20T = '';
+        LS.Tarif21T = '';
+    } else if (CUPS.REGELN[LS.I] === 'Ooe.') {
+        LS.Tarif[iRufer          ] = 1; // Rufer
+        LS.Tarif[iSolorufer      ] = 2; // Solorufer
+        LS.Tarif[iPagatrufer     ] = 1; // Pagat
+        LS.Tarif[iUhurufer       ] = 1; // Uhu
+        LS.Tarif[iKakadurufer    ] = 1; // Kakadu
+        LS.Tarif[iQuapilrufer    ] = 1; // Quapil
+        LS.Tarif[i6er            ] = 4; // 6er
+        LS.Tarif[i3er            ] = 4; // 3er
+        LS.Tarif[iSolo3er        ] = 8; // Solo3er
+        LS.Tarif[iFarben3er      ] = 0; // Farben-3er
+        LS.Tarif[iFarbensolo     ] = 5; // Farbensolo
+        LS.Tarif[iTrischaker     ] = 1; // Trischaken
+        LS.Tarif[iPiZwiccolo     ] = 2; // Pi/Zwiccolo
+        LS.Tarif[iBettler        ] = 2; // Bettler
+        LS.Tarif[iPiZwiccoloOvert] = 6; // Pi/Zwiccolo overt
+        LS.Tarif[iBettlerOvert   ] = 7; // Bettler overt
+        LS.Tarif[iPagat          ] = 1; // Pagat
+        LS.Tarif[iUhu            ] = 2; // Uhu
+        LS.Tarif[iKakadu         ] = 3; // Kakadu
+        LS.Tarif[iQuapil         ] = 4; // Quapil
+        LS.Tarif[iV              ] = 0; // V
+        LS.Tarif[iTrull          ] = 1; // Trull
+        LS.Tarif[i4Koenige       ] = 1; // Vier Könige
+        LS.Tarif[iUltimo         ] = 1; // König ultimo
+        LS.Tarif[iValat          ] = 0; // Valat
+        LS.Tarif[iAbsolut        ] = 0; // Absolut
+        LS.Tarif[iXY             ] = 0; // Prämie XY
+        LS.Tarif20T = '';
+        LS.Tarif21T = '';
+    } else {
+        LS.Tarif[iRufer          ] = 1; // Rufer
+        LS.Tarif[iSolorufer      ] = 2; // Solorufer
+        LS.Tarif[iPagatrufer     ] = 1; // Pagat
+        LS.Tarif[iUhurufer       ] = 1; // Uhu
+        LS.Tarif[iKakadurufer    ] = 1; // Kakadu
+        LS.Tarif[iQuapilrufer    ] = 1; // Quapil
+        LS.Tarif[i6er            ] = 4; // 6er
+        LS.Tarif[i3er            ] = 5; // 3er
+        LS.Tarif[iSolo3er        ] = 10; // Solo3er
+        LS.Tarif[iFarben3er      ] = 5; // Farben-3er
+        LS.Tarif[iFarbensolo     ] = 10; // Farbensolo
+        LS.Tarif[iTrischaker     ] = 2; // Trischaken
+        LS.Tarif[iPiZwiccolo     ] = 2; // Pi/Zwiccolo
+        LS.Tarif[iBettler        ] = 4; // Bettler
+        LS.Tarif[iPiZwiccoloOvert] = 8; // Pi/Zwiccolo overt
+        LS.Tarif[iBettlerOvert   ] = 8; // Bettler overt
+        LS.Tarif[iPagat          ] = 1; // Pagat
+        LS.Tarif[iUhu            ] = 2; // Uhu
+        LS.Tarif[iKakadu         ] = 3; // Kakadu
+        LS.Tarif[iQuapil         ] = 4; // Quapil
+        LS.Tarif[iV              ] = 0; // V
+        LS.Tarif[iTrull          ] = 1; // Trull
+        LS.Tarif[i4Koenige       ] = 1; // Vier Könige
+        LS.Tarif[iUltimo         ] = 1; // König ultimo
+        LS.Tarif[iValat          ] = 10; // Valat
+        LS.Tarif[iAbsolut        ] = 1; // Absolut
+        LS.Tarif[iXY             ] = 1; // Prämie XY
+        LS.Tarif20T = 'Sack';
+        LS.Tarif21T = 'XY';
+    }
+}
+
+function whenSTATloaded() {
+    'use strict';
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
+        checkNeuerTisch();
+        return;
+    }
+
+    var hJetzt = new Date().getTime();
+    if (STAT && new Date(STAT.ZULETZTupd).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
+        showEineWarnung('F1: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+        return false;
+    }
+
+    if (new Date(getVersionsDatum()).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
+        showEineWarnung('F2: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+        return false;
+    }
+
+    if (CUPS.TURNIER[I]) {
+
+        if (PC && CUPS.TURNIER[I] !== 'Handy') {
+        } else {
+            if (STAT.TURRUNDE === 0) {
+                showEineWarnung(I, "Turnier noch nicht gestartet!", "Informiere den Veranstalter.");
+                return false;
+            }
+        }
+
+        if (CUPS.TURNIER[I] === 'Handy') {
+
+            if (new Date(STAT.TURTIMESTAMP).getTime() > hJetzt + 60000 * 15) { // + 15 Minuten Toleranz
+                if (LS.ME !== '3425') {
+                    showEineWarnung('F3: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+                    return false;
+                }
+            }
+
+            if (new Date(STAT.TURTIMESTAMP).toDateString() !== new Date().toDateString()) {
+                if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0) {
+                    if (new Date(STAT.TURTIMESTAMP).getTime() + 60000 * 60 * 24 > hJetzt) { // 24 Stunden Toleranz
+                        showEineWarnung('F4: Datum oder Uhrzeit falsch.',
+                                'Korrekturen müssen innerhalb von 24 Stunden nach Turnierstart durchgeführt werden.');
+                    }
+                } else {
+                    showEineWarnung('F3: Datum ungültig:', 'Nur an dem Tag, an dem<br>'
+                            + 'das Turnier gestartet wurde,<br>'
+                            + 'dem ' + new Date(STAT.TURTIMESTAMP).toLocaleDateString() + ', kann ein<br>'
+                            + 'Tisch eingegeben werden.');
+                    return false;
+                }
+            }
+
+            if (I > 3) {
+                if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || STAT.TURGESPIELT === 0) {
+// Administrator muß händische Tische nacherfassen
+                } else {
+                    showEineWarnung(I, "Runde " + STAT.TURRUNDE + " läuft noch!", "Etwas Geduld bitte!");
+                    return false;
+                }
+            }
+
+        }
+    }
+
+    hideEinenMoment(); // iOS ist hier leider ein bisserl langsam.
+    LS.Von = new Date();
+    LS.Bis = new Date();
+    LS.LoadCups = I * -1; // - = neuer Tisch
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    fHref('Abakus/Anmeldung.html');
+}
+
+function Weiterspielen() {
+    'use strict';
+    LS.ShowCups = LS.I;
+    if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+        LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+        if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
+            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+        }
+    }
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    var NEXT = new Object();
+    NEXT.Seite = 'GR';
+    localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
+    fHref('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
+}
+
+function getINT(pStr) {
+    var Str = $.trim(pStr);
+    var Int = parseInt(Str);
+    if (Str === "")
+        return false;
+    if (isNaN(Str))
+        return false;
+    if (isNaN(Int))
+        return false;
+    if (Str.indexOf('-') >= 0 & Int > 0) {
+        return (Int * -1);
+    }
+    if (Str.toString() === Int.toString()) {
+        return Int;
+    } else {
+        return false;
+    }
+}
+
+function checkVersion() {
+    'use strict';
+    var sDate = new Date(CUPS.TIMESTAMP);
+    var hDate = new Date();
+    if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
+        $('#bSpeichern').addClass('ui-disabled');
+        $('#hSpeichern').html('<span class="cRot">'
+                + 'Die Zeitzone ist ungleich Wien.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
+    } else if (sDate.getFullYear() > hDate.getFullYear() || sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+        $('#bSpeichern').addClass('ui-disabled');
+        $('#hSpeichern').html('<span class=cRot>'
+                + 'Das Systemdatum ist nicht aktuell.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
+    } else if (sDate.getFullYear() < hDate.getFullYear()) {
+        $('#bSpeichern').addClass('ui-disabled');
+        $('#hSpeichern').html('<span class=cRot>'
+                + 'Das System wurde für ' + hDate.getFullYear() + '<br>'
+                + 'noch nicht freigegeben.<br>'
+                + 'Informiere einen Administrator.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
+    }
+}
+
 function historyBack() {
     if (LS.ShowCups) {
         LS.ShowCups = 0;
@@ -501,7 +1965,13 @@ function fZuMeinemTisch() {
         }
     }
     checkVersion();
-    $("#pMEINTISCH").popup("open").show();
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        setTimeout(function () {
+            $("#pMEINTISCH").popup("open").show();
+        }, 200);
+    } else {
+        $("#pMEINTISCH").popup("open").show();
+    }
 }
 
 function resetLastBtn() {
@@ -547,37 +2017,6 @@ function resetLastBtn() {
                 }
             }
         }
-    }
-}
-
-
-function fScrollToView() {
-
-    if (LS.LastBtn) {
-        setTimeout(function () {
-
-            var elementTop = parseInt($(LS.LastBtn).offset().top);
-            var elementBottom = elementTop + $(this).outerHeight();
-
-            var viewportTop = $(window).scrollTop();
-            var viewportBottom = viewportTop + $(window).height();
-
-            console.log(LS.LastBtn + ': ', elementTop, viewportTop);
-
-//    return elementTop > viewportTop && elementTop < viewportBottom;
-            if (elementTop < 0) {
-                console.log(LS.LastBtn + ': ', elementTop, viewportTop);
-//                $("#pContent").scrollTo(LS.LastBtn,1000);
-//                $('#pContent').scrollTop(elementTop * -1 + 55);
-                $('#pContent').scrollTop(22);
-//                $('#pContent').scrollTop($(LS.LastBtn).offset().top);
-//            if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
-//                if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
-//                    $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-//                }
-//            }
-            }
-        }, 1300);
     }
 }
 
@@ -658,40 +2097,6 @@ function showCup(i, pBtn, pTermin) {
             $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen');
         }
         $('#tgl' + LS.LastBtn.substr(1)).toggle('show');
-//        $('#tgl' + LS.LastBtn.substr(1)).toggle('show', fScrollToView);
-
-//        if (!QUERFORMAT()) {
-//            $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
-//            if ($(LS.LastBtn).length) {
-//                if (QUERFORMAT()) {
-//                    $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
-//                }
-//                if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
-//                    $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-//                    if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
-//                        if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
-//                            $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
-//        $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
-//        if ($(LS.LastBtn).length) {
-//            if (QUERFORMAT()) {
-//                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
-//            }
-//            if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
-//                $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-//                if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
-//                    if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
-//                        $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-//                    }
-//                }
-//            }
-//        }
-
     }
 
     writeCanvas(I);
@@ -851,23 +2256,6 @@ function showCup(i, pBtn, pTermin) {
     } else {
         $('#hfText').html(CUPS.TEXT1[i] + htmlNaechstTermin);
     }
-
-    if (LS.LastBtn) {
-
-//        if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
-//            $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-//            if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
-//                if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
-//                    $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-//                }
-//            }
-//        }
-
-
-
-
-    }
-
 }
 
 function listVersion() {
@@ -1015,7 +2403,290 @@ function showCUPS() {
         whenCUPSloaded();
     }
 }
+/* global stCup, CUPS, STAT, stAnzSpalten, LS, PC, setFont, SORT */
 
+function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
+    'use strict';
+
+// stTurCupGes:
+// 0 = Gesamt
+// 1 = laufendes Jahr
+// 2 = Vorjahr
+// 3 = LETZTE Runde/Turnier
+
+    $('#stHead').show();
+    lastOption = 0;
+    lastScrollPos = 0;
+    stAktSpalten = 1;
+
+    hWait = 500;
+
+    if (stStat === 10 || stTurCupGes > 3) { // Anmeldungen || Archiv
+        if (typeof pTurCupGes !== 'number') {
+            pTurCupGes = 3;
+        }
+        if (!pStat) {
+            pStat = -1;
+        }
+        if (!pSort) {
+            pSort = 'GES';
+        }
+    }
+
+    if (pStat === 0) {
+        if (CUPS.TURNIER[stCup]) {
+            if (CUPS.TURNIER[stCup] === "Handy") {
+                if ((STAT.TURRUNDE === 2 || STAT.TURRUNDE === 3) && STAT.TURGESPIELT === 0) {
+                    pStat = -1;
+                    stSort = 'TIS' + STAT.TURRUNDE;
+                    pRunde = STAT.TURRUNDE;
+                    pTurCupGes = 3;
+                } else {
+                    pStat = -1;
+                    stSort = 'GES';
+                }
+            } else {
+                pStat = -1;
+                stSort = 'GES';
+                pTurCupGes = 3;
+            }
+        } else {
+            pStat = 1;
+            stSort = 'CUP';
+        }
+        var hCreateHeader = true;
+    } else {
+        if (pHeader || stAnzSpalten === 1 || pStat === 10) {
+            var hCreateHeader = true;
+        } else {
+            var hCreateHeader = false;
+        }
+    }
+    hCreateHeader = true; // Sonst werden die NB-Buttons nicht aktiviert
+    if (pStat) {
+        stStat = pStat;
+    }
+    if (pSort) {
+        stSort = pSort;
+    }
+    if (typeof pTurCupGes === 'number') {
+        stTurCupGes = pTurCupGes;
+    }
+    if (stSort.indexOf('TIS') === 0 && !pRunde) {
+        stSort = 'GES';
+    }
+
+    if ((stTurCupGes === 4 || stTurCupGes === 5) && stStat === -1) {
+        stStat = 1;      // Für die Jahre 2014 und 2015
+        stSort = 'CUP';  // existiert keine Cupwertung
+    }
+
+    if (stTurCupGes <= 3) {
+        stVollAb = CUPS.VOLLAB[stCup][stTurCupGes];
+    } else {
+        stVollAb = CUPS.VOLLAB[stCup][1];
+    }
+
+    compStNamenLen();
+
+    html = getSortUndLayout();
+
+    if (hCreateHeader) {
+        html += "<div class=ui-grid-c><div class=ui-block-a id=SP1 style='width:100%;'>";
+    }
+    var heute = new Date();
+    var daysOfWeek = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+    var monthsOfYear = ["J" + eval('"\\u00e4"') + "n.", "Feb.", "M" + eval('"\\u00e4"') + "rz", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
+
+    STAT.ZULETZT = new Date(STAT.ZULETZT);
+    stTIMESTAMP = new Date(STAT.ZULETZT);
+
+    html += getHilfeText();
+
+    if (stStat === 8) {
+        statDiagramm();
+    } else {
+        if (stStat === 10) {
+            html = html + statPosAnmeld();
+        } else if (CUPS.TURNIER[stCup]) {
+            if (stSort === 'TZU') {
+                html = html + statPosDivPCtur();
+            } else if ((stStat === -1 || stStat === 2) && (stTurCupGes === 1 || stTurCupGes === 2 || stTurCupGes === 3 || stTurCupGes > 3) || stSort[0] === 'T') {
+                if ((CUPS.TYP[stCup] === 'MT') && (stTurCupGes === 1 || stTurCupGes === 2)) { // 1 === akt. Jahr, 2 === Vorjahr
+                    html = html + statPosCupD60(pRunde);
+                } else {
+                    html = html + statPosCup(pRunde);
+                }
+            } else if (stStat <= 1 || stSort === 'STO') {
+                html = html + statPosCupD60(pRunde);
+            } else {
+                html = html + statPosDiv();  // Staudingerliste
+            }
+        } else {
+            if (stStat <= 1 || stSort === 'STO') {
+                html = html + statPosCupD60(pRunde);
+            } else {
+                html = html + statPosDiv();  // Staudingerliste
+            }
+        }
+        if (hCreateHeader) {
+            var hZuletzt = new Date(STAT.ZULETZT);
+            if (CUPS.TURNIER[stCup] && LS.TURRUNDE === 1 && LS.I === stCup) {
+                hZuletzt = new Date();
+            }
+            if (LS.AnzSpalten === 1 || stAnzSpalten > 3 || !QUERFORMAT()) {
+                if (hZuletzt.getDate() >= 20) {
+                    var tZuletzt = hZuletzt.getDate() + "." + monthsOfYear[hZuletzt.getMonth()];
+                } else {
+                    var tZuletzt = hZuletzt.getDate() + ". " + monthsOfYear[hZuletzt.getMonth()];
+                }
+            } else {
+                var tZuletzt = daysOfWeek[hZuletzt.getDay()] + " " + hZuletzt.getDate() + ". " + monthsOfYear[hZuletzt.getMonth()];
+            }
+            html += "</div>";
+            if (QUERFORMAT()) {
+                html += '<div class=ui-block-b id=SP2 style="width:0%;"></div>'
+                        + '<div class=ui-block-c id=SP3 style="width:0%;"></div>'
+                        + '<div class=ui-block-d id=SP4 style="width:0%;"></div>';
+            }
+            html += "</div>";
+            if (stCup > 450 && PC) {  // damit Google beim Drucken keine Zeilen schluckt.
+                var hDataPosition = "";
+            } else {
+                var hDataPosition = " data-position='fixed'";
+            }
+            if (QUERFORMAT()) {
+                if (LS.ME === '3425' && !STAT.MAXSPIELE) {
+                    showEineMeldung('statShow(), Line 167', 'Warum ist STAT.MAXSPIELE[] nicht deffiniert?');
+                }
+                $('#stMain').html(
+                        "<div id='stHeader' data-role='header' " + hDataPosition + " class='K' style='position: fixed; top: 0; width: 100%; padding:0em; margin:0px'>"
+                        + "<canvas id='stHead' onclick='$(\"#sortUndLayout\").toggle(\"show\");' width='2000' height='66'></canvas>"
+                        + "<div id=stNavbar data-role='navbar' class='noprint'>"
+                        + "<ul>"
+                        + "<li class=nb11 id='bSt2'><a onclick='statShow(false,false,false,false,2);' class='nbButton " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"
+                        + "<li class=nb11 id='bSt1'><a onclick='statShow(false,false,false,false,1);' class='nbButton " + (stTurCupGes === 1 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[1] ? '' : ' ui-disabled') + "'>" + heute.getFullYear() + "</a></li>"
+                        + "<li class=nb6  id='bSt3'><a onclick='statShow(false,false,false,false,3);' class='nbButton " + (stTurCupGes === 3 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[3] ? '' : ' ui-disabled') + "'>" + tZuletzt + "</a></li>"
+                        + "<li class=nb6  id='bSt0'><a onclick='statShow(false,false,false,false,0);' class='nbButton " + (stTurCupGes === 0 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Gesamt</a></li>"
+                        + "<li class=nb6  id='bAnmeldung'><a id=aAnmeldung onclick='statShow(10);'    class='nbButton " + (stStat === 10 ? ' ui-btn-active' : '') + (CUPS.ANMELDERF[stCup] ? '' : ' ui-disabled') + "'>Anmeldungen</a></li>"
+                        + "<li class=nb6  id='bArchiv'><a onclick='showArchiv();'                     class='nbButton " + (STAT.MAXSPIELE[1] + STAT.MAXSPIELE[2] < STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Archiv</a></li>"
+                        + "<li class=nb11 id='bSt99'><a onclick='if ($(\"#hilfeText\").is(\":visible\")) {$(\"#hilfeText\").hide();} else {$(\"#hilfeText\").show();}' class='nbButton'>Hilfe</a></li>"
+                        + "</ul>"
+                        + "</div>"
+                        + "</div>"
+                        + "<div id=stBody>"
+                        + html
+                        + "</div>"
+                        ).trigger('create').show(setFont);
+            } else {
+                $('#stMain').html(
+                        "<div id='stHeader' data-role='header' " + hDataPosition + " class='K' style='position: fixed; top: 0; width: 100%; padding:0em; margin:0px'>"
+                        + "<canvas id='stHead' onclick='$(\"#sortUndLayout\").toggle(\"show\");' width='2000' height='66'></canvas>"
+                        + "<div id=stNavbar data-role='navbar' class='noprint'>"
+                        + "<ul>"
+                        + "<li class=nb18 id='bSt2'><a onclick='statShow(false,false,false,false,2);' class='nbButton M2 " + (stTurCupGes === 2 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[2] ? '' : ' ui-disabled') + "'>" + (heute.getFullYear() - 1) + "</a></li>"
+                        + "<li class=nb18 id='bSt1'><a onclick='statShow(false,false,false,false,1);' class='nbButton M2 " + (stTurCupGes === 1 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[1] ? '' : ' ui-disabled') + "'>" + heute.getFullYear() + "</a></li>"
+                        + "<li class=nb27 id='bSt3'><a onclick='statShow(false,false,false,false,3);' class='nbButton M2 " + (stTurCupGes === 3 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[3] ? '' : ' ui-disabled') + "'>" + tZuletzt + "</a></li>"
+                        + "<li class=nb26 id='bSt0'><a onclick='statShow(false,false,false,false,0);' class='nbButton M2 " + (stTurCupGes === 0 ? ' ui-btn-active' : '') + (STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + "'>Gesamt</a></li>"
+                        + "<li class=nb11 id='bSt99'><a onclick='showNavbarExt();Deactivate(this);' class='nbButton M2'>...</a></li>"
+                        + "</ul>"
+                        + "</div>"
+                        + "</div>"
+                        + "<div id=stBody>"
+                        + html
+                        + "</div>"
+                        ).trigger('create').show(setFont);
+            }
+        } else {
+            $('#SP1').html(html).trigger('create').show(setFont);
+        }
+        window.scrollTo(0, 0);
+    }
+    $("#sortUndLayout").hide();
+
+    if (pRunde) {
+        $("#stRunde2,#stRunde3,#stOptWann").buttonMarkup({theme: 'a'});
+        if (pRunde === 2) {
+            Deactivate("#stRunde2");
+            $("#stRunde2").buttonMarkup({theme: 'c'});
+        } else if (pRunde === 3) {
+            Deactivate("#stRunde3");
+            $("#stRunde3").buttonMarkup({theme: 'c'});
+        }
+    }
+
+    html = '';
+    monthsOfYear = ["J" + eval('"\\u00e4"') + "nner", "Februar", "M" + eval('"\\u00e4"') + "rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+
+    if (pStat === 10) {
+        writeCanvas('Anmeldungen');
+    } else if (SORT.length < 3) { // Auf der Stockerlliste sind eventuell nur 3 Spieler
+        writeCanvas('Keine Daten!');
+    } else if (stStat <= 1) {
+        if (stTurCupGes === 0) {
+            writeCanvas('Gesamtwertung ' + (CUPS.TURNIER[stCup] && stStat === 1 ? 'D60 ' : ''));
+        } else if (stTurCupGes === 1) {
+            writeCanvas('Cupwertung ' + (CUPS.TURNIER[stCup] && stStat === 1 ? 'D60 ' : '') + (heute.getFullYear()));
+        } else if (stTurCupGes === 2) {
+            writeCanvas('Cupwertung ' + (CUPS.TURNIER[stCup] && stStat === 1 ? 'D60 ' : '') + (heute.getFullYear() - 1));
+        } else if (stTurCupGes === 3) {
+            if (CUPS.TURNIER[stCup]) {
+                if (stSort.indexOf('TIS') === 0) {
+                    writeCanvas(pRunde + '. Runde, ' + daysOfWeek[stTIMESTAMP.getDay()] + " " + stTIMESTAMP.getDate() + ". " + monthsOfYear[stTIMESTAMP.getMonth()] + ' ' + stTIMESTAMP.getFullYear(),
+                            pRunde + '. Runde  ' + stTIMESTAMP.getFullYear() + '-' + ('0' + (stTIMESTAMP.getMonth() + 1)).substr(-2) + '-' + ('0' + (stTIMESTAMP.getDate())).substr(-2));
+                } else {
+                    writeCanvas((stCup === 30 ? 'Einzelwertung ' : 'Turnier ') + (stStat === 1 ? 'D60  ' : ' ') + daysOfWeek[stTIMESTAMP.getDay()] + " " + stTIMESTAMP.getDate() + ". " + monthsOfYear[stTIMESTAMP.getMonth()] + ' ' + stTIMESTAMP.getFullYear(),
+                            (stCup === 30 ? 'Einzelwertung ' : 'Turnier ') + (stStat === 1 ? 'D60  ' : ' ') + stTIMESTAMP.getFullYear() + '-' + ('0' + (stTIMESTAMP.getMonth() + 1)).substr(-2) + '-' + ('0' + (stTIMESTAMP.getDate())).substr(-2));
+                }
+            } else {
+                writeCanvas('Tageswertung  ' + daysOfWeek[stTIMESTAMP.getDay()] + " " + stTIMESTAMP.getDate() + ". " + monthsOfYear[stTIMESTAMP.getMonth()],
+                        'Tageswertung  ' + stTIMESTAMP.getFullYear() + '-' + ('0' + (stTIMESTAMP.getMonth() + 1)).substr(-2) + '-' + ('0' + (stTIMESTAMP.getDate())).substr(-2));
+            }
+        } else {
+            if (stStat === -1 && CUPS.TURNIER[stCup]) {
+                writeCanvas('Cupwertung ' + (2010 + stTurCupGes));
+            } else {
+                writeCanvas('Tarockquotient ' + (2010 + stTurCupGes));
+            }
+        }
+    } else {
+        var hTitel = '';
+        if (stStat === 2) {
+            hTitel = 'Stockerlliste';
+        } else if (stStat === 3) {
+            hTitel = 'Gewinner';
+        } else if (stStat === 4) {
+            hTitel = 'Verlierer';
+        } else if (stStat === 5) {
+            hTitel = 'Vielspieler';
+        } else if (stStat === 6) {
+            hTitel = 'Wenigspieler';
+        } else if (stStat === 7) {
+            hTitel = '3er-Liste';
+        } else if (stStat === 8) {
+            hTitel = 'Die Positiven';
+        } else if (stStat === 9) {
+            hTitel = 'Tischliste';
+        } else if (stStat === 10) {
+            hTitel = 'Anmeldungen';
+        } else {
+            hTitel = '???';
+        }
+        if (stTurCupGes === 0) {
+            writeCanvas(hTitel + '  (gesamt)');
+        } else if (stTurCupGes === 1) {
+            writeCanvas(hTitel + '  ' + (heute.getFullYear()));
+        } else if (stTurCupGes === 2) {
+            writeCanvas(hTitel + '  ' + (heute.getFullYear() - 1));
+        } else {
+            writeCanvas(hTitel + '  ' + daysOfWeek[stTIMESTAMP.getDay()] + " " + stTIMESTAMP.getDate() + ". " + monthsOfYear[stTIMESTAMP.getMonth()],
+                    hTitel + '  ' + stTIMESTAMP.getFullYear() + '-' + ('0' + (stTIMESTAMP.getMonth() + 1)).substr(-2) + '-' + ('0' + (stTIMESTAMP.getDate())).substr(-2));
+        }
+    }
+
+    stHeader = true;
+
+}
 function getClass(i) {
 
     if (i === LS.I) {
@@ -1302,7 +2973,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 function whenCUPSloaded() {
 
     initExtraButtons();
-    if (LS.I) { // ????
+    if (LS.I && LS.AnzSpieler) { // ????
         if (LS.gespielt > 0) {
             $('#tCupName').html(CUPS.NAME[LS.I] + '<br>' + (LS.gespielt === 1 ? 'Ein Spiel' : LS.gespielt + ' Spiele') + ' gespielt');
         } else if (LS.TURRUNDE) {
@@ -1642,11 +3313,6 @@ function whenCUPSloaded() {
             }
             if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
                 $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-                if (navigator.userAgent.toUpperCase().indexOf('FIREFOX') >= 0) { // Firefox schafft den Scroll nur jedes zweite mal.
-                    if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
-                        $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
-                    }
-                }
             }
         }
     } else {
@@ -1824,23 +3490,23 @@ $(document).ready(function () {
         });
     };
 
-    if (/iPad|iPhone/.test(navigator.userAgent)) {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
         window.onpageshow = function (event) {
             if (window.performance.navigation.type === 2) {
                 LS = JSON.parse(localStorage.getItem('Abakus.LS'));
                 CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-                if (LS.ME !== 'NOBODY') { // nach Registrierung aktualisieren
-                    if (LS.ME.length === 4) {
-                        $('#tSpieler').html('Registriert für Spieler ' + LS.ME + '<br>' + LS.MEname + '.');
-                    } else {
-                        $('#tSpieler').html('Registriert für Spieler<br>' + LS.MEname + '.');
-                    }
+                if (LS.ME === 'NOBODY') {
+                    $('#tSpieler').html('Noch nicht registriert.');
+                } else {
+                    $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
                 }
                 initSeite1();
                 if (LS.I === 0) {
                     $('#bZuMeinemTisch').hide();
                 }
                 $('body').removeClass('ui-disabled');
+//            } else {
+//                showEineMeldung('iOS Navigation:', 'Type: ' + window.performance.navigation.type);
             }
         };
     }

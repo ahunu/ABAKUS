@@ -12,8 +12,6 @@ var FB = undefined;
 var aANZSPIELE = [[], [], [], [], [], [], []];
 var aANZGEWONNEN = [[], [], [], [], [], [], []];
 var aPKTGEWONNEN = [[], [], [], [], [], [], []];
-var hTISCHP = [, 0, 0, 0, 0, 0, 0];
-var hCUPP = [, 0, 0, 0, 0, 0, 0];
 var hMAXSPIELE = 0;
 
 var stFilter = '';
@@ -182,44 +180,7 @@ function SpeichernOT() {
         }
     }
 
-    log('Speichern 4', 0);
-    for (var i = 1; i <= LS.AnzSpieler; i++) {
-        if (LS.Spiele[i] === 0) {
-            hCUPP[i] = 0;
-        } else {
-            hCUPP[i] = DS.Punkte[i][0] * 60 / LS.Spiele[i];
-            if (LS.Spiele[i] < Math.round(hMAXSPIELE * CUPS.VOLLAB[LS.I][3] / 100)) {
-                hCUPP[i] = hCUPP[i] * (LS.Spiele[i] / (hMAXSPIELE * CUPS.VOLLAB[LS.I][3] / 100));
-            }
-        }
-    }
-
-    if (CUPS.TURNIER[LS.I]) {
-        var anzMehr = 0;
-        var anzGleich = 0;
-
-        for (var i = 1; i <= LS.AnzSpieler; i++) {
-            anzMehr = 0;
-            anzGleich = 0;
-            for (var ii = 1; ii <= LS.AnzSpieler; ii++) {
-                if (hCUPP[i] < hCUPP[ii]) {
-                    anzMehr++;
-                }
-                if (hCUPP[i] === hCUPP[ii]) {
-                    anzGleich++;
-                }
-            }
-            hTISCHP[i] = 11 - (anzGleich * 1) - (anzMehr * 2);
-            if (LS.AnzSpieler > 4) {
-                hTISCHP[i] = hTISCHP[i] + 1;
-            }
-            if (hTISCHP[i] < 2) {
-                hTISCHP[i] = 2;
-            }
-        }
-    }
-
-    log('Speichern 5 - FB.STAT laden:', 0);
+    log('Speichern 4 - FB.STAT laden:', 0);
 
     whenSTATloaded();
 }
@@ -227,7 +188,7 @@ function SpeichernOT() {
 function whenSTATloaded() {
     'use strict';
     if (LS.gespielt !== 0 || LS.AnzGespeichert !== 0) {
-        log('Speichern 6 - FB.STAT geladen:', 0);
+        log('Speichern 5 - FB.STAT geladen:', 0);
         $('#emText').append('<br><br>');
         wrtSPIELER(1);
     } else {
@@ -329,7 +290,7 @@ function wrtSPIELER(I) {
 //        }
         if (CUPS.TURNIER[LS.I]) {
             STAT.S[ii].CUPPUNKTE = [0, 0, 0, 0];
-            STAT.S[ii].PUNKTERx = [];
+            STAT.S[ii].PUNKTERx = [0, 0, 0];
             STAT.S[ii].SCHREIBER = [];
             STAT.S[ii].STOCKERL = ['-', '-', '-', '-'];
         }
@@ -366,7 +327,7 @@ function wrtSPIELER(I) {
     if (CUPS.TURNIER[LS.I]) {
         var iRUNDE = LS.AktRunde - 1;
         if (CUPS.TURNIER[LS.I] === 'Handy') {
-            STAT.S[ii].PUNKTERx[iRUNDE] = DS.Punkte[I][0];
+            STAT.S[ii].PUNKTERx[iRUNDE] += DS.Punkte[I][0];
             if (DS.Game[1] === 'Diverse') { // DS.xxx bei PC-Turnier nicht verfügbar
                 STAT.S[ii].SCHREIBER[iRUNDE] = 'm' + LS.NR[1];
             } else {
@@ -377,7 +338,7 @@ function wrtSPIELER(I) {
                 }
             }
         } else if (CUPS.TURNIER[LS.I] !== 'Handy') {
-            STAT.S[ii].PUNKTERx[iRUNDE] = DS.Punkte[I][0];
+            STAT.S[ii].PUNKTERx[iRUNDE] += DS.Punkte[I][0];
             STAT.S[ii].SCHREIBER[iRUNDE] = LS.ME;
         }
         if (STAT.S[ii].STOCKERL[0] === '-'

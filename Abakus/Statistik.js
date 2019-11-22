@@ -1,5 +1,5 @@
 
-/* global LS, firebase, CUPS, setFont, imgStatistik */
+/* global LS, firebase, CUPS, setFont */
 
 var PC = false;
 var FB = undefined;
@@ -496,10 +496,10 @@ $(document).ready(function () {
             // onbeforeprint equivalent
         } else {
             $('#mTable').css('font-size', '1.5vw');
-            var canvas = document.getElementById("stHead");
-            var context = canvas.getContext('2d');
-            context.clearRect(0, 0, 70, 70);
-            context.drawImage(imgStatistik, 3, 4);  // Original Icon herstellen
+//            var canvas = document.getElementById("stCanvas");
+//            var context = canvas.getContext('2d');
+//            context.clearRect(0, 0, 70, 70);
+//            context.drawImage(imgStatistik, 3, 4);  // Original Icon herstellen
         }
     });
 

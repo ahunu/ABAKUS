@@ -373,7 +373,6 @@ function loadSTATold(I, pCallback) {
 
                     if (CUPS.TURNIER[I]) {
                         if (STAT.S[iSTAT].PUNKTERx.length === 0) {
-                            STAT.S[iSTAT].PUNKTERx = [0, 0, 0];
                             STAT.S[iSTAT].PUNKTE   [3] = 0;
                             STAT.S[iSTAT].SPIELE   [3] = 0;
                             STAT.S[iSTAT].STOCKERL [3] = '-';

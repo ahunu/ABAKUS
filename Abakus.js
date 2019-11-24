@@ -1,5 +1,5 @@
 
-/* global getVersionsDatum, firebase, pSeite, pCUP, SPIELERext */
+/* global getVersionsDatum, firebase, pSeite, pCUP, SPIELERext, stCup, stAnzSpalten, setFont, SORT */
 
 var PC = false;
 var DB = new Object();
@@ -30,6 +30,7 @@ var mTischNeuLoeschen = '';
 var mHref = false;
 var meinStellvertreter = '3244';
 var stFilter = '';
+
 const iRufer = 1;
 const iSolorufer = 2;
 const iPagatrufer = 3;
@@ -58,11 +59,6 @@ const iUltimo = 25;
 const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
-
-/* global LS, CUPS, I, iPfad, hHeute, STAT, mTischTurnier, PC, QUERFORMAT() */
-
-
-/* global LS, CUPS, I, firebase, STAT, rPfad, FB */
 
 function zumTurnier() {
     if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
@@ -254,18 +250,6 @@ function TurnierSTARTEN(pI) {
     STAT.S[pI].PUNKTERx = [];
     STAT.S[pI].SCHREIBER = [];
 
-    var hSTAT = new Object();
-    hSTAT.PUNKTE = STAT.S[pI].PUNKTE;
-    hSTAT.SPIELE = STAT.S[pI].SPIELE;
-    hSTAT.ANZSPIELE = STAT.S[pI].ANZSPIELE;
-    hSTAT.ANZGEWONNEN = STAT.S[pI].ANZGEWONNEN;
-    hSTAT.PKTGEWONNEN = STAT.S[pI].PKTGEWONNEN;
-    if (STAT.S[pI].STOCKERL[0] !== "-") {
-        hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
-    }
-    hSTAT.PUNKTERx = null;
-    hSTAT.SCHREIBER = null;
-
     firebase.database().ref('/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR)
             .update({
                 PUNKTERx: null,
@@ -325,6 +309,7 @@ function TurnierSTARTENend() {
 function RundeXbeenden() {
     'use strict';
     var hSTAT = new Object();
+    showEinenMoment(LS.I, 'Runde ' + LS.TURRUNDE + ' wird beendet.');
 //    hSTAT.ZULETZT  = new Date(new Date().getTime() - 60000 * new Date().getTimezoneOffset()).toISOString();
     hSTAT.ZULETZTupd = new Date().toISOString();
     hSTAT.TURRUNDE = LS.TURRUNDE + 1;
@@ -339,6 +324,7 @@ function RundeXbeenden() {
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
                 hideEinenMoment();
+                initSeite1();
             })
             .catch(function (error) {
                 showEineDBWarnung(error, 'RundeXbeenden()', 'STAT update');
@@ -348,6 +334,7 @@ function RundeXbeenden() {
 function TurnierBEENDEN(pI) {
     'use strict';
     if (typeof pI === 'undefined') { // beim 1. Aufrug (Callback)
+        showEinenMoment(LS.I, 'Das Turnier wird beendet.');
         pI = 1;
     }
     if (STAT.MAXSPIELE[3] === 0) {  // es wurde kein Spiel gespielt
@@ -538,10 +525,11 @@ function TurnierBEENDENendEnd() {
                 LS.TURSPIELER = 0;
                 LS.TURGESPIELT = 0;
                 LS.ShowCups = I;
+//                LS.Meldung = 'Das Turnier wurde beendet.';
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
-                $('#bZuMeinemTisch').hide();
                 hideEinenMoment();
+                initSeite1();
             })
             .catch(function (error) {
                 showEineDBWarnung(error, 'TurnierBEENDENendEnd()', 'STAT update');
@@ -740,19 +728,13 @@ function TischLoeschen(pLoeschen) {
             delete LS.TURTISCH;
         }
         LS.Meldung = "Der Tisch wurde gelöscht!";
-        var h = LS.I;
-        if (CUPS.TURNIER[I] === 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)) {
+        if (CUPS.TURNIER[I] === 'Handy') {
             // Sonst kann der Admin das Turnier nicht beenden.
         } else {
             LS.I = 0;
         }
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        $('#bZuMeinemTisch').hide();
-//        $('a').removeClass('cAktiv');
-
-        showCUPS(); // Um "Zu meinem Tisch" auf "Ein neuer Tisch" zu ändern
-        showCup(h);
-//        whenCUPSloaded();
+        initSeite1();
     } else {
         mTischNeuLoeschen = "L";
         $('#tTischWasNunName').html(CUPS.NAME[LS.I] + '&nbsp&nbsp;');
@@ -777,6 +759,9 @@ function getCupText() {
     var html = '';
     if (LS.Meldung) {
         html += '<div class="cRot B">' + LS.Meldung + '</div><br>';
+        if (!QUERFORMAT()) {
+            showEineNotiz(LS.Meldung);
+        }
         LS.Meldung = '';
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
@@ -1638,16 +1623,34 @@ function initSeite1() {
         I = LS.ShowCups;
     }
 
-    showCUPS();
-    if (I) {
-        showCup(I);
-    } else if (QUERFORMAT()) {
-        showLogo();
-    }
-    if (LS.showMeinenTisch) {
-        delete LS.showMeinenTisch;
-        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        fZuMeinemTisch();
+
+    var sync = new Date(CUPS.DATE);
+    var heute = new Date();
+    var nTage = parseInt((heute - sync) / 86400000);
+    if (LS.Version !== getVersion()) {
+        if (LS.Version < 989) { // später
+            LS.FotoStyle = 0;
+            LS.FotoAnimieren = false;
+            if (LS.Font) {
+                delete LS.Font;
+            }
+        }
+        if (LS.Version < 990) {
+            if (LS.ME.length === 4 && !LS.VIP) {
+                loadSPIELER(); // VIP-Status holen
+            }
+        }
+        localStorage.setItem('Abakus.LOG', JSON.stringify(''));
+        if (LS.Version === 0) {
+            writeLOG('ABAKUS: Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ') wurde installiert.');
+        } else {
+            writeLOG('ABAKUS: Update auf Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ').');
+        }
+        initCUPSdelAllSTAT();
+    } else if (LS.LoadCups > 0 || nTage > 2 || isNaN(nTage)) {
+        loadCUPS(false, false, true);
+    } else {
+        whenCUPSloaded();
     }
 }
 
@@ -2373,38 +2376,6 @@ function whenSPIELERloaded() {
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 }
 
-function showCUPS() {
-    var sync = new Date(CUPS.DATE);
-    var heute = new Date();
-    var nTage = parseInt((heute - sync) / 86400000);
-    if (LS.Version !== getVersion()) {
-        if (LS.Version < 989) { // später
-            LS.FotoStyle = 0;
-            LS.FotoAnimieren = false;
-            if (LS.Font) {
-                delete LS.Font;
-            }
-        }
-        if (LS.Version < 990) {
-            if (LS.ME.length === 4 && !LS.VIP) {
-                loadSPIELER(); // VIP-Status holen
-            }
-        }
-        localStorage.setItem('Abakus.LOG', JSON.stringify(''));
-        if (LS.Version === 0) {
-            writeLOG('ABAKUS: Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ') wurde installiert.');
-        } else {
-            writeLOG('ABAKUS: Update auf Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ').');
-        }
-        initCUPSdelAllSTAT();
-    } else if (LS.LoadCups > 0 || nTage > 2 || isNaN(nTage)) {
-        loadCUPS(false, false, true);
-    } else {
-        whenCUPSloaded();
-    }
-}
-/* global stCup, CUPS, STAT, stAnzSpalten, LS, PC, setFont, SORT */
-
 function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
     'use strict';
 
@@ -2775,7 +2746,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                             ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch();">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             : '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
-                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zu meinem Tisch<div class="S N">Weiterspielen, speichern, etc.</div>'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
                             )
                     + '</div>'
                     : '')
@@ -2801,7 +2772,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                             ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch();">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             : '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
-                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zu meinem Tisch<div class="S N">Weiterspielen, speichern, etc.</div>'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
                             )
                     + '</div>'
                     : '')
@@ -2845,7 +2816,13 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     hStartStopText = 'Turnier starten<div class="S N">Turnier starten und beenden</div>';
                 } else if (LS.I === I && (LS.TURADMIN === LS.ME || LS.I < 5)) {
                     if (LS.TURRUNDE < CUPS.RUNDEN[I]) {
-                        hStartStopText = 'Runde ' + LS.TURRUNDE + ' beenden<div class="S N">Turnier starten und beenden</div>';
+                        if (LS.TURGESPIELT && LS.AnzSpieler === 0 && LS.TURRUNDE === 1) {
+                            hStartStopText = '<span style="color: #dd1111">Runde ' + LS.TURRUNDE + ' beenden</span><div class="S N">Turnier starten und beenden</div>';
+                        } else {
+                            hStartStopText = 'Runde ' + LS.TURRUNDE + ' beenden<div class="S N">Turnier starten und beenden</div>';
+                        }
+                    } else if (LS.TURGESPIELT && LS.AnzSpieler === 0) {
+                        hStartStopText = '<span style="color: #dd1111">Turnier beenden</span><div class="S N">Turnier starten und beenden</div>';
                     } else {
                         hStartStopText = 'Turnier beenden<div class="S N">Turnier starten und beenden</div>';
                     }
@@ -2862,7 +2839,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                             + '</div>';
                 } else {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
-                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zu meinem Tisch<div class="S N">Weiterspielen, speichern, etc.</div>'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
                             + '</div>';
                 }
             }
@@ -2900,7 +2877,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                             + '</div>';
                 } else {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
-                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zu meinem Tisch<div class="S N">Weiterspielen, speichern, etc.</div>'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
                             + '</div>';
                 }
             }
@@ -2983,6 +2960,8 @@ function whenCUPSloaded() {
         }
         $('#tZuMeinemTisch,#tCupName').addClass('cRot');
         $('#bZuMeinemTisch').show();
+    } else {
+        $('#bZuMeinemTisch').hide();
     }
 
     if (LS.ME[0] === '-') { // User für Turnier-PC
@@ -3299,6 +3278,9 @@ function whenCUPSloaded() {
     if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
         showEinenFehler('Diese App ist veraltet!&nbsp;&nbsp;&nbsp;&nbsp;', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
     }
+
+    console.log(LS.I, I, LS.LastBtn);
+
     window.scrollTo(0, 0);
     if (QUERFORMAT()) {
         if (LS.LastBtn) {
@@ -3322,6 +3304,17 @@ function whenCUPSloaded() {
     $('#dFooter').show();
 
     delete TERMINE;
+
+    if (I) {
+        showCup(I);
+    } else if (QUERFORMAT()) {
+        showLogo();
+    }
+    if (LS.showMeinenTisch) {
+        delete LS.showMeinenTisch;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        fZuMeinemTisch();
+    }
 }
 
 $(document).ready(function () {
@@ -3469,7 +3462,6 @@ $(document).ready(function () {
         this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
     });
 
-
     if ($('#hMenu').is(":visible")) {
         $('.iMain').css('height', $('#hMenu').height() - 4);
     } else if ($('#hMix').is(":visible")) {
@@ -3501,12 +3493,7 @@ $(document).ready(function () {
                     $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
                 }
                 initSeite1();
-                if (LS.I === 0) {
-                    $('#bZuMeinemTisch').hide();
-                }
                 $('body').removeClass('ui-disabled');
-//            } else {
-//                showEineMeldung('iOS Navigation:', 'Type: ' + window.performance.navigation.type);
             }
         };
     }

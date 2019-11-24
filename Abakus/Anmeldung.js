@@ -442,7 +442,7 @@ function setTisch(pTisch) {
         LS.Vorhand = 0;
     }
 
-    if (LS.I <= 7 && !LS.NR[2]) {
+    if (LS.I <= 7 && !CUPS.TURNIER[LS.I] && !LS.NR[2]) {
         LS.NR[1] = 'Spieler_A';
         LS.NR[2] = 'Spieler_B';
         LS.NR[3] = 'Spieler_C';
@@ -470,13 +470,13 @@ function setTisch(pTisch) {
 //                    );
         }
     }
-    if (LS.I <= 7 && !LS.NR[5] && LS.AnzSpieler >= 5) {
+    if (LS.I <= 7 && !CUPS.TURNIER[LS.I] && !LS.NR[5] && LS.AnzSpieler >= 5) {
         LS.NR[5] = 'Spieler_E';
         LS.VName[5] = 'E';
         LS.NName[5] = 'Spieler';
         LS.Spieler[5] = 'Spieler E';
     }
-    if (LS.I <= 7 && !LS.NR[6] && LS.AnzSpieler >= 6) {
+    if (LS.I <= 7 && !CUPS.TURNIER[LS.I] && !LS.NR[6] && LS.AnzSpieler >= 6) {
         LS.NR[6] = 'Spieler_F';
         LS.VName[6] = 'F';
         LS.NName[6] = 'Spieler';

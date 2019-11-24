@@ -218,10 +218,6 @@ function wrtSPIELER(I) {
     }
     spTIMESTAMP = new Date(spTIMESTAMP.getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
 
-    if (LS.NR[I] === '3425') {
-        I = I;
-    }
-
     if (I <= LS.AnzGespeichert) {
         $('#emText').append(LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + ' bereits gespeichert.' + '<br>');
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
@@ -283,14 +279,13 @@ function wrtSPIELER(I) {
         STAT.S[ii].VNAME = LS.VName[I];
         STAT.S[ii].PUNKTE = [0, 0, 0, 0];
         STAT.S[ii].SPIELE = [0, 0, 0, 0];
-//        if (CUPS.TURNIER[LS.I] === 'Handy') {
         STAT.S[ii].ANZSPIELE = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
         STAT.S[ii].ANZGEWONNEN = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
         STAT.S[ii].PKTGEWONNEN = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
-//        }
+
         if (CUPS.TURNIER[LS.I]) {
             STAT.S[ii].CUPPUNKTE = [0, 0, 0, 0];
-            STAT.S[ii].PUNKTERx = [0, 0, 0];
+            STAT.S[ii].PUNKTERx = [];
             STAT.S[ii].SCHREIBER = [];
             STAT.S[ii].STOCKERL = ['-', '-', '-', '-'];
         }
@@ -313,11 +308,9 @@ function wrtSPIELER(I) {
                 STAT.S[ii].SPIELE[iJahr] = LS.Spiele[I];
             }
         }
-//        if (CUPS.TURNIER[LS.I] === 'Handy') {
         STAT.S[ii].ANZSPIELE[pI] = addDetails(STAT.S[ii].ANZSPIELE[pI], aANZSPIELE[I]);
         STAT.S[ii].ANZGEWONNEN[pI] = addDetails(STAT.S[ii].ANZGEWONNEN[pI], aANZGEWONNEN[I]);
         STAT.S[ii].PKTGEWONNEN[pI] = addDetails(STAT.S[ii].PKTGEWONNEN[pI], aPKTGEWONNEN[I]);
-//        }
     }
 
     incSTAT(3); // laufendes Turnier/Runde
@@ -327,7 +320,11 @@ function wrtSPIELER(I) {
     if (CUPS.TURNIER[LS.I]) {
         var iRUNDE = LS.AktRunde - 1;
         if (CUPS.TURNIER[LS.I] === 'Handy') {
-            STAT.S[ii].PUNKTERx[iRUNDE] += DS.Punkte[I][0];
+            if (typeof STAT.S[ii].PUNKTERx[iRUNDE] === 'undefined') {
+                STAT.S[ii].PUNKTERx[iRUNDE] = DS.Punkte[I][0];
+            } else {
+                STAT.S[ii].PUNKTERx[iRUNDE] += DS.Punkte[I][0];
+            }
             if (DS.Game[1] === 'Diverse') { // DS.xxx bei PC-Turnier nicht verfügbar
                 STAT.S[ii].SCHREIBER[iRUNDE] = 'm' + LS.NR[1];
             } else {
@@ -337,8 +334,12 @@ function wrtSPIELER(I) {
                     STAT.S[ii].SCHREIBER[iRUNDE] = LS.ME;
                 }
             }
-        } else if (CUPS.TURNIER[LS.I] !== 'Handy') {
-            STAT.S[ii].PUNKTERx[iRUNDE] += DS.Punkte[I][0];
+        } else {
+            if (typeof STAT.S[ii].PUNKTERx[iRUNDE] === 'undefined') {
+                STAT.S[ii].PUNKTERx[iRUNDE] = DS.Punkte[I][0];
+            } else {
+                STAT.S[ii].PUNKTERx[iRUNDE] += DS.Punkte[I][0];
+            }
             STAT.S[ii].SCHREIBER[iRUNDE] = LS.ME;
         }
         if (STAT.S[ii].STOCKERL[0] === '-'
@@ -359,7 +360,6 @@ function wrtSPIELER(I) {
 
     firebase.database().ref('/00/' + ("000" + LS.I).slice(-3) + '/' + STAT.S[ii].NR)
             .set(STAT.S[ii])  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
-//.update(STAT.S[ii])
             .then(function () {
                 console.log('****** ' + LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + ' gespeichert.');
                 $('#emText').append('<strong>' + LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + '.</strong> gespeichert.' + '<br>');
@@ -482,7 +482,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
 

@@ -26,7 +26,6 @@ var myJBox = null;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stLastZitat = [];
-var mTischNeuLoeschen = '';
 var mHref = false;
 var meinStellvertreter = '3244';
 var stFilter = '';
@@ -75,8 +74,11 @@ function zumTurnier() {
     }
 }
 
-function fStartStop(pPruefen) {
+function fStartStop(pCup, pPruefen) {
     'use strict';
+    if (pCup) {
+        I = pCup;
+    }
     mTischTurnier = 'Turnier';
     if (LS.I) {
         if (LS.I === I) {
@@ -115,7 +117,12 @@ function fStartStop(pPruefen) {
                 } else {
                     $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
                 }
-                $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
+                $('#tsSpieleLoeschen').html('Spiele löschen<br>und Turnier starten');
+                if (LS.gespielt) {
+                    $('#tsSpieleSpeichern').removeClass('ui-disabled');
+                } else {
+                    $('#tsSpieleSpeichern').addClass('ui-disabled');
+                }
                 $("#pTISCHWASNUN").popup("open").show();
                 return;
             }
@@ -319,12 +326,14 @@ function RundeXbeenden() {
             .then(function () {
                 $('#bRundeXbeenden').addClass('ui-disabled'); //.text("Turnier wurde gestartet");
                 $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Runde " + LS.TURRUNDE + " wurde beendet.</span><br>");
+                LS.Meldung = 'Runde ' + LS.TURRUNDE + ' wurde beendet.'
                 LS.TURRUNDE++;
                 LS.TURGESPIELT = 0;
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
                 hideEinenMoment();
-                initSeite1();
+//                initSeite1();
+                window.location.reload(false); // Da mit initSeite1 das Scroll in diesem Fall nicht funktioniert.
             })
             .catch(function (error) {
                 showEineDBWarnung(error, 'RundeXbeenden()', 'STAT update');
@@ -525,32 +534,28 @@ function TurnierBEENDENendEnd() {
                 LS.TURSPIELER = 0;
                 LS.TURGESPIELT = 0;
                 LS.ShowCups = I;
-//                LS.Meldung = 'Das Turnier wurde beendet.';
+                LS.Meldung = 'Das Turnier wurde beendet.';
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
                 hideEinenMoment();
-                initSeite1();
+//                initSeite1();
+                window.location.reload(false); // Da mit initSeite1 das Scroll in diesem Fall nicht funktioniert.
             })
             .catch(function (error) {
                 showEineDBWarnung(error, 'TurnierBEENDENendEnd()', 'STAT update');
             });
 }
 
-function TischNeuLoeschen() {
-    if (mTischNeuLoeschen === "N") {
-        fEinNeuerTisch(true);
-    } else {
-        TischLoeschen(true);
-    }
-}
-
-function fEinNeuerTisch(pOK) {
+function fEinNeuerTisch(pCup) {
     'use strict';
+    if (pCup) {
+        I = pCup;
+    }
     if (LS.I && LS.I !== I) {
         if (CUPS.TURNIER[I] === 'Handy'
                 && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
                 && mTischTurnier === 'Turnier') {
-            fStartStop(false); // der Admin will das Turnier starten
+            fStartStop(I, false); // der Admin will das Turnier starten
             return; // very important
         }
     }
@@ -631,20 +636,10 @@ function fEinNeuerTisch(pOK) {
         }
     }
 
-    if (pOK || LS.gespielt < 1) {
-//        LS.AnzGespeichert = 0;
-//        LS.AnzSpieler = 0;
-//        LS.gespielt = 0;
-//        LS.Spieler = ['', '', '', '', '', '', ''];
-//        LS.NR = ['', '', '', '', '', '', ''];
-//        LS.VName = ['', '', '', '', '', '', ''];
-//        LS.NName = ['', '', '', '', '', '', ''];
-//        LS.Sterne = ['', '', '', '', '', '', ''];
-//        LS.Ort = ['', '', '', '', '', '', ''];
-//        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
-//        if (LS.I !== I || !CUPS.TURNIER[LS.I]) {
-//            LS.I = 0;
-//        }
+    if (LS.I === 0
+            || LS.gespielt < 1 && (
+                    LS.I === I
+                    || !CUPS.TURNIER[I])) {
 
         if (!CUPS.TURNIER[I] && (CUPS.TYP[I] === 'PR' || I === 1) && localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3))) {
             LS.LoadCups = I * -1; // - = neuer Tisch
@@ -654,7 +649,6 @@ function fEinNeuerTisch(pOK) {
             if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
                 loadTURNIER(I, hHeute, 'Das Turnier wird geladen.', hHeute + ', neuer Tisch');
             } else {
-//              if (CUPS.TURNIER[I] || (CUPS.BEREadmin[I].indexOf(LS.ME) < 0 && I > 3)) {
                 if (CUPS.TURNIER[I]) {
                     loadSTAT(I, 'Spieler werden geladen.');
                 } else {
@@ -663,7 +657,6 @@ function fEinNeuerTisch(pOK) {
             }
         }
     } else {
-        mTischNeuLoeschen = "N";
         $('#tTischWasNunName').html(CUPS.NAME[I] + '&nbsp&nbsp;');
         if (LS.I !== I) {
             $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
@@ -674,18 +667,24 @@ function fEinNeuerTisch(pOK) {
         if (mTischTurnier === 'Turnier') {
             $('#tTischWasNunTitel').html('Das Turnier starten:');
             $('#tsDieDen').html('die');
-            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und Turnier starten');
+            $('#tsSpieleLoeschen').html('Spiele löschen<br>und Turnier starten');
         } else {
             $('#tTischWasNunTitel').html('Ein neuer Tisch:');
             $('#tsDieDen').html('die');
-            $('#tsSpieleLoeschen').html('Spiele l&ouml;schen<br>und neuen Tisch');
+            $('#tsSpieleLoeschen').html('Spiele löschen<br>und neuen Tisch');
+        }
+        if (LS.gespielt) {
+            $('#tsSpieleSpeichern').removeClass('ui-disabled');
+        } else {
+            $('#tsSpieleSpeichern').addClass('ui-disabled');
         }
         $("#pTISCHWASNUN").popup("open").show();
     }
 }
 
-function TischLoeschen(pLoeschen) {
+function fTischLoeschen(pLoeschen) {
     if (pLoeschen) {
+        $("#pTISCHWASNUN").popup("close");
         var hLog = CUPS.NAME[LS.I];
         hLog += '<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.';
         if (LS.gespielt) {
@@ -734,9 +733,10 @@ function TischLoeschen(pLoeschen) {
             LS.I = 0;
         }
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        initSeite1();
+        setTimeout(function () {
+            initSeite1();
+        }, 200);
     } else {
-        mTischNeuLoeschen = "L";
         $('#tTischWasNunName').html(CUPS.NAME[LS.I] + '&nbsp&nbsp;');
         if (LS.I !== I) {
             $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
@@ -750,6 +750,11 @@ function TischLoeschen(pLoeschen) {
         }
         $('#tsDieDen').html('den');
         $('#tsSpieleLoeschen').html('Tisch löschen');
+        if (LS.gespielt) {
+            $('#tsSpieleSpeichern').removeClass('ui-disabled');
+        } else {
+            $('#tsSpieleSpeichern').addClass('ui-disabled');
+        }
         $("#pMEINTISCH").popup("close");
         $("#pTISCHWASNUN").popup("open").show();
     }
@@ -832,12 +837,12 @@ function getTurnierButtons() {
             }
 
             if (LS.I === 0 && !LS.TURRUNDE || (LS.I !== 0 && LS.I !== I)) {
-                html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bStartbutton>&nbsp;Turnier starten&nbsp;</a>";
+                html += "<a onclick='fStartStop(0, true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bStartbutton>&nbsp;Turnier starten&nbsp;</a>";
             } else if (LS.I === I && (LS.TURADMIN === LS.ME || LS.I < 5)) {
                 if (LS.TURRUNDE < CUPS.RUNDEN[I]) {
-                    html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bRundeXbeenden>&nbsp;Runde " + LS.TURRUNDE + " beenden&nbsp;</a>";
+                    html += "<a onclick='fStartStop(0, true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bRundeXbeenden>&nbsp;Runde " + LS.TURRUNDE + " beenden&nbsp;</a>";
                 } else {
-                    html += "<a onclick='fStartStop(true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bTurnierBeenden>&nbsp;Turnier beenden&nbsp;</a>";
+                    html += "<a onclick='fStartStop(0, true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bTurnierBeenden>&nbsp;Turnier beenden&nbsp;</a>";
                 }
             }
         }
@@ -845,14 +850,14 @@ function getTurnierButtons() {
     if ((CUPS.TYP[I] !== 'CUP' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0)
             || LS.ME === '3425'
             || I <= 2) {
-        html += "<a onclick='hrefParameterAendern();' data-role='button' data-inline='true' data-mini='true' >&nbsp;Parameter ändern&nbsp;</a>";
+        html += "<a onclick='hrefParameterAendern(" + I + ");' data-role='button' data-inline='true' data-mini='true' >&nbsp;Parameter ändern&nbsp;</a>";
     }
     return html + '<br><br>';
 }
 
-function hrefParameterAendern() {
+function hrefParameterAendern(pCup) {
     'use strict';
-    LS.ShowCups = I;
+    LS.ShowCups = pCup;
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     fHref('Abakus/ParameterAendern.html');
 }
@@ -2186,7 +2191,7 @@ function showCup(i, pBtn, pTermin) {
                         )
 
                 + (I !== 49 && I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv || I === 77
-                        ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
+                        ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
 
                         + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3)
@@ -2194,11 +2199,11 @@ function showCup(i, pBtn, pTermin) {
                                 : ''
                                 )
                         + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] === 'Handy') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
-                                ? hVorschub + '<span class="cBlau P XL" onclick="fEinNeuerTisch()" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="fEinNeuerTisch(' + I + ')" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
                         + (CUPS.ANMELDERF[I]
-                                ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(false, \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
+                                ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(' + I + ', \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
                         + (((I === 51 && LS.ME === '1014') || (I === 53 && LS.ME === '4506') || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
@@ -2212,7 +2217,7 @@ function showCup(i, pBtn, pTermin) {
                         || LS.ME === '3425'
                         || I <= 2
                         || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || LS.ME === meinStellvertreter))
-                        ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern()" ><b>Parameter ändern</b></span><br>'
+                        ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern(' + I + ')" ><b>Parameter ändern</b></span><br>'
                         : ''
                         )
 
@@ -2232,18 +2237,18 @@ function showCup(i, pBtn, pTermin) {
                 + '<div style="margin-left: 30%;" class=M>'
                 + '<br><br>'
                 + html
-                + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik()" ><b>Zur Statistik</b></span>'
+                + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
                 + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
                 + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7
                         ? hVorschub
                         + (LS.I === I
                                 ? '<span class="cBlau P XL" onclick="fZuMeinemTisch()"><b>Zu meinem Tisch</b></span><br>Es wurden ' + LS.gespielt + ' Spiele gespielt.<br>'
-                                : '<span class="cBlau P XL" onclick="fEinNeuerTisch()"><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                : '<span class="cBlau P XL" onclick="fEinNeuerTisch(' + I + ')"><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 )
                         : ''
                         )
                 + ((CUPS.TYP[I] !== 'CUP' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0) || LS.ME === '3425' || I <= 2
-                        ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern()" ><b>Parameter ändern</b></span><br>'
+                        ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern(' + I + ')" ><b>Parameter ändern</b></span><br>'
                         : ''
                         )
                 + hVorschub + getCupText()
@@ -2743,7 +2748,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 // Zur Statistik
             hReturn += (pCup === 5 || pCup === 6 || pCup === 7
                     ? (LS.I !== pCup || LS.AnzSpieler === 0
-                            ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch();">'
+                            ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             : '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
@@ -2769,7 +2774,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 // Zur Statistik
             hReturn += (hHeuteTurnier
                     ? (LS.I !== pCup || LS.AnzSpieler === 0
-                            ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch();">'
+                            ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             : '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
@@ -2787,8 +2792,8 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 // Ein neuer Tisch / Zu meinem Tisch
 // Zur Statistik
 // Parameter ändern
-            if (pCup === 8) {
-                pCup = 8;
+            if (pCup === 4) {
+                pCup = 4;
             }
             var hHeuteTurnier = false;
             if (LS.I === pCup) {
@@ -2812,10 +2817,15 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
             if (hHeuteTurnier && CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
                 var hStartStopText = '';
-                if (LS.I === 0 && !LS.TURRUNDE || (LS.I !== 0 && LS.I !== I)) {
+                if (!LS.TURADMIN || LS.TURADMIN === LS.ME || pCup < 8) {
+                    var hStartStopClass = '';
+                } else {
+                    var hStartStopClass = ' ui-disabled';
+                }
+                if (LS.I !== pCup || !LS.TURRUNDE) {
                     hStartStopText = 'Turnier starten<div class="S N">Turnier starten und beenden</div>';
-                } else if (LS.I === I && (LS.TURADMIN === LS.ME || LS.I < 5)) {
-                    if (LS.TURRUNDE < CUPS.RUNDEN[I]) {
+                } else if (LS.I === pCup) {
+                    if (LS.TURRUNDE < CUPS.RUNDEN[pCup]) {
                         if (LS.TURGESPIELT && LS.AnzSpieler === 0 && LS.TURRUNDE === 1) {
                             hStartStopText = '<span style="color: #dd1111">Runde ' + LS.TURRUNDE + ' beenden</span><div class="S N">Turnier starten und beenden</div>';
                         } else {
@@ -2827,14 +2837,14 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                         hStartStopText = 'Turnier beenden<div class="S N">Turnier starten und beenden</div>';
                     }
                 }
-                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fStartStop(true);">'
+                hReturn += '<div class="ui-btn M2 TL' + hStartStopClass + '" style="margin:10px 6px 0 6px" onClick="fStartStop(' + pCup + ', true);">'
                         + '<img src=\'Icons/Turnier.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">' + hStartStopText
                         + '</div>';
             }
 
             if (hHeuteTurnier) {
                 if (LS.I !== pCup || LS.AnzSpieler === 0) {
-                    hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch();">'
+                    hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             + '</div>';
                 } else {
@@ -2849,7 +2859,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '</div>';
 
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
-                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern();">'
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern(' + pCup + ');">'
                         + '<img src=\'Icons/Optionen.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Parameter ändern<div class="S N">Beschreibung und Berechtigungen ändern</div>'
                         + '</div>';
             }
@@ -2872,7 +2882,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     || CUPS.SPIELTAGE[pCup][iWochentag] === 'J'
                     || CUPS.SPIELTAGE[pCup][iVortag] === 'J' && (new Date()).getHours() <= 4) {
                 if (LS.I !== pCup || LS.AnzSpieler === 0) {
-                    hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch();">'
+                    hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             + '</div>';
                 } else {
@@ -2885,7 +2895,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">Statistiken und Diagramme ansehen</div>'
                     + '</div>';
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
-                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern();">'
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern(' + pCup + ');">'
                         + '<img src=\'Icons/Optionen.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Parameter ändern<div class="S N">Tarife, Spieltage, etc. ändern</div>'
                         + '</div>';
             }

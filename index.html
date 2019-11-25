@@ -392,7 +392,7 @@
                     <br><strong>Bitte die Spieler erg&auml;nzen.</strong>
                 </div>
                 <li>
-                    <a id="bTischLoeschen" onClick="TischLoeschen();" style="padding:.1em" >Tisch löschen</a>
+                    <a id="bTischLoeschen" onClick="fTischLoeschen();" style="padding:.1em" >Tisch löschen</a>
                     <a onclick="$('#hTischLoeschen').toggle('show');">Hilfe</a>
                 </li>
                 <div id='hTischLoeschen' style='margin:1em;' class='M' hidden>Mit <strong>Tisch löschen</strong> wird der Tisch gelöscht.</div>
@@ -459,7 +459,7 @@
                 <br>die
                 <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleSpeichern onclick='$("#pTISCHWASNUN").popup("close");fHref("Abakus/TischSpeichern.html")'>Spiele speichern</a>,
                 <br><span id="tsDieDen">die</span>
-                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleLoeschen onclick='$("#pTISCHWASNUN").popup("close").show(TischNeuLoeschen);'>Spiele löschen und neuen Tisch</a>,
+                <a data-theme=e data-role='button' data-inline='true' data-mini='true' id=tsSpieleLoeschen onclick='fTischLoeschen(true);'>Spiele löschen und neuen Tisch</a>,
                 <br>oder
                 <a data-theme=d data-role='button' data-inline='true' data-mini='true' onclick='$("#pTISCHWASNUN").popup("close");'>abbrechen</a>?
             </div>

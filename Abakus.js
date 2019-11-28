@@ -2843,7 +2843,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
             }
 
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
-                    || CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
+                    || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0
                     || pCup < 8) {
                 if (hHeuteTurnier) {
                     if (LS.I !== pCup || LS.AnzSpieler === 0) {
@@ -2882,8 +2882,11 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                         + '<img src=\'Icons/Anmeldung.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Anmeldung<div class="S N">Sich an- oder abmelden</div>'
                         + '</div>';
             }
+            if (pCup === 32) {
+                pCup = 32;
+            }
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
-                    || CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
+                    || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0
                     || pCup < 8) {
                 if (LS.I === pCup
                         || CUPS.SPIELTAGE[pCup][iWochentag] === 'J'
@@ -3287,7 +3290,7 @@ function whenCUPSloaded() {
     if (nMeineRundenCups) {
         $('#dMeineRundenCups').html(htmlMR + '</ul></div>').trigger('create');
     }
-    htmlCT += "<li data-icon='false'><a id='bCTDetailstatistik' class='ui-btn' onclick='showText(\"CTDetailstatistik\")'>&nbsp;<span class=\"N M3\">Detailstatistik</span></a></li>";
+//    htmlCT += "<li data-icon='false'><a id='bCTDetailstatistik' class='ui-btn' onclick='showText(\"CTDetailstatistik\")'>&nbsp;<span class=\"N M3\">Detailstatistik</span></a></li>";
     $('#dRundenCups').html(htmlCT.replace(/bXX/g, 'bCT') + '</ul></div>' + htmlLC.replace(/bXX/g, 'bLC') + '</ul></div>' + htmlMT.replace(/bXX/g, 'bMT') + '</ul></div>' + htmlFC.replace(/bXX/g, 'bFC') + '</ul></div>' + htmlPR.replace(/bXX/g, 'bPR') + '</ul></div>' + htmlTR.replace(/bXX/g, 'bTR') + '</ul></div>' + htmlAR.replace(/bXX/g, 'bAR') + '</ul></div>').trigger('create').show();
     if (LS.Meldung) {
         $('#dMeldung').append("&nbsp;<img src='Icons/Achtung.png'  width='24' height='24'>&nbsp;<b>" + LS.Meldung + "</b>");
@@ -3296,8 +3299,6 @@ function whenCUPSloaded() {
     if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
         showEinenFehler('Diese App ist veraltet!&nbsp;&nbsp;&nbsp;&nbsp;', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
     }
-
-    console.log(LS.I, I, LS.LastBtn);
 
     window.scrollTo(0, 0);
     if (QUERFORMAT()) {

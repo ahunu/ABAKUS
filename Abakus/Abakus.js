@@ -1901,8 +1901,8 @@ function fINIT() {
                 + '</div>',
         closeButton: false
     });
-
 }
+
 
 if (/iPad|iPhone/.test(navigator.userAgent)) {
     window.onpageshow = function (event) {

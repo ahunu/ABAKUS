@@ -6,6 +6,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="Icons/icon-96-xhdpi.png" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="manifest" href="manifest.json">
         <link  href='Icons/icon-36-ldpi.png'                 rel='shortcut icon' />
         <link  href='themes/ThemeABCDE.min.css'              rel='stylesheet' />
         <link  href='themes/jquery.mobile.icons.min.css'     rel='stylesheet' />
@@ -13,6 +14,11 @@
         <script src='js/jquery/jquery.min.js'></script>
         <script src='js/firebase/firebase.js'></script>
         <script type='text/javascript'>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+//                    navigator.serviceWorker.register('/sw.js');
+                });
+            }
             if (window.location.search) { // Quickstart
                 LS = new Object();
                 LS = JSON.parse(localStorage.getItem('Abakus.LS'));

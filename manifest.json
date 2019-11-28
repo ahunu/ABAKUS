@@ -1,0 +1,29 @@
+{
+    "lang": "de",
+    "dir": "ltr",
+    "name": "Abakus",
+    "description": "ABAKUS die königliche Tarock-App",
+    "short_name": "Abakus",
+    "icons": [{
+            "src": "Icons/icon-36-ldpi.png",
+            "type": "image/png",
+            "sizes": "36x36"
+        }, {
+            "src": "Icons/icon-48-mdpi.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        }, {
+            "src": "Icons/icon-96-xhdpi.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        }, {
+            "src": "Icons/icon-144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        }],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "aliceblue",
+    "background_color": "red"
+}

@@ -2845,7 +2845,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
                     || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0
                     || pCup < 8) {
-                if (hHeuteTurnier) {
+                if (hHeuteTurnier || pCup < 8) {
                     if (LS.I !== pCup || LS.AnzSpieler === 0) {
                         hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                                 + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
@@ -2882,8 +2882,8 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                         + '<img src=\'Icons/Anmeldung.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Anmeldung<div class="S N">Sich an- oder abmelden</div>'
                         + '</div>';
             }
-            if (pCup === 32) {
-                pCup = 32;
+            if (pCup === 4) {
+                pCup = 4;
             }
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
                     || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0

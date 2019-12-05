@@ -646,15 +646,25 @@ $(document).bind('pageinit', function () {
             }
         });
     } else {
-        editor = window.pell.init({
-            element: document.getElementById('editor'),
-            actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
-
-            defaultParagraphSeparator: 'p',
-            onChange: function (html) {
-                CUPS.TEXT1[I] = html;
-            }
-        });
+        if (LS.ME === '3425') {
+            editor = window.pell.init({
+                element: document.getElementById('editor'),
+                actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'undo', 'redo', 'foto'],
+                defaultParagraphSeparator: 'p',
+                onChange: function (html) {
+                    CUPS.TEXT1[I] = html;
+                }
+            });
+        } else {
+            editor = window.pell.init({
+                element: document.getElementById('editor'),
+                actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
+                defaultParagraphSeparator: 'p',
+                onChange: function (html) {
+                    CUPS.TEXT1[I] = html;
+                }
+            });
+        }
         $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
     }
     if (CUPS.TEXT1[I]) {

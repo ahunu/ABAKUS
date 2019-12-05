@@ -178,6 +178,25 @@
                     exec('insertImage', url);
             }
         },
+        foto: {
+            icon: '&#128247;',
+            title: 'Foto',
+            result: function result() {
+                var url = window.prompt('Google-Drive-Link:');
+                if (url) {
+                    if (url.indexOf('/file/d/') > 1) {
+                        url = url.substr(url.indexOf('/file/d/') + 8);
+                    }
+                    if (url.indexOf('/open?id=') > 1) {
+                        url = url.substr(url.indexOf('/open?id=') + 9);
+                    }
+                    if (url.indexOf('/view?') > 1) {
+                        url = url.substr(0, url.indexOf('/view?'));
+                    }
+                    exec('insertHTML', '<img class="llf_Image" src="https://drive.google.com/uc?id=' + url + '"/>');
+                }
+            }
+        },
         undo: {
             icon: '<b>&#8630</b>',
             title: 'Rückgängig',

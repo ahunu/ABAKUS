@@ -2036,17 +2036,17 @@ function resetLastBtn() {
 
 function showCup(i, pBtn, pTermin) {
     'use strict';
+    var newBtn = '#' + pBtn + i;
     if (!QUERFORMAT()) {
         if (LS.LastBtn) {
             if (pBtn) {
                 var lastBtn = LS.LastBtn;
-                var newBtn = '';
-                if (pTermin === -1) {
-                    newBtn = '#' + pBtn + i + 'T';
-                } else if (pTermin && pTermin !== -1) {
-                    newBtn = '#' + pBtn + i + 'T' + pTermin;
-                } else if (pBtn) {
-                    newBtn = '#' + pBtn + i;
+                if (typeof pTermin !== "undefined") {
+                    if (pTermin === -1) {
+                        newBtn = '#' + pBtn + i + 'T';
+                    } else {
+                        newBtn = '#' + pBtn + i + 'T' + pTermin;
+                    }
                 }
                 var lastTop = parseInt($(lastBtn).offset().top);
                 var newTop = parseInt($(newBtn).offset().top);
@@ -2060,15 +2060,7 @@ function showCup(i, pBtn, pTermin) {
             if ($('#tgl' + LS.LastBtn.substr(1)).is(":visible")) {
                 $('#tgl' + LS.LastBtn.substr(1)).toggle('show');
                 resetLastBtn();
-                var hBtn = '';
-                if (pTermin === -1) {
-                    hBtn = '#' + pBtn + i + 'T';
-                } else if (pTermin && pTermin !== -1) {
-                    hBtn = '#' + pBtn + i + 'T' + pTermin;
-                } else if (pBtn) {
-                    hBtn = '#' + pBtn + i;
-                }
-                if (hBtn === LS.LastBtn) {
+                if (LS.LastBtn === newBtn) {
                     LS.LastBtn = '';
                     return;
                 }
@@ -2081,13 +2073,14 @@ function showCup(i, pBtn, pTermin) {
     }
     if (pBtn) {
         resetLastBtn();
-        if (pTermin === -1) {
-            LS.LastBtn = '#' + pBtn + i + 'T';
-        } else if (pTermin && pTermin !== -1) {
-            LS.LastBtn = '#' + pBtn + i + 'T' + pTermin;
-        } else if (pBtn) {
-            LS.LastBtn = '#' + pBtn + i;
+        if (typeof pTermin !== "undefined") {
+            if (pTermin === -1) {
+                newBtn = '#' + pBtn + i + 'T';
+            } else {
+                newBtn = '#' + pBtn + i + 'T' + pTermin;
+            }
         }
+        LS.LastBtn = newBtn;
     }
     if (LS.LastBtn) {
         var resetTermin = LS.LastBtn.lastIndexOf('T');

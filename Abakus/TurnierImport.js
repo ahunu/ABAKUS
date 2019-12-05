@@ -96,12 +96,13 @@ function fPruefenSpeichern(pSpeichern) {
         iSAISON = '' + iSAISON;
     } else {
 //      if (iDATUM.getMonth() > 3 || (iDATUM.getMonth() === 3 && iDATUM.getDate() > 15)) {
-        if (iDATUM.getMonth() > 3) {
+        if (iDATUM.getMonth() >= 3) {
             iSAISON = '' + iSAISON + '/' + (iSAISON - 1999);
         } else {
             iSAISON = '' + (iSAISON - 1) + '/' + (iSAISON - 2000);
         }
     }
+//  $('#dSaison').html(iDATUM.getMonth() + 'Saison:<b> ' + iSAISON + '</b>');
 
     iDATUM = myDateString(iDATUM);
 

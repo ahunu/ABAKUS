@@ -120,7 +120,7 @@ function showTeilnehmerzahlen() {
             + "<br>"
 
 
-            + '<div class=XS style="margin: 2vw;text-align:justify"><b>Legende:</b><br>'
+            + '<div class=S style="margin: 2vw;text-align:justify"><b>Legende:</b><br>'
             + 'Der <b>durchschnittliche Gewinn</b> ist eine statistische Größe der Turnierergebnisse, welche '
             + 'in verschiedenen Cups nach unterschiedlichen Regeln erreicht wurden, vergleichbar machen soll. '
             + 'Er markiert jene Punktezahl die für einen guten Spieler, ohne den sprichwörtlichen Erdäpfeln in der Tasche, erreichbar sein sollte. '

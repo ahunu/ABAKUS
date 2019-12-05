@@ -131,14 +131,6 @@ function showTurnier(pTurnier) {
 
     html += "</tbody></table><br>";
 
-    if (stCup === 55) {
-        html += '<div class=XS style="margin-left: 1vw"><b>Cupwertung nach Heinepunkten:</b><br>'
-                + 'Die Schriftpunkte werden als Cuppunkte übernommen. '
-                + 'Von den Pluspunkten über 100 zählt nur jeder zweite Punkt. '
-                + 'Die Minuspunkte werden nicht gewertet.'
-                + '<br><br></div>';
-    }
-
     if (QUERFORMAT()) {
         $('#dRumpf').html(html + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"
                 + "<tbody><tr>"

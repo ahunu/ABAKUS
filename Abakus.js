@@ -548,6 +548,10 @@ function TurnierBEENDENendEnd() {
 
 function fEinNeuerTisch(pCup) {
     'use strict';
+    if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
+        showEinenFehler('Diese App ist veraltet!&nbsp;&nbsp;&nbsp;&nbsp;', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
+        return;
+    }
     if (pCup) {
         I = pCup;
     }
@@ -1558,8 +1562,8 @@ function hrefStatistik(pCup, pParameter) {
             || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0
             || CUPS.TYP[I] !== 'PR'
             || CUPS.TYP[I] === 'PR' && CUPS.MEZULETZT[I] && (
-            (CUPS.MEZULETZT[I] + (100 * 86400000) < Date.now() && CUPS.NAME[I].substr(0, 4) === 'Bei ')
-            || (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()))) {
+            (CUPS.MEZULETZT[I] + (100 * 86400000) > Date.now() && CUPS.NAME[I].substr(0, 4) === 'Bei ')
+            || (CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()))) {
         if (pCup) {
             LS.ShowCups = pCup;
         }
@@ -1690,6 +1694,8 @@ function writeCanvas(pCup) {
             hTitel2 = 'Turnierserie zum dreifachen Tarif';
         } else if (pCup === 11) {
             hTitel2 = 'Sküs of the year';
+        } else if (pCup === 68) {
+            hTitel2 = 'Mit dem Bus durch Österreich';
         } else if (pCup === 80) {
             if (QUERFORMAT()) {
                 hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
@@ -2166,7 +2172,7 @@ function showCup(i, pBtn, pTermin) {
                         )
 
                 + (I === 51 && !mHausruckAktiv
-                        ? hVorschub + 'Organisation:&nbsp;&nbsp;<b><span class=M2>Franz Kienast</span></b><br><br>'
+                        ? hVorschub + 'Organisationsteam:&nbsp;&nbsp;<b>Bert Greisinger,<br> Franz Emeder, Franz Kienast</b><br><br>'
                         + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:f.kienast@eduhi.at\';" >f.kienast@eduhi.at</span><br>'
                         + 'Tarockhandy:&nbsp;&nbsp;0660 5275150<br>'
                         : ''
@@ -2187,6 +2193,12 @@ function showCup(i, pBtn, pTermin) {
                 + (I === 55 && !mTirolAktiv
                         ? hVorschub + 'Organisation:&nbsp;&nbsp;<b><span class=M2>Markus Mair</span></b><br><br>'
                         + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:treff.tarock@chello.at\';" >treff.tarock@chello.at</span><br>'
+                        : ''
+                        )
+
+                + (I === 68
+                        ? hVorschub + '<div class=J style="margin-right:5%">Von Samstag 25. Juli bis Sonntag 2. August 2020 besuchen wir mit einem Tour-Bus neun "Tarockhochburgen" in ganz Österreich. Als Bus-Chaffeur stellt sich dankenswerterweise Karl Schicher - der Tarockprofi aus Bad Leonfelden - zur Verfügung. In jedem Ort wird ein Turnier nach den lokalen Regeln gespielt. Nach dem Finale in Bad Leonfelden feiern wir den Tarock-Meister-on-Tour.</div>'
+//                        + '<br>Organisation:&nbsp;&nbsp;<b>Franz Kienast</b><br>'
                         : ''
                         )
 

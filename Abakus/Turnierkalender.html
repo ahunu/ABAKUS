@@ -29,9 +29,9 @@
                     <img src='../Icons/Turnierkalender.png' alt="Turnierkalender" id=logo height="70" width="70"/>
                 </div>
                 <div class="ui-block-c" style="width:1.5vw;"></div>
-                <div class="ui-block-d" style="width:auto"><i>
-                        <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px;margin-top:-2px;">ABAKUS die Tarock-App</div></i>
-                    <div id=hTitel2 class='N I' style="width:auto; text-align:left; font-size: 28px;margin-top:-8px">Turnierkalender</div>
+                <div class="ui-block-d" style="width:auto">
+                    <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px;margin-top:-2px;"><i>ABAKUS die Tarock-App</i></div>
+                    <div id=hTitel2 class='N' style="width:auto; text-align:left; font-size: 28px;margin-top:-8px">Turnierkalender</div>
                 </div>
             </div>
             <div id="bEinNeuesTurnierEinplanen" class="ui-disabled"> &nbsp;
@@ -100,9 +100,13 @@
                     <div class="ui-block-a" style='width:22%'>
                         Cup:
                     </div>
-                    <div class="ui-block-b" style='width:78%'>
-                        <input id="iCUP" data-role="none" hidden>
-                        <span id="tCUP" class="L B" hidden></span>
+                    <div class="ui-block-b autoCup" style='width:12%'>
+                        <input id="iCUP" data-role="none" type="number" pattern="\d*" >
+                    </div>
+                    <div class="ui-block-c autoCup" style='width:3%'>
+                    </div>
+                    <div class="ui-block-d" style='width:60%'>
+                        <span id="tCUP" class="L B"></span>
                     </div>
                 </div>
                 <div class="ui-grid-b L" style='padding:0em;'>
@@ -119,7 +123,7 @@
                         <div class="ui-block-b" style='width:25%'>
                             <input id="iBEGINN" type="time" class='C' data-role="none">
                         </div>
-                        <div class="ui-block-c M" style='width:47%'>
+                        <div class="ui-block-c S" style='width:47%'>
                             &nbsp;&nbsp;&nbsp;&nbsp;(nicht&nbsp;erforderlich)
                         </div>
                     </div>

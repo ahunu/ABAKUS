@@ -46,7 +46,6 @@ function getStatMeldungen() {
 
     var ret = "";
     var Pfad = "../";
-
     if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER === stStat) {
         if (STAT._AKTTURNIER._RUNDE) {
             var nMinSeitRundeStart = parseInt((Date.now() - STAT._AKTTURNIER._RUNDESTART) / 60000);
@@ -121,7 +120,19 @@ function getSpielerOrt(pNR, pSTANDORT) {
 
 function getCupPunkte(pTurnier, pSpieler) {
 
-    if (stCup >= 50 && stCup <= 60 && stCup !== 55 || stCup === 125 || stCup === 181) { // 125 wurde als Testcup verwendet!
+    if (stCup === 55) { // 55 Tirolcup
+        if (!STAT[pTurnier][pSpieler]) {
+            return '-'; // Spieler hat am Finale nicht teilgenommen
+        }
+        var divident = STAT[pTurnier]._TEILNEHMER - STAT[pTurnier][pSpieler][0];
+        var divisor = STAT[pTurnier]._TEILNEHMER - 1;
+        var ret = Math.round(200 * Math.pow((divident / divisor), 3));
+        if (ret) {
+            return ret;
+        } else {
+            return '-';
+        }
+    } else if (stCup >= 50 && stCup <= 60 && stCup !== 55 || stCup === 125 || stCup === 181) { // 125 wurde als Testcup verwendet!
         if (STAT[pTurnier][pSpieler]) {
             if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
@@ -371,7 +382,6 @@ function getName(pNR, pMax) {
         }
 
         l = l + (1 / f);
-
         if (hNamenLen > l) {
             len = ii;
         }
@@ -419,16 +429,13 @@ function showIcons(pIcons) {
                 }
             }
             for (var i = 0; i < pIcons.length; i++) {
-                $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (0.9 + (3.8 * i)) + 'vw; font-size: 3.3vw; cursor: pointer;').show();
+                $(pIcons[i]).attr('style', 'position: fixed; top: 2px; right: ' + (0.5 + (3.7 * i)) + 'vw; font-size: 3.1vw; cursor: pointer;').show();
             }
             $('#qfHeader').attr('style', 'position: fixed; top: 0;  width: 72%; padding:0; margin:0; background:#f5f5f5;');
         } else {
             $('#qfHeader').attr('style', 'position: fixed; top: 0;  width: 72%; padding:0; margin:0; background:#f5f5f5; z-index: 999999');
         }
     } else {
-//        if (pIcons.length && pIcons[0] === '#iScrollToMe') {
-//            $('#iScrollToMe').attr('style', 'position: fixed; top: ' + ($("#hfHeader").offset().top + 7) + 'px; right: 8px; font-size: 34px; cursor: pointer;').show();
-//        }
         if (pIcons.length) {
             $(pIcons[0]).attr('style', 'position: fixed; top: ' + ($("#hfHeader").offset().top + 7) + 'px; right: 8px; font-size: 34px; cursor: pointer;').show();
         }
@@ -452,13 +459,11 @@ function writeCanvas(pTitel) {
     $('#tStand').hide();
     $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
     $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
-
     if (PC) {
         $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
         $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");
     }
     $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
-
     // 51 H Hausruckcup
     // 52 R Raiffeisencup
     // 53 S Sauwaldcup

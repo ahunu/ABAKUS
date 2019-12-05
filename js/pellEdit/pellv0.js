@@ -41,6 +41,26 @@
     };
 
     var defaultActions = {
+        xx1: {
+            icon: '<big>F</big>',
+            title: 'Fett',
+            state: function state() {
+                return queryCommandState('big');
+            },
+            result: function result() {
+                return exec('big');
+            }
+        },
+        xx2: {
+            icon: '<b>F</b>',
+            title: 'Fett',
+            state: function state() {
+                return queryCommandState('big');
+            },
+            result: function result() {
+                return exec('big');
+            }
+        },
         bold: {
             icon: '<b>F</b>',
             title: 'Fett',
@@ -69,26 +89,6 @@
             },
             result: function result() {
                 return exec('underline');
-            }
-        },
-        superscript: {
-            icon: '<sup>H</sup>',
-            title: 'Hochstellen',
-            state: function state() {
-                return queryCommandState('superscript');
-            },
-            result: function result() {
-                return exec('superscript');
-            }
-        },
-        subscript: {
-            icon: '<sub>T</sub>',
-            title: 'Tiefstellen',
-            state: function state() {
-                return queryCommandState('subscript');
-            },
-            result: function result() {
-                return exec('subscript');
             }
         },
         strikethrough: {

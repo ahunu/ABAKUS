@@ -432,6 +432,46 @@ function onSubmit() {
         CUPS.SPJERUNDE[I] = 0;
     }
 
+    if (CUPS.TEXT1[I]) { // html nach pellEdit reparieren
+        var hVon = 0;
+        var hBis = 0;
+
+        hVon = CUPS.TEXT1[I].indexOf('<span class="cBlau P" onclick');
+        if (hVon >= 0) {
+            CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon) + '<SPAN' + CUPS.TEXT1[I].substr(hVon + 5);
+            hBis = CUPS.TEXT1[I].substr(hVon).indexOf('</span');
+            if (hBis >= 0) {
+                CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon + hBis) + '</SPAN' + CUPS.TEXT1[I].substr(hVon + hBis + 6);
+            }
+        }
+
+        if (CUPS.TEXT1[I].substr(0, 5) === '<div>') {
+            CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(5);
+        }
+        CUPS.TEXT1[I] = CUPS.TEXT1[I].replace(/<div><br><\/div><div>/g, '<br><br>').replace(/<div>/g, '<br>');
+        CUPS.TEXT1[I] = CUPS.TEXT1[I].replace(/<div><br>/g, '<br><br>').replace(/<div>/g, '<br>');
+
+        hVon = 0;
+        while (hVon >= 0) {
+            hVon = CUPS.TEXT1[I].indexOf('<div');
+            if (hVon < 0) {
+                hVon = CUPS.TEXT1[I].indexOf('</div');
+                if (hVon < 0) {
+                    hVon = CUPS.TEXT1[I].indexOf('<span');
+                    if (hVon < 0) {
+                        hVon = CUPS.TEXT1[I].indexOf('</span');
+                    }
+                }
+            }
+            if (hVon >= 0) {
+                hBis = CUPS.TEXT1[I].substr(hVon).indexOf('>');
+                if (hBis > 0) {
+                    CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon) + CUPS.TEXT1[I].substr(hVon + hBis + 1);
+                }
+            }
+        }
+    }
+
     var hCUPS = new Object();
     hCUPS.ANMELDERF = CUPS.ANMELDERF[I];
     hCUPS.BEREadmin = CUPS.BEREadmin[I];
@@ -597,24 +637,25 @@ $(document).bind('pageinit', function () {
 
     if (/iPad|iPhone/.test(navigator.userAgent) && !window.MSStream) {
         $("#editor").addClass('ui-disabled'); // Wenn auf iOS editierbar dann JS-Fehler!!!
-        editor = pell.init({
+        editor = window.pell.init({
             element: document.getElementById('editor'),
             actions: [],
-            classes: {actionbar: 'pell-actionbar-custom-name'},
+            defaultParagraphSeparator: 'p',
             onChange: function (html) {
                 CUPS.TEXT1[I] = html;
             }
         });
     } else {
-        editor = pell.init({
+        editor = window.pell.init({
             element: document.getElementById('editor'),
-            actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
-            classes: {actionbar: 'pell-actionbar-custom-name'},
+            actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
+
+            defaultParagraphSeparator: 'p',
             onChange: function (html) {
                 CUPS.TEXT1[I] = html;
             }
         });
-        $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
+        $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
     }
     if (CUPS.TEXT1[I]) {
         editor.content.innerHTML = CUPS.TEXT1[I];

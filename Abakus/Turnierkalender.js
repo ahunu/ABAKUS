@@ -7,6 +7,7 @@
 // 54 St. Tarockcup
 // 55 Tiroler Tarockcup
 // 56 Wr. Tarockcup
+// 68 Tarock on Tour
 // 81 Schmankerl Tarock
 // 82 UTC Klobainersee
 // 83 Villacher Cup
@@ -190,12 +191,8 @@ function showTermin(pTermin) {
         $('#tTitel').html('Turnier ändern:');
         $('#iDATUM').val(TERMINE[I].DATUM);
         $('#iBEGINN').val(TERMINE[I].BEGINN);
-        $('#iCUP').val(TERMINE[pTermin].CUP).hide();
-        if (LS.ME === '3425') {
-            $('#tCUP').html(TERMINE[pTermin].CUP + '&nbsp;&nbsp;' + CUPS.NAME[TERMINE[pTermin].CUP]).show();
-        } else {
-            $('#tCUP').html(CUPS.NAME[TERMINE[pTermin].CUP]).show();
-        }
+        $('#iCUP').val(TERMINE[pTermin].CUP);
+        $('#tCUP').html(CUPS.NAME[TERMINE[pTermin].CUP]).addClass('B');
         $('#iNAME').val(TERMINE[I].NAME);
         var iVERANSTALTER = TERMINE[I].VERANSTALTER;
         if (TERMINE[I].VERANSTALTER === "Präsidium") {
@@ -243,14 +240,19 @@ function showTermin(pTermin) {
         $('#tTitel').text('Ein Turnier einplanen:');
         $('#iDATUM').val(null);
         $('#iBEGINN').val(null);
+
         if (LS.ME === '3425') {
-            $('#iCUP').val('').show();
-            $('#tCUP').val('').hide();
+            $('#iCUP').val('');
+            $('#tCUP').text('???');
+        } else if (LS.ME === '1014') {
+            $('#iCUP').val('');
+            $('#tCUP').html('<span class="S">(51 = Hausruckcup, 68 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
         }
+
         $('#iNAME').val('');
         $('#iVERANSTALTER').val('');
         if ($('#tCUP').text().indexOf("Steirischer Tarockcup") < 0) {
-            $('#tVERANSTALTER').html('(-1 = Präsidium, -2 = Alle Veranstalter, -3 = Alle Cups)').removeClass('B');
+            $('#tVERANSTALTER').html('<span class="S">(-1 = Präsidium, -2 = Alle Veranstalter, -3 = Alle Cups)</span>').removeClass('B');
         } else {
             $('#tVERANSTALTER').html('');
         }
@@ -271,7 +273,27 @@ function onAendern() {
         I = TERMINE.length;
     }
 
-    var x = $('#iDATUM').val();
+    var hCUP = parseInt($('#iCUP').val().trim());
+    if (hCUP > 0) {
+        if (CUPS.NAME[hCUP]) {
+            $('#tCUP').html(CUPS.NAME[hCUP]).addClass('B');
+        } else {
+            $('#tCUP').html('???').removeClass('B');
+        }
+    }
+
+    if (LS.ME === '1014') {
+        if (hCUP !== 49 && hCUP !== 51 && hCUP !== 68) {
+            showEinenTip('#iCUP', 'Hausruckcup = 51,<br>Tarock on Tour = 68,<br>Österreichfinale = 49!');
+            return;
+        }
+    }
+
+    if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'MT')) {
+        showEinenTip('#iCUP', 'Österreichfinale = 49,<br>Hausruckcup = 50,<br>Ktn. Tarockcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Tarock on Tour = 68,<br>Wr. Marathon = 80,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+        return;
+    }
+
     if ($('#iDATUM').val() === "") {
         showEinenTip('#iDATUM', 'Wann soll das Turnier stattfinden?');
         return;
@@ -279,20 +301,6 @@ function onAendern() {
 
     if ($('#iDATUM').val() < hHeute) {
         showEinenTip('#iDATUM', 'Das Termin mu&szlig; in der Zukunft liegen!');
-        return;
-    }
-
-    var hCUP = parseInt($('#iCUP').val().trim());
-
-    if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'MT')) {
-        showEinenTip('#iCUP', 'Österreichfinale = 49,<br>Hausruckcup = 50,<br>Ktn. Tarockcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Wr. Marathon = 80,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
-        return;
-    }
-
-
-    if (!/^[a-zA-Z0-9\u00C0-\u00ff\-\'\`\´\.\&\/\;\,\(\)\ ]*$/.test($('#iCUP').val())) {
-        showEinenTip('#iCUP', 'Der <b>Cup</b> enthält ein ungültiges Sonderzeichen.');
-        $('input[id=iCUP]').css("color", "red").focus();
         return;
     }
 
@@ -413,7 +421,7 @@ $(document).bind('pageinit', function () {
     hVersionsDatum = myDateString(getVersionsDatum());
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425" && LS.ME !== "1014") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };
@@ -462,6 +470,11 @@ $(document).bind('pageinit', function () {
         $('#cb56').prop('checked', true).checkboxradio("refresh");
         $('#tWTC,#tCUP').html('Wiener Tarockcup').show();
     }
+    if (CUPS.BEREadmin[68].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[68].indexOf(LS.ME) >= 0) {
+        $('#iCUP').val(68);
+        $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
+        $('#tDIV,#tCUP').html('Tarock on Tour').show();
+    }
     if (CUPS.BEREadmin[81].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[81].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(81);
         $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
@@ -474,11 +487,14 @@ $(document).bind('pageinit', function () {
     }
 
     if (LS.ME === '3425') {
-        $('#iCUP').val('').show();
-        $('#tCUP').val('???').show();
+        $('#iCUP').val('');
+        $('#tCUP').text('???');
+    } else if (LS.ME === '1014') {
+        $('#iCUP').val('');
+        $('#tCUP').html('<span class=S>(51 = Hausruckcup, 68 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
     } else {
         $('#iCUP').hide();
-        $('#tCUP').show();
+        $(".autoCup").attr("style", "width:0");
     }
 
     myJTip = new jBox('Tooltip', {

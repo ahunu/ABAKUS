@@ -291,9 +291,9 @@ iPad 5. Gen.: 1024 x 748
 @media screen and (orientation : landscape)  {
 
     .cLinks,#dLinks { width: 28% !important}
-    
+
     .TGL { display: none !important }
-    
+
     #dPC { display: block !important }
     .cSmartphone, .cTablet, #p360, #p361, #p451 { display: none !important }
 
@@ -303,19 +303,34 @@ iPad 5. Gen.: 1024 x 748
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: 1.85vw !important;}
 
     .ui-btn {padding: .1em !important;}
-
-    .XXL {font-size: 4.35vw !important;}  /* Abakus Balken */
-    .XL {font-size: 2.22vw !important;}   /* Zur Statistik, Zur Anmeldung, Nächstes Turnier */
+/*
+    .XXL {font-size: 4.35vw !important;}   Abakus Balken 
+    .XL {font-size: 2.22vw !important;}    Zur Statistik, Zur Anmeldung, Nächstes Turnier 
     .L3 {font-size: 2.1vw !important;}
     .L2 {font-size: 1.98vw !important;}
     .L  {font-size: 1.85vw !important;}
-    .M3, .M2, .Sbtn {font-size: 1.74vw !important;}
+    .M3 {font-size: 1.74vw !important;}
+    .M2, .Sbtn {font-size: 1.74vw !important;}
     .M  {font-size: 1.64vw !important;}
     .S3 {font-size: 1.61vw !important;}
     .S2 {font-size: 1.56vw !important;}
     .S  {font-size: 1.47vw !important;}
     .XS {font-size: 1.39vw !important;}
-    .XXS{font-size: 1.31vw !important;}
+    .XXS{font-size: 1.31vw !important;}*/
+
+    .XXL {font-size: 4.35vw !important;}  /* Abakus Balken */
+    .XL {font-size: 2.22vw !important;}   /* Zur Statistik, Zur Anmeldung, Nächstes Turnier */
+    .L3 {font-size: 1.9vw !important;}
+    .L2 {font-size: 1.83vw !important;}
+    .L  {font-size: 1.76vw !important;}
+    .M3 {font-size: 1.69vw !important;}
+    .M2, .Sbtn {font-size: 1.62vw !important;}
+    .M  {font-size: 1.55vw !important;}
+    .S3 {font-size: 1.50vw !important;}
+    .S2 {font-size: 1.45vw !important;}
+    .S  {font-size: 1.40vw !important;}
+    .XS {font-size: 1.35vw !important;}
+    .XXS{font-size: 1.30vw !important;}
 
     .LL3 {font-size: 1.1vw !important;}  /* Buttons 4er und 5er Tische */
     .LL2 {font-size: 1vw !important;}    /* Buttons 6er Tische */

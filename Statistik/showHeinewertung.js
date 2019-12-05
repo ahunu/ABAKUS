@@ -228,20 +228,13 @@ function showHeinewertung() {
         html += '</tr>';
     }
 
-    html += "</tbody></table><br>";
-
-    if (stCup === 55) {
-        html += '<div class=XS style="margin-left: 1vw">'
-                + 'Diese Cupwertung wurde mit Heinepunkten berechnet und stimmt '
-                + 'nicht mit der gültigen Cupwertung des Tirolcups überein. '
-                + 'Diese findest du unter <span class="cBlau P" onclick="window.open(\'http://www.tarock.tirol\')">www.tarock.tirol</span>.'
-                + '<br><br>'
-                + '<b>Cupwertung nach Heinepunkten:</b><br>'
-                + 'Die Schriftpunkte werden als Cuppunkte übernommen. '
-                + 'Von den Pluspunkten über 100 zählt nur jeder zweite Punkt. '
-                + 'Die Minuspunkte werden nicht gewertet.'
-                + '<br><br></div>';
-    }
+    html += "</tbody></table><br>"
+            + '<div class=S style="margin-left: 1vw">'
+            + '<b>Cupwertung nach Heinepunkten:</b><br>'
+            + 'Die Schriftpunkte werden als Cuppunkte übernommen. '
+            + 'Von den Pluspunkten über 100 zählt nur jeder zweite Punkt. '
+            + 'Minuspunkte werden nicht gewertet.'
+            + '<br><br></div>';
 
     if (QUERFORMAT()) {
         html += "<table data-role=table class=S>"

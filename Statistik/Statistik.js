@@ -264,10 +264,43 @@ function turnierPruefenSpeichern(pSpeichern) {
 
     if (Number.isInteger(stStat)) {
         DATA._CUPANEKDOTE = editor.content.innerHTML;
-        if (DATA._CUPANEKDOTE) {
-            if (DATA._CUPANEKDOTE.substr(0, 23) === '<span style="font-size:') {
-                DATA._CUPANEKDOTE = '<div>' + DATA._CUPANEKDOTE.substr(DATA._CUPANEKDOTE.indexOf('px;">') + 5);
-                DATA._CUPANEKDOTE = DATA._CUPANEKDOTE.substr(0, DATA._CUPANEKDOTE.lastIndexOf('</span>')) + '</div>';
+        if (DATA._CUPANEKDOTE) { // html nach pellEdit reparieren
+            var hVon = 0;
+            var hBis = 0;
+
+            hVon = DATA._CUPANEKDOTE.indexOf('<span class="cBlau P" onclick');
+            if (hVon >= 0) {
+                DATA._CUPANEKDOTE = DATA._CUPANEKDOTE.substr(0, hVon) + '<SPAN' + DATA._CUPANEKDOTE.substr(hVon + 5);
+                hBis = DATA._CUPANEKDOTE.substr(hVon).indexOf('</span');
+                if (hBis >= 0) {
+                    DATA._CUPANEKDOTE = DATA._CUPANEKDOTE.substr(0, hVon + hBis) + '</SPAN' + DATA._CUPANEKDOTE.substr(hVon + hBis + 6);
+                }
+            }
+
+            if (DATA._CUPANEKDOTE.substr(0, 5) === '<div>') {
+                DATA._CUPANEKDOTE = DATA._CUPANEKDOTE.substr(5);
+            }
+            DATA._CUPANEKDOTE.TEXT1[I] = DATA._CUPANEKDOTE.replace(/<div><br><\/div><div>/g, '<br><br>').replace(/<div>/g, '<br>');
+            DATA._CUPANEKDOTE = DATA._CUPANEKDOTE.replace(/<div><br>/g, '<br><br>').replace(/<div>/g, '<br>');
+
+            hVon = 0;
+            while (hVon >= 0) {
+                hVon = DATA._CUPANEKDOTE.indexOf('<div');
+                if (hVon < 0) {
+                    hVon = DATA._CUPANEKDOTE.indexOf('</div');
+                    if (hVon < 0) {
+                        hVon = DATA._CUPANEKDOTE.indexOf('<span');
+                        if (hVon < 0) {
+                            hVon = DATA._CUPANEKDOTE.indexOf('</span');
+                        }
+                    }
+                }
+                if (hVon >= 0) {
+                    hBis = DATA._CUPANEKDOTE.substr(hVon).indexOf('>');
+                    if (hBis > 0) {
+                        DATA._CUPANEKDOTE = DATA._CUPANEKDOTE.substr(0, hVon) + DATA._CUPANEKDOTE.substr(hVon + hBis + 1);
+                    }
+                }
             }
         } else {
             DATA._CUPANEKDOTE = null;
@@ -275,10 +308,43 @@ function turnierPruefenSpeichern(pSpeichern) {
         DATA._CUPFOTOS = [];
     } else {
         DATA._ANEKDOTE = editor.content.innerHTML;
-        if (DATA._ANEKDOTE) {
-            if (DATA._ANEKDOTE.substr(0, 23) === '<span style="font-size:') {
-                DATA._ANEKDOTE = '<div>' + DATA._ANEKDOTE.substr(DATA._ANEKDOTE.indexOf('px;">') + 5);
-                DATA._ANEKDOTE = DATA._ANEKDOTE.substr(0, DATA._ANEKDOTE.lastIndexOf('</span>')) + '</div>';
+        if (DATA._ANEKDOTE) { // html nach pellEdit reparieren
+            var hVon = 0;
+            var hBis = 0;
+
+            hVon = DATA._ANEKDOTE.indexOf('<span class="cBlau P" onclick');
+            if (hVon >= 0) {
+                DATA._ANEKDOTE = DATA._ANEKDOTE.substr(0, hVon) + '<SPAN' + DATA._ANEKDOTE.substr(hVon + 5);
+                hBis = DATA._ANEKDOTE.substr(hVon).indexOf('</span');
+                if (hBis >= 0) {
+                    DATA._ANEKDOTE = DATA._ANEKDOTE.substr(0, hVon + hBis) + '</SPAN' + DATA._ANEKDOTE.substr(hVon + hBis + 6);
+                }
+            }
+
+            if (DATA._ANEKDOTE.substr(0, 5) === '<div>') {
+                DATA._ANEKDOTE = DATA._ANEKDOTE.substr(5);
+            }
+            DATA._ANEKDOTE.TEXT1[I] = DATA._ANEKDOTE.replace(/<div><br><\/div><div>/g, '<br><br>').replace(/<div>/g, '<br>');
+            DATA._ANEKDOTE = DATA._ANEKDOTE.replace(/<div><br>/g, '<br><br>').replace(/<div>/g, '<br>');
+
+            hVon = 0;
+            while (hVon >= 0) {
+                hVon = DATA._ANEKDOTE.indexOf('<div');
+                if (hVon < 0) {
+                    hVon = DATA._ANEKDOTE.indexOf('</div');
+                    if (hVon < 0) {
+                        hVon = DATA._ANEKDOTE.indexOf('<span');
+                        if (hVon < 0) {
+                            hVon = DATA._ANEKDOTE.indexOf('</span');
+                        }
+                    }
+                }
+                if (hVon >= 0) {
+                    hBis = DATA._ANEKDOTE.substr(hVon).indexOf('>');
+                    if (hBis > 0) {
+                        DATA._ANEKDOTE = DATA._ANEKDOTE.substr(0, hVon) + DATA._ANEKDOTE.substr(hVon + hBis + 1);
+                    }
+                }
             }
         } else {
             DATA._ANEKDOTE = null;
@@ -473,14 +539,14 @@ function showAnekdote() {
     $('#dRumpf').html(html);
 
     setTimeout(function () {
-        editor = pell.init({
+        editor = window.pell.init({
             element: document.getElementById('editor'),
-            actions: ['bold', 'italic', 'underline', 'olist', 'ulist', 'line', 'undo', 'redo'],
-            classes: {actionbar: 'pell-actionbar-custom-name'},
+            actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
+            defaultParagraphSeparator: '',
             onChange: function () {
             }
         });
-        $('.pell-actionbar-custom-name').attr('style', 'background-color:#ddd;border:1px solid;');
+        $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
     });
     setTimeout(function () {
         editor.content.innerHTML = '';

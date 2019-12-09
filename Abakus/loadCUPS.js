@@ -30,6 +30,8 @@ function loadCUPS(pTitel, pText, pForce) {
         CUPS.NAME2LEN = [];
         CUPS.NEXTTERMIN = [];
         CUPS.MEANGEMELDET = cMEANGEMELDET;
+        CUPS.MELDAKT = [];
+        CUPS.MELDSTAT = [];
         CUPS.MEZULETZT = cMEZULETZT;
         CUPS.REGELN = [];
         CUPS.RUNDEN = [];
@@ -48,6 +50,8 @@ function loadCUPS(pTitel, pText, pForce) {
 
         CUPS.REGELN[0] = 'Wr.';
         CUPS.DOPPELTERUNDEN[0] = false;
+
+        AKTUELLES = [];
 
         data.forEach(function (cup) {
 
@@ -78,6 +82,13 @@ function loadCUPS(pTitel, pText, pForce) {
                         CUPS.DOPPELTERUNDEN[i] = true;
                     } else {
                         CUPS.DOPPELTERUNDEN[i] = false;
+                    }
+                    if (cupval.AKTUELLES) {
+                        CUPS.MELDAKT   [i] = cupval.AKTUELLES[0];
+                        AKTUELLES      [i] = cupval.AKTUELLES[1];
+                    }
+                    if (cupval.MELDSTAT) {
+                        CUPS.MELDSTAT  [i] = cupval.MELDSTAT;
                     }
                     CUPS.NAME          [i] = cupval.NAME;
                     CUPS.NAME2LEN      [i] = cupval.NAME2LEN;
@@ -135,6 +146,7 @@ function loadCUPS(pTitel, pText, pForce) {
             }
         });
 
+        localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
         localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
 
         function isVIP(pSchalter) {
@@ -147,9 +159,6 @@ function loadCUPS(pTitel, pText, pForce) {
         var hVIP = false;
         SPIELERalpha = [];
         for (var spieler in SPIELERnr) {
-            if (spieler === '3425') {
-                spieler = spieler;
-            }
             if (spieler === LS.ME) {
                 hVIP = isVIP(SPIELERnr[spieler][4]);
             }

@@ -157,7 +157,7 @@
                 return exec('insertHorizontalRule');
             }
         },
-        link: {
+        links: {
             icon: '&#128279;',
             title: 'Link',
             result: function result() {
@@ -169,6 +169,15 @@
                 }
             }
         },
+        link: {
+            icon: '&#128279;',
+            title: 'Link',
+            result: function result() {
+                var url = window.prompt('URL: (Immer mit http:// oder https://.)');
+                if (url)
+                    exec('createLink', url);
+            }
+        },
         image: {
             icon: '&#128247;',
             title: 'Image',
@@ -178,9 +187,9 @@
                     exec('insertImage', url);
             }
         },
-        foto: {
-            icon: '&#128247;',
-            title: 'Foto',
+        fotoS: {
+            icon: '&FilledSmallSquare;',
+            title: 'Ein kleines Foto einfügen',
             result: function result() {
                 var url = window.prompt('Google-Drive-Link:');
                 if (url) {
@@ -193,7 +202,45 @@
                     if (url.indexOf('/view?') > 1) {
                         url = url.substr(0, url.indexOf('/view?'));
                     }
-                    exec('insertHTML', '<img class="llf_Image" src="https://drive.google.com/uc?id=' + url + '"/>');
+                    exec('insertHTML', '<img class="cFotoS" src="https://drive.google.com/uc?id=' + url + '" style="float:right; margin-left: 15px;"/>');
+                }
+            }
+        },
+        fotoM: {
+            icon: '&marker;',
+            title: 'Ein mittelgroßes Foto einfügen',
+            result: function result() {
+                var url = window.prompt('Google-Drive-Link:');
+                if (url) {
+                    if (url.indexOf('/file/d/') > 1) {
+                        url = url.substr(url.indexOf('/file/d/') + 8);
+                    }
+                    if (url.indexOf('/open?id=') > 1) {
+                        url = url.substr(url.indexOf('/open?id=') + 9);
+                    }
+                    if (url.indexOf('/view?') > 1) {
+                        url = url.substr(0, url.indexOf('/view?'));
+                    }
+                    exec('insertHTML', '<img class="cFotoM" src="https://drive.google.com/uc?id=' + url + '" style="float:left; margin-right: 15px;"/>');
+                }
+            }
+        },
+        fotoL: {
+            icon: '&block;',
+            title: 'Ein großes Foto einfügen',
+            result: function result() {
+                var url = window.prompt('Google-Drive-Link:');
+                if (url) {
+                    if (url.indexOf('/file/d/') > 1) {
+                        url = url.substr(url.indexOf('/file/d/') + 8);
+                    }
+                    if (url.indexOf('/open?id=') > 1) {
+                        url = url.substr(url.indexOf('/open?id=') + 9);
+                    }
+                    if (url.indexOf('/view?') > 1) {
+                        url = url.substr(0, url.indexOf('/view?'));
+                    }
+                    exec('insertHTML', '<img class="cFotoL" src="https://drive.google.com/uc?id=' + url + '"/>');
                 }
             }
         },
@@ -298,3 +345,94 @@
     Object.defineProperty(exports, '__esModule', {value: true});
 
 })));
+
+function repairPell(pHtml) {
+
+    if (!pHtml) {
+        return null;
+    } else {
+
+        // html nach pellEdit reparieren
+        var hVon = 0;
+        var hBis = 0;
+
+        hVon = pHtml.indexOf('<a href="');
+        if (hVon >= 0) {
+            hBis = pHtml.substr(hVon + 9).indexOf('"');
+            if (hBis >= 0) {
+                pHtml = pHtml.substr(0, hVon + 10 + hBis) + ")'" + pHtml.substr(hVon + 10 + hBis);
+            }
+            pHtml = pHtml.substr(0, hVon) + "<SPAN class='cBlau P N' ONclick='window.open(" + pHtml.substr(hVon + 8);
+            hBis = pHtml.substr(hVon).indexOf('</a>');
+            if (hBis >= 0) {
+                pHtml = pHtml.substr(0, hVon + hBis) + '</SPAN>' + pHtml.substr(hVon + hBis + 4);
+            }
+        }
+
+
+        hVon = pHtml.indexOf('<a href="');
+        if (hVon >= 0) {
+            hBis = pHtml.substr(hVon + 9).indexOf('"');
+            if (hBis >= 0) {
+                pHtml = pHtml.substr(0, hVon + 10 + hBis) + ")'" + pHtml.substr(hVon + 10 + hBis);
+            }
+            pHtml = pHtml.substr(0, hVon) + "<SPAN class='cBlau P N' ONclick='window.open(" + pHtml.substr(hVon + 8);
+            hBis = pHtml.substr(hVon).indexOf('</a>');
+            if (hBis >= 0) {
+                pHtml = pHtml.substr(0, hVon + hBis) + '</SPAN>' + pHtml.substr(hVon + hBis + 4);
+            }
+        }
+
+        if (pHtml.substr(0, 5) === '<div>') {
+            pHtml = pHtml.substr(5);
+        }
+        pHtml = pHtml.replace(/<div><br><\/div><div>/g, '<br><br>').replace(/<div>/g, '<br>');
+        pHtml = pHtml.replace(/<div><br>/g, '<br><br>').replace(/<div>/g, '<br>');
+//        pHtml = pHtml.replace(/<a href="/g, '<SPAN class="cBlau P" onclick="').replace(/<\/a>/g, '</SPAN>');
+
+        hVon = 0;
+        while (hVon >= 0) {
+            hVon = pHtml.indexOf('<div');
+            if (hVon < 0) {
+                hVon = pHtml.indexOf('</div');
+                if (hVon < 0) {
+                    hVon = pHtml.indexOf('<span');
+                    if (hVon < 0) {
+                        hVon = pHtml.indexOf('</span');
+                        if (hVon < 0) {
+                            hVon = pHtml.indexOf('<p');
+                            if (hVon < 0) {
+                                hVon = pHtml.indexOf('</p');
+                                if (hVon < 0) {
+                                    hVon = pHtml.indexOf('<h1');
+                                    if (hVon < 0) {
+                                        hVon = pHtml.indexOf('</h1');
+                                        if (hVon < 0) {
+                                            hVon = pHtml.indexOf('<h2');
+                                            if (hVon < 0) {
+                                                hVon = pHtml.indexOf('</h2');
+                                                if (hVon < 0) {
+                                                    hVon = pHtml.indexOf('<h3');
+                                                    if (hVon < 0) {
+                                                        hVon = pHtml.indexOf('</h3');
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if (hVon >= 0) {
+                hBis = pHtml.substr(hVon).indexOf('>');
+                if (hBis > 0) {
+                    pHtml = pHtml.substr(0, hVon) + pHtml.substr(hVon + hBis + 1);
+                }
+            }
+        }
+        return pHtml;
+    }
+}

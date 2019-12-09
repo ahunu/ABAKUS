@@ -1,5 +1,5 @@
 
-/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, CUP, is2, SP, spTeilnahmen, spCuppunkte, spBestePlatz, is3, is1, isSaison, getSpielerName, sp0BestePlatz, sp0Cup3ter, sp0Cup2ter, sp0Cupsiege, spPunkte, spRangImCup */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, SAISON, CUP, is2, SP, spTeilnahmen, spCuppunkte, spBestePlatz, is3, is1, isSaison, getSpielerName, sp0BestePlatz, sp0Cup3ter, sp0Cup2ter, sp0Cupsiege, spPunkte, spRangImCup, spSumPlatz */
 
 function addTNPosition(pSpieler, pSort) {
 
@@ -49,7 +49,6 @@ function addTNPosition(pSpieler, pSort) {
                     + '<td class=TC>' + SP[pSpieler][i][spRangImCup] + '</td>'
                     + '<td class=TC>' + parseInt(SP[pSpieler][i][spSumPlatz] / SP[pSpieler][i][spTeilnahmen]) + '</td>'
                     + '<td class="TR QUER">' + SP[pSpieler][i][spTeilnahmen] + '</td>'
-//                    + (window.location.href[0] === 'f' ? '<td class="TR QUER">' + SP[pSpieler][i][spPunkte] + '</td>' : '')
                     + '<td>&nbsp;</td>'
                     + '</tr>';
         }
@@ -100,21 +99,6 @@ function showBestenliste(pSort) {
 
     if (pSort) {
         showEinenMoment(CUPS.NAME[stCup], 'Statistik&nbsp;wird&nbsp;sortiert.');
-//        if (pSort === 'NAME') {
-//
-//        } else if (pSort === 'NAME') {
-//
-//        } else if (pSort === 'CUP') {
-//
-//        } else if (pSort === 'TURNIER') {
-//
-//        } else if (pSort === 'PLATZ') {
-//
-//        } else if (pSort === 'TN') {
-//
-//        } else if (pSort === 'PUNKTE') {
-//
-//        }
     } else {
         pSort = 'TURNIER';
         showEinenMoment(CUPS.NAME[stCup], 'Statistik&nbsp;wird&nbsp;erstellt.');
@@ -252,7 +236,6 @@ function showBestenliste(pSort) {
                     + "<th id=CUP class='C PT cBlau" + (pSort === 'CUP' ? ' U' : '') + "' onclick='showBestenliste(\"CUP\")'>Cup<br>1.2.3.</th>"
                     + "<th id=PLATZ class='TC PT cBlau" + (pSort === 'PLATZ' ? ' U' : '') + "' onclick='showBestenliste(\"PLATZ\")'>&Oslash;<br>Platz</th>"
                     + "<th id=TN class='TR PT cBlau QUER" + (pSort === 'TN' ? ' U' : '') + "' onclick='showBestenliste(\"TN\")'>TN</th>"
-//                    + (window.location.href[0] === 'f' ? "<th id=PUNKTE class='TR PT cBlau QUER" + (pSort === 'PUNKTE' ? ' U' : '') + "' onclick='showBestenliste(\"PUNKTE\")'>Punkte</th>" : '') // Nur ich zuhause
                     + "<th></th>"
                     + "</tr>"
                     + "</thead><tbody>"
@@ -272,11 +255,6 @@ function showBestenliste(pSort) {
                     + "<tr><td colspan=3>&nbsp;</td></tr>"
                     + "<tr class=XS><td></td><td colspan=2 style='text-align:justify'>Es sind alle jene Spieler gelistet welche in der aktuellen Saison schon teilgenommen, in der letzten Saison mindestens fünfmal teilgenommen, insgesamt mindestens 20 mal teilgenommen oder mindestens einen Stockerlplatz erreicht haben.</td></tr>";
             if (QUERFORMAT()) {
-//                html += "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
-//                        + "<tr><td></td><td colspan=2>Mit einen Klick auf eine Spaltenüberschrift kannst du die Sortierung ändern.</th></tr>"
-//                        + "<tr><td></td><td colspan=2>Durch das Anklicken einer Zeile kannst du die Saisonergebnisse ein- oder ausblenden.</th></tr>"
-//                        + "<tr><td></td><td colspan=2>&nbsp;</th></tr>"
-//                        + "<tr><td></td><td colspan=2>Es sind alle jene Spieler gelistet welche in der aktuellen Saison schon teilgenommen, in der letzten Saison mindestens fünfmal teilgenommen, insgesamt mindestens 20 mal teilgenommen oder mindestens einen Stockerlplatz erreicht haben.</th></tr>";
                 $('#dRumpf').html(html + "</tbody></table><br>").css('margin-top', $('#qfHeader').height() + 'px');
             } else {
                 $('#dContent').html(html + "</tbody></table><br><br>").show();

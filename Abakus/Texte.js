@@ -26,7 +26,9 @@ function showText(pText) {
             + '<div style="width: 80%; padding: 1em; margin: 3em auto;">';
 
     var hTitel2 = '';
-    if (pText === 'TippsUndTricks') {
+    if (pText === 'Aktuelles') {
+        writeCanvas(CUPS.NAME[I]);
+    } else if (pText === 'TippsUndTricks') {
         writeCanvas('Tipps und Tricks');
     } else if (pText === 'CTDetailstatistik') {
         writeCanvas('Detailstatistik');
@@ -34,7 +36,13 @@ function showText(pText) {
         writeCanvas(pText);
     }
 
-    if (pText === 'Geschichte') {
+    if (pText === 'Aktuelles') {
+        hTitel2 = CUPS.MELDAKT[I];
+        html += AKTUELLES[I];
+        if (QUERFORMAT() && PC) {
+            $('#iEdit').attr('style', 'position: fixed; top: 2px; right: 0.5vw; font-size: 3.1vw; cursor: pointer;').show();
+        }
+    } else if (pText === 'Geschichte') {
         hTitel2 = 'Die Geschichte des Tarockspiels';
         html += getGeschichte();
     } else if (pText === 'Anekdoten') {
@@ -56,7 +64,7 @@ function showText(pText) {
         hTitel2 = 'Gewusst wie';
         html += getTippsUndTricks();
     }
-    html += '</html></html>';
+    html += '</div></div>';
     $('#qfHeaderZeile2').html(hTitel2);
     $('#dRumpf').html(html).trigger('create');
 }

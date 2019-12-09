@@ -9,6 +9,7 @@ var iTURCODE = 0;
 var LS = new Object();
 var CUPS = new Object();
 var STAT = new Object();
+var AKTUELLES = [];
 var TERMINE = [];
 var I = 0;
 var hShowCup = 0;
@@ -23,12 +24,14 @@ var mSauwaldAktiv = true;
 var hHeute = myDateString(new Date());
 var anzVersuche = 0;
 var myJBox = null;
+var myJTip = null;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stLastZitat = [];
 var mHref = false;
 var meinStellvertreter = '3244';
 var stFilter = '';
+var iAKTUELLES = '';
 
 const iRufer = 1;
 const iSolorufer = 2;
@@ -58,6 +61,160 @@ const iUltimo = 25;
 const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
+
+function aktuellesCheck(pSpeichern) {
+
+    hideEinenTip();
+
+    $('#bASpeichern').addClass('ui-disabled');
+
+    var iSCHLAGZEILE = $('#iSCHLAGZEILE').val();
+
+    if (iSCHLAGZEILE && iAKTUELLES) {
+        if (iSCHLAGZEILE.length < 12) {
+            showEinenTip('#iSCHLAGZEILE', 'Die Schlagzeile muß mindesten 12 Stellen lang sein.');
+            return false;
+        }
+        if (iAKTUELLES.length < 12) {
+            showEinenTip('#editor', 'Der Infotext muß mindestens 12 Stellen lang sein.');
+            return false;
+        }
+        var DATA = [iSCHLAGZEILE, iAKTUELLES];
+    } else {
+        var DATA = null;
+    }
+
+    $('#bASpeichern').removeClass('ui-disabled');
+
+    if (!pSpeichern) {
+        return;
+    }
+
+    showEinenMoment(I, 'Die Änderung wird gespeichert.');
+
+    if (typeof FB !== 'object') {
+        firebase.initDB(0);
+    }
+
+    firebase.database().ref('/00/CUPS/' + ("000" + I).slice(-3) + '/AKTUELLES')
+            .set(DATA) // set ist gefählich wie sonst nichts !!!
+            .then(function () {
+
+                CUPS.MELDAKT[I] = iSCHLAGZEILE;
+                localStorage.setItem("Abakus.CUPS", JSON.stringify(CUPS));
+                AKTUELLES[I] = iAKTUELLES;
+                localStorage.setItem("Abakus.AKTUELLES", JSON.stringify(AKTUELLES));
+
+                hideEinenMoment();
+                showAktuelles();
+            })
+            .catch(function (e) {
+                showEineDBWarnung(e, 'writeAktuelles()');
+            });
+}
+
+function showAktuelles(pCup) {
+    if (CUPS.MELDAKT[I]) {
+        if (LS.GelesenAKT[I] !== CUPS.MELDAKT[I]) {
+            LS.GelesenAKT[I] = CUPS.MELDAKT[I];
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    } else {
+        if (LS.GelesenAKT[I]) {
+            LS.GelesenAKT[I] = null;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    }
+    if (!QUERFORMAT()) {
+        if (pCup) {
+            LS.ShowCups = pCup;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+        window.location.href = 'Abakus/Text.html?Aktuelles';
+        return;
+    }
+
+    if (CUPS.MELDAKT[I]) {
+        $('#qfHeaderZeile2').text(CUPS.MELDAKT[I]);
+    } else {
+        $('#qfHeaderZeile2').text('Eine wichtige Information eingeben');
+    }
+
+    $(LS.LastBtn).removeClass('ui-btn-active');
+
+    if (QUERFORMAT() && PC) {
+        $('#iEdit').attr('style', 'position: fixed; top: 2px; right: 0.5vw; font-size: 3.1vw; cursor: pointer;').show();
+    }
+
+    var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 4);
+    var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
+            + '<div class="M J" style="width: 80%; padding: 1em; margin: 3em auto;">';
+
+    if (AKTUELLES[I]) {
+        html += AKTUELLES[I];
+    }
+
+    html += '</div></div>';
+    $('#ddRumpf').html(html).trigger('create');
+}
+
+function editAktuelles() {
+
+    if (CUPS.MELDAKT[I]) {
+        $('#qfHeaderZeile2').text(CUPS.MELDAKT[I]);
+    } else {
+        $('#qfHeaderZeile2').text('Eine wichtige Information eingeben');
+    }
+
+    $('#iEdit').hide();
+
+    var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 4);
+    var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
+            + '<div style="width: 80%; padding: 1em; margin: 3em auto;" fonclick="event.stopImmediatePropagation();">'
+//            + '<div id="editor" class="M" style="background-color:#eee; border-width:5px; border-style:groove; text-align:left"></div>'
+//            + '<br>'
+            + '<div class="ui-grid-a">'
+            + '<div class="ui-block-a L" style="width:30%">'
+            + 'Letzte Schlagzeile:'
+            + '</div>'
+            + '<div class="ui-block-b" style="width:69%">'
+            + '<input id="iSCHLAGZEILE" data-role="none">'
+            + '</div>'
+            + '</div>'
+            + '<div class="ui-grid-b">'
+            + '<div class="ui-block-a" style="padding:11px 8px 0px 4px;">'
+            + '<button class="L2 ui-corner-all" onClick="hideEinenTip();showAktuelles();" style="width:100%;" data-theme="a">abbrechen</button>'
+            + '</div>'
+            + '<div class="ui-block-b" style="padding:11px 4px 0px 4px;">'
+            + '<button class="L2 ui-corner-all" onClick="aktuellesCheck(false)" style="width:100%;">prüfen</button>'
+            + '</div>'
+            + '<div class="ui-block-c" style="padding:11px 4px 0px 8px;">'
+            + '<button id=bASpeichern class="L3 ui-corner-all ui-disabled" onClick="aktuellesCheck(true)" style="width:100%;background-color:#efcc44;font-weight:bold;" data-theme="e">speichern</button>'
+            + '</div>'
+            + '</div>'
+            + '<div id="editor" class="M" style="background-color:#eee; border-width:5px; border-style:groove; text-align:justify"></div>'
+            + '</div>'
+            + '</div>';
+
+    $('#ddRumpf').html(html).trigger('create');
+    editor = window.pell.init({
+        element: document.getElementById('editor'),
+        actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'fotoS', 'fotoM', 'fotoL', 'undo', 'redo'],
+        defaultParagraphSeparator: '',
+        onChange: function (html) {
+            iAKTUELLES = repairPell(html);
+        }
+    });
+    $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
+
+    if (CUPS.MELDAKT[I]) {
+        $('#iSCHLAGZEILE').val(CUPS.MELDAKT[I]);
+        editor.content.innerHTML = AKTUELLES[I];
+    } else {
+        editor.content.innerHTML = '';
+    }
+    iAKTUELLES = editor.content.innerHTML;
+}
 
 function zumTurnier() {
     if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
@@ -1632,10 +1789,10 @@ function initSeite1() {
         I = LS.ShowCups;
     }
 
-
     var sync = new Date(CUPS.DATE);
     var heute = new Date();
-    var nTage = parseInt((heute - sync) / 86400000);
+//    var nTage = parseInt((heute - sync) / 86400000);
+    var nStunden = (heute - sync) / 3600000;
     if (LS.Version !== getVersion()) {
         if (LS.Version < 989) { // später
             LS.FotoStyle = 0;
@@ -1656,7 +1813,7 @@ function initSeite1() {
             writeLOG('ABAKUS: Update auf Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ').');
         }
         initCUPSdelAllSTAT();
-    } else if (LS.LoadCups > 0 || nTage > 2 || isNaN(nTage)) {
+    } else if (LS.LoadCups > 0 || nStunden > 8 || isNaN(nStunden)) {
         loadCUPS(false, false, true);
     } else {
         whenCUPSloaded();
@@ -2034,8 +2191,36 @@ function resetLastBtn() {
     }
 }
 
+function getMELDAKT(pCup) {
+    if (CUPS.MELDAKT[pCup]) {
+        if (CUPS.MELDAKT[pCup] === LS.GelesenAKT[pCup]) {
+            return CUPS.MELDAKT[pCup];
+        } else {
+            return '<span style="color:crimson">' + CUPS.MELDAKT[pCup] + '</span>';
+        }
+    } else {
+        return 'Wichtige Infos eingeben';
+    }
+}
+
+function getMeldSTAT(pCup) {
+    if (!CUPS.TURNIER[pCup]) {
+        return 'Cupwertung, Platzierungen, etc.';
+    }
+    if (CUPS.MELDSTAT[pCup]) {
+        if (CUPS.MELDSTAT[pCup] === LS.GelesenSTAT[pCup]) {
+            return CUPS.MELDSTAT[pCup];
+        } else {
+            return '<span style="color:crimson">' + CUPS.MELDSTAT[pCup] + '</span>';
+        }
+    } else {
+        return 'Cupwertung, Platzierungen, etc.';
+    }
+}
+
 function showCup(i, pBtn, pTermin) {
     'use strict';
+
     var newBtn = '#' + pBtn + i;
     if (!QUERFORMAT()) {
         if (LS.LastBtn) {
@@ -2197,7 +2382,7 @@ function showCup(i, pBtn, pTermin) {
 
                 + (I !== 49 && I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv || I === 77
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
-                        + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
+                        + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>' + getMeldSTAT(I) + '<br>' : '<br>Nur für Mitspieler...<br>')
 
                         + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3)
                                 ? hVorschub + '<span class="cBlau P XL" onclick="zumTurnier()" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
@@ -2215,6 +2400,12 @@ function showCup(i, pBtn, pTermin) {
                                 ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
                                 : ''
                                 )
+                        : ''
+                        )
+
+                + (CUPS.TURNIER[I] && LS.ME === '3425'
+                        && (CUPS.MELDAKT[I] || CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 && CUPS.TURNIER[I] !== "Handy"))
+                        ? hVorschub + '<span class="cBlau P XL" onclick="showAktuelles(\'Aktuelles\')"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
                         : ''
                         )
 
@@ -2243,7 +2434,7 @@ function showCup(i, pBtn, pTermin) {
                 + '<br><br>'
                 + html
                 + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
-                + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>Cupwertung, Platzierungen, etc.<br>' : '<br>Nur für Mitspieler...<br>')
+                + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>' + getMeldSTAT(I) + '<br>' : '<br>Nur für Mitspieler...<br>')
                 + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7
                         ? hVorschub
                         + (LS.I === I
@@ -2761,7 +2952,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '</div>'
                     : '')
                     + '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
-                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">Statistiken und Fotos ansehen</div>'
+                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">Statistiken, Diagramme etc.</div>'
                     + '</div>';
 
 
@@ -2787,8 +2978,14 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '</div>'
                     : '')
                     + '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
-                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">Statistiken und Fotos ansehen</div>'
+                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
                     + '</div>';
+
+            if (CUPS.MELDAKT[pCup] && LS.ME === '3425') {
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="showAktuelles(' + pCup + ');">'
+                        + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
+                        + '</div>';
+            }
 
 
         } else if (CUPS.TURNIER[pCup]) { // Spontanturniere /////////////////////////////////////////////////////////////////////////////////
@@ -2864,12 +3061,18 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
             }
 
             hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
-                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">Statistiken und Diagramme ansehen</div>'
+                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
                     + '</div>';
 
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
                 hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern(' + pCup + ');">'
                         + '<img src=\'Icons/Optionen.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Parameter ändern<div class="S N">Beschreibung und Berechtigungen ändern</div>'
+                        + '</div>';
+            }
+
+            if (LS.ME === '3425' && CUPS.MELDAKT[pCup]) {
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="showAktuelles(' + pCup + ');">'
+                        + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
                         + '</div>';
             }
 
@@ -2908,7 +3111,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 }
             }
             hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
-                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">Statistiken und Diagramme ansehen</div>'
+                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">Statistiken, Diagramme etc.</div>'
                     + '</div>';
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
                 hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern(' + pCup + ');">'
@@ -3372,6 +3575,8 @@ $(document).ready(function () {
         LS.MeineCups = [];
         LS.Schreibzettel = false;
         LS.I = 0;
+        LS.GelesenAKT = [];
+        LS.GelesenSTAT = [];
         LS.gespielt = 0; // -1
         LS.Regeln = "Wr.";
         LS.Meldung = '';
@@ -3403,12 +3608,20 @@ $(document).ready(function () {
             LS.AnzSpalten = 1;
         }
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
     } else {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+        AKTUELLES = JSON.parse(localStorage.getItem('Abakus.AKTUELLES'));
     }
 
     if (LS.Version < 932) {
         LS.LastBtn = '';
+    }
+    if (!LS.GelesenAKT) {
+        LS.GelesenAKT = [];
+    }
+    if (!LS.GelesenSTAT) {
+        LS.GelesenSTAT = [];
     }
     if (LS.Version < 967) {
         LS.VIP = false;
@@ -3435,9 +3648,9 @@ $(document).ready(function () {
 //            return false; // oncontextmenu
         };
     }
-    document.onselectstart = function () {
-        return false;
-    };
+//    document.onselectstart = function () {
+//        return false;
+//    };
 
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (CUPS === null) {
@@ -3490,6 +3703,15 @@ $(document).ready(function () {
         $('.iMain').css('height', $('#hMenu').height() - 4);
     } else if ($('#hMix').is(":visible")) {
         $('.hfHeaderIcon').css('height', $('#hMix').height() - 8);
+    }
+
+    if (QUERFORMAT()) {
+        myJTip = new jBox('Tooltip', {
+            theme: 'TooltipError',
+            delayClose: 20,
+            closeOnClick: true,
+            closeOnEsc: true
+        });
     }
 
     window.onresize = function (e) {

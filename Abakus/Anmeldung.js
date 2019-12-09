@@ -1658,6 +1658,8 @@ $(document).ready(function () {
         var LS_AnzSpalten = LS.AnzSpalten;
         var LS_Ansagen = LS.Ansagen;
         var LS_AktTage = LS.AktTage;
+        var LS_GelesenAKT = LS.GelesenAKT;
+        var LS_GelesenSTAT = LS.GelesenSTAT;
         var LS_I = LS.LoadCups * -1; // - ist Kennung für neuen Tisch
         var LS_Padding = LS.Padding;
         var LS_Freunde = LS.Freunde;
@@ -1680,6 +1682,8 @@ $(document).ready(function () {
         LS.AnzSpalten = LS_AnzSpalten;
         LS.Ansagen = LS_Ansagen;
         LS.AktTage = LS_AktTage;
+        LS.GelesenAKT = LS_GelesenAKT;
+        LS.GelesenSTAT = LS_GelesenSTAT;
         LS.I = LS_I;
         LS.ShowCups = LS_I;
         LS.Padding = LS_Padding;

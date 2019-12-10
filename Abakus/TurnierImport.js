@@ -178,6 +178,7 @@ function fPruefenSpeichern(pSpeichern) {
     var r2 = 0;
     var r3 = 0;
     var pos = 0;
+    var hGewinner = '';
     for (var i = 0; i < iDATEN.length; i++) {
         iLine = iDATEN[i];
         if (i === 0 && iCUP === 53) {
@@ -211,6 +212,9 @@ function fPruefenSpeichern(pSpeichern) {
                 }
                 oDATEN += oLine + ', ' + r1 + ', ' + r2 + ', ' + r3 + '\n';
                 DATA[iDATUM][iSPIELER] = [r1, r2, r3];
+                if (nSPIELER === 1) {
+                    hGewinner = SPIELERnr[iSPIELER][1] + ' ' + SPIELERnr[iSPIELER][0];
+                }
             }
         }
     }
@@ -223,6 +227,23 @@ function fPruefenSpeichern(pSpeichern) {
 
     $('#bSpeichern').removeClass('ui-disabled');
 
+
+    var iSCHLAGZEILE = null;
+
+    if (new Date - new Date(iDATUM) <= 3600000 * 48) { // 48 Stunden
+        iSCHLAGZEILE = $('#iSCHLAGZEILE').val();
+        if (!iSCHLAGZEILE) {
+            if (iNAME.toUpperCase().indexOf('FINAL') >= 0) {
+                $('#iSCHLAGZEILE').val('Vorname Nachname ist Tarockmeister ' + iSAISON).removeClass('ui-disabled');
+                showEinenTip('#iSCHLAGZEILE', 'Bitte Vorname und Nachname ersetzen.');
+            } else {
+                $('#iSCHLAGZEILE').val(hGewinner + ' gewinnt ' + iNAME).removeClass('ui-disabled');
+                showEinenTip('#iSCHLAGZEILE', 'Ist die Schlagzeile korrekt?');
+            }
+            return;
+        }
+    }
+
     if (!pSpeichern) {
         return;
     }
@@ -232,10 +253,26 @@ function fPruefenSpeichern(pSpeichern) {
     firebase.database().ref('/00/' + ("000" + iCUP).slice(-3))
             .update(DATA)
             .then(function () {
-                hideEinenMoment();
-                LS.Meldung = ('Es wurde ein Turnier eingespielt!');
-                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-                window.history.back();
+                if (iSCHLAGZEILE) {
+                    firebase.database().ref('/00/CUPS/' + ("000" + iCUP).slice(-3))
+                            .update({ MELDSTAT: iSCHLAGZEILE })
+                            .then(function () {
+                                hideEinenMoment();
+                                LS.Meldung = ('Es wurde ein Turnier eingespielt!');
+                                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                                CUPS.MELDSTAT[iCUP] = iSCHLAGZEILE;
+                                localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+                                window.history.back();
+                            })
+                            .catch(function (error) {
+                                showEineDBWarnung(error, 'Speichern():');
+                            });
+                } else {
+                    hideEinenMoment();
+                    LS.Meldung = ('Es wurde ein Turnier eingespielt!');
+                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                    window.history.back();
+                }
             })
             .catch(function (error) {
                 showEineDBWarnung(error, 'Speichern():');

@@ -2396,10 +2396,6 @@ function showCup(i, pBtn, pTermin) {
                                 ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(' + I + ', \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
-                        + (((I === 51 && LS.ME === '1014') || (I === 53 && LS.ME === '4506') || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
-                                ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
-                                : ''
-                                )
                         : ''
                         )
 
@@ -2414,6 +2410,11 @@ function showCup(i, pBtn, pTermin) {
                         || I <= 2
                         || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || LS.ME === meinStellvertreter))
                         ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern(' + I + ')" ><b>Parameter ändern</b></span><br>'
+                        : ''
+                        )
+
+                + (((I === 3 && LS.ME === '3425') || (I === 53 && LS.ME === '4506') || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
+                        ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
                         : ''
                         )
 

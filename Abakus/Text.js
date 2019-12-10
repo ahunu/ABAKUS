@@ -45,6 +45,11 @@ $(document).ready(function () {
         $('#hTitel1').text(CUPS.NAME[LS.ShowCups]);
         $('#hTitel2').text(CUPS.MELDAKT[LS.ShowCups]);
         html += '<div class=M style="text-align:justify">' + AKTUELLES[LS.ShowCups] + '</div>';
+        if (CUPS.TYP[LS.ShowCups] === 'CUP' && LS.ShowCups > 4) {
+            $("#hLogo").attr("src", "../Icons/i" + LS.ShowCups + ".png");
+        } else {
+            $("#hLogo").attr("src", "../Icons/Farben.png");
+        }
     } else {
         LS.ShowCups = 0;
         LS.LastBtn = '';
@@ -81,5 +86,7 @@ $(document).ready(function () {
     }
     html += '</div></div>';
     $('#dRumpf').html(html);
+
+    $('#hLogo').css('height', $('#hHeader').height() - 8).show();
 
 });

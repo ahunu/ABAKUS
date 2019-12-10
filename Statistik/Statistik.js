@@ -125,9 +125,7 @@ function whenSTATloaded(pNewTurnier) {
     initSAISON();
 
     if (LS.ME[0] === '-' || window.location.href.indexOf('?FromTurnier') > 0) {
-        $('#tZumTurnier').html('Zum Turnier');
-    } else if (STAT._AKTTURNIER && STAT._AKTTURNIER._RUNDE <= 3 && LS.ME.length === 4) {
-        $('#tZumTurnier').html('Zurück');
+        $('#tZumTurnier').html('<div class="L C" style="margin-top:12px">Zum Turnier zurück&nbsp;&nbsp;</div>');
     }
 
     if (pNewTurnier) {

@@ -21,7 +21,10 @@ function showInhalt() {
             + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();">&nbsp;Teilnehmerzahlen</a></li>'
             + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.ME !== 'xx' ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
             + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
-            + '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
+            + (CUPS.MELDAKT[stCup] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 20))
+                    ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
+                    : ''
+                    )
             + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
             + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>'
             + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>').listview('refresh').show();

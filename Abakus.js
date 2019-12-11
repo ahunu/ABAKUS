@@ -2239,8 +2239,8 @@ function showCup(i, pBtn, pTermin) {
                         : ''
                         )
 
-                + (CUPS.TURNIER[I] && LS.ME === '3425'
-                        && (CUPS.MELDAKT[I] || CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 && CUPS.TURNIER[I] !== "Handy"))
+                + (CUPS.TURNIER[I] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 20))
+                        && CUPS.MELDAKT[I] && CUPS.TURNIER[I] !== "Handy"
                         ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
                         : ''
                         )
@@ -2822,8 +2822,8 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
                     + '</div>';
 
-            if (CUPS.MELDAKT[pCup] && LS.ME === '3425') {
-                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');">'
+            if (CUPS.MELDAKT[pCup] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 20))) {
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Aktuelles\');">'
                         + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
                         + '</div>';
             }

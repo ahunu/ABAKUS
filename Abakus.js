@@ -9,7 +9,6 @@ var iTURCODE = 0;
 var LS = new Object();
 var CUPS = new Object();
 var STAT = new Object();
-var AKTUELLES = [];
 var TERMINE = [];
 var I = 0;
 var hShowCup = 0;
@@ -28,10 +27,8 @@ var myJTip = null;
 var daysOfWeek = ["So,", "Mo,", "Di,", "Mi,", "Do,", "Fr,", "Sa,"];
 var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stLastZitat = [];
-var mHref = false;
 var meinStellvertreter = '3244';
 var stFilter = '';
-var iAKTUELLES = '';
 
 const iRufer = 1;
 const iSolorufer = 2;
@@ -62,166 +59,12 @@ const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
 
-function aktuellesCheck(pSpeichern) {
-
-    hideEinenTip();
-
-    $('#bASpeichern').addClass('ui-disabled');
-
-    var iSCHLAGZEILE = $('#iSCHLAGZEILE').val();
-
-    if (iSCHLAGZEILE && iAKTUELLES) {
-        if (iSCHLAGZEILE.length < 12) {
-            showEinenTip('#iSCHLAGZEILE', 'Die Schlagzeile muß mindesten 12 Stellen lang sein.');
-            return false;
-        }
-        if (iAKTUELLES.length < 12) {
-            showEinenTip('#editor', 'Der Infotext muß mindestens 12 Stellen lang sein.');
-            return false;
-        }
-        var DATA = [iSCHLAGZEILE, iAKTUELLES];
-    } else {
-        var DATA = null;
-    }
-
-    $('#bASpeichern').removeClass('ui-disabled');
-
-    if (!pSpeichern) {
-        return;
-    }
-
-    showEinenMoment(I, 'Die Änderung wird gespeichert.');
-
-    if (typeof FB !== 'object') {
-        firebase.initDB(0);
-    }
-
-    firebase.database().ref('/00/CUPS/' + ("000" + I).slice(-3) + '/AKTUELLES')
-            .set(DATA) // set ist gefählich wie sonst nichts !!!
-            .then(function () {
-
-                CUPS.MELDAKT[I] = iSCHLAGZEILE;
-                localStorage.setItem("Abakus.CUPS", JSON.stringify(CUPS));
-                AKTUELLES[I] = iAKTUELLES;
-                localStorage.setItem("Abakus.AKTUELLES", JSON.stringify(AKTUELLES));
-
-                hideEinenMoment();
-                showAktuelles();
-            })
-            .catch(function (e) {
-                showEineDBWarnung(e, 'writeAktuelles()');
-            });
-}
-
-function showAktuelles(pCup) {
-    if (CUPS.MELDAKT[I]) {
-        if (LS.GelesenAKT[I] !== CUPS.MELDAKT[I]) {
-            LS.GelesenAKT[I] = CUPS.MELDAKT[I];
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
-    } else {
-        if (LS.GelesenAKT[I]) {
-            LS.GelesenAKT[I] = null;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
-    }
-    if (!QUERFORMAT()) {
-        if (pCup) {
-            LS.ShowCups = pCup;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
-        window.location.href = 'Abakus/Text.html?Aktuelles';
-        return;
-    }
-
-    if (CUPS.MELDAKT[I]) {
-        $('#qfHeaderZeile2').text(CUPS.MELDAKT[I]);
-    } else {
-        $('#qfHeaderZeile2').text('Eine wichtige Information eingeben');
-    }
-
-    $(LS.LastBtn).removeClass('ui-btn-active');
-
-    if (QUERFORMAT() && PC) {
-        $('#iEdit').attr('style', 'position: fixed; top: 2px; right: 0.5vw; font-size: 3.1vw; cursor: pointer;').show();
-    }
-
-    var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 4);
-    var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
-            + '<div class="M J" style="width: 80%; padding: 1em; margin: 3em auto;">';
-
-    if (AKTUELLES[I]) {
-        html += AKTUELLES[I];
-    }
-
-    html += '</div></div>';
-    $('#ddRumpf').html(html).trigger('create');
-}
-
-function editAktuelles() {
-
-    if (CUPS.MELDAKT[I]) {
-        $('#qfHeaderZeile2').text(CUPS.MELDAKT[I]);
-    } else {
-        $('#qfHeaderZeile2').text('Eine wichtige Information eingeben');
-    }
-
-    $('#iEdit').hide();
-
-    var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 4);
-    var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
-            + '<div style="width: 80%; padding: 1em; margin: 3em auto;" fonclick="event.stopImmediatePropagation();">'
-//            + '<div id="editor" class="M" style="background-color:#eee; border-width:5px; border-style:groove; text-align:left"></div>'
-//            + '<br>'
-            + '<div class="ui-grid-a">'
-            + '<div class="ui-block-a L" style="width:30%">'
-            + 'Letzte Schlagzeile:'
-            + '</div>'
-            + '<div class="ui-block-b" style="width:69%">'
-            + '<input id="iSCHLAGZEILE" data-role="none">'
-            + '</div>'
-            + '</div>'
-            + '<div class="ui-grid-b">'
-            + '<div class="ui-block-a" style="padding:11px 8px 0px 4px;">'
-            + '<button class="L2 ui-corner-all" onClick="hideEinenTip();showAktuelles();" style="width:100%;" data-theme="a">abbrechen</button>'
-            + '</div>'
-            + '<div class="ui-block-b" style="padding:11px 4px 0px 4px;">'
-            + '<button class="L2 ui-corner-all" onClick="aktuellesCheck(false)" style="width:100%;">prüfen</button>'
-            + '</div>'
-            + '<div class="ui-block-c" style="padding:11px 4px 0px 8px;">'
-            + '<button id=bASpeichern class="L3 ui-corner-all ui-disabled" onClick="aktuellesCheck(true)" style="width:100%;background-color:#efcc44;font-weight:bold;" data-theme="e">speichern</button>'
-            + '</div>'
-            + '</div>'
-            + '<div id="editor" class="M" style="background-color:#eee; border-width:5px; border-style:groove; text-align:justify"></div>'
-            + '</div>'
-            + '</div>';
-
-    $('#ddRumpf').html(html).trigger('create');
-    editor = window.pell.init({
-        element: document.getElementById('editor'),
-        actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'fotoS', 'fotoM', 'fotoL', 'undo', 'redo'],
-        defaultParagraphSeparator: '',
-        onChange: function (html) {
-            iAKTUELLES = repairPell(html);
-        }
-    });
-    $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
-
-    if (CUPS.MELDAKT[I]) {
-        $('#iSCHLAGZEILE').val(CUPS.MELDAKT[I]);
-        editor.content.innerHTML = AKTUELLES[I];
-    } else {
-        editor.content.innerHTML = '';
-    }
-    iAKTUELLES = editor.content.innerHTML;
-}
-
 function zumTurnier() {
     if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
         if (!window.chrome) {
             showEineMeldung('Achtung', 'HTML5 und Javascript werden von deinem<br>Browser nicht ausreichend unterstützt.'
                     + '<br>Verwende einen der folgenden Browser:'
-                    + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>, <b>Slimjet</b>'
+                    + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>'
                     + '<br>oder einen anderen kompatiblen Browser.');
             return;
         }
@@ -1682,13 +1525,10 @@ function historyBack() {
 }
 
 function fHref(pHref) {
-    $('body').addClass('ui-disabled');
-    mHref = true;
-    if (window.location.hash) {
-        window.location.replace(pHref);
-    } else {
-        window.location.href = pHref;
+    if (window.chrome) {
+        $('body').addClass('ui-disabled');
     }
+    window.location.href = pHref;
 }
 
 function QUERFORMAT() {
@@ -1726,7 +1566,7 @@ function hrefStatistik(pCup, pParameter) {
         }
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
-            fHref("Statistik/Statistik.html");
+            fHref("Statistik/Statistik.html" + pParameter);
         } else {
             fHref("Abakus/Statistik.html" + pParameter);
         }
@@ -2401,7 +2241,7 @@ function showCup(i, pBtn, pTermin) {
 
                 + (CUPS.TURNIER[I] && LS.ME === '3425'
                         && (CUPS.MELDAKT[I] || CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 && CUPS.TURNIER[I] !== "Handy"))
-                        ? hVorschub + '<span class="cBlau P XL" onclick="showAktuelles(\'Aktuelles\')"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
+                        ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
                         : ''
                         )
 
@@ -2983,7 +2823,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '</div>';
 
             if (CUPS.MELDAKT[pCup] && LS.ME === '3425') {
-                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="showAktuelles(' + pCup + ');">'
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');">'
                         + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
                         + '</div>';
             }
@@ -3068,12 +2908,6 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
             if (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
                 hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern(' + pCup + ');">'
                         + '<img src=\'Icons/Optionen.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Parameter ändern<div class="S N">Beschreibung und Berechtigungen ändern</div>'
-                        + '</div>';
-            }
-
-            if (LS.ME === '3425' && CUPS.MELDAKT[pCup]) {
-                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="showAktuelles(' + pCup + ');">'
-                        + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
                         + '</div>';
             }
 
@@ -3609,10 +3443,8 @@ $(document).ready(function () {
             LS.AnzSpalten = 1;
         }
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
     } else {
         LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-        AKTUELLES = JSON.parse(localStorage.getItem('Abakus.AKTUELLES'));
     }
 
     if (LS.Version < 932) {

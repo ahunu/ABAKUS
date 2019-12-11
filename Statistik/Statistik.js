@@ -18,6 +18,7 @@ var LS = new Object();
 var CUPS = new Object();
 var STAT = new Object();
 var SPIELER = new Object();
+var AKTUELLES = null;
 var SAISON = [];
 
 var SP = new Object();
@@ -128,7 +129,10 @@ function whenSTATloaded(pNewTurnier) {
         $('#tZumTurnier').html('<div class="L C" style="margin-top:12px">Zum Turnier zurück&nbsp;&nbsp;</div>');
     }
 
-    if (pNewTurnier) {
+    if (window.location.href.indexOf('?Aktuelles') > 0) {
+        showInhalt();
+        showAktuelles();
+    } else if (pNewTurnier) {
         showSaison(1);
     } else if (!stStat) {
         if (CUPS.TYP[stCup] === 'MT') {
@@ -423,7 +427,15 @@ function newFoto() {
     });
 }
 
-function showAnekdote() {
+function showSomething() {
+    if (lastBtn === '#bAktuelles') {
+        editAktuelles();
+    } else {
+        editAnekdote();
+    }
+}
+
+function editAnekdote() {
     if (jbSpieler) {
         if (jbSpieler.isOpen) {
             jbSpieler.close();

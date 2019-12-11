@@ -398,7 +398,7 @@ function listeDrucken() {
     if (!window.chrome) {
         showEineMeldung('Achtung', 'Die Druckfunktion wird von deinem<br>Browser nicht ausreichend unterstützt.'
                 + '<br>Verwende einen der folgenden Browser:'
-                + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>, <b>Slimjet</b>'
+                + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>'
                 + '<br>oder einen anderen kompatiblen Browser.');
         return;
     }

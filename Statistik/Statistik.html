@@ -46,15 +46,15 @@
                 padding-left: 40px;
                 padding-right: -105px;
             }
-            #mTable {
-                font-size: 22px;
-            }
-            @media print {
-                .XS {font-size: 3vw;}
-            }
+            #mTable {font-size: 22px;}
+            .cFotoS {width:30%;height:auto;}
+            .cFotoM {width:40%;height:auto;}
+            .cFotoL {width:100%;height:auto;}
+            @media print {.XS {font-size: 3vw;}}
         </style>
         <script src="statFunktionen.js"></script>
         <script src='../Abakus/getZitat.js'></script>
+        <script src="showAktuelles.js"></script>
         <script src="showChronik.js"></script>
         <script src="showFotos.js"></script>
         <script src="showParallax.js"></script>
@@ -227,7 +227,7 @@
         <div id=qfHeaderIcons style="width:0%;text-align:right;">
             <i onclick="event.stopPropagation(); downloadExcel();"    title="Die Daten herunterladen."     id=iDownload    class="i zmdi-download noprint cQUER" style="z-index:99999" ></i>
             <i onclick="event.stopPropagation(); listeDrucken();"     title="Die Statistik drucken."       id=iPrint       class="i zmdi-print noprint cQUER" style="z-index:99999"></i>
-            <i onclick="event.stopPropagation(); showAnekdote();"     title="Die Anekdoten anzeigen."      id=iEdit        class="i zmdi-edit noprint"></i>
+            <i onclick="event.stopPropagation(); showSomething();"    title="Den Inhalt editieren."        id=iEdit        class="i zmdi-edit noprint"></i>
             <i onclick="event.stopPropagation(); scrollToMe();"       title="Zu meiner Zeile scrollen."    id=iScrollToMe  class="i zmdi-dot-circle noprint" style="z-index:99999"></i>
             <i onclick="event.stopPropagation(); $('.trDet').show();" title="Saisonergebnisse einblenden." id=iShowDetails class="i zmdi-blocks noprint cQUER"></i>
             <i onclick="event.stopPropagation(); $('.trDet').hide();" title="Saisonergebnisse ausblenden." id=iHideDetails class="i zmdi-list noprint cQUER"></i>

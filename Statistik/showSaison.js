@@ -34,6 +34,18 @@ function showSaison(pSaison, pFotos) {
         }
     }
 
+    if (CUPS.MELDSTAT[stCup]) {
+        if (LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
+            LS.GelesenSTAT[stCup] = CUPS.MELDSTAT[stCup];
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    } else {
+        if (LS.GelesenSTAT[stCup]) {
+            LS.GelesenSTAT[stCup] = null;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    }
+
     if (!pSaison && CUPS.TYP[stCup] === 'CUP') {
         stSaison = SAISON[iSaison][isSaison];
     }

@@ -2224,6 +2224,12 @@ function showCup(i, pBtn, pTermin) {
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>' + getMeldSTAT(I) + '<br>' : '<br>Nur für Mitspieler...<br>')
 
+                        + (CUPS.TURNIER[I] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 15))
+                                && CUPS.MELDAKT[I] && CUPS.TURNIER[I] !== "Handy"
+                                ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
+                                : ''
+                                )
+
                         + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3)
                                 ? hVorschub + '<span class="cBlau P XL" onclick="zumTurnier()" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
@@ -2236,12 +2242,6 @@ function showCup(i, pBtn, pTermin) {
                                 ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(' + I + ', \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
                                 : ''
                                 )
-                        : ''
-                        )
-
-                + (CUPS.TURNIER[I] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 20))
-                        && CUPS.MELDAKT[I] && CUPS.TURNIER[I] !== "Handy"
-                        ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
                         : ''
                         )
 
@@ -2260,7 +2260,7 @@ function showCup(i, pBtn, pTermin) {
 
                 + '</div><div class="ui-block-b M" style="width:50%;text-align:justify;">'
 
-                + hVorschub + (I === 56 ? '<img src="Icons/LogoWTC.png" align="left" style="fload:left;width:120px;height:160px;margin-left:-60px;margin-right:10px">' : '') + getCupText()
+                + hVorschub + (I === 56 ? '<img src="Icons/LogoWTC.png" align="left" style="fload:left;width:120px;height:160px;smargin-left:-60px;margin-right:10px">' : '') + getCupText()
 
                 + '</div></div>'
                 + hVorschub + html
@@ -2822,7 +2822,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
                     + '</div>';
 
-            if (CUPS.MELDAKT[pCup] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 20))) {
+            if (CUPS.MELDAKT[pCup] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 15))) {
                 hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Aktuelles\');">'
                         + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
                         + '</div>';

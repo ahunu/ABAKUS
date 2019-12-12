@@ -131,6 +131,9 @@ function whenSTATloaded(pNewTurnier) {
 
     if (window.location.href.indexOf('?Aktuelles') > 0) {
         showInhalt();
+        if (!iSaison) {
+            iSaison = 1;
+        }
         showAktuelles();
     } else if (pNewTurnier) {
         showSaison(1);
@@ -266,25 +269,9 @@ function turnierPruefenSpeichern(pSpeichern) {
 
     if (Number.isInteger(stStat)) {
         DATA._CUPANEKDOTE = repairPell(editor.content.innerHTML);
-//        if (DATA._CUPANEKDOTE) {
-//            if (DATA._CUPANEKDOTE.substr(0, 23) === '<span style="font-size:') {
-//                DATA._CUPANEKDOTE = '<div>' + DATA._CUPANEKDOTE.substr(DATA._CUPANEKDOTE.indexOf('px;">') + 5);
-//                DATA._CUPANEKDOTE = DATA._CUPANEKDOTE.substr(0, DATA._CUPANEKDOTE.lastIndexOf('</span>')) + '</div>';
-//            }
-//        } else {
-//            DATA._CUPANEKDOTE = null;
-//        }
         DATA._CUPFOTOS = [];
     } else {
         DATA._ANEKDOTE = repairPell(editor.content.innerHTML);
-//        if (DATA._ANEKDOTE) {
-//            if (DATA._ANEKDOTE.substr(0, 23) === '<span style="font-size:') {
-//                DATA._ANEKDOTE = '<div>' + DATA._ANEKDOTE.substr(DATA._ANEKDOTE.indexOf('px;">') + 5);
-//                DATA._ANEKDOTE = DATA._ANEKDOTE.substr(0, DATA._ANEKDOTE.lastIndexOf('</span>')) + '</div>';
-//            }
-//        } else {
-//            DATA._ANEKDOTE = null;
-//        }
         DATA._FOTOS = [];
     }
 
@@ -576,17 +563,6 @@ function fINIT(pCup) {
         $('.cMT').remove();
     } else {
         $('.cCUP').remove();
-    }
-    if (CUPS.MELDSTAT[stCup]) {
-        if (LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
-            LS.GelesenSTAT[stCup] = CUPS.MELDSTAT[stCup];
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
-    } else {
-        if (LS.GelesenSTAT[stCup]) {
-            LS.GelesenSTAT[stCup] = null;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
     }
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {

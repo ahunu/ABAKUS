@@ -30,7 +30,19 @@ function showAktuelles() {
             showIcons(['#iPrint']);
         }
     }
-    
+
+    if (CUPS.MELDAKT[stCup]) {
+        if (LS.GelesenAKT[stCup] !== CUPS.MELDAKT[stCup]) {
+            LS.GelesenAKT[stCup] = CUPS.MELDAKT[stCup];
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    } else {
+        if (LS.GelesenAKT[stCup]) {
+            LS.GelesenAKT[stCup] = null;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    }
+
     stStat = 'Aktuelles';
 
     if (jbSpieler.isOpen) {

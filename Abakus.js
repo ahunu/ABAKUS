@@ -2182,7 +2182,7 @@ function showCup(i, pBtn, pTermin) {
         $('#dRumpf').html('<div id="ddRumpf" style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
                 + '<div style="margin-left: 10%;">'
                 + '<br>'
-                + '<div class="ui-grid-a"><div class="ui-block-a M" style="width:47%">'
+                + '<div class="ui-grid-a"><div class="ui-block-a S2" style="width:47%">'
 
                 + (I === 49
                         ? hVorschub + '<div class="M" style="width:92%;text-align:justify;">Seit 2008 findet jedes Jahr im April das Tarock-Österreich-Finale im Königrufen statt. Die besten Tarockspieler aus ganz Österreich treffen sich im Casino Linz zu einem Tarockevent der Extraklasse.</div>'
@@ -3167,7 +3167,7 @@ function whenCUPSloaded() {
                         hCupName = CUPS.NAME[TERMINE[termin].CUP];
                         hCupFarbe = ' cDIV';
                     }
-
+//
                     hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
                     hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;' + (TERMINE[termin].BEGINN ? TERMINE[termin].BEGINN : '') + '&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
                             + getCupToggleDiv('bAL', TERMINE[termin].CUP, termin);
@@ -3309,7 +3309,20 @@ function whenCUPSloaded() {
 
     for (var s = 0; s < SORT.length; s++) {
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
-        html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')">&nbsp;' + getCupName(i) + '</a></li>'
+        var xText = '';
+        if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
+            if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
+                    || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i])
+
+
+                 && (LS.ME === '3425' || new Date() > new Date(2019, 11, 15))
+
+
+                    ) {
+                xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+            }
+        }
+        html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')"><div style="display:flex; justify-content: space-between"><div>' + getCupName(i) + '</div>' + xText + '</div></a></li>'
                 + getCupToggleDiv('bXX', i, false);
         if (CUPS.NAME[i].substr(0, 4) === "Test" || CUPS.TYP[i] === 'TR' || i <= 4) { // 4te TestRunde / TestCup
             htmlTR = htmlTR + html;

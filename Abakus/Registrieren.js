@@ -172,11 +172,13 @@ function onRegistrieren() {
         var TURNIER = JSON.parse(localStorage.getItem('Abakus.TURNIER'));
         var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
         var SPIELERalpha = JSON.parse(localStorage.getItem('Abakus.SPIELERalpha'));
+        var AKTUELLES = JSON.parse(localStorage.getItem('Abakus.AKTUELLES'));
         localStorage.clear();
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
         localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
         localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
+        localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
         if (DS !== null) {
             localStorage.setItem('Abakus.DS', JSON.stringify(DS));
         }

@@ -44,7 +44,7 @@ th.rotate > div {
 
     .cFotoS:hover,
     .cFotoM:hover,
-    .cFotoM:hover {
+    .cFotoL:hover {
         transform: rotate(0deg) scale(2);
         transform-origin: left top;
     }
@@ -62,7 +62,7 @@ th.rotate > div {
         transform: rotate(0deg) scale(2);
         transform-origin: left top;
     }
-    .cFotoM:hover {
+    .cFotoL:hover {
         transform: rotate(0deg) scale(1.5);
     }
 }

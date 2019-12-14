@@ -3318,6 +3318,8 @@ function whenCUPSloaded() {
                  && (LS.ME === '3425' || new Date() > new Date(2019, 11, 15))
 
 
+&& (LS.MeineCups && (LS.MeineCups[0] === i || LS.MeineCups[1] === i || LS.MeineCups[2] === i || LS.MeineCups[3] === i || LS.MeineCups[4] === i))
+
                     ) {
                 xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
             }

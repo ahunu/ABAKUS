@@ -3311,8 +3311,8 @@ function whenCUPSloaded() {
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
         var xText = '';
         if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
-            if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
-                    || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i])
+            if ((CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
+                    || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))
 
 
                  && (LS.ME === '3425' || new Date() > new Date(2019, 11, 15))

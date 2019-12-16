@@ -343,6 +343,13 @@ function onSubmit() {
         CUPS.TEXT1[I] = null;
     }
 
+    if (CUPS.TURNIER[I]) {
+        CUPS.MELDSTAT[I] = $("#iSCHLAGZEILE").val();
+        if (!CUPS.MELDSTAT[I]) {
+            CUPS.MELDSTAT[I] = null;
+        }
+    }
+
     CUPS.REGELN[I] = $("input:radio[name=iREGELN]:checked").val();
     CUPS.SPIELEAB[I] = parseInt($("#iSPIELEAB").val());
     if (isNaN(CUPS.SPIELEAB[I])) {
@@ -432,70 +439,10 @@ function onSubmit() {
         CUPS.SPJERUNDE[I] = 0;
     }
 
-//    if (CUPS.TEXT1[I]) { // html nach pellEdit reparieren
-//        var hVon = 0;
-//        var hBis = 0;
-//
-//        hVon = CUPS.TEXT1[I].indexOf('<a href="');
-//        if (hVon >= 0) {
-//            hBis = CUPS.TEXT1[I].substr(hVon + 9).indexOf('"');
-//            if (hBis >= 0) {
-//                CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon + 10 + hBis) + ")'" + CUPS.TEXT1[I].substr(hVon + 10 + hBis);
-//            }
-//            CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon) + "<SPAN class='cBlau P N' ONclick='window.open(" + CUPS.TEXT1[I].substr(hVon + 8);
-//            hBis = CUPS.TEXT1[I].substr(hVon).indexOf('</a>');
-//            if (hBis >= 0) {
-//                CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon + hBis) + '</SPAN>' + CUPS.TEXT1[I].substr(hVon + hBis + 4);
-//            }
-//        }
-//
-//
-//        hVon = CUPS.TEXT1[I].indexOf('<a href="');
-//        if (hVon >= 0) {
-//            hBis = CUPS.TEXT1[I].substr(hVon + 9).indexOf('"');
-//            if (hBis >= 0) {
-//                CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon + 10 + hBis) + ")'" + CUPS.TEXT1[I].substr(hVon + 10 + hBis);
-//            }
-//            CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon) + "<SPAN class='cBlau P N' ONclick='window.open(" + CUPS.TEXT1[I].substr(hVon + 8);
-//            hBis = CUPS.TEXT1[I].substr(hVon).indexOf('</a>');
-//            if (hBis >= 0) {
-//                CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon + hBis) + '</SPAN>' + CUPS.TEXT1[I].substr(hVon + hBis + 4);
-//            }
-//        }
-//
-//        if (CUPS.TEXT1[I].substr(0, 5) === '<div>') {
-//            CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(5);
-//        }
-//        CUPS.TEXT1[I] = CUPS.TEXT1[I].replace(/<div><br><\/div><div>/g, '<br><br>').replace(/<div>/g, '<br>');
-//        CUPS.TEXT1[I] = CUPS.TEXT1[I].replace(/<div><br>/g, '<br><br>').replace(/<div>/g, '<br>');
-////        CUPS.TEXT1[I] = CUPS.TEXT1[I].replace(/<a href="/g, '<SPAN class="cBlau P" onclick="').replace(/<\/a>/g, '</SPAN>');
-//
-//        hVon = 0;
-//        while (hVon >= 0) {
-//            hVon = CUPS.TEXT1[I].indexOf('<div');
-//            if (hVon < 0) {
-//                hVon = CUPS.TEXT1[I].indexOf('</div');
-//                if (hVon < 0) {
-//                    hVon = CUPS.TEXT1[I].indexOf('<span');
-//                    if (hVon < 0) {
-//                        hVon = CUPS.TEXT1[I].indexOf('</span');
-//                    }
-//                }
-//            }
-//            if (hVon >= 0) {
-//                hBis = CUPS.TEXT1[I].substr(hVon).indexOf('>');
-//                if (hBis > 0) {
-//                    CUPS.TEXT1[I] = CUPS.TEXT1[I].substr(0, hVon) + CUPS.TEXT1[I].substr(hVon + hBis + 1);
-//                }
-//            }
-//        }
-//    }
-
     var hCUPS = new Object();
     hCUPS.ANMELDERF = CUPS.ANMELDERF[I];
     hCUPS.BEREadmin = CUPS.BEREadmin[I];
     hCUPS.BEREschreiben = CUPS.BEREschreiben[I];
-    hCUPS.BERElesen = null; // wird nicht mehr benötigt
     hCUPS.DISPAB = CUPS.DISPAB      [I];
     hCUPS.NAME = CUPS.NAME          [I];
     hCUPS.NAME2LEN = CUPS.NAME2LEN  [I];
@@ -516,6 +463,7 @@ function onSubmit() {
     hCUPS.VOLLAB = CUPS.VOLLAB      [I];
     if (CUPS.TURNIER[I]) {
         hCUPS.TURNIER = CUPS.TURNIER[I];
+        hCUPS.MELDSTAT = CUPS.MELDSTAT[I];
     }
 
     firebase.database().ref('/00/CUPS/' + ("000" + I).substr(-3))
@@ -645,11 +593,18 @@ $(document).bind('pageinit', function () {
             $("#iBEREadmin").removeClass('ui-disabled');
         }
     }
-    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === "Handy") {
+    if (CUPS.TURNIER[I]) {
+        if (CUPS.TURNIER[I] !== "Handy") {
+            $('.cHandyTurnier').remove();
+        }
+        if (CUPS.MELDSTAT[I]) {
+            $("#iSCHLAGZEILE").val(CUPS.MELDSTAT[I]);
+        }
     } else {
+        $('#dSchlagzeile').remove();
         $('.cHandyTurnier').remove();
     }
-    $('#HandyTurnier').remove();
+
     $("#tNAME2").text(CUPS.NAME[I]);
     $("#iBEREadmin").val(CUPS.BEREadmin[I]);
     $("#iBEREschreiben").val(CUPS.BEREschreiben[I]);
@@ -665,26 +620,14 @@ $(document).bind('pageinit', function () {
             }
         });
     } else {
-        if (LS.ME === '3425') {
-            editor = window.pell.init({
-                element: document.getElementById('editor'),
-                actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'fotoS', 'fotoM', 'fotoL', 'undo', 'redo'],
-//                actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'fotoS', 'fotoM', 'fotoL'],
-                defaultParagraphSeparator: '',
-                onChange: function (html) {
-                    CUPS.TEXT1[I] = repairPell(html);
-                }
-            });
-        } else {
-            editor = window.pell.init({
-                element: document.getElementById('editor'),
-                actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
-                defaultParagraphSeparator: '',
-                onChange: function (html) {
-                    CUPS.TEXT1[I] = repairPell(html);
-                }
-            });
-        }
+        editor = window.pell.init({
+            element: document.getElementById('editor'),
+            actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
+            defaultParagraphSeparator: '',
+            onChange: function (html) {
+                CUPS.TEXT1[I] = repairPell(html);
+            }
+        });
         $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
     }
     if (CUPS.TEXT1[I]) {

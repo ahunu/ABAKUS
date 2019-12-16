@@ -615,6 +615,9 @@ function getSortUndLayout() {
                     ? "<div class='L B'><br>&nbsp;Speziallisten:</div>"
                     + "<div data-role=navbar>"
                     + "<ul>"
+                    + (stCup === 8 || stCup === 9
+                            ? "<li><a onclick='statQuoten(22," + '"STO"' + ");'" + (stSort === 'STO' ? ' class=ui-btn-active' : '') + ">Quoten</a></li>"
+                            : "")
                     + (CUPS.TURNIER[stCup]
                             ? "<li><a onclick='statShow(2," + '"STO"' + ");'" + (stSort === 'STO' ? ' class=ui-btn-active' : '') + ">Stockerlliste</a></li>"
                             : "")
@@ -647,6 +650,9 @@ function getSortUndLayout() {
                     + "</ul>"
                     + "</div><br>"
                     + "<a class='ui-btn ui-btn-d ui-corner-all' onclick='listeDrucken();'>Liste drucken</a>"
+                    + (LS.ME === "3244"
+                            ? "<a class='ui-btn ui-btn-d ui-corner-all' onclick='listeDrucken();'>Das letzte Turnier downloaden</a>"
+                            : '')
                     : '')
             + "<br>"
             + "</div>"

@@ -1,5 +1,5 @@
 
-/* global CUPS, LS, stCup, jbSpieler, stHeute, QUERFORMAT(), ADMIN */
+/* global CUPS, LS, stCup, jbSpieler, stHeute, QUERFORMAT(), ADMIN, firebase, FB */
 
 function showAktuelles() {
 

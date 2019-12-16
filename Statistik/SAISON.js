@@ -104,6 +104,9 @@ function initSAISON(pFilter, pShowSaison) {
         } else if (!QUERFORMAT()) {
             showSaison(pShowSaison);
         }
+    } else {
+        iSaison = 1;
+        stSaison = SAISON[iSaison][isSaison];
     }
 }
 

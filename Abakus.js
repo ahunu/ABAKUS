@@ -2224,7 +2224,7 @@ function showCup(i, pBtn, pTermin) {
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>' + getMeldSTAT(I) + '<br>' : '<br>Nur für Mitspieler...<br>')
 
-                        + (CUPS.TURNIER[I] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 15))
+                        + (CUPS.TURNIER[I]
                                 && CUPS.MELDAKT[I] && CUPS.TURNIER[I] !== "Handy"
                                 ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
                                 : ''
@@ -2809,7 +2809,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
             }
 // Ein neuer Tisch / Zu meinem Tisch
 // Zur Statistik
-            hReturn += (hHeuteTurnier
+            hReturn += (hHeuteTurnier || pCup < 8
                     ? (LS.I !== pCup || LS.AnzSpieler === 0
                             ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
@@ -2822,7 +2822,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
                     + '</div>';
 
-            if (CUPS.MELDAKT[pCup] && (LS.ME === '3425' || new Date() > new Date(2019, 11, 15))) {
+            if (CUPS.MELDAKT[pCup]) {
                 hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Aktuelles\');">'
                         + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
                         + '</div>';
@@ -3238,6 +3238,8 @@ function whenCUPSloaded() {
 
     SORT.sort();
 
+    var xText = '';
+
     for (var i = 51; i <= 56; i++) { // Meine Runden/Cups --- Bei Xxxxxx
         var hShow = false;
         if (CUPS.BEREadmin[i].indexOf(LS.ME) >= 0
@@ -3247,6 +3249,23 @@ function whenCUPSloaded() {
         for (var ii = 0; ii < LS.MeineCups.length; ii++) {
             if (LS.MeineCups[ii] === i) {
                 hShow = true;
+
+
+
+                xText = '';
+                if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
+                    if ((CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
+                            || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))
+
+                            && (LS.MeineCups && (LS.MeineCups[0] === i || LS.MeineCups[1] === i || LS.MeineCups[2] === i || LS.MeineCups[3] === i || LS.MeineCups[4] === i))
+
+                            ) {
+                        xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+                    }
+                }
+
+
+
             }
         }
         if (CUPS.MEZULETZT[i]) {
@@ -3256,7 +3275,7 @@ function whenCUPSloaded() {
         }
         if (hShow) {
             nMeineRundenCups++;
-            htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>'
+            htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')"><div style="display:flex; justify-content: space-between"><div>&nbsp;' + getCupName(i) + '</div>' + xText + '</div></a></li>'
                     + getCupToggleDiv('bMR', i, false);
         }
     }
@@ -3314,17 +3333,13 @@ function whenCUPSloaded() {
             if ((CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
                     || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))
 
-
-                 && (LS.ME === '3425' || new Date() > new Date(2019, 11, 15))
-
-
-&& (LS.MeineCups && (LS.MeineCups[0] === i || LS.MeineCups[1] === i || LS.MeineCups[2] === i || LS.MeineCups[3] === i || LS.MeineCups[4] === i))
+                    && (LS.MeineCups && (LS.MeineCups[0] === i || LS.MeineCups[1] === i || LS.MeineCups[2] === i || LS.MeineCups[3] === i || LS.MeineCups[4] === i))
 
                     ) {
                 xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
             }
         }
-        html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')"><div style="display:flex; justify-content: space-between"><div>' + getCupName(i) + '</div>' + xText + '</div></a></li>'
+        html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')"><div style="display:flex; justify-content: space-between"><div>&nbsp;' + getCupName(i) + '</div>' + xText + '</div></a></li>'
                 + getCupToggleDiv('bXX', i, false);
         if (CUPS.NAME[i].substr(0, 4) === "Test" || CUPS.TYP[i] === 'TR' || i <= 4) { // 4te TestRunde / TestCup
             htmlTR = htmlTR + html;

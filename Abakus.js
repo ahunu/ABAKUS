@@ -2798,18 +2798,26 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
 
         } else if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'MT') { // Cups ///////////////////////////////////////////////////////////
-            var hHeuteTurnier = false;
-            if (LS.ME.length === 4 && pCup !== 53 && pCup !== 55) {
-                for (var termin in CUPS.TERMINE) {
-                    if (CUPS.TERMINE[termin].CUP === pCup && CUPS.TERMINE[termin].DATUM === hHeute) {
-                        hHeuteTurnier = true;
-                        break;
-                    }
+//            var hHeuteTurnier = false;
+//            if (LS.ME.length === 4 && pCup !== 53 && pCup !== 55) {
+//                for (var termin in CUPS.TERMINE) {
+//                    if (CUPS.TERMINE[termin].CUP === pCup && CUPS.TERMINE[termin].DATUM === hHeute) {
+//                        hHeuteTurnier = true;
+//                        break;
+//                    }
+//                }
+//            }
+            var nextTurnier = 0;
+            for (var termin in CUPS.TERMINE) {
+                if (CUPS.TERMINE[termin].CUP === pCup && CUPS.TERMINE[termin].DATUM >= hHeute) {
+                    nextTurnier = CUPS.TERMINE[termin].DATUM;
+                    nextTurnierName = CUPS.TERMINE[termin].NAME;
+                    break;
                 }
             }
 // Ein neuer Tisch / Zu meinem Tisch
 // Zur Statistik
-            hReturn += (hHeuteTurnier || pCup < 8
+            hReturn += (nextTurnier === hHeute || pCup < 8
                     ? (LS.I !== pCup || LS.AnzSpieler === 0
                             ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
@@ -2822,12 +2830,20 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
                     + '</div>';
 
+
             if (CUPS.MELDAKT[pCup]) {
                 hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Aktuelles\');">'
                         + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
                         + '</div>';
             }
-
+            if (nextTurnier >= hHeute) {
+                hReturn += (nextTurnier === hHeute
+                        ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px">'
+                        + '<img src=\'Icons/Kalender.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Nächstes Turnier<div class="S N">Heute ' + nextTurnierName + '</div></div>'
+                        : '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px">'
+                        + '<img src=\'Icons/Kalender.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Nächstes Turnier<div class="S N">' + getDateString(nextTurnier) + '&nbsp;&nbsp;' + nextTurnierName + '</div></div>'
+                        );
+            }
 
         } else if (CUPS.TURNIER[pCup]) { // Spontanturniere /////////////////////////////////////////////////////////////////////////////////
 // Zur Anmeldung
@@ -3173,12 +3189,9 @@ function whenCUPSloaded() {
                             + getCupToggleDiv('bAL', TERMINE[termin].CUP, termin);
                     htmlALLE += hTemp;
                     if (TERMINE[termin].DATUM <= hAktuellBis) {
-                        for (var iMC in LS.MeineCups) {
-                            if (TERMINE[termin].CUP === 49 || TERMINE[termin].CUP === LS.MeineCups[iMC]) {
-                                nAktTermine++;
-                                htmlAKT += hTemp.replace(/bAL/g, 'bAK');
-                                break;
-                            }
+                        if (TERMINE[termin].CUP === 49 || LS.VIC[TERMINE[termin].CUP]) {
+                            nAktTermine++;
+                            htmlAKT += hTemp.replace(/bAL/g, 'bAK');
                         }
                     }
                 } else {
@@ -3242,30 +3255,18 @@ function whenCUPSloaded() {
 
     for (var i = 51; i <= 56; i++) { // Meine Runden/Cups --- Bei Xxxxxx
         var hShow = false;
+        xText = '';
         if (CUPS.BEREadmin[i].indexOf(LS.ME) >= 0
                 || CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
             hShow = true;
         }
-        for (var ii = 0; ii < LS.MeineCups.length; ii++) {
-            if (LS.MeineCups[ii] === i) {
-                hShow = true;
-
-
-
-                xText = '';
-                if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
-                    if ((CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
-                            || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))
-
-                            && (LS.MeineCups && (LS.MeineCups[0] === i || LS.MeineCups[1] === i || LS.MeineCups[2] === i || LS.MeineCups[3] === i || LS.MeineCups[4] === i))
-
-                            ) {
-                        xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
-                    }
+        if (LS.VIC[i]) {
+            hShow = true;
+            if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
+                if ((CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
+                        || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))) {
+                    xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
                 }
-
-
-
             }
         }
         if (CUPS.MEZULETZT[i]) {
@@ -3330,12 +3331,9 @@ function whenCUPSloaded() {
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
         var xText = '';
         if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
-            if ((CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
-                    || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))
-
-                    && (LS.MeineCups && (LS.MeineCups[0] === i || LS.MeineCups[1] === i || LS.MeineCups[2] === i || LS.MeineCups[3] === i || LS.MeineCups[4] === i))
-
-                    ) {
+            if (LS.VIC[i]
+                    && (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
+                            || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))) {
                 xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
             }
         }
@@ -3437,7 +3435,6 @@ $(document).ready(function () {
         LS = new Object();
         LS.ME = "NOBODY";
         LS.MEname = 'Nicht registriert';
-        LS.MeineCups = [];
         LS.Schreibzettel = false;
         LS.I = 0;
         LS.GelesenAKT = [];
@@ -3463,6 +3460,7 @@ $(document).ready(function () {
         LS.Version = 0;
         LS.AnzGespeichert = 0;
         LS.Timeout = 0;
+        LS.VIC = [];
         LS.VIP = false;
         LS.FotoAnimieren = false;
         LS.FotoStyle = 0;
@@ -3495,9 +3493,31 @@ $(document).ready(function () {
     if (!LS.MeineCups) {
         LS.MeineCups = [];
     }
+    if (!LS.VIC) {
+        LS.VIC = [];
+        if (LS.MeineCups[1]) {
+            LS.VIC[LS.MeineCups[1]] = true;
+        }
+        if (LS.MeineCups[2]) {
+            LS.VIC[LS.MeineCups[2]] = true;
+        }
+        if (LS.MeineCups[3]) {
+            LS.VIC[LS.MeineCups[3]] = true;
+        }
+        if (LS.MeineCups[4]) {
+            LS.VIC[LS.MeineCups[4]] = true;
+        }
+        if (LS.MeineCups[5]) {
+            LS.VIC[LS.MeineCups[5]] = true;
+        }
+        if (LS.MeineCups[6]) {
+            LS.VIC[LS.MeineCups[6]] = true;
+        }
+        delete LS.MeineCups;
+    }
     if (new Date().getTime() > LS.LastDate + 60000 * 60 * 12) { // + 6 Stunden Differenz
-        if (LS.MeineCups.length === 1 && LS.MeineCups[0]) {
-            LS.ShowCups = LS.MeineCups[0]; // Auf Standardcup wegen Lesezeichen zurücksetzen
+        if (Number.isInteger(LS.VIC[0])) {
+            LS.ShowCups = LS.VIC[0]; // Auf Standardcup wegen Lesezeichen zurücksetzen
         }
         LS.LastBtn = '';
     }
@@ -3511,9 +3531,9 @@ $(document).ready(function () {
 //            return false; // oncontextmenu
         };
     }
-//    document.onselectstart = function () {
-//        return false;
-//    };
+    document.onselectstart = function () {
+        return false;
+    };
 
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (CUPS === null) {

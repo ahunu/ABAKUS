@@ -1668,7 +1668,7 @@ $(document).ready(function () {
         var LS_Timeout = LS.Timeout;
         var LS_LastBtn = LS.LastBtn;
         var LS_LastDate = LS.LastDate;
-        var LS_MeineCups = LS.MeineCups;
+        var LS_VIC = LS.VIC;
         var LS_VIP = LS.VIP;
         var LS_FotoAnimieren = LS.FotoAnimieren;
         var LS_FotoStyle = LS.FotoStyle;
@@ -1693,7 +1693,7 @@ $(document).ready(function () {
         LS.Timeout = LS_Timeout;
         LS.LastBtn = LS_LastBtn;
         LS.LastDate = LS_LastDate;
-        LS.MeineCups = LS_MeineCups;
+        LS.VIC = LS_VIC;
         LS.VIP = LS_VIP;
         LS.FotoAnimieren = LS_FotoAnimieren;
         LS.FotoStyle = LS_FotoStyle;

@@ -1,6 +1,8 @@
 
 /* global LS */
 
+var myJTip = null;
+
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
@@ -13,7 +15,6 @@ $(document).bind('pageinit', function () {
 
     LS = new Object();
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
@@ -22,11 +23,9 @@ $(document).bind('pageinit', function () {
     document.onselectstart = function () {
 //        return false;
     };
-
     $("#iFotoAnimieren").prop("checked", LS.FotoAnimieren).checkboxradio("refresh");
     $("#iShowSpielerNr").prop("checked", LS.ShowSpielerNr).checkboxradio("refresh");
     $("#iAKTTAGE").val(LS.AktTage);
-
     var hFreunde = '';
     for (var ii = 0; ii < LS.Freunde.length; ii++) {
         if (ii === 0) {
@@ -36,17 +35,109 @@ $(document).bind('pageinit', function () {
         }
     }
     $("#iFREUNDE").val(hFreunde);
-
     if (LS.Timeout) {
         $("#iTIMEOUT").val(LS.Timeout);
     } else {
         $("#iTIMEOUT").val(100);
     }
 
-
-    for (var meinCup of LS.MeineCups) {
-        $('#iMC' + meinCup).prop('checked', true).checkboxradio('refresh');
+    for (var i in LS.VIC) {
+        if (LS.VIC[i]) {
+            $('#iCB' + i).prop('checked', true).checkboxradio('refresh');
+        }
     }
+    if (Number.isInteger(LS.VIC[0])) {
+        $('#iR' + LS.VIC[0]).prop('checked', true).checkboxradio('refresh');
+    }
+    $("input[name=nVIC]:radio").change(function () {
+        LS.VIC[0] = parseInt($("input[name='nVIC']:checked").val());
+        $('#iCB' + LS.VIC[0]).prop('checked', true).checkboxradio('refresh');
+    });
+    $("#iCB51").change(function () {
+        LS.VIC[51] = $("#iCB51").is(":checked");
+        if (LS.VIC[0] === 51 && !LS.VIC[51]) {
+            $("#iR51").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+
+    $("#iCB52").change(function () {
+        LS.VIC[52] = $("#iCB52").is(":checked");
+        if (LS.VIC[0] === 52 && !LS.VIC[52]) {
+            $("#iR52").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+
+    $("#iCB53").change(function () {
+        LS.VIC[53] = $("#iCB53").is(":checked");
+        if (LS.VIC[0] === 53 && !LS.VIC[53]) {
+            $("#iR53").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+
+    $("#iCB54").change(function () {
+        LS.VIC[54] = $("#iCB54").is(":checked");
+        if (LS.VIC[0] === 54 && !LS.VIC[54]) {
+            $("#iR54").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+
+    $("#iCB55").change(function () {
+        LS.VIC[55] = $("#iCB55").is(":checked");
+        if (LS.VIC[0] === 55 && !LS.VIC[55]) {
+            $("#iR55").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+
+    $("#iCB56").change(function () {
+        LS.VIC[56] = $("#iCB56").is(":checked");
+        if (LS.VIC[0] === 56 && !LS.VIC[56]) {
+            $("#iR56").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+
+
+    $("#iCB8").change(function () {
+        LS.VIC[8] = $("#iCB8").is(":checked");
+        if (LS.VIC[0] === 8 && !LS.VIC[8]) {
+            $("#iR8").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+    $("#iCB9").change(function () {
+        LS.VIC[9] = $("#iCB9").is(":checked");
+        if (LS.VIC[0] === 9 && !LS.VIC[9]) {
+            $("#iR9").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+    $("#iCB11").change(function () {
+        LS.VIC[11] = $("#iCB11").is(":checked");
+        if (LS.VIC[0] === 11 && !LS.VIC[11]) {
+            $("#iR11").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+    $("#iCB14").change(function () {
+        LS.VIC[14] = $("#iCB14").is(":checked");
+        if (LS.VIC[0] === 14 && !LS.VIC[14]) {
+            $("#iR14").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+    $("#iCB15").change(function () {
+        LS.VIC[15] = $("#iCB15").is(":checked");
+        if (LS.VIC[0] === 15 && !LS.VIC[15]) {
+            $("#iR15").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+    $("#iCB16").change(function () {
+        LS.VIC[16] = $("#iCB16").is(":checked");
+        if (LS.VIC[0] === 16 && !LS.VIC[16]) {
+            $("#iR16").prop('checked', false).checkboxradio('refresh');
+        }
+    });
+    $("#iCB17").change(function () {
+        LS.VIC[17] = $("#iCB17").is(":checked");
+        if (LS.VIC[0] === 17 && !LS.VIC[17]) {
+            $("#iR17").prop('checked', false).checkboxradio('refresh');
+        }
+    });
 
     $('#Schreibzettel' + LS.Schreibzettel).prop('checked', true).checkboxradio('refresh');
     $('#Schreibzetteltrue,#Schreibzettelfalse').click(function () {
@@ -59,8 +150,6 @@ $(document).bind('pageinit', function () {
         $('#Schreibzettelfalse').prop('checked', false).checkboxradio('refresh');
         $('#Schreibzettel' + LS.Schreibzettel).prop('checked', true).checkboxradio('refresh');
     });
-
-
     $('#FotoStyle' + LS.FotoStyle).prop('checked', true).checkboxradio('refresh');
     $('#FotoStyle0,#FotoStyle1,#FotoStyle2,#FotoStyle3,#FotoStyle4,#FotoStyle5').click(function () {
         LS.FotoStyle = parseInt($("input[name='FotoStyle']:checked").val());
@@ -72,8 +161,6 @@ $(document).bind('pageinit', function () {
         $('#FotoStyle5').prop('checked', false).checkboxradio('refresh');
         $('#FotoStyle' + LS.FotoStyle).prop('checked', true).checkboxradio('refresh');
     });
-
-
     $('#AnzSpalten' + LS.AnzSpalten).prop('checked', true).checkboxradio('refresh');
     $('#AnzSpalten1,#AnzSpalten2,#AnzSpalten3,#AnzSpalten4').click(function () {
         LS.AnzSpalten = parseInt($("input[name='AnzSpalten']:checked").val());
@@ -83,15 +170,12 @@ $(document).bind('pageinit', function () {
         $('#AnzSpalten4').prop('checked', false).checkboxradio('refresh');
         $('#AnzSpalten' + LS.AnzSpalten).prop('checked', true).checkboxradio('refresh');
     });
-
-
     if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
         $('#bTastatur').hide();
     }
     if (QUERFORMAT()) {
         $('#nbHilfeEingabe').hide();
     } else {
-//        $('#bLayout').hide();
         $('#bEingabe').click();
     }
     if (LS.ME === '3425' || LS.ME === '3590' || LS.ME === '6136') { // Hans Hafner, Wolfgang Stein
@@ -102,7 +186,6 @@ $(document).bind('pageinit', function () {
         LS.Schreibzettel = true;
         $('#Schreibzettelfalse').prop('checked', true).checkboxradio('refresh');
         $('#Schreibzetteltrue').prop('checked', false).checkboxradio('refresh');
-
         $('#AnzSpalten1,#AnzSpalten2,#AnzSpalten3,#AnzSpalten4').prop('checked', false).checkboxradio('refresh');
         if (navigator.platform.match(/(Win|Mac|Linux)/i)) {
             LS.AnzSpalten = 2;
@@ -115,31 +198,15 @@ $(document).bind('pageinit', function () {
         $('#FotoStyle0').prop('checked', true).checkboxradio('refresh');
         $("#iTIMEOUT").val(100);
     });
-
     $("#bSpeichern").click(function () {
 
+        LS.VIC[0] = parseInt($("input[name='nVIC']:checked").val());
+        if (!LS.VIC[0]) {
+            showEinenTip("#iR51", 'Welcher Cup ist für dich der wichtigste?');
+            return;
+        }
+
         LS.AktTage = $("#iAKTTAGE").val();
-
-        LS.MeineCups = [];
-        if ($("#iMC51").is(":checked"))
-            LS.MeineCups.push(51);
-        if ($("#iMC52").is(":checked"))
-            LS.MeineCups.push(52);
-        if ($("#iMC53").is(":checked"))
-            LS.MeineCups.push(53);
-        if ($("#iMC54").is(":checked"))
-            LS.MeineCups.push(54);
-        if ($("#iMC55").is(":checked"))
-            LS.MeineCups.push(55);
-        if ($("#iMC56").is(":checked"))
-            LS.MeineCups.push(56);
-        if ($("#iMC57").is(":checked"))
-            LS.MeineCups.push(57);
-        if ($("#iMC58").is(":checked"))
-            LS.MeineCups.push(58);
-        if ($("#iMC59").is(":checked"))
-            LS.MeineCups.push(59);
-
         var hFreunde = $("#iFREUNDE").val();
         var hSave;
         LS.Freunde = [];
@@ -164,16 +231,18 @@ $(document).bind('pageinit', function () {
             }
         }
         $("#iFREUNDE").val(hFreunde);
-
         var hTimeout = parseInt($("#iTIMEOUT").val());
         if (hTimeout > 400) {
             hTimeout = 400;
         }
         LS.Timeout = hTimeout;
-
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         window.history.back();
-
     });
-
+    myJTip = new jBox('Tooltip', {
+        theme: 'TooltipError',
+        delayClose: 20,
+        closeOnClick: true,
+        closeOnEsc: true
+    });
 });

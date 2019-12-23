@@ -71,6 +71,20 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
         stSort = 'GES';
     }
 
+    if (stTurCupGes === 3) {
+        if (CUPS.MELDSTAT[stCup]) {
+            if (LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
+                LS.GelesenSTAT[stCup] = CUPS.MELDSTAT[stCup];
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            }
+        } else {
+            if (LS.GelesenSTAT[stCup]) {
+                LS.GelesenSTAT[stCup] = null;
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            }
+        }
+
+    }
     if ((stTurCupGes === 4 || stTurCupGes === 5) && stStat === -1) {
         stStat = 1;      // Für die Jahre 2014 und 2015
         stSort = 'CUP';  // existiert keine Cupwertung

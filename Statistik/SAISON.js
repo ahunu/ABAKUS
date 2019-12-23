@@ -75,7 +75,7 @@ function initSAISON(pFilter, pShowSaison) {
     }
 
     if (iSaison === 0) {
-        $('#nbSaison').addClass('ui-disabled');
+        $('#nbSaison,#nbArchiv').addClass('ui-disabled');
     } else {
         iSaison = 0;
     }
@@ -105,8 +105,10 @@ function initSAISON(pFilter, pShowSaison) {
             showSaison(pShowSaison);
         }
     } else {
-        iSaison = 1;
-        stSaison = SAISON[iSaison][isSaison];
+        if (SAISON.length) {
+            iSaison = 1;
+            stSaison = SAISON[iSaison][isSaison];
+        }
     }
 }
 

@@ -22,4 +22,13 @@ $(document).bind('pageinit', function () {
         return false;
     };
 
+    if (navigator.userAgent.toUpperCase().indexOf("ANDROID") >= 0) {
+        var LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+        if (LS.ME === 'NOBODY') {
+            $('#tLoeschen').html('Alle lokalen Daten löschen.');
+        } else {
+            $('#tLoeschen').html('Die Registrierung und<br>alle lokalen Daten löschen.');
+        }
+    }
+
 });

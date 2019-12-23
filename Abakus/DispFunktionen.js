@@ -21,11 +21,11 @@ function showGR() {
     $('#bChart').show();
 
     canvas = document.getElementById('bChart');
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream && $(window).innerHeight() >= 718) { // 718 = iPhone 11, Wolfgang Stein
-        canvas.height = $(window).innerHeight() - ($('#NB').height() * 2.7) - 2; // * 3 > Kein weißer Streifen
-    } else {
-        canvas.height = $(window).innerHeight() - $('#NB').height() - $('#NB').height() - 2;
-    }
+    canvas.height = $(window).innerHeight() - $('#NB').height() - $('#NB').height() - 2;
+
+//    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream && $(window).innerHeight() >= 718) { // 718 = iPhone 11, Wolfgang Stein
+//        canvas.height = $(window).innerHeight() - ($('#NB').height() * 2.7) - 2; // * 3 > Kein weißer Streifen
+//    }
 
     canvas.width = $(window).width();
     ctx = canvas.getContext('2d');

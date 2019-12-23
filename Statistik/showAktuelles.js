@@ -11,17 +11,6 @@ function showAktuelles() {
         $(lastBtn).addClass('ui-btn-active');
     }
 
-//    if (LS.ME !== "NOBODY") {
-//        showIcons(['#iPrint']);
-//        if (CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0
-//                || CUPS.BEREschreiben[stCup].indexOf(LS.ME) >= 0
-//                || LS.ME === '3425') {
-//            showIcons(['#iPrint', '#iEdit']);
-//        } else {
-//            showIcons(['#iPrint']);
-//        }
-//    }
-
     if (LS.ME !== "NOBODY") {
         showIcons(['#iPrint']);
         if (LS.ME === '3425') {
@@ -71,7 +60,7 @@ function showAktuelles() {
         setFont();
     } else {
         $('#dContent').html(html).trigger('create').show();
-        $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
+        $('#nbUebersicht').removeClass('ui-btn-active');
         $('#sideTurniereMT').hide();
         setFont(4);
         setTimeout(function () {

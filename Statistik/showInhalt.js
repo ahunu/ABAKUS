@@ -15,19 +15,30 @@ function showInhalt() {
     $('#iPlus,#iMinus').hide();
 
     $("#sideContent").show();
-    $('#sideTurniereMT').html(
-            '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Gesamtstatistiken</li>'
-            + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();">&nbsp;Cupsieger</a></li>'
-            + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();">&nbsp;Teilnehmerzahlen</a></li>'
-            + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.ME !== 'xx' ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
-            + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
-            + (CUPS.MELDAKT[stCup]
-                    ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
-                    : ''
-                    )
-            + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
-            + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>'
-            + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>').listview('refresh').show();
+
+    if (stCup === 49 || stCup === 51 || stCup === 52) {
+        $('#sideTurniereMT').html(
+                '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
+                + (CUPS.MELDAKT[stCup]
+                        ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
+                        : ''
+                        )
+                + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>').listview('refresh').show();
+    } else {
+        $('#sideTurniereMT').html(
+                '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Gesamtstatistiken</li>'
+                + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();">&nbsp;Cupsieger</a></li>'
+                + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();">&nbsp;Teilnehmerzahlen</a></li>'
+                + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.ME !== 'xx' ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
+                + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
+                + (CUPS.MELDAKT[stCup]
+                        ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
+                        : ''
+                        )
+                + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
+                + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>'
+                + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>').listview('refresh').show();
+    }
 
     var html = '';
 

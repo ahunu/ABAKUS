@@ -470,7 +470,7 @@ function writeCanvas(pTitel) {
     // 54 G St. Tarockcup
     // 55 T Tiroler Tarockcup
     // 56 W Wr. Tarockcup
-    // 81 A Sommerstadl
+    // 15 A Stadl Tarock
 
     if (PC) {
         if (stCup === 51) {
@@ -487,9 +487,9 @@ function writeCanvas(pTitel) {
             document.title = 'WTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else if (stCup === 56) {
             document.title = 'WTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
-        } else if (stCup === 81) {
-            document.title = 'SST - ' + pTitel.replace('  ', ' ').replace('/', '-');
-        } else if (stCup === 81) {
+        } else if (stCup === 15) {
+            document.title = 'STA - ' + pTitel.replace('  ', ' ').replace('/', '-');
+        } else if (stCup === 17) {
             document.title = 'UTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else {
             document.title = CUPS.NAME[stCup] + ' - ' + pTitel.replace('  ', ' ').replace('/', '-');

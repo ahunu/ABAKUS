@@ -8,7 +8,7 @@
 // 55 Tiroler Tarockcup
 // 56 Wr. Tarockcup
 
-// 81 Sommer Schmankerl Tarock
+// 15 Sommer Schmankerl Tarock
 
 var ADMIN = false;
 var PC = false;

@@ -1695,7 +1695,7 @@ function writeCanvas(pCup) {
             hTitel2 = 'Turnierserie zum dreifachen Tarif';
         } else if (pCup === 11) {
             hTitel2 = 'Sküs of the year';
-        } else if (pCup === 68) {
+        } else if (pCup === 16) {
             hTitel2 = 'Mit dem Bus durch Österreich';
         } else if (pCup === 80) {
             if (QUERFORMAT()) {
@@ -1703,7 +1703,7 @@ function writeCanvas(pCup) {
             } else {
                 hTitel2 = 'Ein außergewöhnlicher Event';
             }
-        } else if (pCup === 82) {
+        } else if (pCup === 17) {
             hTitel2 = '<b>U</b>rlaubs-<b>T</b>arock-<b>C</b>up';
         }
     }
@@ -1773,8 +1773,8 @@ function writeCanvas(pCup) {
                 hTitel = '1. Wiener Tarockmarathon';
                 document.title = '1. Wr. Marathon';
                 hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
-            } else if (pCup === 81) {
-                document.title = 'SST - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+            } else if (pCup === 15) {
+                document.title = 'STA - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
             } else {
                 document.title = CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
             }
@@ -2218,7 +2218,7 @@ function showCup(i, pBtn, pTermin) {
                         : ''
                         )
 
-                + (I === 68
+                + (I === 16
                         ? hVorschub + '<div class=J style="margin-right:5%">Von Samstag 25. Juli bis Sonntag 2. August 2020 besuchen wir mit einem Tour-Bus neun "Tarockhochburgen" in ganz Österreich. Als Bus-Chaffeur stellt sich dankenswerterweise Karl Schicher - der Tarockprofi aus Bad Leonfelden - zur Verfügung. In jedem Ort wird ein Turnier nach den lokalen Regeln gespielt. Nach dem Finale in Bad Leonfelden feiern wir den Tarock-Meister-on-Tour.</div>'
 //                        + '<br>Organisation:&nbsp;&nbsp;<b>Franz Kienast</b><br>'
                         : ''
@@ -3191,8 +3191,8 @@ function whenCUPSloaded() {
                     } else if (TERMINE[termin].CUP === 80) {
                         hCupName = '1. Wr. Marathon';
                         hCupFarbe = ' cDIV';
-                    } else if (TERMINE[termin].CUP === 81) {
-                        hCupName = 'Schmankerl Tarock';
+                    } else if (TERMINE[termin].CUP === 15) {
+                        hCupName = 'Stadl Tarock';
                         hCupFarbe = ' cDIV';
                     } else {
                         hCupName = CUPS.NAME[TERMINE[termin].CUP];

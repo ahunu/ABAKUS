@@ -80,7 +80,7 @@ function showTurnier(pTurnier) {
         var hIcons = [];
         if (LS.ME === '3425'
                 || LS.ME === 'xx3757' && stCup === 56     // Erwin Haider
-                || LS.ME === 'xx4731' && stCup === 81     // Alexandra Sabkovski
+                || LS.ME === 'xx4731' && stCup === 15     // Alexandra Sabkovski
                 || LS.ME === 'xx2553' && stCup === 83) {  // Arno Peter
             hIcons = ['#iPrint', '#iDownload'];
         } else {
@@ -140,7 +140,7 @@ function showTurnier(pTurnier) {
                 + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 55 ? "<td class=TR>tarock.web.app?Tirolcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 81 ? "<td class=TR>tarock.web.app?Schmankerl Tarock&nbsp;</td>" : "")
+                + (stCup === 15 ? "<td class=TR>tarock.web.app?Stadl Tarock&nbsp;</td>" : "")
                 + "</tr></tbody></table>").css('margin-top', $('#qfHeader').height() + 'px');
         $('#tStand').hide();
     } else {

@@ -252,7 +252,7 @@ function showHeinewertung() {
                 + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
                 + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 81 ? "<td class=TR>tarock.web.app?Schmankerl Tarock&nbsp;</td>" : "")
+                + (stCup === 15 ? "<td class=TR>tarock.web.app?Stadl Tarock&nbsp;</td>" : "")
                 + "</tr></tbody></table>";
         $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
     } else {

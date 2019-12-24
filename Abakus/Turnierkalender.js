@@ -7,9 +7,9 @@
 // 54 St. Tarockcup
 // 55 Tiroler Tarockcup
 // 56 Wr. Tarockcup
-// 68 Tarock on Tour
-// 81 Schmankerl Tarock
-// 82 UTC Klobainersee
+// 16 Tarock on Tour
+// 15 Schmankerl Tarock
+// 17 UTC Klobainersee
 // 83 Villacher Cup
 
 var FB = undefined;
@@ -244,9 +244,12 @@ function showTermin(pTermin) {
         if (LS.ME === '3425') {
             $('#iCUP').val('');
             $('#tCUP').text('???');
-        } else if (LS.ME === '1014') {
+        } else if (LS.ME === '0197') { // Manfred Huemer
             $('#iCUP').val('');
-            $('#tCUP').html('<span class="S">(51 = Hausruckcup, 68 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
+            $('#tCUP').html('<span class="S">(14 = Leonfelder Turnier, 18 = Wr. Städtische Turnier)</span>').removeClass('B');
+        } else if (LS.ME === '1014') { // Franz Kienast
+            $('#iCUP').val('');
+            $('#tCUP').html('<span class="S">(51 = Hausruckcup, 16 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
         }
 
         $('#iNAME').val('');
@@ -282,15 +285,20 @@ function onAendern() {
         }
     }
 
-    if (LS.ME === '1014') {
-        if (hCUP !== 49 && hCUP !== 51 && hCUP !== 68) {
-            showEinenTip('#iCUP', 'Hausruckcup = 51,<br>Tarock on Tour = 68,<br>Österreichfinale = 49!');
+    if (LS.ME === '0197') { // Manfred Huemer
+        if (hCUP !== 14 && hCUP !== 18) {
+            showEinenTip('#iCUP', 'Leonfelder Turniere = 14,<br>Wr. Städtische Turnier = 18!');
+            return;
+        }
+    } else if (LS.ME === '1014') { // Franz Kienast
+        if (hCUP !== 49 && hCUP !== 51 && hCUP !== 16) {
+            showEinenTip('#iCUP', 'Hausruckcup = 51,<br>Tarock on Tour = 16,<br>Österreichfinale = 49!');
             return;
         }
     }
 
     if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'MT')) {
-        showEinenTip('#iCUP', 'Österreichfinale = 49,<br>Hausruckcup = 50,<br>Ktn. Tarockcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Tarock on Tour = 68,<br>Wr. Marathon = 80,<br>Schmankerl Tarock = 81,<br>UTC Klopeinersee = 82,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+        showEinenTip('#iCUP', 'Österreichfinale = 49,<br>Hausruckcup = 50,<br>Ktn. Tarockcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Tarock on Tour = 16,<br>Wr. Marathon = 80,<br>Stadl Tarock = 15,<br>UTC Klopeinersee = 17,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
 
@@ -470,15 +478,15 @@ $(document).bind('pageinit', function () {
         $('#cb56').prop('checked', true).checkboxradio("refresh");
         $('#tWTC,#tCUP').html('Wiener Tarockcup').show();
     }
-    if (CUPS.BEREadmin[68].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[68].indexOf(LS.ME) >= 0) {
-        $('#iCUP').val(68);
+    if (CUPS.BEREadmin[16].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[16].indexOf(LS.ME) >= 0) {
+        $('#iCUP').val(16);
         $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
         $('#tDIV,#tCUP').html('Tarock on Tour').show();
     }
-    if (CUPS.BEREadmin[81].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[81].indexOf(LS.ME) >= 0) {
-        $('#iCUP').val(81);
+    if (CUPS.BEREadmin[15].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[15].indexOf(LS.ME) >= 0) {
+        $('#iCUP').val(15);
         $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
-        $('#tDIV,#tCUP').html('Sommer Schmankerl Tarock').show();
+        $('#tDIV,#tCUP').html('Stadl Tarock').show();
     }
     if (CUPS.BEREadmin[83].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[83].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(83);
@@ -489,9 +497,12 @@ $(document).bind('pageinit', function () {
     if (LS.ME === '3425') {
         $('#iCUP').val('');
         $('#tCUP').text('???');
-    } else if (LS.ME === '1014') {
+    } else if (LS.ME === '0197') { // Manfred Huemer
         $('#iCUP').val('');
-        $('#tCUP').html('<span class=S>(51 = Hausruckcup, 68 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
+        $('#tCUP').html('<span class="S">(14 = Leonfelder Turnier, 18 = Wr. Städtische Turnier)</span>').removeClass('B');
+    } else if (LS.ME === '1014') { // Franz Kienast
+        $('#iCUP').val('');
+        $('#tCUP').html('<span class="S">(51 = Hausruckcup, 16 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
     } else {
         $('#iCUP').hide();
         $(".autoCup").attr("style", "width:0");

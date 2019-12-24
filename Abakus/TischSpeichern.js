@@ -16,6 +16,9 @@ var hMAXSPIELE = 0;
 
 var stFilter = '';
 
+var daysOfWeek = ["So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."];
+var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
+
 var sBasis = 0;
 var nLog = 0;
 
@@ -27,6 +30,30 @@ function log(pText, I) {
     'use strict';
     nLog++;
     console.log(LS.Spieler[I] + '(' + I + '): ' + pText + '.<br>');
+}
+
+function getDateString(pDate) {
+    if (typeof pDate === 'string' && pDate[4] === '-') {
+        var hJar = parseInt(pDate);
+        if (pDate[5] === '0') {
+            var hMon = parseInt(pDate.substr(6, 1)) - 1;
+        } else {
+            var hMon = parseInt(pDate.substr(5, 2)) - 1;
+        }
+        if (pDate[8] === '0') {
+            var hTag = parseInt(pDate.substr(9, 1));
+        } else {
+            var hTag = parseInt(pDate.substr(8, 2));
+        }
+        var hDate = new Date(hJar, hMon, hTag);
+    } else {
+        var hDate = new Date(pDate);
+    }
+    if (new Date().getFullYear() === hDate.getFullYear()) {
+        return daysOfWeek[hDate.getDay()] + ' ' + hDate.getDate() + ". " + monthsOfYear[hDate.getMonth()];
+    } else {
+        return daysOfWeek[hDate.getDay()] + ' ' + hDate.getDate() + ". " + monthsOfYear[hDate.getMonth()] + " <span style='text-decoration: overline;zoom: .9; -moz-transform:scale(.9)'>" + (hDate.getFullYear() - 2000) + "</span>";
+    }
 }
 
 function Summieren(I) {
@@ -380,11 +407,25 @@ function wrtROOT() {
     var hSTAT = new Object();
     hSTAT.ZULETZTupd = firebase.database.ServerValue.TIMESTAMP;
 
+    var maxPUNKTE3 = 0;
+
+    for (var st = 0; st < STAT.S.length; st++) {
+        if (new Date(LS.Von).toDateString() === new Date(STAT.S[st].TIMESTAMP).toDateString()) {
+            if (maxPUNKTE3 < STAT.S[st].PUNKTE[3]) {
+                maxPUNKTE3 = STAT.S[st].PUNKTE[3];
+                CUPS.MELDSTAT[LS.I] = STAT.S[st].NNAME + STAT.S[st].VNAME;
+            }
+        }
+    }
+
     if (CUPS.TURNIER[LS.I]) {
         hSTAT.ZULETZT = new Date(LS.TURTIMESTAMP).toISOString();
+        CUPS.MELDSTAT[LS.I] += ' führt.';
     } else {
         hSTAT.ZULETZT = new Date(new Date(LS.Von).getTime() - 60000 * new Date(LS.Von).getTimezoneOffset()).toISOString();
+        CUPS.MELDSTAT[LS.I] += ' gewinnt am ' + getDateString(LS.Von);
     }
+
     if (CUPS.TURNIER[LS.I] === 'Handy') {
         if (STAT.TURRUNDE === 2) {
             var hRUNDE3 = true;
@@ -405,27 +446,54 @@ function wrtROOT() {
     firebase.database().ref('/00/' + ("000" + LS.I).slice(-3))
             .update(hSTAT)
             .then(function () {
-                console.log('****** Alles Bestens.');
-                LS.AnzGespeichert = 0;
-                LS.AnzSpieler = 0;
-                LS.gespielt = 0;
-                LS.Spieler = ['', '', '', '', '', '', ''];
-                LS.NR = ['', '', '', '', '', '', ''];
-                LS.VName = ['', '', '', '', '', '', ''];
-                LS.NName = ['', '', '', '', '', '', ''];
-                LS.Sterne = ['', '', '', '', '', '', ''];
-                LS.Ort = ['', '', '', '', '', '', ''];
-                LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
-                LS.ShowCups = LS.I;
-                if (!CUPS.TURNIER[LS.I]) {
-                    LS.I = 0;
+                if (CUPS.TYP[LS.I] === 'PR' || CUPS.TYP[LS.I] === 'AR') {
+                    LS.AnzGespeichert = 0;
+                    LS.AnzSpieler = 0;
+                    LS.gespielt = 0;
+                    LS.Spieler = ['', '', '', '', '', '', ''];
+                    LS.NR = ['', '', '', '', '', '', ''];
+                    LS.VName = ['', '', '', '', '', '', ''];
+                    LS.NName = ['', '', '', '', '', '', ''];
+                    LS.Sterne = ['', '', '', '', '', '', ''];
+                    LS.Ort = ['', '', '', '', '', '', ''];
+                    LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+                    LS.ShowCups = LS.I;
+                    if (!CUPS.TURNIER[LS.I]) {
+                        LS.I = 0;
+                    }
+                    LS.Meldung = ('Der Tisch wurde gespeichert!');
+                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                    loadSTAT(LS.ShowCups, null, null, showStatistikOT);
+                } else {
+                    firebase.database().ref('/00/CUPS/' + ("000" + LS.I).slice(-3))
+                            .update({MELDSTAT: CUPS.MELDSTAT[LS.I]})
+                            .then(function () {
+                                LS.AnzGespeichert = 0;
+                                LS.AnzSpieler = 0;
+                                LS.gespielt = 0;
+                                LS.Spieler = ['', '', '', '', '', '', ''];
+                                LS.NR = ['', '', '', '', '', '', ''];
+                                LS.VName = ['', '', '', '', '', '', ''];
+                                LS.NName = ['', '', '', '', '', '', ''];
+                                LS.Sterne = ['', '', '', '', '', '', ''];
+                                LS.Ort = ['', '', '', '', '', '', ''];
+                                LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+                                LS.ShowCups = LS.I;
+                                if (!CUPS.TURNIER[LS.I]) {
+                                    LS.I = 0;
+                                }
+                                LS.Meldung = ('Der Tisch wurde gespeichert!');
+                                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                                localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+                                loadSTAT(LS.ShowCups, null, null, showStatistikOT);
+                            })
+                            .catch(function (error) {
+                                showEinenDBFehler(error);
+                                $('#bSpeichern').removeClass('ui-disabled');
+                            });
                 }
-                LS.Meldung = ('Der Tisch wurde gespeichert!');
-                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-                loadSTAT(LS.ShowCups, null, null, showStatistikOT);
             })
             .catch(function (error) {
-                console.log('?????? Fehler bei wrtROOT();');
                 showEinenDBFehler(error);
                 $('#bSpeichern').removeClass('ui-disabled');
             });
@@ -576,4 +644,5 @@ $(document).ready(function () {
             $('body').addClass('ui-disabled');
         };
     }
-});
+}
+);

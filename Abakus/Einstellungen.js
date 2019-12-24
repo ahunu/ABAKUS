@@ -51,6 +51,7 @@ $(document).bind('pageinit', function () {
     }
     $("input[name=nVIC]:radio").change(function () {
         LS.VIC[0] = parseInt($("input[name='nVIC']:checked").val());
+        LS.VIC[LS.VIC[0]] = true;
         $('#iCB' + LS.VIC[0]).prop('checked', true).checkboxradio('refresh');
     });
     $("#iCB51").change(function () {

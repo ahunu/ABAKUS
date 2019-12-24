@@ -8,7 +8,7 @@
 // 55 Tiroler Tarockcup
 // 56 Wr. Tarockcup
 // 16 Tarock on Tour
-// 15 Schmankerl Tarock
+// 15 Stadl Tarock
 // 17 UTC Klobainersee
 // 83 Villacher Cup
 

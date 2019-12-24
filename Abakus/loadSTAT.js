@@ -106,8 +106,6 @@ function loadSTATnew(I, pCallback) {
             }
         }
 
-
-
         localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
 
         var hMEZULETZT = false;
@@ -417,8 +415,8 @@ function loadSTATold(I, pCallback) {
             CUPS.NEXTTERMIN[I] = STAT.NEXTTERMIN;
             hGeaendert = true;
         }
-        if (LS.ME !== "NOBODY") {
 
+        if (LS.ME !== "NOBODY") {
             if (CUPS.ANMELDERF[I]) {
                 if (STAT.ANMELDUNGEN[LS.ME]) {
                     if (new Date().valueOf() < STAT.ANMELDUNGEN[LS.ME].FUER) {
@@ -426,17 +424,16 @@ function loadSTATold(I, pCallback) {
                     }
                 }
             }
-
             if (CUPS.MEANGEMELDET[I] !== hMEANGEMELDET) {
                 CUPS.MEANGEMELDET[I] = hMEANGEMELDET;
                 hGeaendert = true;
             }
-
             if (CUPS.MEZULETZT[I] !== hMEZULETZT) {
                 CUPS.MEZULETZT[I] = hMEZULETZT;
                 hGeaendert = true;
             }
         }
+
         if (hGeaendert) {
             localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
         }

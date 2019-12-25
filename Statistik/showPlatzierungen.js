@@ -30,10 +30,12 @@ function showPlatzierungen(pSort) {
 
         stStat = 'Platzierungen';
 
-        if (CUPS.TYP[stCup] === 'MT') {
-            writeCanvas('Einzelplatzierungen');
-        } else {
+        if (CUPS.TYP[stCup] === 'CUP') {
             writeCanvas('Platzierungen ' + stSaison);
+        } else if (CUPS.TYP[stCup] === 'ET') {
+            writeCanvas('Platzierungen');
+        } else {
+            writeCanvas('Einzelplatzierungen');
         }
 
         var html = '';
@@ -45,7 +47,7 @@ function showPlatzierungen(pSort) {
 
         for (var turnier in STAT) {
             if (turnier[0] !== '_') {
-                if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] === 'MT') {
+                if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] !== 'CUP') {
                     if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                         html = '<th class="rotate W"><div><span>' + STAT[turnier]._NAME + '</span></div></th>' + html;
                         iTurnier++;
@@ -106,14 +108,14 @@ function showPlatzierungen(pSort) {
                     + '<tr class="bHell">'
                     + '<th></th>'
                     + '<td></td>'
-                    + (CUPS.TYP[stCup] !== 'MT' ? '<td></td>' : '');
+                    + '<td></td>'
             TEILNEHMER[0] = 0;
             for (var I = iTurnier; I >= 7; I--) {
                 htmlRumpf += '<th>' + TEILNEHMER[I] + '</th>';
                 TEILNEHMER[0] += TEILNEHMER[I];
             }
             htmlRumpf += '<th>' + TEILNEHMER[0] + '</th>'
-                    + '</tr>';
+//                    + '</tr>';
         } else {
             var htmlRumpf = '<tbody id=tbody>'
                     + "<tr id='rFilter'><td colspan='4'><input class='N M' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
@@ -151,9 +153,9 @@ function showPlatzierungen(pSort) {
             if (!QUERFORMAT()) {
                 htmlRumpf += '<td>&nbsp;&nbsp;</td>'; // Dummyspalte
             }
-            if (CUPS.TYP[stCup] !== 'MT') {
+//            if (CUPS.TYP[stCup] !== 'xCUP') {
                 htmlRumpf += '<td class="W R">' + CUPPUNKTE[spieler] + '&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-            }
+//            }
             if (QUERFORMAT()) {
                 for (var I = iTurnier; I >= 7; I--) {
                     if (DATA[I]) {
@@ -182,7 +184,7 @@ function showPlatzierungen(pSort) {
                     + '<tr id=L0P1 class=bHell>'
                     + '<th class="rotate bottom C PT cBlau' + (pSort === 'Name' ? ' U' : '') + '" onclick="showPlatzierungen(\'Name\')">Teilnehmer</th>'
                     + '<th class="rotate bottom C PT cBlau' + (pSort === 'Stockerl' ? ' U' : '') + '" onclick="showPlatzierungen(\'Stockerl\')">1.&nbsp;2.&nbsp;3.<br>beste<br>Platz.</th>'
-                    + (CUPS.TYP[stCup] !== 'MT' ? '<th class="rotate bottom C PT cBlau' + (pSort === 'Cuppunkte' ? ' U' : '') + '" onclick="showPlatzierungen(\'Cuppunkte\')">Cup-<br>punkte</th>' : '')
+                    + (CUPS.TYP[stCup] !== 'sMT' ? '<th class="rotate bottom C PT cBlau' + (pSort === 'Cuppunkte' ? ' U' : '') + '" onclick="showPlatzierungen(\'Cuppunkte\')">Cup-<br>punkte</th>' : '')
                     + html
                     + '<th class="rotate bottom C PT cBlau' + (pSort === 'Teilnahmen' ? ' U' : '') + '" onclick="showPlatzierungen(\'Teilnahmen\')">Teil-<br>nahmen</th>'
                     + '</tr>'
@@ -201,7 +203,7 @@ function showPlatzierungen(pSort) {
                     + '<th><br>Teilnehmer</th>'
                     + '<th>beste<br>Platz.</th>'
                     + '<th>&nbsp;&nbsp;</th>' // Dummyspalte
-                    + (CUPS.TYP[stCup] !== 'MT' ? '<th>Cup-<br>punkte&nbsp;&nbsp;</th>' : '')
+                    + '<th>Cup-<br>punkte&nbsp;&nbsp;</th>'
                     + '<th><br>TN&nbsp;&nbsp;</th>'
                     + '</tr>'
                     + '</thead>'

@@ -228,7 +228,6 @@ function popupSpieler(pSpieler, pSaison) {
             positionen = '<tr class=bGrau>'
                     + '<td></td>'
                     + '<th class=TC>Gesamt</th>'
-//                    + '<th class="TR" nowrap>' + SP[SAISON[pSaison][is1]][pSaison][spCuppunkte] + '&nbsp;</th>';
                     + '<th class="TR" nowrap>' + cuppunkte + '&nbsp;</th>';
             if (QUERFORMAT()) {
                 positionen += '<th class="TC" colspan="4">Cuppunkte&nbsp;&nbsp;<i onclick="event.stopPropagation();$(\'#jbSpielerHelp\').toggle();" class="i zmdi-info P"></i></th>';
@@ -241,7 +240,7 @@ function popupSpieler(pSpieler, pSaison) {
     var tName = '';
     nTurniere = 0;
     for (var iTurnier in STAT) {
-        if (iTurnier[0] === '2' && (STAT[iTurnier]._SAISON === pSaison || CUPS.TYP[stCup] === 'MT')) {
+        if (iTurnier[0] === '2' && (STAT[iTurnier]._SAISON === pSaison || CUPS.TYP[stCup] !== 'CUP')) {
             if (STAT[iTurnier][pSpieler]) {
                 nTurniere++;
                 tName = STAT[iTurnier]._NAME;

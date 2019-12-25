@@ -46,14 +46,18 @@ function showSaison(pSaison, pFotos) {
         }
     }
 
-    if (!pSaison && CUPS.TYP[stCup] === 'CUP') {
-        stSaison = SAISON[iSaison][isSaison];
-    }
-
-    if (pSaison && iSaison !== pSaison && CUPS.TYP[stCup] === 'CUP') {
-        iSaison = pSaison;
-        stSaison = SAISON[iSaison][isSaison];
-        compCUPPUNKTE();
+    if (CUPS.TYP[stCup] === 'CUP') {
+        if (!pSaison) {
+            stSaison = SAISON[iSaison][isSaison];
+        }
+        if (pSaison && iSaison !== pSaison) {
+            iSaison = pSaison;
+            stSaison = SAISON[iSaison][isSaison];
+            compCUPPUNKTE();
+        }
+    } else {
+        iSaison = 1;
+        stSaison = 'Gesamt';
     }
 
     if (!pFotos) {
@@ -98,7 +102,7 @@ function showSaison(pSaison, pFotos) {
     stEndstand = false;
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
-            if (STAT[turnier]._SAISON === stSaison) {
+            if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] !== 'CUP') {
                 if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                     if (STAT[turnier]._ANEKDOTE) {
                         nAnekdoten++;
@@ -147,12 +151,8 @@ function showSaison(pSaison, pFotos) {
                                     : (LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT()) ? '<div id=hf' + turnier + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#hf' + turnier + '\').hide();$(\'#sb' + turnier + '\').removeClass(\'ui-btn-active\');" hidden></div>' : ''))
 
                             + '</a>'
-
-//                            + (STAT[turnier]._ANEKDOTE ? '<a onclick="$(\'#tAnek' + nAnekdoten + '\').toggle(\'show\');">Anekdote</a>' : '')
                             + ((LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT())) && !pFotos ? '<a id="sb' + turnier + '" onclick="bTurnierSec(\'' + turnier + '\');">Anekdote</a>' : '')
                             + '</li>'
-//                            + (pFotos && STAT[turnier]._FOTOS ? '<p class="llf_Container"><img class="llf_Image" src="https://drive.google.com/uc?id=' + STAT[turnier]._FOTOS[0] + '"/></p>'
-//                                    : (LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT()) ? '<div id=hf' + turnier + ' class="M" style="text-align:justify;margin:.2em .6em"  onclick="$(\'#hf' + turnier + '\').hide();$(\'#sb' + turnier + '\').removeClass(\'ui-btn-active\');" hidden></div>' : ''))
                             + htmlTE;
                 }
             }
@@ -208,7 +208,7 @@ function compCUPPUNKTE() {
     for (var turnier in STAT) {
         if (turnier[0] !== '_') {
             if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
-                if (STAT[turnier]._SAISON === stSaison) {
+                if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] !== 'CUP') {
                     if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') < 0) {
                         for (var spieler in STAT[turnier]) {
                             if (spieler[0] !== '_') {
@@ -245,7 +245,7 @@ function compCUPPUNKTE() {
     for (var turnier in STAT) {
         if (turnier[0] !== '_') {
             if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
-                if (STAT[turnier]._SAISON === stSaison) {
+                if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] !== 'CUP') {
                     if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
                         for (var spieler in STAT[turnier]) {
                             if (spieler[0] !== '_') {

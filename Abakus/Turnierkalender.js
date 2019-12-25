@@ -297,8 +297,8 @@ function onAendern() {
         }
     }
 
-    if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'MT')) {
-        showEinenTip('#iCUP', 'Österreichfinale = 49,<br>Hausruckcup = 50,<br>Ktn. Tarockcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Tarock on Tour = 16,<br>Wr. Marathon = 80,<br>Stadl Tarock = 15,<br>UTC Klopeinersee = 17,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
+    if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'ET' && CUPS.TYP[hCUP] !== 'MT')) {
+        showEinenTip('#iCUP', 'Österreichfinale = 49,<br>Hausruckcup = 50,<br>Ktn. Tarockcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Leonfeldner Turnier = 18,<br>Tarock on Tour = 16,<br>Wr. Marathon = 80,<br>Stadl Tarock = 15,<br>UTC Klopeinersee = 17,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
         return;
     }
 

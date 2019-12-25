@@ -22,6 +22,7 @@ var AKTUELLES = null;
 var SAISON = [];
 
 var SP = new Object();
+var CUPPUNKTE = new Object();
 
 var tFIXPUNKTE = [, 223, 198, 180, 168, 156, 147, 138, 131, 124, // 0 - 9
     117, 110, 105, 100, 95, 90, 85, 80, 76, 72, // 10 - 19
@@ -560,9 +561,11 @@ function fINIT(pCup) {
         LS.ShowSpielerNr = false;
     }
     if (CUPS.TYP[stCup] === 'CUP') {
-        $('.cMT').remove();
+        $('.cET,.cMT').remove();
+    } else if (CUPS.TYP[stCup] === 'ET') {
+        $('.cCUP,.cMT').remove();
     } else {
-        $('.cCUP').remove();
+        $('.cCUP,.cET').remove();
     }
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {

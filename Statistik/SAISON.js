@@ -106,8 +106,8 @@ function initSAISON(pFilter, pShowSaison) {
         }
     } else {
         if (SAISON.length) {
-            iSaison = 1;
-            stSaison = SAISON[iSaison][isSaison];
+            iSaison = 0;
+//            stSaison = SAISON[iSaison][isSaison];
         }
     }
 }

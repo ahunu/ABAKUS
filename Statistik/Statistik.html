@@ -20,7 +20,7 @@
             LS = JSON.parse(localStorage.getItem('Abakus.LS'));
             CUPS = new Object();
             CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-            if (!LS || !CUPS || LS.ShowCups < 0 || (CUPS.TYP[LS.ShowCups] !== 'CUP' && CUPS.TYP[LS.ShowCups] !== 'MT')) {
+            if (!LS || !CUPS || LS.ShowCups < 0 || (CUPS.TYP[LS.ShowCups] !== 'CUP' && CUPS.TYP[LS.ShowCups] !== 'ET' && CUPS.TYP[LS.ShowCups] !== 'MT')) {
                 window.location.replace('../index.html'); // Aufruf mit ungültigen CUP verhindern (Lesezeichen)
             }
             window.onpageshow = function () { // Forward-Button verhindern
@@ -102,6 +102,12 @@
                         </li>
                         <li class="nb12 cCUP">
                             <a id=nbArchiv onclick="nbArchiv()"><i class="i zmdi-play zmdi-hc-rotate-90"></i></a>
+                        </li>
+                        <li class="nb50 cET">
+                            <a id=nbUebersicht onClick="showInhalt();">Allgemeines</a>
+                        </li>
+                        <li class="nb38 cET">
+                            <a id=nbSaison onclick="showSaison(1)"><span>Turniere</span></a>
                         </li>
                         <li class="nb50 cMT">
                             <a id=nbAllgemeines onClick="showUebersichtMT();">Allgemeines</a>
@@ -185,8 +191,6 @@
                     </ul>
                 </div>
             </div>
-
-
 
         </div>
 

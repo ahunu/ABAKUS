@@ -34,10 +34,10 @@ function showChronik(pTurnier) {
         }
     } else {
         showIcons([]);
-        if (CUPS.TYP[stCup] === 'MT') {
-            writeCanvas('Chronik');
-        } else {
+        if (CUPS.TYP[stCup] === 'CUP') {
             writeCanvas('Chronik ' + stSaison);
+        } else {
+            writeCanvas('Chronik');
         }
     }
 
@@ -393,7 +393,6 @@ function showChronik(pTurnier) {
         if (STAT[pTurnier]._CUPANEKDOTE) {
             html += '<div class=llf_row><div class="llf_center" style="text-align:justify;">' + STAT[pTurnier]._CUPANEKDOTE + '</div></div>';
         }
-
 
         return html;
 

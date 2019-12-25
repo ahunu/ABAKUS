@@ -576,7 +576,7 @@ function fEinNeuerTisch(pCup) {
         iVortag = iWochentag - 1;
     }
 
-    if ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && !QUERFORMAT()) {
+    if ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'ET' || CUPS.TYP[I] === 'MT') && !QUERFORMAT()) {
         if (I > 4) {
             var hOK = false;
             for (var termin in CUPS.TERMINE) {
@@ -654,7 +654,7 @@ function fEinNeuerTisch(pCup) {
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             fHref('Abakus/Anmeldung.html');
         } else {
-            if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
+            if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "ET" || CUPS.TYP[I] === "MT") {
                 loadTURNIER(I, hHeute, 'Das Turnier wird geladen.', hHeute + ', neuer Tisch');
             } else {
                 if (CUPS.TURNIER[I]) {
@@ -753,7 +753,7 @@ function fTischLoeschen(pLoeschen) {
             $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
         }
         $('#tTischWasNunTitel').html('Den Tisch löschen:');
-        if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "MT") {
+        if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "ET" || CUPS.TYP[I] === "MT") {
             $('#tsSpieleSpeichern').addClass('ui-disabled');
         }
         $('#tsDieDen').html('den');
@@ -1464,7 +1464,7 @@ function whenSTATloaded() {
 function Weiterspielen() {
     'use strict';
     LS.ShowCups = LS.I;
-    if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+    if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'ET' && CUPS.TYP[LS.I] !== 'MT') { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
         LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
         if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
             LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
@@ -1670,6 +1670,10 @@ function writeCanvas(pCup) {
     if (!isNaN(pCup)) {
         if (CUPS.TYP[pCup] === "CUP" || CUPS.TYP[pCup] === "TC") {
             hTitel2 = 'Lokaler Cup';
+        } else if (CUPS.TYP[pCup] === "ET") {
+            hTitel2 = 'Einzelturnier';
+        } else if (CUPS.TYP[pCup] === "MT") {
+            hTitel2 = 'Mannschaftsturnier';
         } else if (CUPS.TYP[pCup] === "FC") {
             hTitel2 = 'Wirtshausrunde';
         } else if (CUPS.TYP[pCup] === "PR") {
@@ -1894,7 +1898,7 @@ function initCUPSdelAllSTAT(pMeldung) {
         $('#dMeldung').html("<img src='Icons/OK.png' width='24' height='24'><span class=cSchwarz>&nbsp;&nbsp;Die App wurde initialisiert.</span><br>").show();
     }
     $('#bAK,#bMR').collapsible({collapsed: false});
-    $('#bAL,#bCT,#bLC,#bMT,#bFC,#PR,#bTR,#bAR').collapsible({collapsed: true});
+    $('#bAL,#bCT,#bLC,#bET,#bFC,#PR,#bTR,#bAR').collapsible({collapsed: true});
 }
 
 function showLOG() {
@@ -2258,7 +2262,7 @@ function showCup(i, pBtn, pTermin) {
                 + (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0
                         || LS.ME === '3425'
                         || I <= 2
-                        || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') && (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || LS.ME === meinStellvertreter))
+                        || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'ET' || CUPS.TYP[I] === 'MT') && (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || LS.ME === meinStellvertreter))
                         ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern(' + I + ')" ><b>Parameter ändern</b></span><br>'
                         : ''
                         )
@@ -2830,7 +2834,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 //
 //    } else
 
-    if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'MT') { // Cups ///////////////////////////////////////////////////////////
+    if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'ET' || CUPS.TYP[pCup] === 'MT') { // Cups ///////////////////////////////////////////////////////////
 // Ein neuer Tisch / Zu meinem Tisch
 // Zur Statistik
         if (pCup !== 49 && pCup !== 51 && pCup !== 52) {
@@ -3144,7 +3148,7 @@ function whenCUPSloaded() {
     var htmlMR = '<div id="bMR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class=" "><h2>&nbsp;Meine Cups/Runden:</h2><ul data-role="listview">';
     var htmlCT = '<div id="bCT" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"' + (LS.Quickstart ? ' data-collapsed="false"' : '') + '><h2>&nbsp;Cups:</h2><ul data-role="listview">';
     var htmlLC = '<div id="bLC" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Lokale Cups:</h2><ul data-role="listview">';
-    var htmlMT = '<div id="bMT" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Mannschaftsturniere:</h2><ul data-role="listview">';
+    var htmlET = '<div id="bET" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Einzelne Turniere:</h2><ul data-role="listview">';
     var htmlFC = '<div id="bFC" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Wirtshausrunden:</h2><ul data-role="listview">';
     var htmlPR = '<div id="bPR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Private Runden:</h2><ul data-role="listview">';
     var htmlTR = '<div id="bTR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Testrunden -turniere:</h2><ul data-role="listview">';
@@ -3160,7 +3164,7 @@ function whenCUPSloaded() {
         if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST" && TERMINE[termin].CUP >= 8) {
             if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
                     || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4).toUpperCase() !== "TEST" || LS.ME === "3425")) {
-                if (CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
+                if (CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'ET' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
                     var hCupName = '';
                     var hCupFarbe = '';
                     if (CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
@@ -3299,7 +3303,7 @@ function whenCUPSloaded() {
     for (var s = 0; s < SORT.length; s++) { // Meine Runden/Cups --- Bei Xxxxxx
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
         if (i >= 50 && i <= 59) {
-        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'ET' || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
             nMeineRundenCups++;
             htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>'
@@ -3309,7 +3313,7 @@ function whenCUPSloaded() {
     for (var s = 0; s < SORT.length; s++) { // mit Schreibberechtigung >>>>>>>>>> später eventuell entfernen
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
         if (i >= 50 && i <= 59) {
-        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'ET' || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
         } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
             nMeineRundenCups++;
@@ -3320,7 +3324,7 @@ function whenCUPSloaded() {
     for (var s = 0; s < SORT.length; s++) { // Meine Runden/Cups --- Bei Xxxxxx
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
         if (i >= 50 && i <= 59) {
-        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'MT') {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'ET' || CUPS.TYP[i] === 'MT') {
         } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
         } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
         } else {
@@ -3361,8 +3365,8 @@ function whenCUPSloaded() {
             htmlCT = htmlCT + html;
         } else if (CUPS.TYP[i] === 'CUP' || CUPS.TYP[i] === 'TC') {
             htmlLC = htmlLC + html;
-        } else if (CUPS.TYP[i] === 'MT') {
-            htmlMT = htmlMT + html;
+        } else if (CUPS.TYP[i] === 'ET' || CUPS.TYP[i] === 'MT') {
+            htmlET = htmlET + html;
         } else if (CUPS.TYP[i] === 'FC') {
             htmlFC = htmlFC + html;
         } else if (CUPS.TYP[i] === 'PR') {
@@ -3378,7 +3382,7 @@ function whenCUPSloaded() {
         $('#dMeineRundenCups').html(htmlMR + '</ul></div>').trigger('create');
     }
 //    htmlCT += "<li data-icon='false'><a id='bCTDetailstatistik' class='ui-btn' onclick='showText(\"CTDetailstatistik\")'>&nbsp;<span class=\"N M3\">Detailstatistik</span></a></li>";
-    $('#dRundenCups').html(htmlCT.replace(/bXX/g, 'bCT') + '</ul></div>' + htmlLC.replace(/bXX/g, 'bLC') + '</ul></div>' + htmlMT.replace(/bXX/g, 'bMT') + '</ul></div>' + htmlFC.replace(/bXX/g, 'bFC') + '</ul></div>' + htmlPR.replace(/bXX/g, 'bPR') + '</ul></div>' + (LS.ME !== 'NOBODY' ? htmlTR.replace(/bXX/g, 'bTR') + '</ul></div>' : '') + htmlAR.replace(/bXX/g, 'bAR') + '</ul></div>').trigger('create').show();
+    $('#dRundenCups').html(htmlCT.replace(/bXX/g, 'bCT') + '</ul></div>' + htmlLC.replace(/bXX/g, 'bLC') + '</ul></div>' + htmlET.replace(/bXX/g, 'bET') + '</ul></div>' + htmlFC.replace(/bXX/g, 'bFC') + '</ul></div>' + htmlPR.replace(/bXX/g, 'bPR') + '</ul></div>' + (LS.ME !== 'NOBODY' ? htmlTR.replace(/bXX/g, 'bTR') + '</ul></div>' : '') + htmlAR.replace(/bXX/g, 'bAR') + '</ul></div>').trigger('create').show();
     if (LS.Meldung) {
         $('#dMeldung').append("&nbsp;<img src='Icons/Achtung.png'  width='24' height='24'>&nbsp;<b>" + LS.Meldung + "</b>");
     }

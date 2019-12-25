@@ -326,7 +326,7 @@ function onSubmit() {
         showEinenMoment(CUPS.NAME[I], 'Daten&nbsp;werden&nbsp;gespeichert.');
     }
 
-    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT'
+    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'ET' || CUPS.TYP[I] === 'MT'
             || (LS.ME === '3425' || LS.ME === '3244') && CUPS.BEREadmin[I].indexOf(LS.ME) > 0) {
         $("#iBEREadmin").removeClass('ui-disabled');
         CUPS.BEREadmin[I] = $("#iBEREadmin").val().trim();
@@ -582,7 +582,7 @@ $(document).bind('pageinit', function () {
     if (CUPS.TYP[I] === 'CUP') {
         $('#dRunden').hide();
     }
-    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'MT') {
+    if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'ET' || CUPS.TYP[I] === 'MT') {
         $('#dRundenBerechtigungen').remove();
         if (CUPS.BEREadmin[I].indexOf(LS.ME) < 0 && CUPS.BEREschreiben[I].indexOf(LS.ME) < 0 && LS.ME !== '3425') {
             $("#editor,#iBEREadmin,#iBEREschreiben,#bSpeichern").addClass('ui-disabled');

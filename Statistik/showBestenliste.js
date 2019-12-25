@@ -42,15 +42,17 @@ function addTNPosition(pSpieler, pSort) {
             } else if (hBestePlatz > SP[pSpieler][i][spBestePlatz]) {
                 hBestePlatz = SP[pSpieler][i][spBestePlatz];
             }
-            hPos += '<tr ' + (LS.ME === pSpieler ? '' : 'hidden') + ' class="C ' + hBG + ' trDet trDet' + pSpieler + '" onclick="$(\'.trDet' + pSpieler + '\').hide();">'
-                    + '<td>&nbsp;</td>'
-                    + '<td class=TR><span onclick="event.stopPropagation();popupSpieler(\'' + pSpieler + '\',\'' + SAISON[i][isSaison] + '\');" class="P cBlau">' + SAISON[i][isSaison] + '</span></td>'
-                    + '<td class=TC>' + SP[pSpieler][i][spBestePlatz] + '</td>'
-                    + '<td class=TC>' + SP[pSpieler][i][spRangImCup] + '</td>'
-                    + '<td class=TC>' + parseInt(SP[pSpieler][i][spSumPlatz] / SP[pSpieler][i][spTeilnahmen]) + '</td>'
-                    + '<td class="TR QUER">' + SP[pSpieler][i][spTeilnahmen] + '</td>'
-                    + '<td>&nbsp;</td>'
-                    + '</tr>';
+            if (CUPS.TYP[stCup] === 'CUP') {
+                hPos += '<tr ' + (LS.ME === pSpieler ? '' : 'hidden') + ' class="C ' + hBG + ' trDet trDet' + pSpieler + '" onclick="$(\'.trDet' + pSpieler + '\').hide();">'
+                        + '<td>&nbsp;</td>'
+                        + '<td class=TR><span onclick="event.stopPropagation();popupSpieler(\'' + pSpieler + '\',\'' + SAISON[i][isSaison] + '\');" class="P cBlau">' + SAISON[i][isSaison] + '</span></td>'
+                        + '<td class=TC>' + SP[pSpieler][i][spBestePlatz] + '</td>'
+                        + '<td class=TC>' + SP[pSpieler][i][spRangImCup] + '</td>'
+                        + '<td class=TC>' + parseInt(SP[pSpieler][i][spSumPlatz] / SP[pSpieler][i][spTeilnahmen]) + '</td>'
+                        + '<td class="TR QUER">' + SP[pSpieler][i][spTeilnahmen] + '</td>'
+                        + '<td>&nbsp;</td>'
+                        + '</tr>';
+            }
         }
     }
 
@@ -70,15 +72,17 @@ function addTNPosition(pSpieler, pSort) {
                         : (pSort === 'NAME' ? '<th' : '<td') + ' class=TL>' + (getName(pSpieler).replace(' ', '&nbsp;')) + '</td>'
                         )
                 + (pSort === 'TURNIER' ? '<th' : '<td') + ' class=C>' + (n1te || n2te || n3te ? n1te + '-' + n2te + '-' + n3te : hBestePlatz) + '</td>';
-        if (SP[pSpieler][0][sp0Cupsiege] || SP[pSpieler][0][sp0Cup2ter] || SP[pSpieler][0][sp0Cup3ter]) {
-            html += (pSort === 'CUP' ? '<th' : '<td') + ' class=TC>' + (SP[pSpieler][0][sp0Cupsiege] ? SP[pSpieler][0][sp0Cupsiege] : '0') + '-'
-                    + (SP[pSpieler][0][sp0Cup2ter] ? SP[pSpieler][0][sp0Cup2ter] : '0') + '-'
-                    + (SP[pSpieler][0][sp0Cup3ter] ? SP[pSpieler][0][sp0Cup3ter] : '0') + '</td>';
-        } else {
-            if (SP[pSpieler][0][sp0BestePlatz] === 999) {
-                html += (pSort === 'CUP' ? '<th' : '<td') + ' class=TC>-</td>';
+        if (CUPS.TYP[stCup] === 'CUP') {
+            if (SP[pSpieler][0][sp0Cupsiege] || SP[pSpieler][0][sp0Cup2ter] || SP[pSpieler][0][sp0Cup3ter]) {
+                html += (pSort === 'CUP' ? '<th' : '<td') + ' class=TC>' + (SP[pSpieler][0][sp0Cupsiege] ? SP[pSpieler][0][sp0Cupsiege] : '0') + '-'
+                        + (SP[pSpieler][0][sp0Cup2ter] ? SP[pSpieler][0][sp0Cup2ter] : '0') + '-'
+                        + (SP[pSpieler][0][sp0Cup3ter] ? SP[pSpieler][0][sp0Cup3ter] : '0') + '</td>';
             } else {
-                html += (pSort === 'CUP' ? '<th' : '<td') + ' class=TC>' + SP[pSpieler][0][sp0BestePlatz] + '</td>';
+                if (SP[pSpieler][0][sp0BestePlatz] === 999) {
+                    html += (pSort === 'CUP' ? '<th' : '<td') + ' class=TC>-</td>';
+                } else {
+                    html += (pSort === 'CUP' ? '<th' : '<td') + ' class=TC>' + SP[pSpieler][0][sp0BestePlatz] + '</td>';
+                }
             }
         }
         html += (pSort === 'PLATZ' ? '<th' : '<td') + ' class=TC>' + parseInt(hSumPlatz / nTurnierTN) + '</td>'
@@ -120,7 +124,11 @@ function showBestenliste(pSort) {
         }
 
         if (LS.ME !== "NOBODY") {
-            showIcons(['#iScrollToMe', '#iHideDetails', '#iShowDetails', '#iPrint']);
+            if (CUPS.TYP[stCup] === 'CUP') {
+                showIcons(['#iScrollToMe', '#iHideDetails', '#iShowDetails', '#iPrint']);
+            } else {
+                showIcons(['#iScrollToMe', '#iPrint']);
+            }
         }
 
         stStat = 'Bestenliste';
@@ -233,7 +241,7 @@ function showBestenliste(pSort) {
                     + "<th></th>"
                     + "<th id=CUP class='C PT cBlau" + (pSort === 'NAME' ? ' U' : '') + "' onclick='showBestenliste(\"NAME\")'>Name</th>"
                     + "<th id=TURNIER class='C PT cBlau" + (pSort === 'TURNIER' ? ' U' : '') + "' onclick='showBestenliste(\"TURNIER\")'>Turnier<br>1.2.3.</th>"
-                    + "<th id=CUP class='C PT cBlau" + (pSort === 'CUP' ? ' U' : '') + "' onclick='showBestenliste(\"CUP\")'>Cup<br>1.2.3.</th>"
+                    + (CUPS.TYP[stCup] === 'CUP' ? "<th id=CUP class='C PT cBlau" + (pSort === 'CUP' ? ' U' : '') + "' onclick='showBestenliste(\"CUP\")'>Cup<br>1.2.3.</th>" : "")
                     + "<th id=PLATZ class='TC PT cBlau" + (pSort === 'PLATZ' ? ' U' : '') + "' onclick='showBestenliste(\"PLATZ\")'>&Oslash;<br>Platz</th>"
                     + "<th id=TN class='TR PT cBlau QUER" + (pSort === 'TN' ? ' U' : '') + "' onclick='showBestenliste(\"TN\")'>TN</th>"
                     + "<th></th>"
@@ -251,7 +259,7 @@ function showBestenliste(pSort) {
                     + "<tr><td colspan=3>&nbsp;</td></tr>"
                     + "<tr class=S><td></td><td colspan=2 style='text-align:justify'>Wie auch im Schiweltcup üblich zählen für die Ewige Bestenliste nur die Siege. Lediglich bei Gleichstand sind zweite und dritte Plätze relevant. Nach den Besten (Turniersiegern) erfolgt die Reihunng nach der besten jemals erreichten Platzierung.</th><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"
                     + "<tr><td colspan=3>&nbsp;</td></tr>"
-                    + "<tr class=XS><td></td><td colspan=2 style='text-align:justify'>Mit einen Klick auf eine Spaltenüberschrift kannst du die Sortierung ändern. Durch das Anklicken einer Zeile kannst du die Saisonergebnisse ein- oder ausblenden.</td></tr>"
+                    + "<tr class=XS><td></td><td colspan=2 style='text-align:justify'>Mit einen Klick auf eine Spaltenüberschrift kannst du die Sortierung ändern." + (CUPS.TYP[stCup] === 'CUP' ? " Durch das Anklicken einer Zeile kannst du die Saisonergebnisse ein- oder ausblenden." : "") + "</td></tr>"
                     + "<tr><td colspan=3>&nbsp;</td></tr>"
                     + "<tr class=XS><td></td><td colspan=2 style='text-align:justify'>Es sind alle jene Spieler gelistet welche in der aktuellen Saison schon teilgenommen, in der letzten Saison mindestens fünfmal teilgenommen, insgesamt mindestens 20 mal teilgenommen oder mindestens einen Stockerlplatz erreicht haben.</td></tr>";
             if (QUERFORMAT()) {

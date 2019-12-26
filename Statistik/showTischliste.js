@@ -112,7 +112,7 @@ function showTischliste() {
         }
     } else {
         $("#dContent").html(html + "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>");
-        $('#sideTurniereMT').hide();
+        $('#sideTurniere').hide();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
         $('#sideContent').css('height', hx + 'px');

@@ -124,7 +124,7 @@ function showTermine() {
         $('#dRumpf').html(htmlTE).css('margin-top', $('#qfHeader').height() + 'px');
     } else {
         $('#dContent').html("<ul data-role='listview'>" + htmlTE + "</ul>").trigger('create').show();
-        $('#sideTurniereMT').hide();
+        $('#sideTurniere').hide();
         $('#nbUebersicht').removeClass('ui-btn-active');
         var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);

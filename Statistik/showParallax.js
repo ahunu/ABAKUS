@@ -42,7 +42,7 @@ function showParallax(pChronik) {
 
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
-            if (STAT[turnier]._SAISON === stSaison) {
+            if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] !== 'CUP') {
                 if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                     if (STAT[turnier]._FOTOS) {
                         for (var i = STAT[turnier]._FOTOS.length - 1; i >= 0; i--) {
@@ -130,7 +130,7 @@ function showParallax(pChronik) {
     if (QUERFORMAT()) {
         $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
     } else {
-        $('#sideTurniereMT').hide();
+        $('#sideTurniere').hide();
         $('#dContent').html(html);
         var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);

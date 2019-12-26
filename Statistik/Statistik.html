@@ -103,16 +103,16 @@
                         <li class="nb12 cCUP">
                             <a id=nbArchiv onclick="nbArchiv()"><i class="i zmdi-play zmdi-hc-rotate-90"></i></a>
                         </li>
-                        <li class="nb50 cET">
-                            <a id=nbUebersicht onClick="showInhalt();">Allgemeines</a>
+                        <li class="nb44 cET">
+                            <a id=nbUebersicht onClick="showInhalt();">Diverses</a>
                         </li>
-                        <li class="nb38 cET">
+                        <li class="nb44 cET">
                             <a id=nbSaison onclick="showSaison(1)"><span>Turniere</span></a>
                         </li>
-                        <li class="nb50 cMT">
-                            <a id=nbAllgemeines onClick="showUebersichtMT();">Allgemeines</a>
+                        <li class="nb44 cMT">
+                            <a id=nbAllgemeines onClick="showInhalt();">Diverses</a>
                         </li>
-                        <li class="nb38 cMT">
+                        <li class="nb44 cMT">
                             <a id=nbTurniere onclick="showUebersichtMT(true)"><span>Turniere</span></a>
                         </li>
                     </ul>
@@ -160,7 +160,7 @@
                 </div>
             </div>
 
-            <ul id="sideTurniereMT" data-role="listview" data-inset="false" data-divider-theme="f" data-corners="false" data-split-icon="sieger" hidden>
+            <ul id="sideTurniere" data-role="listview" data-inset="false" data-divider-theme="f" data-corners="false" data-split-icon="sieger" hidden>
                 <li class="cMTallg" data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines:</li>
                 <li class="cMTallg" data-icon="false"><a onClick="showPlatzierungen();">&nbsp;Einzelplatzierungen</a></li>
                 <li class="cMTallg" data-icon="false"><a onClick="showAnekdotenMT();">&nbsp;Anekdoten</a></li>
@@ -179,7 +179,7 @@
             </ul>
 
             <div id=sideContent hidden style="overflow-x: hidden; overflow-y: auto;-webkit-overflow-scrolling: touch;">
-                <ul  id="dContent" class='K' data-role="listview" data-split-icon="sieger">
+                <ul  id="dContent" class='K' data-role="listview"  data-divider-theme="f" data-split-icon="sieger">
                 </ul>
                 <div data-role="navbar" data-iconpos="left">
                     <ul>

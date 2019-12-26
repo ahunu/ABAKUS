@@ -5,6 +5,10 @@ function showChronik(pTurnier) {
 
     hideEinenTip();
 
+    if (CUPS.TYP[stCup] !== 'CUP') {
+        iSaison = 1;
+        stSaison === '&nbsp;';
+    }
     if (QUERFORMAT()) {
         if (lastBtn) {
             $(lastBtn).removeClass('ui-btn-active');
@@ -43,7 +47,7 @@ function showChronik(pTurnier) {
 
     var html = '';
     if (pTurnier) {
-        if (Number.isInteger(pTurnier)) {
+        if (Number.isInteger(pTurnier) && CUPS.TYP[stCup] === 'CUP') {
             html = getCupHtml(pTurnier, SAISON[iSaison][isFinale]) + html;
         } else {
             html = getHtml(pTurnier) + html;
@@ -54,7 +58,7 @@ function showChronik(pTurnier) {
                 + '</div>';
         for (var turnier in STAT) {
             if (turnier[0] === '2') {
-                if (STAT[turnier]._SAISON === stSaison) {
+                if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] !== 'CUP') {
                     if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                         html = getHtml(turnier) + html;
                     }
@@ -77,7 +81,7 @@ function showChronik(pTurnier) {
                 + '</div>';
         $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
     } else {
-        $('#sideTurniereMT').hide();
+        $('#sideTurniere').hide();
         $('#dContent').html(html);
         var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);

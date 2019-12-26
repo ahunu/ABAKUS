@@ -57,7 +57,7 @@ function showTabFotos(pIndex) {
 //        showIcons(['#iChronik']);
     } else {
         showIcons(['#iFotos']);
-        $('#sideTurniereMT').hide();
+        $('#sideTurniere').hide();
         for (var turnier in STAT) {
             if (turnier[0] === '2') {
                 if (STAT[turnier]._SAISON === stSaison) {
@@ -88,7 +88,7 @@ function showTabFotos(pIndex) {
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
 
-//        $('#sideTurniereMT').show();
+//        $('#sideTurniere').show();
 //        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
 //        $('#sideContent').css('height', hx + 'px').scrollTop(0);
 
@@ -168,7 +168,7 @@ function showFotos() {
     if (QUERFORMAT()) {
         $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
     } else {
-        $('#sideTurniereMT').hide();
+        $('#sideTurniere').hide();
         $('#dContent').html(html);
         var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);

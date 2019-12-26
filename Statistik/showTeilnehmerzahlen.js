@@ -49,7 +49,7 @@ function showTeilnehmerzahlen() {
         $('#dRumpf').html('');
     } else {
         $('#dContent').html('');
-        $('#sideTurniereMT').hide();
+        $('#sideTurniere').hide();
         $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
         var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
         $('#sideContent').css('height', hx + 'px').scrollTop(0);
@@ -96,29 +96,31 @@ function showTeilnehmerzahlen() {
             + (QUERFORMAT() ? "<td></td>" : "")
             + "</tr>"
             + html;
-    html += "<tr class='bGrau'>"
-            + "<th class=TC>&nbsp;Gesamt</th>"
-            + "<td class=TC>" + STAT._ANZTURNIERE + "</td>"
-            + (QUERFORMAT() ? "<td></td>" : "")
-            + "<td class=TR>" + STAT._ANZTEILNAHMEN + "&nbsp;&nbsp;&nbsp;</td>"
-            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
-            + "<td class=TR></td>"
-            + (QUERFORMAT() ? "<td></td>" : "")
-            + (QUERFORMAT() ? "<td></td>" : "")
-            + "</tr>";
-    html += "<tr class='bGrau'>"
-            + "<th class=TC>&nbsp;Im&nbsp;Schnitt</th>"
-            + "<td class=TC>" + parseInt((STAT._ANZTURNIERE / STAT._ANZSAISONEN) + 0.5) + "</td>"
-            + (QUERFORMAT() ? "<td class=TR>" + parseInt((nGesTeilnehmer / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</td>" : "")
-            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</td>"
-            + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
-            + "<td class=TR></td>"
-            + (QUERFORMAT() ? "<td class=TC>" + STAT._PUNKTEPOTENTIAL[0] + "</td>" : "")
-            + (QUERFORMAT() ? "<td></td>" : "")
-            + "</tr>"
-            + "</tbody></table>"
-            + "<br>"
+    if (CUPS.TYP[stCup] === 'CUP') {
+        html += "<tr class='bGrau'>"
+                + "<th class=TC>&nbsp;Gesamt</th>"
+                + "<td class=TC>" + STAT._ANZTURNIERE + "</td>"
+                + (QUERFORMAT() ? "<td></td>" : "")
+                + "<td class=TR>" + STAT._ANZTEILNAHMEN + "&nbsp;&nbsp;&nbsp;</td>"
+                + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+                + "<td class=TR></td>"
+                + (QUERFORMAT() ? "<td></td>" : "")
+                + (QUERFORMAT() ? "<td></td>" : "")
+                + "</tr>";
+        html += "<tr class='bGrau'>"
+                + "<th class=TC>&nbsp;Im&nbsp;Schnitt</th>"
+                + "<td class=TC>" + parseInt((STAT._ANZTURNIERE / STAT._ANZSAISONEN) + 0.5) + "</td>"
+                + (QUERFORMAT() ? "<td class=TR>" + parseInt((nGesTeilnehmer / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</td>" : "")
+                + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZSAISONEN) + 0.5) + "&nbsp;&nbsp;&nbsp;</td>"
+                + "<td class=TR>" + parseInt((STAT._ANZTEILNAHMEN / STAT._ANZTURNIERE) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+                + "<td class=TR></td>"
+                + (QUERFORMAT() ? "<td class=TC>" + STAT._PUNKTEPOTENTIAL[0] + "</td>" : "")
+                + (QUERFORMAT() ? "<td></td>" : "")
+                + "</tr>";
+    }
 
+    html += "</tbody></table>"
+            + "<br>"
 
             + '<div class=S style="margin: 2vw;text-align:justify"><b>Legende:</b><br>'
             + 'Der <b>durchschnittliche Gewinn</b> ist eine statistische Größe der Turnierergebnisse, welche '
@@ -126,8 +128,6 @@ function showTeilnehmerzahlen() {
             + 'Er markiert jene Punktezahl die für einen guten Spieler, ohne den sprichwörtlichen Erdäpfeln in der Tasche, erreichbar sein sollte. '
             + 'Der durchschnittliche Gewinn darf nicht mit dem durchschnittlichen Turnierergebnis verwechselt werden. Letzterer ist nämlich immer Null.'
             + '<br><br></div>'
-
-
 
             + "<div style='font-size:1.2vw;font-weight: normal;text-align:center'>"
             + (QUERFORMAT() ? "&mdash;&mdash; &copy; 2015-2019 by Leo Luger &mdash;&mdash;" : "")

@@ -3,10 +3,96 @@
 
 function showInhalt() {
 
-    if (CUPS.TYP[stCup] === 'MT') {
-        showUebersichtMT('*');
-        return;
+//    if (CUPS.TYP[stCup] === 'MT') {
+//        showUebersichtMT('*');
+//        return;
+//    }
+
+    if (jbSpieler.isOpen) {
+        jbSpieler.close();
     }
+
+    $('#sideTurniere,#iPlus,#iMinus').hide();
+
+    $("#sideContent").show();
+
+    var html = '';
+
+    if (stCup === 49 || stCup === 51 || stCup === 52) {
+        html = '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
+                + (CUPS.MELDAKT[stCup]
+                        ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
+                        : ''
+                        )
+                + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>';
+    } else if (CUPS.TYP[stCup] === 'CUP') {
+        html = '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Gesamtstatistiken</li>'
+                + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Cupsieger</a></li>'
+                + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmerzahlen</a></li>'
+                + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
+                + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
+                + (CUPS.MELDAKT[stCup]
+                        ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
+                        : ''
+                        )
+                + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
+                + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>'
+                + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>';
+    } else if (CUPS.TYP[stCup] === 'ET' || CUPS.TYP[stCup] === 'MT') {
+        html = '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Statistiken</li>'
+                + '<li data-icon="false"><a id=bCupwertung onclick="showCupwertung();">&nbsp;Gesamtwertung</a></li>'
+                + '<li data-icon="false"><a id=bHeinewertung onclick="showHeinewertung();">&nbsp;Heinewertung</a></li>'
+                + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
+                + '<li data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
+                + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmerzahlen</a></li>'
+                + (QUERFORMAT()
+                        ? '<li data-icon="foto"><a id=bChronik onclick="showChronik()">&nbsp;Chronik</a><a id="bParallaxCh" onclick="showParallax(true);"></a></li>'
+                        : '')
+                + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
+                + (CUPS.MELDAKT[stCup]
+                        ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
+                        : ''
+                        )
+                + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
+                + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>';
+    }
+
+    if (CUPS.TYP[stCup] === 'CUP') {
+        for (var i = 1; i < SAISON.length; i++) {
+            html += '<li data-icon="false"><a onClick="showSaison(' + i + ');">&nbsp;' + SAISON[i][isSaison] + '</a></li>';
+        }
+    }
+    $('#dContent').html(html + '<br>').listview('refresh');
+
+    $('#nbUebersicht').addClass('ui-btn-active');
+    $('#nbSaison,#nbArchiv').removeClass('ui-btn-active');
+
+    showIcons([]);
+
+
+    stStat = 'Uebersicht';
+    writeCanvas('Vivat Valat!');
+    hideEinenMoment();
+    setFont();
+
+    var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - 1);
+    $('#sideContent').css('height', hx + 'px');
+
+    window.scrollTo(0, 0);
+    if (QUERFORMAT()) {
+        showLogo();
+    }
+}
+
+
+/* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, stLastZitat, SAISON, isSaison */
+
+function xxshowInhalt() {
+
+//    if (CUPS.TYP[stCup] === 'MT') {
+//        showUebersichtMT('*');
+//        return;
+//    }
 
     if (jbSpieler.isOpen) {
         jbSpieler.close();
@@ -17,7 +103,7 @@ function showInhalt() {
     $("#sideContent").show();
 
     if (stCup === 49 || stCup === 51 || stCup === 52) {
-        $('#sideTurniereMT').html(
+        $('#sideTurniere').html(
                 '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
                 + (CUPS.MELDAKT[stCup]
                         ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
@@ -25,7 +111,7 @@ function showInhalt() {
                         )
                 + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>').listview('refresh').show();
     } else if (CUPS.TYP[stCup] === 'CUP') {
-        $('#sideTurniereMT').html(
+        $('#sideTurniere').html(
                 '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Gesamtstatistiken</li>'
                 + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Cupsieger</a></li>'
                 + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmerzahlen</a></li>'
@@ -39,10 +125,16 @@ function showInhalt() {
                 + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>'
                 + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>').listview('refresh').show();
     } else if (CUPS.TYP[stCup] === 'ET') {
-        $('#sideTurniereMT').html(
-                '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Gesamtstatistiken</li>'
-                + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmerzahlen</a></li>'
+        $('#sideTurniere').html(
+                '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Statistiken</li>'
+                + '<li data-icon="false"><a id=bCupwertung onclick="showCupwertung();">&nbsp;Gesamtwertung</a></li>'
+                + '<li data-icon="false"><a id=bHeinewertung onclick="showHeinewertung();">&nbsp;Heinewertung</a></li>'
                 + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
+                + '<li data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
+                + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmerzahlen</a></li>'
+                + (QUERFORMAT()
+                        ? '<li data-icon="foto"><a id=bChronik onclick="showChronik(1)">&nbsp;Chronik</a><a id="bParallaxCh" onclick="showParallax(true);"></a></li>'
+                        : '')
                 + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
                 + (CUPS.MELDAKT[stCup]
                         ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
@@ -50,8 +142,10 @@ function showInhalt() {
                         )
                 + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
                 + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>').listview('refresh').show();
+
+
     } else if (CUPS.TYP[stCup] === 'MT') {
-        $('#sideTurniereMT').html(
+        $('#sideTurniere').html(
                 '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Gesamtstatistiken</li>'
                 + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmerzahlen</a></li>'
                 + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.VIP ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
@@ -151,7 +245,7 @@ function showUebersichtMT(pTurniere) {
         $('.cMTturn,#dContent').hide();
     }
 
-    $("#sideContent,#sideTurniereMT,#dCopyright").show();
+    $("#sideContent,#sideTurniere,#dCopyright").show();
     var hx = parseInt($(window).innerHeight() - $('#sideContent').offset().top - 3);
     $('#sideContent').css('height', hx + 'px');
 }
@@ -185,7 +279,7 @@ function showAnekdotenMT() {
     if (QUERFORMAT()) {
         $('#dRumpf').html(html);
     } else {
-        $('#sideTurniereMT').hide();
+        $('#sideTurniere').hide();
         $('#dContent').html(html + '<br>').show();
         $('#nbAllgemeines').removeClass('ui-btn-active');
     }

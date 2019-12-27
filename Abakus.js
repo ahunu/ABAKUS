@@ -1000,7 +1000,7 @@ function checkNeuerTisch() {
                 if (spieler.length === 4) {
                     blert(spieler, SPIELERnr[spieler][1], SPIELERnr[spieler][0], STAT._AKTTURNIER[spieler][6], '');
                 } else {
-                    blert(spieler, STAT._AKTTURNIER[spieler][0].substr(0, STAT._AKTTURNIER[spieler][0].indexOf(' ')), STAT._AKTTURNIER[spieler][6], STAT._AKTTURNIER[spieler][6], '');
+                    blert(spieler, null, null, null, '');
                 }
             }
         }
@@ -1017,7 +1017,7 @@ function checkNeuerTisch() {
                 if (spieler.length === 4) {
                     blert(spieler, SPIELERnr[spieler][1], SPIELERnr[spieler][0], STAT._AKTTURNIER[spieler][6], '');
                 } else {
-                    blert(spieler, STAT._AKTTURNIER[spieler][0].substr(0, STAT._AKTTURNIER[spieler][0].indexOf(' ')), STAT._AKTTURNIER[spieler][6], STAT._AKTTURNIER[spieler][6], '');
+                    blert(spieler, null, null, null, '');
                 }
             }
         } else {
@@ -1190,6 +1190,13 @@ function checkNeuerTisch() {
 }
 
 function blert(pNR, pVNAME, pNNAME, pORT, pSTERNE) {
+    if (pNR.length !== 4) {
+        var hNR = pNR;
+        pNNAME = pNR.substr(0, pNR.indexOf('ˆ'));
+        hNR = pNR.substr(pNR.indexOf('ˆ') + 1);
+        pVNAME = hNR.substr(0, hNR.indexOf('ˆ'));
+        pORT = hNR.substr(hNR.lastIndexOf('ˆ') + 1);
+    }
     LS.AnzSpieler++;
     LS.NR    [LS.AnzSpieler] = pNR;
     LS.VName [LS.AnzSpieler] = pVNAME.trim();
@@ -1735,7 +1742,7 @@ function writeCanvas(pCup) {
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/DieGeschichte.png");
     } else {
         hTitel = CUPS.NAME[pCup];
-        if (CUPS.TYP[pCup] === 'CUP' && pCup > 4) {
+        if ((CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'ET') && pCup > 4) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i" + pCup + ".png");
         } else if (pCup === 11 || pCup === 25) {
             $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i55.png");

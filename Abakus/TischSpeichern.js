@@ -630,7 +630,7 @@ $(document).ready(function () {
                 + "</table>"
                 + 'Der Tisch wird/wurde gespeichert.';
         writeLOG(hLog);
-        if (CUPS.TYP[LS.I] === 'CUP' || CUPS.TYP[LS.I] === 'MT') {
+        if (CUPS.TYP[LS.I] === 'CUP' || CUPS.TYP[LS.I] === 'ET' || CUPS.TYP[LS.I] === 'MT') {
             loadSTAT(LS.I, 'Der Tisch wird gespeichert:', null, SpeichernNT);
         } else {
             loadSTAT(LS.I, 'Der Tisch wird gespeichert:', null, SpeichernOT);

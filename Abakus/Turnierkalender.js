@@ -499,9 +499,11 @@ $(document).bind('pageinit', function () {
         $('#tCUP').text('???');
     } else if (LS.ME === '0197') { // Manfred Huemer
         $('#iCUP').val('');
+        $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
         $('#tCUP').html('<span class="S">(14 = Leonfelder Turnier, 18 = Wr. Städtische Turnier)</span>').removeClass('B');
     } else if (LS.ME === '1014') { // Franz Kienast
         $('#iCUP').val('');
+        $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
         $('#tCUP').html('<span class="S">(51 = Hausruckcup, 16 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
     } else {
         $('#iCUP').hide();

@@ -1,5 +1,5 @@
 
-/* global STAT, SAISON, isAnzTeilnehmer, isSaison, isAnzTeilnahmen, isAnzTurniere, jbSpieler, LS */
+/* global STAT, SAISON, isAnzTeilnehmer, isSaison, isAnzTeilnahmen, isAnzTurniere, jbSpieler, LS, CUPS, stCup */
 
 function showTeilnehmerzahlen() {
 
@@ -61,12 +61,12 @@ function showTeilnehmerzahlen() {
         if (SAISON[iSaison][isAnzTurniere]) {
             nGesTeilnehmer += SAISON[iSaison][isAnzTeilnehmer];
             html += "<tr>"
-                    + "<td class=TC>&nbsp;" + SAISON[iSaison][isSaison] + "</td>"
+                    + (CUPS.TYP[stCup] === 'CUP' ? "<td class=TC>&nbsp;" + SAISON[iSaison][isSaison] + "</td>" : "")
                     + "<td class=TC>" + SAISON[iSaison][isAnzTurniere] + "</td>"
                     + (QUERFORMAT() ? "<td class=TR>" + SAISON[iSaison][isAnzTeilnehmer] + "&nbsp;&nbsp;&nbsp;</td>" : "")
                     + "<td class=TR>" + SAISON[iSaison][isAnzTeilnahmen] + "&nbsp;&nbsp;&nbsp;</td>"
                     + "<td class=TR>" + parseInt((SAISON[iSaison][isAnzTeilnahmen] / SAISON[iSaison][isAnzTurniere]) + 0.5) + "&nbsp;&nbsp;&nbsp;&nbsp;</td>"
-                    + "<td class=TR>" + getAbweichung(iSaison) + "&nbsp;&nbsp;</td>"
+                    + (CUPS.TYP[stCup] === 'CUP' ? "<td class=TR>" + getAbweichung(iSaison) + "&nbsp;&nbsp;</td>" : "")
                     + (QUERFORMAT() ? "<td class=TC>" + STAT._PUNKTEPOTENTIAL[iSaison] + "</td>" : "")
                     + (QUERFORMAT() ? "<td></td>" : "")
                     + "</tr>";
@@ -75,23 +75,23 @@ function showTeilnehmerzahlen() {
 
     html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><tbody>"
             + "<tr id='L0P1' class='bGrau'>"
-            + "<th class=TL></th>"
+            + (CUPS.TYP[stCup] === 'CUP' ? "<th class=TL></th>" : "")
             + "<th xclass=TR></th>"
             + "<th class=TR>Teil-&nbsp;&nbsp;&nbsp;</th>"
             + (QUERFORMAT() ? "<th class=TR>Teil-&nbsp;&nbsp;&nbsp;</th>" : "")
             + "<th class=TR>&#216; pro&nbsp;</th>"
-            + "<th class=TR>Abwei.&nbsp;&nbsp;</th>"
+            + (CUPS.TYP[stCup] === 'CUP' ? "<th class=TR>Abwei.&nbsp;&nbsp;</th>" : "")
             + (QUERFORMAT() ? "<th class=TC>&#216;&nbsp;</th>" : "")
             + (QUERFORMAT() ? "<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>" : "")
             + "</tr>"
 
             + "<tr id='L0P1' class='bGrau'>"
-            + "<th class=TL></th>"
+            + (CUPS.TYP[stCup] === 'CUP' ? "<th class=TL></th>" : "")
             + "<th xclass=TR>" + (QUERFORMAT() ? "Turniere" : "Turn.") + "</th>"
             + (QUERFORMAT() ? "<th class=TR>nehmer</th>" : "")
             + "<th class=TR>nahmen</th>"
             + "<th class=TR>Turnier</th>"
-            + "<th class=TR>vom &#216;&nbsp;&nbsp;</th>"
+            + (CUPS.TYP[stCup] === 'CUP' ? "<th class=TR>vom &#216;&nbsp;&nbsp;</th>" : "")
             + (QUERFORMAT() ? "<th class=TC>Gewinn&nbsp;</th>" : "")
             + (QUERFORMAT() ? "<td></td>" : "")
             + "</tr>"

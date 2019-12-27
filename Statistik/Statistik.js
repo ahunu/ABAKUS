@@ -106,7 +106,7 @@ function getSTAT(pCup) {
     stCup = pCup;
     stSynchron = false;
 
-    if (CUPS.TYP[stCup] === 'CUP' && stCup > 4) {
+    if ((CUPS.TYP[stCup] === 'CUP' || CUPS.TYP[stCup] === 'ET') && stCup > 4) {
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i" + stCup + ".png");
     } else {
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/Farben.png");

@@ -1645,6 +1645,9 @@ function initSeite1() {
 //    var nTage = parseInt((heute - sync) / 86400000);
     var nStunden = (heute - sync) / 3600000;
     if (LS.Version !== getVersion()) {
+        if (LS.LastBtn && !$(LS.LastBtn).length) {
+            LS.LastBtn = '';
+        }
         if (LS.Version < 989) { // später
             LS.FotoStyle = 0;
             LS.FotoAnimieren = false;
@@ -2059,8 +2062,10 @@ function getMELDAKT(pCup) {
 }
 
 function getMeldSTAT(pCup) {
-    if (CUPS.TYP[pCup] === 'PR' || CUPS.TYP[pCup] === 'AR') {
-        return 'Cupwertung, Platzierungen, etc.';
+    if (CUPS.TYP[pCup] === 'AR') {
+        return 'Tageswertung, Jahreswertung, etc.';
+    } else if (CUPS.TYP[pCup] === 'PR' && CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()) {
+        return 'Nur für Mitspieler...';
     }
     if (CUPS.MELDSTAT[pCup]) {
         if (CUPS.MELDSTAT[pCup] === LS.GelesenSTAT[pCup]) {
@@ -2193,6 +2198,9 @@ function showCup(i, pBtn, pTermin) {
     }
     hVorschub = '<br><br>';
     var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 1);
+    if (I === 44) {
+        I = I;
+    }
     if (CUPS.TURNIER[I] || CUPS.ANMELDERF[I]) {
         $('#dRumpf').html('<div id="ddRumpf" style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
                 + '<div style="margin-left: 10%;">'

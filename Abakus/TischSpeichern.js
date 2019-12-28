@@ -446,7 +446,7 @@ function wrtROOT() {
     firebase.database().ref('/00/' + ("000" + LS.I).slice(-3))
             .update(hSTAT)
             .then(function () {
-                if (CUPS.TYP[LS.I] === 'PR' || CUPS.TYP[LS.I] === 'AR') {
+                if (CUPS.TYP[LS.I] === 'xxPR' || CUPS.TYP[LS.I] === 'xxxAR') {
                     LS.AnzGespeichert = 0;
                     LS.AnzSpieler = 0;
                     LS.gespielt = 0;

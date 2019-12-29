@@ -1,5 +1,5 @@
 
-/* global LS, Pfad, stSynchron, CUPS, STAT, stCup, PC, stNextTerminDat, stVollAb, stTurCupGes, imgStatistik, QUERFORMAT(), stStat, statDiagramm, stSort, imgSkuess, LOG, stFont */
+/* global LS, Pfad, stSynchron, CUPS, STAT, stCup, PC, stNextTerminDat, stVollAb, stTurCupGes, imgStatistik, QUERFORMAT(), stStat, statDiagramm, stSort, imgSkuess, LOG, stFont, stAktiv */
 
 function getStatMeldungen(pAnAbmelden) {
 
@@ -650,8 +650,8 @@ function getSortUndLayout() {
                     + "</ul>"
                     + "</div><br>"
                     + "<a class='ui-btn ui-btn-d ui-corner-all' onclick='listeDrucken();'>Liste drucken</a>"
-                    + (LS.ME === "3244"
-                            ? "<a class='ui-btn ui-btn-d ui-corner-all' onclick='listeDrucken();'>Das letzte Turnier downloaden</a>"
+                    + (LS.ME === "3244" && PC
+                            ? "<a class='ui-btn ui-btn-d ui-corner-all' onclick='downloadExcel();'>Das letzte Turnier downloaden</a>"
                             : '')
                     : '')
             + "<br>"

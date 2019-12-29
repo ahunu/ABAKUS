@@ -56,88 +56,186 @@ $(document).bind('pageinit', function () {
     });
     $("#iCB51").change(function () {
         LS.VIC[51] = $("#iCB51").is(":checked");
-        if (LS.VIC[0] === 51 && !LS.VIC[51]) {
-            $("#iR51").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[51]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 51;
+                $('#iR51').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 51) {
+                $("#iR51").prop('checked', false).checkboxradio('refresh');
+            }
         }
-    });
 
+    });
     $("#iCB52").change(function () {
         LS.VIC[52] = $("#iCB52").is(":checked");
-        if (LS.VIC[0] === 52 && !LS.VIC[52]) {
-            $("#iR52").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[52]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 52;
+                $('#iR52').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 52) {
+                $("#iR52").prop('checked', false).checkboxradio('refresh');
+            }
         }
-    });
 
+    });
     $("#iCB53").change(function () {
         LS.VIC[53] = $("#iCB53").is(":checked");
-        if (LS.VIC[0] === 53 && !LS.VIC[53]) {
-            $("#iR53").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[53]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 53;
+                $('#iR53').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 53) {
+                $("#iR53").prop('checked', false).checkboxradio('refresh');
+            }
         }
-    });
 
+    });
     $("#iCB54").change(function () {
         LS.VIC[54] = $("#iCB54").is(":checked");
-        if (LS.VIC[0] === 54 && !LS.VIC[54]) {
-            $("#iR54").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[54]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 54;
+                $('#iR54').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 54) {
+                $("#iR54").prop('checked', false).checkboxradio('refresh');
+            }
         }
-    });
 
+    });
     $("#iCB55").change(function () {
         LS.VIC[55] = $("#iCB55").is(":checked");
-        if (LS.VIC[0] === 55 && !LS.VIC[55]) {
-            $("#iR55").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[55]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 55;
+                $('#iR55').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 55) {
+                $("#iR55").prop('checked', false).checkboxradio('refresh');
+            }
         }
-    });
 
+    });
     $("#iCB56").change(function () {
         LS.VIC[56] = $("#iCB56").is(":checked");
-        if (LS.VIC[0] === 56 && !LS.VIC[56]) {
-            $("#iR56").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[56]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 56;
+                $('#iR56').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 56) {
+                $("#iR56").prop('checked', false).checkboxradio('refresh');
+            }
         }
-    });
 
+    });
 
     $("#iCB8").change(function () {
         LS.VIC[8] = $("#iCB8").is(":checked");
-        if (LS.VIC[0] === 8 && !LS.VIC[8]) {
-            $("#iR8").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[8]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 8;
+                $('#iR8').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 8) {
+                $("#iR8").prop('checked', false).checkboxradio('refresh');
+            }
         }
+
     });
     $("#iCB9").change(function () {
         LS.VIC[9] = $("#iCB9").is(":checked");
-        if (LS.VIC[0] === 9 && !LS.VIC[9]) {
-            $("#iR9").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[9]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 9;
+                $('#iR9').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 9) {
+                $("#iR9").prop('checked', false).checkboxradio('refresh');
+            }
         }
+
     });
     $("#iCB11").change(function () {
         LS.VIC[11] = $("#iCB11").is(":checked");
-        if (LS.VIC[0] === 11 && !LS.VIC[11]) {
-            $("#iR11").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[11]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 11;
+                $('#iR11').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 11) {
+                $("#iR11").prop('checked', false).checkboxradio('refresh');
+            }
         }
+
     });
     $("#iCB14").change(function () {
         LS.VIC[14] = $("#iCB14").is(":checked");
-        if (LS.VIC[0] === 14 && !LS.VIC[14]) {
-            $("#iR14").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[14]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 14;
+                $('#iR14').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 14) {
+                $("#iR14").prop('checked', false).checkboxradio('refresh');
+            }
         }
+
     });
     $("#iCB15").change(function () {
         LS.VIC[15] = $("#iCB15").is(":checked");
-        if (LS.VIC[0] === 15 && !LS.VIC[15]) {
-            $("#iR15").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[15]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 15;
+                $('#iR15').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 15) {
+                $("#iR15").prop('checked', false).checkboxradio('refresh');
+            }
         }
+
     });
     $("#iCB16").change(function () {
         LS.VIC[16] = $("#iCB16").is(":checked");
-        if (LS.VIC[0] === 16 && !LS.VIC[16]) {
-            $("#iR16").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[16]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 16;
+                $('#iR16').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 16) {
+                $("#iR16").prop('checked', false).checkboxradio('refresh');
+            }
         }
+
     });
     $("#iCB17").change(function () {
         LS.VIC[17] = $("#iCB17").is(":checked");
-        if (LS.VIC[0] === 17 && !LS.VIC[17]) {
-            $("#iR17").prop('checked', false).checkboxradio('refresh');
+        if (LS.VIC[17]) {
+            if (!LS.VIC[0]) {
+                LS.VIC[0] = 17;
+                $('#iR17').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 17) {
+                $("#iR17").prop('checked', false).checkboxradio('refresh');
+            }
         }
+
     });
 
     $('#Schreibzettel' + LS.Schreibzettel).prop('checked', true).checkboxradio('refresh');

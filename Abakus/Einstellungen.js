@@ -47,17 +47,30 @@ $(document).bind('pageinit', function () {
         }
     }
     if (Number.isInteger(LS.VIC[0])) {
-        $('#iR' + LS.VIC[0]).prop('checked', true).checkboxradio('refresh');
+        if (LS.VIC[0] === 0 || LS.VIC[0] === 999) {
+            $('#iR999').prop('checked', true).checkboxradio('refresh');
+        } else {
+            $('#iR' + LS.VIC[0]).prop('checked', true).checkboxradio('refresh');
+        }
     }
     $("input[name=nVIC]:radio").change(function () {
         LS.VIC[0] = parseInt($("input[name='nVIC']:checked").val());
-        LS.VIC[LS.VIC[0]] = true;
-        $('#iCB' + LS.VIC[0]).prop('checked', true).checkboxradio('refresh');
+        if (LS.VIC[0] !== 999) {
+            LS.VIC[LS.VIC[0]] = true;
+            $('#iCB' + LS.VIC[0]).prop('checked', true).checkboxradio('refresh');
+        }
+    });
+    $("#bNichtInteressiert").click(function () {
+        if (LS.VIC[0] && LS.VIC[0] !== 999) {
+            $('#iR' + LS.VIC[0]).prop('checked', false).checkboxradio('refresh');
+        }
+        LS.VIC[0] = 999;
+        $('#iR999').prop('checked', true).checkboxradio('refresh');
     });
     $("#iCB51").change(function () {
         LS.VIC[51] = $("#iCB51").is(":checked");
         if (LS.VIC[51]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 51;
                 $('#iR51').prop('checked', true).checkboxradio('refresh');
             }
@@ -66,12 +79,11 @@ $(document).bind('pageinit', function () {
                 $("#iR51").prop('checked', false).checkboxradio('refresh');
             }
         }
-
     });
     $("#iCB52").change(function () {
         LS.VIC[52] = $("#iCB52").is(":checked");
         if (LS.VIC[52]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 52;
                 $('#iR52').prop('checked', true).checkboxradio('refresh');
             }
@@ -85,7 +97,7 @@ $(document).bind('pageinit', function () {
     $("#iCB53").change(function () {
         LS.VIC[53] = $("#iCB53").is(":checked");
         if (LS.VIC[53]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 53;
                 $('#iR53').prop('checked', true).checkboxradio('refresh');
             }
@@ -99,7 +111,7 @@ $(document).bind('pageinit', function () {
     $("#iCB54").change(function () {
         LS.VIC[54] = $("#iCB54").is(":checked");
         if (LS.VIC[54]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 54;
                 $('#iR54').prop('checked', true).checkboxradio('refresh');
             }
@@ -113,7 +125,7 @@ $(document).bind('pageinit', function () {
     $("#iCB55").change(function () {
         LS.VIC[55] = $("#iCB55").is(":checked");
         if (LS.VIC[55]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 55;
                 $('#iR55').prop('checked', true).checkboxradio('refresh');
             }
@@ -127,7 +139,7 @@ $(document).bind('pageinit', function () {
     $("#iCB56").change(function () {
         LS.VIC[56] = $("#iCB56").is(":checked");
         if (LS.VIC[56]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 56;
                 $('#iR56').prop('checked', true).checkboxradio('refresh');
             }
@@ -142,7 +154,7 @@ $(document).bind('pageinit', function () {
     $("#iCB8").change(function () {
         LS.VIC[8] = $("#iCB8").is(":checked");
         if (LS.VIC[8]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 8;
                 $('#iR8').prop('checked', true).checkboxradio('refresh');
             }
@@ -156,7 +168,7 @@ $(document).bind('pageinit', function () {
     $("#iCB9").change(function () {
         LS.VIC[9] = $("#iCB9").is(":checked");
         if (LS.VIC[9]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 9;
                 $('#iR9').prop('checked', true).checkboxradio('refresh');
             }
@@ -170,7 +182,7 @@ $(document).bind('pageinit', function () {
     $("#iCB11").change(function () {
         LS.VIC[11] = $("#iCB11").is(":checked");
         if (LS.VIC[11]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 11;
                 $('#iR11').prop('checked', true).checkboxradio('refresh');
             }
@@ -184,7 +196,7 @@ $(document).bind('pageinit', function () {
     $("#iCB14").change(function () {
         LS.VIC[14] = $("#iCB14").is(":checked");
         if (LS.VIC[14]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 14;
                 $('#iR14').prop('checked', true).checkboxradio('refresh');
             }
@@ -198,7 +210,7 @@ $(document).bind('pageinit', function () {
     $("#iCB15").change(function () {
         LS.VIC[15] = $("#iCB15").is(":checked");
         if (LS.VIC[15]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 15;
                 $('#iR15').prop('checked', true).checkboxradio('refresh');
             }
@@ -212,7 +224,7 @@ $(document).bind('pageinit', function () {
     $("#iCB16").change(function () {
         LS.VIC[16] = $("#iCB16").is(":checked");
         if (LS.VIC[16]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 16;
                 $('#iR16').prop('checked', true).checkboxradio('refresh');
             }
@@ -226,7 +238,7 @@ $(document).bind('pageinit', function () {
     $("#iCB17").change(function () {
         LS.VIC[17] = $("#iCB17").is(":checked");
         if (LS.VIC[17]) {
-            if (!LS.VIC[0]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 999) {
                 LS.VIC[0] = 17;
                 $('#iR17').prop('checked', true).checkboxradio('refresh');
             }
@@ -303,6 +315,9 @@ $(document).bind('pageinit', function () {
         if (!LS.VIC[0]) {
             showEinenTip("#iR51", 'Welcher Cup ist für dich der wichtigste?');
             return;
+        }
+        if (LS.VIC[0] === 999) {
+            LS.VIC[0] = 0;
         }
 
         LS.AktTage = $("#iAKTTAGE").val();

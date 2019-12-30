@@ -53,12 +53,20 @@ var stLastZitat = [];
 var stStickyHeader = false;
 var stFotoCount = 0;
 var stFotoStyle = 0;
-var daysOfWeek = ["So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."];
+var daysOfWeek = ["So.,", "Mo.,", "Di.,", "Mi.,", "Do.,", "Fr.,", "Sa.,"];
 var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var anz = 1;
 var html = '';
 
 var lastBtn = '';
+
+function IsInteger(value) {
+    if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
@@ -268,7 +276,7 @@ function turnierPruefenSpeichern(pSpeichern) {
 
     var DATA = {};
 
-    if (Number.isInteger(stStat)) {
+    if (IsInteger(stStat)) {
         DATA._CUPANEKDOTE = repairPell(editor.content.innerHTML);
         DATA._CUPFOTOS = [];
     } else {
@@ -303,7 +311,7 @@ function turnierPruefenSpeichern(pSpeichern) {
                 return false;
             }
 
-            if (Number.isInteger(stStat)) {
+            if (IsInteger(stStat)) {
                 DATA._CUPFOTOS[i] = val;
             } else {
                 DATA._FOTOS[i] = val;
@@ -325,7 +333,7 @@ function turnierPruefenSpeichern(pSpeichern) {
     }
 
     var dbRef = '';
-    if (Number.isInteger(stStat)) {
+    if (IsInteger(stStat)) {
         dbRef = '/00/' + ("000" + stCup).slice(-3) + '/' + SAISON[iSaison][isFinale];
         if (DATA._CUPFOTOS.length === 0) {
             DATA._CUPFOTOS = null;
@@ -342,7 +350,7 @@ function turnierPruefenSpeichern(pSpeichern) {
     firebase.database().ref(dbRef)
             .update(DATA)
             .then(function () {
-                if (Number.isInteger(stStat)) {
+                if (IsInteger(stStat)) {
                     if (DATA._CUPANEKDOTE) {
                         STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE = DATA._CUPANEKDOTE;
                     } else {
@@ -438,12 +446,12 @@ function editAnekdote() {
             + '<br>Fotos:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=XS>Abakus ist für Fotos mit einer Breite von 1024 Pixel optimiert.</span>'
             + '<div id="fotoedit-grid">';
 
-    if (Number.isInteger(stStat) && STAT[SAISON[iSaison][isFinale]]._CUPFOTOS) {
+    if (IsInteger(stStat) && STAT[SAISON[iSaison][isFinale]]._CUPFOTOS) {
         for (var i = 0, len = STAT[SAISON[iSaison][isFinale]]._CUPFOTOS.length; i < len; i++) {
             html += '<div><input class="ciFOTO" type="text" data-role="none" value="' + STAT[SAISON[iSaison][isFinale]]._CUPFOTOS[i] + '" >'
                     + '<img class=cFotoImg src="https://drive.google.com/uc?id=' + STAT[SAISON[iSaison][isFinale]]._CUPFOTOS[i] + '" width="100%"></div>';
         }
-    } else if (!Number.isInteger(stStat) && STAT[stStat]._FOTOS) {
+    } else if (!IsInteger(stStat) && STAT[stStat]._FOTOS) {
         for (var i = 0, len = STAT[stStat]._FOTOS.length; i < len; i++) {
             html += '<div><input class="ciFOTO" type="text" data-role="none" value="' + STAT[stStat]._FOTOS[i] + '" >'
                     + '<img class=cFotoImg src="https://drive.google.com/uc?id=' + STAT[stStat]._FOTOS[i] + '" width="100%"></div>';
@@ -482,10 +490,10 @@ function editAnekdote() {
     });
     setTimeout(function () {
         editor.content.innerHTML = '';
-        if (Number.isInteger(stStat) && STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE) {
+        if (IsInteger(stStat) && STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE) {
             $('.pell-content').html(STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE);
             editor.content.innerHTML = STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE;
-        } else if (!Number.isInteger(stStat) && STAT[stStat]._ANEKDOTE) {
+        } else if (!IsInteger(stStat) && STAT[stStat]._ANEKDOTE) {
             $('.pell-content').html(STAT[stStat]._ANEKDOTE);
             editor.content.innerHTML = STAT[stStat]._ANEKDOTE;
         } else {

@@ -24,7 +24,7 @@ var hHeute = myDateString(new Date());
 var anzVersuche = 0;
 var myJBox = null;
 var myJTip = null;
-var daysOfWeek = ["So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."];
+var daysOfWeek = ["So.,", "Mo.,", "Di.,", "Mi.,", "Do.,", "Fr.,", "Sa.,"];
 var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stLastZitat = [];
 var meinStellvertreter = '3244';
@@ -58,6 +58,14 @@ const iUltimo = 25;
 const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
+
+function IsInteger(value) {
+    if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function zumTurnier() {
     if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
@@ -2238,8 +2246,7 @@ function showCup(i, pBtn, pTermin) {
                         )
 
                 + (I === 16
-                        ? hVorschub + '<div class=J style="margin-right:5%">Von Samstag 25. Juli bis Sonntag 2. August 2020 besuchen wir mit einem Tour-Bus neun "Tarockhochburgen" in ganz Österreich. Als Bus-Chaffeur stellt sich dankenswerterweise Karl Schicher - der Tarockprofi aus Bad Leonfelden - zur Verfügung. In jedem Ort wird ein Turnier nach den lokalen Regeln gespielt. Nach dem Finale in Bad Leonfelden feiern wir den Tarock-Meister-on-Tour.</div>'
-//                        + '<br>Organisation:&nbsp;&nbsp;<b>Franz Kienast</b><br>'
+                        ? hVorschub + '<div class="J M" style="margin-right:5%">Von Samstag 25. Juli bis Sonntag 2. August 2020 besuchen wir mit einem Tour-Bus neun "Tarockhochburgen" in ganz Österreich. Als Bus-Chaffeur stellt sich dankenswerterweise Karl Schicher - der Tarockprofi aus Bad Leonfelden - zur Verfügung. In jedem Ort wird ein Turnier nach den lokalen Regeln gespielt. Nach dem Finale in Helfenberg feiern wir den Tarock-Meister-on-Tour.</div>'
                         : ''
                         )
 
@@ -3558,7 +3565,7 @@ $(document).ready(function () {
     }
 
     if (new Date().getTime() > LS.LastDate + 60000 * 60 * 12) { // + 6 Stunden Differenz
-        if (Number.isInteger(LS.VIC[0])) {
+        if (IsInteger(LS.VIC[0])) {
             LS.ShowCups = LS.VIC[0]; // Auf Standardcup wegen Lesezeichen zurücksetzen
         }
         LS.LastBtn = '';

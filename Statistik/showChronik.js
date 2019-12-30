@@ -47,7 +47,7 @@ function showChronik(pTurnier) {
 
     var html = '';
     if (pTurnier) {
-        if (Number.isInteger(pTurnier) && CUPS.TYP[stCup] === 'CUP') {
+        if (IsInteger(pTurnier) && CUPS.TYP[stCup] === 'CUP') {
             html = getCupHtml(pTurnier, SAISON[iSaison][isFinale]) + html;
         } else {
             html = getHtml(pTurnier) + html;

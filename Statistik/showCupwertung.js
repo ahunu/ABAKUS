@@ -119,7 +119,7 @@ function showCupwertung() {
             + "<th class=TR>Ges&nbsp;</th>"
             + (stFinale ? "<th class='TR'>Fin&nbsp;</th>" : "")
             + "<th class=C colspan='" + parseInt(CUPS.TURNIER[stCup]) + "'>Vorrundenpunkte</th>"
-            + (QUERFORMAT() ? "<th class=TC>TN</th><th class=TC nowrap>1. 2. 3.</th>" + (iSaison === 1 && stCup >= 50 && stCup < 60? "<th class=TR>&Ouml;F&nbsp;</th>" : "") : "")
+            + (QUERFORMAT() ? "<th class=TC>TN</th><th class=TC nowrap>1. 2. 3.</th>" + (iSaison === 1 && stCup >= 50 && stCup <= 60 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "") : "")
             + "</tr></thead><tbody id=tbody>"
             + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
 //                    + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
@@ -186,7 +186,7 @@ function showCupwertung() {
             html += '<td class="TR">' + SP[spieler][iSaison][spTeilnahmen] + '&nbsp;</td>';
             html += '<td class="TC" nowrap>' + SP[spieler][iSaison][spBestePlatz] + '</td>';
 
-            if (iSaison === 1 && stCup >= 50 && stCup < 60) {
+            if (iSaison === 1 && stCup >= 50 && stCup <= 60) {
                 if (hPlatz < tOF.length) {
                     html += '<td class="R" nowrap>' + tOF[hPlatz] + '&nbsp;</td>';
                 } else {

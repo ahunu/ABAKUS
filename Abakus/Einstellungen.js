@@ -3,6 +3,14 @@
 
 var myJTip = null;
 
+function IsInteger(value) {
+    if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
@@ -46,7 +54,7 @@ $(document).bind('pageinit', function () {
             $('#iCB' + i).prop('checked', true).checkboxradio('refresh');
         }
     }
-    if (Number.isInteger(LS.VIC[0])) {
+    if (IsInteger(LS.VIC[0])) {
         if (LS.VIC[0] === 0 || LS.VIC[0] === 1) {
             $('#iR1').prop('checked', true).checkboxradio('refresh');
         } else {

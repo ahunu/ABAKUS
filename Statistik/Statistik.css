@@ -33,15 +33,19 @@ th.rotate > div {
     padding-right: -105px;
 }
 #mTable {font-size: 22px;}
-@media print {.XS {font-size: 3vw;}}
+@media print {
+    .XS {font-size: 3vw;}
+    .cFotoS {width:30%;height:auto;}
+    .cFotoM {width:40%;height:auto;}
+    .cFotoL {width:50%;height:auto;}
+}
 
 /* === Aktuelles ============================================================ */
 
 @media screen and (orientation : landscape)  {
     .cFotoS {width:30%;height:auto;}
-    .cFotoM {width:50%;height:auto;}
+    .cFotoM {width:40%;height:auto;}
     .cFotoL {width:50%;height:auto;}
-
     .cFotoS:hover,
     .cFotoM:hover,
     .cFotoL:hover {

@@ -458,7 +458,11 @@ function writeCanvas(pTitel) {
     }
     $('#tStand').hide();
     $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel.replace(/ |_/g, '&nbsp;'));
-    $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
+    if (stCup === 55 && pTitel === 'Vivat Valat!' && false) {
+        $('.hfHeaderZeile2,#qfHeaderZeile2').html('<div class="cBlau P" onclick="window.open(\'http://www.tarock.tirol\')">www.tarock.tirol</div>');
+    } else {
+        $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
+    }
     if (PC) {
         $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
         $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");

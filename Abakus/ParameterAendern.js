@@ -305,7 +305,7 @@ function onSubmit() {
         return;
     }
 
-    if ($("#iBEREadmin").val().trim().length < 4) {
+    if ($("#iBEREadmin").val().trim().length < 4 && hBEREadmin !== '*') {
         showEinenTip("#iBEREadmin", 'Es muss mindestens ein Administrator angegeben werden.');
         return;
     }

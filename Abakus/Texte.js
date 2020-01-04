@@ -416,9 +416,9 @@ function getTurnierkalender() {
         html += '<br><div class="ui-grid-a">'
                 + '<div class="ui-block-a M" style="width:30%">Unsere Sponsoren:</div>'
                 + '<div class="ui-block-c L" style="width:70%">'
-                + '<img class=P src="Icons/LogoGregor.png"  height="80px" onclick="window.open(\'http://www.allfinag.com/afs/home-afs\')" alt="ALLFINAG FINANCIAL SERVICES" >&nbsp;&nbsp;'
+                + '<img class=P src="Icons/LogoGregor.png"  height="80px" onclick="window.open(\'http://www.allfinag.com/afs/home-afs\')" alt="ALLFINAG FINANCIAL SERVICES">&nbsp;&nbsp;'
                 + '<img class=P src="Icons/LogoPiatnik.png" height="80px" onclick="window.open(\'https://www.piatnik.com\')" alt="Piatnik.com">&nbsp;&nbsp;'
-                + '<img class=P src="Icons/LogoTextil.jpg"  height="80px" onclick="window.open(\'http://picpanzee.com/textilveredelungsteyr\')" alt="Textilveredelung Steyr">'
+                + '<img class=P src="Icons/LogoTextil.png"  height="80px" onclick="window.open(\'https://www.texad.at\')" alt="Textilveredelung Steyr">'
                 + '</div>'
                 + '</div>';
     }

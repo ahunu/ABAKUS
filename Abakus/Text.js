@@ -54,6 +54,7 @@ $(document).ready(function () {
         LS.ShowCups = 0;
         LS.LastBtn = '';
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            $("#hLogo").attr("src", "../Icons/DieGeschichte.png");
         if (window.location.href.indexOf('Geschichte') > 0) {
             $('#hTitel1').text("Die Geschichte");
             $('#hTitel2').text("des Tarockspiels");
@@ -67,15 +68,17 @@ $(document).ready(function () {
             $('#hTitel2').text("Eine Ankündigung");
             html += getDetailstatistik();
         } else if (window.location.href.indexOf('Zitate') > 0) {
-            $('#DHeader').hide();
+            $('#dHeader').hide();
             html = '<div style="width:100%; margin-left: auto; margin-right: auto;">'
                     + '<div style="padding: .2em;">';
             $('#hTitel2').text("Zitate");
             html += getZitate();
         } else if (window.location.href.indexOf('Etikette') > 0) {
-            $('#hTitel2').text("Tarocketikette");
+            $('#hTitel1').text("Tarocketikette");
+            $('#hTitel2').text("Behnemen ist gefragt");
             html += getEtikette();
         } else if (window.location.href.indexOf('TippsUndTricks') > 0) {
+            $('#hTitel1').text("Abakus");
             $('#hTitel2').text("Tipps & Tricks");
             html += getTippsUndTricks();
         } else if (window.location.href.indexOf('XXIIDevisen') > 0) {
@@ -87,6 +90,6 @@ $(document).ready(function () {
     html += '</div></div>';
     $('#dRumpf').html(html);
 
-    $('#hLogo').css('height', $('#hHeader').height() - 8).show();
+    $('#hLogo').css('height', $('#dHeader').height() - 8).show();
 
 });

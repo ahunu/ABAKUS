@@ -229,7 +229,7 @@ function showHeinewertung() {
     html += "</tbody></table><br>"
             + '<div class="S J" style="margin-left: 1vw; margin-right: 1vw">'
             + '<b>Heinepunkte anstatt Fixpunkte:</b><br>'
-            + 'Um statistische Verwerfungen aufgrund von unterschiedlich hohen Turniersiegen und aufgrund von unterschiedlichen Teilnehmerzahlen vorzubeugen,&nbsp; '
+            + 'Um statistischen Verzerrungen wegen unterschiedlich großer Teilnehmerzahlen und unterschiedlich hoher Turniersiege vorzubeugen,&nbsp; '
             + 'werden bei der Heinewertung anstatt der vom Rang abhängigen Fixpunkte die von den tatsächlich erzielten Punkten errechneten Heinepunkte verwendet.&nbsp; '
             + '<br><br>'
             + '<b>Berechnung der Heinepunkte:</b><br>'

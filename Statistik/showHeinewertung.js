@@ -278,3 +278,56 @@ function showHeinewertung() {
         }
     }
 }
+
+function showWarumHeinewertung() {
+
+    if (QUERFORMAT()) {
+        if (lastBtn) {
+            $(lastBtn).removeClass('ui-btn-active');
+        }
+        lastBtn = '#bWarumHeinewertung';
+        $(lastBtn).addClass('ui-btn-active');
+    }
+
+    if (jbSpieler.isOpen) {
+        jbSpieler.close();
+    }
+
+    stStat = 'Heinewertung';
+    $("#dCopyright").hide();
+
+    var html = (QUERFORMAT()
+            ? '<div class=M style="text-align:justify;margin:6vw;"><br><br>'
+            : '<div class=M style="text-align:justify;margin:3vw;">'
+            )
+
+            + '<p>Wir alle kennen es nur zu gut. Endlich hat man gute Blätter und macht mit 200 Punkten einen dritten Platz. Beim nächsten Mal gewinnt dann ein anderer mit 150 Punkten das Turnier.'
+
+            + '<p>Da für einen Turniersieg mitunter stark unterschiedlich viele Punkte erforderlich sind, erhöht das Fixpunktesystem den im Königrufen ohnehin schon sehr hohen Glücksfaktor.'
+
+            + '<p>Bei einem Turnier mit 300 Teilnehmern spielt jeder in drei Runden jeweils gegen drei unterschiedlich starke Gegner. Genauso wie bei einem Turnier mit 60 oder weniger Teilnehmern.'
+
+            + '<p>Die Hürde, eine bestimmte Punktezahl zu erreichen, ist also für jeden gleich hoch. Die Chance möglichst viele Fixpunkte zu erreichen schwindet aber mit der Anzahl der Teilnehmer.'
+
+            + '<p>Da im Sport Fairness alles ist, wurde mit den Heinepunkten ein Punktesystem entwickelt, dass die tatsächlich erreichten Punkte als Ausgangswert verwendet.'
+
+            + '<p>Bis 100 Punkten werden die tatsächlich erreichten Punkte voll angerechnet. Ab 100 Punkten zählt jeder zweite Punkt. Es werden maximal 200 Heinepunkte vergeben. Minuspunkte werden nicht gewertet.'
+
+            + '<p>Aufgrund von Überlegungen im Sauwaldcup, im Tiroler, im Steirischen und im Wiener Tarockcup wird mit der Heinewertung eine faire Alternative zur Fixpunktewertung angeboten.'
+
+//            + '<p>Da von jeden Cup immer mehr Turniere veranstaltet werden, sollen für die Heinewertung in einer späteren Ausbaustufe mehr als die üblichen sechs besten Ergebnisse verwendet werden.'
+
+            + '</div>';
+
+    if (QUERFORMAT()) {
+        writeCanvas('Warum gibt es eine Heinewertung?');
+        $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
+    } else {
+        writeCanvas('Warum Heinewertung?');
+        $('#dContent').html(html);
+        $('#sideTurniere').hide();
+        $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
+        $('#sideContent').css('height', hx + 'px').scrollTop(0);
+    }
+}

@@ -105,8 +105,8 @@ function downloadSpieler(pAktiv) {
                     + SPIELERext[spieler][5] + ';'  // Strasse
                     + SPIELERext[spieler][6] + ';'  // PLZ
                     + SPIELERext[spieler][7] + ';'  // Ort
-                    + SPIELERext[spieler][8] + ';'  // Telefon
-                    + SPIELERext[spieler][9] + ';'  // Handy
+                    + '"' + SPIELERext[spieler][8] + '";'  // Telefon
+                    + '"' + SPIELERext[spieler][9] + '";'  // Handy
                     + (getGEBDAT(SPIELERext[spieler][10])) + ';' // Geburtsdatum
                     + SPIELERext[spieler][11] + ';'  // eMail
 

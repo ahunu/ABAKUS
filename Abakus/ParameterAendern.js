@@ -8,6 +8,7 @@ var I = 0;
 var mCupLoeschen = -1;
 var iNeu;
 var iName;
+var iAdmin;
 var hRundeTurnier = 'Runde';
 var editor = null;
 var myJBox = null;
@@ -96,22 +97,26 @@ function rundeKopieren() {
         $('#jBox-overlay').remove();
     }
     myJBox = new jBox('Modal', {
-        title: '<div style="background-color:#27a;border:8px solid #27a;color: white;">&nbsp;' + hRundeTurnier + ' kopieren nach:</div>',
-        content: '<form>'
+        title: '<div class=M style="background-color:#27a;border:8px solid #27a;color: white;">&nbsp;' + hRundeTurnier + ' kopieren nach:</div>',
+        content: '<div class=M>'
                 + '<div class="ui-grid-b">'
-                + '<div class="ui-block-a" style="width:22%;"> Index</div>'
+                + '<div class="ui-block-a" style="width:22%;"> Index:</div>'
                 + '<div class="ui-block-b" style="width:15%;text-align:center;"><input id="iKIndex" type="number" min=1 max=999 data-role="none" style="background:silver;text-align:center;font-weight:bold;"></div>'
                 + '<div class="ui-block-c cRot" style="width:63%;margin-top:.8em;text-align:center" id=kFText></div>'
                 + '</div>'
                 + '<div class="ui-grid-a">'
-                + '<div class="ui-block-a" style="width:22%;"> Name</div>'
-                + '<div class="ui-block-b" style="width:78%;text-align:left;"><input id="iKName" type="text" sdata-role="none" style="background:silver;font-weight:bold;"></div>'
+                + '<div class="ui-block-a" style="width:22%;"> Name:</div>'
+                + '<div class="ui-block-b" style="width:78%;text-align:left;"><input id="iKName" type="text" style="background:silver;font-weight:bold;"></div>'
+                + '</div>'
+                + '<div class="ui-grid-b">'
+                + '<div class="ui-block-a" style="width:22%;"> Admin:</div>'
+                + '<div class="ui-block-b" style="width:27%;text-align:left;"><input id="iAdmin" type="text" style="background:silver;font-weight:bold;"></div>'
                 + '</div>'
                 + '<div class="ui-grid-a">'
                 + '<div class="ui-block-a"><button onClick="myJBoxClose();" data-theme="a">zur&uuml;ck</button></div>'
                 + '<div class="ui-block-b"><button onClick="copyCUPS();" data-theme="e">kopieren</button></div>'
                 + '</div>'
-                + '</form>',
+                + '</div>',
         position: {x: 'center', y: 111}
     }).open();
 }
@@ -119,6 +124,7 @@ function rundeKopieren() {
 function copyCUPS() {
     'use strict';
     iNeu = parseInt($("#iKIndex").val());
+    iAdmin = $("#iAdmin").val();
     if (isNaN(iNeu) || iNeu <= 0) {
         $("#kFText").html('<b>Index ung&uumlltig.</b>');
         return;
@@ -147,11 +153,14 @@ function copyCUPS() {
             return;
         }
     }
+    if (iAdmin.length < 6 && iAdmin !== '*') {
+            $("#kFText").text('Ungültiger Admin.');
+            return;
+    }
 
-// llll    $('#mKopieren').modal('hide');
     showEinenMoment(iName + ':', hRundeTurnier + ' wird erstellt.');
     CUPS.ANMELDERF     [iNeu] = CUPS.ANMELDERF     [I];
-    CUPS.BEREadmin     [iNeu] = CUPS.BEREadmin     [I];
+    CUPS.BEREadmin     [iNeu] = iAdmin;
     CUPS.BEREschreiben [iNeu] = CUPS.BEREschreiben [I];
     CUPS.DISPAB        [iNeu] = CUPS.DISPAB        [I];
     CUPS.DOPPELTERUNDEN[iNeu] = CUPS.DOPPELTERUNDEN[I];
@@ -190,7 +199,7 @@ function copyCUPS() {
 
     var hCUPS = new Object();
     hCUPS.ANMELDERF = CUPS.ANMELDERF[I];
-    hCUPS.BEREadmin = CUPS.BEREadmin[I];
+    hCUPS.BEREadmin = iAdmin;
     hCUPS.BEREschreiben = CUPS.BEREschreiben[I];
     hCUPS.DISPAB = CUPS.DISPAB      [I];
     hCUPS.DOPPELTERUNDEN = CUPS.DOPPELTERUNDEN[I];

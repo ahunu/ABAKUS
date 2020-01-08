@@ -49,6 +49,10 @@ $(document).bind('pageinit', function () {
         $("#iTIMEOUT").val(100);
     }
 
+    if (LS.VIC === []) {
+        LS.VIC = [0];
+    }
+
     for (var i in LS.VIC) {
         if (LS.VIC[i]) {
             $('#iCB' + i).prop('checked', true).checkboxradio('refresh');
@@ -114,6 +118,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 51) {
+                LS.VIC[0] === 0;
                 $("#iR51").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -128,6 +133,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 52) {
+                LS.VIC[0] === 0;
                 $("#iR52").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -143,6 +149,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 53) {
+                LS.VIC[0] === 0;
                 $("#iR53").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -158,6 +165,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 54) {
+                LS.VIC[0] === 0;
                 $("#iR54").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -173,6 +181,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 55) {
+                LS.VIC[0] === 0;
                 $("#iR55").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -188,6 +197,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 56) {
+                LS.VIC[0] === 0;
                 $("#iR56").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -204,6 +214,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 8) {
+                LS.VIC[0] === 0;
                 $("#iR8").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -219,6 +230,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 9) {
+                LS.VIC[0] === 0;
                 $("#iR9").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -234,6 +246,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 11) {
+                LS.VIC[0] === 0;
                 $("#iR11").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -249,6 +262,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 14) {
+                LS.VIC[0] === 0;
                 $("#iR14").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -264,6 +278,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 15) {
+                LS.VIC[0] === 0;
                 $("#iR15").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -279,6 +294,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 16) {
+                LS.VIC[0] === 0;
                 $("#iR16").prop('checked', false).checkboxradio('refresh');
             }
         }
@@ -294,6 +310,7 @@ $(document).bind('pageinit', function () {
             }
         } else {
             if (LS.VIC[0] === 17) {
+                LS.VIC[0] === 0;
                 $("#iR17").prop('checked', false).checkboxradio('refresh');
             }
         }

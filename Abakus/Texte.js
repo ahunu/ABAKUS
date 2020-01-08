@@ -28,6 +28,8 @@ function showText(pText) {
     var hTitel2 = '';
     if (pText === 'Aktuelles') {
         writeCanvas(CUPS.NAME[I]);
+    } else if (pText === 'CTHeinepunkte') {
+        writeCanvas('Warum Heinepunkte?');
     } else if (pText === 'TippsUndTricks') {
         writeCanvas('Tipps und Tricks');
     } else if (pText === 'CTDetailstatistik') {
@@ -54,8 +56,8 @@ function showText(pText) {
     } else if (pText === 'Links') {
         hTitel2 = 'Die wichtigsten Tarocklinks';
         html += getLinks();
-    } else if (pText === 'CTDetailstatistik') {
-        hTitel2 = 'Eine Ankündigung';
+    } else if (pText === 'CTHeinepunkte') {
+        hTitel2 = 'Eine Initiative von SWC, STT, TTC und WTC.';
         html += getDetailstatistik();
     } else if (pText === 'Etikette') {
         hTitel2 = 'Benehmen ist gefragt';
@@ -121,23 +123,23 @@ function getGeschichte() {
 function getDetailstatistik() {
     return '<span class=M style="text-align:justify">'
 
-            + 'Liebe Tarockfreunde!'
-            + '<br>'
-            + '<p>In Kürze wird es an dieser Stelle eine Detailstatistik geben die einen ähnlichen Aufbau wie jene in den Wirtshausrunden und in den privaten Runden haben wird. '
+            + '<p>Wir alle kennen es nur zu gut. Endlich hat man gute Blätter und macht mit 200 Punkten einen dritten Platz. Beim nächsten Mal gewinnt dann ein anderer mit 150 Punkten das Turnier.'
 
-            + '<p>Da ich bei meiner Gratisdatenbank nur ein eingeschränktes Datenkontingent zur Verfügung habe, wird diese Statistik nur für jenen Spielern geführt, die dies ausdrücklich wünschen. '
-            + 'Für diese VIP\'s wird es zu einen späteren Zeitpunkt auch eine TQ-Statistik geben. '
-            + 'In Anlehnung an den IQ steht TQ für Tarockqoutient. '
+            + '<p>Da für einen Turniersieg mitunter stark unterschiedlich viele Punkte erforderlich sind, erhöht das Fixpunktesystem den im Königrufen ohnehin sehr hohen Glücksfaktor.'
 
-            + '<p>Da nicht auf allen Tischen mit einem Handy geschrieben wird, wird diese Statistik nicht vollständig sein. '
-            + 'Bestimmte Tendenzen wie Rufe ich mich immer selber, spiele ich zu riskante Dreier oder bin ich bei meiner Lizitation zu vorsichtig wird man jedoch sehr gut herauslesen können.  '
+            + '<p>Bei einem Turnier mit 300 Teilnehmern spielt jeder in drei Runden jeweils gegen drei unterschiedlich starke Gegner. Genauso wie bei einem Turnier mit 60 oder weniger Teilnehmern.'
 
-            + '<p>Etwa ab September wird mit dem Sammeln der Detaildaten der VIP\'s begonnen werden. Ab Dezember werden dann erste, aussagekräftige Auswertungen möglich sein. Wer dabei sein will gibt mir bitte rechtzeitig Bescheid. '
+            + '<p>Die Hürde, eine bestimmte Punktezahl zu erreichen, ist also für jeden gleich hoch. Die Chance möglichst viele Fixpunkte zu erreichen schwindet aber mit der Teilnehmerzahl.'
 
+            + '<p>Da im Sport Fairness alles ist, wurde mit den Heinepunkten ein Punktesystem entwickelt, dass die tatsächlich erreichten Punkte als Ausgangswert verwendet.'
 
-            + '</span><div class=M style="text-align:center">'
-            + '<br><p>Ich wünsche gute Karten und<br>viel Spass mit der Appp<br> '
-            + '<b><i>Leo Luger</i></b></div>';
+            + '<p>Bis 100 Punkten werden die tatsächlich erreichten Punkte voll angerechnet. Ab 100 Punkten zählt jeder zweite Punkt. Es werden maximal 200 Heinepunkte vergeben. Minuspunkte werden nicht gewertet.'
+
+            + '<p>Aufgrund von Überlegungen im Sauwaldcup, im Tiroler, im Steirischen und im Wiener Tarockcup wird mit der Heinewertung eine faire Alternative zur Fixpunktewertung angeboten.'
+
+//            + '<p>Da von jeden Cup immer mehr Turniere veranstaltet werden, sollen für die Heinewertung in einer späteren Ausbaustufe mehr als die üblichen sechs besten Ergebnisse verwendet werden.'
+
+            + '</span>';
 }
 
 function getAnekdoten() {

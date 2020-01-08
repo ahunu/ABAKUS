@@ -413,7 +413,7 @@ function wrtROOT() {
         if (new Date(LS.Von).toDateString() === new Date(STAT.S[st].TIMESTAMP).toDateString()) {
             if (maxPUNKTE3 < STAT.S[st].PUNKTE[3]) {
                 maxPUNKTE3 = STAT.S[st].PUNKTE[3];
-                CUPS.MELDSTAT[LS.I] = STAT.S[st].NNAME + STAT.S[st].VNAME;
+                CUPS.MELDSTAT[LS.I] = STAT.S[st].VNAME + ' ' + STAT.S[st].NNAME;
             }
         }
     }

@@ -138,3 +138,50 @@ function showTermine() {
     $('#tStand').hide();
 
 }
+
+
+
+
+/* global CUPS, LS, stCup, jbSpieler, stHeute, QUERFORMAT() */
+
+function showTourplan() {
+
+    if (QUERFORMAT()) {
+        if (lastBtn) {
+            $(lastBtn).removeClass('ui-btn-active');
+        }
+        lastBtn = '#bTourplan';
+        $(lastBtn).addClass('ui-btn-active');
+    }
+
+    if (LS.ME !== "NOBODY") {
+        showIcons(['#iPrint']);
+    }
+
+    stStat = 'Tourplan';
+
+    if (jbSpieler.isOpen) {
+        jbSpieler.close();
+    }
+    $("#dCopyright").hide();
+
+    writeCanvas('Tourplan 2020');
+
+    if (QUERFORMAT()) {
+        $('#dRumpf').html('<embed src="../Icons/TarockOnTour2020.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="' + parseInt($(window).innerHeight() - $('#qfHeader').height() - 5) + 'px"/>').css('margin-top', $('#qfHeader').height() + 'px');
+    } else {
+        $('#dContent').html("<ul data-role='listview'>" + htmlTE + "</ul>").trigger('create').show();
+        $('#sideTurniere').hide();
+        $('#nbUebersicht').removeClass('ui-btn-active');
+        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
+        $('#sideContent').css('height', hx + 'px').scrollTop(0);
+    }
+
+    setFont();
+    hideEinenMoment();
+
+    window.scrollTo(0, 0);
+
+    $('#tStand').hide();
+
+}

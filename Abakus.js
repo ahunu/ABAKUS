@@ -2247,6 +2247,11 @@ function showCup(i, pBtn, pTermin) {
                         : ''
                         )
 
+                + (I === 16
+                        ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Tourplan\');"><b>Tourplan</b></span><br>Alle Details, Kosten, etc.<br>'
+                        : ''
+                        )
+
                 + ((I === 49 || I === 51 || I === 52)
                         && (CUPS.MELDAKT[I] || CUPS.BEREadmin[I].indexOf(LS.ME) >= 0)
                         ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
@@ -2296,9 +2301,16 @@ function showCup(i, pBtn, pTermin) {
                 + hVorschub + (I === 56 ? '<img src="Icons/LogoWTC.png" align="left" style="fload:left;width:120px;height:160px;smargin-left:-60px;margin-right:10px">' : '') + getCupText()
 
                 + '</div></div>'
+
+
+                + ((I === 51 || I === 52) && CUPS.MELDSTAT[I]
+                        ? hVorschub + '<b><span class=S3>' + CUPS.MELDSTAT[I] + '</span></b><br>'
+                        : ''
+                        )
+
                 + hVorschub + html
                 + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (isNaN(pTermin) || pTermin === false)
-                        ? '<br>' + getTurnierkalender()
+                        ? getTurnierkalender()
                         : ''
                         )
                 + '</div></div>');
@@ -2555,8 +2567,8 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 // Ein neuer Tisch / Zu meinem Tisch
 // Zur Statistik
         if (pCup !== 49 && pCup !== 51 && pCup !== 52) {
-            hReturn += (heuteTurnier && pCup !== 53 && pCup !== 55 || pCup < 8
-                    ? (LS.ME.length === 4 & (LS.I !== pCup || LS.AnzSpieler === 0)
+            hReturn += (heuteTurnier && pCup !== 53 && pCup !== 55 && LS.ME.length === 4 && LS.Schreiber || pCup < 8
+                    ? (LS.I !== pCup || LS.AnzSpieler === 0
                             ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             : '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
@@ -2983,8 +2995,10 @@ function whenCUPSloaded() {
         if (LS.VIC[i]) {
             hShow = true;
             if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
-                if ((CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
-                        || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))) {
+                if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i]) && i !== 51 && i !== 52) {
+                    xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+                }
+                if (CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i])) {
                     xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
                 }
             }
@@ -3050,11 +3064,14 @@ function whenCUPSloaded() {
     for (var s = 0; s < SORT.length; s++) {
         i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
         var xText = '';
-        if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
-            if (LS.VIC[i]
-                    && (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i])
-                            || CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i]))) {
-                xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+        if (LS.VIC[i]) {
+            if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
+                if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i]) && i !== 51 && i !== 52) {
+                    xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+                }
+                if (CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i])) {
+                    xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+                }
             }
         }
         html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')"><div style="display:flex; justify-content: space-between"><div>&nbsp;' + getCupName(i) + '</div>' + xText + '</div></a></li>'

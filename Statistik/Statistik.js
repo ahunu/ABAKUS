@@ -144,6 +144,9 @@ function whenSTATloaded(pNewTurnier) {
             iSaison = 1;
         }
         showAktuelles();
+    } else     if (window.location.href.indexOf('?Tourplan') > 0) {
+        showInhalt();
+        showTourplan();
     } else if (pNewTurnier) {
         showSaison(1);
     } else if (!stStat) {

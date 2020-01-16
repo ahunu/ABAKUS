@@ -30,6 +30,12 @@ function showInhalt() {
                         ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
                         : ''
                         )
+
+                                + ((stCup === 16)
+                ? '<li data-icon="false"><a id="bTourplan" onClick="showTourplan();">&nbsp;Tourplan</a></li>'
+                        : ''
+                        )
+
                 + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
                 + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>'
                 + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>';
@@ -48,6 +54,11 @@ function showInhalt() {
                         ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
                         : ''
                         )
+
+
+
+
+
                 + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
                 + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>';
     }

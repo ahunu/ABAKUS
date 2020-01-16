@@ -1652,51 +1652,57 @@ $(document).ready(function () {
 
         STAT = JSON.parse(localStorage.getItem("Abakus.STAT" + ("000" + (LS.LoadCups * -1)).substr(-3)));
 
-        var LS_ME = LS.ME;
-        var LS_MEname = LS.MEname;
-        var LS_Schreibzettel = LS.Schreibzettel;
         var LS_AnzSpalten = LS.AnzSpalten;
         var LS_Ansagen = LS.Ansagen;
         var LS_AktTage = LS.AktTage;
+        var LS_FotoAnimieren = LS.FotoAnimieren;
+        var LS_FotoStyle = LS.FotoStyle;
+        var LS_Freunde = LS.Freunde;
         var LS_GelesenAKT = LS.GelesenAKT;
         var LS_GelesenSTAT = LS.GelesenSTAT;
         var LS_I = LS.LoadCups * -1; // - ist Kennung für neuen Tisch
-        var LS_Padding = LS.Padding;
-        var LS_Freunde = LS.Freunde;
-        var LS_Version = LS.Version;
-        var LS_tempVIPs = LS.tempVIPs;
-        var LS_Timeout = LS.Timeout;
         var LS_LastBtn = LS.LastBtn;
         var LS_LastDate = LS.LastDate;
+        var LS_ME = LS.ME;
+        var LS_MEname = LS.MEname;
+        var LS_Padding = LS.Padding;
+        if (LS.Schreiber) {
+            var mSchreiber = true;
+        }
+        var LS_Schreibzettel = LS.Schreibzettel;
+        var LS_tempVIPs = LS.tempVIPs;
+        var LS_Timeout = LS.Timeout;
+        var LS_Version = LS.Version;
         var LS_VIC = LS.VIC;
         var LS_VIP = LS.VIP;
-        var LS_FotoAnimieren = LS.FotoAnimieren;
-        var LS_FotoStyle = LS.FotoStyle;
 
         LS.LoadCups = 0;
 
         LS = new Object();
-        LS.ME = LS_ME;
-        LS.MEname = LS_MEname;
-        LS.Schreibzettel = LS_Schreibzettel;
         LS.AnzSpalten = LS_AnzSpalten;
         LS.Ansagen = LS_Ansagen;
         LS.AktTage = LS_AktTage;
+        LS.FotoAnimieren = LS_FotoAnimieren;
+        LS.FotoStyle = LS_FotoStyle;
+        LS.Freunde = LS_Freunde;
         LS.GelesenAKT = LS_GelesenAKT;
         LS.GelesenSTAT = LS_GelesenSTAT;
         LS.I = LS_I;
-        LS.ShowCups = LS_I;
-        LS.Padding = LS_Padding;
-        LS.Freunde = LS_Freunde;
-        LS.Version = LS_Version;
-        LS.tempVIPs = LS_tempVIPs;
-        LS.Timeout = LS_Timeout;
         LS.LastBtn = LS_LastBtn;
         LS.LastDate = LS_LastDate;
+        LS.ME = LS_ME;
+        LS.MEname = LS_MEname;
+        LS.Padding = LS_Padding;
+        if (mSchreiber) {
+            LS.Schreiber = true;
+        }
+        LS.Schreibzettel = LS_Schreibzettel;
+        LS.ShowCups = LS_I;
+        LS.tempVIPs = LS_tempVIPs;
+        LS.Timeout = LS_Timeout;
+        LS.Version = LS_Version;
         LS.VIC = LS_VIC;
         LS.VIP = LS_VIP;
-        LS.FotoAnimieren = LS_FotoAnimieren;
-        LS.FotoStyle = LS_FotoStyle;
 
         if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'MT') {
             SPIELERerweitern();

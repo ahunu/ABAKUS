@@ -6,7 +6,7 @@ function loadCUPS(pTitel, pText, pForce) {
     if (pTitel) {
         showEinenMoment(pTitel, pText, pForce);
     } else {
-        showEinenMoment('Cup-&Uuml;bersicht', 'Daten&nbsp;werden&nbsp;geladen.', pForce);
+        showEinenMoment('Cup-Übersicht', 'Daten&nbsp;werden&nbsp;geladen.', pForce);
     }
 
     var cMEANGEMELDET = CUPS.MEANGEMELDET;
@@ -26,27 +26,27 @@ function loadCUPS(pTitel, pText, pForce) {
         CUPS.BEREschreiben = [];
         CUPS.DISPAB = [];
         CUPS.DOPPELTERUNDEN = [];
-        CUPS.NAME = [];
-        CUPS.NAME2LEN = [];
-        CUPS.NEXTTERMIN = [];
         CUPS.MEANGEMELDET = cMEANGEMELDET;
         CUPS.MELDAKT = [];
         CUPS.MELDSTAT = [];
         CUPS.MEZULETZT = cMEZULETZT;
+        CUPS.NAME = [];
+        CUPS.NAME2LEN = [];
+        CUPS.NEXTTERMIN = [];
         CUPS.REGELN = [];
         CUPS.RUNDEN = [];
         CUPS.SPIELEAB = [];
         CUPS.SPIELTAGE = [];
-        CUPS.WOCHEN = [];
         CUPS.SPJERUNDE = [];
         CUPS.SWNAME = [];
         CUPS.TARIF = [];
         CUPS.TARIF20T = [];
         CUPS.TARIF21T = [];
         CUPS.TEXT1 = [];
+        CUPS.TURNIER = [];
         CUPS.TYP = [];
         CUPS.VOLLAB = [];
-        CUPS.TURNIER = [];
+        CUPS.WOCHEN = [];
 
         CUPS.REGELN[0] = 'Wr.';
         CUPS.DOPPELTERUNDEN[0] = false;
@@ -176,14 +176,38 @@ function loadCUPS(pTitel, pText, pForce) {
         SPIELERalpha.sort(Comparator);
         localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
 
-        if (LS.VIP !== hVIP || LS.LoadCups) {
+        var mSchreiber = false;
+        for (var iCup in CUPS.BEREadmin) {
+            if (CUPS.BEREadmin[iCup].indexOf(LS.ME) >= 0) {
+                mSchreiber = true;
+                break;
+            }
+        }
+        if (!mSchreiber) {
+            for (var iCup in CUPS.BEREschreiben) {
+                if (CUPS.BEREschreiben[iCup].indexOf(LS.ME) >= 0) {
+                    mSchreiber = true;
+                    break;
+                }
+            }
+        }
+
+        if (LS.VIP !== hVIP
+                || LS.LoadCups
+                || LS.Schreiber !== mSchreiber) {
             LS.VIP = hVIP;
             LS.LoadCups = 0;
+            if (mSchreiber) {
+                LS.Schreiber = true;
+            } else {
+                delete LS.Schreiber;
+            }
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         }
 
         CUPS.DATE = new Date();
         localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+
         whenCUPSloaded();
     }, function (error) {
         showEineDBWarnung(error, 'loadCUPS()', 'CUPS once');

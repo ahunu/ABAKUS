@@ -554,7 +554,7 @@ function onSubmit(pBuchen) {
             $('input[id=iGespielt]').css("color", "red").focus();
             return false;
         } else {
-            if (LS.gespielt <= 0) {
+            if (LS.gespielt < 0) {
                 $('input[id=iGespielt]').focus();
                 $('#mText').html('Wieviele Spiele wurden gespielt ?');
                 $('#Meldung').show();

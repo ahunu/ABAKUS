@@ -2,7 +2,7 @@
 /* global LS, myJTip, myJBox, CUPS, pTarget */
 
 var myJBox = null;
-var myJTip = null;
+//var myJTip = null;
 
 function showEineNotiz(pText, pColor) {
     if (!pColor) {

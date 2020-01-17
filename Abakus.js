@@ -558,6 +558,18 @@ function TurnierBEENDENendEnd() {
             });
 }
 
+
+function fWeitererTisch(pCup) {
+    'use strict';
+    if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
+        showEinenFehler('Diese App ist veraltet!&nbsp;&nbsp;&nbsp;&nbsp;', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
+        return;
+    }
+    LS.LoadCups = I * -1; // - = neuer Tisch
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    fHref('Abakus/Anmeldung.html?WeitererTisch');
+}
+
 function fEinNeuerTisch(pCup) {
     'use strict';
     if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
@@ -2539,7 +2551,6 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 + TERMINE[pTermin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
                 + '</div>';
     }
-
     var nextTurnier = 0;
     var nextTerminI = false;
     var heuteTurnier = false;
@@ -2549,15 +2560,18 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 if (CUPS.TERMINE[termin].DATUM >= hHeute) {
                     if (CUPS.TERMINE[termin].DATUM === hHeute) {
                         heuteTurnier = true;
+                        if ((CUPS.TERMINE[termin].BEGINN && CUPS.TERMINE[termin].BEGINN > new Date().getHours())
+                                || ((pCup === 54 || pCup === 56) && new Date().getHours() < 16)
+                                || ((pCup !== 54 && pCup !== 56) && new Date().getHours() < 20)) {
+                            nextTurnier = CUPS.TERMINE[termin].DATUM;
+                            nextTerminI = termin;
+                            break;
+                        }
+                    } else {
+                        nextTurnier = CUPS.TERMINE[termin].DATUM;
+                        nextTerminI = termin;
+                        break;
                     }
-                }
-                if (CUPS.TERMINE[termin].DATUM > hHeute
-                        || ((pCup === 54 || pCup === 56) && new Date().getHours() > 14)
-                        || (CUPS.TERMINE[termin].BEGINN && CUPS.TERMINE[termin].BEGINN > new Date().getHours())
-                        || (new Date().getHours() > 18)) {
-                    nextTurnier = CUPS.TERMINE[termin].DATUM;
-                    nextTerminI = termin;
-                    break;
                 }
             }
         }
@@ -2601,9 +2615,6 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 // Ein neuer Tisch / Zu meinem Tisch
 // Zur Statistik
 // Parameter ändern
-        if (pCup === 4) {
-            pCup = 4;
-        }
         var hHeuteTurnier = false;
         if (LS.I === pCup) {
             var hHeuteTurnier = true;
@@ -2617,7 +2628,9 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 }
             }
         }
-
+if (pCup === 2) {
+    pCup = 2;
+}
         if (hHeuteTurnier && CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
             var hStartStopText = '';
             if (!LS.TURADMIN || LS.TURADMIN === LS.ME || pCup < 8) {
@@ -2654,6 +2667,11 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             + '</div>';
+                    if (LS.TURADMIN === LS.ME) {
+                        hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fWeitererTisch(' + pCup + ');">'
+                                + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Weiterer Tisch<div class="S N">Weiterer Tisch, Punkte verschieben</div>'
+                                + '</div>';
+                    }
                 } else {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'

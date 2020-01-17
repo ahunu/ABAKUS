@@ -605,7 +605,7 @@ function fINIT(pCup) {
     if (stCup !== 53) {
         $('#nb53').remove();
     }
-    if (QUERFORMAT() && (CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 || LS.ME === '2037' && I === 56 || LS.ME[0] === '-')) {
+    if (QUERFORMAT() && (CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[stCup].indexOf(LS.ME) >= 0 || LS.ME === '3425' && I === 56 || LS.ME[0] === '-')) {
         ADMIN = true;
         myJTip = new jBox('Tooltip', {
             theme: 'TooltipError',

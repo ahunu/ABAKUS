@@ -702,12 +702,12 @@ function onOK() {
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     localStorage.setItem('Abakus.DS', JSON.stringify(DS));
 
-    if (!CUPS.TURNIER[LS.I] || CUPS.TYP[LS.I] === 'CUP' || CUPS.TYP[LS.I] === 'MT') {
+    if (!CUPS.TURNIER[LS.I] || CUPS.TYP[LS.I] === 'CUP' || CUPS.TYP[LS.I] === 'ET' || CUPS.TYP[LS.I] === 'MT') {
         var NEXT = new Object();
         NEXT.Seite = 'GR';
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
         window.location.replace('Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
-    } else if (STAT.TURRUNDE === LS.AktRunde && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] !== 'Handy')) {
+    } else if (STAT.TURRUNDE === LS.AktRunde && window.location.search !== '?WeitererTisch' && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] !== 'Handy')) {
         var NEXT = new Object();
         NEXT.Seite = 'GR';
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
@@ -973,17 +973,13 @@ function listStammspieler() {
                         }
                     }
                 }
-            } else
-            if (STAT.S[i].NR === LS.NR[1]
+            } else if (STAT.S[i].NR === LS.NR[1]
                     || STAT.S[i].NR === LS.NR[2]
                     || STAT.S[i].NR === LS.NR[3]
                     || STAT.S[i].NR === LS.NR[4]
                     || STAT.S[i].NR === LS.NR[5]
                     || STAT.S[i].NR === LS.NR[6]) {
                 tClass += ' cRot';
-            }
-            if (CUPS.TURNIER[LS.I] && STAT.S[i].SCHREIBER.length >= STAT.TURRUNDE) {
-                tClass += ' ui-btn ui-state-disabled';
             }
 
             var monDiff = (new Date() - new Date(STAT.S[i].TIMESTAMP)) / (30 * 24 * 3600 * 1000);
@@ -994,8 +990,17 @@ function listStammspieler() {
                 tClass += ' le6Mon';
             }
 
-            //  if (CUPS.SWNAME[LS.I] === 'NV') {
-            $("#lvStammSP").append("<li data-icon='false'><a class='STAMMSP " + tClass + "' id='TS" + STAT.S[i].NR + "'>&nbsp&nbsp;" + STAT.S[i].NNAME + " " + STAT.S[i].VNAME + STAT.S[i].STERNE + "</a></li>");
+            if (CUPS.TURNIER[LS.I] && STAT.S[i].SCHREIBER.length >= STAT.TURRUNDE) {
+                if (window.location.search === '?WeitererTisch') {
+                    tClass += ' S';
+                    $("#lvStammSP").append("<li data-icon='false' data-theme=d><a class='STAMMSP " + tClass + "' id='TS" + STAT.S[i].NR + "'>&nbsp&nbsp;" + STAT.S[i].NNAME + " " + STAT.S[i].VNAME + STAT.S[i].STERNE + "</a></li>");
+                } else {
+                    tClass += ' S ui-btn ui-state-disabled';
+                    $("#lvStammSP").append("<li data-icon='false'><a class='STAMMSP " + tClass + "' id='TS" + STAT.S[i].NR + "'>&nbsp&nbsp;" + STAT.S[i].NNAME + " " + STAT.S[i].VNAME + STAT.S[i].STERNE + "</a></li>");
+                }
+            } else {
+                $("#lvStammSP").append("<li data-icon='false'><a class='STAMMSP " + tClass + "' id='TS" + STAT.S[i].NR + "'>&nbsp&nbsp;" + STAT.S[i].NNAME + " " + STAT.S[i].VNAME + STAT.S[i].STERNE + "</a></li>");
+            }
             if (nachTischen && STAT.S[i].SCHREIBER.length >= STAT.TURRUNDE) {
                 tClass = "class='ui-btn ui-state-disabled'";
             }

@@ -139,12 +139,16 @@ function whenSTATloaded(pNewTurnier) {
     }
 
     if (window.location.href.indexOf('?Aktuelles') > 0) {
+        iSaison = 1;
         showInhalt();
-        if (!iSaison) {
-            iSaison = 1;
-        }
         showAktuelles();
-    } else     if (window.location.href.indexOf('?Tourplan') > 0) {
+    } else if (LS.ShowFunktion) {
+        iSaison = 1;
+        showInhalt();
+        showRegeln();
+        delete LS.ShowFunktion;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    } else if (window.location.href.indexOf('?Tourplan') > 0) {
         showInhalt();
         showTourplan();
     } else if (pNewTurnier) {

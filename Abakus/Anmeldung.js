@@ -707,7 +707,7 @@ function onOK() {
         NEXT.Seite = 'GR';
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
         window.location.replace('Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
-    } else if (STAT.TURRUNDE === LS.AktRunde && window.location.search !== '?WeitererTisch' && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] !== 'Handy')) {
+    } else if (STAT.TURRUNDE === LS.AktRunde && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] !== 'Handy')) {
         var NEXT = new Object();
         NEXT.Seite = 'GR';
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
@@ -910,7 +910,6 @@ function onSubmitCode() {
         $('#fCode').hide();
         if (CUPS.TURNIER[LS.I] !== 'Handy') {
             showStatuszeile(true, '<b>Tische für PC-Turniere werden in funcTisch angemeldet.</b>');
-            // pcTurnierAnmelden();
         } else {
             $('#dRumpf').show();
             listStammspieler();
@@ -991,7 +990,7 @@ function listStammspieler() {
             }
 
             if (CUPS.TURNIER[LS.I] && STAT.S[i].SCHREIBER.length >= STAT.TURRUNDE) {
-                if (window.location.search === '?WeitererTisch') {
+                if (LS.TURADMIN === LS.ME ) {
                     tClass += ' S';
                     $("#lvStammSP").append("<li data-icon='false' data-theme=d><a class='STAMMSP " + tClass + "' id='TS" + STAT.S[i].NR + "'>&nbsp&nbsp;" + STAT.S[i].NNAME + " " + STAT.S[i].VNAME + STAT.S[i].STERNE + "</a></li>");
                 } else {
@@ -1133,68 +1132,6 @@ function listStammspieler() {
         }
         showEinenTip('#SP1', 'Wo sitzt ' + STAT.S[spDrag].VNAME + STAT.S[spDrag].STERNE + '?');
     });
-}
-
-function pcTurnierAnmelden() {
-    'use strict';
-    var iTisch = 0;
-    var hRUNDE = STAT._AKTTURNIER._RUNDE;
-
-    var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
-
-    for (var spieler in STAT._AKTTURNIER) { // Tisch feststellen
-        if (spieler === LS.ME) {
-            if (STAT._AKTTURNIER[spieler][hRUNDE] !== '-') {
-                if (hRUNDE < 3) {
-                    hRUNDE++;
-                }
-                if (STAT._AKTTURNIER[spieler][hRUNDE] !== '-') {
-                    showStatuszeile(false, 'Du hast Runde ' + hRUNDE + ' bereits gespielt.');
-                    return;
-                }
-            }
-            iTisch = STAT._AKTTURNIER[spieler][hRUNDE + 6];
-            blert(spieler, SPIELERnr[spieler][1], SPIELERnr[spieler][0], SPIELERnr[spieler][2], '');
-            break;
-        }
-    }
-
-    if (iTisch === 0 || iTisch === '-') {
-        showStatuszeile(false, 'Du bist nicht angemeldet!<br>&nbsp;Informiere den Veranstalter.');
-        return;
-    }
-
-    for (var spieler in STAT._AKTTURNIER) { // Mitspieler anmelden
-        if (spieler[0] !== '_') {
-            if (spieler !== LS.ME) {
-                if (STAT._AKTTURNIER[spieler][hRUNDE + 6] === iTisch) {
-                    if (STAT._AKTTURNIER[spieler][hRUNDE] !== '-') {
-                        showStatuszeile(false, spieler + ' hat Runde ' + hRUNDE + ' bereits gespielt.');
-                        return;
-                    }
-                    blert(spieler, SPIELERnr[spieler][1], SPIELERnr[spieler][0], SPIELERnr[spieler][2], '');
-                }
-            }
-        }
-    }
-
-    showStatuszeile(true, 'Runde: <b>' + hRUNDE + '</b>&nbsp;&nbsp;&nbsp;Tisch: <b>' + iTisch + '</b>');
-
-    if (LS.NR[6]) {
-        LS.AnzSpieler = 6;
-        LS.JeSeite = '';
-    } else if (LS.NR[5]) {
-        LS.AnzSpieler = 5;
-        LS.JeSeite = '';
-    } else {
-        LS.AnzSpieler = 4;
-        LS.JeSeite = '1';
-    }
-    setTisch(LS.AnzSpieler);
-
-    LS.Vorhand = (Date.now() % (LS.AnzSpieler) + 1);
-
-    onOK();
 }
 
 function getINT(pStr, pBlankOK) {
@@ -1785,7 +1722,6 @@ $(document).ready(function () {
                 if (CUPS.TURNIER[LS.I] !== 'Handy') {
                     $('#dRumpf').hide();
                     showStatuszeile(true, '<b>Tische für PC-Turniere werden in funcTisch angemeldet.</b>');
-                    // pcTurnierAnmelden();
                 } else {
                     listStammspieler();
                     $('#nbSelAll').show();

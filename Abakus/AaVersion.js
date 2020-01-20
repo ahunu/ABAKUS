@@ -1,13 +1,13 @@
 
 function getVersion() {
-    return 1019;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1020;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 1, 17);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 1, 20);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
 // Mit wem würdest du am liebsten einmal zu abend essen?

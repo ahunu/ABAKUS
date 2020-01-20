@@ -244,7 +244,7 @@ function loadSTATold(I, pCallback) {
                 } else if (dataItem.key === 'TURDATEN') {
                 } else if (dataItem.key === 'TURSPIELER') {
                 } else if (dataItem.key === 'TURGESPIELT') {
-                } else if (dataItem.key === 'MAXSPIELE') {
+//                } else if (dataItem.key === 'MAXSPIELE') {
                 } else if (dataItem.key === 'S') { // falls unsauber kopiert
                     STAT.S = dataItem.val();
                 } else {
@@ -386,9 +386,11 @@ function loadSTATold(I, pCallback) {
                         akku0000rec(i, I, iSTAT);
                     }
 
+//console.log(STAT.S[iSTAT].VNAME, STAT.S[iSTAT].NNAME,STAT.S[iSTAT].SPIELE);
+
                     for (var iii = 0; iii < STAT.S[iSTAT].SPIELE.length; iii++) {
                         if (STAT.S[iSTAT].SPIELE[iii]) {
-                            if (STAT.MAXSPIELE[iii] < STAT.S[iSTAT].SPIELE[iii] || !STAT.MAXSPIELE[iii]) {
+                            if (!STAT.MAXSPIELE[iii] || STAT.MAXSPIELE[iii] < STAT.S[iSTAT].SPIELE[iii] || !STAT.MAXSPIELE[iii]) {
                                 STAT.MAXSPIELE[iii] = STAT.S[iSTAT].SPIELE[iii];
                             }
                         }

@@ -549,6 +549,12 @@ function onSubmit(pBuchen) {
     }
 
     if (xManu) {
+        if ($('#iGespielt').val() === '') {
+            $('#iGespielt').css("color", "red").focus();
+            $('#mText').html('Wieviele Spiele wurden gespielt?<br>&nbsp;&nbsp;0 = Korrektur (Punkte verschieben)');
+            $('#Meldung').show();
+            return false;
+        }
         LS.gespielt = getINT($('#iGespielt').val());
         if (LS.gespielt === false) {
             $('input[id=iGespielt]').css("color", "red").focus();

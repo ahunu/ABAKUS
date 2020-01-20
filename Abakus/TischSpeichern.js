@@ -12,7 +12,6 @@ var FB = undefined;
 var aANZSPIELE = [[], [], [], [], [], [], []];
 var aANZGEWONNEN = [[], [], [], [], [], [], []];
 var aPKTGEWONNEN = [[], [], [], [], [], [], []];
-var hMAXSPIELE = 0;
 
 var stFilter = '';
 
@@ -202,9 +201,6 @@ function SpeichernOT() {
     log('Speichern 3', 0);
     for (var ii = 0; ii <= 6; ii++) {
         Summieren(ii);
-        if (hMAXSPIELE < LS.Spiele[ii]) {
-            hMAXSPIELE = LS.Spiele[ii];
-        }
     }
 
     log('Speichern 4 - FB.STAT laden:', 0);
@@ -214,14 +210,15 @@ function SpeichernOT() {
 
 function whenSTATloaded() {
     'use strict';
-    if (LS.gespielt !== 0 || LS.AnzGespeichert !== 0) {
-        log('Speichern 5 - FB.STAT geladen:', 0);
-        $('#emText').append('<br><br>');
-        wrtSPIELER(1);
-    } else {
+//  if (LS.gespielt !== 0 || LS.AnzGespeichert !== 0) {
+    if (LS.AnzGespeichert === LS.AnzSpieler) {
         setTimeout(function () {
             window.location.replace('Statistik.html');
         });
+    } else {
+        log('Speichern 5 - FB.STAT geladen:', 0);
+        $('#emText').append('<br><br>');
+        wrtSPIELER(1);
     }
 }
 
@@ -251,7 +248,7 @@ function wrtSPIELER(I) {
         wrtSPIELER(I + 1);
         return false;
     }
-    if (LS.Spiele[I] === 0) {
+    if (LS.Spiele[I] === 0 && DS.Punkte[I][0] === 0) {
         $('#emText').append(LS.VName[I] + ' ' + LS.NName[I].substring(0, 1) + LS.Sterne[I] + ' hat nicht gespielt.' + '<br>');
         LS.AnzGespeichert = I;
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
@@ -580,10 +577,12 @@ $(document).ready(function () {
     for (var i = 1; i <= 6; i++) {
         if (LS.Spieler[i] === 'ok') {
             html = html + '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TR>gespeichert&nbsp;</td></tr>';
-        } else if (LS.Spieler[i]) {
-            html = html + '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
-        } else if (LS.Spiele[i] !== 0) {
-            html = html + '<tr><td class="cRot B">???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+        } else if (LS.Spiele[i] !== 0 || DS.Punkte[i][0] !== 0) {
+            if (LS.Spieler[i]) {
+                html = html + '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+            } else {
+                html = html + '<tr><td class="cRot B">???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+            }
         }
     }
 
@@ -619,10 +618,12 @@ $(document).ready(function () {
                 + "</th>"
                 + "</tr>";
         for (var i = 1; i <= 6; i++) {
-            if (LS.Spieler[i]) {
-                hLog += '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TC>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
-            } else if (LS.Spiele[i] !== 0) {
-                hLog += '<tr><td class="cRot B">&nbsp;???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+            if (LS.Spiele[i] !== 0 || DS.Punkte[i][0] !== 0) {
+                if (LS.Spieler[i]) {
+                    hLog += '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TC>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+                } else {
+                    hLog += '<tr><td class="cRot B">&nbsp;???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+                }
             }
         }
         hLog += "<tbody>"

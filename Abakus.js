@@ -558,18 +558,6 @@ function TurnierBEENDENendEnd() {
             });
 }
 
-
-function fWeitererTisch(pCup) {
-    'use strict';
-    if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
-        showEinenFehler('Diese App ist veraltet!&nbsp;&nbsp;&nbsp;&nbsp;', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
-        return;
-    }
-    LS.LoadCups = I * -1; // - = neuer Tisch
-    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-    fHref('Abakus/Anmeldung.html?WeitererTisch');
-}
-
 function fEinNeuerTisch(pCup) {
     'use strict';
     if (navigator.userAgent.match(/Android/i) && CUPS.ABVERSION > getVersion()) {
@@ -2101,6 +2089,11 @@ function getMeldSTAT(pCup) {
 function showCup(i, pBtn, pTermin) {
     'use strict';
 
+if (LS.ShowFunktion) {
+    hrefStatistik(i);
+}
+
+
     var newBtn = '#' + pBtn + i;
     if (!QUERFORMAT()) {
         if (LS.LastBtn) {
@@ -2667,11 +2660,6 @@ if (pCup === 2) {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             + '</div>';
-                    if (LS.TURADMIN === LS.ME) {
-                        hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fWeitererTisch(' + pCup + ');">'
-                                + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Weiterer Tisch<div class="S N">Weiterer Tisch, Punkte verschieben</div>'
-                                + '</div>';
-                    }
                 } else {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'

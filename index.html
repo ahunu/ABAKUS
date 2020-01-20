@@ -19,6 +19,7 @@
 //                    navigator.serviceWorker.register('/sw.js');
 //                });
 //            }
+console.log('XX: ', window.location.search);
             if (window.location.search) { // Quickstart
                 LS = new Object();
                 LS = JSON.parse(localStorage.getItem('Abakus.LS'));
@@ -32,13 +33,13 @@
                             newCup = 51;
                         } else if (hCupName === 'RAIFFEISENCUP') {
                             newCup = 52;
-                        } else if (hCupName === 'SAUWALDCUP') {
+                        } else if (hCupName === 'SAUWALDCUP' || hCupName === 'SAUWALDCUP/REGELN') {
                             newCup = 53;
-                        } else if (hCupName === 'ST.TAROCKCUP') {
+                        } else if (hCupName === 'ST.TAROCKCUP' || hCupName === 'ST.TAROCKCUP/REGELN') {
                             newCup = 54;
-                        } else if (hCupName === 'TIROLCUP') {
+                        } else if (hCupName === 'TIROLCUP' || hCupName === 'TIROLCUP/REGELN') {
                             newCup = 55;
-                        } else if (hCupName === 'WR.TAROCKCUP') {
+                        } else if (hCupName === 'WR.TAROCKCUP' || hCupName === 'WR.TAROCKCUP/REGELN') {
                             newCup = 56;
                         } else if (hCupName === 'WR.MARATHON') {
                             newCup = 80;
@@ -72,6 +73,9 @@
                             }
                             LS.ShowCups = newCup;
                             LS.Quickstart = true;
+                            if (hCupName.indexOf('/REGELN') > 0) {
+                                LS.ShowFunktion = '?Reglen';
+                            }
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                             window.location.replace(window.location.origin + window.location.pathname);
                         } else {

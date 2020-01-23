@@ -2089,9 +2089,9 @@ function getMeldSTAT(pCup) {
 function showCup(i, pBtn, pTermin) {
     'use strict';
 
-if (LS.ShowFunktion) {
-    hrefStatistik(i);
-}
+    if (LS.ShowFunktion) {
+        hrefStatistik(i);
+    }
 
 
     var newBtn = '#' + pBtn + i;
@@ -2621,9 +2621,9 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 }
             }
         }
-if (pCup === 2) {
-    pCup = 2;
-}
+        if (pCup === 2) {
+            pCup = 2;
+        }
         if (hHeuteTurnier && CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
             var hStartStopText = '';
             if (!LS.TURADMIN || LS.TURADMIN === LS.ME || pCup < 8) {
@@ -2649,6 +2649,18 @@ if (pCup === 2) {
             hReturn += '<div class="ui-btn M2 TL' + hStartStopClass + '" style="margin:10px 6px 0 6px" onClick="fStartStop(' + pCup + ', true);">'
                     + '<img src=\'Icons/Turnier.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">' + hStartStopText
                     + '</div>';
+        }
+
+        if (LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') {
+            if (pCup === 9 && !hHeuteTurnier) {
+                var meld = hHeute + ' ? :';
+                for (var termin in TERMINE) {  //  llll llll
+                    if (TERMINE[termin].CUP === pCup) {
+                        meld += JSON.stringify(TERMINE[termin]);
+                    }
+                }
+                writeLOG(meld);
+            }
         }
 
         if (LS.ME !== 'NOBODY'
@@ -2683,7 +2695,6 @@ if (pCup === 2) {
                     + '<img src=\'Icons/Optionen.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Parameter ändern<div class="S N">Beschreibung und Berechtigungen ändern</div>'
                     + '</div>';
         }
-
 
     } else { //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         var iWochentag = (new Date()).getDay();

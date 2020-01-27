@@ -42,8 +42,7 @@
                     <ul>
                         <li class='nb6'>
                             <a data-role="button" class="K" data-theme="d" id='nbMeinTisch' onclick="$('body').addClass('ui-disabled');window.history.back();">
-                                <img src="../Icons/MeinTisch.png" style="position: absolute; top: 1px; left: 3.3vw;margin:0 0 0 -11px; height:9vh;"/>
-                                <i class="iconXL zmdi-minus cInaktiv"></i></a>
+                                <img id="iMeinTisch" src="../Icons/MeinTisch.png" style="display: block; margin: 0 auto; height:1px"/></a>
                         </li>
                         <li class='nb6' style="text-align: center;">
                             <a data-role="button" class="K" data-theme="d" id='nbTarife'  onclick="showCanvas('Tarife');" style="text-align: center;">
@@ -63,8 +62,7 @@
                         </li>
                         <li class='nb6'>
                             <a data-role="button" class="K" data-theme="d" id='nbKorr'    onclick="$('body').addClass('ui-disabled');window.location.replace('Edit6.html?' + aktPos);">
-                                <img style="position: absolute; top: 5px; left: 4vw;margin:0 0 0 -8px; height:8vh;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVGhD7Zo7TsQwFEWnAxbABvj/VgQ1BRIlBVTUNBQI9kELlLRAQ8Gv44/YAgjuLZ4UWXaIn58dI+VIpxkJZ46wPU5mRgMDA1UxBtfhMbyA53AfLsB/wzy8gz8ev+EOrJ4l+AF9EU33YLV0jRCrjImNEKuK0UaIVcSkRoi9xlhFiL3EWEeIRWNyRYhFYnJHiFljSkWI29AcHjtKRtAvuAzNmIJP0Hex3B5BE6bhI/RdpIQ8OSfTdwS9h0nMQt90+vS8ltMTqGYOPkN30Gs4CXcbr+V2A6rg7vQC3QElQigRcwvHYTS8DX2F7oBuhJAz5h1yekfDiDfoDhiKEHLE8H0swmj4R5oIwTKG70P1gIILm/9Gd8CuEYJFDKe1KmICcp92B4yNEFJiuMFwo1GxCd0BtRGCJoZbPWeGmjPYHPAGpkQIMTH80FXtTk0eYHPQVWhFlxgef3gMSuYSNgc+hJa0xZhFEB6R3QtsQSs4TX3bOqcTbw3MWIF8FuteyCKGEdw43LG51at3pzZ4O+lejKbEhCK4O2V9Gs8bffeiVBMTiuCaMJ1OISxiQhFcE2YLuwspMW0RM7A4mpi2NZH8YZdCTEwogmenpGOHFV1iQhE8xWbZYrWEYg7gGvR9T6i+n8hNKMan+s6uFF1i+IlddYTAr5R9xxnKpx1VrYm/4ANlHjSvINfHKeRzJ/44YGBgoApGo1+f4/OBDCGbMAAAAABJRU5ErkJggg=="/>
-                                <i class="iconXL zmdi-minus cInaktiv"></i></a>
+                                <i class="iconXL zmdi-smartphone zmdi-hc-rotate-45"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -313,6 +311,8 @@
                                 <a id="bEnter" data-theme="e" class="ui-disabled XXL">?</a>
                             </li>
                         </ul>
+                    </div>
+                    <div id="tTrischaken" class="M N" style="margin:5vw">
                     </div>
                     <br>
                     <br>

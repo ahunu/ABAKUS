@@ -1650,7 +1650,6 @@ function initSeite1() {
 
     var sync = new Date(CUPS.DATE);
     var heute = new Date();
-//    var nTage = parseInt((heute - sync) / 86400000);
     var nStunden = (heute - sync) / 3600000;
     if (LS.Version !== getVersion()) {
         if (LS.LastBtn && !$(LS.LastBtn).length) {
@@ -1675,7 +1674,7 @@ function initSeite1() {
             writeLOG('ABAKUS: Update auf Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ').');
         }
         initCUPSdelAllSTAT();
-    } else if (LS.LoadCups > 0 || nStunden > 8 || isNaN(nStunden)) {
+    } else if (LS.LoadCups > 0 || nStunden > 6 || isNaN(nStunden)) {
         loadCUPS(false, false, true);
     } else {
         whenCUPSloaded();
@@ -2391,6 +2390,7 @@ function toggleTechDetails() {
                         : '')
                 + 'navigator.userAgent: ' + navigator.userAgent + '<br>'
                 + 'navigator.platform: ' + navigator.platform + '<br>'
+    + (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ? 'iOS navigation.type: ' + window.performance.navigation.type + '<br>' : '')
                 + 'pixelDepth: ' + screen.pixelDepth + '<br>'
                 + '<span id="p451">portrait, min-width: 451px<br></span>'
                 + '<span id="p361">portrait: 361-450px<br></span>'
@@ -2610,7 +2610,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 // Parameter ändern
         var hHeuteTurnier = false;
         if (LS.I === pCup) {
-            var hHeuteTurnier = true;
+            hHeuteTurnier = true;
         } else {
             if (LS.ME.length === 4 && pCup !== 53 && pCup !== 55) {
                 for (var termin in TERMINE) {  //  llll llll
@@ -2621,8 +2621,8 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 }
             }
         }
-        if (pCup === 2) {
-            pCup = 2;
+        if (pCup === 9) {
+            pCup = 9;
         }
         if (hHeuteTurnier && CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
             var hStartStopText = '';
@@ -2654,7 +2654,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
         if (LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') {
             if (pCup === 9 && !hHeuteTurnier) {
                 var meld = hHeute + ' ? :';
-                for (var termin in TERMINE) {  //  llll llll
+                for (var termin in TERMINE) {
                     if (TERMINE[termin].CUP === pCup) {
                         meld += JSON.stringify(TERMINE[termin]);
                     }
@@ -2676,6 +2676,20 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
                             + '</div>';
+                }
+            } else {
+                if (LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') {
+                    if (pCup === 9) {
+                        var meld = 'Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
+                        writeLOG(meld);
+                    }
+                }
+            }
+        } else {
+            if (LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') {
+                if (pCup === 9) {
+                    var meld = 'Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
+                    writeLOG(meld);
                 }
             }
         }
@@ -3372,21 +3386,26 @@ $(document).ready(function () {
         });
     };
 
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        window.onpageshow = function (event) {
-            if (window.performance.navigation.type === 2) {
-                LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-                CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-                if (LS.ME === 'NOBODY') {
-                    $('#tSpieler').html('Noch nicht registriert.');
-                } else {
-                    $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
-                }
-                initSeite1();
-                $('body').removeClass('ui-disabled');
-            }
-        };
-    }
-
 }
 );
+
+if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+    window.onpageshow = function (event) {
+        if (window.performance.navigation.type === 2) {
+            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+            CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+            if (LS.ME === 'NOBODY') {
+                $('#tSpieler').html('Noch nicht registriert.');
+            } else {
+                $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
+            }
+            var hEvent = parseInt(Math.random() * 1000);
+//            writeLOG(' Event: ' + hEvent + ',  Type: ' + window.performance.navigation.type);
+            initSeite1();
+//            writeLOG(' Event: ' + hEvent + ',  Code: ' + window.performance.navigation.type);
+            $('body').removeClass('ui-disabled');
+        } else {
+//            writeLOG(' Exeption: ' + window.performance.navigation.type);
+        }
+    };
+}

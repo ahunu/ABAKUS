@@ -193,7 +193,10 @@ function initGames() {
 
 function setGame(pName, pGame, pPlus) {
     if (pGame === 13) { // Trischaken
-        showEinenTip('#SPIELER', 'Wer hat das<br>Trischaken<br>"gewonnen"?');
+        pName += ' *';
+        $('#tTrischaken').html('*\) Bei Trischaken muß anstatt<br>dem Spieler der Verlierer<br>ausgewählt werden.');
+    } else {
+        $('#tTrischaken').html('');
     }
     if (pGame) { // nicht bei Kontra
         aktSpiel = parseInt(pGame);
@@ -414,9 +417,9 @@ function showCanvas(pShow) {
         }
         printCanvas(null, null, 'Tarife');
         printCanvas(null, null, 'Punkte (nicht) ansagen');
-        printCanvas('zmdi-settings', null, 'Einstellungen,', 'die Vorhand ' + eval('"\\u00E4"') + 'ndern, etc.');
-        printCanvas('zmdi-help', null, 'diese Zeichenerkl' + eval('"\\u00E4"') + 'rung');
-        printCanvas('1111', null, 'ein Spiel korrigieren,', 'das letzte Spiel l' + eval('"\\u00F6"') + 'schen');
+        printCanvas('zmdi-settings', null, 'Einstellungen,', 'die Vorhand ändern, etc.');
+        printCanvas('zmdi-help', null, 'diese Zeichenerklärung');
+        printCanvas('1111', null, 'ein Spiel korrigieren,', 'das letzte Spiel löschen');
 
 
         $('#tHelp').append('<tr><td></td><th colspan="3" class="S2">&nbsp;&nbsp;Symbole Tischmitte:</th></tr>');
@@ -457,8 +460,7 @@ function printCanvas(pUnicode, pUnicode2, pText, pText2) {
         } else if (pUnicode === 'f366') { // Mein Tisch
             html = '<td class="TC"><img src="../Icons/MeinTisch.png" alt="Mein Tisch" style="height: 30px; width: 30px;"></td>';
         } else if (pUnicode === '1111') { // Radiergummi
-            html = '<td class="TC"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVGhD7Zo7TsQwFEWnAxbABvj/VgQ1BRIlBVTUNBQI9kELlLRAQ8Gv44/YAgjuLZ4UWXaIn58dI+VIpxkJZ46wPU5mRgMDA1UxBtfhMbyA53AfLsB/wzy8gz8ev+EOrJ4l+AF9EU33YLV0jRCrjImNEKuK0UaIVcSkRoi9xlhFiL3EWEeIRWNyRYhFYnJHiFljSkWI29AcHjtKRtAvuAzNmIJP0Hex3B5BE6bhI/RdpIQ8OSfTdwS9h0nMQt90+vS8ltMTqGYOPkN30Gs4CXcbr+V2A6rg7vQC3QElQigRcwvHYTS8DX2F7oBuhJAz5h1yekfDiDfoDhiKEHLE8H0swmj4R5oIwTKG70P1gIILm/9Gd8CuEYJFDKe1KmICcp92B4yNEFJiuMFwo1GxCd0BtRGCJoZbPWeGmjPYHPAGpkQIMTH80FXtTk0eYHPQVWhFlxgef3gMSuYSNgc+hJa0xZhFEB6R3QtsQSs4TX3bOqcTbw3MWIF8FuteyCKGEdw43LG51at3pzZ4O+lejKbEhCK4O2V9Gs8bffeiVBMTiuCaMJ1OISxiQhFcE2YLuwspMW0RM7A4mpi2NZH8YZdCTEwogmenpGOHFV1iQhE8xWbZYrWEYg7gGvR9T6i+n8hNKMan+s6uFF1i+IlddYTAr5R9xxnKpx1VrYm/4ANlHjSvINfHKeRzJ/44YGBgoApGo1+f4/OBDCGbMAAAAABJRU5ErkJggg=="'
-                    + ' alt="Radiergummi" style="height: 30px; width: 30px;"></td>';
+            html = '<td class="TC"><i class="i zmdi-smartphone zmdi-hc-rotate-45"></i></td>';
         } else if (pUnicode === '2447') { // Geber
             html = '<td class="TC">&#x' + pUnicode + ';</td>';
         } else if (pUnicode === 'Gewinn') { // Gewinn des Spielers
@@ -601,11 +603,6 @@ function setFont() {
     'use strict';
     $('#nbMeinTisch,#nbTarife,#nbAudio,#nbOptions,#nbHelp,#nbKorr').removeClass('ui-corner-all');
     $('#nbLI,#nbED,#nbPS,#nbFS,#nbNS,#nbGR').removeClass('ui-corner-all');
-    if (QUERFORMAT()) {
-        $('#iMeinTisch').attr('style', 'position: absolute; top: 3px; left: ' + ($(window).innerWidth() / 28) + 'px;margin:0 0 0 -8px;').height($(window).innerWidth() / 24);
-    } else {
-        $('#iMeinTisch').attr('style', 'position: absolute; top: 3px; left: ' + ($(window).innerWidth() / 28) + 'px;margin:0 0 0 -8px;').height($(window).innerWidth() / 8);
-    }
     if (LS.ME === '3312') { // Christian Faltl
         $('.ui-btn').attr('style', 'padding: 0 0 !important;');
     }
@@ -1540,12 +1537,8 @@ function Spieler_Init() {
 window.onbeforeunload = function (event) {
     $('body').addClass('ui-disabled');
 };
+
 window.onload = function () {
-    fINIT();
-};
-
-function fINIT() {
-
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
             || navigator.userAgent.match(/iPhone/i)
@@ -1876,7 +1869,6 @@ function fINIT() {
         Summieren();
     });
 
-
     if (window.location.href.toUpperCase().indexOf('FIREBASEAPP.COM') < 0) {
         $(":mobile-pagecontainer").pagecontainer("load", "Edit" + LS.AnzSpieler + LS.JeSeite + ".html");
     }
@@ -1903,7 +1895,6 @@ function fINIT() {
     });
 }
 
-
 if (/iPad|iPhone/.test(navigator.userAgent)) {
     window.onpageshow = function (event) {
         if (window.performance.navigation.type === 2) {
@@ -1915,7 +1906,6 @@ if (/iPad|iPhone/.test(navigator.userAgent)) {
             } else {
                 $('body').removeClass('ui-disabled');
                 $('#nbOptions').removeClass('ui-btn-active');
-//                fINIT();
                 NEXT = JSON.parse(localStorage.getItem('Abakus.NEXT'));
                 showSeite(NEXT.Seite);
             }

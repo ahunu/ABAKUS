@@ -206,6 +206,7 @@ function loadCUPS(pTitel, pText, pForce) {
         }
 
         CUPS.DATE = new Date();
+
         localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
 
         whenCUPSloaded();
@@ -214,4 +215,3 @@ function loadCUPS(pTitel, pText, pForce) {
         return false;
     });
 }
-

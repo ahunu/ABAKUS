@@ -797,6 +797,7 @@ function showBody() {
         $('#DE' + LS.Vorhand).addClass("bgVorhand");
         $('#DE' + LS.INA1).val('').addClass("bgInaktiv").addClass('ui-disabled');
         $('#DE' + LS.INA2).val('').addClass("bgInaktiv").addClass('ui-disabled');
+        $('#nbED').addClass('ui-btn-active');
     } else {
         xKorr = true;
         setFont();
@@ -903,7 +904,6 @@ function fINIT() {
 
     for (i = 1; i <= LS.AnzSpieler; i++) {
         $('#tName' + i).text(LS.Spieler[i]);
-        $('#tSumme' + i).text(DS.Punkte[i][0]);
     }
 
     $('#OK').text('OK').css("font-size", "36px");
@@ -913,8 +913,6 @@ function fINIT() {
         xManu = true;
         $("#pManu").show();
         $("#NB,#dOptionen,#dSpiele").hide();
-        $("#tSumme1,#tSumme2,#tSumme3,#tSumme4,#tSumme5,#tSumme6").hide();
-        $("#tPunkte1,#tPunkte2,#tPunkte3,#tPunkte4,#tPunkte5,#tPunkte6").hide();
         if (LS.SpieleJeRunde) {
             $("#iGespielt").val(LS.SpieleJeRunde);
         }

@@ -30,7 +30,7 @@ function pruefenNS() {
     }
 
     if (aktSpiel === iTrischaker) {
-        if (LS.Regeln === 'Ti.' && pI) {
+        if (pI) {
             XSBuchen(pGame, aktPunkte, sI, pI, LS.Vorhand);
         } else {
             XSBuchen(pGame, aktPunkte, sI, 0, LS.Vorhand);

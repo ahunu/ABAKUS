@@ -3,6 +3,49 @@
  *  License - http://zavoloklom.github.io/material-design-iconic-font/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
+.zmdi-hc-stack {
+    position: relative;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.4em;
+    vertical-align: middle;
+}
+.zmdi-innericon {
+    position: absolute;
+    left: 0;
+    top: 0.24em;
+    width: 100%;
+    text-align: center;
+}
+.zmdi-hc-inverse {
+    color: #ffffff;
+}
+.zmdi-bg-circle:before {
+    content: '\f26c';
+    font-size: 1.4em;
+}
+.zmdi-bg-fullcircle:before {
+    content: '\f26d';
+    font-size: 1.4em;
+}
+.zmdi-pm-plus:before {
+    content: '\f278';
+    font-size: 0.8em;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.zmdi-pm-minus:before {
+    content: '\f273';
+    font-size: 0.8em;
+    position: absolute;
+    left: 0;
+    top: 0.56em;
+    width: 100%;
+    text-align: center;
+}
 li {
     padding: 0; margin: 0
 }
@@ -303,20 +346,20 @@ iPad 5. Gen.: 1024 x 748
     input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: 1.85vw !important;}
 
     .ui-btn {padding: .1em !important;}
-/*
-    .XXL {font-size: 4.35vw !important;}   Abakus Balken 
-    .XL {font-size: 2.22vw !important;}    Zur Statistik, Zur Anmeldung, Nächstes Turnier 
-    .L3 {font-size: 2.1vw !important;}
-    .L2 {font-size: 1.98vw !important;}
-    .L  {font-size: 1.85vw !important;}
-    .M3 {font-size: 1.74vw !important;}
-    .M2, .Sbtn {font-size: 1.74vw !important;}
-    .M  {font-size: 1.64vw !important;}
-    .S3 {font-size: 1.61vw !important;}
-    .S2 {font-size: 1.56vw !important;}
-    .S  {font-size: 1.47vw !important;}
-    .XS {font-size: 1.39vw !important;}
-    .XXS{font-size: 1.31vw !important;}*/
+    /*
+        .XXL {font-size: 4.35vw !important;}   Abakus Balken 
+        .XL {font-size: 2.22vw !important;}    Zur Statistik, Zur Anmeldung, Nächstes Turnier 
+        .L3 {font-size: 2.1vw !important;}
+        .L2 {font-size: 1.98vw !important;}
+        .L  {font-size: 1.85vw !important;}
+        .M3 {font-size: 1.74vw !important;}
+        .M2, .Sbtn {font-size: 1.74vw !important;}
+        .M  {font-size: 1.64vw !important;}
+        .S3 {font-size: 1.61vw !important;}
+        .S2 {font-size: 1.56vw !important;}
+        .S  {font-size: 1.47vw !important;}
+        .XS {font-size: 1.39vw !important;}
+        .XXS{font-size: 1.31vw !important;}*/
 
     .XXL {font-size: 4.35vw !important;}  /* Abakus Balken */
     .XL {font-size: 2.22vw !important;}   /* Zur Statistik, Zur Anmeldung, Nächstes Turnier */
@@ -544,6 +587,18 @@ iPad 5. Gen.: 1024 x 748
 .zmdi-tab-unselected:before {
     content: '\f1d7';
 }
+.zmdi-close:before {
+    content: '\f136';
+}
+.zmdi-plus-1:before {
+    content: '\f3c5';
+}
+.zmdi-exposure-alt:before {
+    content: '\f37f';
+}
+.zmdi-neg-1:before {
+    content: '\f3c3';
+}
 .BG {
     background-color: #888;
     background-image: linear-gradient(transparent 0%, #ddd 100%),
@@ -595,7 +650,7 @@ iPad 5. Gen.: 1024 x 748
     content: '\f188'; 
 }
 .zmdi-refresh-sync:before {
-    content: '\f1b8';
+    content: '\2571';
 }
 .zmdi-delete:before {
     content: '\f154';

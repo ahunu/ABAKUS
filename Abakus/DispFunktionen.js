@@ -62,7 +62,7 @@ function showGR() {
             window.speechSynthesis.speak(hAnsage);
         }
     }
-    $('#iMeinTisch').css('height', $('#iTarif').height());
+    $('#iMeinTisch,#iEraser').css('height', $('#iTarif').height());
 }
 
 function setFontStyle(pPunkte, pArt, pTH, x, y, pI) {

@@ -194,7 +194,12 @@ function initGames() {
 function setGame(pName, pGame, pPlus) {
     if (pGame === 13) { // Trischaken
         pName += ' *';
-        $('#tTrischaken').html('*\) Bei Trischaken muß anstatt<br>dem Spieler der Verlierer<br>ausgewählt werden.');
+        if (LS.Regeln === 'Ti.' && pI) {
+            $('#tTrischaken').html('*\) Beim Trischaken müssen anstatt<br>des Spielers die Verlierer<br>ausgewählt werden.');
+        } else {
+            $('#tTrischaken').html('*\) Beim Trischaken muss anstatt<br>des Spielers der Verlierer<br>ausgewählt werden.<br>'
+                    + 'Gibt es zwei punktegleiche Verlierer,<br>müssen beide markiert werden.');
+        }
     } else {
         $('#tTrischaken').html('');
     }
@@ -407,7 +412,7 @@ function showCanvas(pShow) {
         $("#tHelp tr").remove();
 
 
-        $('#tHelp').append('<tr><td></td><th colspan="3" class="S2">&nbsp;&nbsp;Symbole unten:</th></tr>');
+        $('#tHelp').append('<tr><td></td><th colspan="3" class="S2">&nbsp;&nbsp;Symbole oben:</th></tr>');
         if (LS.AnzSpieler === 4) {
             printCanvas('f366', null, 'zurück, Tisch speichern,', '5. Spieler anmelden, etc.');
         } else if (LS.AnzSpieler === 5) {
@@ -419,7 +424,7 @@ function showCanvas(pShow) {
         printCanvas(null, null, 'Punkte (nicht) ansagen');
         printCanvas('zmdi-settings', null, 'Einstellungen,', 'die Vorhand ändern, etc.');
         printCanvas('zmdi-help', null, 'diese Zeichenerklärung');
-        printCanvas('1111', null, 'ein Spiel korrigieren,', 'das letzte Spiel löschen');
+        printCanvas('iEraser', null, 'ein Spiel korrigieren,', 'das letzte Spiel löschen');
 
 
         $('#tHelp').append('<tr><td></td><th colspan="3" class="S2">&nbsp;&nbsp;Symbole Tischmitte:</th></tr>');
@@ -459,8 +464,8 @@ function printCanvas(pUnicode, pUnicode2, pText, pText2) {
             html = '<td class="TC"><span style="color: #efdf99">&#x' + pUnicode + ';</span></td>';
         } else if (pUnicode === 'f366') { // Mein Tisch
             html = '<td class="TC"><img src="../Icons/MeinTisch.png" alt="Mein Tisch" style="height: 30px; width: 30px;"></td>';
-        } else if (pUnicode === '1111') { // Radiergummi
-            html = '<td class="TC"><i class="i zmdi-smartphone zmdi-hc-rotate-45"></i></td>';
+        } else if (pUnicode === 'iEraser') { // Radiergummi
+            html = '<td class="TC"><img src="../Icons/icon-eraser.png" alt="Mein Tisch" style="height: 30px; width: 30px;"></td>';
         } else if (pUnicode === '2447') { // Geber
             html = '<td class="TC">&#x' + pUnicode + ';</td>';
         } else if (pUnicode === 'Gewinn') { // Gewinn des Spielers
@@ -597,6 +602,13 @@ function ResetSpieler(btn) {
             $(btn).buttonMarkup({theme: 'a'});
         }
     }
+    if (pI !== 0 && false) { // llll
+        sI = pI;
+        pI = 0;
+//        ResetSpieler(sI);
+//        Set(sI);
+        setEnter();
+    }
 }
 
 function setFont() {
@@ -619,11 +631,6 @@ function SetPartner(btn) {
         btn = '#ss' + btn;
     }
     $(btn).buttonMarkup({theme: 'b'});
-}
-function Reset(btn) {
-    if (btn !== '') {
-        $(btn).buttonMarkup({theme: 'a'});
-    }
 }
 
 function ErgChange(btn) {
@@ -1641,17 +1648,26 @@ window.onload = function () {
             }
         } else {
             if ((hI === LS.INA1 || hI === LS.INA2) && Seite.substr(0, 2) !== 'LI') {
-
                 showEinenTip('#ss' + hI, '<b>' + LS.VName[hI] + '</b>&nbsp;' + LS.NName[hI] + '<br>hat&nbsp;nicht&nbsp;gespielt.');
                 return false;
             } else if (hI === sI) {
                 ResetSpieler(sI);
-                sI = 0;
+                if (aktSpiel === iTrischaker) {
+                    sI = pI;
+                    pI = 0;
+                    if (sI) {
+                        Set(sI);
+                    }
+                } else {
+                    sI = 0;
+                }
                 setEnter();
             } else if (hI === pI) {
                 ResetSpieler(pI);
                 pI = 0;
-            } else if (sI === 0 || aktSpiel === 0 || (aktSpiel >= i6er && (aktSpiel !== iTrischaker || LS.Regeln !== 'Ti.'))) {
+            } else if (sI === 0 || aktSpiel === 0 || (aktSpiel >= i6er && aktSpiel !== iTrischaker)) { // llll
+//            } else if (sI === 0 || aktSpiel === 0 || (aktSpiel >= i6er && (aktSpiel !== iTrischaker || LS.Regeln !== 'Ti.'))) { // llll
+//            } else if (sI === 0 || aktSpiel === 0 || (aktSpiel >= i6er && aktSpiel !== iTrischaker)) {
                 if (sI) {
                     ResetSpieler(sI);
                 }
@@ -1659,9 +1675,15 @@ window.onload = function () {
                 Set(sI);
                 setEnter();
             } else {
-                ResetSpieler(pI);
-                pI = hI;
-                SetPartner(pI);
+                if (aktSpiel !== iTrischaker) {
+                    ResetSpieler(pI);
+                    pI = hI;
+                    SetPartner(pI);
+                } else {
+                    ResetSpieler(pI);
+                    pI = hI;
+                    Set(pI);
+                }
             }
         }
     });

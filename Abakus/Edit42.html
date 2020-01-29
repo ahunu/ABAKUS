@@ -44,15 +44,11 @@
                 <div class="ui-bar ui-bar-a" style="padding:0;">
                     <!-- 4444 -->
                     <span>&nbsp;
-                        <span class="L" id="tName4" style="white-space: nowrap;">Max Kleinlich
+                        <span class="L" id="tName4" style="white-space: nowrap;">
                         </span>
                     </span>
                     <div class="ui-grid-a">
                         <div class="ui-block-a" style="width:40%;text-align:center;">
-                            <div class="XL N" id="tPunkte4">
-                            </div>
-                            <div class="XL B" id="tSumme4">66
-                            </div>
                         </div>
                         <div class="ui-block-b" style="width:60%;padding:.6em 0;">
                             <input type="number" pattern="\d*" id="DE4" data-role="none">
@@ -62,15 +58,11 @@
                 <div class="ui-bar ui-bar-a" style="padding:0;">
                     <!-- 2222 -->
                     <span>&nbsp;
-                        <span class="L" id="tName1" style="white-space: nowrap;">Max Kleinlich
+                        <span class="L" id="tName1" style="white-space: nowrap;">
                         </span>
                     </span>
                     <div class="ui-grid-a">
                         <div class="ui-block-a" style="width:40%;text-align:center;">
-                            <div class="XL N" id="tPunkte1">
-                            </div>
-                            <div class="XL B" id="tSumme1">22
-                            </div>
                         </div>
                         <div class="ui-block-b" style="width:60%;padding:.6em 0;">
                             <input type="number" pattern="\d*" id="DE1" data-role="none">
@@ -82,15 +74,11 @@
                 <div class="ui-bar ui-bar-a" style="padding:0;">
                     <!-- 2222 -->
                     <span>&nbsp;
-                        <span class="L" id="tName3" style="white-space: nowrap;">Max Kleinlich
+                        <span class="L" id="tName3" style="white-space: nowrap;">
                         </span>
                     </span>
                     <div class="ui-grid-a">
                         <div class="ui-block-a" style="width:40%;text-align:center;">
-                            <div class="XL N" id="tPunkte3">
-                            </div>
-                            <div class="XL B" id="tSumme3">22
-                            </div>
                         </div>
                         <div class="ui-block-b" style="width:60%;padding:.6em 0;">
                             <input type="number" pattern="\d*" id="DE3" data-role="none">
@@ -100,15 +88,11 @@
                 <div class="ui-bar ui-bar-a" style="padding:0;">
                     <!-- 2222 -->
                     <span>&nbsp;
-                        <span class="L" id="tName2" style="white-space: nowrap;">Max Kleinlich
+                        <span class="L" id="tName2" style="white-space: nowrap;">
                         </span>
                     </span>
                     <div class="ui-grid-a">
                         <div class="ui-block-a" style="width:40%;text-align:center;">
-                            <div class="XL N" id="tPunkte2">
-                            </div>
-                            <div class="XL B" id="tSumme2">22
-                            </div>
                         </div>
                         <div class="ui-block-b" style="width:60%;padding:.6em 0;">
                             <input type="number" pattern="\d*" id="DE2" data-role="none">
@@ -217,20 +201,33 @@
                 <div data-role="navbar">
                     <ul>
                         <li>
-                            <a data-role="button" id=bK1 class="K" data-theme="a" onclick='korrClear();'>
-                                <i class="iconL zmdi-close-circle-o"></i></a>
+                            <a data-role="button" id=bK1 class="K" data-theme="a" onclick="korrClear();">
+                                <span class="zmdi-hc-stack zmdi-hc-lg">
+                                    <i class="i zmdi-bg-circle"></i>
+                                    <i class="i zmdi-close zmdi-innericon szmdi-hc-inverse"></i>
+                                </span></a>
                         </li>
                         <li>
-                            <a data-role="button" id=bK2 class="K" data-theme="a" onclick='korrBetrag(1);'  class=ui-disabled>
-                                <i class="iconL zmdi-plus-circle"></i></a>
+                            <a data-role="button" id=bK2 class="K" data-theme="a" onclick="korrBetrag(1);">
+                                <span class="zmdi-hc-stack zmdi-hc-lg">
+                                    <i class="i zmdi-bg-fullcircle"></i>
+                                    <i class="i zmdi-plus-1 zmdi-innericon zmdi-hc-inverse"></i>
+                                </span></a>
                         </li>
                         <li>
-                            <a data-role="button" id=bK3 class="K" data-theme="a" onclick='korrVorzeichen();'>
-                                <i class="iconL zmdi-swap-vertical-circle"></i></a>
+                            <a data-role="button" id=bK3 class="K" data-theme="a" onclick="korrVorzeichen();">
+                                <span class="zmdi-hc-stack zmdi-hc-lg">
+                                    <i class="i zmdi-bg-fullcircle"></i>
+                                    <i class="i zmdi-pm-plus zmdi-innericon zmdi-hc-inverse"></i>
+                                    <i class="i zmdi-pm-minus zmdi-innericon zmdi-hc-inverse"></i>
+                                </span></a>
                         </li>
                         <li>
-                            <a data-role="button" id=bK4 class="K" data-theme="a" onclick='korrBetrag(-1);' class=ui-disabled>
-                                <i class="iconL zmdi-minus-circle"></i></a>
+                            <a data-role="button" id=bK4 class="K" data-theme="a" onclick="korrBetrag(-1);">
+                                <span class="zmdi-hc-stack zmdi-hc-lg">
+                                    <i class="i zmdi-bg-fullcircle"></i>
+                                    <i class="i zmdi-neg-1 zmdi-innericon zmdi-hc-inverse"></i>
+                                </span></a>
                         </li>
                     </ul>
                 </div>
@@ -255,39 +252,52 @@
                 &nbsp;den Tisch speichern, etc.
             </div>
             <div style="margin:0 0 10px 0">
-                <i class="iconL zmdi-settings"></i>&nbsp;&nbsp;zu den Einstellungen
+                <i class="i zmdi-settings"></i>&nbsp;&nbsp;zu den Einstellungen
             </div>
-            <div style="margin:-.8em 0" class=K id="dSpiele"  data-theme="d">
+            <div style="margin:-.8em 0" class=k id="dSpiele"  data-theme="d">
                 <a class='ui-btn ui-btn-inline' style='margin:0;padding:0' data-theme="d">&nbsp;
                     <i class="i zmdi-plus" data-theme="f"></i>&nbsp;&nbsp;
                     <i class="i zmdi-invert-colors"></i>&nbsp;&nbsp;
-                    <i class="i zmdi-minus"></i>&nbsp;</a>Spiel w&auml;hlen
+                    <i class="i zmdi-minus"></i>&nbsp;</a>&nbsp;&nbsp;Spiel wählen
             </div>
             <div style="margin:-.8em 0" id="hTischEingeben">
                 <a class='ui-btn ui-btn-inline ui-btn-b' data-theme="d">&nbsp;
-                    <i class="i zmdi-Tisch"></i>&nbsp;&nbsp;</a>ganze Runde eingeben
+                    <i class="i zmdi-Tisch"></i>&nbsp;</a>ganze Runde eingeben
             </div>
             <div style="margin:-.8em 0" id="hSpielLoeschen">
                 <a class='ui-btn ui-btn-inline ui-btn-b' data-theme="d">&nbsp;
-                    <i class="i zmdi-delete"></i>&nbsp;&nbsp;</a>das Spiel l&ouml;schen
+                    <i class="i zmdi-delete"></i>&nbsp;</a>das Spiel löschen
             </div>
             <div style="margin:-.8em 0">
-                <a class='ui-btn ui-btn-inline' data-theme="d">&nbsp;
-                    <i class="i zmdi-close-circle-o"></i>&nbsp;&nbsp;</a>die Eingaben l&ouml;schen
+                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
+                    <span class="zmdi-hc-stack zmdi-hc-lg">
+                        <i class="i zmdi-bg-circle"></i>
+                        <i class="i zmdi-close zmdi-innericon szmdi-hc-inverse"></i>
+                    </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;die Eingaben löschen
             </div>
             <div style="margin:-.8em 0">
-                <a class='ui-btn ui-btn-inline' data-theme="d">&nbsp;
-                    <i class="i zmdi-plus-circle"></i>&nbsp;&nbsp;</a>ein Punkt plus
+                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
+                    <span class="zmdi-hc-stack zmdi-hc-lg">
+                        <i class="i zmdi-bg-fullcircle"></i>
+                        <i class="i zmdi-plus-1 zmdi-innericon zmdi-hc-inverse"></i>
+                    </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;ein Punkt plus
             </div>
             <div style="margin:-.8em 0">
-                <a class='ui-btn ui-btn-inline' data-theme="d">&nbsp;
-                    <i class="i zmdi-swap-vertical-circle"></i>&nbsp;&nbsp;</a>Vorzeichen wechseln
+                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
+                    <span class="zmdi-hc-stack zmdi-hc-lg">
+                        <i class="i zmdi-bg-fullcircle"></i>
+                        <i class="i zmdi-pm-plus zmdi-innericon zmdi-hc-inverse"></i>
+                        <i class="i zmdi-pm-minus zmdi-innericon zmdi-hc-inverse"></i>
+                    </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;Vorzeichen wechseln
             </div>
             <div style="margin:-.8em 0">
-                <a class='ui-btn ui-btn-inline' data-theme="d">&nbsp;
-                    <i class="i zmdi-minus-circle"></i>&nbsp;&nbsp;</a>ein Punkt minus
+                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
+                    <span class="zmdi-hc-stack zmdi-hc-lg">
+                        <i class="i zmdi-bg-fullcircle"></i>
+                        <i class="i zmdi-neg-1 zmdi-innericon zmdi-hc-inverse"></i>
+                    </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;ein Punkt minus
             </div>
-            <div style="margin:.1em;text-align:justify" class="M">
+            <div style="margin: 18px .2em .2em .2em;text-align:justify" class="M">
                 Sollte auf der virtuellen Tastatur kein Minuszeichen vorhanden sein,
                 müssen Minuspunkte mit einer führenden Null eingegeben werden.<br>
             </div>

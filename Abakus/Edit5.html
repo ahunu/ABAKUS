@@ -157,37 +157,24 @@
 
         <div class="ui-body ui-body-c" style="padding:.0em;" id="dOptionen">
             <div class="ui-grid-a" style="padding:.0em;">
-                <div class="ui-block-b" style="width:65%">
-                    <div data-role="navbar">
+                <div class="ui-block-a" style="width:65%">
+                    <div data-role="navbar" data-iconpos="left">
                         <ul>
                             <li>
-                                <a data-role="button" id=bK1 class="K" data-theme="a" onclick="korrClear();">
-                                    <span class="zmdi-hc-stack zmdi-hc-lg">
-                                        <i class="i zmdi-bg-circle"></i>
-                                        <i class="i zmdi-close zmdi-innericon szmdi-hc-inverse"></i>
-                                    </span></a>
+                                <a data-role="button" data-theme="a" id=bPS class="K" onclick='showPositivSpiel()'>
+                                    <i class="iconL zmdi-plus"></i></a>
                             </li>
                             <li>
-                                <a data-role="button" id=bK2 class="K" data-theme="a" onclick="korrBetrag(1);">
-                                    <span class="zmdi-hc-stack zmdi-hc-lg">
-                                        <i class="i zmdi-bg-fullcircle"></i>
-                                        <i class="i zmdi-plus-1 zmdi-innericon zmdi-hc-inverse"></i>
-                                    </span></a>
+                                <a data-role="button" data-theme="a" id=bFS class="K" onclick='showFarbenSpiel()'>
+                                    <i class="iconL zmdi-invert-colors"></i></a>
                             </li>
                             <li>
-                                <a data-role="button" id=bK3 class="K" data-theme="a" onclick="korrVorzeichen();">
-                                    <span class="zmdi-hc-stack zmdi-hc-lg">
-                                        <i class="i zmdi-bg-fullcircle"></i>
-                                        <i class="i zmdi-pm-plus zmdi-innericon zmdi-hc-inverse"></i>
-                                        <i class="i zmdi-pm-minus zmdi-innericon zmdi-hc-inverse"></i>
-                                    </span></a>
+                                <a data-role="button" data-theme="a" id=bNS class="K" onclick='showNegativSpiel()'>
+                                    <i class="iconL zmdi-minus"></i></a>
                             </li>
                             <li>
-                                <a data-role="button" id=bK4 class="K" data-theme="a" onclick="korrBetrag(-1);">
-                                    <span class="zmdi-hc-stack zmdi-hc-lg">
-                                        <i class="i zmdi-bg-fullcircle"></i>
-                                        <i class="i zmdi-neg-1 zmdi-innericon zmdi-hc-inverse"></i>
-                                    </span></a>
+                                <a data-role="button" data-theme="b" id=bMA class="K" onclick='onManuStorno();' hidden>
+                                    <i id=iMA class="iconL"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -217,20 +204,24 @@
                 <div data-role="navbar">
                     <ul>
                         <li>
-                            <a data-role="button" id=bK1 class="K" data-theme="a" onclick='korrClear();'>
-                                <i class="iconL zmdi-close-circle-o"></i></a>
+                            <a data-role="button" id=bK1 class="K" data-theme="a" onclick="korrClear();">
+                                <i class="i zmdi-close"></i></a>
                         </li>
                         <li>
-                            <a data-role="button" id=bK2 class="K" data-theme="a" onclick='korrBetrag(1);'  class=ui-disabled>
-                                <i class="iconL zmdi-plus-circle"></i></a>
+                            <a data-role="button" id=bK2 class="K" data-theme="a" onclick="korrBetrag(1);">
+                                <i class="i zmdi-plus-1"></i></a>
                         </li>
                         <li>
-                            <a data-role="button" id=bK3 class="K" data-theme="a" onclick='korrVorzeichen();'>
-                                <i class="iconL zmdi-swap-vertical-circle"></i></a>
+                            <a data-role="button" id=bK3 class="K" data-theme="a" onclick="korrVorzeichen();">
+                                <span class="zmdi-hc-stack">
+                                    <i class="i zmdi-pm-plus"></i>
+                                    <i class="i zmdi-pm"></i>
+                                    <i class="i zmdi-pm-minus"></i>
+                                </span></a>
                         </li>
                         <li>
-                            <a data-role="button" id=bK4 class="K" data-theme="a" onclick='korrBetrag(-1);' class=ui-disabled>
-                                <i class="iconL zmdi-minus-circle"></i></a>
+                            <a data-role="button" id=bK4 class="K" data-theme="a" onclick="korrBetrag(-1);">
+                                <i class="i zmdi-neg-1"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -272,33 +263,21 @@
                     <i class="i zmdi-delete"></i>&nbsp;</a>das Spiel löschen
             </div>
             <div style="margin:-.8em 0">
-                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
-                    <span class="zmdi-hc-stack zmdi-hc-lg">
-                        <i class="i zmdi-bg-circle"></i>
-                        <i class="i zmdi-close zmdi-innericon szmdi-hc-inverse"></i>
-                    </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;die Eingaben löschen
+                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;&nbsp;<i class="i zmdi-close"></i>&nbsp;&nbsp;</a>&nbsp;&nbsp;die Eingaben löschen
+            </div>
+            <div style="margin:-.8em 0">
+                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;&nbsp;<i class="i zmdi-plus-1"></i>&nbsp;&nbsp;</a>&nbsp;&nbsp;ein Punkt plus
             </div>
             <div style="margin:-.8em 0">
                 <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
-                    <span class="zmdi-hc-stack zmdi-hc-lg">
-                        <i class="i zmdi-bg-fullcircle"></i>
-                        <i class="i zmdi-plus-1 zmdi-innericon zmdi-hc-inverse"></i>
-                    </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;ein Punkt plus
-            </div>
-            <div style="margin:-.8em 0">
-                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
-                    <span class="zmdi-hc-stack zmdi-hc-lg">
-                        <i class="i zmdi-bg-fullcircle"></i>
-                        <i class="i zmdi-pm-plus zmdi-innericon zmdi-hc-inverse"></i>
-                        <i class="i zmdi-pm-minus zmdi-innericon zmdi-hc-inverse"></i>
+                    <span class="ezmdi-hc-stack">
+                        <i class="i zmdi-pm-plus"></i>
+                        <i class="i zmdi-pm"></i>
+                        <i class="i zmdi-pm-minus"></i>
                     </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;Vorzeichen wechseln
             </div>
             <div style="margin:-.8em 0">
-                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
-                    <span class="zmdi-hc-stack zmdi-hc-lg">
-                        <i class="i zmdi-bg-fullcircle"></i>
-                        <i class="i zmdi-neg-1 zmdi-innericon zmdi-hc-inverse"></i>
-                    </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;ein Punkt minus
+                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;&nbsp;<i class="i zmdi-neg-1"></i>&nbsp;&nbsp;</a>&nbsp;&nbsp;ein Punkt minus
             </div>
             <div style="margin: 18px .2em .2em .2em;text-align:justify" class="M">
                 Sollte auf der virtuellen Tastatur kein Minuszeichen vorhanden sein,

@@ -3,7 +3,7 @@
  *  License - http://zavoloklom.github.io/material-design-iconic-font/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
-.zmdi-hc-stack {
+.llllzmdi-hc-stack {
     position: relative;
     display: inline-block;
     width: 1.4em;
@@ -29,23 +29,56 @@
     content: '\f26d';
     font-size: 1.4em;
 }
-.zmdi-pm-plus:before {
-    content: '\f278';
-    font-size: 0.8em;
+
+
+
+.zmdi-hc-stack {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    vertical-align: middle;
+}
+.zmdi-innericon {
     position: absolute;
     left: 0;
+    top: 0.24em;
     width: 100%;
     text-align: center;
+}
+.zmdi-hc-inverse {
+    color: #ffffff;
+}
+.zmdi-bg-circle:before {
+    content: '\f26c';
+    font-size: 1.4em;
+}
+.zmdi-bg-fullcircle:before {
+    content: '\f26d';
+    font-size: 1.4em;
+}
+.zmdi-cross-mark:before {
+    content: '\2717';
+    stop: -0.11em;
+}
+.zmdi-pm-plus:before {
+    content: '\f278';
+    font-size: 1em;
+    wposition: absolute;
+    top: -0.11em;
+}
+.zmdi-pm:before {
+    content: '\2215';
+    font-weight: bold;
+    top: -0.11em;
 }
 .zmdi-pm-minus:before {
     content: '\f273';
-    font-size: 0.8em;
-    position: absolute;
-    left: 0;
-    top: 0.56em;
-    width: 100%;
-    text-align: center;
+    top: -0.11em;
 }
+
+
 li {
     padding: 0; margin: 0
 }
@@ -589,15 +622,22 @@ iPad 5. Gen.: 1024 x 748
 }
 .zmdi-close:before {
     content: '\f136';
+    font-weight: bold;
+    position: relative;
+    top: 0.13em;
 }
 .zmdi-plus-1:before {
     content: '\f3c5';
-}
-.zmdi-exposure-alt:before {
-    content: '\f37f';
+    font-weight: bold;
+    position: relative;
+    top: 0.13em;
 }
 .zmdi-neg-1:before {
     content: '\f3c3';
+    font-weight: bold;
+    position: relative;
+    top: 0.13em;
+
 }
 .BG {
     background-color: #888;

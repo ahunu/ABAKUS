@@ -137,7 +137,7 @@ function showNegativSpiel() {
     myJBox.open();
 }
 
-function setSpiel(pSPIEL) {
+function setSpiel(pSPIEL, pKorrektur) {
 
     if (iSPIEL === 0) {
         $('#Meldung').hide();
@@ -152,12 +152,14 @@ function setSpiel(pSPIEL) {
     }
 
     $('#bPS,#bFS,#bNS').removeClass('ui-btn-active');
-    if (iSPIEL <= 10) {
-        $('#bPS').addClass('ui-btn-active');
-    } else if (iSPIEL <= 12) {
-        $('#bFS').addClass('ui-btn-active');
-    } else {
-        $('#bNS').addClass('ui-btn-active');
+    if (!pKorrektur) {
+        if (iSPIEL <= 10) {
+            $('#bPS').addClass('ui-btn-active');
+        } else if (iSPIEL <= 12) {
+            $('#bFS').addClass('ui-btn-active');
+        } else {
+            $('#bNS').addClass('ui-btn-active');
+        }
     }
 
     if (iSPIEL === iRufer) {
@@ -801,7 +803,7 @@ function showBody() {
     } else {
         xKorr = true;
         setFont();
-        setSpiel(Math.abs(DS.GameI[I]));
+        setSpiel(Math.abs(DS.GameI[I]), true);
 
         $("#OK").text('Korr.').buttonMarkup({theme: 'b'});
 

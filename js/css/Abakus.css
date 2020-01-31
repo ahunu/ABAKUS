@@ -77,6 +77,12 @@
     content: '\f273';
     top: -0.11em;
 }
+.zmdi-plus-minus:before {
+    content: '\pm';
+}
+.zmdi-minus-or-plus:before {
+    content: '\2213';
+}
 
 
 li {

@@ -154,30 +154,30 @@
         </div>
         <div class="ui-body ui-body-c" style="padding:.0em;" id="dOptionen">
             <div class="ui-grid-a" style="padding:.0em;">
-                <div class="ui-block-a" style="width:65%">
+                <div class="ui-block-a" style="padding:.0em;width:35%;vertical-align: middle;">
+                    <div id=tSPIEL class='L2 B C' style="display: block;margin: auto;">Spiel ?
+                    </div>
+                </div>
+                <div class="ui-block-b" style="width:65%">
                     <div data-role="navbar" data-iconpos="left">
                         <ul>
                             <li>
-                                <a data-role="button" data-theme="a" id=bPS class="K" onclick='showPositivSpiel()'>
+                                <a data-role="button" data-theme="b" class="K" id=bMA onclick='onManuStorno();' hidden>
+                                    <i id=iMA class="iconL"></i></a>
+                            </li>
+                            <li>
+                                <a data-role="button" data-theme="a" class="K" id=bPS onclick='showPositivSpiel()'>
                                     <i class="iconL zmdi-plus"></i></a>
                             </li>
                             <li>
-                                <a data-role="button" data-theme="a" id=bFS class="K" onclick='showFarbenSpiel()'>
+                                <a data-role="button" data-theme="a" class="K" id=bFS onclick='showFarbenSpiel()'>
                                     <i class="iconL zmdi-invert-colors"></i></a>
                             </li>
                             <li>
-                                <a data-role="button" data-theme="a" id=bNS class="K" onclick='showNegativSpiel()'>
+                                <a data-role="button" data-theme="a" class="K" id=bNS onclick='showNegativSpiel()'>
                                     <i class="iconL zmdi-minus"></i></a>
                             </li>
-                            <li>
-                                <a data-role="button" data-theme="b" id=bMA class="K" onclick='onManuStorno();' hidden>
-                                    <i id=iMA class="iconL"></i></a>
-                            </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="ui-block-b" style="padding:.0em;width:35%;">
-                    <div id=tSPIEL class='L2 B C' style="margin:.1em;text-align:center;">Spiel ?
                     </div>
                 </div>
             </div>
@@ -210,11 +210,7 @@
                         </li>
                         <li>
                             <a data-role="button" id=bK3 class="K" data-theme="a" onclick="korrVorzeichen();">
-                                <span class="zmdi-hc-stack">
-                                    <i class="i zmdi-pm-plus"></i>
-                                    <i class="i zmdi-pm"></i>
-                                    <i class="i zmdi-pm-minus"></i>
-                                </span></a>
+                                &plusmn;</a>
                         </li>
                         <li>
                             <a data-role="button" id=bK4 class="K" data-theme="a" onclick="korrBetrag(-1);">
@@ -245,19 +241,19 @@
             <div style="margin:0 0 10px 0">
                 <i class="i zmdi-settings"></i>&nbsp;&nbsp;zu den Einstellungen
             </div>
+            <div style="margin:-.8em 0" id="hTischEingeben">
+                <a class='ui-btn ui-btn-inline ui-btn-b' data-theme="d">&nbsp;
+                    <i class="i zmdi-Tisch"></i>&nbsp;&nbsp;</a>ganze Runde eingeben
+            </div>
+            <div style="margin:-.8em 0" id="hSpielLoeschen">
+                <a class='ui-btn ui-btn-inline ui-btn-b' data-theme="d">&nbsp;
+                    <i class="i zmdi-delete"></i>&nbsp;&nbsp;</a>das Spiel löschen
+            </div>
             <div style="margin:-.8em 0" class=k id="dSpiele"  data-theme="d">
                 <a class='ui-btn ui-btn-inline' style='margin:0;padding:0' data-theme="d">&nbsp;
                     <i class="i zmdi-plus" data-theme="f"></i>&nbsp;&nbsp;
                     <i class="i zmdi-invert-colors"></i>&nbsp;&nbsp;
                     <i class="i zmdi-minus"></i>&nbsp;</a>&nbsp;&nbsp;Spiel wählen
-            </div>
-            <div style="margin:-.8em 0" id="hTischEingeben">
-                <a class='ui-btn ui-btn-inline ui-btn-b' data-theme="d">&nbsp;
-                    <i class="i zmdi-Tisch"></i>&nbsp;</a>ganze Runde eingeben
-            </div>
-            <div style="margin:-.8em 0" id="hSpielLoeschen">
-                <a class='ui-btn ui-btn-inline ui-btn-b' data-theme="d">&nbsp;
-                    <i class="i zmdi-delete"></i>&nbsp;</a>das Spiel löschen
             </div>
             <div style="margin:-.8em 0">
                 <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;&nbsp;<i class="i zmdi-close"></i>&nbsp;&nbsp;</a>&nbsp;&nbsp;die Eingaben löschen
@@ -266,12 +262,7 @@
                 <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;&nbsp;<i class="i zmdi-plus-1"></i>&nbsp;&nbsp;</a>&nbsp;&nbsp;ein Punkt plus
             </div>
             <div style="margin:-.8em 0">
-                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;
-                    <span class="ezmdi-hc-stack">
-                        <i class="i zmdi-pm-plus"></i>
-                        <i class="i zmdi-pm"></i>
-                        <i class="i zmdi-pm-minus"></i>
-                    </span>&nbsp;&nbsp;</a>&nbsp;&nbsp;Vorzeichen wechseln
+                <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;&nbsp;&plusmn;&nbsp;&nbsp;</a>&nbsp;&nbsp;Vorzeichen wechseln
             </div>
             <div style="margin:-.8em 0">
                 <a class='ui-btn ui-btn-inline k' data-theme="d">&nbsp;&nbsp;<i class="i zmdi-neg-1"></i>&nbsp;&nbsp;</a>&nbsp;&nbsp;ein Punkt minus

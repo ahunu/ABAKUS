@@ -1,14 +1,16 @@
 
 function getVersion() {
-    return 1020;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1021;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 1, 31);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 2, 1);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
+
+// Frau Ott 0699 102 78 636   Mi. 12 Uhr Obergrafendorf
 
 // https://www.immobilienscout24.at/expose/5e2c7391dcc4010020759637?utm_medium=referral&utm_source=immosuchmaschine.at&utm_campaign=residential&utm_content=residential_expose_WEB
 

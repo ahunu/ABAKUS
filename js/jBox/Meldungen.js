@@ -64,7 +64,7 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
     }
     myJBox = new jBox('Modal', {
         title: '<div class="L2" style="background-color:#27a;color: white;">'
-                + '&nbsp;&nbsp;<i class="iSpinner zmdi-refresh-sync iL"></i>&nbsp;&nbsp;'
+                + '&nbsp;&nbsp;<i class="iSpinner zmdi-spinner iL"></i>&nbsp;&nbsp;'
                 + hTitel
                 + '&nbsp;&nbsp;</div>',
         content: '<span id=emText class="L">' + pText + '</span><br>'

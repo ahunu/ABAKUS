@@ -623,7 +623,7 @@ function onSubmit(pBuchen) {
     }
 
     if (mErgaenzt) {
-        $('#mText').html('Die Eingaben wurden erg&auml;nzt.');
+        $('#mText').html('Die Eingaben wurden ergänzt.');
         $('#Meldung').show();
         return false;
     }
@@ -934,22 +934,52 @@ function fINIT() {
     }
 
     $("#tName1").click(function () {
-        ResetSpieler(1);
+        if (getPUNKTE(1) === '-' || getPUNKTE(1) === '') {
+            $('#mText').html('Wieviele Punkte hat ' + LS.VName[1] + '?');
+            $('#Meldung').show();
+        } else {
+            ResetSpieler(1);
+        }
     });
     $("#tName2").click(function () {
-        ResetSpieler(2);
+        if (getPUNKTE(2) === '-' || getPUNKTE(2) === '') {
+            $('#mText').html('Wieviele Punkte hat ' + LS.VName[2] + '?');
+            $('#Meldung').show();
+        } else {
+            ResetSpieler(2);
+        }
     });
     $("#tName3").click(function () {
-        ResetSpieler(3);
+        if (getPUNKTE(3) === '-' || getPUNKTE(3) === '') {
+            $('#mText').html('Wieviele Punkte hat ' + LS.VName[3] + '?');
+            $('#Meldung').show();
+        } else {
+            ResetSpieler(3);
+        }
     });
     $("#tName4").click(function () {
-        ResetSpieler(4);
+        if (getPUNKTE(4) === '-' || getPUNKTE(4) === '') {
+            $('#mText').html('Wieviele Punkte hat ' + LS.VName[4] + '?');
+            $('#Meldung').show();
+        } else {
+            ResetSpieler(4);
+        }
     });
     $("#tName5").click(function () {
-        ResetSpieler(5);
+        if (getPUNKTE(5) === '-' || getPUNKTE(5) === '') {
+            $('#mText').html('Wieviele Punkte hat ' + LS.VName[5] + '?');
+            $('#Meldung').show();
+        } else {
+            ResetSpieler(5);
+        }
     });
     $("#tName6").click(function () {
-        ResetSpieler(6);
+        if (getPUNKTE(6) === '-' || getPUNKTE(6) === '') {
+            $('#mText').html('Wieviele Punkte hat ' + LS.VName[6] + '?');
+            $('#Meldung').show();
+        } else {
+            ResetSpieler(6);
+        }
     });
 
     $("#DE1,#DE2,#DE3,#DE4,#DE5,#DE6,#iGespielt").focusin(function () {

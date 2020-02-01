@@ -39,81 +39,80 @@
         <script src="AbakusDE.js" ></script>
     </head>
     <body>
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <div class="ui-bar ui-bar-a" style="padding:0;">
-                    <!-- 4444 -->
-                    <span>&nbsp;
-                        <span class="L" id="tName4" style="white-space: nowrap;">
+        <form onsubmit="event.preventDefault(); return onSubmit(true);" style="padding:0">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <div class="ui-bar ui-bar-a" style="padding:0;">
+                        <!-- 4444 -->
+                        <span>&nbsp;
+                            <span class="L" id="tName4" style="white-space: nowrap;">
+                            </span>
                         </span>
-                    </span>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a" style="width:40%;text-align:center;">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:40%;text-align:center;">
+                            </div>
+                            <div class="ui-block-b" style="width:60%;padding:.6em 0;">
+                                <input type="number" pattern="\d*" id="DE4" data-role="none">
+                            </div>
                         </div>
-                        <div class="ui-block-b" style="width:60%;padding:.6em 0;">
-                            <input type="number" pattern="\d*" id="DE4" data-role="none">
+                    </div>
+                    <div class="ui-bar ui-bar-a" style="padding:0;">
+                        <!-- 2222 -->
+                        <span>&nbsp;
+                            <span class="L" id="tName1" style="white-space: nowrap;">
+                            </span>
+                        </span>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:40%;text-align:center;">
+                            </div>
+                            <div class="ui-block-b" style="width:60%;padding:.6em 0;">
+                                <input type="number" pattern="\d*" id="DE1" data-role="none">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="ui-bar ui-bar-a" style="padding:0;">
-                    <!-- 2222 -->
-                    <span>&nbsp;
-                        <span class="L" id="tName1" style="white-space: nowrap;">
+                <div class="ui-block-b">
+                    <div class="ui-bar ui-bar-a" style="padding:0;">
+                        <!-- 2222 -->
+                        <span>&nbsp;
+                            <span class="L" id="tName3" style="white-space: nowrap;">
+                            </span>
                         </span>
-                    </span>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a" style="width:40%;text-align:center;">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:40%;text-align:center;">
+                            </div>
+                            <div class="ui-block-b" style="width:60%;padding:.6em 0;">
+                                <input type="number" pattern="\d*" id="DE3" data-role="none">
+                            </div>
                         </div>
-                        <div class="ui-block-b" style="width:60%;padding:.6em 0;">
-                            <input type="number" pattern="\d*" id="DE1" data-role="none">
+                    </div>
+                    <div class="ui-bar ui-bar-a" style="padding:0;">
+                        <!-- 2222 -->
+                        <span>&nbsp;
+                            <span class="L" id="tName2" style="white-space: nowrap;">
+                            </span>
+                        </span>
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:40%;text-align:center;">
+                            </div>
+                            <div class="ui-block-b" style="width:60%;padding:.6em 0;">
+                                <input type="number" pattern="\d*" id="DE2" data-role="none">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ui-block-b">
-                <div class="ui-bar ui-bar-a" style="padding:0;">
-                    <!-- 2222 -->
-                    <span>&nbsp;
-                        <span class="L" id="tName3" style="white-space: nowrap;">
-                        </span>
-                    </span>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a" style="width:40%;text-align:center;">
-                        </div>
-                        <div class="ui-block-b" style="width:60%;padding:.6em 0;">
-                            <input type="number" pattern="\d*" id="DE3" data-role="none">
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-bar ui-bar-a" style="padding:0;">
-                    <!-- 2222 -->
-                    <span>&nbsp;
-                        <span class="L" id="tName2" style="white-space: nowrap;">
-                        </span>
-                    </span>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a" style="width:40%;text-align:center;">
-                        </div>
-                        <div class="ui-block-b" style="width:60%;padding:.6em 0;">
-                            <input type="number" pattern="\d*" id="DE2" data-role="none">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /grid-c -->
-        <div class="ui-bar ui-bar-a" style="padding:.0em;">
-            <div class="ui-grid-b">
+            <!-- /grid-c -->
+            <div class="ui-grid-b ui-bar ui-bar-a">
                 <div class="ui-block-a L B cRot" style="width:68%;text-align:center;">
-                    <!-- 1111 -->
-                    <span id="mText">
-                    </span>
+                    <span id="mText"></span>
                 </div>
                 <div class="ui-block-c" style="width:32%;">
-                    <button onClick="onSubmit(true)" id=OK data-theme="e" data-mini="true">OK
-                    </button>
+                    <button type="submit" id=OK data-theme="e" data-mini="true">OK</button>
                 </div>
             </div>
+        </form>
+        <div class="ui-bar ui-bar-a" style="padding:.0em;">
             <div style="padding: 0 .5em;" id=dSelberrufer hidden>
                 <label>
                     <input type='checkbox' data-theme="d" id=cbSelberrufer data-mini=true onclick="mSelberrufer = !mSelberrufer;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selberrufer

@@ -51,7 +51,7 @@ function showChart() {
             rotation: -45
         }};
     cChart.yAxis = {min: 0, max: 10,
-        title: {x: -10, text: "% sseigene Spiele", style: {color: '#444', fontSize: '20px', fontFamily: 'Verdana, sans-serif'}},
+        title: {x: -10, text: "% eigene Spiele", style: {color: '#444', fontSize: '20px', fontFamily: 'Verdana, sans-serif'}},
         labels: {enabled: false},
         alternateGridColor: '#ffd'};
     cChart.plotOptions = {column: {dataLabels: {enabled: true, formatter: function () {

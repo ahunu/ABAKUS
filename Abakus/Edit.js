@@ -630,7 +630,6 @@ function onSubmit(pBuchen) {
 
     $('body').addClass('ui-disabled');
     DEBuchen();
-
 }
 
 function getPUNKTE(pInd) {

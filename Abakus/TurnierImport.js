@@ -205,11 +205,13 @@ function fPruefenSpeichern(pSpeichern) {
                 if (isNaN(r1)) {
                     r1 = '-';
                 }
-                if (SPIELERnr[iVERANSTALTER]) {
-                    oLine = iSPIELER + ' ' + SPIELERnr[iSPIELER][0] + ' ' + SPIELERnr[iSPIELER][1];
-                } else {
-                    oLine = iSPIELER + ' ????';
+
+                if (!SPIELERnr[iSPIELER]) {
+                    showEinenFehler(iCUP, 'Spieler ' + iSPIELER + ' existiert nicht.', 'Bitte zuerst den Spieler anlegen.');
+                    return;
                 }
+
+                oLine = iSPIELER + ' ' + SPIELERnr[iSPIELER][0] + ' ' + SPIELERnr[iSPIELER][1];
                 oDATEN += oLine + ', ' + r1 + ', ' + r2 + ', ' + r3 + '\n';
                 DATA[iDATUM][iSPIELER] = [r1, r2, r3];
                 if (nSPIELER === 1) {
@@ -255,7 +257,7 @@ function fPruefenSpeichern(pSpeichern) {
             .then(function () {
                 if (iSCHLAGZEILE) {
                     firebase.database().ref('/00/CUPS/' + ("000" + iCUP).slice(-3))
-                            .update({ MELDSTAT: iSCHLAGZEILE })
+                            .update({MELDSTAT: iSCHLAGZEILE})
                             .then(function () {
                                 hideEinenMoment();
                                 LS.Meldung = ('Es wurde ein Turnier eingespielt!');

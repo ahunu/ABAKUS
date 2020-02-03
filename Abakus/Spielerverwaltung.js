@@ -1056,11 +1056,11 @@ $(document).bind('pageinit', function () {
     } else {
         $('#sVip').remove();
     }
-//    if (SPIELERext && LS.ME === '3425') {
-//        whenSPIELERloaded();
-//    } else {
+    if (SPIELERext && LS.ME === '3425') {
+        whenSPIELERloaded();
+    } else {
     loadSPIELER();
-//    }
+    }
 
     $("input:radio[name=iSort][value=1]").prop('checked', true).checkboxradio("refresh");
     $("input[name='iSort']").on("change", function () {

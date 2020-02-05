@@ -3000,8 +3000,7 @@ function whenCUPSloaded() {
     var SORT = [];
     for (i = 0; i < CUPS.NAME.length; i++) {
         if (CUPS.NAME[i]) {
-            if (i === 14 && (LS.ME !== '3425' && LS.ME !== '0197' && LS.ME !== '4731') // Leonfeldner Turniere ausblenden
-                    || i === 18 && (LS.ME !== '3425' && LS.ME !== '0197')) {           // Wr. Städtische ausblenden
+            if (i === 18 && (LS.ME !== '3425' && LS.ME !== '0197')) {           // Wr. Städtische ausblenden
             } else {
                 if (i >= 49 && i <= 59) {
                     SORT[SORT.length] = i + CUPS.NAME[i] + '  ;' + i;

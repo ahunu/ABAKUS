@@ -284,7 +284,7 @@ function showNeuenSPIELER() {
             break;
         }
     }
-    $('#iNR').val(iNR).addClass('ui-disabled');
+    $('#iNR').val(iNR).removeClass('ui-disabled');
 
     $('#tUEBERSCHRIFT').text('Einen Spieler anlegen:');
     $('#iNNAME,#iVNAME,#iSTRASSE,#iPLZ,#iORT,#iEMAIL,#iGESCHLECHT').removeClass('cRot bBeige');

@@ -104,7 +104,7 @@
                                 <input type="submit" data-theme="e" value="finden">
                             </div>
                         </div>
-                        <input type="button" onclick="$('#bOK').addClass('ui-disabled');$('#pWarnung').popup('open')" data-theme="e" value="Einen neuen Spieler anlegen">
+                        <input type="button" onclick="$('#bOK').addClass('ui-disabled');showNeuenSPIELER();" data-theme="e" value="Einen neuen Spieler anlegen">
 
                     </div>
                     <div class="ui-block-b" style="width:55%">
@@ -204,7 +204,7 @@
                                 <input id="iNR" type="text" data-role="none" class=C>
                             </div>
                             <div class="ui-block-c" style="width:1%">
-&nbsp;
+                                &nbsp;
                             </div>
                             <div class="ui-block-d"    style="width:76%;margin-top:-0.4em;">
                                 <div class="ui-grid-c">
@@ -371,36 +371,6 @@
                     </div>
                 </div>
 
-            </div>
-            <div data-role="popup" data-history=false id="pWarnung" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L2">
-                <div data-role="header" data-theme="c" class="C" style="background-color:#dd1111">Spieler anlegen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kein Spieler darf zweimal angelegt werden!
-                </div>
-                <div style='padding:0.3em 0.8em'>Nur wenn du dir absolut sicher bist, dass der neue Spieler noch nie in
-                    <br> einem Cup gespielt hat, darfst du eine neue Spielernummer vergeben.
-                    <a data-role="button" data-theme="e" onclick="showNeuenSPIELER(true)">
-                        Einen Spieler mit neuer Spielernummer anlegen.
-                        <div class="N M2"><b>Die Spielernummer wird automatisch vergeben.</b></div>
-                        <div class="N M2">Ich bin absolut sicher, dass der Spieler noch nie in einem Cup gespielt hat.</div>
-                    </a>
-                    Willst du einen Spieler mit manueller Nummernvergabe anlegen,<br>
-                    musst du zuerst seine Nummer im entsprechenden Cup überprüfen.
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a">
-                            <a data-role="button" data-theme="a" onclick="window.open('http://www.tarockcup.at/fileadmin/Ablagebox/Dokumente/ergebnisse/Cupwertung.pdf')">Raiffeisencup</a>
-                            <a data-role="button" data-theme="a" onclick="window.open('https://tarockrunde-sauwald.jimdo.com/sauwald-cup')">Sauwaldcup</a>
-                        </div>
-                        <div class="ui-block-b">
-                            <a data-role="button" data-theme="a" onclick="window.open('http://home.eduhi.at/user/tarock/wertungsliste_hausruckcup' + (new Date().getMonth() < 9 ? (new Date().getFullYear() - 2001) + '' + (new Date().getFullYear() - 2000) : (new Date().getFullYear() - 2000) + '' + (new Date().getFullYear() - 1999)) + '.pdf')">Hausruckcup</a>
-                            <a data-role="button" data-theme="a" onclick="window.open('http://www.tarock.tirol/tarock_aktuell/tarock_tirolcup_zwischenstand.pdf')">Tirolcup</a>
-                        </div>
-                    </div>
-                    <a data-role="button" data-theme="e" onclick="showNeuenSPIELER(false)">
-                        Einen Spieler mit seiner bestehenden Nummer erfassen.<br>
-                        <div class="N M2"><b>Die Spielernummer ist manuell einzugeben.</b></div>
-                        <div class="N M2">Ich habe die Nummer des Spielers sorgfältig überprüft.</div>
-                    </a>
-                    <a data-role="button" data-theme="a" onclick="$('#pWarnung').popup('close')">abbrechen</a>
-                </div>
             </div>
         </div>
     </body>

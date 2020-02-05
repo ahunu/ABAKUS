@@ -10,8 +10,8 @@ var SPIELERext = new Object();
 var kzAktiv = '?';
 var mCup = 0;
 
-const spANGELEGTam = 19;
-const spGEAENDERTam = 21;
+const spANGELEGTam = 15;
+const spGEAENDERTam = 17;
 
 const tMonth = ['', 'Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 
@@ -92,7 +92,7 @@ function downloadSpieler(pAktiv) {
 
     for (var spieler in SPIELERext) {
         if (pAktiv && pAktiv === '*'
-                || pAktiv && SPIELERext[spieler][18] && SPIELERext[spieler][18].indexOf(kzAktiv) >= 0
+                || pAktiv && SPIELERext[spieler][14] && SPIELERext[spieler][14].indexOf(kzAktiv) >= 0
                 || !pAktiv && (SPIELERext[spieler][spANGELEGTam] && new Date(SPIELERext[spieler][spANGELEGTam]) >= iDATUM
                         || SPIELERext[spieler][spGEAENDERTam] && new Date(SPIELERext[spieler][spGEAENDERTam]) >= iDATUM)) {
             nSpieler++;
@@ -126,29 +126,6 @@ function downloadSpieler(pAktiv) {
                     + (SPIELERext[spieler][18] ? SPIELERext[spieler][18] : '') + ';\n'; // Geaendert von
         }
     }
-
-
-
-    const spNNAME = 0;
-    const spVNAME = 1;
-    const spTITEL1 = 2;
-    const spTITEL2 = 3;
-    const spZUSATZ = 4;
-    const spSTRASSE = 5;
-    const spPLZ = 6;
-    const spORT = 7;
-    const spFESTNETZ = 8;
-    const spTELEFON = 9;
-    const spGEBDAT = 10;
-    const spEMAIL = 11;
-    const spSCHALTER = 12;
-    const spSTARTORT = 13;
-    const spAKTIV = 14;
-    const spANGELEGTam = 15;
-    const spANGELEGTvon = 16;
-    const spGEAENDERTam = 17;
-    const spGEAENDERTvon = 18;
-
 
     $('#tMeldung').text('Es werden ' + nSpieler + ' Spieler exportiert.');
 

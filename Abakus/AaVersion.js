@@ -1,13 +1,13 @@
 
 function getVersion() {
-    return 1021;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1022;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 2, 3);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 2, 5);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
 // Frau Ott 0699 102 78 636   Mi. 12 Uhr Obergrafendorf

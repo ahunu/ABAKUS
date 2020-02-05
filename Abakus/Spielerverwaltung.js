@@ -163,6 +163,7 @@ function getOrtStrasse(pOrt, pStrasse) {
 
 function showSPIELER(i) {
     'use strict';
+    $('#bPruefen').removeClass('ui-disabled');
     $('#aeTitel').text('Spieler mit ähnlichen Namen:');
     $('#bBestaetigen').hide();
     $("body").addClass('noScroll');
@@ -263,7 +264,7 @@ function bBestaetigen(pStep) {
     }
 }
 
-function showNeuenSPIELER(pNeu) {
+function showNeuenSPIELER() {
     'use strict';
     hNeu = true;
     $("#lvAehnlich").empty();
@@ -275,20 +276,15 @@ function showNeuenSPIELER(pNeu) {
     $('#bBestaetigen1').show();
     $('#bBestaetigen2').hide();
     $('#bPruefen').addClass('ui-disabled');
-    $('#pWarnung').popup('close');
-    if (pNeu) {
-        for (var ii = nNummernkreis; ii < 9999; ii++) {
-            var iii = '' + ('000' + ii).substr(-4); // Interessanterweise ist das ''+ für die deployed Version erforderlich
-            if (!SPIELERext[iii]) {
-                iNR = iii;
-                break;
-            }
+
+    for (var ii = nNummernkreis; ii < 9999; ii++) {
+        var iii = '' + ('000' + ii).substr(-4); // Interessanterweise ist das ''+ für die deployed Version erforderlich
+        if (!SPIELERext[iii]) {
+            iNR = iii;
+            break;
         }
-        $('#iNR').val(iNR).addClass('ui-disabled');
-    } else {
-        iNR = '';
-        $('#iNR').val(iNR).removeClass('ui-disabled');
     }
+    $('#iNR').val(iNR).addClass('ui-disabled');
 
     $('#tUEBERSCHRIFT').text('Einen Spieler anlegen:');
     $('#iNNAME,#iVNAME,#iSTRASSE,#iPLZ,#iORT,#iEMAIL,#iGESCHLECHT').removeClass('cRot bBeige');
@@ -485,6 +481,80 @@ function onOK(pSpeichern) {
         $('#iGESCHLECHT').addClass('cRot bBeige').focus();
         $("#fTEXT").html('Bitte einen g&uuml;ltiges Geschlecht eingeben.');
         return;
+    }
+
+    if (iTELEFON) {
+        switch (iTELEFON[0]) {
+            case '+':
+                if (iTELEFON[3] !== ' ') {
+                    $('#iTELEFON').addClass('cRot bBeige').focus();
+                    $("#fTEXT").html('Zwischen der Länderkennung und der Vorwahl fehlt eine Leerzeichen.');
+                    return;
+                }
+                if (iTELEFON.lastIndexOf(' ') === 3) {
+                    $('#iTELEFON').addClass('cRot bBeige').focus();
+                    $("#fTEXT").html('Zwischen der Vorwahl und der Rufnummer fehlt eine Leerzeichen.');
+                    return;
+                }
+                break;
+            case '0':
+                if (iTELEFON.indexOf(' ') < 1 && iTELEFON.indexOf('/') < 1) {
+                    $('#iTELEFON').addClass('cRot bBeige').focus();
+                    $("#fTEXT").html('Zwischen der Vorwahl und der Rufnummer fehlt eine Leerzeichen.');
+                    return;
+                }
+                break;
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                $('#iTELEFON').addClass('cRot bBeige').focus();
+                $("#fTEXT").html('Bei der Vorwahl fehlt die führende Null.');
+                return;
+                break;
+        }
+    }
+
+    if (iFESTNETZ) {
+        switch (iFESTNETZ[0]) {
+            case '+':
+                if (iFESTNETZ[3] !== ' ') {
+                    $('#iFESTNETZ').addClass('cRot bBeige').focus();
+                    $("#fTEXT").html('Zwischen der Länderkennung und der Vorwahl fehlt eine Leerzeichen.');
+                    return;
+                }
+                if (iFESTNETZ.lastIndexOf(' ') === 3) {
+                    $('#iFESTNETZ').addClass('cRot bBeige').focus();
+                    $("#fTEXT").html('Zwischen der Vorwahl und der Rufnummer fehlt eine Leerzeichen.');
+                    return;
+                }
+                break;
+            case '0':
+                if (iFESTNETZ.indexOf(' ') < 1 && iFESTNETZ.indexOf('/') < 1) {
+                    $('#iFESTNETZ').addClass('cRot bBeige').focus();
+                    $("#fTEXT").html('Zwischen der Vorwahl und der Rufnummer fehlt eine Leerzeichen.');
+                    return;
+                }
+                break;
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                $('#iFESTNETZ').addClass('cRot bBeige').focus();
+                $("#fTEXT").html('Bei der Vorwahl fehlt die führende Null.');
+                return;
+                break;
+        }
     }
 
     if (hNeu) {
@@ -1056,11 +1126,11 @@ $(document).bind('pageinit', function () {
     } else {
         $('#sVip').remove();
     }
-    if (SPIELERext && LS.ME === '3425') {
-        whenSPIELERloaded();
-    } else {
+//    if (SPIELERext && LS.ME === '3425') {
+//        whenSPIELERloaded();
+//    } else {
     loadSPIELER();
-    }
+//    }
 
     $("input:radio[name=iSort][value=1]").prop('checked', true).checkboxradio("refresh");
     $("input[name='iSort']").on("change", function () {

@@ -87,7 +87,9 @@
                 <div data-role="navbar"  >
                     <div class="ui-grid-b">
                         <div class="ui-block-a" style="width:25%; text-align: center;">
-                            <img src="../Icons/MeinTisch.png" style="position: absolute; left: 8.4vw;margin:0 0 0 -8px; height:7.7vh;" onclick="window.history.back();"/>
+                            <div style="display:flex; justify-content: center;">
+                                <img src="../Icons/MeinTisch.png" style="height:7vh;" onclick="window.history.back();"/>
+                            </div>
                         </div>
                         <div class="ui-block-b" style="width:50%;">
                             <ul>
@@ -97,14 +99,8 @@
                             </ul>
                         </div>
                         <div class="ui-block-c" style="width:25%; text-align: center;">
-                            <div class="ui-grid-b">
-                                <div class="ui-block-a">
-                                </div>
-                                <div class="ui-block-b" style="text-align: center;">
-                                    <i class="iconL zmdi-settings" onclick="$('body').addClass('ui-disabled');window.location.href = 'Vorhand.html';"></i>
-                                </div>
-                                <div class="ui-block-c">
-                                </div>
+                            <div style="display:flex; justify-content: center;">
+                                <i class="iconL zmdi-settings" onclick="$('body').addClass('ui-disabled');window.location.href = 'Vorhand.html';"></i>
                             </div>
                         </div>
                     </div>

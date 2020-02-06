@@ -372,12 +372,24 @@ function DEBuchen() {
     if (LS.DoppelteRunden && xNeu) {
         if (iSPIEL === iTrischaker) {
             LS.doppelt += LS.AnzSpieler;
+            if (LS.Pausierer1 && LS.Pausierer1 <= LS.AnzSpieler) {
+                LS.doppelt--;
+            }
+            if (LS.Pausierer2 && LS.Pausierer2 <= LS.AnzSpieler) {
+                LS.doppelt--;
+            }
         } else if (mFensterbrett) {
             if (LS.I === 115) { // Zum Stiegenwirt, 13 Uhr - keine doppelte Runde
             } else if (LS.I === 23) { // Cafe Rathaus - ein doppeltes Spiel
                 LS.doppelt++;
             } else {
                 LS.doppelt += LS.AnzSpieler;
+                if (LS.Pausierer1 && LS.Pausierer1 <= LS.AnzSpieler) {
+                    LS.doppelt--;
+                }
+                if (LS.Pausierer2 && LS.Pausierer2 <= LS.AnzSpieler) {
+                    LS.doppelt--;
+                }
             }
         }
     }

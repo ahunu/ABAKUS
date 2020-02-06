@@ -300,12 +300,15 @@ window.onload = function () {
     }
 
     $("#bDoppelt").click(function () {
-        var hDoppelt = $('input[id=nDoppelt]').val();
-        if (isNaN($('input[id=nDoppelt]').val()) || hDoppelt === "") {
-            $('input[id=nDoppelt]').val(LS.AnzSpieler);
-        } else {
-            $('input[id=nDoppelt]').val(parseInt($('input[id=nDoppelt]').val()) + LS.AnzSpieler);
+        var hDoppelt = parseInt($('input[id=nDoppelt]').val());
+        hDoppelt += LS.AnzSpieler;
+        if (LS.Pausierer1 && LS.Pausierer1 <= LS.AnzSpieler) {
+            hDoppelt--;
         }
+        if (LS.Pausierer2 && LS.Pausierer2 <= LS.AnzSpieler) {
+            hDoppelt--;
+        }
+        $('input[id=nDoppelt]').val(hDoppelt);
     });
 
     $('#hTitel1').text(CUPS.NAME[LS.I]);

@@ -74,6 +74,8 @@
                             LS.Quickstart = true;
                             if (hCupName.indexOf('/REGELN') > 0) {
                                 LS.ShowFunktion = '?Reglen';
+                            } else if (LS.VIC[0] === 0) {
+                                LS.VIC[0] = newCup;
                             }
                             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                             window.location.replace(window.location.origin + window.location.pathname);
@@ -116,11 +118,11 @@
         <script src='Abakus/getZitat.js'   ></script>
         <script src='Abakus/loadCUPS.js'   ></script>
         <script src='Abakus/loadSTAT.js'   ></script>
-        <script src="Abakus/loadSPIELER.js"></script>
+        <script src='Abakus/loadSPIELER.js'></script>
         <script src='Statistik/loadTURNIER.js'></script>
         <script src='Abakus/AaVersion.js'  ></script>
         <script src='Abakus/Texte.js'      ></script>
-        <script src='Abakus.js'            ></script>
+        <script src='index.js'             ></script>
     </head>
     <body onclick="event.stopImmediatePropagation();">
 

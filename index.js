@@ -2390,7 +2390,7 @@ function toggleTechDetails() {
                         : '')
                 + 'navigator.userAgent: ' + navigator.userAgent + '<br>'
                 + 'navigator.platform: ' + navigator.platform + '<br>'
-    + (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ? 'iOS navigation.type: ' + window.performance.navigation.type + '<br>' : '')
+                + (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ? 'iOS navigation.type: ' + window.performance.navigation.type + '<br>' : '')
                 + 'pixelDepth: ' + screen.pixelDepth + '<br>'
                 + '<span id="p451">portrait, min-width: 451px<br></span>'
                 + '<span id="p361">portrait: 361-450px<br></span>'
@@ -2891,8 +2891,28 @@ function whenCUPSloaded() {
                     }
                 }
                 if (newCup) {
+                    if (newCup <= 4) {
+                        LS.LastBtn = '#bTR' + newCup;
+                    } else if (newCup <= 7) {
+                        LS.LastBtn = '#bAR' + newCup;
+                    } else if (CUPS.TYP[newCup] === 'CUP' && newCup >= 50 && newCup <= 59) {
+                        LS.LastBtn = '#bCT' + newCup;
+                    } else if (CUPS.TYP[newCup] === 'CUP' || CUPS.TURNIER[newCup]) {
+                        LS.LastBtn = '#bLC' + newCup;
+                    } else if (CUPS.TYP[newCup] === 'ET' || CUPS.TYP[newCup] === 'MT') {
+                        LS.LastBtn = '#bET' + newCup;
+                    } else if (CUPS.TYP[newCup] === 'PR') {
+                        LS.LastBtn = '#bPR' + newCup;
+                    } else {
+                        LS.LastBtn = '#bFC' + newCup;
+                    }
                     LS.ShowCups = newCup;
                     LS.Quickstart = true;
+                    if (hCupName.indexOf('/REGELN') > 0) {
+                        LS.ShowFunktion = '?Reglen';
+                    } else if (LS.VIC[0] === 0) {
+                        LS.VIC[0] = newCup;
+                    }
                     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                     window.location.replace(window.location.origin + window.location.pathname);
                 }

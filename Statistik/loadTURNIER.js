@@ -58,19 +58,16 @@ function loadTURNIER(I, pTurnier, pTitel, pLastturnier, pCallback) {
             return;
         }
 
-
         var mNewTurnier = false;
 
         if (STAT[pTurnier]._AKTTURNIER) {
             if (pTurnier === pLastturnier.substr(0, 10)) {
                 STAT._AKTTURNIER = STAT[pTurnier]._AKTTURNIER;
-                if (STAT._AKTTURNIER._RUNDE === 1) {
-                    mNewTurnier = true; // nach dem Speichern der Anmeldungen
-                    for (var iItem in STAT._AKTTURNIER) {
-                        if (iItem.substr(0, 4) === '_R1_') {
-                            mNewTurnier = false; // fals bereits Tische eingegeben
-                            break;
-                        }
+                mNewTurnier = true; // nach dem Speichern der Anmeldungen
+                for (var iItem in STAT._AKTTURNIER) {
+                    if (iItem[0] !== '_') {
+                        mNewTurnier = pTurnier; // fals bereits Tische eingegeben
+                        break;
                     }
                 }
             }

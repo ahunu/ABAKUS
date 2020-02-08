@@ -153,6 +153,11 @@ function whenSTATloaded(pNewTurnier) {
         showTourplan();
     } else if (pNewTurnier) {
         showSaison(1);
+        if (pNewTurnier === true) {
+            showTischliste();
+        } else {
+            showTurnier(pNewTurnier);
+        }
     } else if (!stStat) {
         if (CUPS.TYP[stCup] === 'MT') {
             if (STAT) {

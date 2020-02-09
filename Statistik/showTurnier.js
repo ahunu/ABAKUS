@@ -45,7 +45,7 @@ function showTurnier(pTurnier) {
     stNamenLen = 0.38;
 
     if (STAT._LASTTURNIER && STAT._LASTTURNIER.substr(0, 10) === pTurnier) {
-        if (LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
+        if (!LS.GelesenSTAT[stCup] || LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
             LS.GelesenSTAT[stCup] = CUPS.MELDSTAT[stCup];
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         } else if (LS.GelesenSTAT[stCup]) {

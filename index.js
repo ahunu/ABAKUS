@@ -2530,6 +2530,9 @@ function getClassMeinTermin(i) {
 
 function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
+    if (pCup === 14) {
+        pCup = 14;
+    }
     var hBtnName = pPrefix + pCup;
     if (pTermin) {
         if (pTermin === -1) {
@@ -2568,6 +2571,30 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 }
             }
         }
+        if ((CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'ET' || CUPS.TYP[pCup] === 'MT') && nextTurnier) {
+            var ueNextTurnier = 0;
+            var ueNextTerminI = false;
+            for (var termin in CUPS.TERMINE) {
+                if (CUPS.TERMINE[termin].CUP === pCup && termin !== nextTerminI) {
+                    if (CUPS.TERMINE[termin].DATUM >= hHeute) {
+                        if (CUPS.TERMINE[termin].DATUM === hHeute) {
+                            heuteTurnier = true;
+                            if ((CUPS.TERMINE[termin].BEGINN && CUPS.TERMINE[termin].BEGINN > new Date().getHours())
+                                    || ((pCup === 54 || pCup === 56) && new Date().getHours() < 16)
+                                    || ((pCup !== 54 && pCup !== 56) && new Date().getHours() < 20)) {
+                                ueNextTurnier = CUPS.TERMINE[termin].DATUM;
+                                ueNextTerminI = termin;
+                                break;
+                            }
+                        } else {
+                            ueNextTurnier = CUPS.TERMINE[termin].DATUM;
+                            ueNextTerminI = termin;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'ET' || CUPS.TYP[pCup] === 'MT') { // Cups ///////////////////////////////////////////////////////////
@@ -2588,12 +2615,25 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '</div>';
         }
         if (nextTurnier >= hHeute) {
-            hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="$(\'#tglXX' + hBtnName + '\').toggle();">'
-                    + '<img src=\'Icons/Kalender.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Nächstes Turnier<div class="S N">' + (nextTurnier === hHeute ? 'Heute' : getDateString(nextTurnier)) + '&nbsp;&nbsp;' + CUPS.TERMINE[nextTerminI].NAME + '</div></div>'
-                    + '<div id="tglXX' + hBtnName + '" style="margin-left:4px;margin-right:4px;" hidden>'
-                    + (CUPS.TERMINE[nextTerminI].BEGINN ? 'Ende der Anmeldung: ' + CUPS.TERMINE[nextTerminI].BEGINN + '.<br>' : '')
-                    + CUPS.TERMINE[nextTerminI].TEXT
-                    + '</div>';
+            if (pTermin !== false
+                    && ueNextTurnier
+                    && TERMINE[pTermin].CUP === pCup
+                    && TERMINE[pTermin].DATUM === CUPS.TERMINE[nextTerminI].DATUM
+                    ) {
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="$(\'#tglXX' + hBtnName + '\').toggle();">'
+                        + '<img src=\'Icons/Kalender.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Übernächstes Turnier<div class="S N">' + (ueNextTurnier === hHeute ? 'Heute' : getDateString(ueNextTurnier)) + '&nbsp;&nbsp;' + CUPS.TERMINE[ueNextTerminI].NAME + '</div></div>'
+                        + '<div id="tglXX' + hBtnName + '" style="margin-left:4px;margin-right:4px;" hidden>'
+                        + (CUPS.TERMINE[ueNextTerminI].BEGINN ? 'Ende der Anmeldung: ' + CUPS.TERMINE[ueNextTerminI].BEGINN + '.<br>' : '')
+                        + CUPS.TERMINE[ueNextTerminI].TEXT
+                        + '</div>';
+            } else {
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="$(\'#tglXX' + hBtnName + '\').toggle();">'
+                        + '<img src=\'Icons/Kalender.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Nächstes Turnier<div class="S N">' + (nextTurnier === hHeute ? 'Heute' : getDateString(nextTurnier)) + '&nbsp;&nbsp;' + CUPS.TERMINE[nextTerminI].NAME + '</div></div>'
+                        + '<div id="tglXX' + hBtnName + '" style="margin-left:4px;margin-right:4px;" hidden>'
+                        + (CUPS.TERMINE[nextTerminI].BEGINN ? 'Ende der Anmeldung: ' + CUPS.TERMINE[nextTerminI].BEGINN + '.<br>' : '')
+                        + CUPS.TERMINE[nextTerminI].TEXT
+                        + '</div>';
+            }
         }
         if (CUPS.MELDAKT[pCup]) {
             hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Aktuelles\');">'

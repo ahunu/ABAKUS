@@ -44,6 +44,16 @@ function showTurnier(pTurnier) {
 
     stNamenLen = 0.38;
 
+    if (STAT._LASTTURNIER && STAT._LASTTURNIER.substr(0, 10) === pTurnier) {
+        if (LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
+            LS.GelesenSTAT[stCup] = CUPS.MELDSTAT[stCup];
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        } else if (LS.GelesenSTAT[stCup]) {
+            LS.GelesenSTAT[stCup] = null;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    }
+
     var html = getStatMeldungen()
             + (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
             + "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"

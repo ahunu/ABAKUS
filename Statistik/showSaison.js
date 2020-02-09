@@ -1,7 +1,7 @@
 
 /* global STAT, QUERFORMAT(), CUPS, stCup, jbSpieler, sortNumber, LS, SAISON, isSaison, is1, is1CupPunkte, is3, is2, is2CupPunkte, is3CupPunkte, stFilter, isFinale, lastBtn, stFotoStyle */
 
-function showSaison(pSaison, pFotos) {
+function showSaison(pSaison, pFotos, pRefreshTurnier) {
 
     if (QUERFORMAT()) {
         if (lastBtn) {
@@ -31,18 +31,6 @@ function showSaison(pSaison, pFotos) {
             showIcons(['#iLandscape']);
         } else {
             showIcons(['#iPortrait']);
-        }
-    }
-
-    if (CUPS.MELDSTAT[stCup]) {
-        if (LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
-            LS.GelesenSTAT[stCup] = CUPS.MELDSTAT[stCup];
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-        }
-    } else {
-        if (LS.GelesenSTAT[stCup]) {
-            LS.GelesenSTAT[stCup] = null;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         }
     }
 
@@ -104,6 +92,7 @@ function showSaison(pSaison, pFotos) {
     var hDataTheme = '';
     var hContainer = 'llf_PhContainer' + (stFotoStyle === 1 || stFotoStyle === 4 ? '_flat' : '');
     var hStyle = (stFotoStyle === 3 ? ' style="border-radius: 50%;"' : '');
+    var hClass = '';
 
     stFinale = false;
     stFinalTeilnehmer = 0;
@@ -114,6 +103,11 @@ function showSaison(pSaison, pFotos) {
                 if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                     if (STAT[turnier]._ANEKDOTE) {
                         nAnekdoten++;
+                    }
+                    if (STAT._LASTTURNIER && STAT._LASTTURNIER.substr(0, 10) === turnier) {
+                        if (pRefreshTurnier || LS.GelesenSTAT[stCup] && LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
+                            hClass = ' cRot';
+                        }
                     }
                     nTurniere++;
                     if (nTurniere % 2 === 0) {
@@ -146,7 +140,7 @@ function showSaison(pSaison, pFotos) {
                     }
                     htmlTE = '<li ' + hDataTheme + ' data-icon="false"><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;'
 
-                            + '<span class="L">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+                            + '<span class="L' + hClass + '">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
                             + (!pFotos ? '<span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span>'
 
                                     : (STAT[turnier]._STOCKERL ? '<span class="S2 N">'

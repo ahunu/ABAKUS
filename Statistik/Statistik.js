@@ -71,7 +71,7 @@ function IsInteger(value) {
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
-    } else {
+//    } else {
         return false;
     }
 }
@@ -84,9 +84,9 @@ function historyBack() {
 function defArchiv() {
     var hContent = '';
     for (var i = 1; i < SAISON.length; i++) {
-        hContent += '<button class="L" style="width:100%;font-weight:bold;" onclick="jbArchiv.close();showSaison(' + i + ')">' + SAISON[i][isSaison] + '</button><br>';
+        hContent += '<a class="ui-btn ui-btn-a K" onclick="jbArchiv.close();showSaison(' + i + ')">' + SAISON[i][isSaison] + '</a>';
     }
-    hContent += '<button class="L" data-role=none style="width:100%;" onclick="resetNB();jbArchiv.close();">zurück</button>';
+    hContent += '<a class="ui-btn ui-btn-a K N" onclick="resetNB();jbArchiv.close();">zurück</a>';
     jbArchiv = new jBox('Modal', {
         title: '<div class="L" style="background-color:#27a;border:3px solid #27a;color: white;font-weight:bold;"><center>Archiv&nbsp;&nbsp;&nbsp;<i class="i zmdi-play zmdi-hc-rotate-270"></i></center></div>',
         content: hContent,

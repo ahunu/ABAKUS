@@ -95,17 +95,20 @@ function ResetSpieler(pSpieler) {
 
 function showPositivSpiel() {
     myJBox = new jBox('Modal', {
-        title: '<div style="background-color:#27a;border:8px solid #27a;color: white;font-size:30px">&nbsp;Positivspiel:</div>',
-        content: (LS.Tarif[1] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(1)">Rufer      </button><br>' : '')
-                + (LS.Tarif[2] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(2)">Solorufer  </button><br>' : '')
-                + (LS.Tarif[3] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(3)">I-Rufer    </button><br>' : '')
-                + (LS.Tarif[4] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(4)">II-Rufer   </button><br>' : '')
-                + (LS.Tarif[5] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(5)">III-Rufer  </button><br>' : '')
-                + (LS.Tarif[6] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(6)">IIII-Rufer </button><br>' : '')
-                + (LS.Tarif[8] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(8)">6er        </button><br>' : '')
-                + (LS.Tarif[9] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(9)">3er        </button><br>' : '')
-                + (LS.Tarif[10] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(10)">Solodreier</button><br>' : '')
-                + '<button data-role=none style="width:100%;font-size:26px" onclick="setSpiel(0)">zur&uuml;ck</button>'
+        title: '<div style="background-color:#27a;border:8px solid #27a;color: white;font-size:30px">&nbsp;Positivspiel:&nbsp;</div>',
+        content: (LS.Tarif[1] ? ' <a class="ui-btn ui-btn-a K" onclick="setSpiel(1)">Rufer      </a>' : '')
+                + (LS.Tarif[2] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(2)">Solorufer  </a>' : '')
+                + (LS.Tarif[3] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(3)">I-Rufer    </a>' : '')
+                + (LS.Tarif[4] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(4)">II-Rufer   </a>' : '')
+                + (LS.Tarif[5] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(5)">III-Rufer  </a>' : '')
+                + (LS.Tarif[6] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(6)">IIII-Rufer </a>' : '')
+                + (LS.Tarif[8] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(8)">6er        </a>' : '')
+                + (LS.Tarif[9] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(9)">3er        </a>' : '')
+                + (LS.Tarif[10] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(10)">Solodreier</a>' : '')
+                + '<a class="ui-btn ui-btn-a K N" onclick="setSpiel(0)">zurück</a>',
+        closeOnClick: false,
+        closeButton: 'box',
+        closeOnEsc: true
     });
     myJBox.open();
 }
@@ -113,10 +116,13 @@ function showPositivSpiel() {
 function showFarbenSpiel() {
     if (LS.Tarif[11]) {
         myJBox = new jBox('Modal', {
-            title: '<div style="background-color:#27a;border:8px solid #27a;color: white;font-size:30px">&nbsp;Farbenspiel:</div>',
-            content: (LS.Tarif[11] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(11)">Farben-3er    </button><br>' : '')
-                    + (LS.Tarif[12] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(12)">Farbensolo-3er</button><br>' : '')
-                    + '<button data-role=none style="width:100%;font-size:26px" onclick="setSpiel(0)">zur&uuml;ck</button>'
+            title: '<div style="background-color:#27a;border:8px solid #27a;color: white;font-size:30px">&nbsp;Farbenspiel:&nbsp;</div>',
+            content: (LS.Tarif[11] ? ' <a class="ui-btn ui-btn-a K" onclick="setSpiel(11)">Farben-3er    </a>' : '')
+                    + (LS.Tarif[12] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(12)">Farbensolo-3er</a>' : '')
+                    + '<a class="ui-btn ui-btn-a K N" onclick="setSpiel(0)">zurück</a>',
+            closeOnClick: false,
+            closeButton: 'box',
+            closeOnEsc: true
         });
         myJBox.open();
     } else {
@@ -126,13 +132,16 @@ function showFarbenSpiel() {
 
 function showNegativSpiel() {
     myJBox = new jBox('Modal', {
-        title: '<div style="background-color:#27a;border:8px solid #27a;color: white;font-size:30px">&nbsp;Negativspiel:</div>',
-        content: (LS.Tarif[13] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(13)">Trischaken    </button><br>' : '')
-                + (LS.Tarif[14] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(14)">Piccolo/Zwi.  </button><br>' : '')
-                + (LS.Tarif[15] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(15)">Bettler       </button><br>' : '')
-                + (LS.Tarif[16] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(16)">Pic./Zwi.overt</button><br>' : '')
-                + (LS.Tarif[17] ? '<button data-role=none style="width:100%;font-weight:bold;font-size:26px" onclick="setSpiel(17)">Bettler overt </button><br>' : '')
-                + '<button data-role=none style="width:100%;font-size:26px" onclick="setSpiel(0)">zur&uuml;ck</button>'
+        title: '<div style="background-color:#27a;border:8px solid #27a;color: white;font-size:30px">&nbsp;Negativspiel:&nbsp;</div>',
+        content: (LS.Tarif[13] ? ' <a class="ui-btn ui-btn-a K" onclick="setSpiel(13)">Trischaken    </a>' : '')
+                + (LS.Tarif[14] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(14)">Piccolo/Zwi.  </a>' : '')
+                + (LS.Tarif[15] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(15)">Bettler       </a>' : '')
+                + (LS.Tarif[16] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(16)">Pic./Zwi.overt</a>' : '')
+                + (LS.Tarif[17] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(17)">Bettler overt </a>' : '')
+                + '<a class="ui-btn ui-btn-a K N" onclick="setSpiel(0)">zurück</a>',
+        closeOnClick: false,
+        closeButton: 'box',
+        closeOnEsc: true
     });
     myJBox.open();
 }

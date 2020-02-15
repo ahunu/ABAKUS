@@ -188,10 +188,10 @@ function showNavbarExt() {
             closeButton: false,
             closeOnClick: true,
             title: '<div class=L3 style="text-align:center;background-color:#27a;border:4px solid #27a;color: white;">&nbsp;. . .</div>',
-            content: '<button class=L2 style="white-space:nowrap;width:100%;font-weight:bold;" onclick="jbNavbarExt.close();statShow(10);" ' + (CUPS.ANMELDERF[stCup] ? '' : 'class="ui-disabled"') + '>Anmeldung</button><br>'
-                    + '<button class=L2 style="width:100%;font-weight:bold;" onclick="jbNavbarExt.close();showArchiv();" ' + (STAT.MAXSPIELE[1] + STAT.MAXSPIELE[2] < STAT.MAXSPIELE[0] ? '' : 'class="ui-disabled"') + '>Archiv</button><br>'
-                    + '<button class=L2 style="width:100%;font-weight:bold;" onclick="jbNavbarExt.close();$(\'#hilfeText\').toggle(\'show\');">Hilfe</button><br>'
-                    + '<button class="L2" style="width:100%;" onclick="jbNavbarExt.close();">zurück</button>'
+            content: '<a class="ui-btn ui-btn-a K' + (CUPS.ANMELDERF[stCup] ? '' : ' ui-disabled') + '" onclick="jbNavbarExt.close();statShow(10);">&nbsp;Anmeldung&nbsp;</a>'
+                    + '<a class="ui-btn ui-btn-a K' + (STAT.MAXSPIELE[1] + STAT.MAXSPIELE[2] < STAT.MAXSPIELE[0] ? '' : ' ui-disabled') + '" onclick="jbNavbarExt.close();showArchiv();">Archiv</a>'
+                    + '<a class="ui-btn ui-btn-a K" onclick="jbNavbarExt.close();$(\'#hilfeText\').toggle(\'show\');">Hilfe</a>'
+                    + '<a class="ui-btn ui-btn-a K N" onclick="jbNavbarExt.close();">zurück</a>'
         });
     }
     jbNavbarExt.open();
@@ -204,19 +204,19 @@ function showArchiv() {
             position: {x: 'right', y: 'center'},
             closeButton: false,
             closeOnClick: true,
-            title: '<div class=L3 style="white-space:nowrap;text-align:center;background-color:#27a;border:4px solid #27a;color: white;">&nbsp;Archiv:</div>'
+            title: '<div class=L3 style="white-space:nowrap;text-align:center;background-color:#27a;border:4px solid #27a;color: white;">&nbsp;&nbsp;Archiv:&nbsp;</div>'
         });
 
         var jbArchivCon = '';
         if (STAT.MAXSPIELE.length > 4) {
             for (var ii = 4; ii < STAT.MAXSPIELE.length; ii++) {
                 if (STAT.MAXSPIELE[ii]) {
-                    jbArchivCon += '<button class=L3 data-role=none style="width:100%;font-weight:bold;" onclick="closeArchiv();statShow(-1,' + "'D60'" + ',false,false,' + ii + ');">' + (2010 + ii) + '</button><br>';
+                    jbArchivCon += '<a class="ui-btn ui-btn-a K" onclick="closeArchiv();statShow(-1,' + "'D60'" + ',false,false,' + ii + ');">' + (2010 + ii) + '</a>';
                 }
             }
         }
         if (jbArchivCon) {
-            jbArchivCon += '<button class=L2 data-role=none style="white-space:nowrap;width:100%;" onclick="closeArchiv();">zur&uuml;ck</button>';
+            jbArchivCon += '<a class="ui-btn ui-btn-a K N" onclick="closeArchiv();">zurück</a>';
         }
         jbArchiv.setContent(jbArchivCon);
     }

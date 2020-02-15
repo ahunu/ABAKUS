@@ -1,14 +1,31 @@
 
 function getVersion() {
-    return 1027;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1028;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 2, 8);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 2, 14);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
+
+
+//Spielrelevantz und sofortige Ich-Liege-Pflicht bei einen Solodreier wiedersprechen sich.
+//
+//Geschrieben ist geschrieben ist nicht haltbar.
+//
+//Auf 5er-Tischen darf sich der 5te in keinster Form ins Spiel einmischen.
+//Nur wenn er von einen Spieler oder dem Schiedsrichter gefragt wird hat er auskunft zu geben.
+//
+//Bei Renonce durch den Kiebitz zahlt der Kiebitz.
+//
+//Sechs aufnehmen wenn der König liegt.
+//#
+
+
+
+// MI 12. 2. Nachdem ich ein paar dicke Socken genommen habe, fehlen jetzt 4 Paare.
 
 // Mit wem würdest du am liebsten einmal zu abend essen?
 

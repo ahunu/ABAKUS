@@ -184,7 +184,7 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
         LS.Meldung = '';
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
-//showRegeln();
+showRegeln();
 }
 
 function showLi(pListe, pShow) {

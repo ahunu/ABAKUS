@@ -151,8 +151,8 @@ function aktuellesCheck(pSpeichern) {
             showEinenTip('#iSCHLAGZEILE', 'Die Schlagzeile muß mindesten 12 Stellen lang sein.');
             return false;
         }
-        if (iSCHLAGZEILE.length > 40) {
-            showEinenTip('#iSCHLAGZEILE', 'Die Schlagzeile darf maximal 40 Zeiche lang sein.');
+        if (iSCHLAGZEILE.length > 80 ) {
+            showEinenTip('#iSCHLAGZEILE', 'Die Schlagzeile darf maximal 80 Zeichen lang sein.');
             return false;
         }
         if (iAKTUELLES.length < 12) {

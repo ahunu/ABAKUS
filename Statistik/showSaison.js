@@ -36,6 +36,10 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
 
     if (CUPS.TYP[stCup] === 'CUP') {
         if (!pSaison) {
+//            if (isNaN(iSaison) || iSaison < 1 || iSaison >= SAISON.length) {
+            if (iSaison === 0) {
+                iSaison = 1;
+            }
             stSaison = SAISON[iSaison][isSaison];
         }
         if (pSaison && iSaison !== pSaison) {

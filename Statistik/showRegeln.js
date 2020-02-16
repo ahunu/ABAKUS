@@ -34,7 +34,7 @@ function showRegeln() {
         var hTextPadding = '1vw 4vw 2vw 0vw';
     }
 
-    if (LS.ME === '3425' || LS.ME === '37 18') {
+    if (LS.ME === '3425' || LS.ME === "3244" || LS.ME === '37 18') {
 
         html = '<div class="J">'
 

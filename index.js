@@ -2092,7 +2092,6 @@ function showCup(i, pBtn, pTermin) {
         hrefStatistik(i);
     }
 
-
     var newBtn = '#' + pBtn + i;
     if (!QUERFORMAT()) {
         if (LS.LastBtn) {

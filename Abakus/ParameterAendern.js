@@ -153,7 +153,7 @@ function copyCUPS() {
             return;
         }
     }
-    if (iAdmin.length < 6 && iAdmin !== '*') {
+    if (iAdmin.length > 4) {
             $("#kFText").text('Ungültiger Admin.');
             return;
     }

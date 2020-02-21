@@ -386,9 +386,8 @@ function loadSTATold(I, pCallback) {
                         akku0000rec(i, I, iSTAT);
                     }
 
-//console.log(STAT.S[iSTAT].VNAME, STAT.S[iSTAT].NNAME,STAT.S[iSTAT].SPIELE);
-
-                    for (var iii = 0; iii < STAT.S[iSTAT].SPIELE.length; iii++) {
+//                  for (var iii = 0; iii < STAT.S[iSTAT].SPIELE.length; iii++) {
+                    for (var iii = 0; iii < 4; iii++) {
                         if (STAT.S[iSTAT].SPIELE[iii]) {
                             if (!STAT.MAXSPIELE[iii] || STAT.MAXSPIELE[iii] < STAT.S[iSTAT].SPIELE[iii] || !STAT.MAXSPIELE[iii]) {
                                 STAT.MAXSPIELE[iii] = STAT.S[iSTAT].SPIELE[iii];

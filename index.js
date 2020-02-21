@@ -1169,14 +1169,17 @@ function checkNeuerTisch() {
     }
 
     LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
-    if (LS.I === 54 || LS.I === 77) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
-        if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
-            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler);
-        }
-    } else {           // Rest - 5er-Tische spielen mehr
-        if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
-            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
-        }
+//    if (LS.I === 54 || LS.I === 77) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+//        if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
+//            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler);
+//        }
+//    } else {           // Rest - 5er-Tische spielen mehr
+//        if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
+//            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+//        }
+//    }
+    if (LS.AnzSpieler > 4) {
+        LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
     }
 
     SetGeberPausierer();
@@ -1479,7 +1482,7 @@ function whenSTATloaded() {
 function Weiterspielen() {
     'use strict';
     LS.ShowCups = LS.I;
-    if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'ET' && CUPS.TYP[LS.I] !== 'MT') { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+    if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'ET' && CUPS.TYP[LS.I] !== 'MT') {
         LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
         if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
             LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
@@ -2294,7 +2297,7 @@ function showCup(i, pBtn, pTermin) {
                         : ''
                         )
 
-                + (((I === 3 && LS.ME === '3425') || (I === 53 && LS.ME === '4506') || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
+                + (((I === 3 && LS.ME === '3425') || (I === 53 && LS.ME === '4506') || (I === 54 && LS.ME === '3590') || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
                         ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
                         : ''
                         )

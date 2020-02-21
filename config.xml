@@ -2,8 +2,8 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.phonegap.ABAKUSst" 
-        versionCode = "10300001"
-        version     = "10300001">     <!-- ABAKUSst -->
+        versionCode = "10310001"
+        version     = "10310001">     <!-- ABAKUSst -->
 
     <name>ABAKUS für Tablets</name>
 
@@ -22,8 +22,8 @@
 
     <preference name="android-minSdkVersion"    value="18" />  <!-- Android Version 4.3 -->
     <preference name="android-targetSdkVersion" value="28" />  <!-- Android Version 9.0 -->
-    
-    <preference name='pgb-builder-version' value='1'       /> <!-- ResponsiveVoice funktioniert sonst nicht! -->
+
+    <preference name="pgb-builder-version" value="1"       /> <!-- ResponsiveVoice funktioniert sonst nicht! -->
     <preference name="splashscreen"      value="Icons/AbakusSplash.png" />
     <preference name="permissions"       value="none"      />
     <preference name="phonegap-version"  value="cli-9.0.0" />

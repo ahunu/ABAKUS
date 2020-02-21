@@ -162,6 +162,7 @@ function getNextTermin(pCup) {
     }
     return nextTermin;
 }
+
 function getCupPunkte(i, pTurCupGes) {
     if (typeof pTurCupGes !== 'number') {
         pTurCupGes = stTurCupGes;

@@ -188,10 +188,10 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
         LS.Meldung = '';
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
-    if (LS.ME === '3425') {
+//    if (LS.ME === '3425') {
 //        showRegeln();
-        showPresseschau();
-    }
+//        showPresseschau();
+//    }
 }
 
 function showLi(pListe, pShow) {

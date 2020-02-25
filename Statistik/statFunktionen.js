@@ -443,7 +443,11 @@ function showIcons(pIcons) {
 }
 
 function writeCanvas(pTitel) {
-    var hTitel = CUPS.NAME[stCup];
+    if (stCup === 0) {
+        var hTitel = 'Presseschau';
+    } else {
+        var hTitel = CUPS.NAME[stCup];
+    }
     if (stCup === 53) {
         $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "../Icons/i53" + (stFilter.replace(/Ü/g, 'UE')) + ".png");
         if (stFilter) {
@@ -477,7 +481,9 @@ function writeCanvas(pTitel) {
     // 15 A Stadl Tarock
 
     if (PC) {
-        if (stCup === 51) {
+        if (stCup === 0) {
+            document.title = 'Presseschau';
+        } else if (stCup === 51) {
             document.title = 'HRC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else if (stCup === 52) {
             document.title = 'RTC - ' + pTitel.replace('  ', ' ').replace('/', '-');

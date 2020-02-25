@@ -7,7 +7,7 @@ function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 2, 21);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 2, 25);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
 
@@ -21,7 +21,6 @@ function getVersionsDatum() {
 //Bei Renonce durch den Kiebitz zahlt der Kiebitz.
 //
 //Sechs aufnehmen wenn der König liegt.
-//#
 
 
 

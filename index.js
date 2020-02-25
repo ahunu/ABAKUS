@@ -2650,6 +2650,15 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 // Ein neuer Tisch / Zu meinem Tisch
 // Zur Statistik
 // Parameter ändern
+        var hMeld = '';
+        if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
+            for (var termin in TERMINE) {  //  llll llll
+                if (TERMINE[termin].CUP === pCup) {
+                    hMeld += TERMINE[termin].DATUM + ':<br>';
+                }
+            }
+        }
+
         var hHeuteTurnier = false;
         if (LS.I === pCup) {
             hHeuteTurnier = true;
@@ -2658,13 +2667,11 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                 for (var termin in TERMINE) {  //  llll llll
                     if (TERMINE[termin].CUP === pCup && TERMINE[termin].DATUM === hHeute) {
                         hHeuteTurnier = true;
+                        hMeld += TERMINE[termin].DATUM + ': !!!!!!!!!<br>';
                         break;
                     }
                 }
             }
-        }
-        if (pCup === 9) {
-            pCup = 9;
         }
         if (hHeuteTurnier && CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
             var hStartStopText = '';
@@ -2693,18 +2700,6 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     + '</div>';
         }
 
-        if (LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') {
-            if (pCup === 9 && !hHeuteTurnier) {
-                var meld = hHeute + ' ? :';
-                for (var termin in TERMINE) {
-                    if (TERMINE[termin].CUP === pCup) {
-                        meld += JSON.stringify(TERMINE[termin]);
-                    }
-                }
-                writeLOG(meld);
-            }
-        }
-
         if (LS.ME !== 'NOBODY'
                 && (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
                         || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0
@@ -2720,19 +2715,15 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                             + '</div>';
                 }
             } else {
-                if (LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') {
-                    if (pCup === 9) {
-                        var meld = 'Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
-                        writeLOG(meld);
-                    }
+                if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
+                    hMeld += LS.ME + ': Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
+                    writeLOG(hMeld);
                 }
             }
         } else {
-            if (LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') {
-                if (pCup === 9) {
-                    var meld = 'Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
-                    writeLOG(meld);
-                }
+            if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
+                hMeld = LS.ME + ': Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
+                writeLOG(hMeld);
             }
         }
 
@@ -3450,7 +3441,8 @@ $(document).ready(function () {
 }
 );
 
-if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+// if (/iPad|iPhone|iPod|xFirefox/.test(navigator.userAgent) && !window.MSStream) {
+if (window.navigator.userAgent.indexOf("Chrome") === -1) {
     window.onpageshow = function (event) {
         if (window.performance.navigation.type === 2) {
             LS = JSON.parse(localStorage.getItem('Abakus.LS'));

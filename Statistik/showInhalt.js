@@ -30,9 +30,13 @@ function showInhalt() {
                         ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
                         : ''
                         )
+                + (LS.ME === '3425'
+                        ? '<li data-icon="false" class="cQUER"><a id="bPresseschau" onClick="showPresseschau();">&nbsp;Presseschau</a></li>'
+                        : ''
+                        )
 
-                                + ((stCup === 16)
-                ? '<li data-icon="false"><a id="bTourplan" onClick="showTourplan();">&nbsp;Tourplan</a></li>'
+                + ((stCup === 16)
+                        ? '<li data-icon="false"><a id="bTourplan" onClick="showTourplan();">&nbsp;Tourplan</a></li>'
                         : ''
                         )
 
@@ -88,6 +92,7 @@ function showInhalt() {
     if (QUERFORMAT()) {
         showLogo();
     }
+    $("#sideContent").scrollTop(0);
 }
 
 function showUebersichtMT(pTurniere) {

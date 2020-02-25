@@ -4,8 +4,10 @@
         <meta charset='utf-8'/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
         <meta http-equiv="Content-Security-Policy" content="img-src 'self' https: data:" />
+
+        <!--         <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval';  img-src 'self' data:; media-src 'self' https://code.responsivevoice.org/getvoice.php" /> -->
+
 
         <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
         <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
@@ -38,6 +40,29 @@
         <title>Abakus</title>
         <link  href="../js/css/Abakus.css"    rel="stylesheet" />
         <link  href="Statistik.css"           rel="stylesheet" />
+        <style>
+            .presse-btn {
+                background-color: #f4f4f4;
+                border-color: #fff;
+                padding: 1vh;
+                font-weight: 500;
+                border-width: 1px;
+                border-style: groove;
+                cursor: pointer
+            }
+            .presse-btn:hover {
+                background-color: #ededed;
+                border-color: #eee;
+                color: #333;
+                text-shadow: 0 1px 0 #f3f3f3
+            }
+            .ui-btn-active {
+                background-color: #38c !important;
+                border-color: #38c !important;
+                color: #fff !important;
+                text-shadow: 0 1px 0 #059 !important
+            }
+        </style>
         <script src="statFunktionen.js"></script>
         <script src='../Abakus/getZitat.js'></script>
         <script src="showAktuelles.js"></script>
@@ -53,6 +78,7 @@
         <script src="showHeinewertung.js"></script>
         <script src="showOovwertung.js"></script>
         <script src="showPlatzierungen.js"></script>
+        <script src="showPresseschau.js"></script>
         <script src="showTeilnehmerzahlen.js"></script>
         <script src="showBestenliste.js"></script>
         <script src="showTischliste.js"></script>

@@ -30,10 +30,7 @@ function showInhalt() {
                         ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'
                         : ''
                         )
-                + (LS.ME === '3425'
-                        ? '<li data-icon="false" class="cQUER"><a id="bPresseschau" onClick="showPresseschau();">&nbsp;Presseschau</a></li>'
-                        : ''
-                        )
+                + '<li data-icon="false" class="cQUER cRot"><a id="bPresseschau" class="cRot" onClick="showPresseschau();">&nbsp;<span class="cRot">Presseschau</span></a></li>'
 
                 + ((stCup === 16)
                         ? '<li data-icon="false"><a id="bTourplan" onClick="showTourplan();">&nbsp;Tourplan</a></li>'

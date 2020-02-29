@@ -3355,7 +3355,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
@@ -3452,13 +3452,15 @@ if (window.navigator.userAgent.indexOf("Chrome") === -1) {
             } else {
                 $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
             }
-            var hEvent = parseInt(Math.random() * 1000);
-//            writeLOG(' Event: ' + hEvent + ',  Type: ' + window.performance.navigation.type);
+            if (LS.VIC.length === 0) {
+                $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
+            } else if (!LS.VIC[0]) {
+                $('#tEinstellungen').html('&nbsp;&nbsp;Du hast den dir wichtigsten<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
+            } else {
+                $('#tEinstellungen').remove();
+            }
             initSeite1();
-//            writeLOG(' Event: ' + hEvent + ',  Code: ' + window.performance.navigation.type);
             $('body').removeClass('ui-disabled');
-        } else {
-//            writeLOG(' Exeption: ' + window.performance.navigation.type);
         }
     };
 }

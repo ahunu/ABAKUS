@@ -20,7 +20,7 @@ function statPosAnmeld() {
                     + '<br>&nbsp;&nbsp;Falls du mitspielen willst, bitte einen Spieler'
                     + '<br>&nbsp;&nbsp;dein Kommen per Nachricht anzukündigen.</span>'
                     )
-            + "<table id=mTable data-role='table' data-mode='columntoggle' class='table-stripe ui-shadow ui-responsive' data-column-btn-text=''><thead>"
+            + "<table id=mTable data-role='table' data-mode='columntoggle' class='table-stripe ui-shadow ui-responsive" +  (stSynchron ? "" : " ui-disabled") + "' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau M'>"
             + "<th class=TR>#&nbsp;</th>"
             + "<th class=TC>am</th>"

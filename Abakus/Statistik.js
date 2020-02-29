@@ -294,7 +294,7 @@ function whenSTATloaded(pNotSynchron) {
                 } else if (!stSynchron) {
                     stSynchron = true;
                     if (stStat === 10) { // Anmeldung
-                        $('#bAnAbmelden,#bNachricht').removeClass('ui-disabled');
+                        $('#bAnAbmelden,#bNachricht,#mTable').removeClass('ui-disabled');
                     }
                 }
             }, function (error) {
@@ -375,7 +375,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

@@ -1,18 +1,41 @@
 
-/* global CUPS, LS, stCup, jbSpieler, stHeute, QUERFORMAT(), ADMIN, firebase, FB */
+/* global CUPS, LS, hCup, jbSpieler, stHeute, QUERFORMAT(), ADMIN, firebase, FB, stCup */
 
 function showPresseschau() {
 
-
     var aBericht = [];
 
-//    stCup = 0;
+    var hCup = stCup;
+    if (window.location.search === '?Presseschau') {
+        if (LS.VIC[0]) {
+            hCup = LS.VIC[0];
+        } else {
+            hCup = 56;
+        }
+    }
+
+    if (hCup === 51)
+        hFilter = 'HRC';
+    else if (hCup === 51)
+        hFilter = 'KTC';
+    else if (hCup === 52)
+        hFilter = 'RTC';
+    else if (hCup === 53)
+        hFilter = 'SWC';
+    else if (hCup === 54)
+        hFilter = 'STC';
+    else if (hCup === 55)
+        hFilter = 'TTC';
+    else if (hCup === 56)
+        hFilter = 'WTC';
+    else
+        hFilter = 'WTC';
 
     aBericht.push(["27.6.2007", "Diverses", "Bridge, Schnapsen und Tarock sind laut VwGH Geschick&shy;lich&shy;keits&shy;spiele", "https://www.wienerzeitung.at/startseite/archiv/101657-Ein-gutes-Blatt-Glueck-oder-Koennen.html?em_no_split=1"]);
 
     aBericht.push(["19.12.2019", "Diverses", "Karteln gegen die Einsamkeit", "https://www.wienerzeitung.at/nachrichten/chronik/wien/2043161-Karteln-gegen-die-Einsamkeit.html?em_no_split=1"]);
 
-    aBericht.push(["26.11.2008", "Persönlichkeiten", "Versäumt habe man .. zu tarockieren, so Gusenbauer", "https://www.wienerzeitung.at/dossiers/wahlen/oester&shy;reich/250919-Ein-Abschluss-mit-viel-Gefuehl.html"]);
+    aBericht.push(["26.11.2008", "Personen", "Versäumt habe man &hellip; zu tarockieren, so Gusenbauer", "https://www.wienerzeitung.at/dossiers/wahlen/oester&shy;reich/250919-Ein-Abschluss-mit-viel-Gefuehl.html"]);
 
     aBericht.push(["12.6.2004", "Diverses", "Piatnik setzt nicht alles auf eine Karte", "https://www.wienerzeitung.at/nachrichten/wirtschaft/international/308467-Piatnik-setzt-nicht-alles-auf-eine-Karte.html"]);
 
@@ -40,7 +63,7 @@ function showPresseschau() {
 
     aBericht.push(["17.3.2014", "WTC", "Ingrid Müller ist Wiener Tarock&shy;meisterin 2013/14", "https://www.wienerzeitung.at/multimedia/spiele/tarock/tarock-cup/615666-Ingrid-Mueller-ist-Wiener-Tarockmeisterin-2013-14.html"]);
 
-    aBericht.push(["11.11.2019", "Prominente", "Peter Handke und eine Salzburger Tarock-Runde", "https://www.wienerzeitung.at/nachrichten/kultur/literatur/2037461-Als-Handke-Hakenkreuze-uebermalte.html?em_no_split=1"]);
+    aBericht.push(["11.11.2019", "Personen", "Peter Handke und eine Salzburger Tarock-Runde", "https://www.wienerzeitung.at/nachrichten/kultur/literatur/2037461-Als-Handke-Hakenkreuze-uebermalte.html?em_no_split=1"]);
 
     aBericht.push(["3.11.2009", "Diverses", "Tarockcup im Netz", "https://www.wienerzeitung.at/startseite/archiv/67752-Tarockcup-im-Netz.html"]);
 
@@ -130,9 +153,9 @@ function showPresseschau() {
 
     aBericht.push(["10.10.2019", "Tarockkurs", "Der Meister und seine Tarock-Akademie", "https://www.nachrichten.at/oberoester&shy;reich/der-meister-und-seine-tarock-akademie;art4,3174916"]);
 
-    aBericht.push(["5.7.2016", "Seitenblicke", "Schelling will nicht mehr tarockieren!", "https://www.wienerzeitung.at/meinung/glossen/829673-Schelling-will-nicht-mehr-tarockieren.html"]);
+    aBericht.push(["5.7.2016", "Diverses", "Schelling will nicht mehr tarockieren!", "https://www.wienerzeitung.at/meinung/glossen/829673-Schelling-will-nicht-mehr-tarockieren.html"]);
 
-    aBericht.push(["6.11.2018", "Seitenblicke", "Ein verschüttetes Kulturgut", "https://www.wienerzeitung.at/meinung/glossen/1000424-Ein-verschuettetes-Kulturgut.html"]);
+    aBericht.push(["6.11.2018", "Diverses", "Ein verschüttetes Kulturgut", "https://www.wienerzeitung.at/meinung/glossen/1000424-Ein-verschuettetes-Kulturgut.html"]);
 
     aBericht.push(["19.5.2016", "Diverses", "Tiroler Landesmuseum widmen sich der Kulturgeschichte des Spielens", "https://www.tt.com/artikel/11522412/tiroler-landesmuseen-widmen-sich-der-kulturgeschichte-des-spielens"]);
 
@@ -144,25 +167,25 @@ function showPresseschau() {
 
     aBericht.push(["3.10.2018", "Diverses", "Altes Spiel, neue Blüte: Tarock-Renaissance im Cafe", "https://www.diepresse.com/5505130/altes-spiel-neue-blute-tarock-renaissance-im-cafe?from=rss"]);
 
-    aBericht.push(["26.3.2018", "Eh schon wissen", "Tarock ist Taktik und viel Gefühl", "https://www.nachrichten.at/oberoester&shy;reich/Guenther-Steidl-Tarock-ist-Taktik-und-viel-Gefuehl;art4,2851094"]);
+    aBericht.push(["26.3.2018", "Diverses", "Tarock ist Taktik und viel Gefühl", "https://www.nachrichten.at/oberoester&shy;reich/Guenther-Steidl-Tarock-ist-Taktik-und-viel-Gefuehl;art4,2851094"]);
 
-    aBericht.push(["29.9.2016", "Eh schon wissen", "Besser wird, wer nicht immer gegen die gleichen Mitspieler antritt", "https://www.nachrichten.at/oberoester&shy;reich/steyr/Tarock-Besser-wird-wer-nicht-immer-gegen-die-gleichen-Mitspieler-antritt;art68,2359779"]);
+    aBericht.push(["29.9.2016", "Diverses", "Besser wird, wer nicht immer gegen die gleichen Mitspieler antritt", "https://www.nachrichten.at/oberoester&shy;reich/steyr/Tarock-Besser-wird-wer-nicht-immer-gegen-die-gleichen-Mitspieler-antritt;art68,2359779"]);
 
-    aBericht.push(["13.1.2017", "Eh schon wissen", "Beim Tarock gibts kein schlechtes Blatt", "https://www.nachrichten.at/oberoester&shy;reich/Beim-Tarock-gibt-s-kein-schlechtes-Blatt;art4,2454757"]);
+    aBericht.push(["13.1.2017", "Diverses", "Beim Tarock gibts kein schlechtes Blatt", "https://www.nachrichten.at/oberoester&shy;reich/Beim-Tarock-gibt-s-kein-schlechtes-Blatt;art4,2454757"]);
 
-    aBericht.push(["2.1.2016", "Eh schon wissen", "Tarock muss man mit Freude spielen", "https://www.nachrichten.at/oberoester&shy;reich/Josef-Muelleder-Tarock-muss-man-mit-Freude-spielen;art4,2073802"]);
+    aBericht.push(["2.1.2016", "Diverses", "Tarock muss man mit Freude spielen", "https://www.nachrichten.at/oberoester&shy;reich/Josef-Muelleder-Tarock-muss-man-mit-Freude-spielen;art4,2073802"]);
 
-    aBericht.push(["20.11.2015", "Eh schon wissen", "Tarock ist viel mehr als ein Karten&shy;spiel", "https://www.nachrichten.at/oberoester&shy;reich/Wolfgang-Mayr-Tarock-ist-viel-mehr-als-ein-Kartenspiel;art4,2036698"]);
+    aBericht.push(["20.11.2015", "Diverses", "Tarock ist viel mehr als ein Karten&shy;spiel", "https://www.nachrichten.at/oberoester&shy;reich/Wolfgang-Mayr-Tarock-ist-viel-mehr-als-ein-Kartenspiel;art4,2036698"]);
 
-    aBericht.push(["28.6.2013", "Eh schon wissen", "Wo Staudenhocker auf die Wildsau warten", "https://www.nachrichten.at/meine-welt/freizeit/Wo-Staudenhocker-auf-die-Wildsau-warten;art7,1147109"]);
+    aBericht.push(["28.6.2013", "Diverses", "Wo Staudenhocker auf die Wildsau warten", "https://www.nachrichten.at/meine-welt/freizeit/Wo-Staudenhocker-auf-die-Wildsau-warten;art7,1147109"]);
 
-    aBericht.push(["29.3.2010", "Eh schon wissen", "Tarock: Heimlicher Volkssport", "https://www.nachrichten.at/oberoester&shy;reich/muehlviertel/Tarock-Heimlicher-Volkssport;art69,360922"]);
+    aBericht.push(["29.3.2010", "Diverses", "Tarock: Heimlicher Volkssport", "https://www.nachrichten.at/oberoester&shy;reich/muehlviertel/Tarock-Heimlicher-Volkssport;art69,360922"]);
 
-    aBericht.push(["29.10.2010", "Eh schon wissen", "Freude über einen schönen Vogel", "https://www.nachrichten.at/meine-welt/freizeit/Freude-ueber-einen-schoenen-Vogel;art7,488490"]);
+    aBericht.push(["29.10.2010", "Diverses", "Freude über einen schönen Vogel", "https://www.nachrichten.at/meine-welt/freizeit/Freude-ueber-einen-schoenen-Vogel;art7,488490"]);
 
-    aBericht.push(["28.11.2015", "Eh schon wissen", "Spatz, Mond, Gstiß: Ober&shy;rreich ist Tarock-Hochburg", "https://www.nachrichten.at/oberoester&shy;reich/Spatz-Mond-G-stiess-Oberoester&shy;reich-ist-Tarock-Hochburg;art4,2044067"]);
+    aBericht.push(["28.11.2015", "Diverses", "Spatz, Mond, Gstiß: Ober&shy;rreich ist Tarock-Hochburg", "https://www.nachrichten.at/oberoester&shy;reich/Spatz-Mond-G-stiess-Oberoester&shy;reich-ist-Tarock-Hochburg;art4,2044067"]);
 
-    aBericht.push(["29.3.2010", "Eh schon wissen", "Erfolgreicher Tarockclub: Mit den Leonfeldnern ist gut Karten&shy;spielen", "https://www.nachrichten.at/oberoester&shy;reich/muehlviertel/Erfolgreicher-Tarockclub-Mit-den-Leonfeldnern-ist-gut-Kartenspielen;art69,360997"]);
+    aBericht.push(["29.3.2010", "Diverses", "Erfolgreicher Tarockclub: Mit den Leonfeldnern ist gut Karten&shy;spielen", "https://www.nachrichten.at/oberoester&shy;reich/muehlviertel/Erfolgreicher-Tarockclub-Mit-den-Leonfeldnern-ist-gut-Kartenspielen;art69,360997"]);
 
     aBericht.push(["15.9.2005", "Regeln", "Lungauer Tarock", "https://www.wienerzeitung.at/startseite/archiv/129955-Lungauer-Tarock.html"]);
 
@@ -176,19 +199,19 @@ function showPresseschau() {
 
     aBericht.push(["14.9.2005", "Regeln", "Slowenisches Tarock", "https://www.wienerzeitung.at/startseite/archiv/130834-Slowenisches-Tarock.html?em_no_split=1"]);
 
-    aBericht.push(["1.1.2000", "Persönlichkeiten", "Lore Krainer - Eine Biographie", "https://austria-forum.org/af/Biographien/Krainer%2C_Lore"]);
+    aBericht.push(["1.1.2000", "Personen", "Lore Krainer - Eine Biographie", "https://austria-forum.org/af/Biographien/Krainer%2C_Lore"]);
 
-    aBericht.push(["22.4.2016", "Persönlichkeiten", "Karl Renner - Einsatz von taktischen Mitteln", "https://www.diepresse.com/4973653/einsatz-von-taktischen-mitteln?from=rss"]);
+    aBericht.push(["22.4.2016", "Personen", "Karl Renner - Einsatz von taktischen Mitteln", "https://www.diepresse.com/4973653/einsatz-von-taktischen-mitteln?from=rss"]);
 
-    aBericht.push(["10.5.2017", "Persönlichkeiten", "Reinhold Mitterlehner - Die ewige Zukunftshoffnung", "https://www.diepresse.com/5215640/die-ewige-zukunftshoffnung?from=rss"]);
+    aBericht.push(["10.5.2017", "Personen", "Reinhold Mitterlehner - Die ewige Zukunftshoffnung", "https://www.diepresse.com/5215640/die-ewige-zukunftshoffnung?from=rss"]);
 
-    aBericht.push(["16.8.2017", "Persönlichkeiten", "Felix Wallner - Ich liebe das Groteske", "https://www.nachrichten.at/oberoester&shy;reich/linz/Ich-liebe-das-Absurde-das-Groteske;art66,2651524"]);
+    aBericht.push(["16.8.2017", "Personen", "Felix Wallner - Ich liebe das Groteske", "https://www.nachrichten.at/oberoester&shy;reich/linz/Ich-liebe-das-Absurde-das-Groteske;art66,2651524"]);
 
-    aBericht.push(["15.10.2009", "Tarockkarten", "Linz als gutes Blatt: Künstler bringt die Stadt auf den Tarock-Spieltisch", "https://www.nachrichten.at/oberoester&shy;reich/wels/Linz-als-gutes-Blatt-Kuenstler-bringt-die-Stadt-auf-den-Tarock-Spieltisch;art67,276205"]);
+    aBericht.push(["15.10.2009", "Karten", "Linz als gutes Blatt: Künstler bringt die Stadt auf den Tarock-Spieltisch", "https://www.nachrichten.at/oberoester&shy;reich/wels/Linz-als-gutes-Blatt-Kuenstler-bringt-die-Stadt-auf-den-Tarock-Spieltisch;art67,276205"]);
 
-    aBericht.push(["30.3.2009", "Fast privat", "Vom Tarockieren und der Ehre der Jägerschaft", "https://www.nachrichten.at/panorama/society/Fast-privat-Vom-Tarockieren-und-der-Ehre-der-Jaegerschaft;art411,136411"]);
+    aBericht.push(["30.3.2009", "Diverses", "Vom Tarockieren und der Ehre der Jägerschaft", "https://www.nachrichten.at/panorama/society/Fast-privat-Vom-Tarockieren-und-der-Ehre-der-Jaegerschaft;art411,136411"]);
 
-    aBericht.push(["9.11.2010", "Fast privat", "Sküs zum Achtziger", "https://www.nachrichten.at/archivierte-artikel/fast_privat/Skues-zum-Achtziger;art33018,501490"]);
+    aBericht.push(["9.11.2010", "Diverses", "Sküs zum Achtziger", "https://www.nachrichten.at/archivierte-artikel/fast_privat/Skues-zum-Achtziger;art33018,501490"]);
 
     aBericht.push(["8.5.2018", "ÖF", "Anton Wimmer ist öster&shy;reichischer Tarock&shy;meister 2017/18", "https://www.nachrichten.at/oberoester&shy;reich/salzkammergut/Anton-Wimmer-ist-oester&shy;reichischer-Tarockmeister;art71,2889129"]);
 
@@ -244,6 +267,10 @@ function showPresseschau() {
 
     aBericht.push(["26.3.2018", "RTC", "Günther Steidl gewinnt den Raiffeisen Tarockcup 2017/18", "https://www.nachrichten.at/oberoester&shy;reich/Die-Muehlviertler-sind-die-besten-Tarockierer;art4,2850995"]);
 
+    aBericht.push(["26.3.2006", "TTC", "Königrufen in Tirol im Aufwind", "http://www.tarock.tirol/tarock-sonstiges/tiroler-tageszeitung-2006.pdf"]);
+    aBericht.push(["27.4.2009", "TTC", "Gemeinsam am Spieltisch mit Damen und Königen", "http://www.tarock.tirol/tarock-sonstiges/tiroler-tageszeitung-2009.pdf"]);
+
+
     aBericht.push(["", "", "", ""]);
 
 
@@ -273,34 +300,72 @@ function showPresseschau() {
 
     stStat = 'Presseschau';
 
-    writeCanvas(stStat);
+    if (window.location.search === '?Presseschau') {
+        writeCanvas('Was schreibt die Presse?');
+    } else {
+        writeCanvas(stStat);
+    }
     showLogo();
 
     if (jbSpieler.isOpen) {
         jbSpieler.close();
     }
 
-    $('#sideTurniere').html('<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Presseschau: <span class=N>&nbsp;&nbspKategorien</span></li>'
-
-            + '<div data-role="navbar">'
+    $('#sideTurniere').html(
+            '<div data-role="navbar">'
             + '<ul>'
-            + '<li class="nb44">'
-            + '<a class="prFilter" onClick="initSAISON(\'WTC\')"><span class=N>Presseschau:</span> </a>'
-            + '</li>'
-            + '<li class="nb56">'
-            + '<a class="prFilter" onclick="initSAISON(\'ÖF\')">Wr. Tarockcup</i></a>'
-            + '</li>'
-//            + '<li class="nb12">'
-//            + '<a class="prFilter M" onclick="initSAISON(\'ÖF\')"><i class="i zmdi-play zmdi-hc-rotate-90 M"></i></a>'
-//            + '</li>'
+            + (hCup === 51 ? '<li class="nb56"><a id="nbHRC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'HRC\')">Hausruckcup</a></li>' : '')
+            + (hCup === 51 ? '<li class="nb56"><a id="nbKTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'KTC\')">Kärntencup</a></li>' : '')
+            + (hCup === 52 ? '<li class="nb56"><a id="nbRTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'RTC\')">Raiffeisencup</a></li>' : '')
+            + (hCup === 53 ? '<li class="nb56"><a id="nbSWC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'SWC\')">Sauwaldcup</a></li>' : '')
+            + (hCup === 54 ? '<li class="nb56"><a id="nbSTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'STC\')">St. Tarockcup</a></li>' : '')
+            + (hCup === 55 ? '<li class="nb56"><a id="nbTTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'TTC\')">Tirolcup</a></li>' : '')
+            + (hCup === 56 ? '<li class="nb56"><a id="nbWTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'WTC\')">Wr. Tarockcup</a></li>' : '')
+            + '<li class="nb44"><a id="nbÖF" class="prFilter M2" onclick="setPresseFilter(\'ÖF\')">Ö-Finale</a></li>'
             + '</ul>'
             + '</div>'
 
+            + '<div data-role="navbar">'
+            + '<ul>'
+            + (hCup !== 51 ? '<li class="nb6"><a id="nbHRC" class="prFilter M2" onClick="setPresseFilter(\'HRC\')">HRC</a></li>' : '')
+            + (hCup !== 51 ? '<li class="nb6"><a id="nbKTC" class="prFilter M2" onclick="setPresseFilter(\'KTC\')">KTC</a></li>' : '')
+            + (hCup !== 52 ? '<li class="nb6"><a id="nbRTC" class="prFilter M2" onclick="setPresseFilter(\'RTC\')">RTC</a></li>' : '')
+            + (hCup !== 53 ? '<li class="nb6"><a id="nbSWC" class="prFilter M2" onClick="setPresseFilter(\'SWC\')">SWC</a></li>' : '')
+            + (hCup !== 54 ? '<li class="nb6"><a id="nbSTC" class="prFilter M2" onclick="setPresseFilter(\'STC\')">STC</a></li>' : '')
+            + (hCup !== 55 ? '<li class="nb6"><a id="nbTTC" class="prFilter M2" onclick="setPresseFilter(\'TTC\')">TTC</a></li>' : '')
+            + (hCup !== 56 ? '<li class="nb6"><a id="nbWTC" class="prFilter M2" onclick="setPresseFilter(\'WTC\')">WTC</a></li>' : '')
+            + '</ul>'
+            + '</div>'
+
+            + '<div data-role="navbar">'
+            + '<ul>'
+            + '<li class="nb28"><a id="nbRegeln" class="prFilter M2" onClick="setPresseFilter(\'Regeln\')">Regeln</a></li>'
+            + '<li class="nb44"><a id="nbTarockkurs" class="prFilter M2" onclick="setPresseFilter(\'Tarockkurs\')">Tarockkurs</i></a></li>'
+            + '<li class="nb28"><a id="nbKarten" class="prFilter M2" onclick="setPresseFilter(\'Karten\')">Karten</i></a></li>'
+            + '</ul>'
+            + '</div>'
+
+
+            + '<div data-role="navbar">'
+            + '<ul>'
+            + '<li class="nb56"><a id="nbPersonen" class="prFilter M2" onClick="setPresseFilter(\'Personen\')">Persönlichkeiten</a></li>'
+            + '<li class="nb44"><a id="nbDiverses" class="prFilter M2" onclick="setPresseFilter(\'Diverses\')">Diverses</i></a></li>'
+            + '</ul>'
+            + '</div>'
+
+            + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;' + (window.location.search === '?Presseschau' ? 'Kategorie:' : 'Presseschau:') + '&nbsp;&nbsp;<span id=tFilter class=N>'
+            + (hCup === 51 ? 'Hausruckcup' : '')
+            + (hCup === 51 ? 'Kärntencup' : '')
+            + (hCup === 52 ? 'Raiffeisencup' : '')
+            + (hCup === 53 ? 'Sauwaldcup' : '')
+            + (hCup === 54 ? 'St. Tarockcup' : '')
+            + (hCup === 55 ? 'Tirolcup' : '')
+            + (hCup === 56 ? 'Wr. Tarockcup' : '')
+            + '</span></li>'
             ).listview('refresh').trigger('create').show();
 
-
 // Wr. Tarockcup Ö-Finale
-// Alle Cups Persönlichkeiten
+// Alle Cups Personen
 // Regeln Tarockkurs Karten
 // Alles Zurücksetzen
 
@@ -308,9 +373,9 @@ function showPresseschau() {
 
     for (var i = 0; i < aBericht.length; i++) {
         if (aBericht[i][0]) {
-            html += '<div id="bArtikel' + i + '" class="M J presse-btn" onclick="showArtikel(\'' + aBericht[i][3] + '\', ' + i + ',\'' + aBericht[i][2] + '\')" style="max-width:30vw;text-align:justify;overflow-wrap: break-word;word-wrap: break-word;">'
-                    + '<b>' + aBericht[i][2] + '</b><br>'
-                    + aBericht[i][0] + '&nbsp;&nbsp;&nbsp;' + aBericht[i][1] + '</div>';
+            html += '<div id="bArtikel' + i + '"' + (hFilter === aBericht[i][1] ? ' ' : ' hidden ') + 'class="S3 J presse-btn ' + aBericht[i][1] + '" onclick="showArtikel(\'' + aBericht[i][3] + '\', ' + i + ',\'' + aBericht[i][2] + '\')" style="max-width:30vw;text-align:justify;overflow-wrap: break-word;word-wrap: break-word;">'
+                    + '<b>' + aBericht[i][2] + '</b>'
+                    + '<div class="S">' +aBericht[i][0] + '&nbsp;&nbsp;&nbsp;' + aBericht[i][1] + '</div></div>';
         }
     }
 
@@ -320,8 +385,8 @@ function showPresseschau() {
     if (QUERFORMAT()) {
         showLogo();
     }
-    $("#sideContent").scrollTop(0);
-            setTimeout(function () {
+    $("#sideContent").show().scrollTop(0);
+    setTimeout(function () {
         var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 1);
         $('#sideContent').css('height', hx + 'px');
     }, 100);
@@ -334,4 +399,33 @@ function showArtikel(pUrl, pI, pText) {
     $('#dRumpf').html('<iframe id="iFrame" src="' + pUrl + '" style="border:none; height: 2200vh; width: 72vw;"></iframe>');
     writeCanvas(pText);
     window.scrollTo(0, 0);
+}
+
+function setPresseFilter(pFilter) {
+    if (pFilter === 'ÖF')
+        $('#tFilter').text('Ö-Finale');
+    else if (pFilter === 'Personen')
+        $('#tFilter').text('Persönlichkeiten');
+    else if (pFilter === 'HRC')
+        $('#tFilter').text('Hausruckcup');
+    else if (pFilter === 'KTC')
+        $('#tFilter').text('Kärntencup');
+    else if (pFilter === 'RTC')
+        $('#tFilter').text('Raiffeisencup');
+    else if (pFilter === 'SWC')
+        $('#tFilter').text('Sauwaldcup');
+    else if (pFilter === 'STC')
+        $('#tFilter').text('St. Tarockcup');
+    else if (pFilter === 'TTC')
+        $('#tFilter').text('Tirolcup');
+    else if (pFilter === 'WTC')
+        $('#tFilter').text('Wr. Tarockcup');
+    else
+        $('#tFilter').text(pFilter);
+
+    $('.prFilter').removeClass('ui-btn-active');
+    $('#nb' + pFilter).addClass('ui-btn-active');
+    $('.presse-btn').hide();
+    $('.' + pFilter).show();
+    $("#sideContent").scrollTop(0);
 }

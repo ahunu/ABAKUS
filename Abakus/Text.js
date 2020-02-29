@@ -27,7 +27,7 @@ $(document).ready(function () {
     'use strict';
 
     document.oncontextmenu = function () {
-//        return false; // oncontextmenu
+        return false; // oncontextmenu
     };
 
     document.onselectstart = function () {

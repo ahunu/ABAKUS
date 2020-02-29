@@ -71,7 +71,7 @@ function IsInteger(value) {
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;
-//    } else {
+    } else {
         return false;
     }
 }
@@ -580,17 +580,19 @@ function fINIT(pCup) {
     if (stCup >= 60) {
         LS.ShowSpielerNr = false;
     }
-    if (CUPS.TYP[stCup] === 'CUP') {
-        $('.cET,.cMT').remove();
+    if (window.location.search === '?Presseschau') {
+        $('.cCUP,.cET,.cMT').remove();
+    } else if (CUPS.TYP[stCup] === 'CUP') {
+        $('.cET,.cMT,.cPRESSE').remove();
     } else if (CUPS.TYP[stCup] === 'ET') {
-        $('.cCUP,.cMT').remove();
+        $('.cCUP,.cMT,.cPRESSE').remove();
     } else {
-        $('.cCUP,.cET').remove();
+        $('.cCUP,.cET,.cPRESSE').remove();
     }
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
 
@@ -608,7 +610,7 @@ function fINIT(pCup) {
         stFotoStyle = (new Date() % 4) + 1;
     }
 
-    if (stCup === 0) {
+    if (stCup === 0 && window.location.search !== '?Presseschau') {
         history.go(-1);
     }
     if (stCup !== 53) {
@@ -679,7 +681,7 @@ function fINIT(pCup) {
             $('#qfHeaderRechts').attr('style', 'width:92%');
             $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:2.27vw;white-space:nowrap;font-family:Arial;font-style:italic;");
             $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:2.08vw;white-space:nowrap;font-family:Arial;font-weight:normal;");
-            $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
+//            $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
         }
     });
     $(document).on('keyup', '#iFilter', function () {
@@ -714,7 +716,13 @@ function fINIT(pCup) {
             $("#icFilter").addClass('ui-disabled');
         }
     });
-    getSTAT(stCup);
+    if (window.location.search === '?Presseschau') {
+        stCup = 0;
+        $('.cCUP.cET,.cMT').remove();
+        showPresseschau(true);
+    } else {
+        getSTAT(stCup);
+    }
 
     window.onbeforeunload = function (event) {
         if (/iPad|iPhone/.test(navigator.userAgent)) {

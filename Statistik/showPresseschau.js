@@ -267,8 +267,6 @@ function showPresseschau() {
 
     aBericht.push(["26.3.2018", "RTC", "Günther Steidl gewinnt den Raiffeisen Tarockcup 2017/18", "https://www.nachrichten.at/oberoester&shy;reich/Die-Muehlviertler-sind-die-besten-Tarockierer;art4,2850995"]);
 
-    aBericht.push(["26.3.2006", "TTC", "Königrufen in Tirol im Aufwind", "http://www.tarock.tirol/tarock-sonstiges/tiroler-tageszeitung-2006.pdf"]);
-    aBericht.push(["27.4.2009", "TTC", "Gemeinsam am Spieltisch mit Damen und Königen", "http://www.tarock.tirol/tarock-sonstiges/tiroler-tageszeitung-2009.pdf"]);
 
 
     aBericht.push(["", "", "", ""]);

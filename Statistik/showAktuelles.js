@@ -87,10 +87,8 @@ function editAktuelles() {
     $('#iEdit').hide();
 
     var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 4);
-    var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
+    var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px;">'
             + '<div style="width: 80%; padding: 1em; margin: 3em auto;" fonclick="event.stopImmediatePropagation();">'
-//            + '<div id="editor" class="M" style="background-color:#eee; border-width:5px; border-style:groove; text-align:left"></div>'
-//            + '<br>'
             + '<div class="ui-grid-a">'
             + '<div class="ui-block-a L" style="width:30%">'
             + 'Letzte Schlagzeile:'
@@ -151,7 +149,7 @@ function aktuellesCheck(pSpeichern) {
             showEinenTip('#iSCHLAGZEILE', 'Die Schlagzeile muß mindesten 12 Stellen lang sein.');
             return false;
         }
-        if (iSCHLAGZEILE.length > 80 ) {
+        if (iSCHLAGZEILE.length > 80) {
             showEinenTip('#iSCHLAGZEILE', 'Die Schlagzeile darf maximal 80 Zeichen lang sein.');
             return false;
         }

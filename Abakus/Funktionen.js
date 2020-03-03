@@ -37,13 +37,13 @@ function getNextTermin(pCup) {
     }
 
     var nextTermin = hHeute;
-    if (hHeute === hZuletzt) {
-        if (new Date().getHours() >= 20) { // nach 20 Uhr immer nächsten Termin suchen
-            nextTermin += 86400000;
-        } else if (CUPS.SPIELEAB[pCup] > 12 && new Date().getHours() > CUPS.SPIELEAB[pCup]) { // ab einer Stunde nach Spielbeginn nächster Termin
-            nextTermin += 86400000;
-        }
-    }
+//    if (hHeute === hZuletzt) {
+//        if (new Date().getHours() >= 20) { // nach 20 Uhr immer nächsten Termin suchen
+//            nextTermin += 86400000;
+//        } else if (CUPS.SPIELEAB[pCup] > 12 && new Date().getHours() > CUPS.SPIELEAB[pCup]) { // ab einer Stunde nach Spielbeginn nächster Termin
+//            nextTermin += 86400000;
+//        }
+//    }
 
     var iWoche = 0;
     var iWochentag = 0;

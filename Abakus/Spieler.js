@@ -1,18 +1,11 @@
 
 var FB = undefined;
 var LS = new Object();
-var SPIELER = new Object();
-
-var SPIELERext = null;
+var SPIELERext = new Object();
 
 var myJBox = null;
 
 var hThisSession = new Date().toLocaleString();
-
-var spNR = 0;
-var spNNAME = 1;
-var spVNAME = 2;
-var spORT = 3;
 
 var I = 0;
 var iNR = 0;
@@ -23,196 +16,30 @@ var SORT = []; // Sort Stammspieler
 nGeaendert = 0;
 hMeldung = '';
 
+const spNNAME = 0;
+const spVNAME = 1;
+const spTITEL1 = 2;
+const spTITEL2 = 3;
+const spZUSATZ = 4;
+const spSTRASSE = 5;
+const spPLZ = 6;
+const spORT = 7;
+const spFESTNETZ = 8;
+const spTELEFON = 9;
+const spGEBDAT = 10;
+const spEMAIL = 11;
+const spSCHALTER = 12;
+const spSTARTORT = 13;
+const spAKTIV = 14;
+const spANGELEGTam = 15;
+const spANGELEGTvon = 16;
+const spGEAENDERTam = 17;
+const spGEAENDERTvon = 18;
 
-const spANGELEGTam = 19;
-const spANGELEGTvon = 20;
-const spGEAENDERTam = 21;
-const spGEAENDERTvon = 22;
 var hAlt = hNeu = '';
 
 function whenSPIELERloaded() {
-
-//    localStorage.setItem('Abakus.SPIELERext', JSON.stringify(SPIELERext));
-
-    SPIELERext = JSON.parse(localStorage.getItem('Abakus.SPIELERext'));
-
-    for (var spieler in SPIELERext) {
-
-        if (SPIELERext[spieler][spGEAENDERTvon] === "Stammspieler") {
-            SPIELERext[spieler][spGEAENDERTam] = null;
-            SPIELERext[spieler][spGEAENDERTvon] = null;
-        }
-
-        hAlt = hNeu = SPIELERext[spieler][spANGELEGTam];
-        if (hNeu) {
-            var hNeu = '' + hNeu.trim();
-//                        if (hNeu.indexOf('.') === 2) {
-            if (hNeu[1] === '0' && hNeu[2] !== '.') {
-                hNeu = hNeu.substr(2);
-            }
-            hNeu = hNeu.replace(/\./g, ' ');
-
-            hTag = parseInt(hNeu);
-            if (isNaN(hTag)) {
-                hNeu = hNeu.substr(1);
-                hTag = parseInt(hNeu);
-            }
-            if (hTag <= 9) {
-                hTag = '0' + hTag;
-            }
-
-            var i = hNeu.indexOf(' ');
-            hNeu = hNeu.substr(i);
-
-            var hMon = parseInt(hNeu);
-            if (isNaN(hMon)) {
-                hNeu = hNeu.substr(1);
-                hMon = parseInt(hNeu);
-            }
-            if (isNaN(hMon)) {
-                hNeu = hNeu.substr(1);
-                hMon = parseInt(hNeu);
-            }
-            if (hMon <= 9) {
-                hMon = '0' + hMon;
-            }
-
-            var i = hAlt.indexOf('.201');
-            hNeu = hAlt.substr(i);
-
-            hNeu = hAlt.substr(hAlt.lastIndexOf('.') + 1, 7);
-
-            var hJahr = parseInt(hNeu);
-
-            if (isNaN(hJahr)) {
-                hNeu = hNeu.substr(1);
-                hJahr = parseInt(hNeu);
-            }
-            if (isNaN(hJahr)) {
-                hNeu = hNeu.substr(1);
-                hJahr = parseInt(hNeu);
-            }
-
-            var i = hAlt.indexOf(' ') + 1;
-            if (hAlt[i] >= '0' && hAlt[i] <= '9') {
-                hStd = hAlt.substr(i, 5);
-            } else {
-                hStd = hAlt.substr(i, 9);
-            }
-
-            hStd = parseInt(hAlt.substr(i));
-            if (isNaN(hStd)) {
-                hStd = parseInt(hAlt.substr(i + 1));
-            }
-            if (hStd <= 9) {
-                hStd = '0' + hStd;
-            }
-
-            var i = hAlt.indexOf(':') + 1;
-            if (hAlt[i] >= '0' && hAlt[i] <= '9') {
-                hMin = hAlt.substr(i, 5);
-            } else {
-                hMin = hAlt.substr(i, 9);
-            }
-
-            hMin = parseInt(hAlt.substr(i));
-            if (isNaN(hMin)) {
-                hMin = parseInt(hAlt.substr(i + 1));
-            }
-            if (hMin <= 9) {
-                hMin = '0' + hMin;
-            }
-
-            var xTSTAMP = hJahr + '-' + hMon + '-' + hTag + ' ' + hMin + ':' + hStd;
-
-            SPIELERext[spieler][spANGELEGTam] = xTSTAMP;
-        }
-
-                hAlt = hNeu = SPIELERext[spieler][spGEAENDERTam];
-        if (hNeu) {
-            var hNeu = '' + hNeu.trim();
-//                        if (hNeu.indexOf('.') === 2) {
-            if (hNeu[1] === '0' && hNeu[2] !== '.') {
-                hNeu = hNeu.substr(2);
-            }
-            hNeu = hNeu.replace(/\./g, ' ');
-
-            hTag = parseInt(hNeu);
-            if (isNaN(hTag)) {
-                hNeu = hNeu.substr(1);
-                hTag = parseInt(hNeu);
-            }
-            if (hTag <= 9) {
-                hTag = '0' + hTag;
-            }
-
-            var i = hNeu.indexOf(' ');
-            hNeu = hNeu.substr(i);
-
-            var hMon = parseInt(hNeu);
-            if (isNaN(hMon)) {
-                hNeu = hNeu.substr(1);
-                hMon = parseInt(hNeu);
-            }
-            if (isNaN(hMon)) {
-                hNeu = hNeu.substr(1);
-                hMon = parseInt(hNeu);
-            }
-            if (hMon <= 9) {
-                hMon = '0' + hMon;
-            }
-
-            var i = hAlt.indexOf('.201');
-            hNeu = hAlt.substr(i);
-
-            hNeu = hAlt.substr(hAlt.lastIndexOf('.') + 1, 7);
-
-            var hJahr = parseInt(hNeu);
-
-            if (isNaN(hJahr)) {
-                hNeu = hNeu.substr(1);
-                hJahr = parseInt(hNeu);
-            }
-            if (isNaN(hJahr)) {
-                hNeu = hNeu.substr(1);
-                hJahr = parseInt(hNeu);
-            }
-
-            var i = hAlt.indexOf(' ') + 1;
-            if (hAlt[i] >= '0' && hAlt[i] <= '9') {
-                hStd = hAlt.substr(i, 5);
-            } else {
-                hStd = hAlt.substr(i, 9);
-            }
-
-            hStd = parseInt(hAlt.substr(i));
-            if (isNaN(hStd)) {
-                hStd = parseInt(hAlt.substr(i + 1));
-            }
-            if (hStd <= 9) {
-                hStd = '0' + hStd;
-            }
-
-            var i = hAlt.indexOf(':') + 1;
-            if (hAlt[i] >= '0' && hAlt[i] <= '9') {
-                hMin = hAlt.substr(i, 5);
-            } else {
-                hMin = hAlt.substr(i, 9);
-            }
-
-            hMin = parseInt(hAlt.substr(i));
-            if (isNaN(hMin)) {
-                hMin = parseInt(hAlt.substr(i + 1));
-            }
-            if (hMin <= 9) {
-                hMin = '0' + hMin;
-            }
-
-            var xTSTAMP = hJahr + '-' + hMon + '-' + hTag + ' ' + hMin + ':' + hStd;
-
-            SPIELERext[spieler][spGEAENDERTam] = xTSTAMP;
-        }
-    }
+    return;
 }
 
 function B_Clear() {
@@ -308,21 +135,18 @@ function onFinden() {
     }
 
     if (fNR !== "0000") {
-        for (var spieler in SPIELER) {
-            if (fNR === SPIELER[spieler][spNR]) {
-                html += "&nbsp;&nbsp;" + SPIELER[spieler][spNR] + "&nbsp;&nbsp;<b>" + SPIELER[spieler][spNNAME] + " " + SPIELER[spieler][spVNAME] + "</b><br>"
-                        + "&nbsp;&nbsp;" + getOrt(SPIELER[spieler][spORT]) + "<br><hr>";
-                nGefunden++;
-                break;
-            }
+        if (SPIELERext[fNR]) {
+            html += "&nbsp;&nbsp;" + fNR + "&nbsp;&nbsp;<b>" + SPIELERext[fNR][spNNAME] + " " + SPIELERext[fNR][spVNAME] + "</b><br>"
+                    + "&nbsp;&nbsp;" + getOrt(SPIELERext[fNR][spORT]) + "<br><hr>";
+            nGefunden++;
         }
     } else if (lVNAME >= 1 || lNNAME >= 1 || lORT >= 1) {
-        for (var spieler in SPIELER) {
-            if ((lVNAME === 0 || SPIELER[spieler][spVNAME].substr(0, lVNAME).toUpperCase() === fVNAME)
-                    && (lNNAME === 0 || SPIELER[spieler][spNNAME].substr(0, lNNAME).toUpperCase() === fNNAME)
-                    && (lORT === 0 || SPIELER[spieler][spORT].substr(0, lORT).toUpperCase() === fORT)) {
-                html += "&nbsp;&nbsp;" + SPIELER[spieler][spNR] + "&nbsp;&nbsp;<b>" + SPIELER[spieler][spNNAME] + " " + SPIELER[spieler][spVNAME] + "</b><br>"
-                        + "&nbsp;&nbsp;" + getOrt(SPIELER[spieler][spORT]) + "<br><hr>";
+        for (var spieler in SPIELERext) {
+            if ((lVNAME === 0 || SPIELERext[spieler][spVNAME].substr(0, lVNAME).toUpperCase() === fVNAME)
+                    && (lNNAME === 0 || SPIELERext[spieler][spNNAME].substr(0, lNNAME).toUpperCase() === fNNAME)
+                    && (lORT === 0 || SPIELERext[spieler][spORT].substr(0, lORT).toUpperCase() === fORT)) {
+                html += "&nbsp;&nbsp;" + spieler + "&nbsp;&nbsp;<b>" + SPIELERext[spieler][spNNAME] + " " + SPIELERext[spieler][spVNAME] + "</b><br>"
+                        + "&nbsp;&nbsp;" + getOrt(SPIELERext[spieler][spORT]) + "<br><hr>";
                 nGefunden++;
             }
         }
@@ -355,17 +179,17 @@ $(document).bind('pageinit', function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
         return false;
     };
 
-    SPIELER = JSON.parse(localStorage.getItem('Abakus.SPIELERalpha'));
+    SPIELERext = JSON.parse(localStorage.getItem('Abakus.SPIELERextalpha'));
 
-//    loadSPIELER();
-    whenSPIELERloaded();
+    loadSPIELER();
+//    whenSPIELERextloaded();
 
     if ($(window).innerWidth() < $(window).innerHeight()) {
         $('#ui-block-a').width("1%");

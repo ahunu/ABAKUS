@@ -138,7 +138,9 @@ function whenSTATloaded(pNewTurnier) {
         $('#tZumTurnier').html('<div class="L C" style="margin-top:12px">Zum Turnier zurück&nbsp;&nbsp;</div>');
     }
 
-    if (window.location.href.indexOf('?Aktuelles') > 0) {
+    if ($('#iSCHLAGZEILE').is(':visible')
+            || $('#editor').is(':visible')) {
+    } else if (stStat === 'Aktuelles') {
         iSaison = 1;
         showInhalt();
         showAktuelles();
@@ -580,6 +582,9 @@ function fINIT(pCup) {
     if (stCup >= 60) {
         LS.ShowSpielerNr = false;
     }
+    if (window.location.href.indexOf('?Aktuelles') > 0) {
+        stStat = 'Aktuelles';
+    }
     if (window.location.search === '?Presseschau') {
         $('.cCUP,.cET,.cMT').remove();
     } else if (CUPS.TYP[stCup] === 'CUP') {
@@ -718,7 +723,7 @@ function fINIT(pCup) {
     });
     if (window.location.search === '?Presseschau') {
         stCup = 0;
-        $('.cCUP.cET,.cMT').remove();
+        $('.cCUP,.cET,.cMT').remove();
         showPresseschau(true);
     } else {
         getSTAT(stCup);

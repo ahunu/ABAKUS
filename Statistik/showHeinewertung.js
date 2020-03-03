@@ -568,9 +568,9 @@ function showWarumHeinewertung() {
 
             + '<p>Da im Sport Fairness alles ist, wurde mit den Heinepunkten ein Punktesystem entwickelt, dass die tatsächlich erreichten Punkte als Ausgangswert verwendet.'
 
-            + '<p>Bis 100 Punkten werden die tatsächlich erreichten Punkte voll angerechnet. Ab 100 Punkten zählt jeder zweite Punkt. Es werden maximal 200 Heinepunkte vergeben. Minuspunkte werden nicht gewertet.'
+            + '<p>Bis 100 Punkten werden die tatsächlich erreichten Punkte voll angerechnet. Ab 100 Punkten zählt jeder zweite Punkt. Es werden maximal 200 Heinepunkte vergeben. Minuspunkte werden nicht gewertet. Bei 25 Turnieren werden die 12 besten Ergebnisse gewertet. Das sind 50 Prozent der veranstalteten Truniere.'
 
-            + '<p>Aufgrund von Überlegungen im Sauwaldcup, im Steirischen, im Tiroler und im Wiener Tarockcup wird mit der Heinewertung eine faire Alternative zur Fixpunktewertung angeboten.'
+//            + '<p>Aufgrund von Überlegungen im Sauwaldcup, im Steirischen, im Tiroler und im Wiener Tarockcup wird mit der Heinewertung eine faire Alternative zur Fixpunktewertung angeboten.'
 
 //            + '<p>Da von jeden Cup immer mehr Turniere veranstaltet werden, sollen für die Heinewertung in einer späteren Ausbaustufe mehr als die üblichen sechs besten Ergebnisse verwendet werden.'
 

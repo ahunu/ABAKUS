@@ -386,8 +386,12 @@ function repairPell(pHtml) {
         if (pHtml.substr(0, 5) === '<div>') {
             pHtml = pHtml.substr(5);
         }
-        pHtml = pHtml.replace(/<div><br><\/div><div>/g, '<br><br>').replace(/<div>/g, '<br>');
-        pHtml = pHtml.replace(/<div><br>/g, '<br><br>').replace(/<div>/g, '<br>');
+        pHtml = pHtml
+                .replace(/<\/b><br><b><br><\/b><br>/g, '<br>aaa<br>') // Um einen Fehler nach '</b><br>' zu korrigieren
+                .replace(/<div><br><\/div><div>/g, '<br>')
+//                .replace(/<div>/g, '<br>##')
+                .replace(/<div><br>/g, '<br><br>')
+//                .replace(/<div>/g, '<br>####');
 //        pHtml = pHtml.replace(/<a href="/g, '<SPAN class="cBlau P" onclick="').replace(/<\/a>/g, '</SPAN>');
 
         hVon = 0;

@@ -13,6 +13,7 @@ var hThisSession = new Date().toJSON();
 var sSpieler = false;
 var dZuletzt = '';
 var SORT = [];
+
 const spNNAME = 0;
 const spVNAME = 1;
 const spTITEL1 = 2;

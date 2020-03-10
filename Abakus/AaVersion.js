@@ -7,9 +7,8 @@ function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 3, 4);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 3, 10);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
-
 
 //Spielrelevantz und sofortige Ich-Liege-Pflicht bei einen Solodreier wiedersprechen sich.
 //
@@ -21,7 +20,6 @@ function getVersionsDatum() {
 //Bei Renonce durch den Kiebitz zahlt der Kiebitz.
 //
 //Sechs aufnehmen wenn der König liegt.
-
 
 
 // MI 12. 2. Nachdem ich ein paar dicke Socken genommen habe, fehlen jetzt 4 Paare.

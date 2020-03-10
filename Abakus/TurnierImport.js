@@ -296,6 +296,10 @@ $(document).bind('pageinit', function () {
         iCUP = 53; // SWC
     }
 
+    if (LS.ME === "6058") {
+        iCUP = 54; // STC
+    }
+
     if (LS.ME === "3590") {
         iCUP = 54; // STC
     }

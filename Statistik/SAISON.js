@@ -74,6 +74,32 @@ function initSAISON(pFilter, pShowSaison) {
         }
     }
 
+
+
+    stAktTurniere = SAISON[1][isAnzTurniere];
+
+    if (!SAISON[1][isFinale]) {
+        for (var termin in CUPS.TERMINE) {
+            if (CUPS.TERMINE[termin].DATUM >= stHeute && CUPS.TERMINE[termin].CUP === stCup) {
+                if (stCup >= 50 && stCup <= 59 && stCup !== 53) {
+                    if (CUPS.TERMINE[termin].DATUM <= '20' + SAISON[1][isSaison].substr(5, 2) + '-03-31') {
+                        stAktTurniere++;
+                    }
+                } else if (stCup === 53) {
+                    if (CUPS.TERMINE[termin].DATUM <= SAISON[1][isSaison] + '-12-24') {
+                        stAktTurniere++;
+                    }
+                } else {
+                    if (CUPS.TERMINE[termin].DATUM <= SAISON[1][isSaison] + '-12-31') {
+                        stAktTurniere++;
+                    }
+                }
+            }
+        }
+    }
+
+
+
     if (iSaison === 0) {
         $('#nbSaison,#nbArchiv').addClass('ui-disabled');
     } else {

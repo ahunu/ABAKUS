@@ -42,6 +42,7 @@ var iSaison = 0;
 var stSaison = '';
 var stFinale = false;
 var stFinalTeilnehmer = 0;
+var stAktWertungen = 0;
 var stFilter = '';
 var stStat = 0;
 var stNamenLen = 0.45;

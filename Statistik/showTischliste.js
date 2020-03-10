@@ -104,7 +104,7 @@ function showTischliste() {
         $('#dRumpf').html(html + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
-                + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
+                + "<td class=TC>" + (stCup === 56 ? "" : "") + "</td>"
                 + "<td class=TR>tarock.firebaseapp.com?" + (stCup === 56 ? 'Wr.' : 'St.') + "Tarockcup&nbsp;</td>"
                 + "</tr></tbody></table><br>");
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {

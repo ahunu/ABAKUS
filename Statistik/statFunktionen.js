@@ -118,9 +118,22 @@ function getSpielerOrt(pNR, pSTANDORT) {
     return hOrt;
 }
 
-function getCupPunkte(pTurnier, pSpieler) {
+function getHeinePunkte(pTurnier, pSpieler) {
+    var hPunkte = STAT[pTurnier][pSpieler][4]; // Meine Cuppunkte
+    if (hPunkte <= 0) {
+        return '-';
+    } else if (hPunkte >= 300) {
+        return 200;
+    } else if (hPunkte > 100) {
+        return parseInt((hPunkte - 100) / 2) + 100;
+    } else {
+        return hPunkte;
+    }
+}
 
-    if (stCup === 55) { // 55 Tirolcup
+function getFixPunkte(pTurnier, pSpieler) {
+
+    if (stCup === 55 && stSaison <= '2019/20') { // 55 Tirolcup eigenes Punktesystem
         if (!STAT[pTurnier][pSpieler]) {
             return '-'; // Spieler hat am Finale nicht teilgenommen
         }
@@ -132,16 +145,16 @@ function getCupPunkte(pTurnier, pSpieler) {
         } else {
             return '-';
         }
-    } else if (stCup >= 50 && stCup <= 60 && stCup !== 55 || stCup === 125 || stCup === 181) { // 125 wurde als Testcup verwendet!
+    } else { // Fixpunktesystem
         if (STAT[pTurnier][pSpieler]) {
-            if (typeof STAT[pTurnier][pSpieler][0] === "number") { // Fixpunkte
+            if (typeof STAT[pTurnier][pSpieler][0] === "number") {
                 if (STAT[pTurnier][pSpieler][0] <= 50) {
                     return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
                 } else {
                     if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
-                            && (stCup === 54 && stSaison <= '2018/19'
+                            && (stCup === 54 && stSaison <= '2016/17'
                                     || stCup === 125 && stSaison <= '2018/19'
-                                    || stCup === 56 && stSaison <= '2018/19')) {
+                                    || stCup === 56)) {
                         return (STAT[pTurnier][pSpieler][0] - 50) * -1;
                     } else {
                         return '-';
@@ -150,9 +163,52 @@ function getCupPunkte(pTurnier, pSpieler) {
             }
         } else {
             if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
-                    && (stCup === 54 && stSaison <= '2018/19'
+                    && (stCup === 54 && stSaison <= '2016/17'
                             || stCup === 125 && stSaison <= '2018/19'
-                            || stCup === 56 && stSaison <= '2018/19')) {
+                            || stCup === 56)) {
+                return stFinalTeilnehmer * -1 + 49;
+            } else {
+                return '-';
+            }
+        }
+    }
+}
+
+function getCupPunkte(pTurnier, pSpieler) {
+
+    if (stCup === 55 && stSaison <= '2019/20') { // 55 Tirolcup eigenes Punktesystem
+        if (!STAT[pTurnier][pSpieler]) {
+            return '-'; // Spieler hat am Finale nicht teilgenommen
+        }
+        var divident = STAT[pTurnier]._TEILNEHMER - STAT[pTurnier][pSpieler][0];
+        var divisor = STAT[pTurnier]._TEILNEHMER - 1;
+        var ret = Math.round(200 * Math.pow((divident / divisor), 3));
+        if (ret) {
+            return ret;
+        } else {
+            return '-';
+        }
+    } else if (stCup >= 50 && stCup <= 60 && stSaison <= '2019/20') { // Fixpunktesystem
+        if (STAT[pTurnier][pSpieler]) {
+            if (typeof STAT[pTurnier][pSpieler][0] === "number") {
+                if (STAT[pTurnier][pSpieler][0] <= 50) {
+                    return tFIXPUNKTE[STAT[pTurnier][pSpieler][0]];
+                } else {
+                    if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
+                            && (stCup === 54 && stSaison <= '2016/17'
+                                    || stCup === 125 && stSaison <= '2018/19'
+                                    || stCup === 56)) {
+                        return (STAT[pTurnier][pSpieler][0] - 50) * -1;
+                    } else {
+                        return '-';
+                    }
+                }
+            }
+        } else {
+            if (STAT[pTurnier]._NAME.toUpperCase().indexOf('FINAL') >= 0
+                    && (stCup === 54 && stSaison <= '2016/17'
+                            || stCup === 125 && stSaison <= '2018/19'
+                            || stCup === 56)) {
                 return stFinalTeilnehmer * -1 + 49;
             } else {
                 return '-';
@@ -161,9 +217,13 @@ function getCupPunkte(pTurnier, pSpieler) {
     }
 
     if (!STAT[pTurnier][pSpieler]) {
-        return '-'; // Spieler hat am Finale nicht teilgenommen
+        return '???'; // Spieler hat am Finale nicht teilgenommen
     }
-    var hPunkte = STAT[pTurnier][pSpieler][4]; // Meine Cuppunkte
+
+    // Heinewertung
+
+    var hPunkte = STAT[pTurnier][pSpieler][4];
+
     if (hPunkte <= 0) {
         return '-';
     } else if (hPunkte >= 300) {
@@ -472,7 +532,7 @@ function writeCanvas(pTitel) {
 //        $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
 //        $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");
 //    }
-    
+
 //    $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
 
     // 51 H Hausruckcup

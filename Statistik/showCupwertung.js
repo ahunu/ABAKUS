@@ -53,8 +53,8 @@ function showCupwertung() {
                             nTeilnahmen++;
                             if (CUP[spieler]) {
                                 if (turnier !== stFinale || (CUPS.TURNIER[stCup] % 1 === 0)) {
-                                    hCupPunkte = getCupPunkte(turnier, spieler);
-                                    if (getCupPunkte(turnier, spieler) === '-') {
+                                    hCupPunkte = getFixPunkte(turnier, spieler);
+                                    if (getFixPunkte(turnier, spieler) === '-') {
                                         CUP[spieler].push(hCupPunkte);
                                     } else {
                                         ii = CUP[spieler].length;
@@ -71,7 +71,7 @@ function showCupwertung() {
 
                             } else {
                                 if (turnier !== stFinale || (CUPS.TURNIER[stCup] % 1 === 0)) {
-                                    CUP[spieler] = [getCupPunkte(turnier, spieler)];
+                                    CUP[spieler] = [getFixPunkte(turnier, spieler)];
                                 } else {
                                     CUP[spieler] = [];
                                 }
@@ -156,13 +156,28 @@ function showCupwertung() {
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += '<td class=TC>' + (isNaN(spieler) ? '????' : spieler) + '&nbsp;</td>';
         }
-        html += '<td><span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
+        html += '<td><span id="sp' + spieler + '" onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
         if (QUERFORMAT()) {
             html += '<td class=noprint>' + getSpielerOrt(spieler, true) + '</td>';
         }
-        html += '<th class="TR">' + SP[spieler][iSaison][spCuppunkte] + '&nbsp;</th>';
+
+        var hCuppunkte = 0;
+        if (CUP[spieler]) {
+            for (i = 0; i < parseInt(CUPS.TURNIER[stCup]) && i < CUP[spieler].length; i++) {
+                if (IsInteger(CUP[spieler][i])) {
+                    hCuppunkte += CUP[spieler][i];
+                }
+            }
+            if (stFinale) {
+                if (IsInteger(getFixPunkte(stFinale, spieler))) {
+                    hCuppunkte += getFixPunkte(stFinale, spieler);
+                }
+            }
+        }
+//        html += '<th class="TR">' + SP[spieler][iSaison][spCuppunkte] + '&nbsp;</th>';
+        html += '<th class="TR">' + hCuppunkte + '&nbsp;</th>';
         if (stFinale) {
-            html += "<td class='TR'>" + getCupPunkte(stFinale, spieler) + "&nbsp;</td>";
+            html += "<td class='TR'>" + getFixPunkte(stFinale, spieler) + "&nbsp;</td>";
         }
         if (CUP[spieler]) {
 //            for (var i = 0; i < parseInt(CUPS.TURNIER[stCup]); i++) {
@@ -211,7 +226,7 @@ function showCupwertung() {
                 + "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
-                + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
+                + "<td class=TC>" + (stCup === 56 ? "" : "") + "</td>"
                 + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 15 ? "<td class=TR>tarock.web.app?Stadl Tarock&nbsp;</td>" : "")
@@ -238,5 +253,24 @@ function showCupwertung() {
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
         }
+    }
+
+    if (QUERFORMAT() && PC) {
+        $(".cBlau,.cSchwarz").on("mouseenter", function () {
+            $("#sideTurniere,#sideContent").hide();
+            var hID = $(this).attr('id');
+            html = '<div data-role="navbar">'
+                    + '<ul>'
+                    + '<li><a href="#" class="ui-btn-active">'
+                    + ((isNaN(hID.substr(2)) || !PC) ? '' : '<span class="N">' + hID.substr(2) + '</span>&nbsp;&nbsp;') + getSpielerName(hID.substr(2)).replace(' ', '&nbsp;') + (iSaison === 1 ? '' : '&nbsp;&nbsp;-&nbsp;&nbsp;' + stSaison + ' ') + (!isNaN(hID.substr(2)) && isVERSTORBEN(SPIELER[hID.substr(2)][4]) ? '&nbsp;&#134;' : '') + (QUERFORMAT() && stStat !== "Platzierungen" ? '' : '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + getSpielerOrt(hID.substr(2), true))
+                    + '</a></li>'
+                    + '</ul>'
+                    + '</div>';
+            $("#sideSpieler").html(html + getSpieler(hID.substr(2))).trigger('create').show();
+        });
+        $('.cBlau,.cSchwarz').on("mouseleave", function () {
+            $("#sideSpieler").hide();
+            $("#sideTurniere,#sideContent").show();
+        });
     }
 }

@@ -187,7 +187,7 @@ function showOovwertung() {
                 + "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
-                + "<td class=TC>" + (stCup === 56 ? "Siegfried Braun" : "") + "</td>"
+                + "<td class=TC>" + (stCup === 56 ? "" : "") + "</td>"
                 + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 16 ? "<td class=TR>tarock.web.app?Stadl Tarock&nbsp;</td>" : "")

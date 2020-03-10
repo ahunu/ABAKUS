@@ -143,7 +143,7 @@ function showPlatzierungen(pSort) {
             }
 
             htmlRumpf += '<tr ' + (spieler === LS.ME ? 'id="tr' + LS.ME + '"' : '') + ' class="' + hClass + '">'
-                    + '<td class="' + hClass + (QUERFORMAT() ? ' fixedColQuer' : '') + ' left" style="width:100%;">&nbsp;<span onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P W ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
+                    + '<td class="' + hClass + (QUERFORMAT() ? ' fixedColQuer' : '') + ' left" style="width:100%;">&nbsp;<span id="sp' + spieler + '" onclick="event.stopPropagation();popupSpieler(\'' + spieler + '\');" class="P W ' + (spieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(spieler).replace(' ', '&nbsp;')) + '</span></td>';
 
             if (DATA[1] || DATA[2] || DATA[3]) {
                 htmlRumpf += '<td class=W>' + (DATA[1] ? DATA[1] : '0') + '-' + (DATA[2] ? DATA[2] : '0') + '-' + (DATA[3] ? DATA[3] : '0') + '</td>';
@@ -154,7 +154,7 @@ function showPlatzierungen(pSort) {
                 htmlRumpf += '<td>&nbsp;&nbsp;</td>'; // Dummyspalte
             }
 //            if (CUPS.TYP[stCup] !== 'xCUP') {
-                htmlRumpf += '<td class="W R">' + CUPPUNKTE[spieler] + '&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+            htmlRumpf += '<td class="W R">' + CUPPUNKTE[spieler] + '&nbsp;&nbsp;&nbsp;&nbsp;</td>';
 //            }
             if (QUERFORMAT()) {
                 for (var I = iTurnier; I >= 7; I--) {
@@ -223,6 +223,27 @@ function showPlatzierungen(pSort) {
 
         if (LS.ME !== "NOBODY" && mMitgespielt) {
             showIcons(['#iScrollToMe']);
+        }
+
+        if (QUERFORMAT() && PC) {
+            $(".cBlau,.cSchwarz").on("mouseenter", function () {
+                var hID = $(this).attr('id');
+                if (typeof hID !== 'undefined') {
+                    $("#sideTurniere,#sideContent").hide();
+                    html = '<div data-role="navbar">'
+                            + '<ul>'
+                            + '<li><a href="#" class="ui-btn-active">'
+                            + ((isNaN(hID.substr(2)) || !PC) ? '' : '<span class="N">' + hID.substr(2) + '</span>&nbsp;&nbsp;') + getSpielerName(hID.substr(2)).replace(' ', '&nbsp;') + (iSaison === 1 ? '' : '&nbsp;&nbsp;-&nbsp;&nbsp;' + stSaison + ' ') + (!isNaN(hID.substr(2)) && isVERSTORBEN(SPIELER[hID.substr(2)][4]) ? '&nbsp;&#134;' : '') + (QUERFORMAT() && stStat !== "Platzierungen" ? '' : '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + getSpielerOrt(hID.substr(2), true))
+                            + '</a></li>'
+                            + '</ul>'
+                            + '</div>';
+                    $("#sideSpieler").html(html + getSpieler(hID.substr(2))).trigger('create').show();
+                }
+            });
+            $('.cBlau,.cSchwarz').on("mouseleave", function () {
+                $("#sideSpieler").hide();
+                $("#sideTurniere,#sideContent").show();
+            });
         }
 
     }, 200);

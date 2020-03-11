@@ -1,7 +1,32 @@
 
-/* global LS, stSaison, QUERFORMAT(), getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, iSaison, SP, spRangImCup, is1, SAISON, spTeilnahmen, spBestePlatz, spCuppunkte, stFilter, PC, getSpielerName */
+/* global LS, stSaison, QUERFORMAT(), getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, iSaison, SP, spRangImCup, is1, SAISON, spTeilnahmen, spBestePlatz, spCuppunkte, stFilter, PC, getSpielerName, stAktTurniere, isAnzTurniere */
 
 function showHeinewertung() {
+
+    if (jbSpieler.isOpen) {
+        jbSpieler.close();
+    }
+
+    if (stSaison > '2019/20' || stCup === 53) {
+        stStat = 'Cupwertung';
+    } else {
+        stStat = 'Heinewertung';
+    }
+
+    if (QUERFORMAT()) {
+        if (lastBtn) {
+            $(lastBtn).removeClass('ui-btn-active');
+        }
+        lastBtn = '#b' + stStat;
+        $(lastBtn).addClass('ui-btn-active');
+    }
+
+    stNamenLen = 0.3;
+    if (CUPS.TYP[stCup] === 'CUP') {
+        writeCanvas(stStat + '  ' + stSaison);
+    } else {
+        writeCanvas('Gesamtwertung');
+    }
 
     if (iSaison === 1) {
         var nWertungen = stAktTurniere;
@@ -19,22 +44,6 @@ function showHeinewertung() {
     if (nShowWertungen > 7) {
         nShowWertungen = 7;
     }
-
-    if (QUERFORMAT()) {
-        if (lastBtn) {
-            $(lastBtn).removeClass('ui-btn-active');
-        }
-        lastBtn = '#bHeinewertung';
-        $(lastBtn).addClass('ui-btn-active');
-    }
-
-    if (jbSpieler.isOpen) {
-        jbSpieler.close();
-    }
-
-    stStat = 'Heinewertung';
-    stNamenLen = 0.3;
-    writeCanvas('Heinewertung  ' + stSaison);
 
     $("#dCopyright").hide();
     if (stEndstand) {

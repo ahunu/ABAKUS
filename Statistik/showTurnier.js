@@ -130,7 +130,7 @@ function showTurnier(pTurnier) {
         html += '<td class=link><span id="sp' + iSpieler + '" onclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P ' + (iSpieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
         if (QUERFORMAT()) {
             html += '<td>' + getSpielerOrt(iSpieler, true) + '</td>'
-                    + '<td class=TR>' + getCupPunkte(pTurnier, iSpieler) + '&nbsp;</td>';
+                    + '<td class=TR>' + getFixPunkte(pTurnier, iSpieler) + '&nbsp;</td>';
         }
         html += '<th class="TR">' + STAT[pTurnier][iSpieler][4] + '&nbsp;</th>'
                 + '<td class="TR">' + STAT[pTurnier][iSpieler][1] + '&nbsp;</td>'
@@ -373,9 +373,9 @@ function popupSpieler(pSpieler, pSaison) {
         for (var iTurnier in STAT) {
             if (iTurnier[0] === '2' && STAT[iTurnier]._SAISON === pSaison && iTurnier !== stFinale) {
                 if (STAT[iTurnier][pSpieler]) {
-                    hCuppunkte = getCupPunkte(iTurnier, pSpieler);
+                    hCuppunkte = getHeinePunkte(iTurnier, pSpieler);
                     if (!isNaN(hCuppunkte)) {
-                        aCuppunkte.push([900 - getCupPunkte(iTurnier, pSpieler), iTurnier]);
+                        aCuppunkte.push([900 - getHeinePunkte(iTurnier, pSpieler), iTurnier]);
                     }
                 }
             }
@@ -390,7 +390,7 @@ function popupSpieler(pSpieler, pSaison) {
             }
         }
         if (stFinale) {
-            hCupPunkte = getCupPunkte(stFinale, pSpieler);
+            hCupPunkte = getHeinePunkte(stFinale, pSpieler);
             if (!isNaN(hCupPunkte)) {
                 cuppunkte += parseInt(hCupPunkte);
             }
@@ -439,11 +439,11 @@ function popupSpieler(pSpieler, pSaison) {
                         + '<td nowrap>&nbsp;' + tName + '</td>';
                 if (CUPS.TYP[stCup] !== 'MT') {
                     if (oCuppunkte[iTurnier] || iTurnier === stFinale) {
-                        position += '<th class="TR" nowrap>' + getCupPunkte(iTurnier, pSpieler) + '&nbsp;</th>';
-                    } else if (getCupPunkte(iTurnier, pSpieler) === '-') {
+                        position += '<th class="TR" nowrap>' + getHeinePunkte(iTurnier, pSpieler) + '&nbsp;</th>';
+                    } else if (getHeinePunkte(iTurnier, pSpieler) === '-') {
                         position += '<td class="TR" nowrap>-&nbsp;</td>';
                     } else {
-                        position += '<td class="TR" nowrap><span class=LT>ll' + getCupPunkte(iTurnier, pSpieler) + '</span>&nbsp;</td>';
+                        position += '<td class="TR" nowrap><span class=LT>' + getHeinePunkte(iTurnier, pSpieler) + '</span>&nbsp;</td>';
                     }
                 }
                 position += '<th class="TR" nowrap>' + STAT[iTurnier][pSpieler][4] + '&nbsp;</th>';

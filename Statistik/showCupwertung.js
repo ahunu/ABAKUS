@@ -3,25 +3,31 @@
 
 function showCupwertung() {
 
-    if (QUERFORMAT()) {
-        if (lastBtn) {
-            $(lastBtn).removeClass('ui-btn-active');
-        }
-        lastBtn = '#bCupwertung';
-        $(lastBtn).addClass('ui-btn-active');
-    }
-
     if (jbSpieler.isOpen) {
         jbSpieler.close();
     }
 
-    stStat = 'Cupwertung';
+    if (stSaison <= '2019/20' || stCup === 53) {
+        stStat = 'Cupwertung';
+    } else {
+        stStat = 'Fixpunktewertung';
+    }
+
+    if (QUERFORMAT()) {
+        if (lastBtn) {
+            $(lastBtn).removeClass('ui-btn-active');
+        }
+        lastBtn = '#b' + stStat;
+        $(lastBtn).addClass('ui-btn-active');
+    }
+
     stNamenLen = 0.3;
     if (CUPS.TYP[stCup] === 'CUP') {
-        writeCanvas('Cupwertung  ' + stSaison);
+        writeCanvas(stStat + '  ' + stSaison);
     } else {
-        writeCanvas('Gesamtwertung');
+        writeCanvas('Fixpunktewertung');
     }
+
     $("#dCopyright").hide();
     if (stEndstand) {
         $('#tStand').html('Endstand:').attr('style', 'position: fixed; top: 44px; right: 5px; cursor: pointer;').show();

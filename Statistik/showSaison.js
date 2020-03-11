@@ -64,8 +64,6 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
 
                     + '<li class="cDieListen" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a>' + (SAISON[iSaison][isFinale] ? '<a id=sbCupwertung onclick="showChronik(' + iSaison + ');"></a>' : '') + '</li>'
                     + (stCup === 53 || stCup === 54 || stCup === 55 || stCup === 56 || stCup === 381 ? '<li class="cDieListen" data-icon=false><a id=bHeinewertung onclick="showHeinewertung();">&nbsp;Heinewertung</a></li>' : '')
-                    + (stCup === 53 || stCup === 54 || stCup === 55 || stCup === 56 || stCup === 381 ? '<li class="cDieListen" data-icon=false><a id=bWarumHeinewertung onclick="showWarumHeinewertung();" class=' + (QUERFORMAT() ? 'M2' : 'M') + '>&nbsp;<span style="font-weight:normal">Warum Heinewertung?</span></a></li>' : '')
-                    + (stCup === 56 && pSaison === 1 ? '<li class="cDieListen" data-icon=false><a id=bOovwertung onclick="showOovwertung();">&nbsp;OOV-Wertung</a></li>' : '')
 
                     + '<li class="cDieListen" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
                     + (QUERFORMAT()

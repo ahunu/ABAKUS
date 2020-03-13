@@ -1794,8 +1794,8 @@ function writeCanvas(pCup) {
                 hTitel = 'Wiener Tarockcup';
                 hTitel2 = 'Internet:&nbsp;&nbsp;<span>www.tarock.wien</span>';
             } else if (pCup === 80) {
-                hTitel = '1. Wiener Tarockmarathon';
-                document.title = '1. Wr. Marathon';
+                hTitel = 'Wiener Tarockmarathon';
+                document.title = 'Wr. Marathon';
                 hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
             } else if (pCup === 15) {
                 document.title = 'STA - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
@@ -2194,7 +2194,7 @@ function showCup(i, pBtn, pTermin) {
         html += '<br>';
         hVorschub = '<br>';
     } else if (pTermin !== false && !isNaN(pTermin)) {
-        if (CUPS.TERMINE[pTermin].CUP === I) {
+        if (pTermin >= 0 && CUPS.TERMINE[pTermin].CUP === I) {
             html = '<div class="ui-grid-a">'
                     + '<div class="ui-block-a L" style="width:22%;margin:4px 0;">'
                     + getDateString(CUPS.TERMINE[pTermin].DATUM)
@@ -2278,7 +2278,7 @@ function showCup(i, pBtn, pTermin) {
                                 ? hVorschub + '<span class="cBlau P XL" onclick="zumTurnier()" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
-                        + ((!CUPS.TURNIER[I] || CUPS.TURNIER[I] === 'Handy') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
+                        + (((!CUPS.TURNIER[I] || CUPS.TURNIER[I] === 'Handy') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7) && I !== 81)
                                 ? hVorschub + '<span class="cBlau P XL" onclick="fEinNeuerTisch(' + I + ')" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
@@ -2315,7 +2315,7 @@ function showCup(i, pBtn, pTermin) {
                         )
 
                 + hVorschub + html
-                + (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (isNaN(pTermin) || pTermin === false)
+                + (I === 80 || CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (isNaN(pTermin) || pTermin === false)
                         ? getTurnierkalender()
                         : ''
                         )
@@ -2977,7 +2977,7 @@ function whenCUPSloaded() {
         if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST" && TERMINE[termin].CUP >= 8) {
             if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
                     || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4).toUpperCase() !== "TEST" || LS.ME === "3425")) {
-                if (CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'ET' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
+                if (TERMINE[termin].CUP === 80 || TERMINE[termin].CUP === 81 || CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'ET' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
                     var hCupName = '';
                     var hCupFarbe = '';
                     if (CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
@@ -3007,7 +3007,7 @@ function whenCUPSloaded() {
                         hCupName = 'Wr. Tarockcup';
                         hCupFarbe = ' cWTC';
                     } else if (TERMINE[termin].CUP === 80) {
-                        hCupName = '1. Wr. Marathon';
+                        hCupName = 'Wr. Marathon';
                         hCupFarbe = ' cDIV';
                     } else if (TERMINE[termin].CUP === 15) {
                         hCupName = 'Stadl Tarock';
@@ -3021,7 +3021,7 @@ function whenCUPSloaded() {
                             + getCupToggleDiv('bAL', TERMINE[termin].CUP, termin);
                     htmlALLE += hTemp;
                     if (TERMINE[termin].DATUM <= hAktuellBis) {
-                        if (TERMINE[termin].CUP === 49 || LS.VIC[TERMINE[termin].CUP]) {
+                        if (TERMINE[termin].CUP === 49 || LS.VIC[TERMINE[termin].CUP] || TERMINE[termin].CUP === 81 && LS.VIC[56]) {
                             nAktTermine++;
                             htmlAKT += hTemp.replace(/bAL/g, 'bAK');
                         }

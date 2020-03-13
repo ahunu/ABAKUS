@@ -83,6 +83,7 @@ function iABWTARIFEonClick() {
 }
 
 function iANMELDERFonClick() {
+
     if ($("#iANMELDERF").prop("checked")) {
         $('#dANMELDERF').show();
     } else {
@@ -154,8 +155,8 @@ function copyCUPS() {
         }
     }
     if (iAdmin.length > 4) {
-            $("#kFText").text('Ungültiger Admin.');
-            return;
+        $("#kFText").text('Ungültiger Admin.');
+        return;
     }
 
     showEinenMoment(iName + ':', hRundeTurnier + ' wird erstellt.');
@@ -664,6 +665,10 @@ $(document).bind('pageinit', function () {
     } else {
         $("#iANMELDERF").prop("checked", false).checkboxradio("refresh");
         $("#dANMELDERF").hide();
+    }
+    if (I === 80 || I === 81) {
+        $("#iANMELDERF").attr("disabled", true);
+        $("#dANMELDERF").show();
     }
 
     if (CUPS.TARIF[I][1]) {

@@ -990,7 +990,7 @@ function listStammspieler() {
             }
 
             if (CUPS.TURNIER[LS.I] && STAT.S[i].SCHREIBER.length >= STAT.TURRUNDE) {
-                if (LS.TURADMIN === LS.ME ) {
+                if (LS.TURADMIN === LS.ME) {
                     tClass += ' S';
                     $("#lvStammSP").append("<li data-icon='false' data-theme=d><a class='STAMMSP " + tClass + "' id='TS" + STAT.S[i].NR + "'>&nbsp&nbsp;" + STAT.S[i].NNAME + " " + STAT.S[i].VNAME + STAT.S[i].STERNE + "</a></li>");
                 } else {
@@ -1530,7 +1530,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "NOBODY") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

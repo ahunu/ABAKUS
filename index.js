@@ -2297,7 +2297,7 @@ function showCup(i, pBtn, pTermin) {
                         : ''
                         )
 
-                + (((I === 3 && LS.ME === '3425') || (I === 53 && LS.ME === '4506') || (I === 54 && (LS.ME === '3590'||  LS.ME === '6058')) || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
+                + (((I === 3 && LS.ME === '3425') || (I === 53 && LS.ME === '4506') || (I === 54 && (LS.ME === '3590' || LS.ME === '6058')) || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
                         ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
                         : ''
                         )
@@ -2532,8 +2532,8 @@ function getClassMeinTermin(i) {
 
 function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
-    if (pCup === 14) {
-        pCup = 14;
+    if (pCup === 81) {
+        pCup = 81;
     }
     var hBtnName = pPrefix + pCup;
     if (pTermin) {
@@ -2685,14 +2685,19 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
             } else if (LS.I === pCup) {
                 if (LS.TURRUNDE < CUPS.RUNDEN[pCup]) {
                     if (LS.TURGESPIELT && LS.AnzSpieler === 0 && LS.TURRUNDE === 1) {
-                        hStartStopText = '<span style="color: #dd1111">Runde ' + LS.TURRUNDE + ' beenden</span><div class="S N">Turnier starten und beenden</div>';
+                        hStartStopText = '<span style="color: #dd1111">Runde ' + LS.TURRUNDE + ' beenden</span>';
                     } else {
-                        hStartStopText = 'Runde ' + LS.TURRUNDE + ' beenden<div class="S N">Turnier starten und beenden</div>';
+                        hStartStopText = 'Runde ' + LS.TURRUNDE + ' beenden';
                     }
                 } else if (LS.TURGESPIELT && LS.AnzSpieler === 0) {
-                    hStartStopText = '<span style="color: #dd1111">Turnier beenden</span><div class="S N">Turnier starten und beenden</div>';
+                    hStartStopText = '<span style="color: #dd1111">Turnier beenden</span>';
                 } else {
-                    hStartStopText = 'Turnier beenden<div class="S N">Turnier starten und beenden</div>';
+                    hStartStopText = 'Turnier beenden';
+                }
+                if (!LS.TURADMIN || LS.TURADMIN === LS.ME || pCup < 8) {
+                    hStartStopText += '<div class="S N">Turnier starten und beenden</div>';
+                } else {
+                    hStartStopText += '<div class="S N">Administrator: <b>' + LS.TURADMIN + '</b></div>';
                 }
             }
             hReturn += '<div class="ui-btn M2 TL' + hStartStopClass + '" style="margin:10px 6px 0 6px" onClick="fStartStop(' + pCup + ', true);">'

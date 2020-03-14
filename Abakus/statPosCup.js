@@ -108,7 +108,9 @@ function statPosCup(pRunde) {
                                 if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] >= 0 && ii < 6) {
                                     hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];
                                     if (hCupPunkte > 0) {
-                                        if (hCupPunkte > 100) {
+                                        if (hCupPunkte >= 300) {
+                                            hCupPunkte = 200;
+                                        } else if (hCupPunkte > 100) {
                                             hCupPunkte = 100 + parseInt((hCupPunkte - 100) / 2);
                                         }
                                         CupPunkte -= hCupPunkte;  // - wegen der Sortierung
@@ -129,7 +131,9 @@ function statPosCup(pRunde) {
                                 if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] >= 0 && ii < 6) {
                                     hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];
                                     if (hCupPunkte > 0) {
-                                        if (hCupPunkte > 100) {
+                                        if (hCupPunkte >= 300) {
+                                            hCupPunkte = 200;
+                                        } else if (hCupPunkte > 100) {
                                             hCupPunkte = 100 + parseInt((hCupPunkte - 100) / 2);
                                         }
                                         CupPunkte -= hCupPunkte;  // - wegen der Sortierung
@@ -186,7 +190,9 @@ function statPosCup(pRunde) {
                 GesPunkte = STAT.S[i].PUNKTE[stTurCupGes];
                 CupPunkte = GesPunkte;
                 if (CupPunkte > 0) {
-                    if (CupPunkte > 100) {
+                    if (CupPunkte >= 300) {
+                        CupPunkte = 200;
+                    } else if (CupPunkte > 100) {
                         CupPunkte = 100 + parseInt((CupPunkte - 100) / 2);
                     }
                 } else {
@@ -293,7 +299,9 @@ function statPosCup(pRunde) {
                     if (typeof STAT.S[i].CUPPUNKTE[stTurCupGes][ii] === 'number') {
                         if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] > 0) {
                             hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];
-                            if (hCupPunkte > 100) {
+                            if (hCupPunkte >= 300) {
+                                hCupPunkte = 200;
+                            } else if (hCupPunkte > 100) {
                                 hCupPunkte = 100 + parseInt((hCupPunkte - 100) / 2);
                             }
                             hPos += '<td class="TR">' + hCupPunkte + '&nbsp;</td>';

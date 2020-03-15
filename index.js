@@ -2278,7 +2278,7 @@ function showCup(i, pBtn, pTermin) {
                                 ? hVorschub + '<span class="cBlau P XL" onclick="zumTurnier()" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
-                        + (((!CUPS.TURNIER[I] || CUPS.TURNIER[I] === 'Handy') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7) && I !== 81)
+                        + (((!CUPS.TURNIER[I] || CUPS.TURNIER[I] === 'Handy') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7) && I !== 80)
                                 ? hVorschub + '<span class="cBlau P XL" onclick="fEinNeuerTisch(' + I + ')" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
                                 : ''
                                 )
@@ -2532,9 +2532,6 @@ function getClassMeinTermin(i) {
 
 function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
-    if (pCup === 81) {
-        pCup = 81;
-    }
     var hBtnName = pPrefix + pCup;
     if (pTermin) {
         if (pTermin === -1) {
@@ -2982,7 +2979,7 @@ function whenCUPSloaded() {
         if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST" && TERMINE[termin].CUP >= 8) {
             if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
                     || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4).toUpperCase() !== "TEST" || LS.ME === "3425")) {
-                if (TERMINE[termin].CUP === 80 || TERMINE[termin].CUP === 81 || CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'ET' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
+                if (TERMINE[termin].CUP === 80 || CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'ET' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
                     var hCupName = '';
                     var hCupFarbe = '';
                     if (CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
@@ -3026,7 +3023,7 @@ function whenCUPSloaded() {
                             + getCupToggleDiv('bAL', TERMINE[termin].CUP, termin);
                     htmlALLE += hTemp;
                     if (TERMINE[termin].DATUM <= hAktuellBis) {
-                        if (TERMINE[termin].CUP === 49 || LS.VIC[TERMINE[termin].CUP] || TERMINE[termin].CUP === 81 && LS.VIC[56]) {
+                        if (TERMINE[termin].CUP === 49 || LS.VIC[TERMINE[termin].CUP] || TERMINE[termin].CUP === 80 && LS.VIC[56]) {
                             nAktTermine++;
                             htmlAKT += hTemp.replace(/bAL/g, 'bAK');
                         }

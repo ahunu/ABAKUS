@@ -105,13 +105,19 @@ function AnAbmelden(pAnmelden) {
 }
 
 function AnmeldenExe() {
+
     var hANMELDUNG = {};
-    hANMELDUNG[LS.ME] = {};
-    if (LS.ME === '2778') {
-        hANMELDUNG[LS.ME].NAME = 'Phan Thomas';
+    if (STAT.ANMELDUNGEN[LS.ME]) {
+        hANMELDUNG[LS.ME] = STAT.ANMELDUNGEN[LS.ME];
     } else {
-        hANMELDUNG[LS.ME].NAME = LS.MEname;
+        hANMELDUNG[LS.ME] = {};
+        if (LS.ME === '2778') {
+            hANMELDUNG[LS.ME].NAME = 'Phan Thomas';
+        } else {
+            hANMELDUNG[LS.ME].NAME = LS.MEname;
+        }
     }
+    hANMELDUNG[LS.ME].ANGEMELDET = true;
     hANMELDUNG[LS.ME].FUER = stNextTermin;
     hANMELDUNG[LS.ME].UM = new Date().toISOString();
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN')

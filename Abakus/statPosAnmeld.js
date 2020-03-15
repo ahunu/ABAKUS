@@ -12,7 +12,6 @@ function statPosAnmeld() {
             Activate('#aAnmeldung');
         }
     }, 200);
-
     var ret = "<div id='SP1Rumpf' class=M>"
             + getStatMeldungen(true)
             + (STAT.TEILNEHMER ? ''
@@ -20,19 +19,17 @@ function statPosAnmeld() {
                     + '<br>&nbsp;&nbsp;Falls du mitspielen willst, bitte einen Spieler'
                     + '<br>&nbsp;&nbsp;dein Kommen per Nachricht anzukündigen.</span>'
                     )
-            + "<table id=mTable data-role='table' data-mode='columntoggle' class='table-stripe ui-shadow ui-responsive" +  (stSynchron ? "" : " ui-disabled") + "' data-column-btn-text=''><thead>"
+            + "<table id=mTable data-role='table' data-mode='columntoggle' class='table-stripe ui-shadow ui-responsive" + (stSynchron ? "" : " ui-disabled") + "' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau M'>"
             + "<th class=TR>#&nbsp;</th>"
             + "<th class=TC>am</th>"
             + "<th class=TC>um</th>"
             + "<th>&nbsp;angemeldet</th>"
             + "</tr></thead><tbody>";
-
     var hClass = '';
     var hUM;
     var iAnmeldung = 0;
     var iii = -1;
-
     var SORT = [];
     for (var anmeldung in STAT.ANMELDUNGEN) {
         if (new Date().valueOf() <= STAT.ANMELDUNGEN[anmeldung].FUER) {
@@ -47,17 +44,23 @@ function statPosAnmeld() {
     });
 
     for (var anmeldung in SORT) {
-        iAnmeldung++;
+        if (SORT[anmeldung].ANGEMELDET || true) {
+            iAnmeldung++;
+        }
         hUM = new Date(SORT[anmeldung].UM);
         hClass = '';
         if (SORT[anmeldung].NR === LS.ME) {
             hClass = 'bBeige';
         }
         ret += '<tr class="' + hClass + '">'
-                + '<td class="TR">' + (iAnmeldung) + '&nbsp;</td>'
-                + '<td class="TC">' + hUM.getDate() + '.' + (hUM.getMonth() + 1) + '.</td>'
-                + '<td class="TC">' + hUM.getHours() + ':' + ('0' + hUM.getMinutes()).slice(-2) + '&nbsp;</td>'
-                + '<th>' + SORT[anmeldung].NAME.replace(' ','&nbsp;') + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>'
+                + (SORT[anmeldung].ANGEMELDET || true
+                        ? '<td class="TR">' + (iAnmeldung) + '&nbsp;</td>'
+                        + '<td class="TC">' + hUM.getDate() + '.' + (hUM.getMonth() + 1) + '.</td>'
+                        + '<td class="TC">' + hUM.getHours() + ':' + ('0' + hUM.getMinutes()).slice(-2) + '&nbsp;</td>'
+                        + '<th>' + SORT[anmeldung].NAME.replace(' ', '&nbsp;') + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>'
+                        : '<td colspan="3"></td>'
+                        + '<td>' + SORT[anmeldung].NAME.replace(' ', '&nbsp;') + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>'
+                        )
                 + '</tr>'
 
 

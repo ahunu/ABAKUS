@@ -64,9 +64,9 @@ function getStatMeldungen(pAnAbmelden) {
                         if (Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER) {
                             hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="AnAbmelden(false);">&nbsp;abmelden&nbsp;</button><br>';
                             if (STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
-                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').val(STAT.ANMELDUNGEN[LS.ME].NACHRICHT).focus();">&nbsp;meine Nachricht ändern&nbsp;</button>';
+                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').val(STAT.ANMELDUNGEN[LS.ME].NACHRICHT).focus();">&nbsp;Nachricht ändern&nbsp;</button>';
                             } else {
-                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;eine Nachricht schreiben&nbsp;</button>';
+                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;Nachricht schreiben&nbsp;</button>';
                             }
                         }
                     }

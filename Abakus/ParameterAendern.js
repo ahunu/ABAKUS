@@ -666,7 +666,7 @@ $(document).bind('pageinit', function () {
         $("#iANMELDERF").prop("checked", false).checkboxradio("refresh");
         $("#dANMELDERF").hide();
     }
-    if (I === 80 || I === 81) {
+    if (I === 80) {
         $("#iANMELDERF").attr("disabled", true);
         $("#dANMELDERF").show();
     }

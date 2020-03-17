@@ -13,7 +13,7 @@ function showInhalt() {
 
     var html = '';
 
-    if (stCup === 49 || stCup === 51 || stCup === 52) {
+    if (stCup === 49 || stCup === 50 || stCup === 52) {
         html = '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
                 + (CUPS.MELDAKT[stCup]
                         ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'

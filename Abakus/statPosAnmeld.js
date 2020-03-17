@@ -28,7 +28,6 @@ function statPosAnmeld() {
             + "</tr></thead><tbody>";
     var hClass = '';
     var hUM;
-    var iAnmeldung = 0;
     var iii = -1;
     var SORT = [];
     for (var anmeldung in STAT.ANMELDUNGEN) {
@@ -43,8 +42,9 @@ function statPosAnmeld() {
         return new Date(a.UM).valueOf() - new Date(b.UM).valueOf();
     });
 
+    var iAnmeldung = 0;
     for (var anmeldung in SORT) {
-        if (SORT[anmeldung].ANGEMELDET || true) {
+        if (SORT[anmeldung].ANGEMELDET) {
             iAnmeldung++;
         }
         hUM = new Date(SORT[anmeldung].UM);
@@ -53,7 +53,7 @@ function statPosAnmeld() {
             hClass = 'bBeige';
         }
         ret += '<tr class="' + hClass + '">'
-                + (SORT[anmeldung].ANGEMELDET || true
+                + (SORT[anmeldung].ANGEMELDET
                         ? '<td class="TR">' + (iAnmeldung) + '&nbsp;</td>'
                         + '<td class="TC">' + hUM.getDate() + '.' + (hUM.getMonth() + 1) + '.</td>'
                         + '<td class="TC">' + hUM.getHours() + ':' + ('0' + hUM.getMinutes()).slice(-2) + '&nbsp;</td>'

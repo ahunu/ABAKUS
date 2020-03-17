@@ -27,7 +27,8 @@ $(document).ready(function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
 
     if (LS.ME === '3425'                              // Ich
-            || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 // Administratoren
+            || CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 // Administratoren
+            || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0
@@ -39,7 +40,8 @@ $(document).ready(function () {
         }
     }
     if (LS.ME === '4731' || LS.ME === '0197' || LS.ME === '2553' // Alex Sabkovski, Manfred Huemer, Arno Peter --- Turnierkalender
-            || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0 // Administrator-Stellvertreter
+            || CUPS.BEREschreiben[50].indexOf(LS.ME) >= 0 // Administrator-Stellvertreter
+            || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0
             || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0
             || CUPS.BEREschreiben[53].indexOf(LS.ME) >= 0
             || CUPS.BEREschreiben[54].indexOf(LS.ME) >= 0

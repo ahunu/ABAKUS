@@ -289,7 +289,7 @@ $(document).bind('pageinit', function () {
     SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
 
     if (LS.ME === "1014") {
-        iCUP = 51; // HRC
+        iCUP = 50; // HRC
     }
 
     if (LS.ME === "4506") {

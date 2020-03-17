@@ -1,7 +1,8 @@
 
 /* global firebase, showCupwertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, MPPUtils, isSaison, pell, editor, isFinale */
 
-// 51 Hausruckcup
+// 50 Hausruckcup
+// 51 Ktn. Tarockcup
 // 52 Raiffeisencup
 // 53 Sauwaldcup
 // 54 St. Tarockcup
@@ -580,9 +581,7 @@ function fINIT(pCup) {
     } else {
         stCup = LS.ShowCups;
     }
-    if (stCup >= 60) {
-        LS.ShowSpielerNr = false;
-    }
+
     if (window.location.href.indexOf('?Aktuelles') > 0) {
         stStat = 'Aktuelles';
     }

@@ -535,19 +535,23 @@ function writeCanvas(pTitel) {
 
 //    $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
 
-    // 51 H Hausruckcup
+    // 50 H Hausruckcup
+    // 51 K Ktn. Tarockcup
     // 52 R Raiffeisencup
     // 53 S Sauwaldcup
     // 54 G St. Tarockcup
     // 55 T Tiroler Tarockcup
     // 56 W Wr. Tarockcup
     // 15 A Stadl Tarock
+    // 17   UTC Klopeinersee
 
     if (PC) {
         if (stCup === 0) {
             document.title = 'Presseschau';
-        } else if (stCup === 51) {
+        } else if (stCup === 50) {
             document.title = 'HRC - ' + pTitel.replace('  ', ' ').replace('/', '-');
+        } else if (stCup === 51) {
+            document.title = 'KTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else if (stCup === 52) {
             document.title = 'RTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else if (stCup === 53) {
@@ -556,8 +560,6 @@ function writeCanvas(pTitel) {
             document.title = 'STC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else if (stCup === 55) {
             document.title = 'TTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
-        } else if (stCup === 56) {
-            document.title = 'WTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else if (stCup === 56) {
             document.title = 'WTC - ' + pTitel.replace('  ', ' ').replace('/', '-');
         } else if (stCup === 15) {

@@ -161,9 +161,12 @@ $(document).bind('pageinit', function () {
     if (LS.ME === '3425') { // Leo Luger
         mCup = 56;
         kzAktiv = 'W';
-    } else if (LS.ME === "-51" || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) { // Franz Kienast
-        mCup = 51;
+    } else if (LS.ME === "-50" || CUPS.BEREadmin[50].indexOf(LS.ME) >= 0) { // Franz Kienast
+        mCup = 50;
         kzAktiv = 'H';
+    } else if (LS.ME === "-51" || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) { // Arno Peter
+        mCup = 51;
+        kzAktiv = 'K';
     } else if (LS.ME === "-52" || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) { // Karl Haas
         mCup = 52;
         kzAktiv = 'R';

@@ -1772,9 +1772,9 @@ function writeCanvas(pCup) {
                 document.title = 'HRC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
                 hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" >hausruckcup1.jimdo.com</span>';
             } else if (pCup === 51) {
-                hTitel = 'Hausruckviertler Tarockcup';
-                document.title = 'HRC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
-                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" >hausruckcup1.jimdo.com</span>';
+                hTitel = 'Kärntner Tarockcup';
+                document.title = 'KTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel2 = '';
             } else if (pCup === 52) {
                 hTitel = 'Raiffeisen Tarockcup Austria';
                 document.title = 'RTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
@@ -2023,7 +2023,7 @@ function resetLastBtn() {
                 } else if (LS.LastBtn.substr(4, 3) === '50T') {
                     $(LS.LastBtn).addClass('cHRC');
                 } else if (LS.LastBtn.substr(4, 3) === '51T') {
-                    $(LS.LastBtn).addClass('cHRC');
+                    $(LS.LastBtn).addClass('cKTC');
                 } else if (LS.LastBtn.substr(4, 3) === '52T') {
                     $(LS.LastBtn).addClass('cRTC');
                 } else if (LS.LastBtn.substr(4, 3) === '53T') {
@@ -2039,7 +2039,6 @@ function resetLastBtn() {
                 }
             } else if (LS.LastBtn.substr(4, 2) === '49'
                     || LS.LastBtn.substr(4, 2) === '50'
-                    || LS.LastBtn.substr(4, 2) === '51'
                     || LS.LastBtn.substr(4, 2) === '52') {
                 $(LS.LastBtn).addClass('cDIV');
             }
@@ -2157,7 +2156,7 @@ function showCup(i, pBtn, pTermin) {
         } else if (pTermin || resetTermin) {
             $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen');
         } else {
-            if (i === 49 || i === 51 || i === 52) {
+            if (i === 49 || i === 50 || i === 52) {
                 $(LS.LastBtn).removeClass('cDIV');
             }
             $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen');
@@ -2223,7 +2222,7 @@ function showCup(i, pBtn, pTermin) {
                         : ''
                         )
 
-                + (I === 51 && !mHausruckAktiv
+                + (I === 50 && !mHausruckAktiv
                         ? hVorschub + 'Organisationsteam:&nbsp;&nbsp;<b>Bert Greisinger,<br> Franz Emeder, Franz Kienast</b><br><br>'
                         + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:f.kienast@eduhi.at\';" >f.kienast@eduhi.at</span><br>'
                         + 'Tarockhandy:&nbsp;&nbsp;0660 5275150<br>'
@@ -2258,13 +2257,13 @@ function showCup(i, pBtn, pTermin) {
                         : ''
                         )
 
-                + ((I === 49 || I === 51 || I === 52)
+                + ((I === 49 || I === 50 || I === 52)
                         && (CUPS.MELDAKT[I] || CUPS.BEREadmin[I].indexOf(LS.ME) >= 0)
                         ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
                         : ''
                         )
 
-                + (I !== 49 && I !== 50 && I !== 51 && I !== 52 && I !== 53 && I !== 55 || I === 51 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv || I === 77
+                + (I !== 49 && I !== 50 && I !== 52 && I !== 53 && I !== 55 || I === 50 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv || I === 77
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>' + getMeldSTAT(I) + '<br>' : '<br>Nur für Mitspieler...<br>')
 
@@ -2309,7 +2308,7 @@ function showCup(i, pBtn, pTermin) {
                 + '</div></div>'
 
 
-                + ((I === 51 || I === 52) && CUPS.MELDSTAT[I]
+                + ((I === 50 || I === 52) && CUPS.MELDSTAT[I]
                         ? hVorschub + '<b><span class=S3>' + CUPS.MELDSTAT[I] + '</span></b><br>'
                         : ''
                         )
@@ -2446,6 +2445,7 @@ function initExtraButtons() {
 
     $('#bAdminTools,#bFindSpieler').hide();
     if (LS.ME === '3425'
+            || CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[50].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[53].indexOf(LS.ME) >= 0
@@ -2599,7 +2599,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
     if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'ET' || CUPS.TYP[pCup] === 'MT') { // Cups ///////////////////////////////////////////////////////////
 // Ein neuer Tisch / Zu meinem Tisch
 // Zur Statistik
-        if (pCup !== 49 && pCup !== 51 && pCup !== 52) {
+        if (pCup !== 49 && pCup !== 50 && pCup !== 52) {
             hReturn += (heuteTurnier && pCup !== 53 && pCup !== 55 && LS.ME.length === 4 && LS.Schreiber || pCup < 8
                     ? (LS.I !== pCup || LS.AnzSpieler === 0
                             ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
@@ -2991,8 +2991,8 @@ function whenCUPSloaded() {
                         hCupName = 'Hausruckcup';
                         hCupFarbe = ' cHRC';
                     } else if (TERMINE[termin].CUP === 51) {
-                        hCupName = 'Hausruckcup';
-                        hCupFarbe = ' cHRC';
+                        hCupName = 'Ktn. Tarockcup';
+                        hCupFarbe = ' cKTC';
                     } else if (TERMINE[termin].CUP === 52) {
                         hCupName = 'Raiffeisencup';
                         hCupFarbe = ' cRTC';
@@ -3070,7 +3070,7 @@ function whenCUPSloaded() {
 
     var xText = '';
 
-    for (var i = 51; i <= 56; i++) { // Meine Runden/Cups --- Bei Xxxxxx
+    for (var i = 50; i <= 56; i++) { // Meine Runden/Cups --- Bei Xxxxxx
         var hShow = false;
         xText = '';
         if (CUPS.BEREadmin[i].indexOf(LS.ME) >= 0
@@ -3080,7 +3080,7 @@ function whenCUPSloaded() {
         if (LS.VIC[i]) {
             hShow = true;
             if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
-                if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i]) && i !== 51 && i !== 52) {
+                if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i]) && i !== 50 && i !== 52) {
                     xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
                 }
                 if (CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i])) {
@@ -3151,7 +3151,7 @@ function whenCUPSloaded() {
         var xText = '';
         if (LS.VIC[i]) {
             if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
-                if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i]) && i !== 51 && i !== 52) {
+                if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i]) && i !== 50 && i !== 52) {
                     xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
                 }
                 if (CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i])) {

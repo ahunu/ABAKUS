@@ -1,7 +1,8 @@
 
 /* global firebase, iVERANSTALTER */
 
-// 51 Hausruckcup
+// 50 Hausruckcup
+// 51 Kärntner Tarockcup
 // 52 Raiffeisencup
 // 53 Sauwaldcup
 // 54 St. Tarockcup
@@ -10,7 +11,6 @@
 // 16 Tarock on Tour
 // 15 Stadl Tarock
 // 17 UTC Klobainersee
-// 83 Villacher Cup
 
 var FB = undefined;
 var LS = new Object();
@@ -80,13 +80,14 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
         for (var termin in TERMINE) {
 
             if (pScrollTo && pScrollTo === 'li' + TERMINE[termin].DATUM
+                    || TERMINE[termin].CUP === 50 && $("#cb50").is(':checked')
                     || TERMINE[termin].CUP === 51 && $("#cb51").is(':checked')
                     || TERMINE[termin].CUP === 52 && $("#cb52").is(':checked')
                     || TERMINE[termin].CUP === 53 && $("#cb53").is(':checked')
                     || TERMINE[termin].CUP === 54 && $("#cb54").is(':checked')
                     || TERMINE[termin].CUP === 55 && $("#cb55").is(':checked')
                     || TERMINE[termin].CUP === 56 && $("#cb56").is(':checked')
-                    || ($("#cbDiverse").is(':checked') && TERMINE[termin].CUP !== 51 && TERMINE[termin].CUP !== 52 && TERMINE[termin].CUP !== 53 && TERMINE[termin].CUP !== 54 && TERMINE[termin].CUP !== 55 && TERMINE[termin].CUP !== 56)) {
+                    || ($("#cbDiverse").is(':checked') && TERMINE[termin].CUP !== 50 && TERMINE[termin].CUP !== 51 && TERMINE[termin].CUP !== 52 && TERMINE[termin].CUP !== 53 && TERMINE[termin].CUP !== 54 && TERMINE[termin].CUP !== 55 && TERMINE[termin].CUP !== 56)) {
                 if (TERMINE[termin].CUP === 3) {
                     hCupName = 'Tarockcup (Test)';
                     hClass = ' cDIV';
@@ -103,8 +104,8 @@ function whenCUPSloaded(pNachNeuAendernLoeschen, pScrollTo) {
                     hCupName = 'Hausruckcup';
                     hClass = ' cHRC';
                 } else if (TERMINE[termin].CUP === 51) {
-                    hCupName = 'Hausruckcup';
-                    hClass = ' cHRC';
+                    hCupName = 'Ktn. Tarockcup';
+                    hClass = ' cKTC';
                 } else if (TERMINE[termin].CUP === 52) {
                     hCupName = 'Raiffeisencup';
                     hClass = ' cRTC';
@@ -249,7 +250,7 @@ function showTermin(pTermin) {
             $('#tCUP').html('<span class="S">(14 = Leonfelder Turnier, 18 = Wr. Städtische Turnier)</span>').removeClass('B');
         } else if (LS.ME === '1014') { // Franz Kienast
             $('#iCUP').val('');
-            $('#tCUP').html('<span class="S">(51 = Hausruckcup, 16 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
+            $('#tCUP').html('<span class="S">(50 = Hausruckcup, 16 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
         }
 
         $('#iNAME').val('');
@@ -291,14 +292,14 @@ function onAendern() {
             return;
         }
     } else if (LS.ME === '1014') { // Franz Kienast
-        if (hCUP !== 49 && hCUP !== 51 && hCUP !== 16) {
-            showEinenTip('#iCUP', 'Hausruckcup = 51,<br>Tarock on Tour = 16,<br>Österreichfinale = 49!');
+        if (hCUP !== 49 && hCUP !== 50 && hCUP !== 16) {
+            showEinenTip('#iCUP', 'Hausruckcup = 50,<br>Tarock on Tour = 16,<br>Österreichfinale = 49!');
             return;
         }
     }
 
     if (hCUP < 0 || !CUPS.TYP[hCUP] || (CUPS.TYP[hCUP] !== 'CUP' && CUPS.TYP[hCUP] !== 'ET' && CUPS.TYP[hCUP] !== 'MT')) {
-        if (hCUP !== 80) {
+        if (hCUP !== 80) { // Wr. Marathon
             showEinenTip('#iCUP', 'Österreichfinale = 49,<br>Hausruckcup = 50,<br>Ktn. Tarockcup = 51,<br>Raiffeisencup = 52,<br>Sauwaldcup = 53,<br>St. Tarockcup = 54,<br>Tirolcup = 55,<br>Wr. Tarockcup = 56,<br>Leonfeldner Turnier = 18,<br>Tarock on Tour = 16,<br>Wr. Marathon = 80,<br>Stadl Tarock = 15,<br>UTC Klopeinersee = 17,<br>Villacher Cup = 83,<br>Drumlinger MT = 31,<br>Villacher MT = 30!');
             return;
         }
@@ -431,7 +432,7 @@ $(document).bind('pageinit', function () {
     hVersionsDatum = myDateString(getVersionsDatum());
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-    if (LS.ME !== "3425" && LS.ME !== "1014") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };
@@ -450,10 +451,15 @@ $(document).bind('pageinit', function () {
 //        $('#cb50').prop('checked', true).checkboxradio("refresh");
 //        $('#tWMA,#tCUP').text('Hausruckcup').show();
 //    }
+    if (CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[50].indexOf(LS.ME) >= 0) {
+        $('#iCUP').val(50);
+        $('#cb50').prop('checked', true).checkboxradio("refresh");
+        $('#tHRC,#tCUP').text('Hausruckcup').show();
+    }
     if (CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(51);
         $('#cb51').prop('checked', true).checkboxradio("refresh");
-        $('#tHRC,#tCUP').text('Hausruckcup').show();
+        $('#tKTC,#tCUP').text('Ktn. Tarockcup').show();
     }
     if (CUPS.BEREadmin[52].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0) {
         $('#iCUP').val(52);
@@ -506,7 +512,7 @@ $(document).bind('pageinit', function () {
     } else if (LS.ME === '1014') { // Franz Kienast
         $('#iCUP').val('');
         $('#cbDiverse').prop('checked', true).checkboxradio("refresh");
-        $('#tCUP').html('<span class="S">(51 = Hausruckcup, 16 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
+        $('#tCUP').html('<span class="S">(50 = Hausruckcup, 16 = Tarock on Tour, 49 = Österreichfinale)</span>').removeClass('B');
     } else {
         $('#iCUP').hide();
         $(".autoCup").attr("style", "width:0");

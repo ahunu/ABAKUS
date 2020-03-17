@@ -1097,22 +1097,25 @@ $(document).bind('pageinit', function () {
     if (LS.ME === '3425') { // Leo Luger
         kzAktiv = 'W';
         nNummernkreis = 3761;
-    } else if (LS.ME === "-51" || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) { // Franz Kienast
+    } else if (LS.ME === "-50" || CUPS.BEREadmin[50].indexOf(LS.ME) >= 0) { // HRC
         kzAktiv = 'H';
         nNummernkreis = 6300;
-    } else if (LS.ME === "-52" || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) { // Karl Haas
+    } else if (LS.ME === "-51" || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0) { // KTC
+        kzAktiv = 'K';
+        nNummernkreis = 7000;
+    } else if (LS.ME === "-52" || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0) { // RTC
         kzAktiv = 'R';
         nNummernkreis = 6500;
-    } else if (LS.ME === "-53" || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0) { // Sepp Lang
+    } else if (LS.ME === "-53" || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0) { // SWC
         kzAktiv = 'S';
         nNummernkreis = 5750;
-    } else if (LS.ME === "-54" || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0) { // Hans Hafner
+    } else if (LS.ME === "-54" || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0) { // STC
         kzAktiv = 'G';
         nNummernkreis = 6001;
-    } else if (LS.ME === "-55" || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0) { // Markus Mair
+    } else if (LS.ME === "-55" || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0) { // TTC
         kzAktiv = 'T';
         nNummernkreis = 4001;
-    } else if (LS.ME === "-56" || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) { // Erwin Haider
+    } else if (LS.ME === "-56" || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) { // WTC
         kzAktiv = 'W';
         nNummernkreis = 3761;
     }

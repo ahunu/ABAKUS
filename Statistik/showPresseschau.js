@@ -14,7 +14,7 @@ function showPresseschau() {
         }
     }
 
-    if (hCup === 51)
+    if (hCup === 50)
         hFilter = 'HRC';
     else if (hCup === 51)
         hFilter = 'KTC';
@@ -312,7 +312,7 @@ function showPresseschau() {
     $('#sideTurniere').html(
             '<div data-role="navbar">'
             + '<ul>'
-            + (hCup === 51 ? '<li class="nb56"><a id="nbHRC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'HRC\')">Hausruckcup</a></li>' : '')
+            + (hCup === 50 ? '<li class="nb56"><a id="nbHRC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'HRC\')">Hausruckcup</a></li>' : '')
             + (hCup === 51 ? '<li class="nb56"><a id="nbKTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'KTC\')">Kärntencup</a></li>' : '')
             + (hCup === 52 ? '<li class="nb56"><a id="nbRTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'RTC\')">Raiffeisencup</a></li>' : '')
             + (hCup === 53 ? '<li class="nb56"><a id="nbSWC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'SWC\')">Sauwaldcup</a></li>' : '')
@@ -325,7 +325,7 @@ function showPresseschau() {
 
             + '<div data-role="navbar">'
             + '<ul>'
-            + (hCup !== 51 ? '<li class="nb6"><a id="nbHRC" class="prFilter M2" onClick="setPresseFilter(\'HRC\')">HRC</a></li>' : '')
+            + (hCup !== 50 ? '<li class="nb6"><a id="nbHRC" class="prFilter M2" onClick="setPresseFilter(\'HRC\')">HRC</a></li>' : '')
             + (hCup !== 51 ? '<li class="nb6"><a id="nbKTC" class="prFilter M2" onclick="setPresseFilter(\'KTC\')">KTC</a></li>' : '')
             + (hCup !== 52 ? '<li class="nb6"><a id="nbRTC" class="prFilter M2" onclick="setPresseFilter(\'RTC\')">RTC</a></li>' : '')
             + (hCup !== 53 ? '<li class="nb6"><a id="nbSWC" class="prFilter M2" onClick="setPresseFilter(\'SWC\')">SWC</a></li>' : '')
@@ -352,7 +352,7 @@ function showPresseschau() {
             + '</div>'
 
             + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;' + (window.location.search === '?Presseschau' ? 'Kategorie:' : 'Presseschau:') + '&nbsp;&nbsp;<span id=tFilter class=N>'
-            + (hCup === 51 ? 'Hausruckcup' : '')
+            + (hCup === 50 ? 'Hausruckcup' : '')
             + (hCup === 51 ? 'Kärntencup' : '')
             + (hCup === 52 ? 'Raiffeisencup' : '')
             + (hCup === 53 ? 'Sauwaldcup' : '')

@@ -1,7 +1,7 @@
 
 /* global LS, Pfad, stSynchron, CUPS, STAT, stCup, PC, stNextTerminDat, stVollAb, stTurCupGes, imgStatistik, QUERFORMAT(), stStat, statDiagramm, stSort, imgSkuess, LOG, stFont, stAktiv */
 
-function getStatMeldungen(pAnAbmelden) {
+function getStatMeldungen(pAnAbmelden, nAnmeldungen) {
 
     var ret = "";
 
@@ -58,34 +58,49 @@ function getStatMeldungen(pAnAbmelden) {
                     + '&nbsp;<b>An- und abmelden ist nicht möglich.</b></span>';
         } else {
             if (STAT.TEILNEHMER && pAnAbmelden) {
-                hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled") + '" onclick="AnAbmelden(true);">&nbsp;anmelden&nbsp;</button><br>';
-                if (STAT.ANMELDUNGEN) {
-                    if (STAT.ANMELDUNGEN[LS.ME]) {
-                        if (Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER) {
-                            hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="AnAbmelden(false);">&nbsp;abmelden&nbsp;</button><br>';
-                            if (STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
-                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').val(STAT.ANMELDUNGEN[LS.ME].NACHRICHT).focus();">&nbsp;Nachricht ändern&nbsp;</button>';
-                            } else {
-                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;Nachricht schreiben&nbsp;</button>';
-                            }
-                        }
-                    }
+//                if (STAT.ANMELDUNGEN) {
+//                    if (STAT.ANMELDUNGEN[LS.ME]) {
+//                        if (Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER) {
+//                            hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="AnAbmelden(false);">&nbsp;abmelden&nbsp;</button><br>';
+//                            if (STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
+//                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').val(STAT.ANMELDUNGEN[LS.ME].NACHRICHT).focus();">&nbsp;Nachricht ändern&nbsp;</button>';
+//                            } else {
+//                                hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;Nachricht schreiben&nbsp;</button>';
+//                            }
+//                        }
+//                    }
+//                }
+                if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].ANGEMELDET) {
+                    hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="AnAbmelden(false);">&nbsp;Abmelden&nbsp;</button><br>';
+                } else {
+                    hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled") + '" onclick="AnAbmelden(true);">&nbsp;Anmelden&nbsp;</button><br>';
+                }
+                if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
+                    hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').val(STAT.ANMELDUNGEN[LS.ME].NACHRICHT).focus();">&nbsp;Nachricht ändern&nbsp;</button>';
+                } else {
+                    hAnAbmelden += '&nbsp;&nbsp;<button id=bNachricht  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="jbNachricht.open();$(\'#iNachricht\').focus();">&nbsp;Nachricht schreiben&nbsp;</button>';
                 }
             } else {
                 hAnAbmelden = '<br>';
             }
         }
         if (STAT.ANMELDUNGEN) {
-            if (Object.keys(STAT.ANMELDUNGEN).length <= 0) {
+            var nAnmeldungen = 0;
+            for (var anmeldung in STAT.ANMELDUNGEN) {
+                if (STAT.ANMELDUNGEN[anmeldung].ANGEMELDET && new Date().valueOf() <= STAT.ANMELDUNGEN[anmeldung].FUER) {
+                    nAnmeldungen++;
+                }
+            }
+            if (nAnmeldungen <= 0) {
                 ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Keine Anmeldungen f&uuml;r " + stNextTerminDat + ".&nbsp;&nbsp;</b><br></span>";
-            } else if (Object.keys(STAT.ANMELDUNGEN).length === 1) {
+            } else if (nAnmeldungen === 1) {
                 ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png' width='24' height='24'><span class=M>&nbsp;<b>Eine Anmeldung f&uuml;r " + stNextTerminDat + ".</b><br></span>";
-            } else if (Object.keys(STAT.ANMELDUNGEN).length < 4 || Object.keys(STAT.ANMELDUNGEN).length === 7) {
-                ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png' width='24' height='24'><span class=M>&nbsp;<b>" + Object.keys(STAT.ANMELDUNGEN).length + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
-            } else if (Object.keys(STAT.ANMELDUNGEN).length === 6 || Object.keys(STAT.ANMELDUNGEN).length === 11) {
-                ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png' width='24' height='24'><span class=M>&nbsp;<b>" + Object.keys(STAT.ANMELDUNGEN).length + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
+            } else if (nAnmeldungen < 4 || nAnmeldungen === 7) {
+                ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
+            } else if (nAnmeldungen === 6 || nAnmeldungen === 11) {
+                ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
             } else {
-                ret += "&nbsp;<img src='" + Pfad + "Icons/OK.png' width='24' height='24'><span class=M>&nbsp;<b>" + Object.keys(STAT.ANMELDUNGEN).length + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
+                ret += "&nbsp;<img src='" + Pfad + "Icons/OK.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
             }
         } else {
             ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Keine Anmeldungen f&uuml;r " + stNextTerminDat + ".&nbsp;&nbsp;</b><br></span>";

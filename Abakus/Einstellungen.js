@@ -70,6 +70,7 @@ $(document).bind('pageinit', function () {
         if (LS.VIC[0] === 1) {
             LS.VIC = [1, 1];
             $('#iR1').prop('checked', true).checkboxradio('refresh');
+            $("#iCB50").prop('checked', false).checkboxradio('refresh');
             $("#iCB51").prop('checked', false).checkboxradio('refresh');
             $("#iCB52").prop('checked', false).checkboxradio('refresh');
             $("#iCB53").prop('checked', false).checkboxradio('refresh');
@@ -94,6 +95,7 @@ $(document).bind('pageinit', function () {
         }
         LS.VIC = [1, 1];
         $('#iR1').prop('checked', true).checkboxradio('refresh');
+        $("#iCB50").prop('checked', false).checkboxradio('refresh');
         $("#iCB51").prop('checked', false).checkboxradio('refresh');
         $("#iCB52").prop('checked', false).checkboxradio('refresh');
         $("#iCB53").prop('checked', false).checkboxradio('refresh');
@@ -107,6 +109,21 @@ $(document).bind('pageinit', function () {
         $("#iCB15").prop('checked', false).checkboxradio('refresh');
         $("#iCB16").prop('checked', false).checkboxradio('refresh');
         $("#iCB17").prop('checked', false).checkboxradio('refresh');
+    });
+    $("#iCB50").change(function () {
+        LS.VIC[50] = $("#iCB50").is(":checked");
+        if (LS.VIC[50]) {
+            if (!LS.VIC[0] || LS.VIC[0] === 1) {
+                LS.VIC[0] = 50;
+                $("#iR1").prop('checked', false).checkboxradio('refresh');
+                $('#iR50').prop('checked', true).checkboxradio('refresh');
+            }
+        } else {
+            if (LS.VIC[0] === 50) {
+                LS.VIC[0] = 0;
+                $("#iR50").prop('checked', false).checkboxradio('refresh');
+            }
+        }
     });
     $("#iCB51").change(function () {
         LS.VIC[51] = $("#iCB51").is(":checked");

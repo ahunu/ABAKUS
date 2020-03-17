@@ -65,6 +65,9 @@ function showText(pText) {
     } else if (pText === 'TippsUndTricks') {
         hTitel2 = 'Gewusst wie';
         html += getTippsUndTricks();
+    } else if (pText === 'Urlaubsplaner') {
+        hTitel2 = 'Tarockurlaub gefällig?';
+        html += getUrlaubsplaner();
     }
     html += '</div></div>';
     $('#qfHeaderZeile2').html(hTitel2);
@@ -322,6 +325,40 @@ function getEtikette() {
             + '</span>';
 }
 
+function getUrlaubsplaner() {
+    return '<span class=M style="text-align:justify">'
+
+            + '<p><b>14. - 17. April 2020 2. Wiener Tarockmarathon</b>Link<br>'
+            + 'Veranstaltungsort: 1110 Wien, Guglgasse 6, Gasometer Ebene 3, Restaurant El Greco<br>'
+            + 'Veranstalter: Leo Luger, Tel.: 0650 651 652 2<br>'
+
+            + '<p><b>22. - 28. Juni 2020 Tarockwoch am Klopeinersee</b>Link<br>'
+            + 'Veranstaltungsort: 9122 St. Kanzian, Am See V/2, Hotel Marolt<br>'
+            + 'Veranstalter: Johann König, Tel.: 0699 111 116 65'
+
+            + '<p><b>25. Juli bis 2. August 2020 Tarock on Tour</b>Link<br>'
+            + 'Route: Frankenmarkt - Zirl - Altenmarkt - Villach - Unterpremstätten - Großpetersdorf - Wien - Hardegg - Helfenberg<br>'
+            + 'Organisation: Franz Kienast, Franz Emeder, Tel.: 0660 527 515 0, Mail: f.kienast@edhui.at'
+
+            + '<p><b>16. - 24. Juni 2020 Tarock- und Kartenspielkreuzfahrt</b><br>'
+            + 'Route: Savona, Neapel, Palermo, Valenzia, Barcelona, Marseile, Savona<br>'
+            + 'Veranstalter: Freizeitclub St. Roman<br>'
+            + 'Josef Kißling 077162079, Claudia Friedl 07712 2747 67235<br>'
+            + 'Preise: 670 - 1110 Euro'
+
+            + '<p><b>10. - 17. Oktober 2020 Flußkreuzfahrt</b> (in Planung)<br>'
+            + 'Route: Berlin - Prag<br>'
+            + 'Veranstalter: Freizeitclub St. Roman<br>'
+            + 'Josef Kißling 077162079, Claudia Friedl 07712 2747 67235<br>'
+
+            + '<p><b>18. Jän. - 2. Feb. 2021 Traumreise mit AIDAblu</b> (in Planung)<br>'
+            + 'Route: Mauritius - Seyschellen - Madagaskar - Mauritius<br>'
+            + 'Veranstalter: Freizeitclub St. Roman<br>'
+            + 'Josef Kißling 077162079, Claudia Friedl 07712 2747 67235<br>'
+
+            + '</span>';
+}
+
 function getTippsUndTricks() {
     return '<span class=M style="text-align:justify">'
 
@@ -401,7 +438,7 @@ function getTurnierkalender() {
     if (nTurniere === 0) {
         if (I === 3) {
             html = '<span class=M>Nachdem das letzte Turnier abgeschlossen wurde,<br> kann pro Tag ein PC-Turnier durchgespielt werden.</span><br><br>';
-        } else if (I === 51 || I === 52) {
+        } else if (I === 50 || I === 52) {
             html = '';
         } else if (I === 50) {
             html = '<span class=L>Das nächste Österreichfinale ist für Ende April, Anfang Mai ' + (new Date().getFullYear() + 1) + ' geplant.</span><br><br>';

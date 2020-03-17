@@ -29,6 +29,8 @@
                         var hCupName = window.location.search.replace(/\%20|_| /g, '').substr(1).toUpperCase();
                         var newCup = 0;
                         if (hCupName === 'HAUSRUCKCUP') {
+                            newCup = 50;
+                        } else if (hCupName === 'KTN.TAROCKCUP') {
                             newCup = 51;
                         } else if (hCupName === 'RAIFFEISENCUP') {
                             newCup = 52;
@@ -59,7 +61,7 @@
                                 LS.LastBtn = '#bTR' + newCup;
                             } else if (newCup <= 7) {
                                 LS.LastBtn = '#bAR' + newCup;
-                            } else if (CUPS.TYP[newCup] === 'CUP' && newCup >= 50 && newCup <= 59) {
+                            } else if (CUPS.TYP[newCup] === 'CUP' && newCup >= 50 && newCup <= 60) {
                                 LS.LastBtn = '#bCT' + newCup;
                             } else if (CUPS.TYP[newCup] === 'CUP' || CUPS.TURNIER[newCup]) {
                                 LS.LastBtn = '#bLC' + newCup;
@@ -198,12 +200,20 @@
                         <ul data-role="listview" data-split-icon="info" >
                             <li data-role="list-divider" data-theme="d" >&nbsp;&nbsp;Farbenlehre:
                             </li>
-                            <li data-icon=false onclick="showCup(51, 'bCT')">
+                            <li data-icon=false onclick="showCup(50, 'bCT')">
                                 <a style="padding:.0em">&nbsp;
                                     <span class="cHRC">
                                         <span class=N>HRC:&nbsp;&nbsp;
                                         </span>
                                         Hausruckviertler Tarockcup
+                                    </span></a>
+                            </li>
+                            <li data-icon=false onclick="showCup(51, 'bCT')">
+                                <a style="padding:.0em">&nbsp;
+                                    <span class="cKTC">
+                                        <span class=N>KTC:&nbsp;&nbsp;
+                                        </span>
+                                        Kärntner Tarockcup
                                     </span></a>
                             </li>
                             <li data-icon=false onclick="showCup(52, 'bCT')">
@@ -256,11 +266,11 @@
                             </li>
                         </ul>
                         <div onclick="hDebug = true;">
-                        <br> &nbsp;&nbsp;&nbsp;Ich w&uuml;nsche Dir gute Karten
-                        <br> &nbsp;&nbsp;&nbsp;und viel Spass mit der App.
-                        <br> &nbsp;&nbsp;&nbsp;<i>Leo Luger</i>
-                        <br>
-                        <br>
+                            <br> &nbsp;&nbsp;&nbsp;Ich w&uuml;nsche Dir gute Karten
+                            <br> &nbsp;&nbsp;&nbsp;und viel Spass mit der App.
+                            <br> &nbsp;&nbsp;&nbsp;<i>Leo Luger</i>
+                            <br>
+                            <br>
                         </div>
                     </div>
                     <div id=pMenu class='S'>
@@ -297,6 +307,9 @@
 
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k cQUER" id="bPresseschau" onclick="fHref('Statistik/Statistik.html?Presseschau')">&nbsp;
                                     <i class="i zmdi-receipt"></i>&nbsp;&nbsp;<span class="cRot">Presseschau</span>&nbsp;</a>
+
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k cQUER" id="bUrlaubsplaner" onclick="showText('Urlaubsplaner')">&nbsp;
+                                    <i class="i zmdi-sun"></i>&nbsp;&nbsp;<span class="cRot">Urlaubsplaner</span>&nbsp;</a>
 
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bZitate"   onclick="showLogo()">&nbsp;
                                     <i class="i zmdi-graphic-eq zmdi-hc-rotate-90"></i>&nbsp;&nbsp;Zitate&nbsp;</a>

@@ -8,15 +8,20 @@ function downloadExcel() {
     var blob = '';
 
     var hCup = '';
-    if (stCup === 54) {
+    if (stCup === 50)
+        hCup = 'HRC';
+    else if (stCup === 51)
+        hCup = 'KTC';
+    else if (stCup === 52)
+        hCup = 'RTC';
+    else if (stCup === 53)
+        hCup = 'SWC';
+    else if (stCup === 54)
         hCup = 'STC';
-    } else {
-        if (stCup === 56) {
-            hCup = 'WTC';
-        } else {
-            hCup = 'SST';
-        }
-    }
+    else if (stCup === 55)
+        hCup = 'TTC';
+    else if (stCup === 56)
+        hCup = 'WTC';
 
     if (stStat === 'Cupwertung') { // nicht verfügbar
         showEinenMoment(CUPS.NAME[stCup] + ':', 'Die Cupwertung ' + stSaison + '<br>wird herungergladen!');

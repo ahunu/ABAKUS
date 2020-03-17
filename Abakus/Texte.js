@@ -68,6 +68,7 @@ function showText(pText) {
     } else if (pText === 'Urlaubsplaner') {
         hTitel2 = 'Tarockurlaub gefällig?';
         html += getUrlaubsplaner();
+        $("#qfHeaderIcon").attr("src", "Icons/Urlaub.png");
     }
     html += '</div></div>';
     $('#qfHeaderZeile2').html(hTitel2);
@@ -326,35 +327,30 @@ function getEtikette() {
 }
 
 function getUrlaubsplaner() {
-    return '<span class=M style="text-align:justify">'
+    return '<span class=M sstyle="text-align:justify">'
 
-            + '<p><b>14. - 17. April 2020 2. Wiener Tarockmarathon</b>Link<br>'
-            + 'Veranstaltungsort: 1110 Wien, Guglgasse 6, Gasometer Ebene 3, Restaurant El Greco<br>'
-            + 'Veranstalter: Leo Luger, Tel.: 0650 651 652 2<br>'
+            + '<div class="L" style="margin:0 0 1vh 0">14. - 17. April 2020&nbsp;&nbsp; <b>2.&nbsp;Wiener&nbsp;Tarockmarathon</b></div>'
+            + 'Veranstaltungsort:&nbsp;1110&nbsp;Wien, Guglgasse&nbsp;6, Gasometer&nbsp;Ebene&nbsp;3, Restaurant&nbsp;El&nbsp;Greco<br>'
+            + 'Veranstalter:&nbsp;Leo&nbsp;Luger, Tel.:&nbsp;0650&nbsp;651&nbsp;652&nbsp;2'
 
-            + '<p><b>22. - 28. Juni 2020 Tarockwoch am Klopeinersee</b>Link<br>'
-            + 'Veranstaltungsort: 9122 St. Kanzian, Am See V/2, Hotel Marolt<br>'
-            + 'Veranstalter: Johann König, Tel.: 0699 111 116 65'
+            + '<p><div class="L" style="margin:4vh 0 1vh 0">22. - 28. Juni 2020&nbsp;&nbsp; <b>UTC&nbsp;Klopeinersee</b></div>'
+            + 'Veranstaltungsort: 9122 St. Kanzian, Am&nbsp;See&nbsp;V/2,&nbsp;Hotel&nbsp;Marolt<br>'
+            + 'Veranstalter: Johann König, Tel.: 0699&nbsp;111&nbsp;116&nbsp;65'
 
-            + '<p><b>25. Juli bis 2. August 2020 Tarock on Tour</b>Link<br>'
+            + '<p><div class="L" style="margin:4vh 0 1vh 0">25. Juli bis 2. Aug. 2020&nbsp;&nbsp; <b>Tarock&nbsp;on&nbsp;Tour</b></div>'
             + 'Route: Frankenmarkt - Zirl - Altenmarkt - Villach - Unterpremstätten - Großpetersdorf - Wien - Hardegg - Helfenberg<br>'
-            + 'Organisation: Franz Kienast, Franz Emeder, Tel.: 0660 527 515 0, Mail: f.kienast@edhui.at'
+            + 'Organisation: Franz Kienast, Franz&nbsp;Emeder, Tel.:&nbsp;0660&nbsp;527&nbsp;515&nbsp;0, Mail:&nbsp;f.kienast@edhui.at'
 
-            + '<p><b>16. - 24. Juni 2020 Tarock- und Kartenspielkreuzfahrt</b><br>'
+            + '<p><div class="L" style="margin:4vh 0 1vh 0">16. - 24. Juni 2020&nbsp;&nbsp; <b>Tarock- und Kartenspielkreuzfahrt</b></div>'
             + 'Route: Savona, Neapel, Palermo, Valenzia, Barcelona, Marseile, Savona<br>'
-            + 'Veranstalter: Freizeitclub St. Roman<br>'
-            + 'Josef Kißling 077162079, Claudia Friedl 07712 2747 67235<br>'
+            + 'Organisation: Sepp&nbsp;Lang, Tel.:&nbsp;0664&nbsp;8231678<br>'
+            + 'Veranstalter: Freizeitclub&nbsp;St.&nbsp;Roman<br>'
+            + 'Josef Kißlinger 07716&nbsp;20179, Claudia&nbsp;Friedl&nbsp;07712&nbsp;2747&nbsp;67235<br>'
             + 'Preise: 670 - 1110 Euro'
 
-            + '<p><b>10. - 17. Oktober 2020 Flußkreuzfahrt</b> (in Planung)<br>'
-            + 'Route: Berlin - Prag<br>'
-            + 'Veranstalter: Freizeitclub St. Roman<br>'
-            + 'Josef Kißling 077162079, Claudia Friedl 07712 2747 67235<br>'
-
-            + '<p><b>18. Jän. - 2. Feb. 2021 Traumreise mit AIDAblu</b> (in Planung)<br>'
-            + 'Route: Mauritius - Seyschellen - Madagaskar - Mauritius<br>'
-            + 'Veranstalter: Freizeitclub St. Roman<br>'
-            + 'Josef Kißling 077162079, Claudia Friedl 07712 2747 67235<br>'
+            + '<p><div class="L" style="margin:4vh 0 1vh 0">18. - 20. Sep. 2020&nbsp;&nbsp; <b>Frankenmarkter Marathon</b></div>'
+            + 'Veranstaltungsort: Gasthof&nbsp;Greisinger, 4890&nbsp;Frankenmarkt<br>'
+            + 'Veranstalter: Tarockrunde&nbsp;Frankenmarkt, Bert&nbsp;Greisinger&nbsp;Tel.:&nbsp;0664&nbsp;2863075'
 
             + '</span>';
 }

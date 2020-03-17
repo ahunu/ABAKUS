@@ -54,7 +54,7 @@ $(document).ready(function () {
         LS.ShowCups = 0;
         LS.LastBtn = '';
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-            $("#hLogo").attr("src", "../Icons/DieGeschichte.png");
+        $("#hLogo").attr("src", "../Icons/DieGeschichte.png");
         if (window.location.href.indexOf('Geschichte') > 0) {
             $('#hTitel1').text("Die Geschichte");
             $('#hTitel2').text("des Tarockspiels");
@@ -81,10 +81,11 @@ $(document).ready(function () {
             $('#hTitel1').text("Abakus");
             $('#hTitel2').text("Tipps & Tricks");
             html += getTippsUndTricks();
-        } else if (window.location.href.indexOf('XXIIDevisen') > 0) {
-            $('#hTitel1').text("XXII Devisen");
-            $('#hTitel2').text("Fia aufgweckte Spüla");
-            html += XXIIDevisen();
+        } else if (window.location.href.indexOf('Urlaubsplaner') > 0) {
+            $('#hTitel1').text("Urlaubsplaner");
+            $('#hTitel2').text("Tarockurlaub gefällig?");
+            html += getUrlaubsplaner();
+            $("#hLogo").attr("src", "../Icons/Urlaub.png");
         }
     }
     html += '</div></div>';

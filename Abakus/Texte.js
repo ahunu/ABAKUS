@@ -333,6 +333,10 @@ function getUrlaubsplaner() {
             + 'Veranstaltungsort:&nbsp;1110&nbsp;Wien, Guglgasse&nbsp;6, Gasometer&nbsp;Ebene&nbsp;3, Restaurant&nbsp;El&nbsp;Greco<br>'
             + 'Veranstalter:&nbsp;Leo&nbsp;Luger, Tel.:&nbsp;0650&nbsp;651&nbsp;652&nbsp;2'
 
+            + '<p><div class="L" style="margin:4vh 0 1vh 0">20. - 23. Mai 2020&nbsp;&nbsp; <b>Villacher Tarockwoche</b></div>'
+            + 'Veranstaltungsort: Gasthof&nbsp;Steirerhof, 9500&nbsp;Villach<br>'
+            + 'Veranstalter: Arno&nbsp;Peter, Tel.:&nbsp;0664&nbsp;3708490'
+
             + '<p><div class="L" style="margin:4vh 0 1vh 0">22. - 28. Juni 2020&nbsp;&nbsp; <b>UTC&nbsp;Klopeinersee</b></div>'
             + 'Veranstaltungsort: 9122 St. Kanzian, Am&nbsp;See&nbsp;V/2,&nbsp;Hotel&nbsp;Marolt<br>'
             + 'Veranstalter: Johann König, Tel.: 0699&nbsp;111&nbsp;116&nbsp;65'

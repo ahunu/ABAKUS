@@ -333,6 +333,13 @@ function getUrlaubsplaner() {
             + 'Veranstaltungsort:&nbsp;1110&nbsp;Wien, Guglgasse&nbsp;6, Gasometer&nbsp;Ebene&nbsp;3, Restaurant&nbsp;El&nbsp;Greco<br>'
             + 'Veranstalter:&nbsp;Leo&nbsp;Luger, Tel.:&nbsp;0650&nbsp;651&nbsp;652&nbsp;2'
 
+            + '<p><div class="L" style="margin:4vh 0 1vh 0">16. - 24. Mai 2020&nbsp;&nbsp; <b>Tarock- und Kartenspielkreuzfahrt</b></div>'
+            + 'Route: Savona, Neapel, Palermo, Valenzia, Barcelona, Marseile, Savona<br>'
+            + 'Organisation: Sepp&nbsp;Lang, Tel.:&nbsp;0664&nbsp;8231678<br>'
+            + 'Veranstalter: Freizeitclub&nbsp;St.&nbsp;Roman<br>'
+            + 'Josef Kißlinger 07716&nbsp;20179, Claudia&nbsp;Friedl&nbsp;07712&nbsp;2747&nbsp;67235<br>'
+            + 'Preise: 670 - 1110 Euro'
+
             + '<p><div class="L" style="margin:4vh 0 1vh 0">20. - 23. Mai 2020&nbsp;&nbsp; <b>Villacher Tarockwoche</b></div>'
             + 'Veranstaltungsort: Gasthof&nbsp;Steirerhof, 9500&nbsp;Villach<br>'
             + 'Veranstalter: Arno&nbsp;Peter, Tel.:&nbsp;0664&nbsp;3708490'
@@ -344,13 +351,6 @@ function getUrlaubsplaner() {
             + '<p><div class="L" style="margin:4vh 0 1vh 0">25. Juli bis 2. Aug. 2020&nbsp;&nbsp; <b>Tarock&nbsp;on&nbsp;Tour</b></div>'
             + 'Route: Frankenmarkt - Zirl - Altenmarkt - Villach - Unterpremstätten - Großpetersdorf - Wien - Hardegg - Helfenberg<br>'
             + 'Organisation: Franz Kienast, Franz&nbsp;Emeder, Tel.:&nbsp;0660&nbsp;527&nbsp;515&nbsp;0, Mail:&nbsp;f.kienast@edhui.at'
-
-            + '<p><div class="L" style="margin:4vh 0 1vh 0">16. - 24. Juni 2020&nbsp;&nbsp; <b>Tarock- und Kartenspielkreuzfahrt</b></div>'
-            + 'Route: Savona, Neapel, Palermo, Valenzia, Barcelona, Marseile, Savona<br>'
-            + 'Organisation: Sepp&nbsp;Lang, Tel.:&nbsp;0664&nbsp;8231678<br>'
-            + 'Veranstalter: Freizeitclub&nbsp;St.&nbsp;Roman<br>'
-            + 'Josef Kißlinger 07716&nbsp;20179, Claudia&nbsp;Friedl&nbsp;07712&nbsp;2747&nbsp;67235<br>'
-            + 'Preise: 670 - 1110 Euro'
 
             + '<p><div class="L" style="margin:4vh 0 1vh 0">18. - 20. Sep. 2020&nbsp;&nbsp; <b>Frankenmarkter Marathon</b></div>'
             + 'Veranstaltungsort: Gasthof&nbsp;Greisinger, 4890&nbsp;Frankenmarkt<br>'

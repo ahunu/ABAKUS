@@ -90,8 +90,7 @@ function showTurnier(pTurnier) {
         var hIcons = [];
         if (LS.ME === '3425'
                 || LS.ME === 'xx3757' && stCup === 56     // Erwin Haider
-                || LS.ME === 'xx4731' && stCup === 15     // Alexandra Sabkovski
-                || LS.ME === 'xx2553' && stCup === 83) {  // Arno Peter
+                || LS.ME === 'xx4731' && stCup === 15) {  // Alexandra Sabkovski
             hIcons = ['#iPrint', '#iDownload'];
         } else {
             hIcons = ['#iPrint'];

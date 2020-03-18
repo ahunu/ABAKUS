@@ -112,8 +112,10 @@ function initSAISON(pFilter, pShowSaison) {
         if (QUERFORMAT()) {
             showSaison(pShowSaison);
         }
-        if (hStat === 'Cupwertung') {
-            showCupwertung();
+        if (hStat === 'Heinewertung') {
+            showHeinewertung();
+        } else if (hStat === 'Fixpunktewertung') {
+            showFixpunktewertung();
         } else if (hStat === 'Platzierungen') {
             showPlatzierungen();
         } else if (hStat === 'Chronik') {

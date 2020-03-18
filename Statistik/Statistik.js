@@ -1,5 +1,5 @@
 
-/* global firebase, showCupwertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, MPPUtils, isSaison, pell, editor, isFinale */
+/* global firebase, showFixpunktewertung, showPlatzierungen, showTermine, showTurnier, showSaison, jHtmlArea, MPPUtils, isSaison, pell, editor, isFinale */
 
 // 50 Hausruckcup
 // 51 Ktn. Tarockcup
@@ -184,8 +184,10 @@ function whenSTATloaded(pNewTurnier) {
             } else {
                 showSaison();
             }
-        } else if (stStat === 'Cupwertung') {
-            showCupwertung();
+        } else if (stStat === 'Heinewertung') {
+            showHeinewertung();
+        } else if (stStat === 'Fixpunktewertung') {
+            showFixpunktewertung();
         } else if (stStat === 'Platzierungen') {
             showPlatzierungen();
         } else if (stStat === 'Tischliste') {

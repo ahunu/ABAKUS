@@ -2154,7 +2154,7 @@ function showCup(i, pBtn, pTermin) {
         if (pTermin === -1 || resetTermin === -1) {
             $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen').removeClass('cDIV');
         } else if (pTermin || resetTermin) {
-            $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen');
+            $(LS.LastBtn).addClass('ui-btn-active').removeClass('cHRC').removeClass('cKTC').removeClass('cRTC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen');
         } else {
             if (i === 49 || i === 50 || i === 52) {
                 $(LS.LastBtn).removeClass('cDIV');
@@ -3203,7 +3203,7 @@ function whenCUPSloaded() {
         $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
         if ($(LS.LastBtn).length) {
             if (QUERFORMAT()) {
-                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cRTC').removeClass('cHRC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
+                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cHRC').removeClass('cKTC').removeClass('cRTC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
             }
             if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
                 $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));

@@ -42,8 +42,7 @@ function showInhalt() {
                 + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>';
     } else if (CUPS.TYP[stCup] === 'ET' || CUPS.TYP[stCup] === 'MT') {
         html = '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Statistiken</li>'
-                + '<li data-icon="false"><a id=bCupwertung onclick="showCupwertung();">&nbsp;Gesamtwertung</a></li>'
-                + '<li data-icon="false"><a id=bHeinewertung onclick="showHeinewertung();">&nbsp;Heinewertung</a></li>'
+                + '<li data-icon="false"><a id=bHeinewertung onclick="showHeinewertung();">&nbsp;Gesamtwertung</a></li>'
                 + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.ME !== 'NOBODY' ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
                 + '<li data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
                 + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();" ' + (LS.ME !== 'NOBODY' ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmerzahlen</a></li>'

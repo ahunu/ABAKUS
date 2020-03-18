@@ -54,29 +54,33 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
 
     if (!pFotos) {
         if (CUPS.TYP[stCup] === 'CUP') {
-            $('#sideTurniere').html(
-                    '<li data-role="list-divider"><div class="ui-grid-a">'
+            html = '<li data-role="list-divider"><div class="ui-grid-a">'
                     + '<div class="ui-block-a" style="width:90%">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Listen:</div>'
                     + '<div class="ui-block-b" style="width:10%">'
 
                     + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',false);" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-play zmdi-hc-rotate-270 noprint"></i>'
-                    + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',true);" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-play zmdi-hc-rotate-90 noprint"></i>'
+                    + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',true);" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-play zmdi-hc-rotate-90 noprint"></i>';
 
-                    + '<li class="cDieListen" data-icon=false><a id=bCupwertung onclick="showCupwertung();">&nbsp;Cupwertung</a>' + (SAISON[iSaison][isFinale] ? '<a id=sbCupwertung onclick="showChronik(' + iSaison + ');"></a>' : '') + '</li>'
-                    + (stCup === 53 || stCup === 54 || stCup === 55 || stCup === 56 || stCup === 381 ? '<li class="cDieListen" data-icon=false><a id=bHeinewertung onclick="showHeinewertung();">&nbsp;Heinewertung</a></li>' : '')
+            if (stCup === 53) { // Sauwaldcup
+                html += '<li class="cDieListen" data-icon=false><a id=bFixpunktewertung onclick="showFixpunktewertung();">&nbsp;Cupwertung</a>' + (SAISON[iSaison][isFinale] ? '<a id=sbCupwertung onclick="showChronik(' + iSaison + ');"></a>' : '') + '</li>'
+                        + '<li class="cDieListen" data-icon=false><a id=bHeinewertung onclick="showHeinewertung();">&nbsp;Heinewertung</a></li>';
+            } else if (stCup < 50 || stCup > 60 || stSaison >= '2020') { // Heinewertung ist Cupwertung
+                html += '<li class="cDieListen" data-icon=false><a id=bFixpunktewertung onclick="showHeinewertung();">&nbsp;Cupwertung</a>' + (SAISON[iSaison][isFinale] ? '<a id=sbCupwertung onclick="showChronik(' + iSaison + ');"></a>' : '') + '</li>';
+            } else { // Fixpunktewertung ist Cupwertung
+                html += '<li class="cDieListen" data-icon=false><a id=bFixpunktewertung onclick="showFixpunktewertung();">&nbsp;Cupwertung</a>' + (SAISON[iSaison][isFinale] ? '<a id=sbCupwertung onclick="showChronik(' + iSaison + ');"></a>' : '') + '</li>'
+                        + '<li class="cDieListen" data-icon=false><a id=bHeinewertung onclick="showHeinewertung();">&nbsp;Heinewertung</a></li>';
+            }
 
-                    + '<li class="cDieListen" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
+            html += '<li class="cDieListen" data-icon="false"><a id=bPlatzierungen onclick="showPlatzierungen();">&nbsp;Platzierungen</a></li>'
                     + (QUERFORMAT()
                             ? '<li class="cDieListen" data-icon="foto"><a id=bChronik onclick="showChronik()">&nbsp;Chronik</a><a id="bParallaxCh" onclick="showParallax(true);"></a></li>'
                             + '<li class="cDieListen" data-icon="foto"><a id=bFotos onclick="showFotos()">&nbsp;Fotos</a><a id="bParallax" onclick="showParallax();"></a></li>'
                             : '')
-                    + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Turniere:</li>'
-                    ).listview('refresh').show();
+                    + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;' + stSaison + ' - die Turniere:</li>';
         } else {
-            $('#sideTurniere').html(
-                    '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Die Turniere</li>'
-                    ).listview('refresh').show();
+            html = '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Die Turniere</li>';
         }
+        $('#sideTurniere').html(html).listview('refresh').show();
     } else {
         $('#sideTurniere').hide();
     }
@@ -86,8 +90,8 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
     $('#tArchiv').text(stSaison);
     stStat = '';
     writeCanvas('Vivat Valat!');
+    html = '';
     var i = 0;
-    var htmlTE = "";
     var nTurniere = 0;
     var nAnekdoten = 0;
     var hDataTheme = '';
@@ -133,13 +137,13 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
                             if (STAT._AKTTURNIER[LS.ME]) {
                                 hIchSitzeAuf = '<span class="M N"><br>&nbsp;&nbsp;Ich sitze auf <b>' + STAT._AKTTURNIER[LS.ME][7] + '</b>, <b>' + STAT._AKTTURNIER[LS.ME][8] + '</b> und <b>' + STAT._AKTTURNIER[LS.ME][9] + '</b>.</span>';
                             }
-                            htmlTE = '<li data-theme="f" data-icon=false><a class="Sbtn K" id="bTischliste" onclick="showTischliste();">&nbsp;<span class="L">Tischliste' + hIchSitzeAuf + '</span></a></li>'
-                                    + htmlTE;
+                            html = '<li data-theme="f" data-icon=false><a class="Sbtn K" id="bTischliste" onclick="showTischliste();">&nbsp;<span class="L">Tischliste' + hIchSitzeAuf + '</span></a></li>'
+                                    + html;
                         }
                     } else {
                         hDataTheme = '';
                     }
-                    htmlTE = '<li ' + hDataTheme + ' data-icon="false"><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;'
+                    html = '<li ' + hDataTheme + ' data-icon="false"><a class="K" id="b' + turnier + '" onclick="showTurnier(\'' + turnier + '\');">&nbsp;'
 
                             + '<span class="L' + hClass + '">' + STAT[turnier]._NAME + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
                             + (!pFotos ? '<span class="M N"><br>&nbsp;' + (new Date(turnier).toLocaleDateString()) + ', ' + getVeranstalter(STAT[turnier]._VERANSTALTER) + '</span>'
@@ -156,7 +160,7 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
                             + '</a>'
                             + ((LS.ME.length === 4 || (iSaison < 3 && QUERFORMAT())) && !pFotos ? '<a id="sb' + turnier + '" onclick="bTurnierSec(\'' + turnier + '\');">Anekdote</a>' : '')
                             + '</li>'
-                            + htmlTE;
+                            + html;
                 }
             }
         }
@@ -170,7 +174,7 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
         }
     }
 
-    $('#dContent').html(htmlTE + '<br>').listview('refresh');
+    $('#dContent').html(html + '<br>').listview('refresh');
     if (QUERFORMAT()) {
         showLogo();
     }

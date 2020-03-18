@@ -397,7 +397,7 @@ $(document).bind('pageinit', function () {
 
         LS.VIC[0] = parseInt($("input[name='nVIC']:checked").val());
         if (!LS.VIC[0]) {
-            showEinenTip("#iR51", 'Welcher Cup ist für dich der wichtigste?');
+            showEinenTip("#iR50", 'Welcher Cup ist für dich der wichtigste?');
             return;
         }
         if (LS.VIC[0] === 1) {

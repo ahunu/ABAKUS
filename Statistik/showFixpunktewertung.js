@@ -1,52 +1,24 @@
 
-/* global LS, stSaison, QUERFORMAT(), getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, iSaison, SP, spRangImCup, is1, SAISON, spTeilnahmen, spBestePlatz, spCuppunkte, stFilter, PC, getSpielerName, stAktTurniere, isAnzTurniere */
+/* global LS, stSaison, QUERFORMAT(), stFinale, getName, SPIELER, STAT, stCup, CUPS, stEndstand, jbSpieler, ADMIN, iSaison, SP, spRangImCup, is1, SAISON, spTeilnahmen, spBestePlatz, spCuppunkte, stFilter */
 
-function showHeinewertung() {
+function showFixpunktewertung() {
 
     if (jbSpieler.isOpen) {
         jbSpieler.close();
     }
 
-    stStat = 'Heinewertung';
+    stStat = 'Fixpunktewertung';
 
     if (QUERFORMAT()) {
         if (lastBtn) {
             $(lastBtn).removeClass('ui-btn-active');
         }
-        lastBtn = '#bHeinewertung';
+        lastBtn = '#bFixpunktewertung';
         $(lastBtn).addClass('ui-btn-active');
     }
 
     stNamenLen = 0.3;
-    if (CUPS.TYP[stCup] === 'CUP') {
-        writeCanvas(stStat + '  ' + stSaison);
-        if (stCup === 53) { // Sauwaldcup
-            writeCanvas('Heinewertung  ' + stSaison);
-        } else if (stCup < 50 || stCup > 60 || stSaison >= '2020') { // Heinewertung ist Cupwertung
-            writeCanvas('Cupwertung  ' + stSaison);
-        } else { // Fixpunktewertung ist Cupwertung
-            writeCanvas('Heinewertung  ' + stSaison);
-        }
-    } else {
-        writeCanvas('Gesamtwertung');
-    }
-
-    if (iSaison === 1) {
-        var nWertungen = stAktTurniere;
-    } else {
-        var nWertungen = SAISON[iSaison][isAnzTurniere];
-    }
-
-    if (nWertungen > 10) {
-        nWertungen = parseInt(nWertungen / 2);
-    } else {
-        nWertungen = parseInt((nWertungen + 1) / 2);
-    }
-
-    var nShowWertungen = nWertungen;
-    if (nShowWertungen > 7) {
-        nShowWertungen = 7;
-    }
+    writeCanvas(stStat + '  ' + stSaison);
 
     $("#dCopyright").hide();
     if (stEndstand) {
@@ -71,29 +43,36 @@ function showHeinewertung() {
     var nTeilnahmen = 0;
     for (var turnier in STAT) {
         if (turnier[0] === '2') {
-            if (STAT[turnier]._SAISON === stSaison) {
+            if (STAT[turnier]._SAISON === stSaison || CUPS.TYP[stCup] !== 'CUP') {
                 if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
                     nTurniere++;
                     for (var spieler in STAT[turnier]) {
                         if (spieler[0] !== '_') {
                             nTeilnahmen++;
                             if (CUP[spieler]) {
-                                hCupPunkte = getHeinePunkte(turnier, spieler);
-                                if (getHeinePunkte(turnier, spieler) === '-') {
-                                    CUP[spieler].push(hCupPunkte);
-                                } else {
-                                    ii = CUP[spieler].length;
-                                    for (var i = 0; i < CUP[spieler].length; i++) {
-                                        if (CUP[spieler][i] === '-'
-                                                || CUP[spieler][i] <= hCupPunkte) {
-                                            ii = i;
-                                            break;
+                                if (turnier !== stFinale || (CUPS.TURNIER[stCup] % 1 === 0)) {
+                                    hCupPunkte = getFixPunkte(turnier, spieler);
+                                    if (getFixPunkte(turnier, spieler) === '-') {
+                                        CUP[spieler].push(hCupPunkte);
+                                    } else {
+                                        ii = CUP[spieler].length;
+                                        for (var i = 0; i < CUP[spieler].length; i++) {
+                                            if (CUP[spieler][i] === '-'
+                                                    || CUP[spieler][i] <= hCupPunkte) {
+                                                ii = i;
+                                                break;
+                                            }
                                         }
+                                        CUP[spieler].splice(ii, 0, hCupPunkte);
                                     }
-                                    CUP[spieler].splice(ii, 0, hCupPunkte);
                                 }
+
                             } else {
-                                CUP[spieler] = [getHeinePunkte(turnier, spieler)];
+                                if (turnier !== stFinale || (CUPS.TURNIER[stCup] % 1 === 0)) {
+                                    CUP[spieler] = [getFixPunkte(turnier, spieler)];
+                                } else {
+                                    CUP[spieler] = [];
+                                }
                             }
                         }
                     }
@@ -103,18 +82,11 @@ function showHeinewertung() {
     }
 
     var SORTnachPlatz = [];
+    var spieler = '';
 
     for (var spieler in SP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
-        var hCuppunkte = 0;
-        if (CUP[spieler]) {
-            for (i = 0; i < nWertungen && i < CUP[spieler].length; i++) {
-                if (IsInteger(CUP[spieler][i])) {
-                    hCuppunkte += CUP[spieler][i];
-                }
-            }
-        }
         if (SP[spieler][iSaison]) {
-            SORTnachPlatz.push((9000 - hCuppunkte) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+            SORTnachPlatz.push((100 + SP[spieler][iSaison][spRangImCup]) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         }
     }
 
@@ -143,10 +115,12 @@ function showHeinewertung() {
             + "<th class=TL>&nbsp;&nbsp;Name</th>"
             + (QUERFORMAT() ? "<th class='TL noprint'>&nbsp;&nbsp;Ort</th>" : "")
             + "<th class=TR>Ges&nbsp;</th>"
-            + "<th class=C colspan='7'>Vorrundenpunkte</th>"
+            + (stFinale ? "<th class='TR'>Fin&nbsp;</th>" : "")
+            + "<th class=C colspan='" + parseInt(CUPS.TURNIER[stCup]) + "'>Vorrundenpunkte</th>"
             + (QUERFORMAT() ? "<th class=TC>TN</th><th class=TC nowrap>1. 2. 3.</th>" + (iSaison === 1 && stCup >= 50 && stCup <= 60 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "") : "")
             + "</tr></thead><tbody id=tbody>"
-            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='8'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
+            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
+//                    + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
                     + "<td class=TC><i id='icFilter' onclick='$(this).addClass(\"ui-disabled\");$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-plus-bold zmdi-hc-rotate-45 ui-disabled'></i></td></tr>" : "");
 
     var nSpieler = 0;
@@ -187,58 +161,44 @@ function showHeinewertung() {
 
         var hCuppunkte = 0;
         if (CUP[spieler]) {
-            for (i = 0; i < nWertungen && i < CUP[spieler].length; i++) {
+            for (i = 0; i < parseInt(CUPS.TURNIER[stCup]) && i < CUP[spieler].length; i++) {
                 if (IsInteger(CUP[spieler][i])) {
                     hCuppunkte += CUP[spieler][i];
                 }
             }
+            if (stFinale) {
+                if (IsInteger(getFixPunkte(stFinale, spieler))) {
+                    hCuppunkte += getFixPunkte(stFinale, spieler);
+                }
+            }
         }
+//        html += '<th class="TR">' + SP[spieler][iSaison][spCuppunkte] + '&nbsp;</th>';
         html += '<th class="TR">' + hCuppunkte + '&nbsp;</th>';
-
+        if (stFinale) {
+            html += "<td class='TR'>" + getFixPunkte(stFinale, spieler) + "&nbsp;</td>";
+        }
         if (CUP[spieler]) {
-            if (CUP[spieler].length <= 7) {
-                for (i = 0; i < nShowWertungen && i < CUP[spieler].length; i++) {
-                    html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
-                }
-                for (i = CUP[spieler].length; i < nShowWertungen; i++) {
-                    html += '<td class="TR"></td>';
-                }
-            } else {
-                html += '<td class="TR">' + CUP[spieler][0] + '&nbsp;</td>';
-                html += '<td class="TR">' + CUP[spieler][1] + '&nbsp;</td>';
-                html += '<td class="TR">' + CUP[spieler][2] + '&nbsp;</td>';
-                html += '<td class="TR">' + CUP[spieler][3] + '&nbsp;</td>';
-                html += '<td class="TR">...&nbsp;</td>';
-                if (CUP[spieler].length > nWertungen - 2) {
-                    html += '<td class="TR">' + CUP[spieler][nWertungen - 2] + '&nbsp;</td>';
-                } else {
-                    html += '<td class="TR"></td>';
-                }
-                if (CUP[spieler].length > nWertungen - 1) {
-                    html += '<td class="TR">' + CUP[spieler][nWertungen - 1] + '&nbsp;</td>';
-                } else {
-                    html += '<td class="TR"></td>';
-                }
-//                for (i = 0; i < nWertungen && i < 5; i++) {
+//            for (var i = 0; i < parseInt(CUPS.TURNIER[stCup]); i++) {
+//                if (i < CUP[spieler].lenght) {
 //                    html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
-//                }
-//                html += '<td class="TR">...&nbsp;</td>';
-//                if (CUP[spieler][5] === '-') {
-//                    html += '<td class="TR">-&nbsp;</td>';
 //                } else {
-//                    for (i = (nWertungen < CUP[spieler].length ? nWertungen : CUP[spieler].length) - 1; i > 0; i--) {
-//                        if (CUP[spieler][i] !== '-') {
-//                            html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
-//                            break;
-//                        }
-//                    }
+//                    html += '<td class="TR"></td>';
 //                }
+//            }
+
+            for (i = 0; i < parseInt(CUPS.TURNIER[stCup]) && i < CUP[spieler].length; i++) {
+                html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
+            }
+            for (i = CUP[spieler].length; i < parseInt(CUPS.TURNIER[stCup]); i++) {
+                html += '<td class="TR"></td>';
             }
         }
 
         if (QUERFORMAT()) {
+
             html += '<td class="TR">' + SP[spieler][iSaison][spTeilnahmen] + '&nbsp;</td>';
             html += '<td class="TC" nowrap>' + SP[spieler][iSaison][spBestePlatz] + '</td>';
+
             if (iSaison === 1 && stCup >= 50 && stCup <= 60) {
                 if (hPlatz < tOF.length) {
                     html += '<td class="R" nowrap>' + tOF[hPlatz] + '&nbsp;</td>';
@@ -250,17 +210,7 @@ function showHeinewertung() {
         html += '</tr>';
     }
 
-    html += "</tbody></table><br>"
-            + '<div class="S J" style="margin-left: 1vw; margin-right: 1vw">'
-//            + '<b>Heinepunkte anstatt Fixpunkte:</b><br>'
-//            + 'Um statistischen Verzerrungen wegen unterschiedlich großer Teilnehmerzahlen und unterschiedlich hoher Turniersiege vorzubeugen,&nbsp; '
-//            + 'werden bei der Heinewertung anstatt der vom Rang abhängigen Fixpunkte die von den tatsächlich erzielten Punkten errechneten Heinepunkte verwendet.&nbsp; '
-//            + '<br><br>'
-            + '<b>Berechnung der Heinepunkte:</b><br>'
-            + 'Bis 100 Punkten werden die tatsächlich erreichten Punkte voll angerechnet.&nbsp; '
-            + 'Ab 100 Punkten zählt nur jeder zweite Punkt.&nbsp; Es werden maximal 200 Heinepunkte vergeben.&nbsp; Minuspunkte werden nicht gewertet.&nbsp; '
-            + 'Von ' + (iSaison === 1 ? stAktTurniere : nTurniere) + ' Turnieren ' + (iSaison === 1 ? 'werden' : 'wurden') + ' die ' + nWertungen + ' besten Ergebnisse (50%) gewertet. '
-            + '<br><br></div>';
+    html += "</tbody></table><br>";
 
     if (QUERFORMAT()) {
         html += "<table data-role=table class=S>"
@@ -290,7 +240,11 @@ function showHeinewertung() {
     }
 
     hideEinenMoment();
-    setFont(3.7, true);
+    if (stFinale) {
+        setFont(3.7, true);
+    } else {
+        setFont(4.1, true);
+    }
 
     if (QUERFORMAT()) {
         window.scrollTo(0, 0);
@@ -316,58 +270,5 @@ function showHeinewertung() {
             $("#sideSpieler").hide();
             $("#sideTurniere,#sideContent").show();
         });
-    }
-}
-
-function showWarumHeinewertung() {
-
-    if (QUERFORMAT()) {
-        if (lastBtn) {
-            $(lastBtn).removeClass('ui-btn-active');
-        }
-        lastBtn = '#bWarumHeinewertung';
-        $(lastBtn).addClass('ui-btn-active');
-    }
-
-    if (jbSpieler.isOpen) {
-        jbSpieler.close();
-    }
-
-    stStat = 'Heinewertung';
-    $("#dCopyright").hide();
-
-    var html = (QUERFORMAT()
-            ? '<div class=M style="text-align:justify;margin:6vw;"><br><br>'
-            : '<div class=M style="text-align:justify;margin:3vw;">'
-            )
-
-            + '<p>Wir alle kennen es nur zu gut. Endlich hat man gute Blätter und macht mit 200 Punkten einen dritten Platz. Beim nächsten Mal gewinnt dann ein anderer mit 150 Punkten das Turnier.'
-
-            + '<p>Da für einen Turniersieg mitunter stark unterschiedlich viele Punkte erforderlich sind, erhöht das Fixpunktesystem den im Königrufen ohnehin schon sehr hohen Glücksfaktor.'
-
-            + '<p>Bei einem Turnier mit 300 Teilnehmern spielt jeder in drei Runden jeweils gegen drei unterschiedlich starke Gegner. Genauso wie bei einem Turnier mit 60 oder weniger Teilnehmern.'
-
-            + '<p>Die Hürde, eine bestimmte Punktezahl zu erreichen, ist also für jeden gleich hoch. Die Chance möglichst viele Fixpunkte zu erreichen schwindet aber mit der Anzahl der Teilnehmer.'
-
-            + '<p>Da im Sport Fairness alles ist, wurde mit den Heinepunkten ein Punktesystem entwickelt, dass die tatsächlich erreichten Punkte als Ausgangswert verwendet.'
-
-            + '<p>Bis 100 Punkten werden die tatsächlich erreichten Punkte voll angerechnet. Ab 100 Punkten zählt jeder zweite Punkt. Es werden maximal 200 Heinepunkte vergeben. Minuspunkte werden nicht gewertet. Bei 25 Turnieren werden die 12 besten Ergebnisse gewertet. Das sind 50 Prozent der veranstalteten Truniere.'
-
-//            + '<p>Aufgrund von Überlegungen im Sauwaldcup, im Steirischen, im Tiroler und im Wiener Tarockcup wird mit der Heinewertung eine faire Alternative zur Fixpunktewertung angeboten.'
-
-//            + '<p>Da von jeden Cup immer mehr Turniere veranstaltet werden, sollen für die Heinewertung in einer späteren Ausbaustufe mehr als die üblichen sechs besten Ergebnisse verwendet werden.'
-
-            + '</div>';
-
-    if (QUERFORMAT()) {
-        writeCanvas('Warum gibt es eine Heinewertung?');
-        $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
-    } else {
-        writeCanvas('Warum Heinewertung?');
-        $('#dContent').html(html);
-        $('#sideTurniere').hide();
-        $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
-        var hx = $(window).innerHeight() - $('#sideContent').offset().top - 1;
-        $('#sideContent').css('height', hx + 'px').scrollTop(0);
     }
 }

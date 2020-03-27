@@ -41,7 +41,7 @@ function showTermine() {
     }
     $("#dCopyright").hide();
 
-    writeCanvas('Die n' + eval('"\\u00E4"') + 'chsten Turniere');
+    writeCanvas('Die nächsten Turniere');
 
     if (CUPS.TYP[stCup] === 'MT') {
         $('#nb_Uebersicht').addClass('ui-btn-active');

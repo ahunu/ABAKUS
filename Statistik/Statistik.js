@@ -639,9 +639,9 @@ function fINIT(pCup) {
     }
 
     if (CUPS.TYP[stCup] === 'MT') {
-        writeCanvas(eval('"\\u00DC"') + 'bersicht');
+        writeCanvas('Übersicht');
     } else {
-        writeCanvas(eval('"\\u00DC"') + 'bersicht ' + stSaison);
+        writeCanvas('Übersicht ' + stSaison);
     }
 
     $('#tJJJJ').text(new Date().getFullYear());

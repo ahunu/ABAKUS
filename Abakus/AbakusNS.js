@@ -1,13 +1,16 @@
 /* global iTrischaker, LS, sI, pI, iPiZwiccolo, iBettler, iPiZwiccoloOvert, iBettlerOvert */
 
 function NS_Init() {
+    $('#ss1,#ss2,#ss3,#ss4,#ss5,#ss6,#bNegKontra,#gName').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
     $('.cNS,#Nx2,#Nx4').buttonMarkup({theme: 'a'});
     $('.ui-nobtn').removeClass('ui-btn').removeClass('ui-btn-a').removeClass('ui-corner-all').removeClass('ui-shadow');
     $('.cNS a,#gName').removeClass('ui-btn-active');
+    $('#bNegKontra').addClass('ui-disabled').text('Kontra *');
 
     aktSpiel = 0;
     aktPunkte = 0;
     kontra = 1;
+    negKontra = [null, 1, 1, 1, 1, 1, 1];
 
     $('.cPS,.cFS,#gWert').hide();
     $('.cNS').show();
@@ -36,6 +39,6 @@ function pruefenNS() {
             XSBuchen(pGame, aktPunkte, sI, 0, LS.Vorhand);
         }
     } else {
-        XSBuchen(pGame, aktPunkte, sI, 0);
+        NSBuchen(pGame, aktPunkte, sI, 0);
     }
 }

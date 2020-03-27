@@ -316,7 +316,7 @@ function DEBuchen() {
             if (hPunkte < 0) {
                 LS.Ansage += "minus bei " + LS.VName[hSpieler];
             } else {
-                LS.Ansage += 'f' + eval('"\\u00FC"') + 'r ' + LS.VName[hSpieler];  // für
+                LS.Ansage += 'für ' + LS.VName[hSpieler];
             }
             if (hCount[0] === 2 && hCount[1] === 2) {
                 LS.Ansage += " und " + LS.VName[iPartner] + ".";

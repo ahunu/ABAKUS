@@ -105,7 +105,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
     }
     var heute = new Date();
     var daysOfWeek = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
-    var monthsOfYear = ["J" + eval('"\\u00e4"') + "n.", "Feb.", "M" + eval('"\\u00e4"') + "rz", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
+    var monthsOfYear = ["Jän.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 
     STAT.ZULETZT = new Date(STAT.ZULETZT);
     stTIMESTAMP = new Date(STAT.ZULETZT);
@@ -225,7 +225,7 @@ function statShow(pStat, pSort, pHeader, pRunde, pTurCupGes) {
     }
 
     html = '';
-    monthsOfYear = ["J" + eval('"\\u00e4"') + "nner", "Februar", "M" + eval('"\\u00e4"') + "rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    monthsOfYear = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 
     if (pStat === 10) {
         writeCanvas('Anmeldungen');

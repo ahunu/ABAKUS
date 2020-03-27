@@ -2532,6 +2532,9 @@ function getClassMeinTermin(i) {
 
 function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
+if (pCup === 51) {
+    pCup = 51;
+}
     var hBtnName = pPrefix + pCup;
     if (pTermin) {
         if (pTermin === -1) {

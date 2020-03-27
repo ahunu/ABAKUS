@@ -6,7 +6,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="Icons/icon-96-xhdpi.png" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="manifest" href="manifest.json">
+        <link rel="manifest" href="/manifest.json">
         <link  href='Icons/icon-36-ldpi.png'                 rel='shortcut icon' />
         <link  href='themes/ThemeABCDE.min.css'              rel='stylesheet' />
         <link  href='themes/jquery.mobile.icons.min.css'     rel='stylesheet' />
@@ -114,6 +114,17 @@
                 80% { transform: translate(-1px, -1px) rotate(1deg); }
                 90% { transform: translate(1px, 2px) rotate(0deg); }
                 100% { transform: translate(1px, -2px) rotate(-1deg); }
+            }
+            .my-icon-cards:after {
+                background-image: url("Icons/iCards.png");
+                background-position: 3px 3px;
+                background-size: 90%;
+
+                background-color: transparent;
+                height: 34px;
+                width: 32px;
+                margin-left: -17px;
+                margin-top: -16px;
             }
         </style>
         <script src='Abakus/Funktionen.js' ></script>
@@ -310,6 +321,9 @@
 
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bUrlaubsplaner" onclick="showText('Urlaubsplaner')">&nbsp;
                                     <i class="i zmdi-sun"></i>&nbsp;&nbsp;<span class="cRot">Urlaubsplaner</span>&nbsp;</a>
+
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bUrlaubsplaner" onclick="window.open('https://tarock-konigrufen8.webnode.at')">&nbsp;
+                                    <i class="i zmdi-cards zmdi-hc-rotate-180"></i>&nbsp;&nbsp;<span class="cRot">Onlinekurs</span>&nbsp;</a>
 
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bZitate"   onclick="showLogo()">&nbsp;
                                     <i class="i zmdi-graphic-eq zmdi-hc-rotate-90"></i>&nbsp;&nbsp;Zitate&nbsp;</a>

@@ -17,6 +17,7 @@ var aktSpiel = 0;
 var aktSpielWert = 0;
 var aktPunkte = 0;
 var kontra = 1;
+var negKontra = [null, 1, 1, 1, 1, 1, 1];
 
 const iRufer = 1;
 const iSolorufer = 2;
@@ -191,19 +192,66 @@ function initGames() {
     $('.cPS,.cFS,.cNS').removeClass('ui-corner-all');
 }
 
-function setGame(pName, pGame, pPlus) {
-    if (pGame === 13) { // Trischaken
-        pName += ' *';
-        if (LS.Regeln === 'Ti.' && pI) {
-            $('#tTrischaken').html('*\) Beim Trischaken müssen anstatt<br>des Spielers die Verlierer<br>ausgewählt werden.');
-        } else {
-            $('#tTrischaken').html('*\) Beim Trischaken muss anstatt<br>des Spielers der Verlierer<br>ausgewählt werden.<br>'
-                    + 'Gibt es zwei punktegleiche Verlierer,<br>müssen beide markiert werden.');
-        }
-    } else {
-        $('#tTrischaken').html('');
+function setNegKontra() {
+    'use strict';
+    Deactivate('#bNegKontra');
+    if (!sI) {
+        showEinenTip('#bNegKontra', 'Du musst zuerst den Spieler markieren.');
+        return;
     }
+    if (kontra > 1) {
+        $('#bNegKontra').removeClass('bgKontra' + kontra);
+    }
+    if (kontra === 8) {
+        kontra = 1;
+        if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] > 6) {
+            $('#bNegKontra').text('Kontra **');
+            $('#tNegativ').html('**) Die Kontrapunkte scheinen hier nicht auf, werden jedoch korrekt geschrieben.');
+        } else {
+            $('#bNegKontra').text('Kontra');
+            $('#tNegativ').html('');
+        }
+    } else if (kontra === 1) {
+        kontra = 2;
+        $('#bNegKontra').addClass('bgKontra2').text('Kontra *');
+    } else if (kontra === 2) {
+        kontra = 4;
+        $('#bNegKontra').addClass('bgKontra4').text('Retour *');
+    } else if (kontra === 4) {
+        kontra = 8;
+        $('#bNegKontra').addClass('bgKontra8').text('Sub *');
+    }
+    if (kontra > 1) {
+        $('#tNegativ').html('*\) Bei Negativspielen muß der kont&shy;rierende Spieler markiert werden.');
+    }
+}
+
+function setGame(pName, pGame, pPlus) {
     if (pGame) { // nicht bei Kontra
+        $('#nbTrischaken,#nbKontra').hide();
+        if (pGame < 13) { // Positivspiele
+            $('#tNegativ').html('');
+        } else if (pGame === 13) { // Trischaken
+            $('#ss1,#ss2,#ss3,#ss4,#ss5,#ss6,#bNegKontra').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
+            negKontra = [null, 1, 1, 1, 1, 1, 1];
+            $('#nbTrischaken').show();
+            pName += ' *';
+            if (LS.Regeln === 'Ti.' && pI) {
+                $('#tNegativ').html('*\) Beim Trischaken müssen anstatt des Spielers die Verlierer ausgewählt werden.');
+            } else {
+                $('#tNegativ').html('*\) Beim Trischaken muss anstatt des Spielers der Verlierer ausgewählt werden. '
+                        + 'Gibt es zwei punktegleiche Verlierer, müssen beide markiert werden.');
+            }
+        } else {
+            $('#nbKontra').show();
+            if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] > 6) {
+                $('#bNegKontra').text('Kontra **');
+                $('#tNegativ').html('**) Die Kontrapunkte scheinen hier nicht auf, werden jedoch korrekt geschrieben.');
+            } else {
+                $('#bNegKontra').text('Kontra');
+                $('#tNegativ').html('');
+            }
+        }
         aktSpiel = parseInt(pGame);
         aktSpielWert = LS.Tarif[aktSpiel];
         $('#nbSpiel').show();
@@ -213,16 +261,10 @@ function setGame(pName, pGame, pPlus) {
         if (pGame === 2 && LS.I === 37) {
             aktSpielWert--; // in der Eggenberger Runde zählt der Solorufer 3 Punkte...
         }
-
-        if (pGame === iTrischaker) {
-            $('#Nx2,#Nx4').show();
-        } else {
-            $('#Nx2,#Nx4').hide();
-        }
     }
 
     var hSpielWert = aktSpielWert * kontra;
-    kontra = 1;
+
     var tValat = '';
     if (Seite === 'PS') {
         tValat = $('#PValate').text();
@@ -276,46 +318,62 @@ function setGame(pName, pGame, pPlus) {
 
 function showSpiele() {
     Deactivate('#gName');
-    if (kontra === 1) {
+    if (Seite === 'NS') {
+        if (kontra > 1) {
+            $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra *');
+            kontra = 1;
+        }
         $('#nbSpiel,#gWert,#nbWerte').hide();
         $('#nbSpiele').show();
-    } else {
+    } else if (kontra > 1 || $('#gName').hasClass('bgKontra2') || $('#gName').hasClass('bgKontra4') || $('#gName').hasClass('bgKontra8')) {
         setGame();
-        $('#gName').buttonMarkup({theme: 'b'});
-        if (LS.Tarif21T && $("#PS").is(":visible")) {
-            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
+        if (kontra > 1) {
+            $('#gName').addClass('bgKontra' + kontra);
+            if (LS.Tarif21T && $("#PS").is(":visible")) {
+                $('.cKontra').removeClass('bgKontra' + kontra).text('Kont.');
+            } else {
+                $('.cKontra').removeClass('bgKontra' + kontra).text('Kontra');
+            }
+            kontra = 1;
         } else {
-            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+            $('#gName').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
         }
+    } else {
+        $('#nbSpiel,#gWert,#nbWerte').hide();
+        $('#nbSpiele').show();
     }
 }
 
-function setKontra(pKontra) {
+function setKontra() {
+    'use strict';
     Deactivate('.cKontra');
-    if (kontra === 8 || pKontra === 0) {
-        kontra = 1;
-        if (LS.Tarif21T && $("#PS").is(":visible")) {
-            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
-        } else {
-            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
-        }
-    } else if (kontra === 1) {
+    if (kontra > 1) {
+        $('.cKontra').removeClass('bgKontra' + kontra);
+    }
+    if (kontra === 1) {
         kontra = 2;
         if (LS.Tarif21T && $("#PS").is(":visible")) {
-            $('.cKontra').buttonMarkup({theme: 'b'}).text('Kont.');
+            $('.cKontra').addClass('bgKontra2').text('Kont.');
         } else {
-            $('.cKontra').buttonMarkup({theme: 'b'}).text('Kontra');
+            $('.cKontra').addClass('bgKontra2').text('Kontra');
         }
     } else if (kontra === 2) {
         kontra = 4;
         if (LS.Tarif21T && $("#PS").is(":visible")) {
-            $('.cKontra').buttonMarkup({theme: 'b'}).text('Re');
+            $('.cKontra').addClass('bgKontra4').text('Re');
         } else {
-            $('.cKontra').buttonMarkup({theme: 'b'}).text('Retour');
+            $('.cKontra').addClass('bgKontra4').text('Retour');
         }
     } else if (kontra === 4) {
         kontra = 8;
-        $('.cKontra').buttonMarkup({theme: 'b'}).text('Sub');
+        $('.cKontra').addClass('bgKontra8').text('Sub');
+    } else if (kontra === 8) {
+        kontra = 1;
+        if (LS.Tarif21T && $("#PS").is(":visible")) {
+            $('.cKontra').text('Kont.');
+        } else {
+            $('.cKontra').text('Kontra');
+        }
     }
 }
 
@@ -635,33 +693,29 @@ function SetPartner(btn) {
 
 function ErgChange(btn) {
     Deactivate(btn);               //  !!! Ein Muss !!!
-    if (kontra === 1) {
-        if (btn === '#gWert' && aktSpiel === iTrischaker) {
-            showEinenTip(btn, 'Beim Trischaken<br>zahlt der "Gewinner".');
-            return;
-        }
-        var i1 = parseInt($(btn).text()) * -1;
-        if (aktSpiel === i6er && btn === '#gWert') {
-            if (i1 < 0) {
-                i1 *= 2;
-            } else {
-                i1 /= 2;
-            }
-        }
-        $(btn).text(i1);
-        if (i1 > 0) {
-            $(btn).css("color", "black");
+    if (kontra > 1) {
+        $('.cKontra,#bNegKontra').removeClass('bgKontra' + kontra);
+        kontra = 1;
+    }
+    if (btn === '#gWert' && aktSpiel === iTrischaker) {
+        showEinenTip(btn, 'Beim Trischaken<br>zahlt der "Gewinner".');
+        return;
+    }
+    var i1 = parseInt($(btn).text()) * -1;
+    if (aktSpiel === i6er && btn === '#gWert') {
+        if (i1 < 0) {
+            i1 *= 2;
         } else {
-            $(btn).css("color", "orangered");
-        }
-        Summieren();
-    } else {
-        if (btn === '#gWert') {
-            $('#gName').click();
-        } else {
-            $('#' + btn.id.substr(0, btn.id.length - 1)).click();
+            i1 /= 2;
         }
     }
+    $(btn).text(i1);
+    if (i1 > 0) {
+        $(btn).css("color", "black");
+    } else {
+        $(btn).css("color", "orangered");
+    }
+    Summieren();
 }
 
 function Summieren() {
@@ -774,7 +828,6 @@ function showSeite(pSeite) {
         }
         showGR();
     } else {
-//        $('#gName').removeClass('ui-btn').css('font-weight', 'normal').css('color', 'black').html('&nbsp;&nbsp;Wähle ein Spiel');
         $('#gWert').text('?');
         $('#nbSpiele').show();
         $('#nbSpiel,#nbWerte').hide();
@@ -1443,25 +1496,68 @@ function BtnSet3(btn, pWert) {
     Deactivate(btn);               //  !!! Ein Muss !!!
     btnE = btn + 'e';
 
-    if (kontra === 1 && ($(btn).hasClass('ui-btn-e') || $(btn).hasClass('ui-btn-b'))) {
-        $(btn).buttonMarkup({theme: 'a'});
-        $(btnE).text(0).hide();
-    } else {
-        if (kontra !== 1) {
-            pWert = pWert * 2 * kontra;
-            $(btn).buttonMarkup({theme: 'b'});
-            kontra = 1;
-            if (LS.Tarif21T && $("#PS").is(":visible")) {
-                $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
+//    if (kontra === 1 && ($(btn).hasClass('ui-btn-e') || $(btn).hasClass('bgKontra2') || $(btn).hasClass('bgKontra4') || $(btn).hasClass('bgKontra8'))) {
+//        $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').buttonMarkup({theme: 'a'});
+//        $(btnE).text(0).hide();
+//    } else {
+//        if (kontra !== 1) {
+//            pWert = pWert * 2 * kontra;
+//            $(btn).addClass('bgKontra' + kontra);
+//            if (LS.Tarif21T && $("#PS").is(":visible")) {
+//                $('.cKontra').removeClass('bgKontra' + kontra).text('Kont.');
+//            } else {
+//                $('.cKontra').removeClass('bgKontra' + kontra).text('Kontra');
+//            }
+//            kontra = 1;
+//        } else if ($(btn).hasClass('ui-btn-c')) {
+//            $(btn).buttonMarkup({theme: 'e'});
+//            pWert = pWert * 2;
+//        } else {
+//            $(btn).buttonMarkup({theme: 'c'});
+//        }
+//        if ($(btnE).text().substr(0, 1) === '-') {
+//            $(btnE).css("color", "red").text('-' + pWert).show();
+//        } else {
+//            $(btnE).css("color", "black").text(pWert).show();
+//        }
+//    }
+
+    if (kontra === 1) {
+        if ($(btn).hasClass('bgKontra2') || $(btn).hasClass('bgKontra4') || $(btn).hasClass('bgKontra8')) {
+            $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
+            $(btn).buttonMarkup({theme: 'a'});
+            $(btnE).text(0).hide();
+        } else if ($(btn).hasClass('ui-btn-a')) {
+            pWert = pWert;
+            $(btn).buttonMarkup({theme: 'c'});
+            if ($(btnE).text().substr(0, 1) === '-') {
+                $(btnE).css("color", "red").text('-' + pWert).show();
             } else {
-                $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+                $(btnE).css("color", "black").text(pWert).show();
             }
         } else if ($(btn).hasClass('ui-btn-c')) {
-            $(btn).buttonMarkup({theme: 'e'});
             pWert = pWert * 2;
+            $(btn).buttonMarkup({theme: 'e'});
+            if ($(btnE).text().substr(0, 1) === '-') {
+                $(btnE).css("color", "red").text('-' + pWert).show();
+            } else {
+                $(btnE).css("color", "black").text(pWert).show();
+            }
         } else {
-            $(btn).buttonMarkup({theme: 'c'});
+            $(btn).buttonMarkup({theme: 'a'});
+            $(btnE).text(0).hide();
         }
+    } else {
+        $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
+        $(btn).buttonMarkup({theme: 'a'});
+        pWert = pWert * 2 * kontra;
+        $(btn).addClass('bgKontra' + kontra);
+        if (LS.Tarif21T && $("#PS").is(":visible")) {
+            $('.cKontra').removeClass('bgKontra' + kontra).text('Kont.');
+        } else {
+            $('.cKontra').removeClass('bgKontra' + kontra).text('Kontra');
+        }
+        kontra = 1;
         if ($(btnE).text().substr(0, 1) === '-') {
             $(btnE).css("color", "red").text('-' + pWert).show();
         } else {
@@ -1482,8 +1578,8 @@ function BtnSetValat(btn) {
             hPunkte *= -1;
         }
     }
-    if (kontra === 1 && ($(btn).hasClass('ui-btn-e') || $(btn).hasClass('ui-btn-b'))) {
-        $(btn).buttonMarkup({theme: 'a'});
+    if (kontra === 1 && ($(btn).hasClass('ui-btn-e') || $(btn).hasClass('bgKontra'))) {
+        $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
         $(btnE).text(0).hide();
     } else {
         if (kontra === 1) {
@@ -1508,11 +1604,11 @@ function BtnSetValat(btn) {
                 $(btnE).text('x 64').show();
             }
             kontra = 1;
-            $(btn).buttonMarkup({theme: 'b'});
+            $(btn).addClass('bgKontra');
             if (LS.Tarif21T && $("#PS").is(":visible")) {
-                $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
+                $('.cKontra').addClass('bgKontra').text('Kont.');
             } else {
-                $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+                $('.cKontra').addClass('bgKontra').text('Kontra');
             }
         }
     }
@@ -1523,7 +1619,7 @@ function BtnSetValat(btn) {
 }
 
 function Spieler_Init() {
-    $("#ss1,#ss2,#ss3,#ss4,#ss5,#ss6").buttonMarkup({theme: 'a'});
+    $("#ss1,#ss2,#ss3,#ss4,#ss5,#ss6").removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').buttonMarkup({theme: 'a'});
     if (LS.Spieler[5]) {
         if (LS.Pausierer1 === 0) {
             $('#ss' + LS.INA1).buttonMarkup({theme: 'd'});
@@ -1621,15 +1717,52 @@ window.onload = function () {
 
     $("#ss1,#ss2,#ss3,#ss4,#ss5,#ss6").click(function () {       // LL
         Deactivate(this);               //  !!! Ein Muss !!!
-        if (kontra !== 1) {
-            kontra = 1;
-            if (LS.Tarif21T && $("#PS").is(":visible")) {
-                $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
-            } else {
-                $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+
+        var hI = parseInt($(this).attr('id').substr(2, 1));
+
+        if (Seite === 'NS') {
+            $('#bNegKontra').removeClass('ui-disabled');
+
+            if (kontra > 1) {
+
+                if (sI === hI) {
+                    showEinenTip('#ss' + hI, 'Der Spieler kann sich<br>nicht selbst kontrieren.');
+                    return;
+                }
+
+                $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra *');
+
+                if (negKontra[hI] > 1) {
+                    $('#ss' + hI).removeClass('bgKontra' + negKontra[hI]);
+                }
+                $('#ss' + hI).addClass('bgKontra' + kontra);
+                negKontra[hI] = kontra;
+                $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra **');
+                $('#tNegativ').html('**) Die Kontrapunkte scheinen hier nicht auf, werden jedoch korrekt geschrieben.');
+                kontra = 1;
+                return;
+            } else if (negKontra[hI] > 1) {
+                $('#ss' + hI).removeClass('bgKontra' + negKontra[hI]);
+                negKontra[hI] = 1;
+                if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] > 6) {
+                    $('#bNegKontra').text('Kontra **');
+                    $('#tNegativ').html('**) Die Kontrapunkte scheinen hier nicht auf, werden jedoch korrekt geschrieben.');
+                } else {
+                    $('#bNegKontra').text('Kontra');
+                    $('#tNegativ').html('');
+                }
+                return;
+            }
+        } else {
+            if (kontra !== 1) {
+                kontra = 1;
+                if (LS.Tarif21T && $("#PS").is(":visible")) {
+                    $('.cKontra').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').text('Kont.');
+                } else {
+                    $('.cKontra').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').text('Kontra');
+                }
             }
         }
-        var hI = parseInt($(this).attr('id').substr(2, 1));
 
         if (Seite.substr(0, 2) === 'LI') {
             if (sI !== hI) {
@@ -1658,6 +1791,9 @@ window.onload = function () {
                     if (sI) {
                         Set(sI);
                     }
+                } else if (aktSpiel > iTrischaker) { // Negativspiel
+                    $('#bNegKontra').addClass('ui-disabled');
+                    sI = 0;
                 } else {
                     sI = 0;
                 }
@@ -1666,8 +1802,6 @@ window.onload = function () {
                 ResetSpieler(pI);
                 pI = 0;
             } else if (sI === 0 || aktSpiel === 0 || (aktSpiel >= i6er && aktSpiel !== iTrischaker)) { // llll
-//            } else if (sI === 0 || aktSpiel === 0 || (aktSpiel >= i6er && (aktSpiel !== iTrischaker || LS.Regeln !== 'Ti.'))) { // llll
-//            } else if (sI === 0 || aktSpiel === 0 || (aktSpiel >= i6er && aktSpiel !== iTrischaker)) {
                 if (sI) {
                     ResetSpieler(sI);
                 }
@@ -1684,6 +1818,15 @@ window.onload = function () {
                     pI = hI;
                     Set(pI);
                 }
+            }
+        }
+        if (Seite === 'NS') {
+            if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] > 6) {
+                $('#bNegKontra').text('Kontra **');
+                $('#tNegativ').html('**) Die Kontrapunkte scheinen hier nicht auf, werden jedoch korrekt geschrieben.');
+            } else {
+                $('#bNegKontra').text('Kontra');
+                $('#tNegativ').html('');
             }
         }
     });
@@ -1791,6 +1934,16 @@ window.onload = function () {
     });
 
     $("#gWert").click(function () {
+        if (Seite === 'NS' && kontra !== 1) {
+            if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] > 6) {
+                $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra **');
+                $('#tNegativ').html('**) Die Kontrapunkte scheinen hier nicht auf, werden jedoch korrekt geschrieben.');
+            } else {
+                $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra');
+                $('#tNegativ').html('');
+            }
+            kontra = 1;
+        }
         ErgChange('#gWert');
     });
 

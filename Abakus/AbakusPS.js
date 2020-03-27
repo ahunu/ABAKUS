@@ -2,6 +2,7 @@
 /* global LS, pPagat, pUhu, pKakadu, pQuapil, pValat, iRufer, iPagatrufer, iUhurufer, iKakadurufer, iQuapilrufer, iSolorufer, i6er, i3er, iSolo3er, sI, pI, jbSelberrufer, selberruferSpeichern, pXY, pAbsolut, pTrull, p4Koenige, pUltimo */
 
 function PS_Init() {
+    $('#ss1,#ss2,#ss3,#ss4,#ss5,#ss6').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
     $('.cPS,#P1,#P2,#P3,#P4,#P5,#P6,#P7,#P8,#P9,#PValat').buttonMarkup({theme: 'a'});
     $('.ui-nobtn').removeClass('ui-btn').removeClass('ui-btn-a').removeClass('ui-corner-all').removeClass('ui-shadow');
     $('#P5,#P6').removeClass('ui-disabled');
@@ -18,18 +19,18 @@ function PS_Init() {
     if ((LS.TURRUNDE || LS.TURTISCH) && LS.I !== 11) {
         $('#dKontra').removeClass('nb24').addClass('nb0');
         $('#dName').removeClass('nb52').addClass('nb76');
-        $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra').addClass('ui-disabled');
+        $('.cKontra').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').text('Kontra').addClass('ui-disabled');
     } else {
         if (LS.Tarif21T) {
             $('.cKontra').show();
             $('#nbSpiel').hide();
             $('#dKontra').removeClass('nb0').addClass('nb24');
             $('#dName').removeClass('nb76').addClass('nb52');
-            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kont.');
+            $('.cKontra').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').text('Kont.');
         } else {
             $('#dKontra').removeClass('nb24').addClass('nb0');
             $('#dName').removeClass('nb52').addClass('nb76');
-            $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+            $('.cKontra').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').text('Kontra');
         }
     }
     setFont();

@@ -871,7 +871,7 @@ function writeCanvas(pTitel) {
     context.font = '22pt sans-serif';
     context.fillText(pTitel, 92, 60);
     context.font = '20pt sans-serif';
-    context.fillText('Gute Bl' + eval('"\\u00e4"') + 'tter!', 92, 108);
+    context.fillText('Gute Blätter!', 92, 108);
 }
 
 function showEineNotiz(pText) {

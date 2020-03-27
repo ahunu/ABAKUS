@@ -2,6 +2,7 @@
 /* global LS, pValat, iFarbensolo, iFarben3er, sI */
 
 function FS_Init() {
+    $('#ss1,#ss2,#ss3,#ss4,#ss5,#ss6').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
     $('.cFS,#F1,#F2,#F3,#FValat').buttonMarkup({theme: 'a'});
     $('.ui-nobtn').removeClass('ui-btn').removeClass('ui-btn-a').removeClass('ui-corner-all').removeClass('ui-shadow');
     $('.cFS a,#gName').removeClass('ui-btn-active');
@@ -24,7 +25,7 @@ function FS_Init() {
 
     $('#dKontra').removeClass('nb24').addClass('nb0');
     $('#dName').removeClass('nb52').addClass('nb76');
-    $('.cKontra').buttonMarkup({theme: 'a'}).text('Kontra');
+    $('.cKontra').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').text('Kontra');
     if ((LS.TURRUNDE || LS.TURTISCH) && LS.I !== 11) {
         $('.cKontra').addClass('ui-disabled');
     }

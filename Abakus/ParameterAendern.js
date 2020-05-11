@@ -349,6 +349,7 @@ function onSubmit() {
         CUPS.BEREschreiben[I] = '-';
     }
 
+    CUPS.TEXT1[I] = repairPell(editor.content.innerHTML);
     if (!CUPS.TEXT1[I]) {
         CUPS.TEXT1[I] = null;
     }
@@ -624,19 +625,13 @@ $(document).bind('pageinit', function () {
         editor = window.pell.init({
             element: document.getElementById('editor'),
             actions: [],
-            defaultParagraphSeparator: '',
-            onChange: function (html) {
-                CUPS.TEXT1[I] = repairPell(html);
-            }
+            defaultParagraphSeparator: ''
         });
     } else {
         editor = window.pell.init({
             element: document.getElementById('editor'),
             actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'undo', 'redo'],
-            defaultParagraphSeparator: '',
-            onChange: function (html) {
-                CUPS.TEXT1[I] = repairPell(html);
-            }
+            defaultParagraphSeparator: ''
         });
         $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
     }

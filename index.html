@@ -6,7 +6,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="Icons/icon-96-xhdpi.png" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="manifest" href="/manifest.json">
         <link  href='Icons/icon-36-ldpi.png'                 rel='shortcut icon' />
         <link  href='themes/ThemeABCDE.min.css'              rel='stylesheet' />
         <link  href='themes/jquery.mobile.icons.min.css'     rel='stylesheet' />
@@ -14,11 +13,6 @@
         <script src='js/jquery/jquery.min.js'></script>
         <script src='js/firebase/firebase.js'></script>
         <script type='text/javascript'>
-//            if ('serviceWorker' in navigator) {
-//                window.addEventListener('load', () => {
-//                    navigator.serviceWorker.register('/sw.js');
-//                });
-//            }
             if (window.location.search) { // Quickstart
                 LS = new Object();
                 LS = JSON.parse(localStorage.getItem('Abakus.LS'));
@@ -136,6 +130,12 @@
         <script src='Abakus/AaVersion.js'  ></script>
         <script src='Abakus/Texte.js'      ></script>
         <script src='index.js'             ></script>
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#fff">
+        <script src='/swReg.js'></script>
+        <!-- iOS support -->
+        <link rel="apple-touch-icon" href="/Icons/icon-144.png">
+        <meta name="apple-mobile-web-app-status-bar" content="#fff">
     </head>
     <body onclick="event.stopImmediatePropagation();">
 
@@ -317,13 +317,13 @@
                                     <i class="i zmdi-mood"></i>&nbsp;&nbsp;Anekdoten&nbsp;</a>
 
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k cQUER" id="bPresseschau" onclick="fHref('Statistik/Statistik.html?Presseschau')">&nbsp;
-                                    <i class="i zmdi-receipt"></i>&nbsp;&nbsp;<span class="cRot">Presseschau</span>&nbsp;</a>
+                                    <i class="i zmdi-receipt"></i>&nbsp;&nbsp;Presseschau&nbsp;</a>
 
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bUrlaubsplaner" onclick="showText('Urlaubsplaner')">&nbsp;
-                                    <i class="i zmdi-sun"></i>&nbsp;&nbsp;<span class="cRot">Urlaubsplaner</span>&nbsp;</a>
+                                    <i class="i zmdi-sun"></i>&nbsp;&nbsp;<span class="cSWC">Urlaubsplaner</span>&nbsp;</a>
 
-                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bUrlaubsplaner" onclick="window.open('https://tarock-konigrufen8.webnode.at')">&nbsp;
-                                    <i class="i zmdi-cards zmdi-hc-rotate-180"></i>&nbsp;&nbsp;<span class="cRot">Onlinekurs</span>&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bOnlinekurs" onclick="window.open('https://tarock-konigrufen8.webnode.at')">&nbsp;
+                                    <i class="i zmdi-cards zmdi-hc-rotate-180"></i>&nbsp;&nbsp;Onlinekurs&nbsp;</a>
 
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bZitate"   onclick="showLogo()">&nbsp;
                                     <i class="i zmdi-graphic-eq zmdi-hc-rotate-90"></i>&nbsp;&nbsp;Zitate&nbsp;</a>
@@ -341,12 +341,14 @@
                                     <i class="i zmdi-format-list-bulleted"></i>&nbsp;&nbsp;Einstellungen&nbsp;<div id="tEinstellungen" class="cRot TL M N"></div></a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k"                  onclick="fHref('Abakus/Datenschutzerklaerung.html')">&nbsp;
                                     <i class="i zmdi-shild-check"></i>&nbsp;&nbsp;Datenschutzerklärung&nbsp;</a>
-                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bAdminTools   onclick="fHref('Abakus/AdminTools.html')">&nbsp;
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id=bAdminTools onclick="fHref('Abakus/AdminTools.html')">&nbsp;
                                     <i class="i zmdi-wrench"></i>&nbsp;&nbsp;Administrator Tools&nbsp;</a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bInitialisieren" onclick="initCUPSdelAllSTAT('Die App wurde initialisiert.');">&nbsp;
                                     <i class="i zmdi-star"></i>&nbsp;&nbsp;Initialisieren&nbsp;</a>
                                 <a class="ui-btn ui-btn-inline ui-corner-all L k"        onclick="showLOG();">&nbsp;
                                     <i class="i zmdi-view-headline"></i>&nbsp;&nbsp;Log&nbsp;</a>
+                                <a class="ui-btn ui-btn-inline ui-corner-all L k" id="bRAMOS"      onclick="fHref('_Ramos/RAMOS.html')">&nbsp;
+                                    <i class="i zmdi-view-headline"></i>&nbsp;&nbsp;RAMOS&nbsp;</a>
                             </div>
                             <div id=tLOG style="margin:0 20px 0;" hidden>
                             </div>

@@ -1,14 +1,26 @@
 
 function getVersion() {
-    return 1039;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1040;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 3, 27);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 5, 11);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
+
+
+//1. Passau Engelhardszell, 31 km, 2:09
+//2. Engelhardszell Linz, 58 km, 4:02
+//3. Linz Ybbs, 81 km, 5:10 Std
+//4. Ybbs Krems, 65 km, 3:59
+//5. Krems Wien, 80 km, 4:35
+
+//Um auch den
+//Um auch ungeübten Radfahrern eine Chance zu bieten, wurde zum Beispiel für die Strecke Krems Wien anstatt der von Google vorgeschlagenen 4:04 Std. 4:44 Stunden eingeplant.
+
+
 
 //Spielrelevantz und sofortige Ich-Liege-Pflicht bei einen Solodreier wiedersprechen sich.
 //

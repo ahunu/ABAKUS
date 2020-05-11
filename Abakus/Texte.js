@@ -329,32 +329,30 @@ function getEtikette() {
 function getUrlaubsplaner() {
     return '<span class=M sstyle="text-align:justify">'
 
-            + '<div class="L" style="margin:0 0 1vh 0">14. - 17. April 2020&nbsp;&nbsp; <b>2.&nbsp;Wiener&nbsp;Tarockmarathon</b></div>'
-            + 'Veranstaltungsort:&nbsp;1110&nbsp;Wien, Guglgasse&nbsp;6, Gasometer&nbsp;Ebene&nbsp;3, Restaurant&nbsp;El&nbsp;Greco<br>'
-            + 'Veranstalter:&nbsp;Leo&nbsp;Luger, Tel.:&nbsp;0650&nbsp;651&nbsp;652&nbsp;2'
+            + '<p><div class="L" style="margin:0 0 1vh 0">22. und 23. Aug. 2020&nbsp;&nbsp; <b>Uhudler Marathon</b></div>'
+            + 'Veranstaltungsort: Gasthof&nbsp;Baier, 7400&nbsp;Drumling<br>'
+            + 'Veranstalter: Johann Hafner, Tel.:&nbsp;0650&nbsp;5120838'
 
-            + '<p><div class="L" style="margin:4vh 0 1vh 0">16. - 24. Mai 2020&nbsp;&nbsp; <b>Tarock- und Kartenspielkreuzfahrt</b></div>'
-            + 'Route: Savona, Neapel, Palermo, Valenzia, Barcelona, Marseile, Savona<br>'
-            + 'Organisation: Sepp&nbsp;Lang, Tel.:&nbsp;0664&nbsp;8231678<br>'
-            + 'Veranstalter: Freizeitclub&nbsp;St.&nbsp;Roman<br>'
-            + 'Josef Kißlinger 07716&nbsp;20179, Claudia&nbsp;Friedl&nbsp;07712&nbsp;2747&nbsp;67235<br>'
-            + 'Preise: 670 - 1110 Euro'
-
-            + '<p><div class="L" style="margin:4vh 0 1vh 0">20. - 23. Mai 2020&nbsp;&nbsp; <b>Villacher Tarockwoche</b></div>'
-            + 'Veranstaltungsort: Gasthof&nbsp;Steirerhof, 9500&nbsp;Villach<br>'
-            + 'Veranstalter: Arno&nbsp;Peter, Tel.:&nbsp;0664&nbsp;3708490'
-
-            + '<p><div class="L" style="margin:4vh 0 1vh 0">22. - 28. Juni 2020&nbsp;&nbsp; <b>UTC&nbsp;Klopeinersee</b></div>'
-            + 'Veranstaltungsort: 9122 St. Kanzian, Am&nbsp;See&nbsp;V/2,&nbsp;Hotel&nbsp;Marolt<br>'
-            + 'Veranstalter: Johann König, Tel.: 0699&nbsp;111&nbsp;116&nbsp;65'
-
-            + '<p><div class="L" style="margin:4vh 0 1vh 0">25. Juli bis 2. Aug. 2020&nbsp;&nbsp; <b>Tarock&nbsp;on&nbsp;Tour</b></div>'
-            + 'Route: Frankenmarkt - Zirl - Altenmarkt - Villach - Unterpremstätten - Großpetersdorf - Wien - Hardegg - Helfenberg<br>'
-            + 'Organisation: Franz Kienast, Franz&nbsp;Emeder, Tel.:&nbsp;0660&nbsp;527&nbsp;515&nbsp;0, Mail:&nbsp;f.kienast@edhui.at'
+            + '<p><div class="L" style="margin:4vh 0 1vh 0">7. - 11. Sep. 2020&nbsp;&nbsp; <b>Passau Wien per birota</b></div>'
+            + 'Mo. 7. Sept. Engelhartszell Veranstalter: Michael Achleitner 0664/2155381<br>'
+            + 'Di. 8. Sep. Linz, Veranstalter: Alfred Plischnack 0699/88809355<br>'
+            + 'Mi. 9. Sep. Ybbs, Veranstalter: Johann Katschtaler<br>'
+            + 'Do. 10. Sep. Krems, Veranstalter: Hans Mitteregger 0664 5435016<br>'
+            + 'Fr. 11. Sep. Wien, Veranstalter: Leo Luger 0650 6516522<br>'
+            + 'Organisation: Leo Luger 0650 6516522'
 
             + '<p><div class="L" style="margin:4vh 0 1vh 0">18. - 20. Sep. 2020&nbsp;&nbsp; <b>Frankenmarkter Marathon</b></div>'
             + 'Veranstaltungsort: Gasthof&nbsp;Greisinger, 4890&nbsp;Frankenmarkt<br>'
             + 'Veranstalter: Tarockrunde&nbsp;Frankenmarkt, Bert&nbsp;Greisinger&nbsp;Tel.:&nbsp;0664&nbsp;2863075'
+
+
+
+//1. Passau Engelhardszell, 31 km, 2:09
+//2. Engelhardszell Linz, 58 km, 4:02
+//3. Linz Ybbs, 81 km, 5:10 Std
+//4. Ybbs Krems, 65 km, 3:59
+//5. Krems Wien, 80 km, 4:35
+
 
             + '</span>';
 }

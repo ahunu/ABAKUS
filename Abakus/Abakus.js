@@ -1721,7 +1721,9 @@ window.onload = function () {
         var hI = parseInt($(this).attr('id').substr(2, 1));
 
         if (Seite === 'NS') {
-            $('#bNegKontra').removeClass('ui-disabled');
+            if ((!LS.TURRUNDE && !LS.TURTISCH) || LS.I === 11) {
+                $('#bNegKontra').removeClass('ui-disabled');
+            }
 
             if (kontra > 1) {
 

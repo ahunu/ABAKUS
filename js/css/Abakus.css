@@ -3,19 +3,6 @@
  *  License - http://zavoloklom.github.io/material-design-iconic-font/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
-.bgKontra2 {
-    color: #eee !important;
-    background: #650000 !important;
-}
-.bgKontra4 {
-    color: #eee !important;
-    background: #a00000 !important;
-}
-.bgKontra8 {
-    color: #eee !important;
-    background: #d00000 !important;
-}
-
 .llllzmdi-hc-stack {
     position: relative;
     display: inline-block;
@@ -205,7 +192,7 @@ iPad 5. Gen.: 1024 x 748
 
     .iSpinner {
         display: inline-block;
-        font: normal normal normal 22px 'Material-Design-Iconic-Font';
+        font: normal normal normal calc(3vw + 12px) 'Material-Design-Iconic-Font';
         font-size: 8vw;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -358,7 +345,7 @@ iPad 5. Gen.: 1024 x 748
 
     .iSpinner {
         display: inline-block;
-        font: normal normal normal 22px 'Material-Design-Iconic-Font';
+        font: normal normal normal calc(1vw + 22px) 'Material-Design-Iconic-Font';
         font-size: 8vw;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -967,78 +954,12 @@ iPad 5. Gen.: 1024 x 748
 .cWTC {color: rgb(153,0,0) !important}
 
 
-
-
-.cHRC {color: rgb(200,0,0) !important}
-.cKTC {color: rgb(0,130,0) !important}
-.cRTC {color: rgb(0,0,190) !important}
-.cSWC {color: rgb(130,130,0) !important}
-.cSTC {color: rgb(150,0,150) !important}
-.cSTC {color: rgb(0,130,130) !important}
-.cTTC {color: rgb(150,150,0) !important}
-.cWTC {color: rgb(120,120,0) !important}
-
-
-.cHRC {color: rgb(0,130,0) !important}
-.cKTC {color: rgb(120,120,0) !important}
-.cRTC {color: rgb(0,0,190) !important}
-.cSWC {color: rgb(0,150,150) !important}
-.cSTC {color: rgb(150,0,150) !important}
-.cSTC {color: rgb(0,130,130) !important}
-.cTTC {color: rgb(0,60,0) !important}
-.cWTC {color: rgb(200,0,0) !important}
-
-.cHRC {color: rgb(200,0,0) !important}
-.cKTC {color: rgb(0,130,0) !important}
-.cRTC {color: rgb(0,0,190) !important}
-.cSWC {color: rgb(0,220,220) !important}
-.cSTC {color: rgb(220,0,220) !important}
-.cTTC {color: rgb(220,220,0) !important}
-.cWTC {color: rgb(150,150,0) !important}
-
-.cHRC {color: rgb(200,0,0) !important}
-.cKTC {color: rgb(150,150,0) !important}
-.cRTC {color: rgb(0,0,190) !important}
-.cSWC {color: rgb(150,0,150) !important}
-
-.cHRC {color: rgb(200,0,0) !important}
-.cKTC {color: rgb(0,130,0) !important}
-.cRTC {color: rgb(0,0,190) !important}
-.cSWC {color: rgb(130,0,180) !important}
-.cSTC {color: rgb(150,0,150) !important}
-.cTTC {color: rgb(0,130,130) !important}
-.cWTC {color: rgb(150,150,0) !important}
-
-.cHRC {color: rgb(200,0,0) !important}
-.cKTC {color: rgb(130,130,0) !important}
-.cRTC {color: rgb(0,0,190) !important}
-.cSWC {color: rgb(150,0,150) !important}
-
-
-.cHRC {color: rgb(200,0,0) !important}
-.cKTC {color: rgb(0,130,0) !important}
-.cRTC {color: rgb(0,0,190) !important}
-.cSWC {color: rgb(130,130,0) !important}
-.cSTC {color: rgb(150,0,150) !important}
-.cSTC {color: rgb(0,130,130) !important}
-.cTTC {color: rgb(0,135,135) !important}
-.cWTC {color: rgb(0,140,140) !important}
-
-.cHRC {color: rgb(0,110,0) !important}
-.cKTC {color: rgb(0,120,110) !important}
-.cRTC {color: rgb(0,0,170) !important}
+.cHRC {color: rgb(0,105,0) !important}
+.cKTC {color: rgb(0,110,150) !important}
+.cRTC {color: rgb(0,0,180) !important}
 .cSWC {color: rgb(150,0,150) !important}
 .cSTC {color: rgb(130,130,0) !important}
 .cTTC {color: rgb(0,60,0) !important}
-.cWTC {color: rgb(180,0,0) !important}
-
-
-.cHRC {color: rgb(0,102,0) !important}
-.cKTC {color: rgb(0,102,153) !important}
-.cRTC {color: rgb(0,0,204) !important}
-.cSWC {color: rgb(153,0,153) !important}
-.cSTC {color: rgb(204,102,0) !important}
-.cTTC {color: rgb(0,51,0) !important}
 .cWTC {color: rgb(180,0,0) !important}
 
 
@@ -1161,19 +1082,3 @@ li, .K {
     padding: .1em 0 !important;
     margin: 0.4em 0 !important;
 }
-
-.XXL {font-size:54px !important;}
-.XL {font-size:48px !important;}
-.L3 {font-size:34px !important;}
-.L2 {font-size:25px !important;}
-.L, input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size:22px !important;}
-.M3  {font-size:21px !important;}
-.M2, .Sbtn {font-size:20px !important;}
-.M  {font-size:18px !important;}
-.S3 {font-size:17.4px !important;}
-.S2 {font-size:16.75px !important;}
-.S  {font-size:15.5px !important;}
-.XS {font-size:14.5px !important;}
-
-.LL3 {font-size:26px !important;}
-.LL2 {font-size:24px !important;}

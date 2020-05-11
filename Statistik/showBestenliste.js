@@ -68,7 +68,7 @@ function addTNPosition(pSpieler, pSort) {
         html = '<tr id="tr' + pSpieler + '" class="' + hBG + '" onclick="$(\'.trDet' + pSpieler + '\').toggle();">'
                 + '<th>&nbsp;</th>'
                 + (SP[pSpieler][1]
-                        ? (pSort === 'NAME' ? '<th' : '<td') + ' class=TL><span onclick="event.stopPropagation();popupSpieler(\'' + pSpieler + '\');" class="P cBlau">' + (getName(pSpieler).replace(' ', '&nbsp;')) + '</span></td>'
+                        ? (pSort === 'NAME' ? '<th' : '<td') + ' class=TL><span id="sp' + pSpieler + '" onclick="event.stopPropagation();popupSpieler(\'' + pSpieler + '\');" class="P cBlau">' + (getName(pSpieler).replace(' ', '&nbsp;')) + '</span></td>'
                         : (pSort === 'NAME' ? '<th' : '<td') + ' class=TL>' + (getName(pSpieler).replace(' ', '&nbsp;')) + '</td>'
                         )
                 + (pSort === 'TURNIER' ? '<th' : '<td') + ' class=C>' + (n1te || n2te || n3te ? n1te + '-' + n2te + '-' + n3te : hBestePlatz) + '</td>';
@@ -236,7 +236,7 @@ function showBestenliste(pSort) {
         if (!html) {
             hideEinenMoment();
         } else {
-            html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive ssssstable-stripe' data-column-btn-text=''><thead>"
+            html = "<table id=mTable data-role='table' data-filter='true' data-input='#iFilter' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive' data-column-btn-text=''><thead>"
                     + "<tr id='L0P1' class='bGrau'>"
                     + "<th></th>"
                     + "<th id=CUP class='C PT cBlau" + (pSort === 'NAME' ? ' U' : '') + "' onclick='showBestenliste(\"NAME\")'>Name</th>"
@@ -274,6 +274,26 @@ function showBestenliste(pSort) {
                 if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
                     $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
                 }
+            }
+            if (QUERFORMAT() && PC) {
+                $(".cBlau,.cSchwarz").on("mouseenter", function () {
+                    var hID = $(this).attr('id');
+                    if (hID && hID[0] === 's') {
+                        $("#sideContent").hide();
+                        html = '<div data-role="navbar">'
+                                + '<ul>'
+                                + '<li><a href="#" class="ui-btn-active">'
+                                + ((isNaN(hID.substr(2)) || !PC) ? '' : '<span class="N">' + hID.substr(2) + '</span>&nbsp;&nbsp;') + getSpielerName(hID.substr(2)).replace(' ', '&nbsp;') + (iSaison === 1 ? '' : '&nbsp;&nbsp;-&nbsp;&nbsp;' + stSaison + ' ') + (!isNaN(hID.substr(2)) && isVERSTORBEN(SPIELER[hID.substr(2)][4]) ? '&nbsp;&#134;' : '') + (QUERFORMAT() && stStat !== "Platzierungen" ? '' : '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + getSpielerOrt(hID.substr(2), true))
+                                + '</a></li>'
+                                + '</ul>'
+                                + '</div>';
+                        $("#sideSpieler").html(html + getSpieler(hID.substr(2))).trigger('create').show();
+                    }
+                });
+                $('.cBlau,.cSchwarz').on("mouseleave", function () {
+                    $("#sideSpieler").hide();
+                    $("#sideContent").show();
+                });
             }
         }
     }, 200);

@@ -116,10 +116,7 @@ function editAktuelles() {
     eAKTUELLES = window.pell.init({
         element: document.getElementById('eAKTUELLES'),
         actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'fotoS', 'fotoM', 'fotoL', 'undo', 'redo'],
-        defaultParagraphSeparator: '',
-        onChange: function (html) {
-            iAKTUELLES = repairPell(html);
-        }
+        defaultParagraphSeparator: ''
     });
     $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
 
@@ -135,6 +132,8 @@ function editAktuelles() {
 function aktuellesCheck(pSpeichern) {
 
     hideEinenTip();
+
+    iAKTUELLES = repairPell(eAKTUELLES.content.innerHTML);
 
     $('#bASpeichern').addClass('ui-disabled');
 

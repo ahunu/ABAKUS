@@ -1720,7 +1720,7 @@ function writeCanvas(pCup) {
         } else if (pCup === 11) {
             hTitel2 = 'Sküs of the year';
         } else if (pCup === 16) {
-            hTitel2 = 'Mit dem Bus durch Österreich';
+            hTitel2 = 'Mit dem Rad entlang der Donau gemütlich nach Wien';
         } else if (pCup === 80) {
             if (QUERFORMAT()) {
                 hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
@@ -2248,22 +2248,22 @@ function showCup(i, pBtn, pTermin) {
                         )
 
                 + (I === 16
-                        ? hVorschub + '<div class="J M" style="margin-right:5%">Von Samstag 25. Juli bis Sonntag 2. August 2020 besuchen wir mit einem Tour-Bus neun "Tarockhochburgen" in ganz Österreich. Als Bus-Chaffeur stellt sich dankenswerterweise Karl Schicher - der Tarockprofi aus Bad Leonfelden - zur Verfügung. In jedem Ort wird ein Turnier nach den lokalen Regeln gespielt. Nach dem Finale in Helfenberg feiern wir den Tarock-Meister-on-Tour.</div>'
+                        ? hVorschub + '<div class="J M" style="margin-right:5%">An lauen Septembertagen mit Freunden der Donau entlang radeln, in diversen Gastgärten mit der Seele baumeln und wer will zwischendurch oder am Abend ein Spielchen wagen. Was will das Spielerherz mehr?</div>'
                         : ''
                         )
 
-                + (I === 16
-                        ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Tourplan\');"><b>Tourplan</b></span><br>Alle Details, Kosten, etc.<br>'
-                        : ''
-                        )
+//                + (I === 16
+//                        ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Tourplan\');"><b>Tourplan</b></span><br>Alle Details, Kosten, etc.<br>'
+//                        : ''
+//                        )
 
-                + ((I === 49 || I === 50 || I === 52)
+                + ((I === 16 || I === 49 || I === 50 || I === 52)
                         && (CUPS.MELDAKT[I] || CUPS.BEREadmin[I].indexOf(LS.ME) >= 0)
                         ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
                         : ''
                         )
 
-                + (I !== 49 && I !== 50 && I !== 52 && I !== 53 && I !== 55 || I === 50 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv || I === 77
+                + (I !== 16 && I !== 49 && I !== 50 && I !== 52 && I !== 53 && I !== 55 || I === 50 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv || I === 77
                         ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
                         + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>' + getMeldSTAT(I) + '<br>' : '<br>Nur für Mitspieler...<br>')
 
@@ -2443,7 +2443,7 @@ function initExtraButtons() {
         $('#bRegistrieren').hide();
     }
 
-    $('#bAdminTools,#bFindSpieler').hide();
+    $('#bAdminTools,#bFindSpieler,#bRAMOS').hide();
     if (LS.ME === '3425'
             || CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[50].indexOf(LS.ME) >= 0
             || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0
@@ -2454,6 +2454,9 @@ function initExtraButtons() {
             || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[56].indexOf(LS.ME) >= 0
             ) {
         $('#bAdminTools,#bFindSpieler').show();
+    }
+    if (LS.ME === '3425' || LS.ME === 'x3759') { // Karl Zeinhofer
+        $('#bRAMOS').show();
     }
 
     if (LS.ME === '4731' || LS.ME === '0197' || LS.ME === '2553') { // Alex Sabkovski, Manfred Huemer, Arno Peter --- Turnierkalender
@@ -2532,9 +2535,9 @@ function getClassMeinTermin(i) {
 
 function getCupToggleDiv(pPrefix, pCup, pTermin) {
 
-if (pCup === 51) {
-    pCup = 51;
-}
+    if (pCup === 51) {
+        pCup = 51;
+    }
     var hBtnName = pPrefix + pCup;
     if (pTermin) {
         if (pTermin === -1) {

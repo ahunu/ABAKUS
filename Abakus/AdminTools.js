@@ -26,6 +26,10 @@ $(document).ready(function () {
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
 
+    if (LS.ME === '3753') { // Gregor Zamberger darf die WTC-Spieler ansehen
+        $('#bSpielerverwaltung').removeClass('ui-disabled');
+    }
+
     if (LS.ME === '3425'                              // Ich
             || CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 // Administratoren
             || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0

@@ -61,19 +61,21 @@ var nGeaendert = 0;
 var hMeldung = '';
 
 function whenSPIELERloaded() {
-    setTimeout(function () {
-        hideEinenMoment();
-        dZuletzt = new Date();
-        dZuletzt.setHours(1); // 1 wegen der Sommerzeit
-        dZuletzt = dZuletzt.valueOf();
-        dZuletzt -= 86400000 * (13);
-        //  1 Tag    86 400 000 ms
-        dZuletzt = new Date(dZuletzt).toJSON().substr(0, 10);
-        $('#main').removeClass('ui-disabled');
-        if (LS.ME === '3425') {
-            localStorage.setItem('Abakus.SPIELERext', JSON.stringify(SPIELERext));
-        }
-    });
+    hideEinenMoment();
+    $('#pDSGVO').popup("open");
+}
+
+function enableMain() {
+    dZuletzt = new Date();
+    dZuletzt.setHours(1); // 1 wegen der Sommerzeit
+    dZuletzt = dZuletzt.valueOf();
+    dZuletzt -= 86400000 * (13);
+    //  1 Tag    86 400 000 ms
+    dZuletzt = new Date(dZuletzt).toJSON().substr(0, 10);
+    $('#main').removeClass('ui-disabled');
+    if (LS.ME === '3425') {
+        localStorage.setItem('Abakus.SPIELERext', JSON.stringify(SPIELERext));
+    }
 }
 
 function isMAENNLICH(pSchalter) {
@@ -847,7 +849,11 @@ function spielerAnzeigen() {
                 cFarbe = 'cGrau';
             }
         }
-        $("#lvGefunden").append("<li data-icon='false'><a id='GS" + spieler + "' onclick='showSPIELER(\"" + spieler + "\")'><span class='N " + cFarbe + "'>" + spieler + " </span><span class='" + cFarbe + "'> " + SPIELERext[spieler][spNNAME] + " " + SPIELERext[spieler][spVNAME] + (SPIELERext[spieler][spZUSATZ] ? " " + SPIELERext[spieler][spZUSATZ] : "") + (isVERSTORBEN(SPIELERext[spieler][spSCHALTER]) ? "&nbsp;&nbsp;&#134;" : "") + "</span><span class='N " + cFarbe + "'><br>" + SPIELERext[spieler][spORT] + ", " + SPIELERext[spieler][spSTRASSE] + "</span></a></li>");
+        if (LS.ME !== '3753' || ifAktiv(spieler)) {
+            $("#lvGefunden").append("<li data-icon='false'><a id='GS" + spieler + "' onclick='showSPIELER(\"" + spieler + "\")'><span class='N " + cFarbe + "'>" + spieler + " </span><span class='" + cFarbe + "'> " + SPIELERext[spieler][spNNAME] + " " + SPIELERext[spieler][spVNAME] + (SPIELERext[spieler][spZUSATZ] ? " " + SPIELERext[spieler][spZUSATZ] : "") + (isVERSTORBEN(SPIELERext[spieler][spSCHALTER]) ? "&nbsp;&nbsp;&#134;" : "") + "</span><span class='N " + cFarbe + "'><br>" + SPIELERext[spieler][spORT] + ", " + SPIELERext[spieler][spSTRASSE] + "</span></a></li>");
+        } else { // Gregor Zamberger darf nur die im WTC aktiven anschauen
+            $("#lvGefunden").append("<li data-icon='false'><a id='GS" + spieler + "')'><span class='N " + cFarbe + "'>" + spieler + " </span><span class='" + cFarbe + "'> " + SPIELERext[spieler][spNNAME] + " " + SPIELERext[spieler][spVNAME] + (SPIELERext[spieler][spZUSATZ] ? " " + SPIELERext[spieler][spZUSATZ] : "") + (isVERSTORBEN(SPIELERext[spieler][spSCHALTER]) ? "&nbsp;&nbsp;&#134;" : "") + "</span><span class='N " + cFarbe + "'><br>" + SPIELERext[spieler][spORT] + ", " + SPIELERext[spieler][spSTRASSE] + "</span></a></li>");
+        }
     }
 
     $('#lvGefunden').listview().listview('refresh');
@@ -1118,6 +1124,10 @@ $(document).bind('pageinit', function () {
     } else if (LS.ME === "-56" || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) { // WTC
         kzAktiv = 'W';
         nNummernkreis = 3761;
+    } else { // User ohne Berechtigung: Gregor Zamberger darf schauen
+        $('#bEinNeuerSpieler,#bSpielerPruefen,#bSpielerOK').remove();
+        kzAktiv = 'W';
+        nNummernkreis = 3761;
     }
 
     if (kzAktiv) {
@@ -1133,7 +1143,7 @@ $(document).bind('pageinit', function () {
 //    if (SPIELERext && LS.ME === '3425') {
 //        whenSPIELERloaded();
 //    } else {
-    loadSPIELER();
+        loadSPIELER();
 //    }
 
     $("input:radio[name=iSort][value=1]").prop('checked', true).checkboxradio("refresh");

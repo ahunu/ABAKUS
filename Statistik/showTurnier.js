@@ -126,7 +126,8 @@ function showTurnier(pTurnier) {
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += '<td class=TC>' + (isNaN(iSpieler) ? '????' : iSpieler) + '&nbsp;</td>';
         }
-        html += '<td class=link><span id="sp' + iSpieler + '" onclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P ' + (iSpieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
+//        html += '<td class=link><span id="sp' + iSpieler + '" onclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P ' + (iSpieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
+        html += '<td sclass=link><span id="sp' + iSpieler + '" sonclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P ' + (iSpieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
         if (QUERFORMAT()) {
             html += '<td>' + getSpielerOrt(iSpieler, true) + '</td>'
                     + '<td class=TR>' + getFixPunkte(pTurnier, iSpieler) + '&nbsp;</td>';

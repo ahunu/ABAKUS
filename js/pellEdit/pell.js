@@ -296,7 +296,7 @@
                 exec(formatBlock, '<' + defaultParagraphSeparator + '>');
             else if (content.innerHTML === '<br>')
                 content.innerHTML = '';
-            settings.onChange(content.innerHTML);
+//            settings.onChange(content.innerHTML);
         };
         content.onkeydown = function (event) {
             if (event.key === 'Enter' && queryCommandValue(formatBlock) === 'blockquote') {
@@ -346,7 +346,7 @@
 
 })));
 
-function repairPell(pHtml) {
+function DelrepairPell(pHtml) {
 
     if (!pHtml) {
         return null;
@@ -439,4 +439,41 @@ function repairPell(pHtml) {
         }
         return pHtml;
     }
+}
+
+function repairPell(pHtml) {
+
+    if (!pHtml) {
+        return '';
+    } else {
+
+        // html nach pellEdit reparieren
+        var hVon = 0;
+        var hBis = 0;
+
+        hVon = 0;
+        while (hVon >= 0) {
+            hVon = pHtml.indexOf('<a href="');
+            if (hVon >= 0) {
+                hBis = pHtml.substr(hVon + 9).indexOf('"');
+                if (hBis >= 0) {
+                    pHtml = pHtml.substr(0, hVon + 10 + hBis) + ")'" + pHtml.substr(hVon + 10 + hBis);
+                }
+                pHtml = pHtml.substr(0, hVon) + "<SPAN class='cBlau P N' ONclick='window.open(" + pHtml.substr(hVon + 8);
+                hBis = pHtml.substr(hVon).indexOf('</a>');
+                if (hBis >= 0) {
+                    pHtml = pHtml.substr(0, hVon + hBis) + '</SPAN>' + pHtml.substr(hVon + hBis + 4);
+                }
+            }
+        }
+
+        pHtml = pHtml
+                .replace(/<h1>|<h2>|<h3>|<h4>/g, '<p>')
+                .replace(/<h1 |<h2 |<h3 |<h4 /g, '<p ')
+                .replace(/<\/h1>|<\/h2>|<\/h3>|<\/h4>/g, '</p>')
+                .replace(/<\/h1>|<\/h2>|<\/h3>|<\/h4>/g, '<p>')
+                .replace(/ style=/g, ' llSTYLE=');
+
+    }
+    return pHtml;
 }

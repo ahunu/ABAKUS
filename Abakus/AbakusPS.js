@@ -37,9 +37,12 @@ function PS_Init() {
 }
 
 function SetPraemienSolo(pSolo) {
-    var cAngesagt = 'ui-btn-e';
+
     var cStill = 'ui-btn-c';
-    var cKontra = 'ui-btn-b';
+    var cAngesagt = 'ui-btn-e';
+    var cKontra = 'bgKontra2';
+    var cRetour = 'bgKontra4';
+    var cSub = 'bgKontra8';
 
     if (pSolo && soloFaktor !== 2
             || !pSolo && soloFaktor !== 1) {
@@ -60,6 +63,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P1e', LS.Tarif[pPagat] * soloFaktor * 2);
         } else if ($('#P1').hasClass(cKontra)) {
             BtnSet('#P1e', LS.Tarif[pPagat] * soloFaktor * 4);
+        } else if ($('#P1').hasClass(cRetour)) {
+            BtnSet('#P1e', LS.Tarif[pPagat] * soloFaktor * 8);
+        } else if ($('#P1').hasClass(cSub)) {
+            BtnSet('#P1e', LS.Tarif[pPagat] * soloFaktor * 16);
         }
 
         if ($('#P2').hasClass(cStill)) {
@@ -68,6 +75,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P2e', LS.Tarif[pUhu] * soloFaktor * 2);
         } else if ($('#P2').hasClass(cKontra)) {
             BtnSet('#P2e', LS.Tarif[pUhu] * soloFaktor * 4);
+        } else if ($('#P2').hasClass(cRetour)) {
+            BtnSet('#P2e', LS.Tarif[pUhu] * soloFaktor * 8);
+        } else if ($('#P2').hasClass(cSub)) {
+            BtnSet('#P2e', LS.Tarif[pUhu] * soloFaktor * 16);
         }
 
         if ($('#P3').hasClass(cStill)) {
@@ -76,6 +87,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P3e', LS.Tarif[pKakadu] * soloFaktor * 2);
         } else if ($('#P3').hasClass(cKontra)) {
             BtnSet('#P3e', LS.Tarif[pKakadu] * soloFaktor * 4);
+        } else if ($('#P3').hasClass(cRetour)) {
+            BtnSet('#P3e', LS.Tarif[pKakadu] * soloFaktor * 8);
+        } else if ($('#P3').hasClass(cSub)) {
+            BtnSet('#P3e', LS.Tarif[pKakadu] * soloFaktor * 16);
         }
 
         if ($('#P4').hasClass(cStill)) {
@@ -84,6 +99,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P4e', LS.Tarif[pQuapil] * soloFaktor * 2);
         } else if ($('#P4').hasClass(cKontra)) {
             BtnSet('#P4e', LS.Tarif[pQuapil] * soloFaktor * 4);
+        } else if ($('#P4').hasClass(cRetour)) {
+            BtnSet('#P4e', LS.Tarif[pKakadu] * soloFaktor * 8);
+        } else if ($('#P4').hasClass(cSub)) {
+            BtnSet('#P4e', LS.Tarif[pKakadu] * soloFaktor * 16);
         }
 
         if ($('#P5').hasClass(cStill)) {
@@ -92,6 +111,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P5e', LS.Tarif[pTrull] * soloFaktor * 2);
         } else if ($('#P5').hasClass(cKontra)) {
             BtnSet('#P5e', LS.Tarif[pTrull] * soloFaktor * 4);
+        } else if ($('#P5').hasClass(cRetour)) {
+            BtnSet('#P5e', LS.Tarif[pTrull] * soloFaktor * 8);
+        } else if ($('#P5').hasClass(cSub)) {
+            BtnSet('#P5e', LS.Tarif[pTrull] * soloFaktor * 16);
         }
 
         if ($('#P6').hasClass(cStill)) {
@@ -100,6 +123,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P6e', LS.Tarif[p4Koenige] * soloFaktor * 2);
         } else if ($('#P6').hasClass(cKontra)) {
             BtnSet('#P6e', LS.Tarif[p4Koenige] * soloFaktor * 4);
+        } else if ($('#P6').hasClass(cRetour)) {
+            BtnSet('#P6e', LS.Tarif[p4Koenige] * soloFaktor * 8);
+        } else if ($('#P6').hasClass(cSub)) {
+            BtnSet('#P6e', LS.Tarif[p4Koenige] * soloFaktor * 16);
         }
 
         if ($('#P7').hasClass(cStill)) {
@@ -108,6 +135,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P7e', LS.Tarif[pUltimo] * soloFaktor * 2);
         } else if ($('#P7').hasClass(cKontra)) {
             BtnSet('#P7e', LS.Tarif[pUltimo] * soloFaktor * 4);
+        } else if ($('#P7').hasClass(cRetour)) {
+            BtnSet('#P7e', LS.Tarif[pUltimo] * soloFaktor * 8);
+        } else if ($('#P7').hasClass(cSub)) {
+            BtnSet('#P7e', LS.Tarif[pUltimo] * soloFaktor * 16);
         }
 
         if ($('#P8').hasClass(cStill)) {
@@ -116,6 +147,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P8e', LS.Tarif[pAbsolut] * soloFaktor * 2);
         } else if ($('#P8').hasClass(cKontra)) {
             BtnSet('#P8e', LS.Tarif[pAbsolut] * soloFaktor * 4);
+        } else if ($('#P8').hasClass(cRetour)) {
+            BtnSet('#P8e', LS.Tarif[pAbsolut] * soloFaktor * 8);
+        } else if ($('#P8').hasClass(cSub)) {
+            BtnSet('#P8e', LS.Tarif[pAbsolut] * soloFaktor * 16);
         }
 
         if ($('#P9').hasClass(cStill)) {
@@ -124,6 +159,10 @@ function SetPraemienSolo(pSolo) {
             BtnSet('#P9e', LS.Tarif[pXY] * soloFaktor * 2);
         } else if ($('#P9').hasClass(cKontra)) {
             BtnSet('#P9e', LS.Tarif[pXY] * soloFaktor * 4);
+        } else if ($('#P9').hasClass(cRetour)) {
+            BtnSet('#P9e', LS.Tarif[pXY] * soloFaktor * 8);
+        } else if ($('#P9').hasClass(cSub)) {
+            BtnSet('#P9e', LS.Tarif[pXY] * soloFaktor * 16);
         }
 
         if (LS.Tarif[pValat]) {
@@ -131,6 +170,12 @@ function SetPraemienSolo(pSolo) {
                 BtnSet('#PValate', LS.Tarif[pValat] * soloFaktor);
             } else if ($('#PValat').hasClass(cAngesagt)) {
                 BtnSet('#PValate', LS.Tarif[pValat] * soloFaktor * 2);
+            } else if ($('#PValat').hasClass(cKontra)) {
+                BtnSet('#PValate', LS.Tarif[pValat] * soloFaktor * 4);
+            } else if ($('#PValat').hasClass(cRetour)) {
+                BtnSet('#PValate', LS.Tarif[pValat] * soloFaktor * 8);
+            } else if ($('#PValat').hasClass(cSub)) {
+                BtnSet('#PValate', LS.Tarif[pValat] * soloFaktor * 16);
             }
         }
     }
@@ -143,29 +188,43 @@ function pruefenPS() {
 
     var cStill = 'ui-btn-c';
     var cAngesagt = 'ui-btn-e';
-    var cKontra = 'ui-btn-b';
+    var cKontra = 'bgKontra2';
+    var cRetour = 'bgKontra4';
+    var cSub = 'bgKontra8';
 
     if ($('#P1').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u2780';
-    } else if ($('#P1').hasClass(cAngesagt) || $('#P1').hasClass(cKontra)) {
+    } else if ($('#P1').hasClass(cAngesagt)
+            || $('#P1').hasClass(cKontra)
+            || $('#P1').hasClass(cRetour)
+            || $('#P1').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u278A';
         hRufer = iPagatrufer;
     }
     if ($('#P2').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u2781';
-    } else if ($('#P2').hasClass(cAngesagt) || $('#P2').hasClass(cKontra)) {
+    } else if ($('#P2').hasClass(cAngesagt)
+            || $('#P2').hasClass(cKontra)
+            || $('#P2').hasClass(cRetour)
+            || $('#P2').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u278B';
         hRufer = iUhurufer;
     }
     if ($('#P3').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u2782';
-    } else if ($('#P3').hasClass(cAngesagt) || $('#P3').hasClass(cKontra)) {
+    } else if ($('#P3').hasClass(cAngesagt)
+            || $('#P3').hasClass(cKontra)
+            || $('#P3').hasClass(cRetour)
+            || $('#P3').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u278C';
         hRufer = iKakadurufer;
     }
     if ($('#P4').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u2783';
-    } else if ($('#P4').hasClass(cAngesagt) || $('#P4').hasClass(cKontra)) {
+    } else if ($('#P4').hasClass(cAngesagt)
+            || $('#P4').hasClass(cKontra)
+            || $('#P4').hasClass(cRetour)
+            || $('#P4').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u278D';
         hRufer = iQuapilrufer;
     }
@@ -180,41 +239,62 @@ function pruefenPS() {
 
     if ($('#P5').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24E3'; // t
-    } else if ($('#P5').hasClass(cAngesagt) || $('#P5').hasClass(cKontra)) {
+    } else if ($('#P5').hasClass(cAngesagt)
+            || $('#P5').hasClass(cKontra)
+            || $('#P5').hasClass(cRetour)
+            || $('#P5').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24C9'; // T
     }
     if ($('#P6').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24DA'; // k
-    } else if ($('#P6').hasClass(cAngesagt) || $('#P6').hasClass(cKontra)) {
+    } else if ($('#P6').hasClass(cAngesagt)
+            || $('#P6').hasClass(cKontra)
+            || $('#P6').hasClass(cRetour)
+            || $('#P6').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24C0'; // K
     }
     if ($('#P7').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24E4'; // u
-    } else if ($('#P7').hasClass(cAngesagt) || $('#P7').hasClass(cKontra)) {
+    } else if ($('#P7').hasClass(cAngesagt)
+            || $('#P7').hasClass(cKontra)
+            || $('#P7').hasClass(cRetour)
+            || $('#P7').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24CA'; // U
     }
     if (LS.Regeln !== 'Ti.') {
         if ($('#P8').hasClass(cStill)) {
             pPraemie = pPraemie + '\\u24D0'; // a
-        } else if ($('#P8').hasClass(cAngesagt) || $('#P8').hasClass(cKontra)) {
+        } else if ($('#P8').hasClass(cAngesagt)
+                || $('#P8').hasClass(cKontra)
+                || $('#P8').hasClass(cRetour)
+                || $('#P8').hasClass(cSub)) {
             pPraemie = pPraemie + '\\u24B6'; // A
         }
     } else {
         if ($('#P8').hasClass(cStill)) {
             pPraemie = pPraemie + '\\u24E2'; // s
-        } else if ($('#P8').hasClass(cAngesagt) || $('#P8').hasClass(cKontra)) {
+        } else if ($('#P8').hasClass(cAngesagt)
+                || $('#P8').hasClass(cKontra)
+                || $('#P8').hasClass(cRetour)
+                || $('#P8').hasClass(cSub)) {
             pPraemie = pPraemie + '\\u24C8'; // S
         }
     }
     if ($('#P9').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24E7'; // x
-    } else if ($('#P9').hasClass(cAngesagt) || $('#P9').hasClass(cKontra)) {
+    } else if ($('#P9').hasClass(cAngesagt)
+            || $('#P9').hasClass(cKontra)
+            || $('#P9').hasClass(cRetour)
+            || $('#P9').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24CD'; // X
     }
 
     if ($('#PValat').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24E5'; // v
-    } else if ($('#PValat').hasClass(cAngesagt) || $('#PValat').hasClass(cKontra)) {
+    } else if ($('#PValat').hasClass(cAngesagt)
+            || $('#PValat').hasClass(cKontra)
+            || $('#PValat').hasClass(cRetour)
+            || $('#PValat').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24CB'; // V
     }
 

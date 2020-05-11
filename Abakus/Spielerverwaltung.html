@@ -21,6 +21,12 @@
         <link  href="../js/css/Abakus.css"      rel="stylesheet" />
         <script src="Spielerverwaltung.js"></script>
         <script src="loadSPIELER.js"></script>
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#fff">
+        <script src='/swReg.js'></script>
+        <!-- iOS support -->
+        <link rel="apple-touch-icon" href="/Icons/icon-144.png">
+        <meta name="apple-mobile-web-app-status-bar" content="#fff">
     </head>
     <body>
         <div data-role="header" id="dHeader" class="ui-btn K" data-position="fixed" style="padding:0em; margin:0em;">
@@ -104,7 +110,7 @@
                                 <input type="submit" data-theme="e" value="finden">
                             </div>
                         </div>
-                        <input type="button" onclick="$('#bOK').addClass('ui-disabled');showNeuenSPIELER();" data-theme="e" value="Einen neuen Spieler anlegen">
+                        <input id="bEinNeuerSpieler" type="button" onclick="$('#bOK').addClass('ui-disabled');showNeuenSPIELER();" data-theme="e" value="Einen neuen Spieler anlegen">
 
                     </div>
                     <div class="ui-block-b" style="width:55%">
@@ -186,6 +192,30 @@
             </div>
         </div>
 
+        <div data-role="popup" data-history=false id="pDSGVO" data-position-to="#F_VNAME" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L ui-corner-all" style="padding:4rem; position:relative; left:8vw; top:10vh; width:70%;">
+
+            <div class="J sui-content">
+                <div class="L3 B C">
+                Nutzungsbedingungen im Sinne der Datenschutzgrundverordnung.
+                </div>
+                <br>
+                Die Spieler werden vom Österreichischen Tarockfinale und den ihm angeschlossenen Cups
+                gemeinschaftlich gewartet und gemeinschaftlich für Tarockzwecke genutzt.
+                Eine darüber hinausgehende Nutzung, eine kommerzielle Nutzung oder die Weitergabe der Daten wiederspricht der Datenschutzgrundverordnung und ist strengstens untersagt.
+                <br>
+                <br>
+            </div>
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a data-role="button" data-theme="e" onclick="$('#pDSGVO').popup('close');enableMain();">OK</a>
+                </div>
+                <div class="ui-block-b">
+                    <a data-role="button" data-theme="a" onclick="history.back();">Nicht OK</a>
+                </div>
+            </div>
+
+        </div>
 
         <div data-role="popup" data-history=false id="pSpieler" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="L2 ui-corner-all">
             <div data-role="header" data-theme="c">
@@ -343,10 +373,10 @@
                                 <a data-role="button" data-theme="a" onclick="$('body').removeClass('noScroll');$('#iVNAME,#iNNAME,#iORT').filter(':input:focus').blur();$('#pSpieler').popup('close');" id="krZurueck" >abbrechen</a>
                             </div>
                             <div class="ui-block-b">
-                                <a data-role="button" data-theme="a" onclick="onOK(false)" id="bPruefen">prüfen</a>
+                                <a data-role="button" id="bSpielerPruefen" data-theme="a" onclick="onOK(false)" id="bPruefen">prüfen</a>
                             </div>
                             <div class="ui-block-c">
-                                <a data-role="button" data-theme="e" onclick="onOK(true)" id="bOK">OK</a>
+                                <a data-role="button" id="bSpielerOK" data-theme="e" onclick="onOK(true)" id="bOK">OK</a>
                             </div>
                         </div>
 
@@ -374,4 +404,5 @@
             </div>
         </div>
     </body>
+
 </html>

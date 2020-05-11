@@ -173,7 +173,7 @@ function setTarif() {
         LS.Tarif[iTrull          ] = 1; // Trull
         LS.Tarif[i4Koenige       ] = 1; // Vier Könige
         LS.Tarif[iUltimo         ] = 1; // König ultimo
-        LS.Tarif[iValat          ] = 0; // Valat
+        LS.Tarif[iValat          ] = 10; // Valat
         LS.Tarif[iAbsolut        ] = 0; // Absolut
         LS.Tarif[iXY             ] = 0; // Prämie XY
         LS.Tarif20T = '';

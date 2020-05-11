@@ -546,9 +546,9 @@ function editAnekdote() {
 
 // I N I T  ************************************************************************************
 $(document).ready(function () {
-    fINIT();
-});
-function fINIT(pCup) {
+//    fINIT();
+//});
+//function fINIT(pCup) {
     $('#iDownload,#iPrint,#iEdit,#iScrollToMe,#iShowDetails,#iHideDetails,#iLandscape,#iPortrait,#iFotos,#iChronik').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
@@ -577,12 +577,12 @@ function fINIT(pCup) {
     }
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     stHeute = myDateString(new Date());
-    if (pCup) {
-        stCup = pCup;
-        stStat = 0;
-    } else {
-        stCup = LS.ShowCups;
-    }
+//    if (pCup) {
+//        stCup = pCup;
+//        stStat = 0;
+//    } else {
+    stCup = LS.ShowCups;
+//    }
 
     if (window.location.href.indexOf('?Aktuelles') > 0) {
         stStat = 'Aktuelles';
@@ -634,9 +634,9 @@ function fINIT(pCup) {
     }
     STAT = JSON.parse(localStorage.getItem('Abakus.STAT' + (("000" + stCup).slice(-3))));
     SPIELER = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
-    if (!pCup) {
-        firebase.initDB(stCup, 'rw');
-    }
+//    if (!pCup) {
+    firebase.initDB(stCup, 'rw');
+//    }
 
     if (CUPS.TYP[stCup] === 'MT') {
         writeCanvas('Übersicht');
@@ -739,4 +739,5 @@ function fINIT(pCup) {
             firebaseRef.off();
         }
     };
-}
+//}
+});

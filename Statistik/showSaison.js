@@ -36,7 +36,6 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
 
     if (CUPS.TYP[stCup] === 'CUP') {
         if (!pSaison) {
-//            if (isNaN(iSaison) || iSaison < 1 || iSaison >= SAISON.length) {
             if (iSaison === 0) {
                 iSaison = 1;
             }
@@ -60,6 +59,10 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
 
                     + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',false);" title="Die Listen der Saison ausblenden." id=iPlus class="i zmdi-play zmdi-hc-rotate-270 noprint"></i>'
                     + '<i onclick="event.stopPropagation(); showLi(\'.cDieListen\',true);" title="Die Listen der Saison einblenden." id=iMinus class="i zmdi-play zmdi-hc-rotate-90 noprint"></i>';
+
+//            if (LS.ME === '3425' || LS.ME === '3244') {
+//                html += '<li class="cDieListen" data-icon="false"><a id=bQuer onclick="showQuer();">&nbsp;Übersicht</a></li>';
+//            }
 
             if (stCup === 53) { // Sauwaldcup
                 html += '<li class="cDieListen" data-icon=false><a id=bFixpunktewertung onclick="showFixpunktewertung();">&nbsp;Cupwertung</a>' + (SAISON[iSaison][isFinale] ? '<a id=sbCupwertung onclick="showChronik(' + iSaison + ');"></a>' : '') + '</li>'

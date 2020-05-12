@@ -333,11 +333,11 @@ function getUrlaubsplaner() {
             + 'Veranstaltungsort: Gasthof&nbsp;Baier, 7400&nbsp;Drumling<br>'
             + 'Veranstalter: Johann Hafner, Tel.:&nbsp;0650&nbsp;5120838'
 
-            + '<p><div class="L" style="margin:4vh 0 1vh 0">7. - 11. Sep. 2020&nbsp;&nbsp; <b>Passau Wien per birota</b></div>'
-            + 'Mo. 7. Sept. Engelhartszell Veranstalter: Michael Achleitner 0664/2155381<br>'
-            + 'Di. 8. Sep. Linz, Veranstalter: Alfred Plischnack 0699/88809355<br>'
+            + '<p><div class="L" style="margin:4vh 0 1vh 0">7. - 11. Sep. 2020&nbsp;&nbsp; <b>Passau Wien mit\'n Radl</b></div>'
+            + 'Mo. 7. Sept. Schlögen, Veranstalter: Michael Achleitner 0664 2155381<br>'
+            + 'Di. 8. Sep. Linz, Veranstalter: Alfred Plischnack 0699 88809355<br>'
             + 'Mi. 9. Sep. Ybbs, Veranstalter: Johann Katschtaler<br>'
-            + 'Do. 10. Sep. Krems, Veranstalter: Hans Mitteregger 0664 5435016<br>'
+            + 'Do. 10. Sep. Krems, Veranstalter: Leo Luger 0650 6516522<br>'
             + 'Fr. 11. Sep. Wien, Veranstalter: Leo Luger 0650 6516522<br>'
             + 'Organisation: Leo Luger 0650 6516522'
 

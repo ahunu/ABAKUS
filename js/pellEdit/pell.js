@@ -1,3 +1,5 @@
+/* global define */
+
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
             typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -345,101 +347,6 @@
     Object.defineProperty(exports, '__esModule', {value: true});
 
 })));
-
-function DelrepairPell(pHtml) {
-
-    if (!pHtml) {
-        return null;
-    } else {
-
-        // html nach pellEdit reparieren
-        var hVon = 0;
-        var hBis = 0;
-
-        hVon = pHtml.indexOf('<a href="');
-        if (hVon >= 0) {
-            hBis = pHtml.substr(hVon + 9).indexOf('"');
-            if (hBis >= 0) {
-                pHtml = pHtml.substr(0, hVon + 10 + hBis) + ")'" + pHtml.substr(hVon + 10 + hBis);
-            }
-            pHtml = pHtml.substr(0, hVon) + "<SPAN class='cBlau P N' ONclick='window.open(" + pHtml.substr(hVon + 8);
-            hBis = pHtml.substr(hVon).indexOf('</a>');
-            if (hBis >= 0) {
-                pHtml = pHtml.substr(0, hVon + hBis) + '</SPAN>' + pHtml.substr(hVon + hBis + 4);
-            }
-        }
-
-
-        hVon = pHtml.indexOf('<a href="');
-        if (hVon >= 0) {
-            hBis = pHtml.substr(hVon + 9).indexOf('"');
-            if (hBis >= 0) {
-                pHtml = pHtml.substr(0, hVon + 10 + hBis) + ")'" + pHtml.substr(hVon + 10 + hBis);
-            }
-            pHtml = pHtml.substr(0, hVon) + "<SPAN class='cBlau P N' ONclick='window.open(" + pHtml.substr(hVon + 8);
-            hBis = pHtml.substr(hVon).indexOf('</a>');
-            if (hBis >= 0) {
-                pHtml = pHtml.substr(0, hVon + hBis) + '</SPAN>' + pHtml.substr(hVon + hBis + 4);
-            }
-        }
-
-        if (pHtml.substr(0, 5) === '<div>') {
-            pHtml = pHtml.substr(5);
-        }
-        pHtml = pHtml
-                .replace(/<\/b><br><b><br><\/b><br>/g, '<br>aaa<br>') // Um einen Fehler nach '</b><br>' zu korrigieren
-                .replace(/<div><br><\/div><div>/g, '<br>')
-//                .replace(/<div>/g, '<br>##')
-                .replace(/<div><br>/g, '<br><br>')
-//                .replace(/<div>/g, '<br>####');
-//        pHtml = pHtml.replace(/<a href="/g, '<SPAN class="cBlau P" onclick="').replace(/<\/a>/g, '</SPAN>');
-
-        hVon = 0;
-        while (hVon >= 0) {
-            hVon = pHtml.indexOf('<div');
-            if (hVon < 0) {
-                hVon = pHtml.indexOf('</div');
-                if (hVon < 0) {
-                    hVon = pHtml.indexOf('<span');
-                    if (hVon < 0) {
-                        hVon = pHtml.indexOf('</span');
-                        if (hVon < 0) {
-                            hVon = pHtml.indexOf('<p');
-                            if (hVon < 0) {
-                                hVon = pHtml.indexOf('</p');
-                                if (hVon < 0) {
-                                    hVon = pHtml.indexOf('<h1');
-                                    if (hVon < 0) {
-                                        hVon = pHtml.indexOf('</h1');
-                                        if (hVon < 0) {
-                                            hVon = pHtml.indexOf('<h2');
-                                            if (hVon < 0) {
-                                                hVon = pHtml.indexOf('</h2');
-                                                if (hVon < 0) {
-                                                    hVon = pHtml.indexOf('<h3');
-                                                    if (hVon < 0) {
-                                                        hVon = pHtml.indexOf('</h3');
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            if (hVon >= 0) {
-                hBis = pHtml.substr(hVon).indexOf('>');
-                if (hBis > 0) {
-                    pHtml = pHtml.substr(0, hVon) + pHtml.substr(hVon + hBis + 1);
-                }
-            }
-        }
-        return pHtml;
-    }
-}
 
 function repairPell(pHtml) {
 

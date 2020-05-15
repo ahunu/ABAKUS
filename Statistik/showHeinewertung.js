@@ -44,8 +44,14 @@ function showHeinewertung() {
     }
 
     var nShowWertungen = nWertungen;
-    if (nShowWertungen > 7) {
-        nShowWertungen = 7;
+    if (QUERFORMAT()) {
+        if (nShowWertungen > 7) {
+            nShowWertungen = 7;
+        }
+    } else {
+        if (nShowWertungen > 5) {
+            nShowWertungen = 5;
+        }
     }
 
     $("#dCopyright").hide();
@@ -141,7 +147,7 @@ function showHeinewertung() {
     }
 
     SORTnachPlatz.sort();
-    var html = (QUERFORMAT() ? "<div id='dFilter' class='noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>" : "")
+    var html = "<div id='dFilter' class='cQUER noprint'><input class='N M' id='iFilter' placeholder='Nachname, Vorname," + (QUERFORMAT() ? " Ort," : "") + " ...'></div>"
             + "<table id=mTable style='swidth: 100% !important;' data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
             + "<tr id='L0P1' class='bGrau'>"
             + "<th class=TR>#&nbsp;&nbsp;</th>"
@@ -149,10 +155,10 @@ function showHeinewertung() {
             + "<th class=TL>&nbsp;&nbsp;Name</th>"
             + (QUERFORMAT() ? "<th class='TL noprint'>&nbsp;&nbsp;Ort</th>" : "")
             + "<th class=TR>Ges&nbsp;</th>"
-            + "<th class=C colspan='7'>Vorrundenpunkte</th>"
+            + "<th class=C colspan='" + nShowWertungen + "'>Vorrundenpunkte</th>"
             + (QUERFORMAT() ? "<th class=TC>TN</th><th class=TC nowrap>1. 2. 3.</th>" + (iSaison === 1 && stCup >= 50 && stCup <= 60 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "") : "")
             + "</tr></thead><tbody id=tbody>"
-            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='8'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
+            + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='" + (nShowWertungen + 2) + "'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
                     + "<td class=TC><i id='icFilter' onclick='$(this).addClass(\"ui-disabled\");$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-plus-bold zmdi-hc-rotate-45 ui-disabled'></i></td></tr>" : "");
 
     var nSpieler = 0;
@@ -202,43 +208,50 @@ function showHeinewertung() {
         html += '<th class="TR">' + hCuppunkte + '&nbsp;</th>';
 
         if (CUP[spieler]) {
-            if (CUP[spieler].length <= nShowWertungen) {
-                for (i = 0; i < nShowWertungen && i < CUP[spieler].length; i++) {
-                    html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
-                }
-                for (i = CUP[spieler].length; i < nShowWertungen; i++) {
-                    html += '<td class="TR"></td>';
+            if (QUERFORMAT()) {
+                if (CUP[spieler].length <= 7 || nWertungen <= 7) {
+                    for (i = 0; i < nShowWertungen && i < CUP[spieler].length; i++) {
+                        html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
+                    }
+                    if (CUP[spieler].length < nShowWertungen) {
+                        html += '<td colspan="' + (nShowWertungen - CUP[spieler].length) + '"></td>';
+                    }
+                } else {
+                    html += '<td class="TR">' + CUP[spieler][0] + '&nbsp;</td>';
+                    html += '<td class="TR">' + CUP[spieler][1] + '&nbsp;</td>';
+                    html += '<td class="TR">' + CUP[spieler][2] + '&nbsp;</td>';
+                    html += '<td class="TR">' + CUP[spieler][3] + '&nbsp;</td>';
+                    html += '<td class="TR">...&nbsp;</td>';
+                    if (CUP[spieler].length > nWertungen - 2) {
+                        html += '<td class="TR">' + CUP[spieler][nWertungen - 2] + '&nbsp;</td>';
+                    } else {
+                        html += '<td class="TR"></td>';
+                    }
+                    if (CUP[spieler].length > nWertungen - 1) {
+                        html += '<td class="TR">' + CUP[spieler][nWertungen - 1] + '&nbsp;</td>';
+                    } else {
+                        html += '<td class="TR"></td>';
+                    }
                 }
             } else {
-                html += '<td class="TR">' + CUP[spieler][0] + '&nbsp;</td>';
-                html += '<td class="TR">' + CUP[spieler][1] + '&nbsp;</td>';
-                html += '<td class="TR">' + CUP[spieler][2] + '&nbsp;</td>';
-                html += '<td class="TR">' + CUP[spieler][3] + '&nbsp;</td>';
-                html += '<td class="TR">...&nbsp;</td>';
-                if (CUP[spieler].length > nWertungen - 2) {
-                    html += '<td class="TR">' + CUP[spieler][nWertungen - 2] + '&nbsp;</td>';
+                if (CUP[spieler].length <= 5 || nWertungen <= 5) {
+                    for (i = 0; i < nShowWertungen && i < CUP[spieler].length; i++) {
+                        html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
+                    }
+                    if (CUP[spieler].length < nShowWertungen) {
+                        html += '<td colspan="' + (nShowWertungen - CUP[spieler].length) + '"></td>';
+                    }
                 } else {
-                    html += '<td class="TR"></td>';
+                    html += '<td class="TR">' + CUP[spieler][0] + '&nbsp;</td>';
+                    html += '<td class="TR">' + CUP[spieler][1] + '&nbsp;</td>';
+                    html += '<td class="TR">' + CUP[spieler][2] + '&nbsp;</td>';
+                    html += '<td class="TR">...&nbsp;</td>';
+                    if (CUP[spieler].length > nWertungen - 1) {
+                        html += '<td class="TR">' + CUP[spieler][nWertungen - 1] + '&nbsp;</td>';
+                    } else {
+                        html += '<td class="TR"></td>';
+                    }
                 }
-                if (CUP[spieler].length > nWertungen - 1) {
-                    html += '<td class="TR">' + CUP[spieler][nWertungen - 1] + '&nbsp;</td>';
-                } else {
-                    html += '<td class="TR"></td>';
-                }
-//                for (i = 0; i < nWertungen && i < 5; i++) {
-//                    html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
-//                }
-//                html += '<td class="TR">...&nbsp;</td>';
-//                if (CUP[spieler][5] === '-') {
-//                    html += '<td class="TR">-&nbsp;</td>';
-//                } else {
-//                    for (i = (nWertungen < CUP[spieler].length ? nWertungen : CUP[spieler].length) - 1; i > 0; i--) {
-//                        if (CUP[spieler][i] !== '-') {
-//                            html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
-//                            break;
-//                        }
-//                    }
-//                }
             }
         }
 

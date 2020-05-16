@@ -3,6 +3,19 @@
  *  License - http://zavoloklom.github.io/material-design-iconic-font/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
+.bgKontra2 {
+    color: #eee !important;
+    background: #650000 !important;
+}
+.bgKontra4 {
+    color: #eee !important;
+    background: #a00000 !important;
+}
+.bgKontra8 {
+    color: #eee !important;
+    background: #d00000 !important;
+}
+
 .llllzmdi-hc-stack {
     position: relative;
     display: inline-block;
@@ -779,13 +792,27 @@ iPad 5. Gen.: 1024 x 748
 .zmdi-print:before {
     content: '\f1b0';
 }
+.zmdi-1ter:before {
+    content: '\2460';
+    position: relative;
+    top: -0.22em;
+}
+.zmdi-2ter:before {
+    content: '\2461';
+    position: relative;
+    top: -0.22em;
+}
+.zmdi-3ter:before {
+    content: '\2462';
+    position: relative;
+    top: -0.22em;
+}
 .zmdi-wrench:before {
     content: '\f1ed';
 }
 .zmdi-search:before {
     content: '\f1c3';
 }
-
 .header { color:#fff; background-color:#666; padding:.1em; position:fixed; top:0; width:100% }
 .footer { position: fixed; bottom: 0; width: 100%; }
 
@@ -954,12 +981,78 @@ iPad 5. Gen.: 1024 x 748
 .cWTC {color: rgb(153,0,0) !important}
 
 
-.cHRC {color: rgb(0,105,0) !important}
-.cKTC {color: rgb(0,110,150) !important}
-.cRTC {color: rgb(0,0,180) !important}
+
+
+.cHRC {color: rgb(200,0,0) !important}
+.cKTC {color: rgb(0,130,0) !important}
+.cRTC {color: rgb(0,0,190) !important}
+.cSWC {color: rgb(130,130,0) !important}
+.cSTC {color: rgb(150,0,150) !important}
+.cSTC {color: rgb(0,130,130) !important}
+.cTTC {color: rgb(150,150,0) !important}
+.cWTC {color: rgb(120,120,0) !important}
+
+
+.cHRC {color: rgb(0,130,0) !important}
+.cKTC {color: rgb(120,120,0) !important}
+.cRTC {color: rgb(0,0,190) !important}
+.cSWC {color: rgb(0,150,150) !important}
+.cSTC {color: rgb(150,0,150) !important}
+.cSTC {color: rgb(0,130,130) !important}
+.cTTC {color: rgb(0,60,0) !important}
+.cWTC {color: rgb(200,0,0) !important}
+
+.cHRC {color: rgb(200,0,0) !important}
+.cKTC {color: rgb(0,130,0) !important}
+.cRTC {color: rgb(0,0,190) !important}
+.cSWC {color: rgb(0,220,220) !important}
+.cSTC {color: rgb(220,0,220) !important}
+.cTTC {color: rgb(220,220,0) !important}
+.cWTC {color: rgb(150,150,0) !important}
+
+.cHRC {color: rgb(200,0,0) !important}
+.cKTC {color: rgb(150,150,0) !important}
+.cRTC {color: rgb(0,0,190) !important}
+.cSWC {color: rgb(150,0,150) !important}
+
+.cHRC {color: rgb(200,0,0) !important}
+.cKTC {color: rgb(0,130,0) !important}
+.cRTC {color: rgb(0,0,190) !important}
+.cSWC {color: rgb(130,0,180) !important}
+.cSTC {color: rgb(150,0,150) !important}
+.cTTC {color: rgb(0,130,130) !important}
+.cWTC {color: rgb(150,150,0) !important}
+
+.cHRC {color: rgb(200,0,0) !important}
+.cKTC {color: rgb(130,130,0) !important}
+.cRTC {color: rgb(0,0,190) !important}
+.cSWC {color: rgb(150,0,150) !important}
+
+
+.cHRC {color: rgb(200,0,0) !important}
+.cKTC {color: rgb(0,130,0) !important}
+.cRTC {color: rgb(0,0,190) !important}
+.cSWC {color: rgb(130,130,0) !important}
+.cSTC {color: rgb(150,0,150) !important}
+.cSTC {color: rgb(0,130,130) !important}
+.cTTC {color: rgb(0,135,135) !important}
+.cWTC {color: rgb(0,140,140) !important}
+
+.cHRC {color: rgb(0,110,0) !important}
+.cKTC {color: rgb(0,120,110) !important}
+.cRTC {color: rgb(0,0,170) !important}
 .cSWC {color: rgb(150,0,150) !important}
 .cSTC {color: rgb(130,130,0) !important}
 .cTTC {color: rgb(0,60,0) !important}
+.cWTC {color: rgb(180,0,0) !important}
+
+
+.cHRC {color: rgb(0,102,0) !important}
+.cKTC {color: rgb(0,102,153) !important}
+.cRTC {color: rgb(0,0,204) !important}
+.cSWC {color: rgb(153,0,153) !important}
+.cSTC {color: rgb(204,102,0) !important}
+.cTTC {color: rgb(0,51,0) !important}
 .cWTC {color: rgb(180,0,0) !important}
 
 

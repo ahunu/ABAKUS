@@ -347,36 +347,34 @@ function showSpiele() {
 function setKontra() {
     'use strict';
     Deactivate('.cKontra');
-    setTimeout(function () {
-        if (kontra > 1) {
-            $('.cKontra').removeClass('bgKontra' + kontra);
+    if (kontra > 1) {
+        $('.cKontra').removeClass('bgKontra' + kontra);
+    }
+    if (kontra === 1) {
+        kontra = 2;
+        if (LS.Tarif21T && $("#PS").is(":visible")) {
+            $('.cKontra').addClass('bgKontra2').text('Kont.');
+        } else {
+            $('.cKontra').addClass('bgKontra2').text('Kontra');
         }
-        if (kontra === 1) {
-            kontra = 2;
-            if (LS.Tarif21T && $("#PS").is(":visible")) {
-                $('.cKontra').addClass('bgKontra2').text('Kont.');
-            } else {
-                $('.cKontra').addClass('bgKontra2').text('Kontra');
-            }
-        } else if (kontra === 2) {
-            kontra = 4;
-            if (LS.Tarif21T && $("#PS").is(":visible")) {
-                $('.cKontra').addClass('bgKontra4').text('Re');
-            } else {
-                $('.cKontra').addClass('bgKontra4').text('Retour');
-            }
-        } else if (kontra === 4) {
-            kontra = 8;
-            $('.cKontra').addClass('bgKontra8').text('Sub');
-        } else if (kontra === 8) {
-            kontra = 1;
-            if (LS.Tarif21T && $("#PS").is(":visible")) {
-                $('.cKontra').text('Kont.');
-            } else {
-                $('.cKontra').text('Kontra');
-            }
+    } else if (kontra === 2) {
+        kontra = 4;
+        if (LS.Tarif21T && $("#PS").is(":visible")) {
+            $('.cKontra').addClass('bgKontra4').text('Re');
+        } else {
+            $('.cKontra').addClass('bgKontra4').text('Retour');
         }
-    }, 300);
+    } else if (kontra === 4) {
+        kontra = 8;
+        $('.cKontra').addClass('bgKontra8').text('Sub');
+    } else if (kontra === 8) {
+        kontra = 1;
+        if (LS.Tarif21T && $("#PS").is(":visible")) {
+            $('.cKontra').text('Kont.');
+        } else {
+            $('.cKontra').text('Kontra');
+        }
+    }
 }
 
 function showCanvas(pShow) {

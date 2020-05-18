@@ -1727,8 +1727,13 @@ window.onload = function () {
 
             if (kontra > 1) {
 
-                if (sI === hI) {
+                if (hI === sI) {
                     showEinenTip('#ss' + hI, 'Der Spieler kann sich<br>nicht selbst kontrieren.');
+                    return;
+                }
+
+                if (hI === LS.INA1 || hI === LS.INA2) {
+                    showEinenTip('#ss' + hI, '<b>' + LS.VName[hI] + '</b>&nbsp;' + LS.NName[hI] + '<br>hat nicht gespielt.');
                     return;
                 }
 

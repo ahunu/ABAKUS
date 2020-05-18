@@ -62,34 +62,6 @@ function statPosAnmeld() {
                         )
                 + '</tr>'
 
-
-                + (SORT.length < 8 && iAnmeldung === 6 && new Date(hUM).toLocaleDateString() === new Date(STAT.NEXTTERMIN).toLocaleDateString()
-                        ? '<tr hidden></tr>'
-                        + '<tr class="' + hClass + '">'
-                        + '<td></td>'
-                        + '<td colspan="3" class=cNachricht>Nur wenn sich mindesten 8 Spieler anmelden.</td>'
-                        + '</tr>'
-                        : '')
-
-
-                + (SORT.length === 7 && iAnmeldung === 7 && new Date(hUM).toLocaleDateString() === new Date(STAT.NEXTTERMIN).toLocaleDateString()
-                        ? '<tr hidden></tr>'
-                        + '<tr class="' + hClass + '">'
-                        + '<td></td>'
-                        + '<td colspan="3" class=cNachricht>Nur wenn sich noch ein 8. anmeldet.</td>'
-                        + '</tr>'
-                        : '')
-
-
-                + (SORT.length === 11 && iAnmeldung === 11 && new Date(hUM).toLocaleDateString() === new Date(STAT.NEXTTERMIN).toLocaleDateString()
-                        ? '<tr hidden></tr>'
-                        + '<tr class="' + hClass + '">'
-                        + '<td></td>'
-                        + '<td colspan="3" class=cNachricht>Nur wenn sich noch ein 12. anmeldet.</td>'
-                        + '</tr>'
-                        : '')
-
-
                 + (SORT[anmeldung].NACHRICHT
                         ? '<tr hidden></tr>'
                         + '<tr class="' + hClass + '">'

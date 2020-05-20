@@ -113,6 +113,9 @@ function editAktuelles() {
             + '</div>';
 
     $('#dRumpf').html(html).trigger('create');
+    if (/iPad|iPhone/.test(navigator.userAgent) && !window.MSStream) {
+        $("#eAKTUELLES").addClass('ui-disabled'); // Wenn auf iOS editierbar dann JS-Fehler!!!
+    }
     eAKTUELLES = window.pell.init({
         element: document.getElementById('eAKTUELLES'),
         actions: ['bold', 'italic', 'underline', 'superscript', 'subscript', 'olist', 'ulist', 'line', 'link', 'fotoS', 'fotoM', 'fotoL', 'undo', 'redo'],
@@ -120,13 +123,15 @@ function editAktuelles() {
     });
     $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
 
-    if (CUPS.MELDAKT[stCup]) {
-        $('#iSCHLAGZEILE').val(CUPS.MELDAKT[stCup]);
-        eAKTUELLES.content.innerHTML = AKTUELLES;
-    } else {
-        eAKTUELLES.content.innerHTML = '';
-    }
-    iAKTUELLES = eAKTUELLES.content.innerHTML;
+    setTimeout(function () {
+        if (CUPS.MELDAKT[stCup]) {
+            $('#iSCHLAGZEILE').val(CUPS.MELDAKT[stCup]);
+            eAKTUELLES.content.innerHTML = AKTUELLES;
+        } else {
+            eAKTUELLES.content.innerHTML = '';
+        }
+        iAKTUELLES = eAKTUELLES.content.innerHTML;
+    }, 0);
 }
 
 function aktuellesCheck(pSpeichern) {

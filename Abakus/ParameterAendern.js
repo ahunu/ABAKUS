@@ -636,9 +636,9 @@ $(document).bind('pageinit', function () {
         $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
     }
     if (CUPS.TEXT1[I]) {
-        editor.content.innerHTML = CUPS.TEXT1[I];
-    } else {
-        editor.content.innerHTML = '';
+        setTimeout(function () {
+            editor.content.innerHTML = CUPS.TEXT1[I];
+        }, 0);
     }
 
     $("input:radio[name=iREGELN][value='Wr.']").prop('checked', (CUPS.REGELN[I] === 'Wr.')).checkboxradio("refresh");

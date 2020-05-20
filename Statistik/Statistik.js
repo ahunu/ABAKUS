@@ -496,6 +496,9 @@ function editAnekdote() {
 
     $('#dRumpf').html(html);
 
+    if (/iPad|iPhone/.test(navigator.userAgent) && !window.MSStream) {
+        $("#editor").addClass('ui-disabled'); // Wenn auf iOS editierbar dann JS-Fehler!!!
+    }
     setTimeout(function () {
         editor = window.pell.init({
             element: document.getElementById('editor'),
@@ -507,7 +510,6 @@ function editAnekdote() {
         $('.pell-actionbar').attr('style', 'background-color:#ddd;border:1px solid;');
     });
     setTimeout(function () {
-        editor.content.innerHTML = '';
         if (IsInteger(stStat) && STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE) {
             $('.pell-content').html(STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE);
             editor.content.innerHTML = STAT[SAISON[iSaison][isFinale]]._CUPANEKDOTE;

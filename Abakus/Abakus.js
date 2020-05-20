@@ -832,6 +832,7 @@ function showSeite(pSeite) {
         $('#nbSpiele').show();
         $('#nbSpiel,#nbWerte').hide();
         kontra = 1;
+        $('.bgKontra2, .bgKontra4, .bgKontra8').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
 
         $('#SPIELEallg').show();
         setEnter();
@@ -1496,39 +1497,12 @@ function BtnSet3(btn, pWert) {
     Deactivate(btn);               //  !!! Ein Muss !!!
     btnE = btn + 'e';
 
-//    if (kontra === 1 && ($(btn).hasClass('ui-btn-e') || $(btn).hasClass('bgKontra2') || $(btn).hasClass('bgKontra4') || $(btn).hasClass('bgKontra8'))) {
-//        $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').buttonMarkup({theme: 'a'});
-//        $(btnE).text(0).hide();
-//    } else {
-//        if (kontra !== 1) {
-//            pWert = pWert * 2 * kontra;
-//            $(btn).addClass('bgKontra' + kontra);
-//            if (LS.Tarif21T && $("#PS").is(":visible")) {
-//                $('.cKontra').removeClass('bgKontra' + kontra).text('Kont.');
-//            } else {
-//                $('.cKontra').removeClass('bgKontra' + kontra).text('Kontra');
-//            }
-//            kontra = 1;
-//        } else if ($(btn).hasClass('ui-btn-c')) {
-//            $(btn).buttonMarkup({theme: 'e'});
-//            pWert = pWert * 2;
-//        } else {
-//            $(btn).buttonMarkup({theme: 'c'});
-//        }
-//        if ($(btnE).text().substr(0, 1) === '-') {
-//            $(btnE).css("color", "red").text('-' + pWert).show();
-//        } else {
-//            $(btnE).css("color", "black").text(pWert).show();
-//        }
-//    }
-
     if (kontra === 1) {
         if ($(btn).hasClass('bgKontra2') || $(btn).hasClass('bgKontra4') || $(btn).hasClass('bgKontra8')) {
             $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
             $(btn).buttonMarkup({theme: 'a'});
             $(btnE).text(0).hide();
         } else if ($(btn).hasClass('ui-btn-a')) {
-            pWert = pWert;
             $(btn).buttonMarkup({theme: 'c'});
             if ($(btnE).text().substr(0, 1) === '-') {
                 $(btnE).css("color", "red").text('-' + pWert).show();

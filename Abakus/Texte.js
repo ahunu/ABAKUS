@@ -238,6 +238,8 @@ function getLinks() {
             + '<br>'
             + '<span class="cBlau P M" onclick="window.open(\'http://www.tarockcup.at\')" ><b>Raiffeisen Tarockcup Austria (RTC)</b>, M&uuml;hlviertel (Karl Haas), seit 1995/96</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" ><b>Hausruckviertler Tarockcup (HRC)</b>, Hausruck (Franz Kienast), seit 1997/98</span><br>'
+            + '<span class="cBlau P M" onclick="window.open(\'https://kärntner-tarockcup.at\')" ><b>Kärntner Tarockcup (KTC)</b>, Steiermark (Arno Peter), seit 2020/21</span><br>'
+            + '<span class="cBlau P M" onclick="showCup(51,\'bCT\')" ><b>Kärntner Tarockcup</b> - Ergebnisse</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://tarockrunde-sauwald.jimdo.com\')" ><b>Sauwaldcup (SWC)</b>, Innviertel (Sepp Lang), seit 2016</span><br>'
             + '<span class="cBlau P M" onclick="showCup(56,\'bCT\')" ><b>Wiener Tarockcup (WTC)</b>, Wien/NÖ (Siegfried Braun), seit 2003</span><br>'
             + '<span class="cBlau P M" onclick="window.open(\'https://steirercup.webnode.at\')" ><b>Steirischer Tarockcup (STC)</b>, Steiermark (Peter Baumann), seit 2013/14</span><br>'

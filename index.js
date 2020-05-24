@@ -1774,7 +1774,7 @@ function writeCanvas(pCup) {
             } else if (pCup === 51) {
                 hTitel = 'Kärntner Tarockcup';
                 document.title = 'KTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
-                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://kärntner-tarockcup.at\')" >https://kärntner-tarockcup.at</span>';
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://kärntner-tarockcup.at\')" >kärntner-tarockcup.at</span>';
             } else if (pCup === 52) {
                 hTitel = 'Raiffeisen Tarockcup Austria';
                 document.title = 'RTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');

@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.phonegap.ABAKUSst" 
-        versionCode = "10480001"
-        version     = "10480001">     <!-- ABAKUSst -->
+        id          = "com.phonegap.ABAKUSlight" 
+        versionCode = "1048"
+        version     = "1048">     <!-- ABAKUSlight -->
 
-    <name>ABAKUS für Tablets</name>
-
-    <!-- ACHTUNG Die config.xml muss auf _Standard und _Tablet geaendert werden. -->
+    <name>Abakus</name>
+    
+    <!-- ACHTUNG Die config.xml muss auf _Standard und _Light geaendert werden. -->
 
     <description>
         ABAKUS die königliche Tarock-App.
     </description>
 
-    <author href="https://tarock.web.app" email="Luger.Leo@gmail.com">
+    <author href="https://tarock.web.app/" email="Luger.Leo@gmail.com">
         Leopold Luger
     </author>
 
     <platform name="android" />
     <plugin   name="cordova-plugin-whitelist" spec="1.3.0" />
 
-    <preference name="android-minSdkVersion"    value="21" />  <!-- Android Version 5.0 -->
+    <preference name="android-minSdkVersion"    value="14" />  <!-- Android Version 4.0 -->  
+    <preference name="android-maxSdkVersion"    value="20" />  <!-- Android Version 4.4 -->  
     <preference name="android-targetSdkVersion" value="28" />  <!-- Android Version 9.0 -->
 
     <preference name="pgb-builder-version" value="1"       /> <!-- ResponsiveVoice funktioniert sonst nicht! -->

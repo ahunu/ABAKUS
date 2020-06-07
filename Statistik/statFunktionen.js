@@ -188,7 +188,7 @@ function getCupPunkte(pTurnier, pSpieler) {
         } else {
             return '-';
         }
-    } else if (stCup >= 50 && stCup <= 60 && stSaison <= '2019/20') { // Fixpunktesystem
+    } else if (stCup >= 50 && stCup <= 60 && stSaison <= '2019/20' || stCup === 53) { // Fixpunktesystem
         if (STAT[pTurnier][pSpieler]) {
             if (typeof STAT[pTurnier][pSpieler][0] === "number") {
                 if (STAT[pTurnier][pSpieler][0] <= 50) {

@@ -1670,6 +1670,11 @@ function initSeite1() {
                 loadSPIELER(); // VIP-Status holen
             }
         }
+        if (LS.Version < 1049) {
+            if (typeof LS.VIC === 'undefined' || LS.VIC.length === 0) {
+                LS.VIC = [0];
+            }
+        }
         localStorage.setItem('Abakus.LOG', JSON.stringify(''));
         if (LS.Version === 0) {
             writeLOG('ABAKUS: Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ') wurde installiert.');
@@ -2911,7 +2916,10 @@ function whenCUPSloaded() {
             CUPS = new Object();
             CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
             if (CUPS) {
-                var hCupName = window.location.search.replace(/\%20|_| /g, '').substr(1).toUpperCase();
+                var hCupName = window.location.search.replace(/\'|\%20|_| /g, '').substr(1).toUpperCase();
+                if (hCupName[0] === '?') {
+                    hCupName = hCupName.subString(1);
+                }
                 var newCup = 0;
                 if (hCupName === 'WR.TAROCKCUP') {
                     newCup = 56;
@@ -2924,7 +2932,7 @@ function whenCUPSloaded() {
                 } else {
                     for (var ii = CUPS.NAME.length; ii > 0; ii--) {
                         if (CUPS.NAME[ii]) {
-                            if (CUPS.NAME[ii].toUpperCase().replace(/\%20|_| /g, '').indexOf(hCupName) >= 0) {
+                            if (CUPS.NAME[ii].toUpperCase().replace(/\'|\%20|_| /g, '').indexOf(hCupName) >= 0) {
                                 newCup = ii;
                                 break;
                             }
@@ -2949,10 +2957,19 @@ function whenCUPSloaded() {
                     }
                     LS.ShowCups = newCup;
                     LS.Quickstart = true;
+                    // 01.2022 entfernen Beg
+                    LS.VIC = [];
+                    if (typeof LS.VIC === 'undefined' || LS.VIC.length === 0) {
+                        LS.VIC = [0];
+                    }
+                    // 01.2022 entfernen End
                     if (hCupName.indexOf('/REGELN') > 0) {
                         LS.ShowFunktion = '?Reglen';
                     } else if (LS.VIC[0] === 0) {
-                        LS.VIC[0] = newCup;
+                        if (newCup >= 50 && newCup <= 59) {
+                            LS.VIC[0] = newCup;
+                            LS.VIC[newCup] = true;
+                        }
                     }
                     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                     window.location.replace(window.location.origin + window.location.pathname);
@@ -3288,7 +3305,7 @@ $(document).ready(function () {
         LS.Version = 0;
         LS.AnzGespeichert = 0;
         LS.Timeout = 0;
-        LS.VIC = [];
+        LS.VIC = [0];
         LS.VIP = false;
         LS.FotoAnimieren = false;
         LS.FotoStyle = 0;
@@ -3363,7 +3380,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "1000") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

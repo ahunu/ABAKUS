@@ -30,7 +30,7 @@ function iABWTARIFEonClick() {
             $("#iTARIF8").val(4); // Bettler
             $("#iTARIF9").val(6); // Pi/Zwiccolo overt
             $("#iTARIF10").val(8); // Bettler overt
-            $("#iTARIF19").val(0); // Valat 0 = * 4 / * 8
+            $("#iTARIF19").val(10); // Valat 0 = * 4 / * 8
             $("#iTARIF20").val(0); // Absolut
             $("#iTARIF21").val(0); // XY
             $("#iTARIF20T").val(''); // Absolut

@@ -113,7 +113,8 @@ function showSaison(pSaison, pFotos, pRefreshTurnier) {
                         nAnekdoten++;
                     }
                     if (STAT._LASTTURNIER && STAT._LASTTURNIER.substr(0, 10) === turnier) {
-                        if (pRefreshTurnier || !LS.GelesenSTAT[stCup] || LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
+//                        if (pRefreshTurnier || !LS.GelesenSTAT[stCup] || LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
+                        if (!LS.GelesenSTAT[stCup] || LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
                             hClass = ' cRot';
                         }
                     }

@@ -48,9 +48,10 @@ function showTurnier(pTurnier) {
         if (!LS.GelesenSTAT[stCup] || LS.GelesenSTAT[stCup] !== CUPS.MELDSTAT[stCup]) {
             LS.GelesenSTAT[stCup] = CUPS.MELDSTAT[stCup];
             localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            $('#b' + pTurnier + ' span').removeClass('cRot');
         } else if (LS.GelesenSTAT[stCup]) {
-            LS.GelesenSTAT[stCup] = null;
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+//            LS.GelesenSTAT[stCup] = null;
+//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
         }
     }
 

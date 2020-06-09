@@ -2111,11 +2111,13 @@ function showCup(i, pBtn, pTermin) {
                         newBtn = '#' + pBtn + i + 'T' + pTermin;
                     }
                 }
-                var lastTop = parseInt($(lastBtn).offset().top);
+                var lastTop = $(lastBtn).length;
+                if (lastTop) {
+                    lastTop = parseInt($(lastBtn).offset().top);
+                }
                 var newTop = parseInt($(newBtn).offset().top);
                 var viewTop = parseInt($('#pContent').scrollTop());
                 var tglHeight = parseInt($('#tgl' + LS.LastBtn.substr(1)).height());
-//              console.log('Tops: View: ', viewTop, ' Last: ', lastTop, (lastTop < newTop ? ' <<< ' : '>>>'), ' New: ', newTop, 'Toggle: ',tglHeight);
                 if (lastTop < newTop && lastTop < 60) {
                     $('#pContent').scrollTop(viewTop + newTop - tglHeight - 100); // 100 === Header
                 }

@@ -35,17 +35,17 @@ th.rotate > div {
 #mTable {font-size: 22px;}
 @media print {
     .XS {font-size: 3vw;}
-    .cFotoS {width:30%;height:auto;}
-    .cFotoM {width:40%;height:auto;}
-    .cFotoL {width:50%;height:auto;}
+    .cFotoS {width:30%;height:auto;float:left;margin-right:15px;}
+    .cFotoM {width:40%;height:auto;float:left;margin-right:15px;}
+    .cFotoL {width:50%;height:auto;float:left;margin-right:15px;}
 }
 
 /* === Aktuelles ============================================================ */
 
 @media screen and (orientation : landscape)  {
-    .cFotoS {width:30%;height:auto;}
-    .cFotoM {width:40%;height:auto;}
-    .cFotoL {width:50%;height:auto;}
+    .cFotoS {width:30%;height:auto;float:left;margin-right:15px;}
+    .cFotoM {width:40%;height:auto;float:left;margin-right:15px;}
+    .cFotoL {width:50%;height:auto;float:left;margin-right:15px;}
     .cFotoS:hover,
     .cFotoM:hover,
     .cFotoL:hover {

@@ -13,6 +13,7 @@ var hRundeTurnier = 'Runde';
 var editor = null;
 var myJBox = null;
 var myJTip = null;
+
 function myJBoxClose() {
     myJBox.close();
 }
@@ -478,7 +479,7 @@ function onSubmit() {
     }
 
     firebase.database().ref('/00/CUPS/' + ("000" + I).substr(-3))
-            .set(hCUPS)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+            .update(hCUPS)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
             .then(function () {
                 firebase.database().ref('/00/CUPS')
                         .update({TIMESTAMP: firebase.database.ServerValue.TIMESTAMP})

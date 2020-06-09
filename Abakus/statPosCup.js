@@ -15,6 +15,11 @@ function statPosCup(pRunde) {
         stCup = STAT.I;
     }
 
+    var nTurniereWerten = 6;
+    if (stCup === 80) { // Wr. Tarockmarathon
+        nTurniereWerten = 3;
+    }
+
     var sNAM = '';
     var sCUP = '';
     var sD60 = '';
@@ -295,7 +300,7 @@ function statPosCup(pRunde) {
             } else {
                 CupPunkte = 0;
                 hPos = '';
-                for (var ii = 0; ii < 6; ii++) {
+                for (var ii = 0; ii < nTurniereWerten; ii++) {
                     if (typeof STAT.S[i].CUPPUNKTE[stTurCupGes][ii] === 'number') {
                         if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] > 0) {
                             hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];

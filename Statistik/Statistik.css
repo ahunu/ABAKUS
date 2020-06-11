@@ -55,17 +55,11 @@ th.rotate > div {
 }
 
 @media only screen and (orientation : portrait) {
-    .cFotoS {width:35%;height:auto;}
-    .cFotoM {width:45%;height:auto;}
+    .cFotoS {width:35%;height:auto;float:left;margin-right:15px;}
+    .cFotoM {width:45%;height:auto;float:left;margin-right:15px;}
     .cFotoL {width:100%;height:auto;}
-    .cFotoS:hover {
-        transform: rotate(0deg) scale(2);
-        transform-origin: left top;
-    }
-    .cFotoM:hover {
-        transform: rotate(0deg) scale(2);
-        transform-origin: left top;
-    }
+    .cFotoS:hover,
+    .cFotoM:hover {width:100%;height:auto;float:left;}
 }
 
 /* === Fotos ================================================================ */

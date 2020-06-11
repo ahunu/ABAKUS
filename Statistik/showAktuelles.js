@@ -131,6 +131,7 @@ function editAktuelles() {
             eAKTUELLES.content.innerHTML = '';
         }
         iAKTUELLES = eAKTUELLES.content.innerHTML;
+        $('.pell-content').css('padding','11px').focus();
     }, 0);
 }
 

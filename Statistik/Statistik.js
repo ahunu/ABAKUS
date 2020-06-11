@@ -520,7 +520,7 @@ function editAnekdote() {
             $('.pell-content').html('');
             editor.content.innerHTML = '';
         }
-        $('.pell-content').focus();
+        $('.pell-content').css('padding','11px').focus();
     }, 100);
 
     $(".ciFOTO").focusout(function () {

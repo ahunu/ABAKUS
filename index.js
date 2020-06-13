@@ -59,6 +59,26 @@ const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
 
+//function getVoice() {
+//
+//    var available_voices;
+//
+//// list of languages is probably not loaded, wait for it
+//    var y = window.speechSynthesis.getVoices().length;
+//    showEineMeldung('1: ', 'Preinstallt: ' + y);
+//    if (window.speechSynthesis.getVoices().length === 0) {
+//        showEineMeldung('2:', 'Muss laden.');
+//        window.speechSynthesis.addEventListener('voiceschanged', function () {
+//            available_voices = window.speechSynthesis.getVoices();
+//        });
+//    } else {
+//        showEineMeldung('2:', 'OK');
+//        available_voices = window.speechSynthesis.getVoices();
+//    }
+//
+//    showEineMeldung('3:', available_voices);
+//}
+
 function IsInteger(value) {
     if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
         return true;

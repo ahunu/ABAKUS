@@ -229,7 +229,7 @@ function getSpieler(pSpieler, pSaison) {
     }
 
     var html = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
-            + "<tr class='bGrau sM'>"
+            + "<tr class='bGrau M'>"
             + "<th class=TR>#&nbsp;</th>"
             + "<th>&nbsp;Turnier&nbsp;</th>";
     if (CUPS.TYP[stCup] !== 'MT') {
@@ -241,7 +241,7 @@ function getSpieler(pSpieler, pSaison) {
                 + "<th class=TR>R2&nbsp;</th>"
                 + "<th class=TR>R3&nbsp;</th>";
     }
-    html += "</tr></thead><tbody class=sM>";
+    html += "</tr></thead><tbody class=M>";
 
     var position = '';
     var positionen = '';
@@ -347,7 +347,7 @@ function popupSpieler(pSpieler, pSaison) {
         }
     }
     var html = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
-            + "<tr class='bGrau sM'>"
+            + "<tr class='bGrau S3'>"
             + "<th class=TR>#&nbsp;</th>"
             + "<th>&nbsp;Turnier&nbsp;</th>";
     if (CUPS.TYP[stCup] !== 'MT') {
@@ -359,7 +359,7 @@ function popupSpieler(pSpieler, pSaison) {
                 + "<th class=TR>R2&nbsp;</th>"
                 + "<th class=TR>R3&nbsp;</th>";
     }
-    html += "</tr></thead><tbody class=sM>";
+    html += "</tr></thead><tbody class=XL>";
 
     $('#jbSpielerHelp').hide();
 

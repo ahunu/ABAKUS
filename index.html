@@ -4,14 +4,8 @@
     <head>
         <meta charset='utf-8'/>
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="apple-touch-icon" href="Icons/icon-96-xhdpi.png" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link  href='Icons/icon-36-ldpi.png'                 rel='shortcut icon' />
-        <link  href='themes/ThemeABCDE.min.css'              rel='stylesheet' />
-        <link  href='themes/jquery.mobile.icons.min.css'     rel='stylesheet' />
-        <link  href='js/jquery.mobile/jquery.mobile.min.css' rel='stylesheet' />
-        <script src='js/jquery/jquery.min.js'></script>
-        <script src='js/firebase/firebase.js'></script>
+        <script src='sw.js' ></script>
         <script type='text/javascript'>
             if (window.location.search) { // Quickstart
                 LS = new Object();
@@ -93,7 +87,19 @@
                     }
                 }
             }
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                        .then((reg) => console.log('SW registered:', reg))
+                        .catch((err) => console.log('SW not registered:', err));
+            }
         </script>
+        <link rel="apple-touch-icon" href="Icons/icon-96-xhdpi.png" >
+        <link  href='Icons/icon-36-ldpi.png'                 rel='shortcut icon' />
+        <link  href='themes/ThemeABCDE.min.css'              rel='stylesheet' />
+        <link  href='themes/jquery.mobile.icons.min.css'     rel='stylesheet' />
+        <link  href='js/jquery.mobile/jquery.mobile.min.css' rel='stylesheet' />
+        <script src='js/jquery/jquery.min.js'></script>
+        <script src='js/firebase/firebase.js'></script>
         <script src='js/jquery.mobile/jquery.mobile.min.js'></script>
         <link  href="js/jBox/jBox.css"     rel="stylesheet"/>
         <script src="js/jBox/jBox.min.js"  ></script>
@@ -101,9 +107,7 @@
         <!-- Das ist ein Kommentar -->
         <title>ABAKUS die königliche Tarock-App</title>
         <meta name="description"
-              content="Mary's simple recipe for maple bacon donuts
-              makes a sticky, sweet treat with just a hint
-              of salt that you'll keep coming back for.">
+              content="ABAKUS die königliche Tarock-App">
         <link  href='js/css/Abakus.css'    rel='stylesheet'/>
         <style>
             #imgShake:hover {
@@ -148,7 +152,6 @@
         <script src='index.js'             ></script>
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#fff">
-        <script src='/swReg.js'></script>
         <!-- iOS support -->
         <link rel="apple-touch-icon" href="/Icons/icon-144.png">
         <meta name="apple-mobile-web-app-status-bar" content="#fff">
@@ -459,7 +462,8 @@
                 </li>
                 <div id='hTischLoeschen' style='margin:1em;' class='M' hidden>Mit <strong>Tisch löschen</strong> wird der Tisch gelöscht.</div>
                 <li>
-                    <a id="bNeuerTisch" onClick='$("#pMEINTISCH").popup("close");fEinNeuerTisch();' style="padding:.1em" >Neuer Tisch</a>
+                    <a id="bNeuerTisch" onClick='$("#pMEINTISCH").popup("close");
+                            fEinNeuerTisch();' style="padding:.1em" >Neuer Tisch</a>
                     <a onclick="$('#hNeueRunde').toggle('show');">Hilfe</a>
                 </li>
                 <div id='hNeueRunde' style='margin:1em;' class='M' hidden>Einen <strong>neuen Tisch</strong> kannst du erst beginnen, wenn du den alten Tisch zuvor gespeichert oder gel&ouml;scht hast.

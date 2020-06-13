@@ -1,14 +1,29 @@
 
 function getVersion() {
-    return 1051;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1052;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 6, 9);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 6, 12);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
+
+//17 alten Cache löschen
+//18 Dynamic Caching     // addEentListener FETCH  #17 verwenden
+//19 Offline Fallback Page
+//20 Conditional Fallback
+//21 Limiting Cache Size
+//22 Site Audit Refresh
+//23 Firestore Database
+//24 Realtime Data
+//25 Updating the UI
+//26 Offline Data
+//27 Adding Recipes
+//28 Deleting Recipies
+//29 Deploying to Firebase
+//30 Testing the App
 
 
 //1. Passau Engelhardszell, 31 km, 2:09
@@ -40,9 +55,6 @@ function getVersionsDatum() {
 
 // Wise würdest du einen perfekten Tag beschreiben?
 
-// responsiveVoice - Die Versionen bis inclusive 1.5.12 funktionieren nach der Änderung eines Spiels auf Android nicht !!!
-// Nur mit 1.4.9 wird die Meldung "wants to use speech DENY ALLOW" nach der Änderung eines Spiels nicht gezeigt.
-
 // Panorama / Sachbücher. Romane.
 // Theoretisch-praktische Anweisung zur gründlichen Erlernung des beliebten Tarok-Tappen-Spiels	älteste Königrufenregeln, 2. Auflage mit Anhang übers Königrufen, Wien 1827, s. www.noel.gv.at (NÖ Landesbibliothek)
 //
@@ -60,10 +72,6 @@ function getVersionsDatum() {
 // http://www.gamesmuseum.uwaterloo.ca
 
 // LET kann vom Galaxy Nexus nicht interpretiert werden.
-
-// responsiveVoice - Die Version 1.5.8 funktioniert als Android-Apps nicht !!!
-// responsiveVoice - Die Version 1.5.7 funktioniert nach der Änderung eines Spiels nicht !!!
-// Nur mit 1.4.9 wird die Meldung "wants to use speech DENY ALLOW" nach der Änderung eines Spiels nicht gezeigt.
 
 // Unicodezeichen:
 //    Geber: 1BE0, 1C30, 1A00

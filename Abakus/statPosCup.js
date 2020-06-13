@@ -208,23 +208,43 @@ function statPosCup(pRunde) {
             if ((QUERFORMAT() || stTurCupGes === 3 || true) && stSort !== 'NAM') {
                 if (stSort === 'CUP' || stSort === 'STO' || stSort === 'D60' || stSort === 'GES') {
                     aktRANG++;
-                    if ((stSort === 'CUP' && CupPunkte !== '-' && CupPunkte >= 0)
-                            || (stSort === 'STO')
-                            || (stSort === 'D60' && D60Punkte >= 0)
-                            || (stSort === 'GES')) {
-                        if ((stSort === 'CUP' && CupPunkte !== lastPUNKTE)
-                                || (stSort === 'STO' && GesPunkte !== lastPUNKTE)
-                                || (stSort === 'D60' && D60Punkte !== lastPUNKTE)
-                                || (stSort === 'GES' && STAT.S[i].PUNKTE[stTurCupGes] !== lastPUNKTE)) {
-                            if (stSort === 'CUP') {
+                    if (stTurCupGes === 3) {
+                        if ((stSort === 'CUP' && CupPunkte !== '-' && CupPunkte >= 0)
+                                || (stSort === 'STO')
+                                || (stSort === 'D60' && D60Punkte >= 0)
+                                || (stSort === 'GES')) {
+                            if (stSort === 'CUP' && CupPunkte !== lastPUNKTE) {
                                 lastPUNKTE = CupPunkte;
-                            } else if (stSort === 'STO') {
+                                tRANG = aktRANG + '.';
+                            } else if (stSort === 'STO' && GesPunkte !== lastPUNKTE) {
                                 lastPUNKTE = GesPunkte;
-                            } else if (stSort === 'D60') {
+                                tRANG = aktRANG + '.';
+                            } else if (stSort === 'D60' && D60Punkte !== lastPUNKTE) {
                                 lastPUNKTE = D60Punkte;
-                            } else if (stSort === 'GES') {
+                                tRANG = aktRANG + '.';
+                            } else if (stSort === 'GES' && STAT.S[i].PUNKTE[stTurCupGes] !== lastPUNKTE) {
                                 lastPUNKTE = STAT.S[i].PUNKTE[stTurCupGes];
+                                tRANG = aktRANG + '.';
                             }
+                        }
+                    } else {
+                        CupPunkte = 0;
+                        for (var ii = 0; ii < nTurniereWerten; ii++) {
+                            if (typeof STAT.S[i].CUPPUNKTE[stTurCupGes][ii] === 'number') {
+                                if (STAT.S[i].CUPPUNKTE[stTurCupGes][ii] > 0) {
+                                    hCupPunkte = STAT.S[i].CUPPUNKTE[stTurCupGes][ii];
+                                    if (hCupPunkte >= 300) {
+                                        hCupPunkte = 200;
+                                    } else if (hCupPunkte > 100) {
+                                        hCupPunkte = 100 + parseInt((hCupPunkte - 100) / 2);
+                                    }
+                                    CupPunkte += hCupPunkte;
+                                }
+                            }
+                        }
+
+                        if (lastPUNKTE !== CupPunkte) {
+                            lastPUNKTE = CupPunkte;
                             tRANG = aktRANG + '.';
                         }
                     }
@@ -317,6 +337,11 @@ function statPosCup(pRunde) {
                     } else {
                         hPos += '<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>';
                     }
+                }
+
+                if (lastPUNKTE !== CupPunkte) {
+                    lastPUNKTE = CupPunkte;
+                    tRANG = aktRANG + '.';
                 }
 
                 pos += '<td class="TR ' + sGES + '">' + CupPunkte + '&nbsp&nbsp;</td>';

@@ -1,5 +1,4 @@
-/* global LS, aktSpiel, responsiveVoice, iTrischaker */
-/* global LS, aktSpiel, responsiveVoice, iTrischaker, negKontra */
+/* global LS, aktSpiel, iTrischaker, negKontra */
 
 function NSBuchen(pGame, pPunkte, pS) {
 
@@ -84,9 +83,7 @@ function NSBuchen(pGame, pPunkte, pS) {
         }
 
         if (LS.Ansagen) {
-            if (navigator.vendor.indexOf("Apple") < 0) {
-                responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
-            } else if ('speechSynthesis' in window) {
+            if ('speechSynthesis' in window) {
                 var hAnsage = new SpeechSynthesisUtterance(LS.Ansage);
                 hAnsage.lang = "de-DE";
                 window.speechSynthesis.speak(hAnsage);
@@ -309,9 +306,7 @@ function XSBuchen(pGame, pPunkte, pS, pP, pSakt) {
         }
 
         if (LS.Ansagen) {
-            if (navigator.vendor.indexOf("Apple") < 0) {
-                responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
-            } else if ('speechSynthesis' in window) {
+            if ('speechSynthesis' in window) {
                 var hAnsage = new SpeechSynthesisUtterance(LS.Ansage);
                 hAnsage.lang = "de-DE";
                 window.speechSynthesis.speak(hAnsage);

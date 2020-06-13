@@ -1,5 +1,5 @@
 
-/* global chrome, NEXT, responsiveVoice */
+/* global chrome, NEXT */
 
 function showGR() {
 
@@ -52,11 +52,7 @@ function showGR() {
     if (NEXT.AnsageVorlesen && LS.Ansagen) { // An anderer Positon funktionier ResponsiveVoice nicht
         NEXT.AnsageVorlesen = false;         // wants to use speech DENY ALLOW -- nach Änderung eines Spiels EDITn.html
         localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
-        if (navigator.vendor.indexOf("Apple") < 0) {
-            responsiveVoice.OnVoiceReady = function () {
-                responsiveVoice.speak(LS.Ansage, 'Deutsch Female');
-            };
-        } else if ('speechSynthesis' in window) {
+        if ('speechSynthesis' in window) {
             var hAnsage = new SpeechSynthesisUtterance(LS.Ansage);
             hAnsage.lang = "de-DE";
             window.speechSynthesis.speak(hAnsage);

@@ -62,17 +62,6 @@ th.rotate > div {
     .cFotoM:hover {width:100%;height:auto;float:left;}
 }
 
-/* === Fotos ================================================================ */
-
-.ui-icon-foto:after {
-    background-image: url("../Icons/icon-foto.png");
-    background-size: 22px 22px;
-}
-.ui-icon-sieger:after {
-    background-image: url("../Icons/icon-sieger.png");
-    background-size: 18px 18px;
-}
-
 @media print {
     #dPrint {width:100% !important;}
     #mTable {font-size: 2.4vw !important;}

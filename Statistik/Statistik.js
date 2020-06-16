@@ -658,14 +658,11 @@ $(document).ready(function () {
         hx = $(window).innerWidth() / 10;
     }
     jbSpieler = new jBox('Modal', {
-        title: '<div class=M style="white-space:nowrap;background-color:#27a;color: white;">'
+        title: '<div class=S style="white-space:nowrap;background-color:#27a;color: white;">'
                 + '&nbsp;&nbsp;<i class="i zmdi-account iL"></i>&nbsp;&nbsp;'
                 + '<span id=jbSpielerTitel></span>'
                 + '</div>',
-        content: '<div onclick="jbSpieler.close();"><div id=jbSpielerContent></div><div id=jbSpielerHelp hidden>'
-                + (QUERFORMAT() ? 'Die Cuppunkte ergeben sich aus der Summe<br>der sechs besten Ergebnisse plus dem Finale.'
-                        : 'Zur Berechnung der Cuppunkte<br>werden die sieben besten<br>Ergebnisse verwendet.')
-                + '</div></div>',
+        content: '<div onclick="jbSpieler.close();"><div id=jbSpielerContent></div></div>',
         position: {x: hx, y: hy},
         closeButton: 'box',
         closeOnEsc: true,

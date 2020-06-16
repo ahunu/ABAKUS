@@ -228,8 +228,8 @@ function getSpieler(pSpieler, pSaison) {
         nWertungen = parseInt((nWertungen + 1) / 2);
     }
 
-    var html = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
-            + "<tr class='bGrau M'>"
+    var html = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='table ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
+            + "<tr class='bGrau'>"
             + "<th class=TR>#&nbsp;</th>"
             + "<th>&nbsp;Turnier&nbsp;</th>";
     if (CUPS.TYP[stCup] !== 'MT') {
@@ -241,7 +241,7 @@ function getSpieler(pSpieler, pSaison) {
                 + "<th class=TR>R2&nbsp;</th>"
                 + "<th class=TR>R3&nbsp;</th>";
     }
-    html += "</tr></thead><tbody class=M>";
+    html += "</tr></thead><tbody>";
 
     var position = '';
     var positionen = '';
@@ -274,13 +274,9 @@ function getSpieler(pSpieler, pSaison) {
             positionen = '<tr class=bGrau>'
                     + '<td></td>'
                     + '<th class=TC>Gesamt</th>'
-                    + '<th class="TR" nowrap>' + cuppunkte + '&nbsp;</th>';
-            if (QUERFORMAT()) {
-                positionen += '<th class="TC" colspan="4">Cuppunkte&nbsp;&nbsp;<i onclick="event.stopPropagation();$(\'#jbSpielerHelp\').toggle();" class="i zmdi-info P"></i></th>';
-            } else {
-                positionen += '<th></th>';
-            }
-            positionen += '</tr>';
+                    + '<th class="TR" nowrap>' + cuppunkte + '&nbsp;</th>'
+                    + '<th colspan="4">&nbsp;&nbsp;Cuppunkte</th>'
+                    + '</tr>';
         }
     }
 
@@ -291,24 +287,13 @@ function getSpieler(pSpieler, pSaison) {
             if (STAT[iTurnier][pSpieler]) {
                 nTurniere++;
                 tName = STAT[iTurnier]._NAME;
-                if (QUERFORMAT()) {
-                    if (tName.length > 28) {
-                        if (tName[28] === ' ') {
-                            tName = tName.substr(0, 27);
-                        } else {
-                            tName = tName.substr(0, 27) + '.';
-                        }
-                    }
-                } else {
-                    if (tName.length > 20) {
-                        if (tName[20] === ' ') {
-                            tName = tName.substr(0, 19);
-                        } else {
-                            tName = tName.substr(0, 19) + '.';
-                        }
+                if (tName.length > 16) {
+                    if (tName[16] === ' ') {
+                        tName = tName.substr(0, 15);
+                    } else {
+                        tName = tName.substr(0, 15) + '.';
                     }
                 }
-
                 position = '<tr>'
                         + '<td class="TR" nowrap>&nbsp;' + STAT[iTurnier][pSpieler][0] + '.</td>'
                         + '<td nowrap>&nbsp;' + tName + '</td>';
@@ -321,13 +306,11 @@ function getSpieler(pSpieler, pSaison) {
                         position += '<td class="TR" nowrap><span class=LT>' + getHeinePunkte(iTurnier, pSpieler) + '</span>&nbsp;</td>';
                     }
                 }
-                position += '<th class="TR" nowrap>' + STAT[iTurnier][pSpieler][4] + '&nbsp;</th>';
-                if (QUERFORMAT()) {
-                    position += '<td class="TR" nowrap>' + STAT[iTurnier][pSpieler][1] + '&nbsp;</td>'
-                            + '<td class="TR" nowrap>' + STAT[iTurnier][pSpieler][2] + '&nbsp;</td>'
-                            + '<td class="TR" nowrap>' + STAT[iTurnier][pSpieler][3] + '&nbsp;</td>';
-                }
-                position += '</tr>';
+                position += '<th class="TR" nowrap>' + STAT[iTurnier][pSpieler][4] + '&nbsp;</th>'
+                        + '<td class="TR" nowrap>' + STAT[iTurnier][pSpieler][1] + '&nbsp;</td>'
+                        + '<td class="TR" nowrap>' + STAT[iTurnier][pSpieler][2] + '&nbsp;</td>'
+                        + '<td class="TR" nowrap>' + STAT[iTurnier][pSpieler][3] + '&nbsp;</td>'
+                        + '</tr>';
                 positionen = position + positionen;
             }
         }
@@ -347,7 +330,7 @@ function popupSpieler(pSpieler, pSaison) {
         }
     }
     var html = "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='ui-body-d ui-shadow ui-responsive table-stripe' data-column-btn-text=''><thead>"
-            + "<tr class='bGrau S3'>"
+            + "<tr class='bGrau'>"
             + "<th class=TR>#&nbsp;</th>"
             + "<th>&nbsp;Turnier&nbsp;</th>";
     if (CUPS.TYP[stCup] !== 'MT') {
@@ -359,9 +342,7 @@ function popupSpieler(pSpieler, pSaison) {
                 + "<th class=TR>R2&nbsp;</th>"
                 + "<th class=TR>R3&nbsp;</th>";
     }
-    html += "</tr></thead><tbody class=XL>";
-
-    $('#jbSpielerHelp').hide();
+    html += "</tr></thead><tbody>";
 
     var position = '';
     var positionen = '';
@@ -400,13 +381,9 @@ function popupSpieler(pSpieler, pSaison) {
             positionen = '<tr class=bGrau>'
                     + '<td></td>'
                     + '<th class=TC>Gesamt</th>'
-                    + '<th class="TR" nowrap>' + cuppunkte + '&nbsp;</th>';
-            if (QUERFORMAT()) {
-                positionen += '<th class="TC" colspan="4">Cuppunkte&nbsp;&nbsp;<i onclick="event.stopPropagation();$(\'#jbSpielerHelp\').toggle();" class="i zmdi-info P"></i></th>';
-            } else {
-                positionen += '<th></th>';
-            }
-            positionen += '</tr>';
+                    + '<th class="TR" nowrap>' + cuppunkte + '&nbsp;</th>'
+                    + '<th></th>'
+                    + '</tr>';
         }
     }
     var tName = '';
@@ -416,24 +393,13 @@ function popupSpieler(pSpieler, pSaison) {
             if (STAT[iTurnier][pSpieler]) {
                 nTurniere++;
                 tName = STAT[iTurnier]._NAME;
-                if (QUERFORMAT()) {
-                    if (tName.length > 28) {
-                        if (tName[28] === ' ') {
-                            tName = tName.substr(0, 27);
-                        } else {
-                            tName = tName.substr(0, 27) + '.';
-                        }
-                    }
-                } else {
-                    if (tName.length > 20) {
-                        if (tName[20] === ' ') {
-                            tName = tName.substr(0, 19);
-                        } else {
-                            tName = tName.substr(0, 19) + '.';
-                        }
+                if (tName.length > 16) {
+                    if (tName[16] === ' ') {
+                        tName = tName.substr(0, 15);
+                    } else {
+                        tName = tName.substr(0, 15) + '.';
                     }
                 }
-
                 position = '<tr>'
                         + '<td class="TR" nowrap>&nbsp;' + STAT[iTurnier][pSpieler][0] + '.</td>'
                         + '<td nowrap>&nbsp;' + tName + '</td>';

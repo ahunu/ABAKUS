@@ -50,12 +50,6 @@ function NSBuchen(pGame, pPunkte, pS) {
         } else if (hVNameS === 'Franz') {
             hVNameS = 'Frahntz';
         }
-        var hVNameP = LS.VName[pP];
-        if (hVNameP === 'Leo') {
-            hVNameP = 'Leho';
-        } else if (hVNameP === 'Franz') {
-            hVNameP = 'Frahntz';
-        }
 
         if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] === 4) {
             LS.Ansage = "Drei mal " + hPunkte + hFuerBei + hVNameS + "!";

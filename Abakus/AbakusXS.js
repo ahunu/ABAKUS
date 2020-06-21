@@ -46,15 +46,15 @@ function NSBuchen(pGame, pPunkte, pS) {
         negKontra[LS.INA2] = 0;
         var hVNameS = LS.VName[pS];
         if (hVNameS === 'Leo') {
-            hVNameS = 'Leoh';
+            hVNameS = 'Leho';
         } else if (hVNameS === 'Franz') {
-            hVNameS = 'Frantz';
+            hVNameS = 'Frahntz';
         }
         var hVNameP = LS.VName[pP];
         if (hVNameP === 'Leo') {
-            hVNameP = 'Leoh';
+            hVNameP = 'Leho';
         } else if (hVNameP === 'Franz') {
-            hVNameP = 'Frantz';
+            hVNameP = 'Frahntz';
         }
 
         if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] === 4) {
@@ -281,15 +281,15 @@ function XSBuchen(pGame, pPunkte, pS, pP, pSakt) {
         }
         var hVNameS = LS.VName[pS];
         if (hVNameS === 'Leo') {
-            hVNameS = 'Leoh';
+            hVNameS = 'Leho';
         } else if (hVNameS === 'Franz') {
-            hVNameS = 'Frantz';
+            hVNameS = 'Frahntz';
         }
         var hVNameP = LS.VName[pP];
         if (hVNameP === 'Leo') {
-            hVNameP = 'Leoh';
+            hVNameP = 'Leho';
         } else if (hVNameP === 'Franz') {
-            hVNameP = 'Frantz';
+            hVNameP = 'Frahntz';
         }
         if (pP === 0 || pP === pS) { // -1 Ohne Partner oder pP = pS Selberrufer
             LS.Ansage = "Drei mal " + hPunkte + hFuerBei + hVNameS + "!";

@@ -44,14 +44,26 @@ function NSBuchen(pGame, pPunkte, pS) {
         H.PUNKTE[LS.INA2] = 0;
         H.PAUSE[LS.INA2] = 1;
         negKontra[LS.INA2] = 0;
+        var hVNameS = LS.VName[pS];
+        if (hVNameS === 'Leo') {
+            hVNameS = 'Leoh';
+        } else if (hVNameS === 'Franz') {
+            hVNameS = 'Frantz';
+        }
+        var hVNameP = LS.VName[pP];
+        if (hVNameP === 'Leo') {
+            hVNameP = 'Leoh';
+        } else if (hVNameP === 'Franz') {
+            hVNameP = 'Frantz';
+        }
 
         if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] === 4) {
-            LS.Ansage = "Drei mal " + hPunkte + hFuerBei + LS.VName[pS] + "!";
+            LS.Ansage = "Drei mal " + hPunkte + hFuerBei + hVNameS + "!";
             H.PUNKTE[pS] = H.PUNKTE[pS] * -3;
         } else {
             var nCount = 0;
             H.PUNKTE[pS] = 0;
-            LS.Ansage = hFuerBei + LS.VName[pS] + " gibt es ";
+            LS.Ansage = hFuerBei + hVNameS + " gibt es ";
             for (var i = 1; i < 6; i++) {
                 if (i !== pS && negKontra[i] !== 0) {
                     nCount++;
@@ -267,11 +279,23 @@ function XSBuchen(pGame, pPunkte, pS, pP, pSakt) {
         } else {
             hFuerBei = ' für ';
         }
+        var hVNameS = LS.VName[pS];
+        if (hVNameS === 'Leo') {
+            hVNameS = 'Leoh';
+        } else if (hVNameS === 'Franz') {
+            hVNameS = 'Frantz';
+        }
+        var hVNameP = LS.VName[pP];
+        if (hVNameP === 'Leo') {
+            hVNameP = 'Leoh';
+        } else if (hVNameP === 'Franz') {
+            hVNameP = 'Frantz';
+        }
         if (pP === 0 || pP === pS) { // -1 Ohne Partner oder pP = pS Selberrufer
-            LS.Ansage = "Drei mal " + hPunkte + hFuerBei + LS.VName[pS] + "!";
+            LS.Ansage = "Drei mal " + hPunkte + hFuerBei + hVNameS + "!";
             H.PUNKTE[pS] = H.PUNKTE[pS] * -3;
         } else {
-            LS.Ansage = hFuerBei + LS.VName[pS] + " und " + LS.VName[pP] + " gibt es jeweils " + hPunkte + '!';
+            LS.Ansage = hFuerBei + hVNameS + " und " + hVNameP + " gibt es jeweils " + hPunkte + '!';
             H.PUNKTE[pS] = H.PUNKTE[pS] * -1;
             H.PUNKTE[pP] = H.PUNKTE[pP] * -1;
         }

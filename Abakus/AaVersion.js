@@ -1,14 +1,18 @@
 
 function getVersion() {
-    return 1057;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1058;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 6, 22);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 6, 29);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
+
+//  Tarock Meisterklasse
+//  Die große Kunst des Lizits
+
 
 //17 alten Cache löschen
 //18 Dynamic Caching     // addEentListener FETCH  #17 verwenden

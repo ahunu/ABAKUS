@@ -2324,7 +2324,7 @@ function showCup(i, pBtn, pTermin) {
                         )
 
                 + (((I === 3 && LS.ME === '3425') || (I === 53 && LS.ME === '4506') || (I === 54 && (LS.ME === '3590' || LS.ME === '6058')) || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425')) && PC
-                        ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'Abakus/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
+                        ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'AdminTools/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
                         : ''
                         )
 

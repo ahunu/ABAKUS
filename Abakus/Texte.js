@@ -332,17 +332,17 @@ function getUrlaubsplaner() {
     return '<span class=M sstyle="text-align:justify">'
 
 
-            + '<p><div class="L" style="margin:0 0 1vh 0">8. bis 12. Juni 2020&nbsp;&nbsp; <b>2. Wiener Tarockmarathon</b></div>'
-            + 'Von Montag bis Freitag wird jeweils ein Turnier veranstaltet.<br>'
-            + 'Beginn jeweils um 17 Uhr.<br>'
-            + 'Veranstaltungsort: Cafe Heine, Heinestraße 39, 1020 Wien gleich beim Praterstern<br>'
-            + 'Veranstalter: Leo Luger 0650 6516522<br>'
-
-            + '<p><div class="L" style="margin:0 0 1vh 0">21. bis 28. Juni 2020&nbsp;&nbsp; <b>Urlaub am Klopeinersee</b></div>'
-            + 'Montag Mittwoch und Freitag wird jeweils ein Turnier veranstaltet.<br>'
-            + 'Näheres erfährt ihr vor Ort.<br>'
-            + 'Veranstaltungsort: Hotel Marolt, Am See V/2, 9122 St. Kanzian<br>'
-            + 'Veranstalter: Johann König Tel. 0699 11111665<br>'
+//            + '<p><div class="L" style="margin:0 0 1vh 0">8. bis 12. Juni 2020&nbsp;&nbsp; <b>2. Wiener Tarockmarathon</b></div>'
+//            + 'Von Montag bis Freitag wird jeweils ein Turnier veranstaltet.<br>'
+//            + 'Beginn jeweils um 17 Uhr.<br>'
+//            + 'Veranstaltungsort: Cafe Heine, Heinestraße 39, 1020 Wien gleich beim Praterstern<br>'
+//            + 'Veranstalter: Leo Luger 0650 6516522<br>'
+//
+//            + '<p><div class="L" style="margin:0 0 1vh 0">21. bis 28. Juni 2020&nbsp;&nbsp; <b>Urlaub am Klopeinersee</b></div>'
+//            + 'Montag Mittwoch und Freitag wird jeweils ein Turnier veranstaltet.<br>'
+//            + 'Näheres erfährt ihr vor Ort.<br>'
+//            + 'Veranstaltungsort: Hotel Marolt, Am See V/2, 9122 St. Kanzian<br>'
+//            + 'Veranstalter: Johann König Tel. 0699 11111665<br>'
 
             + '<p><div class="L" style="margin:0 0 1vh 0">22. und 23. Aug. 2020&nbsp;&nbsp; <b>Uhudler Marathon</b></div>'
             + 'Veranstaltungsort: Gasthof&nbsp;Baier, 7400&nbsp;Drumling<br>'

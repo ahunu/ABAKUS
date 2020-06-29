@@ -17,17 +17,23 @@ function showHeinewertung() {
         $(lastBtn).addClass('ui-btn-active');
     }
 
+    var tWertung = '';
+
     stNamenLen = 0.3;
     if (CUPS.TYP[stCup] === 'CUP') {
         writeCanvas(stStat + '  ' + stSaison);
         if (stCup === 53) { // Sauwaldcup
+            tWertung = 'Heine';
             writeCanvas('Heinewertung  ' + stSaison);
         } else if (stCup < 50 || stCup > 60 || stSaison >= '2020') { // Heinewertung ist Cupwertung
+            tWertung = 'Cup';
             writeCanvas('Cupwertung  ' + stSaison);
         } else { // Fixpunktewertung ist Cupwertung
+            tWertung = 'Heine';
             writeCanvas('Heinewertung  ' + stSaison);
         }
     } else {
+        tWertung = 'Gesamt';
         writeCanvas('Gesamtwertung');
     }
 
@@ -36,6 +42,9 @@ function showHeinewertung() {
     } else {
         var nWertungen = SAISON[iSaison][isAnzTurniere];
     }
+    var tGerundet = '';
+    if (nWertungen % 2)
+        tGerundet = ' gerundet';
 
     if (nWertungen > 10) {
         nWertungen = parseInt(nWertungen / 2);
@@ -275,10 +284,10 @@ function showHeinewertung() {
 //            + 'Um statistischen Verzerrungen wegen unterschiedlich großer Teilnehmerzahlen und unterschiedlich hoher Turniersiege vorzubeugen,&nbsp; '
 //            + 'werden bei der Heinewertung anstatt der vom Rang abhängigen Fixpunkte die von den tatsächlich erzielten Punkten errechneten Heinepunkte verwendet.&nbsp; '
 //            + '<br><br>'
-            + '<b>Berechnung der Heinepunkte:</b><br>'
+            + '<b>Berechnung der ' + tWertung + 'punkte:</b><br>'
             + 'Bis 100 Punkten werden die tatsächlich erreichten Punkte voll angerechnet.&nbsp; '
-            + 'Ab 100 Punkten zählt nur jeder zweite Punkt.&nbsp; Es werden maximal 200 Heinepunkte vergeben.&nbsp; Minuspunkte werden nicht gewertet.&nbsp; '
-            + 'Von ' + (iSaison === 1 ? stAktTurniere : nTurniere) + ' Turnieren ' + (iSaison === 1 ? 'werden' : 'wurden') + ' die ' + nWertungen + ' besten Ergebnisse (50%) gewertet. '
+            + 'Ab 100 Punkten zählt nur jeder zweite Punkt.&nbsp; Es werden maximal 200 ' + tWertung + 'punkte vergeben.&nbsp; Minuspunkte werden nicht gewertet.&nbsp; '
+            + 'Von ' + (iSaison === 1 ? stAktTurniere : nTurniere) + ' Turnieren ' + (iSaison === 1 ? 'werden' : 'wurden') + ' die ' + nWertungen + ' besten Ergebnisse (50%' + tGerundet + ') gewertet. '
             + '<br><br></div>';
 
     if (QUERFORMAT()) {

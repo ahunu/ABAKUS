@@ -70,10 +70,18 @@ function initSAISON(pFilter, pShowSaison) {
         if (STAT[SORT[i]]._SAISON !== stSaison) {
             iSaison++;
             stSaison = STAT[SORT[i]]._SAISON;
-            bereSaison();
+            if (stCup === 50  // HRC
+                    || stCup === 52 // RTC
+                    || stCup === 53 // SWC
+                    || stCup === 54 && stSaison <= '2020/21' // STC
+                    || stCup === 55 // TTC
+                    || stCup === 56 && stSaison <= '2020/21') { // WTC
+                bereSaisonFIX();
+            } else {
+                bereSaisonHEINE();
+            }
         }
     }
-
 
     if (SAISON[1]) {
         stAktTurniere = SAISON[1][isAnzTurniere];
@@ -98,7 +106,7 @@ function initSAISON(pFilter, pShowSaison) {
             }
         }
     }
-
+    
     if (iSaison === 0) {
         $('#nbSaison,#nbArchiv').addClass('ui-disabled');
     } else {
@@ -138,7 +146,198 @@ function initSAISON(pFilter, pShowSaison) {
     }
 }
 
-function bereSaison() {
+function bereSaisonHEINE() {
+
+    SAISON[iSaison] = [stSaison, '', '', '', 0, 0, 0, 0, 0, 0, false];
+
+    stFinale = false;
+    stEndstand = false;
+
+    for (var turnier in STAT) {
+        if (turnier[0] === '2') {
+            if (STAT[turnier]._SAISON === stSaison) {
+                if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
+                    SAISON[iSaison][isAnzTurniere]++;
+                    if (STAT[turnier]._NAME.toUpperCase().indexOf('FINAL') >= 0) {
+                        SAISON[iSaison][isFinale] = turnier;
+                        if (STAT._AKTTURNIER && STAT._AKTTURNIER._TURNIER !== turnier) {
+                            stEndstand = false;
+                        } else {
+                            stEndstand = true;
+                        }
+                        stFinale = turnier;
+                    } else if (iSaison > 1) {
+                        SAISON[iSaison][isFinale] = turnier;
+                    }
+                }
+            }
+        }
+    }
+
+    var CUP = {};
+    var hCupPunkte = 0;
+    for (var turnier in STAT) {
+        if (turnier[0] === '2') {
+            if (STAT[turnier]._SAISON === stSaison) {
+                if (!stFilter || STAT[turnier]._NAME.toUpperCase().indexOf(stFilter) >= 0) {
+                    for (var spieler in STAT[turnier]) {
+                        if (spieler[0] !== '_') {
+
+                            SAISON[iSaison][isAnzTeilnahmen]++;
+
+                            if (CUP[spieler]) {
+                                aSP = CUP[spieler];
+                                if (STAT[turnier][spieler][0] === 1) {
+                                    aSP[1]++;
+                                } else if (STAT[turnier][spieler][0] === 2) {
+                                    aSP[2]++;
+                                } else if (STAT[turnier][spieler][0] === 3) {
+                                    aSP[3]++;
+                                }
+                                aSP[4]++;
+
+                                if (aSP[6] > STAT[turnier][spieler][0]) {
+                                    aSP[6] = STAT[turnier][spieler][0];  // Beste Platzierung
+                                }
+                                aSP[7] += STAT[turnier][spieler][0]; // Durch. Platzierung
+                                aSP[8] += STAT[turnier][spieler][4]; // Punkte
+
+                                hCupPunkte = getHeinePunkte(turnier, spieler);
+                                if (getHeinePunkte(turnier, spieler) === '-') {
+                                    aSP[5].push(hCupPunkte);
+                                } else {
+                                    ii = aSP[5].length;
+                                    for (var i = 0; i < aSP[5].length; i++) {
+                                        if (aSP[5][i] === '-'
+                                                || aSP[5][i] <= hCupPunkte) {
+                                            ii = i;
+                                            break;
+                                        }
+                                    }
+                                    aSP[5].splice(ii, 0, hCupPunkte);
+                                }
+
+                                CUP[spieler] = aSP;
+                            } else {
+                                SAISON[iSaison][isAnzTeilnehmer]++;
+                                aSP = [0, 0, 0, 0, 1, [], STAT[turnier][spieler][0], STAT[turnier][spieler][0], STAT[turnier][spieler][4]];
+                                if (STAT[turnier][spieler][0] === 1) {
+                                    aSP[1]++;
+                                } else if (STAT[turnier][spieler][0] === 2) {
+                                    aSP[2]++;
+                                } else if (STAT[turnier][spieler][0] === 3) {
+                                    aSP[3]++;
+                                }
+
+                                aSP[5] = [getHeinePunkte(turnier, spieler)];
+
+                                CUP[spieler] = aSP;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    var nWertungen = SAISON[iSaison][isAnzTurniere];
+
+    if (nWertungen > 10) {
+        nWertungen = parseInt(nWertungen / 2);
+    } else {
+        nWertungen = parseInt((nWertungen + 1) / 2);
+    }
+
+    var CUPD = [];
+    var spieler = '';
+    for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
+
+        aSP = CUP[spieler];
+        for (var i in aSP[5]) {
+            if (i < nWertungen) {
+                if (!isNaN(aSP[5][i])) {
+                    aSP[0] += aSP[5][i];
+                }
+            } else {
+                break;
+            }
+        }
+
+        if (stFinale || iSaison > 1) {
+            if (aSP[0] > SAISON[iSaison][is3CupPunkte]) {
+                if (aSP[0] > SAISON[iSaison][is2CupPunkte]) {
+                    if (aSP[0] > SAISON[iSaison][is1CupPunkte]) {
+                        SAISON[iSaison][is3] = SAISON[iSaison][is2];
+                        SAISON[iSaison][is3CupPunkte] = SAISON[iSaison][is2CupPunkte];
+                        SAISON[iSaison][is2] = SAISON[iSaison][is1];
+                        SAISON[iSaison][is2CupPunkte] = SAISON[iSaison][is1CupPunkte];
+                        SAISON[iSaison][is1] = spieler;
+                        SAISON[iSaison][is1CupPunkte] = aSP[0];
+                    } else {
+                        SAISON[iSaison][is3] = SAISON[iSaison][is2];
+                        SAISON[iSaison][is3CupPunkte] = SAISON[iSaison][is2CupPunkte];
+                        SAISON[iSaison][is2] = spieler;
+                        SAISON[iSaison][is2CupPunkte] = aSP[0];
+                    }
+                } else {
+                    SAISON[iSaison][is3] = spieler;
+                    SAISON[iSaison][is3CupPunkte] = aSP[0];
+                }
+            }
+        }
+
+        if (!SP[spieler]) {
+            SP[spieler] = [[999]];
+        }
+
+        SP[spieler][iSaison] = [0, aSP[0], aSP[4], aSP[6], aSP[7], aSP[8]];
+        if (aSP[6] < 4) {
+            SP[spieler][iSaison][3] = aSP[1] + '-' + aSP[2] + '-' + aSP[3];
+        }
+
+        CUPD.push((9000 - aSP[0]) + 'FP:0000' + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+    }
+
+    CUPD.sort();
+
+    var hPlatz = 0;
+    var hLastKey = '';
+    for (var ii = 0; ii < CUPD.length; ii++) {
+        var spieler = CUPD[ii].substring((CUPD[ii].lastIndexOf(';') + 1));
+        if (hLastKey !== CUPD[ii].substr(0, 11)) {
+            hLastKey = CUPD[ii].substr(0, 11);
+            hPlatz = ii + 1;
+        }
+        SP[spieler][iSaison][0] = hPlatz;
+
+        if (stFinale || iSaison > 1) {
+            if (SP[spieler][0][sp0BestePlatz] > hPlatz) {
+                SP[spieler][0][sp0BestePlatz] = hPlatz;
+            }
+            if (hPlatz === 1) {
+                if (SP[spieler][0][sp0Cupsiege]) {
+                    SP[spieler][0][sp0Cupsiege] = SP[spieler][0][sp0Cupsiege] + 1;
+                } else {
+                    SP[spieler][0][sp0Cupsiege] = 1;
+                }
+            } else if (hPlatz === 2) {
+                if (SP[spieler][0][sp0Cup2ter]) {
+                    SP[spieler][0][sp0Cup2ter] = SP[spieler][0][sp0Cup2ter] + 1;
+                } else {
+                    SP[spieler][0][sp0Cup2ter] = 1;
+                }
+            } else if (hPlatz === 3) {
+                if (SP[spieler][0][sp0Cup3ter]) {
+                    SP[spieler][0][sp0Cup3ter] = SP[spieler][0][sp0Cup3ter] + 1;
+                } else {
+                    SP[spieler][0][sp0Cup3ter] = 1;
+                }
+            }
+        }
+    }
+}
+
+function bereSaisonFIX() {
 
     SAISON[iSaison] = [stSaison, '', '', '', 0, 0, 0, 0, 0, 0, false];
 
@@ -164,9 +363,7 @@ function bereSaison() {
                         } else {
                             stEndstand = true;
                         }
-//                        if (CUPS.TURNIER[stCup] % 1) {
                         stFinale = turnier;
-//                        }
                     } else if (iSaison > 1) {
                         SAISON[iSaison][isFinale] = turnier;
                     }

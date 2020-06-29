@@ -105,7 +105,7 @@ function showTischliste() {
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
                 + "<td class=TC>" + (stCup === 56 ? "" : "") + "</td>"
-                + "<td class=TR>tarock.firebaseapp.com?" + (stCup === 56 ? 'Wr.' : 'St.') + "Tarockcup&nbsp;</td>"
+                + "<td class=TR>tarock.web.app?" + (stCup === 56 ? 'Wr.' : 'St.') + "Tarockcup&nbsp;</td>"
                 + "</tr></tbody></table><br>");
         if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
             $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});

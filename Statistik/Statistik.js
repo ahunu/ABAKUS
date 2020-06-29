@@ -404,7 +404,7 @@ function turnierPruefenSpeichern(pSpeichern) {
                                 showChronik(stStat);
                             })
                             .catch(function (error) {
-                                showEineDBWarnung(error, 'writeAnekdote()');
+                                showEineDBWarnung(error, 'writeAnekdote1()');
                             });
                 } else {
                     hideEinenMoment();
@@ -412,7 +412,7 @@ function turnierPruefenSpeichern(pSpeichern) {
                 }
             })
             .catch(function (e) {
-                showEineDBWarnung(e, 'writeAnekdote()');
+                showEineDBWarnung(e, 'writeAnekdote2()');
             });
 
 }

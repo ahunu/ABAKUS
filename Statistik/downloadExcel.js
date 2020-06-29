@@ -7,7 +7,7 @@ function downloadExcel() {
     var fName = null;
     var blob = '';
 
-    var hCup = '';
+    var hCup = 'UTC';
     if (stCup === 50)
         hCup = 'HRC';
     else if (stCup === 51)

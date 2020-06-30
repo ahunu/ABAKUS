@@ -1,18 +1,27 @@
 
 function getVersion() {
-    return 1058;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1059;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 6, 29);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 6, 30);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
 //  Tarock Meisterklasse
 //  Die große Kunst des Lizits
 
+
+//  Lesen Sie vor dem Auftragen die Anweisungen:
+//        1. Entfernen Sie Schmutz oder Fett von der Oberfläche und waschen Sie Ihre Hände.
+//        2. Ziehen Sie den Aufkleber vorsichtig vom Blatt ab und kleben Sie ihn mit leichtem Druck auf.
+//           Auf diese Weise können Sie den Aufkleber bei Bedarf neu positionieren.
+//           Halten Sie den Aufkleber an den Rändern und vermeiden Sie es, die klebrige Seite des Aufklebers zu berühren.
+//        3. Wenn Sie richtig positioniert sind, nehmen Sie einen sauberen Lappen und üben Sie Druck von der Innenseite
+//           des Aufklebers nach außen aus. Entfernen Sie mit dem Lappen den Kleber, der an den Kanten des Aufklebers austritt.
+//        4. Warten Sie 24 Stunden, bis der Kleber haftet. Der Aufkleber wird dann dauerhaft in Position gebracht.
 
 //17 alten Cache löschen
 //18 Dynamic Caching     // addEentListener FETCH  #17 verwenden

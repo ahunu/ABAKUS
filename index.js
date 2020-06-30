@@ -2710,6 +2710,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
             } else {
                 var hStartStopClass = ' ui-disabled';
             }
+
             if (LS.I !== pCup || !LS.TURRUNDE) {
                 hStartStopText = 'Turnier starten<div class="S N">Turnier starten und beenden</div>';
             } else if (LS.I === pCup) {
@@ -3422,6 +3423,16 @@ $(document).ready(function () {
     }
 
     LS.LastDate = new Date().getTime();
+
+
+
+//    LS.I = 8;  LLLL
+//    LS.TURRUNDE = 1;
+//    LS.TURADMIN = '3425';
+
+
+
+
 
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 

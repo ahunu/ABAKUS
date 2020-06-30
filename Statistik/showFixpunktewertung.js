@@ -120,7 +120,6 @@ function showFixpunktewertung() {
             + (QUERFORMAT() ? "<th class=TC>TN</th><th class=TC nowrap>1. 2. 3.</th>" + (iSaison === 1 && stCup >= 50 && stCup <= 60 ? "<th class=TR>&Ouml;F&nbsp;</th>" : "") : "")
             + "</tr></thead><tbody id=tbody>"
             + (!QUERFORMAT() ? "<tr id='rFilter'><td colspan='" + (stFinale ? 9 : 8) + "'><input class='N S2' id='iFilter' placeholder='Nachname, Vorname, ...'></td>"
-//                    + "<td class=TC><i onclick='$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-delete'></i></td></tr>" : "");
                     + "<td class=TC><i id='icFilter' onclick='$(this).addClass(\"ui-disabled\");$(\"#iFilter\").val(\"\").blur();$(\"#tbody\").find(\"tr\").show();' class='i zmdi-plus-bold zmdi-hc-rotate-45 ui-disabled'></i></td></tr>" : "");
 
     var nSpieler = 0;
@@ -172,20 +171,11 @@ function showFixpunktewertung() {
                 }
             }
         }
-//        html += '<th class="TR">' + SP[spieler][iSaison][spCuppunkte] + '&nbsp;</th>';
         html += '<th class="TR">' + hCuppunkte + '&nbsp;</th>';
         if (stFinale) {
             html += "<td class='TR'>" + getFixPunkte(stFinale, spieler) + "&nbsp;</td>";
         }
         if (CUP[spieler]) {
-//            for (var i = 0; i < parseInt(CUPS.TURNIER[stCup]); i++) {
-//                if (i < CUP[spieler].lenght) {
-//                    html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
-//                } else {
-//                    html += '<td class="TR"></td>';
-//                }
-//            }
-
             for (i = 0; i < parseInt(CUPS.TURNIER[stCup]) && i < CUP[spieler].length; i++) {
                 html += '<td class="TR">' + CUP[spieler][i] + '&nbsp;</td>';
             }
@@ -195,10 +185,8 @@ function showFixpunktewertung() {
         }
 
         if (QUERFORMAT()) {
-
             html += '<td class="TR">' + SP[spieler][iSaison][spTeilnahmen] + '&nbsp;</td>';
             html += '<td class="TC" nowrap>' + SP[spieler][iSaison][spBestePlatz] + '</td>';
-
             if (iSaison === 1 && stCup >= 50 && stCup <= 60) {
                 if (hPlatz < tOF.length) {
                     html += '<td class="R" nowrap>' + tOF[hPlatz] + '&nbsp;</td>';

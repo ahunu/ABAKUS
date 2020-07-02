@@ -96,15 +96,20 @@ function skipEinenMoment(pSkip) {
 }
 
 function showEinenMoment2(pID, pSkip) {
+    pSkip = true;
     if (myJBox) {
         if (myJBox.isOpen && myJBox.id === pID) {
             if (navigator.onLine || pSkip) {
-                $('#emText2').append('<br><span class="L" >Langsame Verbindung...</span>');
+                $('#emText2').append('<br><span class="L" style="color: DarkGoldenRod;">Langsame Verbindung<br>oder Speicherfehler...</span>');
                 setTimeout(function () {
                     showEinenMoment3(pID, pSkip);
-                }, 20000);
+                }, 30000);
             } else {
-                showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
+                if (navigator.onLine) {
+                    showEinenFehler('Speicherfehler!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                } else {
+                    showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
+                }
             }
         }
     }
@@ -114,12 +119,16 @@ function showEinenMoment3(pID, pSkip) {
     if (myJBox) {
         if (myJBox.isOpen && myJBox.id === pID) {
             if (navigator.onLine || pSkip) {
-                $('#emText2').append('<br><span id=emText2 class="L" style="color: DarkGoldenRod;">Sehr langsame Verbindung!</span>');
+                $('#emText2').append('<br><span class="L" style="color: OrangeRed;">Noch zwei Minuten!</span>');
                 setTimeout(function () {
                     showEinenMoment4(pID, pSkip);
-                }, 30000); // 1 min = 60000
+                }, 50000); // 1 min = 60000
             } else {
-                showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
+                if (navigator.onLine) {
+                    showEinenFehler('Speicherfehler!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                } else {
+                    showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
+                }
             }
         }
     }
@@ -129,12 +138,16 @@ function showEinenMoment4(pID, pSkip) {
     if (myJBox) {
         if (myJBox.isOpen && myJBox.id === pID) {
             if (navigator.onLine || pSkip) {
-                $('#emText2').append('<br><span id=emText2 class="L" style="color: OrangeRed;">Noch zwei Minuten!</span>');
+                $('#emText2').append('<br><span class="L" style="color: FireBrick;">Noch eine Minute!</span>');
                 setTimeout(function () {
                     showEinenMoment5(pID, pSkip);
-                }, 30000); // 1 min = 60000
+                }, 50000); // 1 min = 60000
             } else {
-                showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
+                if (navigator.onLine) {
+                    showEinenFehler('Speicherfehler!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                } else {
+                    showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
+                }
             }
         }
     }
@@ -143,22 +156,11 @@ function showEinenMoment4(pID, pSkip) {
 function showEinenMoment5(pID, pSkip) {
     if (myJBox) {
         if (myJBox.isOpen && myJBox.id === pID) {
-            if (navigator.onLine || pSkip) {
-                $('#emText2').append('<br><span id=emText2 class="L" style="color: FireBrick;">Noch eine Minute!</span>');
-                setTimeout(function () {
-                    showEinenMoment6(pID, pSkip);
-                }, 60000);
+            if (!navigator.onLine) {
+                showEinenFehler('Speicherfehler!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
             } else {
                 showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
             }
-        }
-    }
-}
-
-function showEinenMoment6(pID) {
-    if (myJBox) {
-        if (myJBox.isOpen && myJBox.id === pID) {
-            showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
         }
     }
 }

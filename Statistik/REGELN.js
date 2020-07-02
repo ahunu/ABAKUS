@@ -121,7 +121,7 @@ function REGELN(pCup) {
                 + '<br>'
                 + '</div>';
 
-    } else if (pCup === 53) { // Sauwaldcup
+    } else if (pCup === 53 || pCup === 34) { // Sauwaldcup / Sauwald Mannschaftsturniere
         return '<div class="J">'
                 + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTablePadding + '">'
                 + '<div class="ui-block-a" style="width:' + hTableWidth + '%;">'

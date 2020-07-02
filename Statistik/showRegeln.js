@@ -223,7 +223,7 @@ function showRegeln() {
             + '<br>'
             + '</div>';
 
-    if (stCup === 53 || stCup === 55) {
+    if (stCup === 53 || stCup === 55 || stCup === 34) {
         html = REGELN(stCup);
     }
 

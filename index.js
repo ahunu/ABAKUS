@@ -3387,7 +3387,7 @@ $(document).ready(function () {
     if (LS.VIC.length === 0) {
         $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
     } else if (!LS.VIC[0]) {
-        $('#tEinstellungen').html('&nbsp;&nbsp;Du hast den dir wichtigsten<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
+        $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
     }
 
     if (new Date().getTime() > LS.LastDate + 60000 * 60 * 12) { // + 6 Stunden Differenz
@@ -3423,16 +3423,6 @@ $(document).ready(function () {
     }
 
     LS.LastDate = new Date().getTime();
-
-
-
-//    LS.I = 8;  LLLL
-//    LS.TURRUNDE = 1;
-//    LS.TURADMIN = '3425';
-
-
-
-
 
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 
@@ -3513,7 +3503,7 @@ if (window.navigator.userAgent.indexOf("Chrome") === -1) {
             if (LS.VIC.length === 0) {
                 $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
             } else if (!LS.VIC[0]) {
-                $('#tEinstellungen').html('&nbsp;&nbsp;Du hast den dir wichtigsten<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
+                $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
             } else {
                 $('#tEinstellungen').remove();
             }

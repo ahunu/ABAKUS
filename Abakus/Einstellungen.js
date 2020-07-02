@@ -29,7 +29,7 @@ $(document).bind('pageinit', function () {
         };
     }
     document.onselectstart = function () {
-//        return false;
+        return false;
     };
     $("#iFotoAnimieren").prop("checked", LS.FotoAnimieren).checkboxradio("refresh");
     $("#iShowSpielerNr").prop("checked", LS.ShowSpielerNr).checkboxradio("refresh");

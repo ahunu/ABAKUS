@@ -98,9 +98,9 @@ function QUERFORMAT() {
 function AnAbmelden(pAnmelden) {
     mAnmelden = pAnmelden;
     if (pAnmelden) {
-        loadSTAT(stCup, 'Du wirst angemeldet!', null, AnmeldenExe);
+        loadSTAT(stCup, 'Du wirst angemeldet!', false, AnmeldenExe);
     } else {
-        loadSTAT(stCup, 'Du wirst abgemeldet!', null, AbmeldenExe);
+        loadSTAT(stCup, 'Du wirst abgemeldet!', false, AbmeldenExe);
     }
 }
 
@@ -128,7 +128,7 @@ function AnmeldenExe() {
                             ZULETZTupd: new Date().toISOString()
                         })
                         .then(function () {
-                            hideEinenMoment();
+//                            hideEinenMoment();
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AnmeldenExe()');
@@ -146,7 +146,7 @@ function AbmeldenExe() {
         var hDate = new Date();
         hDate.setYear(2100);
         hANMELDUNG[LS.ME].UM = hDate.toISOString();
-        hANMELDUNG[LS.ME].ANGEMELDET = null;
+        hANMELDUNG[LS.ME].ANGEMELDET = false;
     } else {
         hANMELDUNG[LS.ME] = null;
     }
@@ -158,8 +158,8 @@ function AbmeldenExe() {
                             ZULETZTupd: new Date().toISOString()
                         })
                         .then(function () {
-                            STAT.ANMELDUNGEN[LS.ME].ANGEMELDET = false;
-                            hideEinenMoment();
+//                            STAT.ANMELDUNGEN[LS.ME].ANGEMELDET = false;
+//                            hideEinenMoment();
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AbmeldenExe()');
@@ -192,7 +192,7 @@ function NachrichtSenden() {
         hANMELDUNG[LS.ME].UM = hDate.toISOString();
         hANMELDUNG[LS.ME].NACHRICHT = $('#iNachricht').val().trim();
         if (!hANMELDUNG[LS.ME].NACHRICHT) {
-            hANMELDUNG[LS.ME] = null;
+            hANMELDUNG[LS.ME] = false;
         }
     }
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN')
@@ -203,7 +203,7 @@ function NachrichtSenden() {
                             ZULETZTupd: new Date().toISOString()
                         })
                         .then(function () {
-                            hideEinenMoment();
+//                            hideEinenMoment();
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'NachrichtSenden()');

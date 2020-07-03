@@ -100,13 +100,13 @@ function showEinenMoment2(pID, pSkip) {
     if (myJBox) {
         if (myJBox.isOpen && myJBox.id === pID) {
             if (navigator.onLine || pSkip) {
-                $('#emText2').append('<br><span class="L" style="color: DarkGoldenRod;">Langsame Verbindung<br>oder Speicherfehler...</span>');
+                $('#emText2').append('<br><span class="L" style="color: DarkGoldenRod;">Langsame Verbindung<br>oder Speicherplatzproblem...</span>');
                 setTimeout(function () {
                     showEinenMoment3(pID, pSkip);
                 }, 30000);
             } else {
                 if (navigator.onLine) {
-                    showEinenFehler('Speicherfehler!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                    showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
                 } else {
                     showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
                 }
@@ -125,7 +125,7 @@ function showEinenMoment3(pID, pSkip) {
                 }, 50000); // 1 min = 60000
             } else {
                 if (navigator.onLine) {
-                    showEinenFehler('Speicherfehler!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                    showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
                 } else {
                     showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
                 }
@@ -144,7 +144,7 @@ function showEinenMoment4(pID, pSkip) {
                 }, 50000); // 1 min = 60000
             } else {
                 if (navigator.onLine) {
-                    showEinenFehler('Speicherfehler!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                    showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
                 } else {
                     showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
                 }
@@ -157,7 +157,7 @@ function showEinenMoment5(pID, pSkip) {
     if (myJBox) {
         if (myJBox.isOpen && myJBox.id === pID) {
             if (!navigator.onLine) {
-                showEinenFehler('Speicherfehler!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
             } else {
                 showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');
             }

@@ -16,6 +16,8 @@ function akku0000rec(pI, I, iSTAT) {
 }
 
 function loadSTAT(I, pTitel, pSkip, pCallback) {
+    'use strict';
+    console.log('loadSTAT(' + I + ', ' + pTitel + ', ' + pSkip + ', ' + (pCallback ? true : false) + ').');
     if (pTitel) {
         if (pSkip && !CUPS.TURNIER[I]) {
             STAT = JSON.parse(localStorage.getItem("Abakus.STAT" + ("000" + pSkip).substr(-3)));
@@ -106,7 +108,12 @@ function loadSTATnew(I, pCallback) {
             }
         }
 
-        localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
+        try {
+            localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
+        } catch (err) {
+            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            return;
+        }
 
         var hMEZULETZT = false;
         for (var turnier in STAT) {
@@ -120,7 +127,12 @@ function loadSTATnew(I, pCallback) {
         if (hMEZULETZT) {
             if (CUPS.MEZULETZT[I] !== hMEZULETZT) {
                 CUPS.MEZULETZT[I] = hMEZULETZT;
-                localStorage.setItem("Abakus.CUPS", JSON.stringify(CUPS));
+                try {
+                    localStorage.setItem("Abakus.CUPS", JSON.stringify(CUPS));
+                } catch (err) {
+                    showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                    return;
+                }
             }
         }
 
@@ -139,7 +151,7 @@ function loadSTATnew(I, pCallback) {
 
 //  STAT  Funktionen  **************************************************************************
 function loadSTATold(I, pCallback) {
-
+    'use strict';
     var hMEZULETZT = 0;
     var hMEANGEMELDET = 0;
     var hZuletztGespielt = 0;
@@ -403,6 +415,7 @@ function loadSTATold(I, pCallback) {
                 STAT.ANMELDUNGEN = {};
             } else {
                 for (var anmeldung in STAT.ANMELDUNGEN) {
+                    console.log(STAT.ANMELDUNGEN[anmeldung].UM, STAT.ANMELDUNGEN[anmeldung].NAME, STAT.ANMELDUNGEN[anmeldung].ANGEMELDET);
                     if (STAT.ANMELDUNGEN[anmeldung].FUER < Date.now()
                             || new Date(STAT.ANMELDUNGEN[anmeldung].FUER).toDateString() === new Date(hZuletztGespielt).toDateString()) {
                         delete STAT.ANMELDUNGEN[anmeldung];
@@ -436,10 +449,20 @@ function loadSTATold(I, pCallback) {
         }
 
         if (hGeaendert) {
-            localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+            try {
+                localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+            } catch (err) {
+                showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                return;
+            }
         }
 
-        localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
+        try {
+            localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
+        } catch (err) {
+            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            return;
+        }
 
         if (CUPS.TURNIER[I]) {
             if (LS.I === I) {
@@ -463,12 +486,19 @@ function loadSTATold(I, pCallback) {
                         }
                     }
                 }
-                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                try {
+                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                } catch (err) {
+                    showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                    return;
+                }
             }
         }
 
         if (typeof pCallback === "function") {
+            console.log('loadSTAT ===> ' + pCallback.name);
             pCallback();
+            pCallback = null;
         } else {
             whenSTATloaded();
         }

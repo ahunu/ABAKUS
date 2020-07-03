@@ -68,9 +68,12 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
             }
         }
 
-
-
-        localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
+        try {
+            localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
+        } catch (err) {
+            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            return;
+        }
 
         var hMEZULETZT = false;
         for (var turnier in STAT) {
@@ -84,7 +87,12 @@ function loadSTAT(I, pTitel, pWarning, pCallback) {
         if (hMEZULETZT) {
             if (CUPS.MEZULETZT[I] !== hMEZULETZT) {
                 CUPS.MEZULETZT[I] = hMEZULETZT;
-                localStorage.setItem("Abakus.CUPS", JSON.stringify(CUPS));
+                try {
+                    localStorage.setItem("Abakus.CUPS", JSON.stringify(CUPS));
+                } catch (err) {
+                    showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                    return;
+                }
             }
         }
 

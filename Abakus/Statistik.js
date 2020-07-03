@@ -4,18 +4,13 @@
 var PC = false;
 var FB = undefined;
 var firebaseRef = null;
-
 var Pfad = '../';
-
 var STAT = new Object();
 var DET = new Object();
-
 var cChart1, cChart2, cChart3;
 var cI = [];
-
 var stTurCupGes = 2;
 var stLaenge = 0;
-
 var stTIMESTAMP = undefined;
 var stCup = 0;
 var stAktiv = false;
@@ -46,27 +41,21 @@ var lastOption = 0;
 var lastScrollPos = 0;
 var anzGewonnen = 0;
 var hWait = 500;
-
 var onValueInit = false;
 var anzSpPyr = [0, 0, 0, 0, 0];
-
 var SORT = null;
-
 var aDET, iDET;
 var anzVersuche = 0;
-
 var myJBox = null;
 var jbNavbarExt = null;
 var jbArchiv = null;
-
 var daysOfWeek = ["So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."];
 var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
 var stNextTermin = 0;
 var stNextTerminDat = null;
-
 var mAnmelden = true;
-
 var jbNachricht = null;
+
 
 function seiteUeberspringen(pCup) {
     if (pCup === 1 || pCup === 5 || pCup === 6 || pCup === 7) { // Private Runde, oö. Regeln, wr. Regeln, tir. Regeln
@@ -95,16 +84,18 @@ function QUERFORMAT() {
     }
 }
 
-function AnAbmelden(pAnmelden) {
-    mAnmelden = pAnmelden;
-    if (pAnmelden) {
-        loadSTAT(stCup, 'Du wirst angemeldet!', false, AnmeldenExe);
-    } else {
-        loadSTAT(stCup, 'Du wirst abgemeldet!', false, AbmeldenExe);
-    }
-}
+//function AnAbmelden(pAnmelden) {
+//    console.log('AnAbmelden(', pAnmelden, ').');
+//    if (pAnmelden) {
+//        loadSTAT(stCup, 'Du wirst angemeldet!', false, AnmeldenExe);
+//    } else {
+//        loadSTAT(stCup, 'Du wirst abgemeldet!', false, AbmeldenExe);
+//    }
+//}
 
 function AnmeldenExe() {
+    'use strict';
+    console.log('AnmeldenExe();');
 
     var hANMELDUNG = {};
     if (STAT.ANMELDUNGEN[LS.ME]) {
@@ -120,23 +111,45 @@ function AnmeldenExe() {
     hANMELDUNG[LS.ME].ANGEMELDET = true;
     hANMELDUNG[LS.ME].FUER = stNextTermin;
     hANMELDUNG[LS.ME].UM = new Date().toISOString();
+
+
+//    firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN')
+//            .update(hANMELDUNG)
+//            .then(function () {
+//                console.log('AnmeldenExe(' + hANMELDUNG[LS.ME].ANGEMELDET + ');');
+//                firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
+//                        .update({
+//                            ZULETZTupd: new Date().toISOString()
+//                        })
+//                        .catch(function (error) {
+//                            showEineDBWarnung(error, 'AnmeldenExe()');
+//                        });
+//            })
+//            .catch(function (error) {
+//                showEineDBWarnung(error, 'AnmeldenExe()');
+//            });
+
+
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN')
-            .update(hANMELDUNG)
-            .then(function () {
-                firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
-                        .update({
-                            ZULETZTupd: new Date().toISOString()
-                        })
-                        .catch(function (error) {
+            .update(hANMELDUNG,
+                    function (error) {
+                        if (error) {
                             showEineDBWarnung(error, 'AnmeldenExe()');
-                        });
-            })
-            .catch(function (error) {
-                showEineDBWarnung(error, 'AnmeldenExe()');
-            });
+                        } else {
+                            firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
+                                    .update({ZULETZTupd: new Date().toISOString()},
+                                            function (error) {
+                                                if (error) {
+                                                    showEineDBWarnung(error, 'AnmeldenExe2()');
+                                                }
+                                            });
+                        }
+                    });
 }
 
 function AbmeldenExe() {
+    'use strict';
+    console.log('AbmeldenExe();');
     var hANMELDUNG = {};
     if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
         hANMELDUNG[LS.ME] = STAT.ANMELDUNGEN[LS.ME];
@@ -150,6 +163,11 @@ function AbmeldenExe() {
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN')
             .update(hANMELDUNG)
             .then(function () {
+                if (hANMELDUNG[LS.ME]) {
+                    console.log('AbmeldenExe(' + hANMELDUNG[LS.ME].ANGEMELDET + ');');
+                } else {
+                    console.log('AbmeldenExe(null);');
+                }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
                             ZULETZTupd: new Date().toISOString()
@@ -164,7 +182,8 @@ function AbmeldenExe() {
 }
 
 function NachrichtSenden() {
-
+    'use strict';
+    console.log('NachrichtSenden();');
     var hANMELDUNG = {};
     if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].ANGEMELDET) {
         hANMELDUNG[LS.ME] = STAT.ANMELDUNGEN[LS.ME];
@@ -191,6 +210,11 @@ function NachrichtSenden() {
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN')
             .update(hANMELDUNG)
             .then(function () {
+                if (hANMELDUNG[LS.ME] && hANMELDUNG[LS.ME].NACHRICHT) {
+                    console.log('NachrichtSenden(' + hANMELDUNG[LS.ME].NACHRICHT + ');');
+                } else {
+                    console.log('NachrichtSenden(null);');
+                }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
                             ZULETZTupd: new Date().toISOString()
@@ -230,7 +254,6 @@ function showArchiv() {
             closeOnClick: true,
             title: '<div class=L3 style="white-space:nowrap;text-align:center;background-color:#27a;border:4px solid #27a;color: white;">&nbsp;&nbsp;Archiv:&nbsp;</div>'
         });
-
         var jbArchivCon = '';
         if (STAT.MAXSPIELE.length > 4) {
             for (var ii = 4; ii < STAT.MAXSPIELE.length; ii++) {
@@ -262,7 +285,6 @@ function closeArchiv() {
 
 function whenSTATloaded(pNotSynchron) {
     'use strict';
-
     if (!pNotSynchron) {
         stSynchron = true;
     }
@@ -304,9 +326,11 @@ function whenSTATloaded(pNotSynchron) {
     setTimeout(function () {
         hideEinenMoment();
         if (!onValueInit) {
+            console.log('ON Init:');
             onValueInit = true;
             firebaseRef = firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ZULETZTupd');
             firebaseRef.on('value', function (data) {
+                console.log('ON update:', STAT.ZULETZTupd, data.val());
                 $('#dOffline').hide();
                 if (navigator.onLine) {
                     $('#dInstabil').hide();
@@ -314,7 +338,7 @@ function whenSTATloaded(pNotSynchron) {
                     $('#dInstabil').show();
                 }
                 if (data.val() !== STAT.ZULETZTupd) {
-                    loadSTAT(stCup, 'Statistik wird geladen.');
+                    loadSTAT(stCup, 'Statistik wird geladen.', false, false);
                 } else if (!stSynchron) {
                     stSynchron = true;
                     if (stStat === 10) { // Anmeldung
@@ -402,18 +426,16 @@ $(document).ready(function () {
             return false; // oncontextmenu
         };
     }
+
     document.onselectstart = function () {
         return false;
     };
-
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
-
     if (stCup <= 0) {
         history.back();
     }
 
     $('#tJJJJ').text(new Date().getFullYear());
-
     jbNachricht = new jBox('Modal', {
         title: '<div class=L2 style="background-color:#27a;border:8px solid #27a;color: white;">&nbsp;Meine Nachricht</div>',
         content: '<div>'
@@ -433,7 +455,6 @@ $(document).ready(function () {
                 + '</div>'
                 + '</div>'
     });
-
     stAnzSpalten = LS.AnzSpalten;
     if (stCup === 11) {
         stSort = 'GES';
@@ -441,9 +462,7 @@ $(document).ready(function () {
         stSort = 'CUP';
     }
     stTurCupGes = 3;
-
     firebase.initDB(stCup);
-
     if (QUERFORMAT() || seiteUeberspringen(stCup)) {
         $("#tMeinTisch").text(CUPS.NAME[stCup]);
         $("#iMeinTisch").attr("src", "../Icons/Farben.png");
@@ -480,7 +499,6 @@ $(document).ready(function () {
             $('#SP1Rumpf').html(statPosDiv()).trigger('create').show(setFont);
         }
     });
-
     $(window).on("scroll touchmove", function () {
         if (lastOption === 0) {
             var aktScrollPos = $(this).scrollTop();
@@ -498,7 +516,6 @@ $(document).ready(function () {
             lastScrollPos = aktScrollPos;
         }
     });
-
     setInterval(function () {
         if (navigator.onLine) {
             $('#dOffline').hide();
@@ -513,7 +530,6 @@ $(document).ready(function () {
             }
         }
     }, 20000);
-
     var mediaQueryList = window.matchMedia('print');
     mediaQueryList.addListener(function (mql) {
         if (mql.matches) {
@@ -526,7 +542,6 @@ $(document).ready(function () {
 //            context.drawImage(imgStatistik, 3, 4);  // Original Icon herstellen
         }
     });
-
     window.onbeforeunload = function (event) {
         if (/iPad|iPhone/.test(navigator.userAgent)) {
             $('body').addClass('ui-disabled');

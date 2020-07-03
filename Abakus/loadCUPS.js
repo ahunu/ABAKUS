@@ -146,8 +146,19 @@ function loadCUPS(pTitel, pText, pForce) {
             }
         });
 
-        localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
-        localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
+
+        try {
+            localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
+        } catch (err) {
+            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            return;
+        }
+        try {
+            localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
+        } catch (err) {
+            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            return;
+        }
 
         function isVIP(pSchalter) {
             return ((pSchalter & 8) !== 0);
@@ -174,7 +185,12 @@ function loadCUPS(pTitel, pText, pForce) {
             return 0;
         }
         SPIELERalpha.sort(Comparator);
-        localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
+        try {
+            localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
+        } catch (err) {
+            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            return;
+        }
 
         var mSchreiber = false;
         for (var iCup in CUPS.BEREadmin) {
@@ -202,12 +218,24 @@ function loadCUPS(pTitel, pText, pForce) {
             } else {
                 delete LS.Schreiber;
             }
-            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            try {
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            } catch (err) {
+                showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                return;
+            }
+
         }
 
         CUPS.DATE = new Date();
 
-        localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+        try {
+            localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+        } catch (err) {
+            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            return;
+        }
+
 
         whenCUPSloaded();
     }, function (error) {

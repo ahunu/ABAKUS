@@ -127,9 +127,6 @@ function AnmeldenExe() {
                         .update({
                             ZULETZTupd: new Date().toISOString()
                         })
-                        .then(function () {
-//                            hideEinenMoment();
-                        })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AnmeldenExe()');
                         });
@@ -156,10 +153,6 @@ function AbmeldenExe() {
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
                             ZULETZTupd: new Date().toISOString()
-                        })
-                        .then(function () {
-//                            STAT.ANMELDUNGEN[LS.ME].ANGEMELDET = false;
-//                            hideEinenMoment();
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AbmeldenExe()');
@@ -192,7 +185,7 @@ function NachrichtSenden() {
         hANMELDUNG[LS.ME].UM = hDate.toISOString();
         hANMELDUNG[LS.ME].NACHRICHT = $('#iNachricht').val().trim();
         if (!hANMELDUNG[LS.ME].NACHRICHT) {
-            hANMELDUNG[LS.ME] = false;
+            hANMELDUNG[LS.ME] = null;
         }
     }
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN')
@@ -201,9 +194,6 @@ function NachrichtSenden() {
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
                             ZULETZTupd: new Date().toISOString()
-                        })
-                        .then(function () {
-//                            hideEinenMoment();
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'NachrichtSenden()');

@@ -59,7 +59,6 @@ const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
 
-//        showEineMeldung('2:', 'Muss laden.');
 function IsInteger(value) {
     if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
         return true;

@@ -23,6 +23,8 @@
     <preference name="android-minSdkVersion"    value="21" /> <!-- Android Version 5.0 -->
     <preference name="android-targetSdkVersion" value="28" /> <!-- Android Version 9.0 -->
 
+    <preference name="pgb-builder-version" value="1"/>
+    
     <preference name="splashscreen"      value="Icons/AbakusSplash.png" />
     <preference name="permissions"       value="none"      />
     <preference name="phonegap-version"  value="cli-9.0.0" />

@@ -1530,7 +1530,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425" && LS.ME !== "NOBODY") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

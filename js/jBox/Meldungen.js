@@ -122,7 +122,7 @@ function showEinenMoment3(pID, pSkip) {
                 $('#emText2').append('<br><span class="L" style="color: OrangeRed;">Noch zwei Minuten!</span>');
                 setTimeout(function () {
                     showEinenMoment4(pID, pSkip);
-                }, 50000); // 1 min = 60000
+                }, 40000); // 1 min = 60000
             } else {
                 if (navigator.onLine) {
                     showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
@@ -141,7 +141,7 @@ function showEinenMoment4(pID, pSkip) {
                 $('#emText2').append('<br><span class="L" style="color: FireBrick;">Noch eine Minute!</span>');
                 setTimeout(function () {
                     showEinenMoment5(pID, pSkip);
-                }, 50000); // 1 min = 60000
+                }, 40000); // 1 min = 60000
             } else {
                 if (navigator.onLine) {
                     showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
@@ -156,7 +156,7 @@ function showEinenMoment4(pID, pSkip) {
 function showEinenMoment5(pID, pSkip) {
     if (myJBox) {
         if (myJBox.isOpen && myJBox.id === pID) {
-            if (!navigator.onLine) {
+            if (navigator.onLine) {
                 showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
             } else {
                 showEinenFehler('Verbindungsfehler!', 'Verbindung herstellen', 'und Vorgang wiederholen.');

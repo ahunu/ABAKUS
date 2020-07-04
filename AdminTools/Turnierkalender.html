@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/firebase/firebase.js"></script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus</title>
+        <link  href="../js/css/Abakus.css"      rel="stylesheet" />
+        <script src="Turnierkalender.js"></script>
+        <script src="../Abakus/loadCUPS.js"></script>
+        <script src="../Abakus/loadSPIELER.js"></script>
+        <script src="../Abakus/AaVersion.js"></script>
+            <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#fff">
+            <script src='/swReg.js'></script>
+        <!-- iOS support -->
+        <link rel="apple-touch-icon" href="/Icons/icon-144.png">
+        <meta name="apple-mobile-web-app-status-bar" content="#fff">
+    </head>
+    <body>
+        <div id=dHeader data-role="header" data-position="fixed" style="padding:0em; margin:0em;">
+            <div class="ui-grid-c" onClick="$('#dLegende').toggle('show');">
+                <div class="ui-block-a" style="width:1vw;"></div>
+                <div class="ui-block-b C" style="width:70px;margin-bottom:-8px">
+                    <img src='../Icons/Kalender.png' alt="Turnierkalender" id=logo height="70" width="70"/>
+                </div>
+                <div class="ui-block-c" style="width:1.5vw;"></div>
+                <div class="ui-block-d" style="width:auto">
+                    <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px;margin-top:-2px;"><i>ABAKUS die Tarock-App</i></div>
+                    <div id=hTitel2 class='N' style="width:auto; text-align:left; font-size: 28px;margin-top:-8px">Turnierkalender</div>
+                </div>
+            </div>
+            <div id="bEinNeuesTurnierEinplanen" class="ui-disabled"> &nbsp;
+                <a class="ui-btn ui-btn-inline ui-corner-all" onclick="showTermin(-1);">&nbsp;
+                    <i class="i zmdi-calendar-note"></i>&nbsp;Ein neues Turnier einplanen&nbsp;</a>
+            </div>
+            <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                <button>&nbsp;&nbsp;Filter:&nbsp;&nbsp;</button>
+
+                <label for="cb50">&nbsp;&nbsp;<i class="i zmdi-circle cHRC"></i>&nbsp;&nbsp;<span id="tHRC">HRC</span>&nbsp;&nbsp;</label>
+                <input type="checkbox" id="cb50">
+
+                <label for="cb51">&nbsp;&nbsp;<i class="i zmdi-circle cKTC"></i>&nbsp;&nbsp;<span id="tKTC">KTC</span>&nbsp;&nbsp;</label>
+                <input type="checkbox" id="cb51">
+
+                <label for="cb52">&nbsp;&nbsp;<i class="i zmdi-circle cRTC"></i>&nbsp;&nbsp;<span id="tRTC">RTC</span>&nbsp;&nbsp;</label>
+                <input type="checkbox" id="cb52">
+
+                <label for="cb53">&nbsp;&nbsp;<i class="i zmdi-circle cSWC"></i>&nbsp;&nbsp;<span id="tSWC">SWC</span>&nbsp;&nbsp;</label>
+                <input type="checkbox" id="cb53">
+
+                <label for="cb54">&nbsp;&nbsp;<i class="i zmdi-circle cSTC"></i>&nbsp;&nbsp;<span id="tSTC">STC</span>&nbsp;&nbsp;</label>
+                <input type="checkbox" id="cb54">
+
+                <label for="cb55">&nbsp;&nbsp;<i class="i zmdi-circle cTTC"></i>&nbsp;&nbsp;<span id="tTTC">TTC</span>&nbsp;&nbsp;</label>
+                <input type="checkbox" id="cb55">
+
+                <label for="cb56">&nbsp;&nbsp;<i class="i zmdi-circle cWTC"></i>&nbsp;&nbsp;<span id="tWTC">WTC</span>&nbsp;&nbsp;</label>
+                <input type="checkbox" id="cb56">
+
+                <label for="cbDiverse">&nbsp;&nbsp;<i class="i zmdi-circle cDIV"></i>&nbsp;&nbsp;Diverse&nbsp;&nbsp;</label>
+                <input type="checkbox" id="cbDiverse">
+
+            </fieldset>
+            <div id='dLegende' style='margin:1em' class=M hidden onClick="$('#dLegende').hide();"> <b>Hinweis:</b>
+                <br>
+                <span Class='N S'> Der Eintrag eines Termins im Turnierkalender ist Voraussetzung daf&uuml;r, da&szlig; ein Turnier abgehalten werden kann.<br>
+                    Sp&auml;testens 48 Stunden nach dem Speichern werden die neuen Termine auf allen Handys und PCs angezeigt.
+                </span>
+            </div>
+        </div>
+        <div id='main'>
+            <div>
+                <div id=dTermine>
+                </div>
+            </div>
+            <br>
+            <div data-role="footer" id="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a data-icon=delete class=iconJQM onClick="history.go(-1);">&nbsp;&nbsp;&nbsp;&nbsp;abbrechen</a>
+                        </li>
+                        <li>
+                            <a data-icon=check  class="iconJQM ui-disabled" onclick="Speichern(0);" id="bSpeichern" data-theme="e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speichern</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="popup" data-history=false id="pTermin" data-theme="d" data-overlay-theme="b" data-icon="delete" data-dismissible="false" class="XL ui-corner-all" data-transition=slidedown data-position-to="#lv">
+            <div data-role="header" data-theme="c" class="ui-corner-top" align="center"> &nbsp;&nbsp;
+                <span id=tTitel>
+                </span>&nbsp;&nbsp;
+            </div>
+            <div style='padding:0.5em;'>
+
+                <div class="ui-grid-b L" style='padding:0em;'>
+                    <div class="ui-block-a" style='width:22%'>
+                        Cup:
+                    </div>
+                    <div class="ui-block-b autoCup" style='width:12%'>
+                        <input id="iCUP" data-role="none" type="number" pattern="\d*" >
+                    </div>
+                    <div class="ui-block-c autoCup" style='width:3%'>
+                    </div>
+                    <div class="ui-block-d" style='width:60%'>
+                        <span id="tCUP" class="L B"></span>
+                    </div>
+                </div>
+                <div class="ui-grid-b L" style='padding:0em;'>
+                    <div class="ui-block-a" style='width:22%'>
+                        Datum:
+                    </div>
+                    <div class="ui-block-b" style='width:25%'>
+                        <input id="iDATUM" type="date" class='C' data-role="none">
+                    </div>
+                    <div class="ui-block-c" style='width:53%'>
+                        <div class="ui-block-a C" style='width:28%'>
+                            Beginn:
+                        </div>
+                        <div class="ui-block-b" style='width:25%'>
+                            <input id="iBEGINN" type="time" class='C' data-role="none">
+                        </div>
+                        <div class="ui-block-c S" style='width:47%'>
+                            &nbsp;&nbsp;&nbsp;&nbsp;(nicht&nbsp;erforderlich)
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-grid-a L" style='padding:0em;'>
+                    <div class="ui-block-a" style='width:22%'>
+                        Turniername:
+                    </div>
+                    <div class="ui-block-b" style='width:78%'>
+                        <input id="iNAME" data-role="none">
+                    </div>
+                </div>
+                <div class="ui-grid-c L" style='padding:0em;'>
+                    <div class="ui-block-a" style='width:22%'>
+                        Veranstalter:
+                    </div>
+                    <div class="ui-block-b" style='width:12%'>
+                        <input id="iVERANSTALTER" data-role="none" type="number" pattern="\d*" >
+                    </div>
+                    <div class="ui-block-c" style='width:3%'>
+                    </div>
+                    <div class="ui-block-d M B" style='width:63%' id="tVERANSTALTER">
+                    </div>
+                </div>
+                <div class="ui-grid-a L" style='padding:0em;'>
+                    <div class="ui-block-a" style='width:22%'>
+                        Lokal, Internet:
+                    </div>
+                    <div class="ui-block-b" style='width:78%'>
+                        <input id="iLOKAL" data-role="none">
+                    </div>
+                </div>
+                <div class="ui-grid-a L" style='padding:0em;'>
+                    <div class="ui-block-a" style='width:22%'>
+                        Ort, Strasse:
+                    </div>
+                    <div class="ui-block-b" style='width:78%'>
+                        <input id="iORT" data-role="none" size="44" >
+                    </div>
+                </div>
+                <div class="ui-grid-a" id=bNeu>
+                    <div class="ui-block-a">
+                        <a data-role="button" data-theme="a" onclick="$('#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT').filter(':input:focus').blur();$('#pTermin').popup('close');">abbrechen</a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a data-role="button" data-theme="a" onclick="onAendern()">neu anlegen</a>
+                    </div>
+                </div>
+                <div class="ui-grid-b" id=bAendern>
+                    <div class="ui-block-a">
+                        <a data-role="button" data-theme="a" onclick="$('#iDATUM,#iCUP,#iNAME,#iVERANSTALTER,#iLOKAL,#iORT').filter(':input:focus').blur();$('#pTermin').popup('close');">abbrechen</a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a data-role="button" data-theme="a" onclick="onAendern()">&auml;ndern</a>
+                    </div>
+                    <div class="ui-block-c">
+                        <a data-role="button" data-theme="a" onclick="onLoeschen()">l&ouml;schen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

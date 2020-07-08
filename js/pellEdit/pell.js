@@ -204,7 +204,7 @@
                     if (url.indexOf('/view?') > 1) {
                         url = url.substr(0, url.indexOf('/view?'));
                     }
-                    exec('insertHTML', '<img class="cFotoS" src="https://drive.google.com/uc?id=' + url + '" style="float:right; margin-left: 15px;"/>');
+                    exec('insertHTML', '<br><DIV class="cFotoContainer"><img class="cFotoS" src="https://drive.google.com/uc?id=' + url + '"/><br></DIV><br>');
                 }
             }
         },
@@ -223,7 +223,7 @@
                     if (url.indexOf('/view?') > 1) {
                         url = url.substr(0, url.indexOf('/view?'));
                     }
-                    exec('insertHTML', '<img class="cFotoM" src="https://drive.google.com/uc?id=' + url + '" style="float:left; margin-right: 15px;"/>');
+                    exec('insertHTML', '<DIV class="cFotoContainer"><img class="cFotoM" src="https://drive.google.com/uc?id=' + url + '"/><br></DIV><br>');
                 }
             }
         },
@@ -242,7 +242,7 @@
                     if (url.indexOf('/view?') > 1) {
                         url = url.substr(0, url.indexOf('/view?'));
                     }
-                    exec('insertHTML', '<img class="cFotoL" src="https://drive.google.com/uc?id=' + url + '"/>');
+                    exec('insertHTML', '<DIV class="cFotoContainer"><img class="cFotoL" src="https://drive.google.com/uc?id=' + url + '"/><br></DIV><br>');
                 }
             }
         },

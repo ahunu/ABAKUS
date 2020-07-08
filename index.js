@@ -1683,7 +1683,11 @@ function initSeite1() {
         }
         initCUPSdelAllSTAT();
     } else if (LS.LoadCups > 0 || nStunden > 6 || isNaN(nStunden)) {
-        loadCUPS(false, false, true);
+        if (navigator.onLine) {
+            loadCUPS(false, false, true);
+        } else {
+            whenCUPSloaded();
+        }
     } else {
         whenCUPSloaded();
     }
@@ -3410,6 +3414,12 @@ $(document).ready(function () {
 
     listVersion();
     $('#tJJJJ,#tJJJJ2').text(new Date().getFullYear());
+    if (navigator.onLine) {
+        $('#tOnline').html('Datenverbindung ist OK!');
+        $('#tOnline').html('Mit Internet verbunen!');
+    } else {
+        $('#tOnline').html('KEINE Datenverbindung!');
+    }
     if (LS.ME === 'NOBODY') {
         $('#tSpieler').html('Noch nicht registriert.');
     } else {
@@ -3475,6 +3485,11 @@ if (window.navigator.userAgent.indexOf("Chrome") === -1) {
         if (window.performance.navigation.type === 2) {
             LS = JSON.parse(localStorage.getItem('Abakus.LS'));
             CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+            if (navigator.onLine) {
+                $('#tOnline').html('Datenverbindung ist OK!');
+            } else {
+                $('#tOnline').html('KEINE Datenverbindung!');
+            }
             if (LS.ME === 'NOBODY') {
                 $('#tSpieler').html('Noch nicht registriert.');
             } else {

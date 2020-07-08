@@ -46,13 +46,12 @@ th.rotate > div {
     .cFotoS {width:30%;height:auto;float:left;margin-right:15px;}
     .cFotoM {width:40%;height:auto;float:left;margin-right:15px;}
     .cFotoL {width:50%;height:auto;float:left;margin-right:15px;}
-    .cFotoS:hover,
-    .cFotoM:hover,
-    .cFotoL:hover {
-        transform: rotate(0deg) scale(2);
-        transform-origin: left top;
-    }
+    .cFotoS:hover {width:50%;height:auto;float:left;margin-right:15px;}
+    .cFotoM:hover {width:55%;height:auto;float:left;margin-right:15px;}
+    .cFotoL:hover {width:100%;height:auto;float:left;}
 }
+
+.cFotoContainer {overflow:auto;height:auto}
 
 @media only screen and (orientation : portrait) {
     .cFotoS {width:35%;height:auto;float:left;margin-right:15px;}

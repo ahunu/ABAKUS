@@ -150,13 +150,13 @@ function loadCUPS(pTitel, pText, pForce) {
         try {
             localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
         } catch (err) {
-            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
             return;
         }
         try {
             localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
         } catch (err) {
-            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
             return;
         }
 
@@ -188,7 +188,7 @@ function loadCUPS(pTitel, pText, pForce) {
         try {
             localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
         } catch (err) {
-            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
             return;
         }
 
@@ -221,7 +221,7 @@ function loadCUPS(pTitel, pText, pForce) {
             try {
                 localStorage.setItem('Abakus.LS', JSON.stringify(LS));
             } catch (err) {
-                showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
                 return;
             }
 
@@ -232,7 +232,7 @@ function loadCUPS(pTitel, pText, pForce) {
         try {
             localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
         } catch (err) {
-            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
             return;
         }
 

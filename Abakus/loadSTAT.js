@@ -111,7 +111,7 @@ function loadSTATnew(I, pCallback) {
         try {
             localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
         } catch (err) {
-            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
             return;
         }
 
@@ -130,7 +130,7 @@ function loadSTATnew(I, pCallback) {
                 try {
                     localStorage.setItem("Abakus.CUPS", JSON.stringify(CUPS));
                 } catch (err) {
-                    showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                    showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
                     return;
                 }
             }
@@ -452,7 +452,7 @@ function loadSTATold(I, pCallback) {
             try {
                 localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
             } catch (err) {
-                showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
                 return;
             }
         }
@@ -460,7 +460,7 @@ function loadSTATold(I, pCallback) {
         try {
             localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
         } catch (err) {
-            showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+            showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
             return;
         }
 
@@ -489,7 +489,7 @@ function loadSTATold(I, pCallback) {
                 try {
                     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                 } catch (err) {
-                    showEinenFehler('Speicherplatzproblem!', 'Inítialisieren oder<br>Verlauf löschen oder<br>neu starten und', 'Vorgang wiederholen.');
+                    showEinenFehler('Speicherplatzproblem:', 'Inítialisieren und', 'Vorgang wiederholen.');
                     return;
                 }
             }

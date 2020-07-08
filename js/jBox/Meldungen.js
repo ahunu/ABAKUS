@@ -100,7 +100,7 @@ function showEinenMoment2(pID, pSkip) {
     if (myJBox) {
         if (myJBox.isOpen && myJBox.id === pID) {
             if (navigator.onLine || pSkip) {
-                $('#emText2').append('<br><span style="color: DarkGoldenRod;">Langsame Verbindung<br>oder Speicherplatzproblem...</span>');
+                $('#emText2').append('<br><span style="color: DarkGoldenRod;">Langsame&nbsp;Verbindung?<br>Speicherplatzproblem?</span>');
                 setTimeout(function () {
                     showEinenMoment3(pID, pSkip);
                 }, 27000);

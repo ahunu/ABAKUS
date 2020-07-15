@@ -375,6 +375,35 @@ function getUrlaubsplaner() {
 function getTippsUndTricks() {
     return '<span class=M style="text-align:justify">'
 
+            + ((window.matchMedia('(display-mode: standalone)').matches) // als PWA gestartet
+                    ? '<p><b>Du verwendest Abakus bereits als App.</b><br>'
+                    : '<p><b><span class="cRot L">Warum verwendest du Abakus nicht als App?</span></b><br>'
+                    )
+
+
+            + '<p><b>Welche Vorteile bringt eine App?</b><br>'
+            + 'Bei einer Installation wird die App am PC bzw. am Handy gespeichter und braucht somit nicht jedesmal über das Netz geladen werden. '
+            + 'Das spart Datenvolumen und schneller geht´s ausserdem. '
+            + 'Wenn die App mal gestartet ist benötigt sie keine Internetverbindung mehr. '
+
+
+            + '<p><b>Abakus am PC als App installieren:</b><br>'
+            + 'Rufe mit <b>tarock.web.app</b> die Startseite von Abakus in deinem Lieblingsbrowser auf. '
+            + 'Wenn du Abakus noch nicht installiert hast, wird in der Adresszeile rechts das Symbol <b>&#8853;</b> angezeigt. '
+            + 'Nach einem Klick darauf und einen weitern Klick auf "<b>Installieren</b>" wird für Abakus auf dem Deskop eingerichtet. '
+            + '<br>Das funktioniert so mit Google Chrome, Microsoft Edge, Opera, Vivaldi und mit einigen anderen Browsern. Nicht jedoch mit Firefox, Safari und dem Internet Explorer. '
+
+            + '<p><b>Abakus auf Android als App installieren:</b><br>'
+            + 'Rufe in Google Chrome mit <b>tarock.web.app</b> die Startseite von Abakus auf. '
+            + 'Mit einen Klick auf das Symbol <b>&#5010;</b> rechts oben öffnest du das Menü. Mit "<b>Zum Startbildschirm zufügen</b>" installierst du die App abhängig von der Androidversion am Startbildschirm oder im Programmordner. '
+            + 'Von dort kannst du die App nach belieben verschieben. '
+            + '<br>Im Gegensatz zu einer App aus dem Play Store braucht eine so installierte App nicht mehr aktualisiert werden. '
+
+            + '<p><b>Abakus auf iOS als App installieren:</b><br>'
+            + 'Rufe in Safari mit <b>tarock.web.app</b> die Startseite von Abakus auf. '
+            + 'Öffne mit dem Symbol <b>&#9040;</b> das Teilenmenü. Wenn du "<b>Zum Home-Bildschirm</b>" drückst erscheint rechts oben "<b>Hinzufügen</b>". '
+            + 'Mit einem Klick darauf erstellst du die App auf dem Home-Bildschirm. '
+
             + '<p><b>Muss ich mich registrieren?</b><br>'
             + 'Nein. Du kannst die App auch ohne Registrierung verwenden und in den allgemeinen Runden sogar eigene Tische eingeben. '
             + 'Nur wenn du in anderen Runden oder Cups Tische eingeben willst oder dir die Spielestatistik ansehen willst, '
@@ -391,7 +420,6 @@ function getTippsUndTricks() {
             + 'Dieses App wird laufend weiterentwickelt. Dies kann zur Folge haben, dass die geladenen Daten mit der App nicht mehr kompatibel sind. Um diese Inkompatibilit&auml;t zu beseitigen, dr&uuml;ckst du hier oder auf der Hauptseite links unten auf '
             + '<a class="ui-btn ui-btn-inline ui-corner-all K" style="margin:0;padding:0em;margin:0;" onclick="bInitialisieren();">&nbsp; '
             + '<i class="i zmdi-star"></i>&nbsp;&nbsp;Initialisieren&nbsp;</a>.&nbsp;Danach wird die App wieder wie gewohnt funktionieren. '
-
 
             + (($(window).innerHeight() > $(window).innerWidth()) // Hochformat
                     ? '<p><b>Internetseite:</b><br>'

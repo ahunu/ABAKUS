@@ -16,35 +16,6 @@
     background: #d00000 !important;
 }
 
-.llllzmdi-hc-stack {
-    position: relative;
-    display: inline-block;
-    width: 1.4em;
-    height: 1.4em;
-    line-height: 1.4em;
-    vertical-align: middle;
-}
-.zmdi-innericon {
-    position: absolute;
-    left: 0;
-    top: 0.24em;
-    width: 100%;
-    text-align: center;
-}
-.zmdi-hc-inverse {
-    color: #ffffff;
-}
-.zmdi-bg-circle:before {
-    content: '\f26c';
-    font-size: 1.4em;
-}
-.zmdi-bg-fullcircle:before {
-    content: '\f26d';
-    font-size: 1.4em;
-}
-
-
-
 .zmdi-hc-stack {
     position: relative;
     display: inline-block;
@@ -95,6 +66,12 @@
 }
 .zmdi-minus-or-plus:before {
     content: '\2213';
+}
+.zmdi-wifi-alt:before {
+    content: '\f2e3';
+}
+.zmdi-wifi-off:before {
+    content: '\f2e6';
 }
 
 

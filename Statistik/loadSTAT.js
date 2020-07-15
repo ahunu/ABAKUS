@@ -5,7 +5,11 @@
 function loadSTAT(I, pTitel, pWarning, pCallback) {
 
     if (pTitel) {
-        showEinenMoment(I, pTitel);
+        if (navigator.onLine) {
+            showEinenMoment(I, pTitel);
+        } else {
+            showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen.');
+        }
     }
     if (typeof stCup === 'number') { // nur in Statistik möglich
         if (I === 0) {

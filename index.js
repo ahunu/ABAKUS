@@ -1866,6 +1866,7 @@ function initCUPSdelAllSTAT(pMeldung) {
     var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
     var CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     var TURNIER = JSON.parse(localStorage.getItem('Abakus.TURNIER'));
+    var AKTUELLES = JSON.parse(localStorage.getItem('Abakus.AKTUELLES'));
     var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
     var SPIELERalpha = JSON.parse(localStorage.getItem('Abakus.SPIELERalpha'));
     localStorage.clear();
@@ -1908,6 +1909,13 @@ function initCUPSdelAllSTAT(pMeldung) {
             LS.Meldung = 'F' + err + ': TURNIER konnte nicht geladen werden.';
         }
     }
+    if (AKTUELLES !== null) {
+        try {
+            localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': AKTUELLES konnte nicht geladen werden.';
+        }
+    }
     if (SPIELERnr !== null) {
         try {
             localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
@@ -1922,9 +1930,13 @@ function initCUPSdelAllSTAT(pMeldung) {
             LS.Meldung = 'F' + err + ': SPIELERalpha konnte nicht geladen werden.';
         }
     }
-    loadCUPS();
-    if (pMeldung) {
-        $('#dMeldung').html("<img src='Icons/OK.png' width='24' height='24'><span class=cSchwarz>&nbsp;&nbsp;Die App wurde initialisiert.</span><br>").show();
+    if (navigator.onLine) {
+        loadCUPS();
+        if (pMeldung) {
+            $('#dMeldung').html("<img src='Icons/OK.png' width='24' height='24'><span class=cSchwarz>&nbsp;&nbsp;Die App wurde initialisiert.</span><br>").show();
+        }
+    } else {
+        showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen', 'und Vorgang wiederholen.');
     }
     $('#bAK,#bMR').collapsible({collapsed: false});
     $('#bAL,#bCT,#bLC,#bET,#bFC,#PR,#bTR,#bAR').collapsible({collapsed: true});
@@ -2395,6 +2407,12 @@ function listVersion() {
 function toggleTechDetails() {
     if ($('#dTechDetails').is(":hidden")) {
         $('#dTechDetails').html('<b>Technische Details:</b><br>'
+
+
+                + ((window.matchMedia('(display-mode: standalone)').matches)
+                ? 'display-mode: standalone<br>'
+                : 'display-mode: in browser<br>')
+
                 + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
                 + 'navigator.vendor: ' + navigator.vendor + '<br>'
                 + (("standalone" in window.navigator && window.navigator.standalone)
@@ -3414,12 +3432,10 @@ $(document).ready(function () {
 
     listVersion();
     $('#tJJJJ,#tJJJJ2').text(new Date().getFullYear());
-    if (navigator.onLine) {
-        $('#tOnline').html('Datenverbindung ist OK!');
-        $('#tOnline').html('Mit Internet verbunen!');
-    } else {
-        $('#tOnline').html('KEINE Datenverbindung!');
+    if (!PC && !window.matchMedia('(display-mode: standalone)').matches) { // nicht als PWA gestartet
+        $('#tTipps').html('Tipps zur Installation als App<br>kannst du <span class="cRot P S3 B" onclick="event.stopImmediatePropagation();showText(\'TippsUndTricks\')">hier</span> nachlesen.<br>');
     }
+
     if (LS.ME === 'NOBODY') {
         $('#tSpieler').html('Noch nicht registriert.');
     } else {

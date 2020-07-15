@@ -32,7 +32,7 @@ function showFixpunktewertung() {
     var tOF = [];
     if (stCup === 53) {
         tOF = [0, 120, 112, 106, 101, 98, 96, 93, 90, 88, 85, 83, 80, 78, 76, 73, 71, 69, 67, 65, 63, 61, 59, 57, 55, 53, 52, 50, 48, 47, 45, 44, 42, 41, 40, 38, 37, 36, 35, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 24, 23, 22, 21, 21, 20, 19, 19, 18, 18, 17, 17, 16, 16, 15, 15, 14, 14, 14, 13, 13, 13, 13, 12, 12, 12, 12, 11, 11, 11, 11, 11];
-    } else if (stCup === 54 || stCup === 55) {
+    } else if (stCup === 51 || stCup === 54 || stCup === 55) {
         tOF = [0, 120, 109, 100, 93, 87, 82, 78, 73, 69, 64, 60, 57, 53, 50, 46, 43, 41, 38, 35, 33, 31, 29, 27, 25, 23, 22, 20, 19, 18, 17, 16, 15, 14, 13, 13, 12, 12, 11, 11, 11];
     } else {
         tOF = [0, 120, 111, 104, 98, 95, 91, 88, 84, 81, 78, 75, 72, 69, 66, 63, 61, 58, 56, 53, 51, 49, 47, 45, 43, 41, 39, 37, 36, 34, 32, 31, 30, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 17, 16, 15, 15, 14, 14, 13, 13, 13, 12, 12, 12, 11, 11, 11, 11];
@@ -212,10 +212,12 @@ function showFixpunktewertung() {
                 + "<table data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
-                + "<td class=TC>" + (stCup === 56 ? "" : "") + "</td>"
+                + (stCup === 51 ? "<td class=TR>tarock.web.app?Ktn.Tarockcup&nbsp;</td>" : "")
+                + (stCup === 53 ? "<td class=TR>tarock.web.app?Sauwaldcup&nbsp;</td>" : "")
                 + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
+                + (stCup === 55 ? "<td class=TR>tarock.web.app?Tirolcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 15 ? "<td class=TR>tarock.web.app?Stadl Tarock&nbsp;</td>" : "")
+                + (stCup === 15 ? "<td class=TR>tarock.web.app?StadlTarock&nbsp;</td>" : "")
                 + "</tr></tbody></table>";
         $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
     } else {

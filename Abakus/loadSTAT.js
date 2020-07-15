@@ -21,13 +21,21 @@ function loadSTAT(I, pTitel, pSkip, pCallback) {
     if (pTitel) {
         if (pSkip && !CUPS.TURNIER[I]) {
             STAT = JSON.parse(localStorage.getItem("Abakus.STAT" + ("000" + pSkip).substr(-3)));
-            if (STAT === null && (I >= 8 || CUPS.TURNIER[I])) {
-                showEinenMoment(I, pTitel);
+            if (navigator.onLine) {
+                if (STAT === null && (I >= 8 || CUPS.TURNIER[I])) {
+                    showEinenMoment(I, pTitel);
+                } else {
+                    showEinenMoment(I, pTitel, false, pSkip);
+                }
             } else {
-                showEinenMoment(I, pTitel, false, pSkip);
+                showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen.');
             }
         } else {
-            showEinenMoment(I, pTitel);
+            if (navigator.onLine) {
+                showEinenMoment(I, pTitel);
+            } else {
+                showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen.');
+            }
         }
     }
     if (typeof stCup === 'number') { // nur in Statistik möglich

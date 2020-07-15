@@ -145,12 +145,12 @@ function showTurnier(pTurnier) {
         $('#dRumpf').html(html + "<table width=100% data-role='table' data-mode='columntoggle' cellspacing='0' class='table XXS'>"
                 + "<tbody><tr>"
                 + "<td>&nbsp;&nbsp;&nbsp;&copy; 2015-" + new Date().getFullYear() + " by Leo Luger</td>"
-                + "<td class=TC>" + (stCup === 56 ? "" : "") + "</td>"
+                + (stCup === 51 ? "<td class=TR>tarock.web.app?Ktn.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 53 ? "<td class=TR>tarock.web.app?Sauwaldcup&nbsp;</td>" : "")
                 + (stCup === 54 ? "<td class=TR>tarock.web.app?St.Tarockcup&nbsp;</td>" : "")
                 + (stCup === 55 ? "<td class=TR>tarock.web.app?Tirolcup&nbsp;</td>" : "")
                 + (stCup === 56 ? "<td class=TR>tarock.web.app?Wr.Tarockcup&nbsp;</td>" : "")
-                + (stCup === 15 ? "<td class=TR>tarock.web.app?Stadl Tarock&nbsp;</td>" : "")
+                + (stCup === 15 ? "<td class=TR>tarock.web.app?StadlTarock&nbsp;</td>" : "")
                 + "</tr></tbody></table>").css('margin-top', $('#qfHeader').height() + 'px');
         $('#tStand').hide();
     } else {

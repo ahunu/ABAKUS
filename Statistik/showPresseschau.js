@@ -159,6 +159,8 @@ function showPresseschau() {
 
     aBericht.push(["19.5.2016", "Diverses", "Tiroler Landesmuseum widmen sich der Kulturgeschichte des Spielens", "https://www.tt.com/artikel/11522412/tiroler-landesmuseen-widmen-sich-der-kulturgeschichte-des-spielens"]);
 
+    aBericht.push(["19.5.2016", "Diverses", "Tarock von A bis Z", "https://kurier.at/freizeit/tarock-von-a-bis-z/158.301.611"]);
+
     aBericht.push(["15.4.2014", "Diverses", "Skatspiel für immaterielles Kulturerbe vorgeschlagen", "https://www.tt.com/artikel/8239074/skatspiel-fuer-immaterielles-kulturerbe-vorgeschlagen"]);
 
     aBericht.push(["12.1.2016", "Diverses", "Habsburger-Mythos im Talon", "https://www.tt.com/artikel/10932982/habsburger-mythos-im-talon"]);

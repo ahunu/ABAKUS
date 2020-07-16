@@ -2408,10 +2408,13 @@ function toggleTechDetails() {
     if ($('#dTechDetails').is(":hidden")) {
         $('#dTechDetails').html('<b>Technische Details:</b><br>'
 
+                + 'location.origin: ' + location.origin + '<br>'
+                + 'document.URL: ' + document.URL + '<br>'
+                + 'window.cordova: ' + window.cordova + '<br>'
 
                 + ((window.matchMedia('(display-mode: standalone)').matches)
-                ? 'display-mode: standalone<br>'
-                : 'display-mode: in browser<br>')
+                        ? 'display-mode: standalone<br>'
+                        : 'display-mode: in browser<br>')
 
                 + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
                 + 'navigator.vendor: ' + navigator.vendor + '<br>'
@@ -3386,10 +3389,17 @@ $(document).ready(function () {
         delete LS.MeineCups;
     }
 
-    if (LS.VIC.length === 0) {
-        $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
-    } else if (!LS.VIC[0]) {
-        $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
+    if (!PC && !window.matchMedia('(display-mode: standalone)').matches) { // nicht als PWA gestartet
+        $('#tTippsUndTricks').html('&nbsp;&nbsp;Welche Vorteile bringt mir<br>&nbsp;&nbsp;eine Installation von Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als App?&nbsp;');
+        if (LS.VIC.length === 0 || !LS.VIC[0]) {
+            $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+            $('#tTippsUndTricks').append('<br>&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+        }
+    } else {
+        if (LS.VIC.length === 0 || !LS.VIC[0]) {
+            $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+            $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+        }
     }
 
     if (new Date().getTime() > LS.LastDate + 60000 * 60 * 12) { // + 6 Stunden Differenz
@@ -3432,9 +3442,6 @@ $(document).ready(function () {
 
     listVersion();
     $('#tJJJJ,#tJJJJ2').text(new Date().getFullYear());
-    if (!PC && !window.matchMedia('(display-mode: standalone)').matches) { // nicht als PWA gestartet
-        $('#tTipps').html('Tipps zur Installation als App<br>kannst du <span class="cRot P S3 B" onclick="event.stopImmediatePropagation();showText(\'TippsUndTricks\')">hier</span> nachlesen.<br>');
-    }
 
     if (LS.ME === 'NOBODY') {
         $('#tSpieler').html('Noch nicht registriert.');
@@ -3511,13 +3518,24 @@ if (window.navigator.userAgent.indexOf("Chrome") === -1) {
             } else {
                 $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
             }
-            if (LS.VIC.length === 0) {
-                $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
-            } else if (!LS.VIC[0]) {
-                $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;');
+
+            if (!PC && !window.matchMedia('(display-mode: standalone)').matches) { // nicht als PWA gestartet
+                $('#tTippsUndTricks').html('&nbsp;&nbsp;Welche Vorteile bringt mir<br>&nbsp;&nbsp;eine Installation von Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als App?&nbsp;');
+                if (LS.VIC.length === 0 || !LS.VIC[0]) {
+                    $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+                    $('#tTippsUndTricks').append('<br>&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+                } else {
+                    $('#tEinstellungen').remove();
+                }
             } else {
-                $('#tEinstellungen').remove();
+                if (LS.VIC.length === 0 || !LS.VIC[0]) {
+                    $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+                    $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+                } else {
+                    $('#tEinstellungen').remove();
+                }
             }
+
             initSeite1();
             $('body').removeClass('ui-disabled');
         }

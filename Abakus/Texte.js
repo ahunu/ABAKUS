@@ -386,6 +386,8 @@ function getTippsUndTricks() {
             + 'Das spart Datenvolumen und schneller geht´s ausserdem. '
             + 'Wenn die App mal gestartet ist benötigt sie keine Internetverbindung mehr. '
 
+//            + '<p><b>Worauf muss ich bei der Installation achten?</b><br>'
+//            + 'Sowohl auf dem PC, Internetverbindung mehr. '
 
             + '<p><b>Abakus am PC als App installieren:</b><br>'
             + 'Rufe mit <b>tarock.web.app</b> die Startseite von Abakus in deinem Lieblingsbrowser auf. '
@@ -404,6 +406,17 @@ function getTippsUndTricks() {
             + 'Öffne mit dem Symbol <b>&#9040;</b> das Teilenmenü. Wenn du "<b>Zum Home-Bildschirm</b>" drückst erscheint rechts oben "<b>Hinzufügen</b>". '
             + 'Mit einem Klick darauf erstellst du die App auf dem Home-Bildschirm. '
 
+            + ((LS.VIC.length === 0 || !LS.VIC[0])
+                    ? '<p><b><span class="cRot L">Du hast deine dir wichtigen Cups noch nicht ausgewählt!</span></b><br>'
+                    : ''
+                    )
+
+            + '<p><b>Warum soll ich dir mir wichtigen Cups auswählen?</b><br>'
+            + 'Beim ersten Aufruf von Abakus wird der dir wichtigste Cup ohne weiteres zutun angezeigt. '
+            + 'Die Turnier der dir wichtigen Cups werden unter "Aktuelle Turniere" angezeigt. '
+            + 'Und du wirst über ungelesene Neuigkeiten dieser Cups informiert. '
+
+
             + '<p><b>Muss ich mich registrieren?</b><br>'
             + 'Nein. Du kannst die App auch ohne Registrierung verwenden und in den allgemeinen Runden sogar eigene Tische eingeben. '
             + 'Nur wenn du in anderen Runden oder Cups Tische eingeben willst oder dir die Spielestatistik ansehen willst, '
@@ -421,22 +434,22 @@ function getTippsUndTricks() {
             + '<a class="ui-btn ui-btn-inline ui-corner-all K" style="margin:0;padding:0em;margin:0;" onclick="bInitialisieren();">&nbsp; '
             + '<i class="i zmdi-star"></i>&nbsp;&nbsp;Initialisieren&nbsp;</a>.&nbsp;Danach wird die App wieder wie gewohnt funktionieren. '
 
-            + (($(window).innerHeight() > $(window).innerWidth()) // Hochformat
-                    ? '<p><b>Internetseite:</b><br>'
-                    + 'Diese App kann im Internet auch mit <b>https://tarock.web.app</b> aufgerufen werden.'
-
-                    + '<p><b>Bei fehlendem Minus:</b><br>'
-                    + 'Falls bei der Eingabe eines Tisches auf der virtuellen Tastatur kein Minus vorhanden ist, müssen Minuspunkte mit einer führenden Null eingegeben werden.<br>'
-                    + 'Auf einem Android-Handy kannst du das Problem mit dem fehlendem Minus mit der Installation der Google-Tastatur beheben.<br>'
-                    : '')
-
-            + (($(window).innerHeight() < $(window).innerWidth()) // Querformat
-                    ? '<p><b>Gibt es von diesem Programm eine App für mein Handy?</b><br>'
-                    + 'Ja, du kannst sie dir kostenlos aus dem Android PlayStore herunterladen. '
-                    + 'Ihr Name ist "<b>Die Tarock-App</b>". '
-                    + 'Für iPhones ist leider keine App verfügbar. '
-                    + 'Du kannst jedoch die funktionsgleiche Internetseite "<b>tarock.web.app</b>" verwenden. '
-                    : '')
+//            + (($(window).innerHeight() > $(window).innerWidth()) // Hochformat
+//                    ? '<p><b>Internetseite:</b><br>'
+//                    + 'Diese App kann im Internet auch mit <b>https://tarock.web.app</b> aufgerufen werden.'
+//
+//                    + '<p><b>Bei fehlendem Minus:</b><br>'
+//                    + 'Falls bei der Eingabe eines Tisches auf der virtuellen Tastatur kein Minus vorhanden ist, müssen Minuspunkte mit einer führenden Null eingegeben werden.<br>'
+//                    + 'Auf einem Android-Handy kannst du das Problem mit dem fehlendem Minus mit der Installation der Google-Tastatur beheben.<br>'
+//                    : '')
+//
+//            + (($(window).innerHeight() < $(window).innerWidth()) // Querformat
+//                    ? '<p><b>Gibt es von diesem Programm eine App für mein Handy?</b><br>'
+//                    + 'Ja, du kannst sie dir kostenlos aus dem Android PlayStore herunterladen. '
+//                    + 'Ihr Name ist "<b>Die Tarock-App</b>". '
+//                    + 'Für iPhones ist leider keine App verfügbar. '
+//                    + 'Du kannst jedoch die funktionsgleiche Internetseite "<b>tarock.web.app</b>" verwenden. '
+//                    : '')
 
             + '<p><b>Hast du weitere Fragen?</b>'
             + '<br> Alfred Plischnack,'

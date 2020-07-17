@@ -2409,12 +2409,13 @@ function toggleTechDetails() {
         $('#dTechDetails').html('<b>Technische Details:</b><br>'
 
                 + 'location.origin: ' + location.origin + '<br>'
-                + 'document.URL: ' + document.URL + '<br>'
-                + 'window.cordova: ' + window.cordova + '<br>'
 
                 + ((window.matchMedia('(display-mode: standalone)').matches)
                         ? 'display-mode: standalone<br>'
-                        : 'display-mode: in browser<br>')
+                        : +((location.origin[0] !== 'h') // PhoneGap-App oder lokal (!http) gestartet.
+                                ? 'display-mode: phoneGap<br>'
+                                : 'display-mode: in browser<br>')
+                        )
 
                 + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
                 + 'navigator.vendor: ' + navigator.vendor + '<br>'
@@ -3389,16 +3390,16 @@ $(document).ready(function () {
         delete LS.MeineCups;
     }
 
-    if (!PC && !window.matchMedia('(display-mode: standalone)').matches) { // nicht als PWA gestartet
+    if (PC || window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
+        if (LS.VIC.length === 0 || !LS.VIC[0]) {
+            $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+            $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+        }
+    } else {
         $('#tTippsUndTricks').html('&nbsp;&nbsp;Welche Vorteile bringt mir<br>&nbsp;&nbsp;eine Installation von Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als App?&nbsp;');
         if (LS.VIC.length === 0 || !LS.VIC[0]) {
             $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
             $('#tTippsUndTricks').append('<br>&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
-        }
-    } else {
-        if (LS.VIC.length === 0 || !LS.VIC[0]) {
-            $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
-            $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
         }
     }
 
@@ -3519,18 +3520,18 @@ if (window.navigator.userAgent.indexOf("Chrome") === -1) {
                 $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
             }
 
-            if (!PC && !window.matchMedia('(display-mode: standalone)').matches) { // nicht als PWA gestartet
-                $('#tTippsUndTricks').html('&nbsp;&nbsp;Welche Vorteile bringt mir<br>&nbsp;&nbsp;eine Installation von Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als App?&nbsp;');
+            if (PC || window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
                 if (LS.VIC.length === 0 || !LS.VIC[0]) {
                     $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
-                    $('#tTippsUndTricks').append('<br>&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+                    $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
                 } else {
                     $('#tEinstellungen').remove();
                 }
             } else {
+                $('#tTippsUndTricks').html('&nbsp;&nbsp;Welche Vorteile bringt mir<br>&nbsp;&nbsp;eine Installation von Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als App?&nbsp;');
                 if (LS.VIC.length === 0 || !LS.VIC[0]) {
                     $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
-                    $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+                    $('#tTippsUndTricks').append('<br>&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
                 } else {
                     $('#tEinstellungen').remove();
                 }

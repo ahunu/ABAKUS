@@ -307,12 +307,7 @@ function changeDisp() {
     hDisp = hDisp * -1;
     hMeld = 'N';
     DispSummen();
-    if (iMP3 === -1) {
-        if (false) {
-            var audio = new Media('../_mp3/a_hmhmhm.mp3');
-            audio.play();
-        }
-    } else {
+    if (iMP3 !== -1) {
         iMP3 = iMP3 + parseInt(window.event.offsetY / (Hoehe / 7));
         audioElement.src = mp3Name[iMP3];
         // erst abspielen wenn genug vom mp3 geladen wurde

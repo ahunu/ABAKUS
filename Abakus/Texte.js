@@ -375,7 +375,7 @@ function getUrlaubsplaner() {
 function getTippsUndTricks() {
     return '<span class=M style="text-align:justify">'
 
-            + ((window.matchMedia('(display-mode: standalone)').matches) // als PWA gestartet
+            + ((window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
                     ? '<p><b>Du verwendest Abakus bereits als App.</b><br>'
                     : '<p><b><span class="cRot L">Warum verwendest du Abakus nicht als App?</span></b><br>'
                     )
@@ -411,10 +411,10 @@ function getTippsUndTricks() {
                     : ''
                     )
 
-            + '<p><b>Warum soll ich dir mir wichtigen Cups auswählen?</b><br>'
-            + 'Beim ersten Aufruf von Abakus wird der dir wichtigste Cup ohne weiteres zutun angezeigt. '
-            + 'Die Turnier der dir wichtigen Cups werden unter "Aktuelle Turniere" angezeigt. '
-            + 'Und du wirst über ungelesene Neuigkeiten dieser Cups informiert. '
+            + '<p><b>Warum soll ich die mir wichtigen Cups auswählen?</b><br>'
+            + 'Beim ersten Aufruf von Abakus wird jeweils der dir wichtigste Cup ohne weiteres zutun angezeigt. '
+            + 'Die Turniere der dir wichtigen Cups werden unter "Aktuelle Turniere" angezeigt. '
+            + 'Cups mit ungelesene Neuigkeiten werden mit <span class=cRot>&#128712;</span> gekennzeichnet. '
 
 
             + '<p><b>Muss ich mich registrieren?</b><br>'

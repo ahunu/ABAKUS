@@ -12,7 +12,6 @@ function showAktuelles() {
     }
 
     if (LS.ME !== "NOBODY") {
-        showIcons(['#iPrint']);
         if (LS.ME === '3425' || CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[stCup].indexOf(LS.ME) >= 0) {
             showIcons(['#iPrint', '#iEdit']);
         } else {

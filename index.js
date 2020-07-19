@@ -1339,7 +1339,7 @@ function setTarif() {
         LS.Tarif[iTrull          ] = 1; // Trull
         LS.Tarif[i4Koenige       ] = 1; // Vier Könige
         LS.Tarif[iUltimo         ] = 1; // König ultimo
-        LS.Tarif[iValat          ] = 0; // Valat
+        LS.Tarif[iValat          ] = 10; // Valat
         LS.Tarif[iAbsolut        ] = 0; // Absolut
         LS.Tarif[iXY             ] = 0; // Prämie XY
         LS.Tarif20T = '';
@@ -2233,6 +2233,14 @@ function showCup(i, pBtn, pTermin) {
         hVorschub = '<br>';
     }
     hVorschub = '<br><br>';
+
+//    var hTest = [I]; // 3824 Roman
+//
+//    if (LS.ME === '3425' || LS.ME === '3824') {
+//        CUPS.TYP[pCup] === 'CUP'
+//        hTest.push();
+//    }
+
     var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 1);
     if (CUPS.TURNIER[I] || CUPS.ANMELDERF[I]) {
         $('#dRumpf').html('<div id="ddRumpf" style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
@@ -2408,6 +2416,7 @@ function toggleTechDetails() {
     if ($('#dTechDetails').is(":hidden")) {
         $('#dTechDetails').html('<b>Technische Details:</b><br>'
 
+                + 'Date(): ' + new Date().toLocaleString() + '<br>'
                 + 'location.origin: ' + location.origin + '<br>'
 
                 + ((window.matchMedia('(display-mode: standalone)').matches)
@@ -2804,7 +2813,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                     || CUPS.SPIELTAGE[pCup][iVortag] === 'J' && (new Date()).getHours() <= 4) {
                 if (LS.I !== pCup || LS.AnzSpieler === 0) {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
-                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">ffEin neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
                             + '</div>';
                 } else {
                     hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'

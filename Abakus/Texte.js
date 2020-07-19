@@ -3,6 +3,10 @@
 
 function showText(pText) {
     if (QUERFORMAT()) {
+        if (LS.ME !== "NOBODY") {
+            showIcons(['#iPrint']);
+        }
+
         if (window.location.hash) {
             I = 0;
             LS.ShowCups = 0;
@@ -398,7 +402,7 @@ function getTippsUndTricks() {
             + '<p><b>Abakus auf Android als App installieren:</b><br>'
             + 'Rufe in Google Chrome mit <b>tarock.web.app</b> die Startseite von Abakus auf. '
             + 'Mit einen Klick auf das Symbol <b>&#5010;</b> rechts oben öffnest du das Menü. Mit "<b>Zum Startbildschirm zufügen</b>" installierst du die App abhängig von der Androidversion am Startbildschirm oder im Programmordner. '
-            + 'Von dort kannst du die App nach belieben verschieben. '
+            + 'Von dort kannst du die App nach belieben verschieben. Unter Umständen kann es bis zu einer Minute dauern, bis die App am Startbildschirm bzw. im Programmordner aufscheint.'
             + '<br>Im Gegensatz zu einer App aus dem Play Store braucht eine so installierte App nicht mehr aktualisiert werden. '
 
             + '<p><b>Abakus auf iOS als App installieren:</b><br>'
@@ -407,14 +411,14 @@ function getTippsUndTricks() {
             + 'Mit einem Klick darauf erstellst du die App auf dem Home-Bildschirm. '
 
             + ((LS.VIC.length === 0 || !LS.VIC[0])
-                    ? '<p><b><span class="cRot L">Du hast deine dir wichtigen Cups noch nicht ausgewählt!</span></b><br>'
+                    ? '<p><b><span class="cRot L">Du hast deine(n) dir wichtigen Cup(s) noch nicht ausgewählt!</span></b><br>'
                     : ''
                     )
 
-            + '<p><b>Warum soll ich die mir wichtigen Cups auswählen?</b><br>'
-            + 'Beim ersten Aufruf von Abakus wird jeweils der dir wichtigste Cup ohne weiteres zutun angezeigt. '
-            + 'Die Turniere der dir wichtigen Cups werden unter "Aktuelle Turniere" angezeigt. '
-            + 'Cups mit ungelesene Neuigkeiten werden mit <span class=cRot>&#128712;</span> gekennzeichnet. '
+            + '<p><b>Warum soll ich den/die mir wichtigen Cup(s) auswählen?</b><br>'
+            + 'Beim ersten Aufruf von Abakus wird jeweils der mir wichtigste Cup ohne weiteres zutun angezeigt. '
+            + 'Die Turniere der mir wichtigen Cups werden unter "Aktuelle Turniere" angezeigt. '
+            + 'Mir wichtige Cups mit ungelesene Neuigkeiten werden mit <span class=cRot>&#128712;</span> gekennzeichnet. '
 
 
             + '<p><b>Muss ich mich registrieren?</b><br>'

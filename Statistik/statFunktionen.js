@@ -528,12 +528,6 @@ function writeCanvas(pTitel) {
     } else {
         $('.hfHeaderZeile2,#qfHeaderZeile2').html(pTitel.replace(/ |_/g, '&nbsp;'));
     }
-//    if (PC) {
-//        $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:23pt;white-space:nowrap;font-family:Arial;font-style:italic;");
-//        $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:21pt;white-space:nowrap;font-family:Arial;font-weight:normal;");
-//    }
-
-//    $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
 
     // 50 H Hausruckcup
     // 51 K Ktn. Tarockcup

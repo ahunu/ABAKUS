@@ -106,7 +106,7 @@ function initSAISON(pFilter, pShowSaison) {
             }
         }
     }
-    
+
     if (iSaison === 0) {
         $('#nbSaison,#nbArchiv').addClass('ui-disabled');
     } else {
@@ -451,21 +451,47 @@ function bereSaisonFIX() {
 
     var CUPD = [];
     var spieler = '';
+    var sortPunkte = 0;
     for (var spieler in CUP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
 
+        sortPunkte = 0;
         aSP = CUP[spieler];
-        for (var i in aSP[5]) {
-            if (i < parseInt(CUPS.TURNIER[stCup])) {
-                if (!isNaN(aSP[5][i])) {
-                    aSP[0] += aSP[5][i];
-                }
-            } else {
-                break;
-            }
+
+        if (spieler === '3228' || spieler === '2553') {
+            spieler = spieler;
         }
 
-        if (stFinale || iSaison > 1) {
+//        for (var i in aSP[5]) {
+//            sortPunkte *= 2;
+//            if (i < parseInt(CUPS.TURNIER[stCup])) {
+//                if (!isNaN(aSP[5][i])) {
+//                    aSP[0] += aSP[5][i];
+//                    sortPunkte += aSP[5][i];
+//                }
+//            } else {
+//                break;
+//            }
+//        }
+        for (var i = 0; i < parseInt(CUPS.TURNIER[stCup]); i++) {
+            sortPunkte *= 2;
+            if (!isNaN(aSP[5][i])) {
+                aSP[0] += aSP[5][i];
+                sortPunkte += aSP[5][i];
+                if ((spieler === '3749' || spieler === '2471' || spieler === '3508') && stSaison === '2019/20') {
+                    console.log(spieler, aSP[5][i], aSP[0], sortPunkte);
+                }
+            }
+//            if ((spieler === '3228' || spieler === '2553') && stSaison === '2019/20') {
+//                console.log(spieler,aSP[5][i],aSP[0], sortPunkte);
+//            }
+//            if ((spieler === '3749' || spieler === '2471' || spieler === '3508') && stSaison === '2019/20') {
+//                console.log(spieler,aSP[5][i],aSP[0], sortPunkte);
+//            }
+        }
+
+        if ((stFinale || iSaison > 1)) {
             if (hPlusFinale) {
+                sortPunkte *= 2;
                 if (stFinale) {
                     hCupPunkte = getCupPunkte(stFinale, spieler);
                 } else {
@@ -473,6 +499,7 @@ function bereSaisonFIX() {
                 }
                 if (!isNaN(hCupPunkte)) {
                     aSP[0] += parseInt(hCupPunkte);
+                    sortPunkte += parseInt(hCupPunkte);
                 }
             }
             if (aSP[0] > SAISON[iSaison][is3CupPunkte]) {
@@ -506,10 +533,24 @@ function bereSaisonFIX() {
             SP[spieler][iSaison][3] = aSP[1] + '-' + aSP[2] + '-' + aSP[3];
         }
 
+        if ((spieler === '3749' || spieler === '2471' || spieler === '3508') && stSaison === '2019/20') {
+            console.log(spieler, aSP[0], sortPunkte, aSP[4]);
+        }
+
+
+        if (sortPunkte) {
+            sortPunkte *= 30;
+            sortPunkte += aSP[4]; // Anzahl Teilnahmen
+        }
+
+        if ((spieler === '3749' || spieler === '2471' || spieler === '3508') && stSaison === '2019/20') {
+            console.log(spieler, aSP[0], sortPunkte, aSP[4]);
+        }
+
         if (stFinale && hPlusFinale) {
-            CUPD.push((9000 - aSP[0]) + 'FP:' + (5000 - getCupPunkte(stFinale, spieler)) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+            CUPD.push((9000 - aSP[0]) + '-' + (90000000 - sortPunkte) + 'FP:' + (5000 - getCupPunkte(stFinale, spieler)) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         } else {
-            CUPD.push((9000 - aSP[0]) + 'FP:0000' + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
+            CUPD.push((9000 - aSP[0]) + '-' + (90000000 - sortPunkte) + 'FP:0000' + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         }
     }
 
@@ -519,8 +560,8 @@ function bereSaisonFIX() {
     var hLastKey = '';
     for (var ii = 0; ii < CUPD.length; ii++) {
         var spieler = CUPD[ii].substring((CUPD[ii].lastIndexOf(';') + 1));
-        if (hLastKey !== CUPD[ii].substr(0, 11)) {
-            hLastKey = CUPD[ii].substr(0, 11);
+        if (hLastKey !== CUPD[ii].substr(0, 16)) {
+            hLastKey = CUPD[ii].substr(0, 16);
             hPlatz = ii + 1;
         }
         SP[spieler][iSaison][0] = hPlatz;

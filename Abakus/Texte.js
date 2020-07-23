@@ -3,10 +3,6 @@
 
 function showText(pText) {
     if (QUERFORMAT()) {
-        if (LS.ME !== "NOBODY") {
-            showIcons(['#iPrint']);
-        }
-
         if (window.location.hash) {
             I = 0;
             LS.ShowCups = 0;
@@ -26,8 +22,8 @@ function showText(pText) {
 
     var html = '';
     var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 4);
-    html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
-            + '<div style="width: 80%; padding: 1em; margin: 3em auto;">';
+        html += '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
+                + '<div style="width: 80%; padding: 1em; margin: 3em auto;">';
 
     var hTitel2 = '';
     if (pText === 'Aktuelles') {
@@ -397,7 +393,7 @@ function getTippsUndTricks() {
             + 'Rufe mit <b>tarock.web.app</b> die Startseite von Abakus in deinem Lieblingsbrowser auf. '
             + 'Wenn du Abakus noch nicht installiert hast, wird in der Adresszeile rechts das Symbol <b>&#8853;</b> angezeigt. '
             + 'Nach einem Klick darauf und einen weitern Klick auf "<b>Installieren</b>" wird für Abakus auf dem Deskop eingerichtet. '
-            + '<br>Das funktioniert so mit Google Chrome, Microsoft Edge, Opera, Vivaldi und mit einigen anderen Browsern. Nicht jedoch mit Firefox, Safari und dem Internet Explorer. '
+            + '<br>Das funktioniert so mit Google Chrome, Microsoft Edge und mit einigen anderen Browsern. Nicht jedoch mit Firefox, Safari und dem Internet Explorer. '
 
             + '<p><b>Abakus auf Android als App installieren:</b><br>'
             + 'Rufe in Google Chrome mit <b>tarock.web.app</b> die Startseite von Abakus auf. '

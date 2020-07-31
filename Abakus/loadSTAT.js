@@ -51,6 +51,7 @@ function loadSTAT(I, pTitel, pSkip, pCallback) {
     } else {
         loadSTATold(I, pCallback);
     }
+    pCallback = false; // Sicher ist sicher. Anmeldungen wurden kurz nach dem Anmelden gelöscht????
 }
 
 //  STAT  Funktionen  **************************************************************************
@@ -423,11 +424,13 @@ function loadSTATold(I, pCallback) {
                 STAT.ANMELDUNGEN = {};
             } else {
                 for (var anmeldung in STAT.ANMELDUNGEN) {
-                    console.log(STAT.ANMELDUNGEN[anmeldung].UM, STAT.ANMELDUNGEN[anmeldung].NAME, STAT.ANMELDUNGEN[anmeldung].ANGEMELDET);
-                    if (STAT.ANMELDUNGEN[anmeldung].FUER < Date.now()
-                            || new Date(STAT.ANMELDUNGEN[anmeldung].FUER).toDateString() === new Date(hZuletztGespielt).toDateString()) {
-                        delete STAT.ANMELDUNGEN[anmeldung];
+                    if (LS.ME === '3425' && anmeldung === LS.ME) {
+                        console.log(STAT.ANMELDUNGEN[anmeldung].UM, STAT.ANMELDUNGEN[anmeldung].NAME, STAT.ANMELDUNGEN[anmeldung].ANGEMELDET);
                     }
+//                    if (STAT.ANMELDUNGEN[anmeldung].FUER < Date.now()
+//                            || new Date(STAT.ANMELDUNGEN[anmeldung].FUER).toDateString() === new Date(hZuletztGespielt).toDateString()) {
+//                        delete STAT.ANMELDUNGEN[anmeldung];
+//                    }
                 }
             }
         }
@@ -506,7 +509,7 @@ function loadSTATold(I, pCallback) {
         if (typeof pCallback === "function") {
             console.log('loadSTAT ===> ' + pCallback.name);
             pCallback();
-            pCallback = null;
+            pCallback = false; // Sicher ist sicher. Anmeldungen wurden kurz nach dem Anmelden gelöscht????
         } else {
             whenSTATloaded();
         }

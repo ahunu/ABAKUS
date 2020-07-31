@@ -2588,7 +2588,7 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
             hBtnName = pPrefix + pCup + 'T' + TERMINE[pTermin].I;
         }
     }
-    var hReturn = '<div id="tgl' + hBtnName + '" class="S TGL" style="margin-left:4px;margin-right:4px;" hidden>';
+    var hReturn = '<div id="tgl' + hBtnName + '" class="S TGL" style="padding 0;margin-left:4px;margin-right:4px;" hidden>';
     if (pTermin && pTermin !== -1) {
         hReturn += '<div style="margin: 6px 6px 0 6px">'
                 + TERMINE[pTermin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')

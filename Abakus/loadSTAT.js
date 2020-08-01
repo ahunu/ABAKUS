@@ -427,10 +427,10 @@ function loadSTATold(I, pCallback) {
                     if (LS.ME === '3425' && anmeldung === LS.ME) {
                         console.log(STAT.ANMELDUNGEN[anmeldung].UM, STAT.ANMELDUNGEN[anmeldung].NAME, STAT.ANMELDUNGEN[anmeldung].ANGEMELDET);
                     }
-//                    if (STAT.ANMELDUNGEN[anmeldung].FUER < Date.now()
-//                            || new Date(STAT.ANMELDUNGEN[anmeldung].FUER).toDateString() === new Date(hZuletztGespielt).toDateString()) {
-//                        delete STAT.ANMELDUNGEN[anmeldung];
-//                    }
+                    if (STAT.ANMELDUNGEN[anmeldung].FUER < Date.now()
+                            || new Date(STAT.ANMELDUNGEN[anmeldung].FUER).toDateString() === new Date(hZuletztGespielt).toDateString()) {
+                        delete STAT.ANMELDUNGEN[anmeldung];
+                    }
                 }
             }
         }

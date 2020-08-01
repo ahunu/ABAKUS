@@ -98,7 +98,7 @@ function AnmeldenExe() {
     } else {
         stANMELDUNG.NAME = LS.MEname;
     }
-    stANMELDUNG.ANGEMELDET = 'J';
+    stANMELDUNG.ANGEMELDET = true;
     stANMELDUNG.FUER = stNextTermin;
     stANMELDUNG.UM = new Date().toISOString();
 
@@ -108,7 +108,7 @@ function AnmeldenExe() {
                 console.log('>>>> AnmeldenExe(' + stANMELDUNG.ANGEMELDET + ');');
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString()
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ' angemeldet.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AnmeldenExe2()');
@@ -132,8 +132,6 @@ function AbmeldenExe() {
     } else {
         stANMELDUNG = {};
     }
-    stANMELDUNG.ANGEMELDET = false;
-    stANMELDUNG.RUEBE = 4711;
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
             .set(stANMELDUNG) // Achtung Set ist gefählich wie sonst nichts!!!
             .then(function () {
@@ -144,7 +142,7 @@ function AbmeldenExe() {
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString()
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ' abgemeldet.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AbmeldenExe2()');
@@ -191,7 +189,7 @@ function NachrichtSenden() {
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString()
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ' Textänderung.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'NachrichtSenden()');
@@ -297,40 +295,45 @@ function whenSTATloaded(pNotSynchron) {
     } else {
         $('#stHeader,#stFooter').show();
     }
-    setTimeout(function () {
-        hideEinenMoment();
-        if (!onValueInit) {
-            console.log('ON Init:');
-            onValueInit = true;
-            firebaseRef = firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ZULETZTupd');
-            firebaseRef.on('value', function (data) {
-                console.log('ON update:', STAT.ZULETZTupd, data.val());
-                $('#dOffline').hide();
-                if (navigator.onLine) {
-                    $('#dInstabil').hide();
-                } else {
-                    $('#dInstabil').show();
-                }
-                if (data.val() !== STAT.ZULETZTupd) {
-                    loadSTAT(stCup, 'Statistik wird geladen.', false, false);
-                } else if (!stSynchron) {
-                    stSynchron = true;
-                    if (stStat === 10) { // Anmeldung
-                        $('#bAnAbmelden,#bNachricht,#mTable').removeClass('ui-disabled');
-                    }
-                }
-            }, function (error) {
-                stSynchron = false;
-                if (stStat === 10) { // Anmeldung
-                    $('#bAnAbmelden,#bNachricht').addClass('ui-disabled');
-                }
-                $('#dOffline').show();
+
+//    setTimeout(function () {
+//        hideEinenMoment();
+
+    if (!onValueInit) {
+        console.log('ON Init:');
+        onValueInit = true;
+        firebaseRef = firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ZULETZTupd');
+        firebaseRef.on('value', function (data) {
+            console.log('ON update:', STAT.ZULETZTupd, data.val());
+            $('#dOffline').hide();
+            if (navigator.onLine) {
                 $('#dInstabil').hide();
-                showEinenDBFehler(error, 'initSTAT()', 'STAT on');
-                return false;
-            });
-        }
-    });
+            } else {
+                $('#dInstabil').show();
+            }
+            if (data.val() !== STAT.ZULETZTupd) {
+                loadSTAT(stCup, 'Statistik wird geladen.', false, false);
+            } else if (!stSynchron) {
+                stSynchron = true;
+                if (stStat === 10) { // Anmeldung
+                    $('#bAnAbmelden,#bNachricht,#mTable').removeClass('ui-disabled');
+                }
+            }
+        }, function (error) {
+            stSynchron = false;
+            if (stStat === 10) { // Anmeldung
+                $('#bAnAbmelden,#bNachricht').addClass('ui-disabled');
+            }
+            $('#dOffline').show();
+            $('#dInstabil').hide();
+            showEinenDBFehler(error, 'initSTAT()', 'STAT on');
+            return false;
+        });
+    }
+
+//    });
+
+    hideEinenMoment();
 }
 
 function getTIME(pDAT) {

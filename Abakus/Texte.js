@@ -331,7 +331,6 @@ function getEtikette() {
 function getUrlaubsplaner() {
     return '<span class=M sstyle="text-align:justify">'
 
-
 //            + '<p><div class="L" style="margin:0 0 1vh 0">8. bis 12. Juni 2020&nbsp;&nbsp; <b>2. Wiener Tarockmarathon</b></div>'
 //            + 'Von Montag bis Freitag wird jeweils ein Turnier veranstaltet.<br>'
 //            + 'Beginn jeweils um 17 Uhr.<br>'
@@ -352,14 +351,13 @@ function getUrlaubsplaner() {
             + 'Mo. 7. Sept. Schlögen, Veranstalter: Michael Achleitner 0664 2155381<br>'
             + 'Di. 8. Sep. Mauthausen, Veranstalter: Alfred Plischnack 0699 88809355<br>'
             + 'Mi. 9. Sep. Pöchlarn, Veranstalter: Johann Katschtaler<br>'
-            + 'Do. 10. Sep. Mautern, Veranstalter: Leo Luger 0650 6516522<br>'
+            + 'Do. 10. Sep. Mautern, Veranstalter: Gerhard Reis<br>'
             + 'Fr. 11. Sep. Wien, Veranstalter: Leo Luger 0650 6516522<br>'
             + 'Organisation: Leo Luger 0650 6516522'
 
             + '<p><div class="L" style="margin:4vh 0 1vh 0">18. - 20. Sep. 2020&nbsp;&nbsp; <b>Frankenmarkter Marathon</b></div>'
             + 'Veranstaltungsort: Gasthof&nbsp;Greisinger, 4890&nbsp;Frankenmarkt<br>'
             + 'Veranstalter: Tarockrunde&nbsp;Frankenmarkt, Bert&nbsp;Greisinger&nbsp;Tel.:&nbsp;0664&nbsp;2863075'
-
 
 
 //1. Passau Engelhardszell, 31 km, 2:09

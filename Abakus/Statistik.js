@@ -108,7 +108,7 @@ function AnmeldenExe() {
                 console.log('>>>> AnmeldenExe(' + stANMELDUNG.ANGEMELDET + ');');
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ' angemeldet.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stCup + ' angemeldet.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AnmeldenExe2()');
@@ -135,14 +135,14 @@ function AbmeldenExe() {
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
             .set(stANMELDUNG) // Achtung Set ist gefählich wie sonst nichts!!!
             .then(function () {
-                if (stANMELDUNG[LS.ME]) {
+                if (stANMELDUNG && stANMELDUNG.ANGEMELDET) {
                     console.log('<<<< AbmeldenExe(' + stANMELDUNG.ANGEMELDET + ');');
                 } else {
                     console.log('<<<< AbmeldenExe(null);');
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ' abgemeldet.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stCup + ' abgemeldet.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AbmeldenExe2()');
@@ -189,7 +189,7 @@ function NachrichtSenden() {
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ' Textänderung.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stCup + ' Textänderung.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'NachrichtSenden()');
@@ -493,6 +493,7 @@ $(document).ready(function () {
             lastScrollPos = aktScrollPos;
         }
     });
+
     setInterval(function () {
         if (navigator.onLine) {
             $('#dOffline').hide();

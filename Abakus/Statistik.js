@@ -9,6 +9,7 @@ var STAT = new Object();
 var DET = new Object();
 var cChart1, cChart2, cChart3;
 var cI = [];
+var stBrowser = '';
 var stTurCupGes = 2;
 var stLaenge = 0;
 var stTIMESTAMP = undefined;
@@ -56,8 +57,6 @@ var stNextTermin = 0;
 var stNextTerminDat = null;
 var mAnmelden = true;
 var jbNachricht = null;
-
-
 function seiteUeberspringen(pCup) {
     if (pCup === 1 || pCup === 5 || pCup === 6 || pCup === 7) { // Private Runde, oö. Regeln, wr. Regeln, tir. Regeln
         return false;
@@ -88,7 +87,6 @@ function QUERFORMAT() {
 function AnmeldenExe() {
     'use strict';
     console.log('>> AnmeldenExe();');
-
     stANMELDUNG = {};
     if (STAT.ANMELDUNGEN[LS.ME] && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
         stANMELDUNG.NACHRICHT = STAT.ANMELDUNGEN[LS.ME].NACHRICHT;
@@ -101,14 +99,13 @@ function AnmeldenExe() {
     stANMELDUNG.ANGEMELDET = true;
     stANMELDUNG.FUER = stNextTermin;
     stANMELDUNG.UM = new Date().toISOString();
-
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
             .update(stANMELDUNG)
             .then(function () {
                 console.log('>>>> AnmeldenExe(' + stANMELDUNG.ANGEMELDET + ');');
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stCup + ' angemeldet.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrowser + ' ' + stCup + ' angemeldet.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AnmeldenExe2()');
@@ -120,18 +117,24 @@ function AnmeldenExe() {
 }
 
 function AbmeldenExe() {
-    'use strict';
+//    'use strict';
     console.log('<< AbmeldenExe();');
-    stANMELDUNG = {};
-    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
-        stANMELDUNG = STAT.ANMELDUNGEN[LS.ME];
-        var hDate = new Date();
-        hDate.setYear(2100);
-        stANMELDUNG.UM = hDate.toISOString();
-        stANMELDUNG.ANGEMELDET = false;
-    } else {
-        stANMELDUNG = {};
-    }
+//    stANMELDUNG = {};
+//    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
+//        stANMELDUNG = STAT.ANMELDUNGEN[LS.ME];
+//        var hDate = new Date();
+//        hDate.setYear(2100);
+//        stANMELDUNG.UM = hDate.toISOString();
+//        stANMELDUNG.ANGEMELDET = false;
+//    } else {
+//        stANMELDUNG = {};
+//    }
+
+    stANMELDUNG = STAT.ANMELDUNGEN[LS.ME];
+    var hDate = new Date();
+    hDate.setYear(2100);
+    stANMELDUNG.UM = hDate.toISOString();
+    stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + stBrowser + ' ' + stCup;
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
             .set(stANMELDUNG) // Achtung Set ist gefählich wie sonst nichts!!!
             .then(function () {
@@ -142,7 +145,7 @@ function AbmeldenExe() {
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stCup + ' abgemeldet.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrowser + ' ' + stCup + ' abgemeldet.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AbmeldenExe2()');
@@ -189,7 +192,7 @@ function NachrichtSenden() {
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stCup + ' Textänderung.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrwoser + ' ' + stCup + ' Textänderung.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'NachrichtSenden()');
@@ -412,6 +415,33 @@ $(document).ready(function () {
         history.back();
     }
 
+    if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) !== -1) {
+        stBrowser = 'Opera';
+    } else if (navigator.userAgent.indexOf("Edg") !== -1) {
+        stBrowser = 'Edge';
+    } else if (navigator.userAgent.indexOf("Chrome") !== -1) {
+        stBrowser = 'Chrome';
+    } else if (navigator.userAgent.indexOf("Safari") !== -1) {
+        stBrowser = 'Safari';
+    } else if (navigator.userAgent.indexOf("Firefox") !== -1) {
+        stBrowser = 'Firefox';
+    } else if ((navigator.userAgent.indexOf("MSIE") !== -1) || (!!document.documentMode === true)) {
+        stBrowser = 'IE';
+    } else {
+        stBrowser = 'Unknown';
+    }
+    if (location.origin === 'file://') {
+        if (PC) {
+            stBrowser += '-FS';
+        } else {
+            stBrowser += '-PG';
+        }
+    } else if (location.pathname === '/') {
+        stBrowser += '-BR';
+    } else {
+        stBrowser += '-AP';
+    }
+
     $('#tJJJJ').text(new Date().getFullYear());
     jbNachricht = new jBox('Modal', {
         title: '<div class=L2 style="background-color:#27a;border:8px solid #27a;color: white;">&nbsp;Meine Nachricht</div>',
@@ -493,7 +523,6 @@ $(document).ready(function () {
             lastScrollPos = aktScrollPos;
         }
     });
-
     setInterval(function () {
         if (navigator.onLine) {
             $('#dOffline').hide();

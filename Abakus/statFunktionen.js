@@ -58,7 +58,7 @@ function getStatMeldungen(pAnAbmelden, nAnmeldungen) {
                     + '&nbsp;<b>An- und abmelden ist nicht möglich.</b></span>';
         } else {
             if (STAT.TEILNEHMER && pAnAbmelden) {
-                if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].ANGEMELDET) {
+                if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].ANGEMELDET && (STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === true || STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === 'J')) {
                     hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled M2") + '" onclick="loadSTAT(stCup, \'Du wirst abgemeldet!\', false, AbmeldenExe);">&nbsp;Abmelden&nbsp;</button><br>';
                 } else {
                     hAnAbmelden = '&nbsp;&nbsp;<button id=bAnAbmelden class="ui-btn ui-btn-e ui-btn-inline ui-corner-all' + (stSynchron ? "" : " ui-disabled") + '" onclick="loadSTAT(stCup, \'Du wirst angemeldet!\', false, AnmeldenExe);">&nbsp;Anmelden&nbsp;</button><br>';
@@ -75,23 +75,23 @@ function getStatMeldungen(pAnAbmelden, nAnmeldungen) {
         if (STAT.ANMELDUNGEN) {
             var nAnmeldungen = 0;
             for (var anmeldung in STAT.ANMELDUNGEN) {
-                if (STAT.ANMELDUNGEN[anmeldung].ANGEMELDET && new Date().valueOf() <= STAT.ANMELDUNGEN[anmeldung].FUER) {
+                if (STAT.ANMELDUNGEN[anmeldung].ANGEMELDET && (STAT.ANMELDUNGEN[anmeldung].ANGEMELDET === true || STAT.ANMELDUNGEN[anmeldung].ANGEMELDET === 'J') && new Date().valueOf() <= STAT.ANMELDUNGEN[anmeldung].FUER) {
                     nAnmeldungen++;
                 }
             }
             if (nAnmeldungen <= 0) {
-                ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Keine Anmeldungen f&uuml;r " + stNextTerminDat + ".&nbsp;&nbsp;</b><br></span>";
+                ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Keine Anmeldungen für " + stNextTerminDat + ".&nbsp;&nbsp;</b><br></span>";
             } else if (nAnmeldungen === 1) {
                 ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png' width='24' height='24'><span class=M>&nbsp;<b>Eine Anmeldung f&uuml;r " + stNextTerminDat + ".</b><br></span>";
             } else if (nAnmeldungen < 4 || nAnmeldungen === 7) {
-                ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
+                ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen für " + stNextTerminDat + ".</b><br></span>";
             } else if (nAnmeldungen === 6 || nAnmeldungen === 11) {
-                ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
+                ret += "&nbsp;<img src='" + Pfad + "Icons/Achtung.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen für " + stNextTerminDat + ".</b><br></span>";
             } else {
-                ret += "&nbsp;<img src='" + Pfad + "Icons/OK.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen f&uuml;r " + stNextTerminDat + ".</b><br></span>";
+                ret += "&nbsp;<img src='" + Pfad + "Icons/OK.png' width='24' height='24'><span class=M>&nbsp;<b>" + nAnmeldungen + " Anmeldungen für " + stNextTerminDat + ".</b><br></span>";
             }
         } else {
-            ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Keine Anmeldungen f&uuml;r " + stNextTerminDat + ".&nbsp;&nbsp;</b><br></span>";
+            ret += "&nbsp;<img src='" + Pfad + "Icons/Fehler.png'  width='24' height='24'><span class=M>&nbsp;<b>Keine Anmeldungen für " + stNextTerminDat + ".&nbsp;&nbsp;</b><br></span>";
         }
         if (LS.ME !== 'NOBODY') {
             var hAnmeldung = "";

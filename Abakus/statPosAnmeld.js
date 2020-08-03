@@ -44,7 +44,7 @@ function statPosAnmeld() {
 
     var iAnmeldung = 0;
     for (var anmeldung in SORT) {
-        if (SORT[anmeldung].ANGEMELDET) {
+        if (SORT[anmeldung].ANGEMELDET && (SORT[anmeldung].ANGEMELDET === true || SORT[anmeldung].ANGEMELDET === 'J')) {
             iAnmeldung++;
         }
         hUM = new Date(SORT[anmeldung].UM);
@@ -52,24 +52,34 @@ function statPosAnmeld() {
         if (SORT[anmeldung].NR === LS.ME) {
             hClass = 'bBeige';
         }
-        ret += '<tr class="' + hClass + '">'
-                + (SORT[anmeldung].ANGEMELDET
-                        ? '<td class="TR">' + (iAnmeldung) + '&nbsp;</td>'
+
+        if (SORT[anmeldung].ANGEMELDET) {
+            if (SORT[anmeldung].ANGEMELDET === true || SORT[anmeldung].ANGEMELDET === 'J') {
+                ret += '<tr class="' + hClass + '">'
+                        + '<td class="TR">' + (iAnmeldung) + '&nbsp;</td>'
                         + '<td class="TC">' + hUM.getDate() + '.' + (hUM.getMonth() + 1) + '.</td>'
                         + '<td class="TC">' + hUM.getHours() + ':' + ('0' + hUM.getMinutes()).slice(-2) + '&nbsp;</td>'
                         + '<th>' + SORT[anmeldung].NAME.replace(' ', '&nbsp;') + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>'
-                        : '<td></td><td colspan="3">' + SORT[anmeldung].NAME.replace(' ', '&nbsp;') + '&nbsp;schreibt:</td>'
-                        )
-                + '</tr>'
+                        + '</tr>';
+            } else if (LS.ME === '3425') {
+                ret += '<tr class="' + hClass + '"><td></td><td colspan="3"><b>' + SORT[anmeldung].NR + '</b> ' + SORT[anmeldung].ANGEMELDET + '</td></tr>';
+            }
+        }
 
-                + (SORT[anmeldung].NACHRICHT
-                        ? '<tr hidden></tr>'
-                        + '<tr class="' + hClass + '">'
-                        + '<td></td>'
-                        + '<td colspan="3" class=cNachricht>' + SORT[anmeldung].NACHRICHT + '</td>'
-                        + '</tr>'
-                        : '');
+        if (SORT[anmeldung].NACHRICHT) {
+            if (!SORT[anmeldung].ANGEMELDET || (SORT[anmeldung].ANGEMELDET !== true && SORT[anmeldung].ANGEMELDET !== 'J')) {
+                ret += '<tr class="' + hClass + '"><td></td><td colspan="3">' + SORT[anmeldung].NAME.replace(' ', '&nbsp;') + '&nbsp;schreibt:</td></tr>';
+            }
+            ret += (SORT[anmeldung].NACHRICHT
+                    ? '<tr hidden></tr>'
+                    + '<tr class="' + hClass + '">'
+                    + '<td></td>'
+                    + '<td colspan="3" class=cNachricht>' + SORT[anmeldung].NACHRICHT + '</td>'
+                    + '</tr>'
+                    : '');
+        }
     }
+
     ret += "</tbody></table>";
     return ret + "</div>";
 }

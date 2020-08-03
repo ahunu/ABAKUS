@@ -57,6 +57,7 @@ var stNextTermin = 0;
 var stNextTerminDat = null;
 var mAnmelden = true;
 var jbNachricht = null;
+
 function seiteUeberspringen(pCup) {
     if (pCup === 1 || pCup === 5 || pCup === 6 || pCup === 7) { // Private Runde, oö. Regeln, wr. Regeln, tir. Regeln
         return false;
@@ -88,17 +89,18 @@ function AnmeldenExe() {
     'use strict';
     console.log('>> AnmeldenExe();');
     stANMELDUNG = {};
-    if (STAT.ANMELDUNGEN[LS.ME] && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
-        stANMELDUNG.NACHRICHT = STAT.ANMELDUNGEN[LS.ME].NACHRICHT;
-    }
+    stANMELDUNG.UM = new Date().toISOString();
+    stANMELDUNG.FUER = stNextTermin;
+    stANMELDUNG.ANGEMELDET = true;
     if (LS.ME === '2778') {
         stANMELDUNG.NAME = 'Phan Thomas';
     } else {
         stANMELDUNG.NAME = LS.MEname;
     }
-    stANMELDUNG.ANGEMELDET = true;
-    stANMELDUNG.FUER = stNextTermin;
-    stANMELDUNG.UM = new Date().toISOString();
+    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
+        stANMELDUNG.NACHRICHT = STAT.ANMELDUNGEN[LS.ME].NACHRICHT;
+    }
+
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
             .update(stANMELDUNG)
             .then(function () {
@@ -117,7 +119,7 @@ function AnmeldenExe() {
 }
 
 function AbmeldenExe() {
-//    'use strict';
+    'use strict';
     console.log('<< AbmeldenExe();');
 //    stANMELDUNG = {};
 //    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
@@ -130,11 +132,19 @@ function AbmeldenExe() {
 //        stANMELDUNG = {};
 //    }
 
-    stANMELDUNG = STAT.ANMELDUNGEN[LS.ME];
-    var hDate = new Date();
-    hDate.setYear(2100);
-    stANMELDUNG.UM = hDate.toISOString();
+    stANMELDUNG = {};
+    stANMELDUNG.UM = new Date().toISOString();
+    stANMELDUNG.FUER = stNextTermin;
     stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + stBrowser + ' ' + stCup;
+    if (LS.ME === '2778') {
+        stANMELDUNG.NAME = 'Phan Thomas';
+    } else {
+        stANMELDUNG.NAME = LS.MEname;
+    }
+    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
+        stANMELDUNG.NACHRICHT = STAT.ANMELDUNGEN[LS.ME].NACHRICHT;
+    }
+
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
             .set(stANMELDUNG) // Achtung Set ist gefählich wie sonst nichts!!!
             .then(function () {
@@ -160,28 +170,23 @@ function NachrichtSenden() {
     'use strict';
     console.log('>> NachrichtSenden();');
     stANMELDUNG = {};
-    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].ANGEMELDET) {
-        stANMELDUNG = STAT.ANMELDUNGEN[LS.ME];
-        stANMELDUNG.NACHRICHT = $('#iNachricht').val().trim();
-        if (!stANMELDUNG.NACHRICHT) {
-            stANMELDUNG.NACHRICHT = null;
-        }
+    stANMELDUNG.UM = new Date().toISOString();
+    stANMELDUNG.FUER = stNextTermin;
+    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && (STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === true || STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === 'J')) {
+        stANMELDUNG.ANGEMELDET = true;
     } else {
-        stANMELDUNG = {};
-        if (LS.ME === '2778') {
-            stANMELDUNG.NAME = 'Phan Thomas';
-        } else {
-            stANMELDUNG.NAME = LS.MEname;
-        }
-        stANMELDUNG.FUER = stNextTermin;
-        var hDate = new Date();
-        hDate.setYear(2100);
-        stANMELDUNG.UM = hDate.toISOString();
-        stANMELDUNG.NACHRICHT = $('#iNachricht').val().trim();
-        if (!stANMELDUNG.NACHRICHT) {
-            stANMELDUNG = null;
-        }
+        stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + stBrowser + ' ' + stCup;
     }
+    if (LS.ME === '2778') {
+        stANMELDUNG.NAME = 'Phan Thomas';
+    } else {
+        stANMELDUNG.NAME = LS.MEname;
+    }
+    stANMELDUNG.NACHRICHT = $('#iNachricht').val().trim();
+    if (!stANMELDUNG.NACHRICHT) {
+        stANMELDUNG.NACHRICHT = null;
+    }
+
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
             .update(stANMELDUNG)
             .then(function () {
@@ -192,7 +197,7 @@ function NachrichtSenden() {
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrwoser + ' ' + stCup + ' Textänderung.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrowser + ' ' + stCup + ' Textänderung.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'NachrichtSenden()');

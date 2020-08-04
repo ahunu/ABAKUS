@@ -202,35 +202,34 @@ function whenSTATloaded(pNewTurnier) {
 
     }
 
-    setTimeout(function () {
-        hideEinenMoment();
-        if (!onValueInit) {
-            onValueInit = true;
-            firebaseRef = firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/_LASTTURNIER');
-            firebaseRef.on('value', function (data) {
-                $('#dOffline').hide();
-                if (navigator.onLine) {
-                    $('#dInstabil').hide();
-                } else {
-                    $('#dInstabil').show();
-                }
-                if (!STAT._LASTTURNIER) {
-                    loadSTAT(stCup, 'Statistik wird geladen.');
-                } else if (data.val() !== STAT._LASTTURNIER) {
-                    loadTURNIER(stCup, data.val().substr(0, 10), 'Statistik wird geladen.', data.val());
-                } else if (!stSynchron) {
-                    stSynchron = true;
-                }
-            }, function (error) {
-                stSynchron = false;
-                $('#dOffline').show();
+    if (!onValueInit) {
+        onValueInit = true;
+        firebaseRef = firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/_LASTTURNIER');
+        firebaseRef.on('value', function (data) {
+            $('#dOffline').hide();
+            if (navigator.onLine) {
                 $('#dInstabil').hide();
-                showEinenDBFehler(error, 'initSTAT()', 'STAT on');
-                return false;
-            });
-        }
-    });
+            } else {
+                $('#dInstabil').show();
+            }
+            if (!STAT._LASTTURNIER) {
+                loadSTAT(stCup, 'Statistik wird geladen.');
+            } else if (data.val() !== STAT._LASTTURNIER) {
+                loadTURNIER(stCup, data.val().substr(0, 10), 'Statistik wird geladen.', data.val());
+            } else if (!stSynchron) {
+                stSynchron = true;
+            }
+        }, function (error) {
+            stSynchron = false;
+            $('#dOffline').show();
+            $('#dInstabil').hide();
+            showEinenDBFehler(error, 'initSTAT()', 'STAT on');
+            return false;
+        });
+    }
+
     defArchiv();
+    hideEinenMoment();
 }
 
 function sgetDateString(pDate) {
@@ -520,7 +519,7 @@ function editAnekdote() {
             $('.pell-content').html('');
             editor.content.innerHTML = '';
         }
-        $('.pell-content').css('padding','11px').focus();
+        $('.pell-content').css('padding', '11px').focus();
     }, 100);
 
     $(".ciFOTO").focusout(function () {

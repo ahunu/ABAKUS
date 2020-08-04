@@ -9,7 +9,6 @@ var STAT = new Object();
 var DET = new Object();
 var cChart1, cChart2, cChart3;
 var cI = [];
-var stBrowser = '';
 var stTurCupGes = 2;
 var stLaenge = 0;
 var stTIMESTAMP = undefined;
@@ -110,7 +109,7 @@ function AnmeldenExe() {
                 console.log('>>>> AnmeldenExe(' + stANMELDUNG.ANGEMELDET + ');');
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrowser + ' ' + stCup + ' angemeldet.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + window.innerWidth + ' ' + stCup + ' angemeldet.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AnmeldenExe2()');
@@ -127,7 +126,7 @@ function AbmeldenExe() {
     stANMELDUNG = {};
     stANMELDUNG.UM = new Date().toISOString();
     stANMELDUNG.FUER = stNextTermin;
-    stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + stBrowser + ' ' + stCup;
+    stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + window.innerWidth + ' ' + stCup;
     if (LS.ME === '2778') {
         stANMELDUNG.NAME = 'Phan Thomas';
     } else {
@@ -150,7 +149,7 @@ function AbmeldenExe() {
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrowser + ' ' + stCup + ' abgemeldet.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + window.innerWidth + ' ' + stCup + ' abgemeldet.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'AbmeldenExe2()');
@@ -170,7 +169,7 @@ function NachrichtSenden() {
     if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && (STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === true || STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === 'J')) {
         stANMELDUNG.ANGEMELDET = true;
     } else {
-        stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + stBrowser + ' ' + stCup;
+        stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + window.innerWidth + ' ' + stCup;
     }
     if (LS.ME === '2778') {
         stANMELDUNG.NAME = 'Phan Thomas';
@@ -192,7 +191,7 @@ function NachrichtSenden() {
                 }
                 firebase.database().ref('/00/' + ("000" + stCup).slice(-3))
                         .update({
-                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrowser + ' ' + stCup + ' Textänderung.'
+                            ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + window.innerWidth + ' ' + stCup + ' Textänderung.'
                         })
                         .catch(function (error) {
                             showEineDBWarnung(error, 'NachrichtSenden2()');
@@ -408,33 +407,6 @@ $(document).ready(function () {
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (stCup <= 0) {
         history.back();
-    }
-
-    if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) !== -1) {
-        stBrowser = 'Opera';
-    } else if (navigator.userAgent.indexOf("Edg") !== -1) {
-        stBrowser = 'Edge';
-    } else if (navigator.userAgent.indexOf("Chrome") !== -1) {
-        stBrowser = 'Chrome';
-    } else if (navigator.userAgent.indexOf("Safari") !== -1) {
-        stBrowser = 'Safari';
-    } else if (navigator.userAgent.indexOf("Firefox") !== -1) {
-        stBrowser = 'Firefox';
-    } else if ((navigator.userAgent.indexOf("MSIE") !== -1) || (!!document.documentMode === true)) {
-        stBrowser = 'IE';
-    } else {
-        stBrowser = 'Unknown';
-    }
-    if (location.origin === 'file://') {
-        if (PC) {
-            stBrowser += '-FS';
-        } else {
-            stBrowser += '-PG';
-        }
-    } else if (location.pathname === '/') {
-        stBrowser += '-BR';
-    } else {
-        stBrowser += '-AP';
     }
 
     $('#tJJJJ').text(new Date().getFullYear());

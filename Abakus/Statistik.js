@@ -97,8 +97,11 @@ function AnmeldenExe() {
     } else {
         stANMELDUNG.NAME = LS.MEname;
     }
-    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
+    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
         stANMELDUNG.NACHRICHT = STAT.ANMELDUNGEN[LS.ME].NACHRICHT;
+    }
+    if (!stANMELDUNG.NACHRICHT) {
+        stANMELDUNG.NACHRICHT = null;
     }
 
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
@@ -121,17 +124,6 @@ function AnmeldenExe() {
 function AbmeldenExe() {
     'use strict';
     console.log('<< AbmeldenExe();');
-//    stANMELDUNG = {};
-//    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
-//        stANMELDUNG = STAT.ANMELDUNGEN[LS.ME];
-//        var hDate = new Date();
-//        hDate.setYear(2100);
-//        stANMELDUNG.UM = hDate.toISOString();
-//        stANMELDUNG.ANGEMELDET = false;
-//    } else {
-//        stANMELDUNG = {};
-//    }
-
     stANMELDUNG = {};
     stANMELDUNG.UM = new Date().toISOString();
     stANMELDUNG.FUER = stNextTermin;
@@ -141,12 +133,15 @@ function AbmeldenExe() {
     } else {
         stANMELDUNG.NAME = LS.MEname;
     }
-    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
+    if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
         stANMELDUNG.NACHRICHT = STAT.ANMELDUNGEN[LS.ME].NACHRICHT;
+    }
+    if (!stANMELDUNG.NACHRICHT) {
+        stANMELDUNG.NACHRICHT = null;
     }
 
     firebase.database().ref('/00/' + ("000" + stCup).slice(-3) + '/ANMELDUNGEN/' + LS.ME)
-            .set(stANMELDUNG) // Achtung Set ist gefählich wie sonst nichts!!!
+            .update(stANMELDUNG)
             .then(function () {
                 if (stANMELDUNG && stANMELDUNG.ANGEMELDET) {
                     console.log('<<<< AbmeldenExe(' + stANMELDUNG.ANGEMELDET + ');');
@@ -200,7 +195,7 @@ function NachrichtSenden() {
                             ZULETZTupd: new Date().toISOString() + ' ' + LS.ME + ', ' + stBrowser + ' ' + stCup + ' Textänderung.'
                         })
                         .catch(function (error) {
-                            showEineDBWarnung(error, 'NachrichtSenden()');
+                            showEineDBWarnung(error, 'NachrichtSenden2()');
                         });
             })
             .catch(function (error) {
@@ -304,9 +299,6 @@ function whenSTATloaded(pNotSynchron) {
         $('#stHeader,#stFooter').show();
     }
 
-//    setTimeout(function () {
-//        hideEinenMoment();
-
     if (!onValueInit) {
         console.log('ON Init:');
         onValueInit = true;
@@ -338,8 +330,6 @@ function whenSTATloaded(pNotSynchron) {
             return false;
         });
     }
-
-//    });
 
     hideEinenMoment();
 }

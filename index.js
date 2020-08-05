@@ -2,6 +2,7 @@
 /* global getVersionsDatum, firebase, pSeite, pCUP, SPIELERext, stCup, stAnzSpalten, setFont, SORT */
 
 var PC = false;
+var APP = false;
 var DB = new Object();
 var FB = undefined;
 var AnmeldungGestartet = false;
@@ -1032,7 +1033,6 @@ function checkNeuerTisch() {
             break;
         }
     }
-
 
     LS.Vorhand = (Date.now() % (LS.AnzSpieler) + 1);
 // onOK aus Anmeldung.js
@@ -2426,11 +2426,12 @@ function toggleTechDetails() {
                                 : 'display-mode: in browser<br>')
                         )
 
+
+
+
+
                 + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
                 + 'navigator.vendor: ' + navigator.vendor + '<br>'
-                + (("standalone" in window.navigator && window.navigator.standalone)
-                        ? 'navigators.standalone: true<br>'
-                        : '')
                 + 'navigator.userAgent: ' + navigator.userAgent + '<br>'
                 + 'navigator.platform: ' + navigator.platform + '<br>'
                 + (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ? 'iOS navigation.type: ' + window.performance.navigation.type + '<br>' : '')
@@ -3305,6 +3306,15 @@ $(document).ready(function () {
         PC = false;
     } else {
         PC = true;
+    }
+
+    if (window.matchMedia('(display-mode: standalone)').matches // PWA-App
+            || (!PC && location.origin === 'file://')) {        // PhoneGap
+        APP = true;
+        $('#dVollversion').remove();
+    } else {
+        APP = false;
+        $('#dOrigin').text(location.origin);
     }
 
     try {

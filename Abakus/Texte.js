@@ -22,8 +22,8 @@ function showText(pText) {
 
     var html = '';
     var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 4);
-        html += '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
-                + '<div style="width: 80%; padding: 1em; margin: 3em auto;">';
+    html += '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
+            + '<div style="width: 80%; padding: 1em; margin: 3em auto;">';
 
     var hTitel2 = '';
     if (pText === 'Aktuelles') {
@@ -371,66 +371,69 @@ function getUrlaubsplaner() {
 }
 
 function getTippsUndTricks() {
+    var CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     return '<span class=M style="text-align:justify">'
 
-            + ((window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
-                    ? '<p><b>Du verwendest Abakus bereits als App.</b><br>'
-                    : '<p><b><span class="cRot L">Warum verwendest du Abakus nicht als App?</span></b><br>'
+            + ((window.matchMedia('(display-mode: standalone)').matches
+                    || (location.origin === 'file://' && navigator.userAgent.match(/Android/i))) // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
+                    ? '<p><b>Du verwendest bereits die Vollversion von Abakus.</b><br>'
+                    : '<p><b><span class="cRot L">Warum verwendest du nicht die Vollversion von Abakus?</span></b><br>'
                     )
 
+                    + '<p><b>Welche Vorteile bringt die Vollversion?</b><br>'
+                    + (CUPS.BEREadmin.indexOf(LS.ME) >= 0 || CUPS.BEREschreiben.indexOf(LS.ME) >= 0
+                            ? "Aus Sicherheitsgründen sind die Administratortools, "
+                            : "Aus Sicherheitsgründen ist "
+                            )
+                    + 'das Eingeben von Tischen und das Ändern der Parameter nur in der Vollversion möglich. '
+                    + 'Bei einer Installation wird die App am PC bzw. am Handy gespeichter und braucht somit nicht jedesmal über das Netz geladen werden. '
+                    + 'Das spart Datenvolumen und schneller geht´s ausserdem. '
+                    + 'Wenn die App mal gestartet ist benötigt sie keine Internetverbindung mehr ausser man will etwas ändern oder eine aktuellere Statistik anschauen. '
 
-            + '<p><b>Welche Vorteile bringt eine App?</b><br>'
-            + 'Bei einer Installation wird die App am PC bzw. am Handy gespeichter und braucht somit nicht jedesmal über das Netz geladen werden. '
-            + 'Das spart Datenvolumen und schneller geht´s ausserdem. '
-            + 'Wenn die App mal gestartet ist benötigt sie keine Internetverbindung mehr. '
+                    + '<p><b>Am PC Abakus als Vollversion installieren:</b><br>'
+                    + 'Rufe mit <b>tarock.web.app</b> die Startseite von Abakus in deinem Lieblingsbrowser auf. '
+                    + 'Wenn du Abakus noch nicht installiert hast, wird in der Adresszeile rechts das Symbol <b>&#8853;</b> angezeigt. '
+                    + 'Nach einem Klick darauf und einen weitern Klick auf "<b>Installieren</b>" wird für Abakus auf dem Deskop eingerichtet. '
+                    + '<br>Das funktioniert so mit Google Chrome, Microsoft Edge und mit einigen anderen Browsern. Nicht jedoch mit Firefox, Safari und dem Internet Explorer. '
 
-//            + '<p><b>Worauf muss ich bei der Installation achten?</b><br>'
-//            + 'Sowohl auf dem PC, Internetverbindung mehr. '
+                    + '<p><b>Auf Android die Vollversion installieren:</b><br>'
+                    + 'Rufe in Google Chrome mit <b>tarock.web.app</b> die Startseite von Abakus auf. '
+                    + 'Mit einen Klick auf das Symbol <b>&#5010;</b> rechts oben öffnest du das Menü. Mit "<b>Zum Startbildschirm zufügen</b>" installierst du die App abhängig von der Androidversion am Startbildschirm oder im Programmordner. '
+                    + 'Von dort kannst du die App nach belieben verschieben. Unter Umständen kann es bis zu einer Minute dauern, bis die App am Startbildschirm bzw. im Programmordner aufscheint.'
+                    + '<br>Im Gegensatz zu einer App aus dem Play Store braucht eine so installierte App nicht mehr aktualisiert werden. '
 
-            + '<p><b>Abakus am PC als App installieren:</b><br>'
-            + 'Rufe mit <b>tarock.web.app</b> die Startseite von Abakus in deinem Lieblingsbrowser auf. '
-            + 'Wenn du Abakus noch nicht installiert hast, wird in der Adresszeile rechts das Symbol <b>&#8853;</b> angezeigt. '
-            + 'Nach einem Klick darauf und einen weitern Klick auf "<b>Installieren</b>" wird für Abakus auf dem Deskop eingerichtet. '
-            + '<br>Das funktioniert so mit Google Chrome, Microsoft Edge und mit einigen anderen Browsern. Nicht jedoch mit Firefox, Safari und dem Internet Explorer. '
+                    + '<p><b>Auf iOS Abakus als Vollversion installieren:</b><br>'
+                    + 'Rufe in Safari mit <b>tarock.web.app</b> die Startseite von Abakus auf. '
+                    + 'Öffne mit dem Symbol <b>&#9040;</b> das Teilenmenü. Wenn du "<b>Zum Home-Bildschirm</b>" drückst erscheint rechts oben "<b>Hinzufügen</b>". '
+                    + 'Mit einem Klick darauf erstellst du die App auf dem Home-Bildschirm. '
 
-            + '<p><b>Abakus auf Android als App installieren:</b><br>'
-            + 'Rufe in Google Chrome mit <b>tarock.web.app</b> die Startseite von Abakus auf. '
-            + 'Mit einen Klick auf das Symbol <b>&#5010;</b> rechts oben öffnest du das Menü. Mit "<b>Zum Startbildschirm zufügen</b>" installierst du die App abhängig von der Androidversion am Startbildschirm oder im Programmordner. '
-            + 'Von dort kannst du die App nach belieben verschieben. Unter Umständen kann es bis zu einer Minute dauern, bis die App am Startbildschirm bzw. im Programmordner aufscheint.'
-            + '<br>Im Gegensatz zu einer App aus dem Play Store braucht eine so installierte App nicht mehr aktualisiert werden. '
+                    + ((LS.VIC.length === 0 || !LS.VIC[0])
+                            ? '<p><b><span class="cRot L">Du hast deine(n) dir wichtigen Cup(s) noch nicht ausgewählt!</span></b><br>'
+                            : ''
+                            )
 
-            + '<p><b>Abakus auf iOS als App installieren:</b><br>'
-            + 'Rufe in Safari mit <b>tarock.web.app</b> die Startseite von Abakus auf. '
-            + 'Öffne mit dem Symbol <b>&#9040;</b> das Teilenmenü. Wenn du "<b>Zum Home-Bildschirm</b>" drückst erscheint rechts oben "<b>Hinzufügen</b>". '
-            + 'Mit einem Klick darauf erstellst du die App auf dem Home-Bildschirm. '
-
-            + ((LS.VIC.length === 0 || !LS.VIC[0])
-                    ? '<p><b><span class="cRot L">Du hast deine(n) dir wichtigen Cup(s) noch nicht ausgewählt!</span></b><br>'
-                    : ''
-                    )
-
-            + '<p><b>Warum soll ich den/die mir wichtigen Cup(s) auswählen?</b><br>'
-            + 'Beim ersten Aufruf von Abakus wird jeweils der mir wichtigste Cup ohne weiteres zutun angezeigt. '
-            + 'Die Turniere der mir wichtigen Cups werden unter "Aktuelle Turniere" angezeigt. '
-            + 'Mir wichtige Cups mit ungelesene Neuigkeiten werden mit <span class=cRot>&#128712;</span> gekennzeichnet. '
+                    + '<p><b>Warum soll ich den/die mir wichtigen Cup(s) auswählen?</b><br>'
+                    + 'Beim ersten Aufruf von Abakus wird jeweils der mir wichtigste Cup ohne weiteres zutun angezeigt. '
+                    + 'Die Turniere der mir wichtigen Cups werden unter "Aktuelle Turniere" angezeigt. '
+                    + 'Mir wichtige Cups mit ungelesene Neuigkeiten werden mit <span class=cRot>&#128712;</span> gekennzeichnet. '
 
 
-            + '<p><b>Muss ich mich registrieren?</b><br>'
-            + 'Nein. Du kannst die App auch ohne Registrierung verwenden und in den allgemeinen Runden sogar eigene Tische eingeben. '
-            + 'Nur wenn du in anderen Runden oder Cups Tische eingeben willst oder dir die Spielestatistik ansehen willst, '
-            + 'ist eine Registrierung erforderlich. '
-            + 'Auch das Betreiben einer eigenen Runde oder eines eigenen Cups ist nur mit Registrierung möglich. '
+                    + '<p><b>Muss ich mich registrieren?</b><br>'
+                    + 'Nein. Du kannst die App auch ohne Registrierung verwenden und in den allgemeinen Runden sogar eigene Tische eingeben. '
+                    + 'Nur wenn du in anderen Runden oder Cups Tische eingeben willst oder dir die Spielestatistik ansehen willst, '
+                    + 'ist eine Registrierung erforderlich. '
+                    + 'Auch das Betreiben einer eigenen Runde oder eines eigenen Cups ist nur mit Registrierung möglich. '
 
-            + '<p><b>Wo finde ich zus&auml;tzliche Informationen?</b><br>'
-            + 'Zu jeder Seite kannst du &uuml;ber die Seitenüberschrift zusätzliche Infos abrufen. '
-            + 'Tippe mal auf den &Uuml;berschriftsbalken und die Infos werden angezeigt. '
-            + 'Nach einem weiteren Antippen verschwinden die Infos wieder. '
+                    + '<p><b>Wo finde ich zus&auml;tzliche Informationen?</b><br>'
+                    + 'Zu jeder Seite kannst du &uuml;ber die Seitenüberschrift zusätzliche Infos abrufen. '
+                    + 'Tippe mal auf den &Uuml;berschriftsbalken und die Infos werden angezeigt. '
+                    + 'Nach einem weiteren Antippen verschwinden die Infos wieder. '
 
-            + '<p><b>Wozu initialisieren?</b><br>'
-            + '<b>Programmfehler aufgrund einer Inkompatibilt&auml;t beheben:</b><br>'
-            + 'Dieses App wird laufend weiterentwickelt. Dies kann zur Folge haben, dass die geladenen Daten mit der App nicht mehr kompatibel sind. Um diese Inkompatibilit&auml;t zu beseitigen, dr&uuml;ckst du hier oder auf der Hauptseite links unten auf '
-            + '<a class="ui-btn ui-btn-inline ui-corner-all K" style="margin:0;padding:0em;margin:0;" onclick="bInitialisieren();">&nbsp; '
-            + '<i class="i zmdi-star"></i>&nbsp;&nbsp;Initialisieren&nbsp;</a>.&nbsp;Danach wird die App wieder wie gewohnt funktionieren. '
+                    + '<p><b>Wozu initialisieren?</b><br>'
+                    + '<b>Programmfehler aufgrund einer Inkompatibilt&auml;t beheben:</b><br>'
+                    + 'Dieses App wird laufend weiterentwickelt. Dies kann zur Folge haben, dass die geladenen Daten mit der App nicht mehr kompatibel sind. Um diese Inkompatibilit&auml;t zu beseitigen, dr&uuml;ckst du hier oder auf der Hauptseite links unten auf '
+                    + '<a class="ui-btn ui-btn-inline ui-corner-all K" style="margin:0;padding:0em;margin:0;" onclick="bInitialisieren();">&nbsp; '
+                    + '<i class="i zmdi-star"></i>&nbsp;&nbsp;Initialisieren&nbsp;</a>.&nbsp;Danach wird die App wieder wie gewohnt funktionieren. '
 
 //            + (($(window).innerHeight() > $(window).innerWidth()) // Hochformat
 //                    ? '<p><b>Internetseite:</b><br>'
@@ -449,252 +452,252 @@ function getTippsUndTricks() {
 //                    + 'Du kannst jedoch die funktionsgleiche Internetseite "<b>tarock.web.app</b>" verwenden. '
 //                    : '')
 
-            + '<p><b>Hast du weitere Fragen?</b>'
-            + '<br> Alfred Plischnack,'
-            + '<br> Hans Hafner,'
-            + '<br> Johannes Toppelreiter,'
-            + '<br> Kurt Timoschek,'
-            + '<br> Markus Mair,'
-            + '<br> Veronika Schober,'
-            + '<br> Wolfgang Stein und ich'
-            + '<br> Leo Luger helfen gerne.'
-            + '<br>'
-            + '<br>'
-            + '<br> Ich wünsche gute Blätter'
-            + '<br> und viel Spaß mit der App!'
-            + '<br> <i>Leo Luger</i>'
-            + '</span>';
-}
+                    + '<p><b>Hast du weitere Fragen?</b>'
+                    + '<br> Alfred Plischnack,'
+                    + '<br> Hans Hafner,'
+                    + '<br> Johannes Toppelreiter,'
+                    + '<br> Kurt Timoschek,'
+                    + '<br> Markus Mair,'
+                    + '<br> Veronika Schober,'
+                    + '<br> Wolfgang Stein und ich'
+                    + '<br> Leo Luger helfen gerne.'
+                    + '<br>'
+                    + '<br>'
+                    + '<br> Ich wünsche gute Blätter'
+                    + '<br> und viel Spaß mit der App!'
+                    + '<br> <i>Leo Luger</i>'
+                    + '</span>';
+        }
 
-function getTurnierkalender() {
-    var html = '';
-    var nTurniere = 0;
+        function getTurnierkalender() {
+            var html = '';
+            var nTurniere = 0;
 
-    for (var iTermin in CUPS.TERMINE) {
-        if (CUPS.TERMINE[iTermin].DATUM >= hHeute && CUPS.TERMINE[iTermin].CUP === I) {
-            if (CUPS.TERMINE[iTermin].NAME.substr(0, 4) !== "test" || LS.ME === "3425") {
-                nTurniere++;
-                html += '<div class="ui-grid-a">'
-                        + '<div class="ui-block-a M" style="width:20%;padding-top:.2em">'
-                        + getDateString(CUPS.TERMINE[iTermin].DATUM)
-                        + (CUPS.TERMINE[iTermin].BEGINN ? '<div class=S>Beginn: ' + CUPS.TERMINE[iTermin].BEGINN + '</div>' : '')
+            for (var iTermin in CUPS.TERMINE) {
+                if (CUPS.TERMINE[iTermin].DATUM >= hHeute && CUPS.TERMINE[iTermin].CUP === I) {
+                    if (CUPS.TERMINE[iTermin].NAME.substr(0, 4) !== "test" || LS.ME === "3425") {
+                        nTurniere++;
+                        html += '<div class="ui-grid-a">'
+                                + '<div class="ui-block-a M" style="width:20%;padding-top:.2em">'
+                                + getDateString(CUPS.TERMINE[iTermin].DATUM)
+                                + (CUPS.TERMINE[iTermin].BEGINN ? '<div class=S>Beginn: ' + CUPS.TERMINE[iTermin].BEGINN + '</div>' : '')
+                                + '</div>'
+                                + '<div class="ui-block-b S" style="width:80%">'
+                                + '<span class=L><b>' + CUPS.TERMINE[iTermin].NAME + '</b></span><br>'
+                                + getTerminText(iTermin)
+                                + '</div>'
+                                + '</div><br>';
+                    }
+                }
+            }
+            if (nTurniere === 0) {
+                if (I === 3) {
+                    html = '<span class=M>Nachdem das letzte Turnier abgeschlossen wurde,<br> kann pro Tag ein PC-Turnier durchgespielt werden.</span><br><br>';
+                } else if (I === 50 || I === 52) {
+                    html = '';
+                } else if (I === 50) {
+                    html = '<span class=L>Das nächste Österreichfinale ist für Ende April, Anfang Mai ' + (new Date().getFullYear() + 1) + ' geplant.</span><br><br>';
+                } else {
+                    html = '<span class=L>Laut Turnierkalender sind in nächster Zeit<br>keine Turniere geplant.</span><br><br>';
+                }
+            } else if (nTurniere === 1) {
+                html = '<span class=L>Das nächste Turnier:</span><br><br>' + html;
+            } else {
+                html = '<span class=L>Die nächsten Turniere sind:</span><br><br>' + html;
+            }
+
+            if (I === 56) {
+                html += '<br><div class="ui-grid-a">'
+                        + '<div class="ui-block-a M" style="width:30%">Unsere Sponsoren:</div>'
+                        + '<div class="ui-block-c L" style="width:70%">'
+                        + '<img class=P src="Icons/LogoGregor.png"  height="80px" onclick="window.open(\'http://www.allfinag.com/afs/home-afs\')" alt="ALLFINAG FINANCIAL SERVICES">&nbsp;&nbsp;'
+                        + '<img class=P src="Icons/LogoPiatnik.png" height="80px" onclick="window.open(\'https://www.piatnik.com\')" alt="Piatnik.com">&nbsp;&nbsp;'
+                        + '<img class=P src="Icons/LogoTextil.png"  height="80px" onclick="window.open(\'https://www.texad.at\')" alt="Textilveredelung Steyr">'
                         + '</div>'
-                        + '<div class="ui-block-b S" style="width:80%">'
-                        + '<span class=L><b>' + CUPS.TERMINE[iTermin].NAME + '</b></span><br>'
-                        + getTerminText(iTermin)
+                        + '</div>';
+            }
+
+            if (I === 49) {
+                html += '<br><div class="ui-grid-b">'
+                        + '<div class="ui-block-a" style="width:20%"></div>'
+                        + '<div class="ui-block-b L" style="width:40%">Gesamtwertung</div>'
+                        + '<div class="ui-block-c L" style="width:40%">Tageswertung</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2019</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Huemer Manfred</b>, Bad Leonf.</span><br>'
+                        + '<span>2. Raninger Rudolf, Julbach</span><br>'
+                        + '<span>3. Pestitschek Günther, Graz</span><br>'
                         + '</div>'
-                        + '</div><br>';
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Kneifl Josef, Linz</span><br>'
+                        + '<span>2. Kienberger Johann, Zell a.P.</span><br>'
+                        + '<span>3. Dallinger Elisabeth, Eferding</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2018</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Wimmer Anton</b>, Puchkirchen</span><br>'
+                        + '<span>2. Baumann Peter, Dobl</span><br>'
+                        + '<span>3. Wastl Friedrich, Wels</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Miesbauer Oskar, Aigen i.M.</span><br>'
+                        + '<span>2. Raab Jimmy, Au / Donau</span><br>'
+                        + '<span>3. Rieseneder Christian, Wien</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2017</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Rieseneder Christian</b>, Wien</span><br>'
+                        + '<span>2. Müller Ingrid, Wien</span><br>'
+                        + '<span>3. Balthasar Rohrmoser, Wals</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Proksch Rudolf, St. Georgen i.A.</span><br>'
+                        + '<span>2. Müller Inge, Graz</span><br>'
+                        + '<span>3. Rieseneder Christian, Wien</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2016</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Mülleder Josef</b>, Bad Leonfelden</span><br>'
+                        + '<span>2. Hafner Johann, Wien</span><br>'
+                        + '<span>3. Mair Markus, Innsbruck</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Leimhofer Barbara, Neustadl</span><br>'
+                        + '<span>2. Beneder Sepp, Bad Leonfelden</span><br>'
+                        + '<span>3. Kroiß Friedrich, Oftering</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2015</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Zauner Hubert</b>, Bad Ischl</span><br>'
+                        + '<span>2. Oleinek Dieter, Wolfsegg</span><br>'
+                        + '<span>3. Wenninger Johannes, Zell a.P.</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Miesbauer Oskar, Aigen i.M.</span><br>'
+                        + '<span>2. Oleinek Dieter, Wolfsegg</span><br>'
+                        + '<span>3. Ömer Liesl, Adlwang</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2014</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Stürmer Rudolf</b>, Bad Leonfelden</span><br>'
+                        + '<span>2. Diess Sigurd, Obertrum am See</span><br>'
+                        + '<span>3. Zandt Johann, Salzburg</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Zandt Johann, Salzburg</span><br>'
+                        + '<span>2. Pongruber Walter, Seekirchen</span><br>'
+                        + '<span>3. Zauner Herbert, Bad Ischl</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2013</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Ebner Florian</b>, Linz</span><br>'
+                        + '<span>2. Dallinger Helmut, Eferding</span><br>'
+                        + '<span>3. Stöbich Alois, Bad Leonfelden</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Stöbich Alois, Bad Leonfelden</span><br>'
+                        + '<span>2. Rieseneder Chiristian, Wien</span><br>'
+                        + '<span>3. Haas Johann, Waging</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2012</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Böckl Josef</b>, Neukirchen/V.</span><br>'
+                        + '<span>2. Jungwirth Markus, Tragwein</span><br>'
+                        + '<span>3. Raninger Christian, Julbach</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Raffelsberger Josef, Gschwandt</span><br>'
+                        + '<span>2. Strobl Klaus, Straß i.A.</span><br>'
+                        + '<span>3. Jungwirth Markus, Tragwein</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2011</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Leimhofer Markus</b>, Neustadl</span><br>'
+                        + '<span>2. Schilcher Karl, Bad Leonfelden</span><br>'
+                        + '<span>3. Manzenreiter Hermann Bad L.</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Leimhofer Markus, Neustadl</span><br>'
+                        + '<span>2. Leitner Erich, Gallneukirchen</span><br>'
+                        + '<span>3. Manzenreiter Hermann, Bad L.</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2010</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Manzenreiter Hermann</b>, Bad L.</span><br>'
+                        + '<span>2. Huemer Manfred, Bad Leonfelden</span><br>'
+                        + '<span>3. Mülleder Josef, Bad Leonfelden</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Proksch Rudolf, St. Georgen i.A.</span><br>'
+                        + '<span>2. Schott Edeldraut, Schwanenstadt</span><br>'
+                        + '<span>3. Huemer Manfred, Bad Leonfelden</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2009</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Doppler Manfred</b>, Ampflwang</span><br>'
+                        + '<span>2. Brugger Johann, Neukirchen /V.</span><br>'
+                        + '<span>3. Wenninger Josef, Zell a.P.</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Stöbich Alois, Bad Leonfelden</span><br>'
+                        + '<span>2. Ömer Helmut, Adlwang</span><br>'
+                        + '<span>3. Wohlmuth Johannes, Schwanenst</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + '<div class="ui-grid-b S2">'
+                        + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2008</div>'
+                        + '<div class="ui-block-b" style="width:40%">'
+                        + '<span>1. <b>Huemer Manfred</b>, Bad Leonf.</span><br>'
+                        + '<span>2. Zauner Huber, Bad Ischl</span><br>'
+                        + '<span>3. Angerer Thomas, Wien</span><br>'
+                        + '</div>'
+                        + '<div class="ui-block-c" style="width:40%">'
+                        + '<span>1. Klammer Elfi, Wien</span><br>'
+                        + '<span>2. Heigl Ignaz, Altenmarkt</span><br>'
+                        + '<span>3. Kienast Franz, Frankenmarkt</span><br>'
+                        + '</div>'
+                        + '</div><br>'
+                        + "<span class='XXS'>&copy; 2008-" + new Date().getFullYear() + " by Franz Kienast<br></span>";
+            }
+            return html;
+        }
+
+        function getTerminText(iTermin) {
+            var hFrom = CUPS.TERMINE[iTermin].TEXT.indexOf('www.');
+            if (hFrom > 0) {
+                var hReturn = CUPS.TERMINE[iTermin].TEXT.substr(0, hFrom);
+                var hRest = CUPS.TERMINE[iTermin].TEXT.substr(hFrom);
+                hFrom = hRest.indexOf('<');
+                if (hFrom > 0) {
+                    hLink = hRest.substr(0, hFrom);
+                    hRest = hRest.substr(hFrom);
+                    return hReturn + '<span class="cBlau P" onclick="window.open(\'http://' + hLink + '\')">' + hLink + '</span>' + hRest;
+                } else {
+                    return hReturn + '<span class="cBlau P" onclick="window.open(\'http://' + hRest + '\')">' + hRest + '</span>';
+                }
+            } else {
+                return CUPS.TERMINE[iTermin].TEXT;
             }
         }
-    }
-    if (nTurniere === 0) {
-        if (I === 3) {
-            html = '<span class=M>Nachdem das letzte Turnier abgeschlossen wurde,<br> kann pro Tag ein PC-Turnier durchgespielt werden.</span><br><br>';
-        } else if (I === 50 || I === 52) {
-            html = '';
-        } else if (I === 50) {
-            html = '<span class=L>Das nächste Österreichfinale ist für Ende April, Anfang Mai ' + (new Date().getFullYear() + 1) + ' geplant.</span><br><br>';
-        } else {
-            html = '<span class=L>Laut Turnierkalender sind in nächster Zeit<br>keine Turniere geplant.</span><br><br>';
-        }
-    } else if (nTurniere === 1) {
-        html = '<span class=L>Das nächste Turnier:</span><br><br>' + html;
-    } else {
-        html = '<span class=L>Die nächsten Turniere sind:</span><br><br>' + html;
-    }
-
-    if (I === 56) {
-        html += '<br><div class="ui-grid-a">'
-                + '<div class="ui-block-a M" style="width:30%">Unsere Sponsoren:</div>'
-                + '<div class="ui-block-c L" style="width:70%">'
-                + '<img class=P src="Icons/LogoGregor.png"  height="80px" onclick="window.open(\'http://www.allfinag.com/afs/home-afs\')" alt="ALLFINAG FINANCIAL SERVICES">&nbsp;&nbsp;'
-                + '<img class=P src="Icons/LogoPiatnik.png" height="80px" onclick="window.open(\'https://www.piatnik.com\')" alt="Piatnik.com">&nbsp;&nbsp;'
-                + '<img class=P src="Icons/LogoTextil.png"  height="80px" onclick="window.open(\'https://www.texad.at\')" alt="Textilveredelung Steyr">'
-                + '</div>'
-                + '</div>';
-    }
-
-    if (I === 49) {
-        html += '<br><div class="ui-grid-b">'
-                + '<div class="ui-block-a" style="width:20%"></div>'
-                + '<div class="ui-block-b L" style="width:40%">Gesamtwertung</div>'
-                + '<div class="ui-block-c L" style="width:40%">Tageswertung</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2019</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Huemer Manfred</b>, Bad Leonf.</span><br>'
-                + '<span>2. Raninger Rudolf, Julbach</span><br>'
-                + '<span>3. Pestitschek Günther, Graz</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Kneifl Josef, Linz</span><br>'
-                + '<span>2. Kienberger Johann, Zell a.P.</span><br>'
-                + '<span>3. Dallinger Elisabeth, Eferding</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2018</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Wimmer Anton</b>, Puchkirchen</span><br>'
-                + '<span>2. Baumann Peter, Dobl</span><br>'
-                + '<span>3. Wastl Friedrich, Wels</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Miesbauer Oskar, Aigen i.M.</span><br>'
-                + '<span>2. Raab Jimmy, Au / Donau</span><br>'
-                + '<span>3. Rieseneder Christian, Wien</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2017</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Rieseneder Christian</b>, Wien</span><br>'
-                + '<span>2. Müller Ingrid, Wien</span><br>'
-                + '<span>3. Balthasar Rohrmoser, Wals</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Proksch Rudolf, St. Georgen i.A.</span><br>'
-                + '<span>2. Müller Inge, Graz</span><br>'
-                + '<span>3. Rieseneder Christian, Wien</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2016</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Mülleder Josef</b>, Bad Leonfelden</span><br>'
-                + '<span>2. Hafner Johann, Wien</span><br>'
-                + '<span>3. Mair Markus, Innsbruck</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Leimhofer Barbara, Neustadl</span><br>'
-                + '<span>2. Beneder Sepp, Bad Leonfelden</span><br>'
-                + '<span>3. Kroiß Friedrich, Oftering</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2015</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Zauner Hubert</b>, Bad Ischl</span><br>'
-                + '<span>2. Oleinek Dieter, Wolfsegg</span><br>'
-                + '<span>3. Wenninger Johannes, Zell a.P.</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Miesbauer Oskar, Aigen i.M.</span><br>'
-                + '<span>2. Oleinek Dieter, Wolfsegg</span><br>'
-                + '<span>3. Ömer Liesl, Adlwang</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2014</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Stürmer Rudolf</b>, Bad Leonfelden</span><br>'
-                + '<span>2. Diess Sigurd, Obertrum am See</span><br>'
-                + '<span>3. Zandt Johann, Salzburg</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Zandt Johann, Salzburg</span><br>'
-                + '<span>2. Pongruber Walter, Seekirchen</span><br>'
-                + '<span>3. Zauner Herbert, Bad Ischl</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2013</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Ebner Florian</b>, Linz</span><br>'
-                + '<span>2. Dallinger Helmut, Eferding</span><br>'
-                + '<span>3. Stöbich Alois, Bad Leonfelden</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Stöbich Alois, Bad Leonfelden</span><br>'
-                + '<span>2. Rieseneder Chiristian, Wien</span><br>'
-                + '<span>3. Haas Johann, Waging</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2012</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Böckl Josef</b>, Neukirchen/V.</span><br>'
-                + '<span>2. Jungwirth Markus, Tragwein</span><br>'
-                + '<span>3. Raninger Christian, Julbach</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Raffelsberger Josef, Gschwandt</span><br>'
-                + '<span>2. Strobl Klaus, Straß i.A.</span><br>'
-                + '<span>3. Jungwirth Markus, Tragwein</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2011</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Leimhofer Markus</b>, Neustadl</span><br>'
-                + '<span>2. Schilcher Karl, Bad Leonfelden</span><br>'
-                + '<span>3. Manzenreiter Hermann Bad L.</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Leimhofer Markus, Neustadl</span><br>'
-                + '<span>2. Leitner Erich, Gallneukirchen</span><br>'
-                + '<span>3. Manzenreiter Hermann, Bad L.</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2010</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Manzenreiter Hermann</b>, Bad L.</span><br>'
-                + '<span>2. Huemer Manfred, Bad Leonfelden</span><br>'
-                + '<span>3. Mülleder Josef, Bad Leonfelden</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Proksch Rudolf, St. Georgen i.A.</span><br>'
-                + '<span>2. Schott Edeldraut, Schwanenstadt</span><br>'
-                + '<span>3. Huemer Manfred, Bad Leonfelden</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2009</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Doppler Manfred</b>, Ampflwang</span><br>'
-                + '<span>2. Brugger Johann, Neukirchen /V.</span><br>'
-                + '<span>3. Wenninger Josef, Zell a.P.</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Stöbich Alois, Bad Leonfelden</span><br>'
-                + '<span>2. Ömer Helmut, Adlwang</span><br>'
-                + '<span>3. Wohlmuth Johannes, Schwanenst</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + '<div class="ui-grid-b S2">'
-                + '<div class="ui-block-a L" style="width:20%;padding-top:.2em">2008</div>'
-                + '<div class="ui-block-b" style="width:40%">'
-                + '<span>1. <b>Huemer Manfred</b>, Bad Leonf.</span><br>'
-                + '<span>2. Zauner Huber, Bad Ischl</span><br>'
-                + '<span>3. Angerer Thomas, Wien</span><br>'
-                + '</div>'
-                + '<div class="ui-block-c" style="width:40%">'
-                + '<span>1. Klammer Elfi, Wien</span><br>'
-                + '<span>2. Heigl Ignaz, Altenmarkt</span><br>'
-                + '<span>3. Kienast Franz, Frankenmarkt</span><br>'
-                + '</div>'
-                + '</div><br>'
-                + "<span class='XXS'>&copy; 2008-" + new Date().getFullYear() + " by Franz Kienast<br></span>";
-    }
-    return html;
-}
-
-function getTerminText(iTermin) {
-    var hFrom = CUPS.TERMINE[iTermin].TEXT.indexOf('www.');
-    if (hFrom > 0) {
-        var hReturn = CUPS.TERMINE[iTermin].TEXT.substr(0, hFrom);
-        var hRest = CUPS.TERMINE[iTermin].TEXT.substr(hFrom);
-        hFrom = hRest.indexOf('<');
-        if (hFrom > 0) {
-            hLink = hRest.substr(0, hFrom);
-            hRest = hRest.substr(hFrom);
-            return hReturn + '<span class="cBlau P" onclick="window.open(\'http://' + hLink + '\')">' + hLink + '</span>' + hRest;
-        } else {
-            return hReturn + '<span class="cBlau P" onclick="window.open(\'http://' + hRest + '\')">' + hRest + '</span>';
-        }
-    } else {
-        return CUPS.TERMINE[iTermin].TEXT;
-    }
-}

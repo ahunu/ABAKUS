@@ -427,8 +427,7 @@ function loadSTATold(I, pCallback) {
                     if (LS.ME === '3425' && anmeldung === LS.ME) {
                         console.log(STAT.ANMELDUNGEN[anmeldung].UM, STAT.ANMELDUNGEN[anmeldung].NAME, STAT.ANMELDUNGEN[anmeldung].ANGEMELDET);
                     }
-                    if (STAT.ANMELDUNGEN[anmeldung].FUER < Date.now()
-                            || new Date(STAT.ANMELDUNGEN[anmeldung].FUER).toDateString() === new Date(hZuletztGespielt).toDateString()) {
+                    if (STAT.ANMELDUNGEN[anmeldung].FUER < Date.now()) {
                         delete STAT.ANMELDUNGEN[anmeldung];
                     }
                 }
@@ -443,7 +442,7 @@ function loadSTATold(I, pCallback) {
 
         if (LS.ME !== "NOBODY") {
             if (CUPS.ANMELDERF[I]) {
-                if (STAT.ANMELDUNGEN[LS.ME]) {
+                if (STAT.ANMELDUNGEN[LS.ME] && STAT.ANMELDUNGEN[LS.ME].ANGEMELDET && STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === true) {
                     if (new Date().valueOf() < STAT.ANMELDUNGEN[LS.ME].FUER) {
                         hMEANGEMELDET = STAT.ANMELDUNGEN[LS.ME].FUER.valueOf();
                     }

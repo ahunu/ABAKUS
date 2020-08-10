@@ -164,12 +164,13 @@ function NachrichtSenden() {
     'use strict';
     console.log('>> NachrichtSenden();');
     stANMELDUNG = {};
-    stANMELDUNG.UM = new Date().toISOString();
     stANMELDUNG.FUER = stNextTermin;
     if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && (STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === true || STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === 'J')) {
-        stANMELDUNG.ANGEMELDET = true;
+        stANMELDUNG.ANGEMELDET = STAT.ANMELDUNGEN[LS.ME].UM;
+        stANMELDUNG.UM = new Date().toISOString();
     } else {
         stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + window.innerWidth + ' ' + stCup;
+        stANMELDUNG.UM = new Date().toISOString();
     }
     if (LS.ME === '2778') {
         stANMELDUNG.NAME = 'Phan Thomas';

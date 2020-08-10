@@ -166,8 +166,8 @@ function NachrichtSenden() {
     stANMELDUNG = {};
     stANMELDUNG.FUER = stNextTermin;
     if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && (STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === true || STAT.ANMELDUNGEN[LS.ME].ANGEMELDET === 'J')) {
-        stANMELDUNG.ANGEMELDET = STAT.ANMELDUNGEN[LS.ME].UM;
-        stANMELDUNG.UM = new Date().toISOString();
+        stANMELDUNG.ANGEMELDET = true;
+        stANMELDUNG.UM = STAT.ANMELDUNGEN[LS.ME].UM;
     } else {
         stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + window.innerWidth + ' ' + stCup;
         stANMELDUNG.UM = new Date().toISOString();

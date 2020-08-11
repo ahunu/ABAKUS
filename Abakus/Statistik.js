@@ -396,7 +396,7 @@ $(document).ready(function () {
 //    LS.ShowCups = 0;
 //    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };

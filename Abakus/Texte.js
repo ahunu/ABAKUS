@@ -381,11 +381,10 @@ function getTippsUndTricks() {
                     )
 
                     + '<p><b>Welche Vorteile bringt die Vollversion?</b><br>'
-                    + (CUPS.BEREadmin.indexOf(LS.ME) >= 0 || CUPS.BEREschreiben.indexOf(LS.ME) >= 0
-                            ? "Aus Sicherheitsgründen sind die Administratortools, "
-                            : "Aus Sicherheitsgründen ist "
+                    + (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)
+                            ? "Aus Sicherheitsgründen ist das Eingeben von Tischen und das Ändern der Parameter nur in der Vollversion möglich. "
+                            : ""
                             )
-                    + 'das Eingeben von Tischen und das Ändern der Parameter nur in der Vollversion möglich. '
                     + 'Bei einer Installation wird die App am PC bzw. am Handy gespeichter und braucht somit nicht jedesmal über das Netz geladen werden. '
                     + 'Das spart Datenvolumen und schneller geht´s ausserdem. '
                     + 'Wenn die App mal gestartet ist benötigt sie keine Internetverbindung mehr ausser man will etwas ändern oder eine aktuellere Statistik anschauen. '

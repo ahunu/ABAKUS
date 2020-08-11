@@ -545,7 +545,7 @@ $(document).ready(function () {
     DS = JSON.parse(localStorage.getItem('Abakus.DS'));
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
 
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };

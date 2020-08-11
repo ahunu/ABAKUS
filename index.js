@@ -30,7 +30,6 @@ var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "A
 var stLastZitat = [];
 var meinStellvertreter = '3244';
 var stFilter = '';
-
 const iRufer = 1;
 const iSolorufer = 2;
 const iPagatrufer = 3;
@@ -59,7 +58,6 @@ const iUltimo = 25;
 const iValat = 26;
 const iAbsolut = 27;
 const iXY = 28;
-
 function IsInteger(value) {
     if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
         return true;
@@ -192,7 +190,6 @@ function fStartStop(pCup, pPruefen) {
 
     $("#ssMELD").hide();
     $('#bSSja,#bSSnein').removeClass('ui-btn-active');
-
     setTimeout(function () { // warten auf close von pTISCHWASNUN
         $("#pSTARTSTOP").popup("open").show();
         $("#iTURCODE").val('').focus();
@@ -265,7 +262,6 @@ function TurnierSTARTEN(pI) {
     STAT.S[pI].STOCKERL    [3] = '-';
     STAT.S[pI].PUNKTERx = [];
     STAT.S[pI].SCHREIBER = [];
-
     firebase.database().ref('/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR)
             .update({
                 PUNKTERx: null,
@@ -292,7 +288,6 @@ function TurnierSTARTENend() {
     hSTAT.TURADMIN = LS.ME;
     hSTAT.TURRUNDE = 1;
     hSTAT.TURTIMESTAMP = firebase.database.ServerValue.TIMESTAMP;
-
     firebase.database().ref('/00/' + ("000" + I).slice(-3))
             .update(hSTAT)
             .then(function () {
@@ -329,7 +324,6 @@ function RundeXbeenden() {
 //    hSTAT.ZULETZT  = new Date(new Date().getTime() - 60000 * new Date().getTimezoneOffset()).toISOString();
     hSTAT.ZULETZTupd = new Date().toISOString();
     hSTAT.TURRUNDE = LS.TURRUNDE + 1;
-
     firebase.database().ref('/00/' + ("000" + I).slice(-3))
             .update(hSTAT)
             .then(function () {
@@ -375,13 +369,11 @@ function TurnierBEENDEN(pI) {
     var hPunkte3ter = -9999;
     var hPunkteAkt = -9999;
     var hPunkteZwi = 0;
-
     for (var ii = 1; ii < STAT.S.length; ii++) { // Punkte der Stockerplätze errechnen
 
         if (STAT.S[ii].SPIELE[3] > 0) {
 
             hPunkteAkt = STAT.S[ii].PUNKTE[3];
-
             if (hPunkteAkt > hPunkte3ter) {
                 hPunkte3ter = hPunkteAkt;
             }
@@ -407,23 +399,17 @@ function TurnierBEENDEN(pI) {
         }
 
         nPlaetze[1] = parseInt(pString.substr(0, (pString.indexOf('-'))));
-
         pString = pString.substr(pString.indexOf('-') + 1);
         nPlaetze[2] = parseInt(pString.substr(0, (pString.indexOf('-'))));
-
         pString = pString.substr(pString.indexOf('-') + 1);
         nPlaetze[3] = parseInt(pString);
-
         nPlaetze[pPlatz]++;
-
         return nPlaetze[1].toString() + '-' + nPlaetze[2].toString() + '-' + nPlaetze[3].toString();
     }
 
     hPunkteAkt = STAT.S[pI].PUNKTE[3];
-
     var hSTAT = new Object();
     var iJahr = new Date(LS.Von).getFullYear() - 2010;
-
     if (hPunkteAkt === hPunkte1ter) {
         STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 1);
         STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 1);
@@ -441,7 +427,6 @@ function TurnierBEENDEN(pI) {
         hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
     }
     STAT.S[pI].STOCKERL[iJahr] = STAT.S[pI].STOCKERL[1];
-
     if (typeof STAT.S[pI].CUPPUNKTE[1] !== "object") {
         STAT.S[pI].CUPPUNKTE[1] = [];
     }
@@ -462,9 +447,7 @@ function TurnierBEENDEN(pI) {
         }
     }
     STAT.S[pI].CUPPUNKTE[iJahr] = STAT.S[pI].CUPPUNKTE[1];
-
     hSTAT.CUPPUNKTE = STAT.S[pI].CUPPUNKTE;
-
     firebase.database().ref('/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR)
             .update(hSTAT)
             .then(function () {
@@ -489,7 +472,6 @@ function TurnierBEENDENend() {  // Monatssicherung
     STAT.TURRUNDE = 0;
     STAT.TURCODE = 0;
     STAT.TURTIMESTAMP = null;
-
     var hSTAT = new Object();
     hSTAT.ZULETZT = STAT.ZULETZT;
     hSTAT.ZULETZTupd = STAT.ZULETZTupd;
@@ -497,7 +479,6 @@ function TurnierBEENDENend() {  // Monatssicherung
     hSTAT.TURRUNDE = STAT.TURRUNDE;
     hSTAT.TURCODE = STAT.TURCODE;
     hSTAT.TURTIMESTAMP = STAT.TURTIMESTAMP;
-
     for (var ii = 1; ii < STAT.S.length; ii++) { // 0000 nicht kopieren
         if (STAT.S[ii]) {
             hSTAT[STAT.S[ii].NR] = STAT.S[ii];
@@ -523,7 +504,6 @@ function TurnierBEENDENendEnd() {
     hSTAT.TURADMIN = '';
     hSTAT.TURRUNDE = 0;
     hSTAT.TURTIMESTAMP = null;
-
     firebase.database().ref('/00/' + ("000" + I).slice(-3))
             .update(hSTAT)
             .then(function () {
@@ -745,7 +725,7 @@ function fTischLoeschen(pLoeschen) {
         }
         LS.Meldung = "Der Tisch wurde gelöscht!";
         if (CUPS.TURNIER[I] === 'Handy') {
-            // Sonst kann der Admin das Turnier nicht beenden.
+// Sonst kann der Admin das Turnier nicht beenden.
         } else {
             LS.I = 0;
         }
@@ -838,7 +818,7 @@ function getTurnierButtons() {
                         var iWoche = parseInt((new Date().getDate() - 1) / 7);
                         //                  if (I ===  8 && new Date().getDate() >= 15) {
                         if (CUPS.WOCHEN[I][iWoche] !== 'J') {
-                            cClass = ' ui-disabled';  // nicht in dieser Woche
+                            cClass = ' ui-disabled'; // nicht in dieser Woche
                         }
                         if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date()).getHours() + 1 >= CUPS.SPIELEAB[I] // 1 Stunde Toleranz
                                 || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
@@ -1146,7 +1126,6 @@ function checkNeuerTisch() {
     LS.Spieler[4] = LS.Spieler[4] + LS.Sterne[4];
     LS.Spieler[5] = LS.Spieler[5] + LS.Sterne[5];
     LS.Spieler[6] = LS.Spieler[6] + LS.Sterne[6];
-
     if (LS.Spieler[5] === '') {
         LS.JeSeite = '1';
         if (LS.AnzSpieler !== 4) {
@@ -1954,7 +1933,6 @@ function showLOG() {
 
 function fZuMeinemTisch() {
     'use strict';
-
     $("#tMeinTischName").html(CUPS.NAME[LS.I] + '&nbsp&nbsp;');
     $('#bWeiter,#bSpieler,#bSpeichern').removeClass('ui-disabled'); // Wegen iOS entfernen
 
@@ -2110,7 +2088,6 @@ function getMeldSTAT(pCup) {
 
 function showCup(i, pBtn, pTermin) {
     'use strict';
-
     if (LS.ShowFunktion) {
         hrefStatistik(i);
     }
@@ -2233,7 +2210,6 @@ function showCup(i, pBtn, pTermin) {
         hVorschub = '<br>';
     }
     hVorschub = '<br><br>';
-
 //    var hTest = [I]; // 3824 Roman
 //
 //    if (LS.ME === '3425' || LS.ME === '3824') {
@@ -2777,7 +2753,6 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
         hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
                 + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
                 + '</div>';
-
         if (CUPS.ANMELDERF[pCup] && LS.ME !== 'NOBODY') {
             hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Anmeldungen\');">'
                     + '<img src=\'Icons/Anmeldung.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Anmeldung<div class="S N">Nächstes Turnier:&nbsp;&nbsp;' + getDateString(CUPS.NEXTTERMIN[pCup]) + '</div>'
@@ -2996,7 +2971,7 @@ function whenCUPSloaded() {
                     if (typeof LS.VIC === 'undefined' || LS.VIC.length === 0) {
                         LS.VIC = [0];
                     }
-                    // 01.2022 entfernen End
+// 01.2022 entfernen End
                     if (hCupName.indexOf('/REGELN') > 0) {
                         LS.ShowFunktion = '?Reglen';
                     } else if (LS.VIC[0] === 0) {
@@ -3089,7 +3064,6 @@ function whenCUPSloaded() {
 
                     hTemp = getMeinTerminBarZeile(TERMINE[termin].CUP)
                             + getCupToggleDiv('bAL', TERMINE[termin].CUP, -1);
-
                     function getMeinTerminBarZeile(pCup) {
                         if (typeof CUPS.MEANGEMELDET[pCup] === 'number') {
                             if (CUPS.MEANGEMELDET[pCup] > Date.now()) {
@@ -3124,9 +3098,7 @@ function whenCUPSloaded() {
     }
 
     SORT.sort();
-
     var xText = '';
-
     for (var i = 50; i <= 56; i++) { // Meine Runden/Cups --- Bei Xxxxxx
         var hShow = false;
         xText = '';
@@ -3271,9 +3243,7 @@ function whenCUPSloaded() {
         $('#bMR').collapsible({collapsed: false});
     }
     $('#dFooter').show();
-
     delete TERMINE;
-
     if (I) {
         showCup(I);
     } else if (QUERFORMAT()) {
@@ -3288,7 +3258,6 @@ function whenCUPSloaded() {
 
 $(document).ready(function () {
     'use strict';
-
     $('#pFehler').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
@@ -3303,8 +3272,11 @@ $(document).ready(function () {
         PC = true;
     }
 
-    if (window.matchMedia('(display-mode: standalone)').matches // PWA-App
-            || (!PC && location.origin === 'file://')) {        // PhoneGap
+    if (((navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i))
+            && window.matchMedia('(display-mode: standalone)').matches)
+            || (navigator.userAgent.match(/Android/i) || location.origin !== 'file://')) {
         APP = true;
         $('#dVollversion').remove();
     } else {
@@ -3429,7 +3401,7 @@ $(document).ready(function () {
         LS.tempVIPs = window.location.href.substr(window.location.href.toUpperCase().indexOf('?VIPS'));
     }
 
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };
@@ -3437,7 +3409,6 @@ $(document).ready(function () {
     document.onselectstart = function () {
         return false;
     };
-
     CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
     if (CUPS === null) {
         CUPS = new Object();
@@ -3451,14 +3422,10 @@ $(document).ready(function () {
     }
 
     LS.LastDate = new Date().getTime();
-
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-
     initSeite1();
-
     listVersion();
     $('#tJJJJ,#tJJJJ2').text(new Date().getFullYear());
-
     if (LS.ME === 'NOBODY') {
         $('#tSpieler').html('Noch nicht registriert.');
     } else {
@@ -3485,7 +3452,6 @@ $(document).ready(function () {
     $('#ddRumpf').each(function () { // sonst funktioniert important nicht
         this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
     });
-
     if ($('#hMenu').is(":visible")) {
         $('.iMain').css('height', $('#hMenu').height() - 4);
     } else if ($('#hMix').is(":visible")) {
@@ -3514,10 +3480,8 @@ $(document).ready(function () {
             this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
         });
     };
-
 }
 );
-
 // if (/iPad|iPhone|iPod|xFirefox/.test(navigator.userAgent) && !window.MSStream) {
 if (window.navigator.userAgent.indexOf("Chrome") === -1) {
     window.onpageshow = function (event) {

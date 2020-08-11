@@ -1634,7 +1634,7 @@ window.onload = function () {
     NEXT = new Object();
     NEXT = JSON.parse(localStorage.getItem('Abakus.NEXT'));
 
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };

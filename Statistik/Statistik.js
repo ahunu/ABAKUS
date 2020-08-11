@@ -598,7 +598,7 @@ $(document).ready(function () {
         $('.cCUP,.cET,.cPRESSE').remove();
     }
 
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };

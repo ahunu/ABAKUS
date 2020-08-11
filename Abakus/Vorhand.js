@@ -259,7 +259,7 @@ window.onload = function () {
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     Old_JeSeite = LS.JeSeite;
 
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };

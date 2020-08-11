@@ -581,7 +581,7 @@ $(document).bind('pageinit', function () {
 
     LS = new Object();
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };

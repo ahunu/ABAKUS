@@ -897,7 +897,7 @@ function fINIT() {
     ST = JSON.parse(localStorage.getItem('Abakus.ST'));
     DS = JSON.parse(localStorage.getItem('Abakus.DS'));
 
-    if (LS.ME !== "3425" && LS.ME !== "1000") {
+    if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
         };

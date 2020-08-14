@@ -2388,17 +2388,9 @@ function toggleTechDetails() {
         $('#dTechDetails').html('<b>Technische Details:</b><br>'
 
                 + 'Date(): ' + new Date().toLocaleString() + '<br>'
-                + 'location.hash: ' + location.hash + '<br>'
-                + 'location.host: ' + location.host + '<br>'
-                + 'location.hostname: ' + location.hostname + '<br>'
                 + 'location.href: ' + location.href + '<br>'
                 + 'location.origin: ' + location.origin + '<br>'
                 + 'location.path: ' + location.pathname + '<br>'
-                + 'location.port: ' + location.port + '<br>'
-                + 'location.protocol: ' + location.protocol + '<br>'
-
-                + 'window.PhoneGap: ' + window.PhoneGap + '<br>'
-                + 'window.cordova: ' + window.cordova + '<br>'
 
                 + ((window.matchMedia('(display-mode: standalone)').matches)
                         ? 'display-mode: standalone<br>'
@@ -3280,21 +3272,12 @@ $(document).ready(function () {
         PC = true;
     }
 
-    if (PC || navigator.standalone
-            || ((navigator.userAgent.match(/Android/i)
-                    || navigator.userAgent.match(/iPhone/i)
-                    || navigator.userAgent.match(/iPad/i))
-                    && window.matchMedia('(display-mode: standalone)').matches)
-            || (navigator.userAgent.match(/Android/i) || location.origin !== 'file://')) {
-        APP = true;
-        $('#dVollversion').remove();
-    } else {
-        APP = false;
-        $('#dOrigin').text(location.origin);
-        $('#bAdminTools,#bRAMOS').remove();
-    }
-
-//    if (PC || navigator.standalone) {
+//    if (PC || navigator.standalone
+//            || ((navigator.userAgent.match(/Android/i)
+//                    || navigator.userAgent.match(/iPhone/i)
+//                    || navigator.userAgent.match(/iPad/i))
+//                    && window.matchMedia('(display-mode: standalone)').matches)
+//            || (navigator.userAgent.match(/Android/i) || location.origin !== 'file://')) {
 //        APP = true;
 //        $('#dVollversion').remove();
 //    } else {
@@ -3302,6 +3285,19 @@ $(document).ready(function () {
 //        $('#dOrigin').text(location.origin);
 //        $('#bAdminTools,#bRAMOS').remove();
 //    }
+
+    if (PC
+            || navigator.userAgent.match(/Android/i) && window.matchMedia('(display-mode: standalone)').matches
+            || navigator.userAgent.match(/iPhone/i) && navigator.standalone
+            || navigator.userAgent.match(/iPad/i) && navigator.standalone
+            || location.pathname.substring(0, 20) === '/android_asset/wwww/') {
+        APP = true;
+        $('#dVollversion').remove();
+    } else {
+        APP = false;
+        $('#dOrigin').text(location.origin);
+        $('#bAdminTools,#bRAMOS').remove();
+    }
 
     try {
         localStorage.Abakus = 'OK';

@@ -3290,7 +3290,7 @@ $(document).ready(function () {
             || navigator.userAgent.match(/Android/i) && window.matchMedia('(display-mode: standalone)').matches
             || navigator.userAgent.match(/iPhone/i) && navigator.standalone
             || navigator.userAgent.match(/iPad/i) && navigator.standalone
-            || location.pathname.substring(0, 20) === '/android_asset/wwww/') {
+            || location.pathname.substring(0, 19) === '/android_asset/www/') {
         APP = true;
         $('#dVollversion').remove();
     } else {

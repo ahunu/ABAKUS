@@ -122,9 +122,6 @@ function showHeinewertung() {
     for (var spieler in SP) { // der Internet Explorer versteht kein  for (var CUPrec of CUP)
         var hCuppunkte = 0;
         var hSortkey = '';
-        if (spieler === '3425') {
-            LS.ME = '3425';
-        }
         if (CUP[spieler]) {
             for (i = 0; i < nWertungen && i < CUP[spieler].length; i++) {
                 if (IsInteger(CUP[spieler][i])) {
@@ -134,7 +131,6 @@ function showHeinewertung() {
             }
         }
         if (SP[spieler][iSaison]) {
-//            SORTnachPlatz.push((9999 - hCuppunkte) + '' + (99 - CUP[spieler].length) + (9999999 - hSortpunkte) + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
             SORTnachPlatz.push((9999 - hCuppunkte) + '' + hSortkey + (SPIELER[spieler] ? SPIELER[spieler][0] : '????') + ';' + spieler);
         }
     }

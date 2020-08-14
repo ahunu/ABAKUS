@@ -2388,17 +2388,25 @@ function toggleTechDetails() {
         $('#dTechDetails').html('<b>Technische Details:</b><br>'
 
                 + 'Date(): ' + new Date().toLocaleString() + '<br>'
+                + 'location.hash: ' + location.hash + '<br>'
+                + 'location.host: ' + location.host + '<br>'
+                + 'location.hostname: ' + location.hostname + '<br>'
+                + 'location.href: ' + location.href + '<br>'
                 + 'location.origin: ' + location.origin + '<br>'
+                + 'location.path: ' + location.pathname + '<br>'
+                + 'location.port: ' + location.port + '<br>'
+                + 'location.protocol: ' + location.protocol + '<br>'
+
+                + 'window.PhoneGap: ' + window.PhoneGap + '<br>'
+                + 'window.cordova: ' + window.cordova + '<br>'
 
                 + ((window.matchMedia('(display-mode: standalone)').matches)
                         ? 'display-mode: standalone<br>'
-                        : +((location.origin[0] !== 'h') // PhoneGap-App oder lokal (!http) gestartet.
-                                ? 'display-mode: phoneGap<br>'
-                                : 'display-mode: in browser<br>')
+                        : 'display-mode: multi<br>'
                         )
 
 
-
+                + 'navigator.standalone: ' + navigator.standalone + '<br>'
 
 
                 + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
@@ -3272,10 +3280,11 @@ $(document).ready(function () {
         PC = true;
     }
 
-    if (((navigator.userAgent.match(/Android/i)
-            || navigator.userAgent.match(/iPhone/i)
-            || navigator.userAgent.match(/iPad/i))
-            && window.matchMedia('(display-mode: standalone)').matches)
+    if (PC || navigator.standalone
+            || ((navigator.userAgent.match(/Android/i)
+                    || navigator.userAgent.match(/iPhone/i)
+                    || navigator.userAgent.match(/iPad/i))
+                    && window.matchMedia('(display-mode: standalone)').matches)
             || (navigator.userAgent.match(/Android/i) || location.origin !== 'file://')) {
         APP = true;
         $('#dVollversion').remove();
@@ -3284,6 +3293,15 @@ $(document).ready(function () {
         $('#dOrigin').text(location.origin);
         $('#bAdminTools,#bRAMOS').remove();
     }
+
+//    if (PC || navigator.standalone) {
+//        APP = true;
+//        $('#dVollversion').remove();
+//    } else {
+//        APP = false;
+//        $('#dOrigin').text(location.origin);
+//        $('#bAdminTools,#bRAMOS').remove();
+//    }
 
     try {
         localStorage.Abakus = 'OK';
@@ -3377,7 +3395,8 @@ $(document).ready(function () {
         delete LS.MeineCups;
     }
 
-    if (PC || window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
+    if (PC || navigator.standalone || window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
+//    if (PC || navigator.standalone || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
         if (LS.VIC.length === 0 || !LS.VIC[0]) {
             $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
             $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
@@ -3499,7 +3518,7 @@ if (window.navigator.userAgent.indexOf("Chrome") === -1) {
                 $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
             }
 
-            if (PC || window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
+            if (PC || navigator.standalone || window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
                 if (LS.VIC.length === 0 || !LS.VIC[0]) {
                     $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
                     $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');

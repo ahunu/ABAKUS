@@ -3286,6 +3286,8 @@ $(document).ready(function () {
 //        $('#bAdminTools,#bRAMOS').remove();
 //    }
 
+
+
     if (PC
             || navigator.userAgent.match(/Android/i) && window.matchMedia('(display-mode: standalone)').matches
             || navigator.userAgent.match(/iPhone/i) && navigator.standalone

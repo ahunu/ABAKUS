@@ -1,13 +1,13 @@
 
 function getVersion() {
-    return 1087.4;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1088;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 8, 17);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 8, 18);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
 //  Tarock Meisterklasse

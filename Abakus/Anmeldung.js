@@ -1611,6 +1611,9 @@ $(document).ready(function () {
         if (LS.Schreiber) {
             var mSchreiber = true;
         }
+        if (LS.XXL) {
+            var mXXL = true;
+        }
         var LS_Schreibzettel = LS.Schreibzettel;
         var LS_tempVIPs = LS.tempVIPs;
         var LS_Timeout = LS.Timeout;
@@ -1637,6 +1640,9 @@ $(document).ready(function () {
         LS.Padding = LS_Padding;
         if (mSchreiber) {
             LS.Schreiber = true;
+        }
+        if (mXXL) {
+            LS.XXL = true;
         }
         LS.Schreibzettel = LS_Schreibzettel;
         LS.ShowCups = LS_I;

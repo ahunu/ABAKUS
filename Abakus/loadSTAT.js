@@ -21,7 +21,7 @@ function loadSTAT(I, pTitel, pSkip, pCallback) {
     if (pTitel) {
         if (pSkip && !CUPS.TURNIER[I]) {
             STAT = JSON.parse(localStorage.getItem("Abakus.STAT" + ("000" + pSkip).substr(-3)));
-            if (navigator.onLine) {
+            if (navigator.onLine || I === 5 || I === 6 || I === 7 || STAT) {
                 if (STAT === null && (I >= 8 || CUPS.TURNIER[I])) {
                     showEinenMoment(I, pTitel);
                 } else {

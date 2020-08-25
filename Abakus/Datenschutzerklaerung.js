@@ -6,10 +6,17 @@ function fIchStimmeZu() {
 
 function fIchStimmeNichtZu() {
     localStorage.clear();
-    if (navigator.userAgent.match(/Android/i)) {
+    if (navigator.userAgent.match(/Android/i)) {       // Android
         history.back();
-    } else {
+    } else if (navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)) {   // iOS
         history.go(-2);
+    } else {                                           // PC
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            history.back();                            // PC APP
+        } else {
+            history.go(-2);
+        }
     }
 }
 

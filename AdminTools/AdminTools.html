@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script src="../js/jquery/jquery.min.js"></script>
+        <script src="../js/firebase/firebase.js"></script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus</title>
+        <link   rel="stylesheet"    href="../js/css/Abakus.css" />
+        <script src="AdminTools.js"  ></script>
+            <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#fff">
+            <script src='../swReg.js'></script>
+        <!-- iOS support -->
+        <link rel="apple-touch-icon" href="/Icons/icon-144.png">
+        <meta name="apple-mobile-web-app-status-bar" content="#fff">
+    </head>
+    <body>
+        <div data-role="header" class="ui-btn K" data-position="fixed" style="padding:0em; margin:0em;">
+            <div class="ui-grid-c" onClick="$('#dLegende').toggle('show');">
+                <div class="ui-block-a" style="width:1vw;"></div>
+                <div class="ui-block-b C" style="width:70px;margin-bottom:-8px">
+                    <img src='../Icons/Tools.png' id=logo height="70" width="70"/>
+                </div>
+                <div class="ui-block-c" style="width:1.5vw;"></div>
+                <div class="ui-block-d" style="width:auto">
+                    <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px; margin-top:-2px; font-style: italic;">ABAKUS die Tarock-App</div>
+                    <div id=hTitel2 style="width:auto; text-align:left; font-size: 28px; margin-top:-8px; font-weight: normal;">Administrator Tools</div>
+                </div>
+            </div>
+            <div id='dLegende' onClick="$('#dLegende').toggle('show');" style='margin:1em; text-align: left;' class='M N' hidden>
+                <b>Achtung:</b> Da Änderungen zum Teil nicht r&uuml;ckg&auml;ngig gemacht werden k&ouml;nnen,<br>
+                ist ein konzentriertes Arbeiten angebracht.
+            </div>
+        </div>
+        <div class='M'>
+            <br>
+            <div id=pMeinCup>
+                <div id="bTurnierkalender" class="ui-btn ui-disabled" onclick="window.location.href = 'Turnierkalender.html';">
+                    <div class=XL>Turnierkalender
+                        <div class='S N'>Termine pflegen.
+                        </div>
+                    </div>
+                </div>
+                <div id="dTurnierImport" class="ui-disabled" hidden>
+                    <div class="ui-btn" onclick="window.location.href = 'TurnierImport.html';">
+                        <div class=XL>Turnier importieren
+                            <div class='S N'>Ein Turnier per copy & paste einlesen.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dStatistikImport" class="ui-disabled" hidden>
+                    <div class="ui-btn" onclick="window.location.href = 'VorjahrImport.html';">
+                        <div class=XL>Statistikdaten importieren
+                            <div class='S N'>Statistikdaten aus dem System von Karl Haas übernehmen.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="bSpielerverwaltung" class="ui-btn ui-disabled" onclick="window.location.href = 'Spielerverwaltung.html';">
+                    <div class=XL>Spielerverwaltung
+                        <div class='S N'>Spieler anzeigen, ändern, neu anlegen.
+                        </div>
+                    </div>
+                </div>
+                <div id="bSpielerExport" class="ui-btn ui-disabled" onclick="window.location.href = 'SpielerExport.html';">
+                    <div class=XL>Spieler exportieren
+                        <div class='S N'>Excel-Datei erstellen.
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-btn ui-disabled" onclick="window.location.href = 'Turnierkalender.html';">
+                    <div class=XL>Systemfreigabe
+                        <div id="tSystemfreigabe" class='S N'>Das System ist freigegeben.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id=pMeinCupFuss>
+                <div class="ui-grid-a ui-btn" style="padding:0px;height:60px;" onClick="history.back();">
+                    <div class="ui-block-a" style="width:20%;spadding:-30px 0px 0px 0px">
+                        <img src='../Icons/icon-48-mdpi.png' height="60" width="60"/>
+                    </div>
+                    <div class="ui-block-b C" style="width:75%;xpadding:16px 0px 15px 0px">
+                        <div class=L>Abakus
+                            <div class='S N'>Cup- und Rundenübersicht
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /pABAKUS -->
+    </body>
+</html>

@@ -1,5 +1,5 @@
 
-/* global STAT, LS, stSort, QUERFORMAT() */
+/* global STAT, LS, stSort, QUERFORMAT(), stSynchron */
 
 function statPosAnmeld() {
     'use strict';
@@ -61,8 +61,6 @@ function statPosAnmeld() {
                         + '<td class="TC">' + hUM.getHours() + ':' + ('0' + hUM.getMinutes()).slice(-2) + '&nbsp;</td>'
                         + '<th>' + SORT[anmeldung].NAME.replace(' ', '&nbsp;') + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>'
                         + '</tr>';
-            } else if (LS.ME === '3425') {
-                ret += '<tr class="' + hClass + '"><td></td><td colspan="3"><b>' + SORT[anmeldung].NR + '</b> ' + SORT[anmeldung].ANGEMELDET + '</td></tr>';
             }
         }
 

@@ -1,1 +1,301 @@
-var _0x375d=['#bRegistrieren','Ktn.\x20Tarockcup','NOBODY','stringify','disabled','Abakus.LOG','St.\x20Tarockcup','Spieler\x20','focus','clear','ui-disabled','removeClass','blur','indexOf','0000','oncontextmenu','length','hide','setItem','-54','VIP','Tooltip','TooltipError','Tiroler\x20Tarockcup','-52','Du\x20musst\x20\x22Familienname\x20Vorname,\x20Ort\x22\x20eingeben.','activePage','Meldung','#dRegistrieren','Sauwaldcup','zurück','Wenn\x20du\x20keine\x20Spielernummer\x20hast,<br>kannst\x20du\x20dich\x20alternativ\x20mit<br>deinem\x20Namen\x20registrieren.','replace','Abakus.TU','#iPIN','-15','substr','onselectstart','Abakus.CUPS','Abakus.SPIELERnr','UTC\x20Klopeinersee','Der\x20PIN\x20eines\x20Admins\x20kann\x20nicht\x20berechnet\x20werden.','type','#bOhneRegistrierung','PIN\x20ung&uuml;ltig,\x20bitte\x20unter<br>Tel.\x200650\x20651\x20652\x202\x20erfragen.','Abakus.LS','-17','registrieren','Abakus.AKTUELLES','trim','Abakus.DS','-56','button','Tarockcup','back','-53','(Cup)Spielernummer\x20ungültig.','3425','Abakus.SPIELERalpha','-51','prop','XXL','\x20registriert.','#iCNR','Die\x20Registrierung\x20wurde\x20nach\x20drei\x20Fehlversuchen\x20abgebrochen.','val','attr','bind','refresh','value','getItem','parse','addClass','pageinit','mobile','Nicht\x20registriert','\x20ist\x20kein\x20Tiroler.','MEname','Abakus.TURNIER','Du\x20kannst\x20den\x20PIN-Code\x20unter<br>Tel.\x200650\x20651\x20652\x202\x20erfragen.','PIN\x20berechnen','placeholder','#iVNN'];(function(_0x2189a2,_0x375de8){var _0x2c4ffa=function(_0x1a57a7){while(--_0x1a57a7){_0x2189a2['push'](_0x2189a2['shift']());}};_0x2c4ffa(++_0x375de8);}(_0x375d,0xf0));var _0x2c4f=function(_0x2189a2,_0x375de8){_0x2189a2=_0x2189a2-0x0;var _0x2c4ffa=_0x375d[_0x2189a2];return _0x2c4ffa;};var FB=undefined,LS=new Object(),SPIELERext=new Object();const spNR=0x0,spNNAME=0x1,spVNAME=0x2,spORT=0x3;var myJBox=null,myJTip=null,nVersuche=0x0,xMEFpo=![];function whenSPIELERloaded(){hideEinenMoment(),$(_0x2c4f('0x25'))[_0x2c4f('0x14')](_0x2c4f('0x13'));}function isVIP(_0x30fcf0){return(_0x30fcf0&0x8)!==0x0;}function onRegistrieren(){'use strict';$[_0x2c4f('0x0')][_0x2c4f('0x23')][_0x2c4f('0x11')](),myJTip['close']();var _0x276893='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',_0x3bb143=parseInt($(_0x2c4f('0x48'))[_0x2c4f('0x4a')]()),_0x54dadf=$(_0x2c4f('0x8'))[_0x2c4f('0x4a')]();!_0x3bb143&&(_0x3bb143=0x0);var _0x51d2e6=parseInt($(_0x2c4f('0x2b'))[_0x2c4f('0x4a')]());!_0x51d2e6&&(_0x51d2e6=0x0);if(_0x3bb143<0x0&&LS['ME']!==_0x2c4f('0x42')&&LS['ME']!==_0x2c4f('0xb')){showEinenTip(_0x2c4f('0x48'),'(Cup)Spielernummer\x20ungültig.');return;}if((_0x3bb143<0x0||_0x3bb143>0x270f)&&_0x3bb143!==-0x4&&_0x3bb143!==-0x34&&_0x3bb143!==-0x36&&_0x3bb143!==-0x37&&_0x3bb143!==-0x38){showEinenTip(_0x2c4f('0x48'),_0x2c4f('0x41'));return;}if(LS['ME']!==_0x2c4f('0xb')&&LS['ME']!==_0x2c4f('0x42')){if(_0x3bb143===0xd61||_0x3bb143===0x7c||_0x3bb143===0x3f6||_0x3bb143===0xcfa||_0x3bb143===0xead||_0x3bb143===0xcac||_0x3bb143===0x119a||_0x3bb143===0xe06||_0x3bb143===0x17aa||_0x3bb143===0x119a||_0x3bb143===0x127b||_0x3bb143===0xc5||_0x3bb143===0x9f9){showEinenTip(_0x2c4f('0x48'),_0x2c4f('0x32'));return;}}var _0x11ae81=_0x2c4f('0x17')+_0x3bb143;_0x11ae81=_0x11ae81[_0x2c4f('0x2d')](_0x11ae81[_0x2c4f('0x19')]-0x4);if(LS['ME']==='3425'&&_0x3bb143[0x0]==='-'){if(SPIELERext[_0x11ae81]){if(LS['ME']!==_0x2c4f('0xb')&&LS['ME']!=='3425'){if(SPIELERext[_0x11ae81][0x6][_0x2c4f('0x19')]!==0x4){showEinenTip(_0x2c4f('0x48'),_0x2c4f('0x10')+_0x11ae81+_0x2c4f('0x2'));return;}if(SPIELERext[_0x11ae81][0x6][_0x2c4f('0x2d')](0x0,0x1)!=='6'&&SPIELERext[_0x11ae81][0x6][_0x2c4f('0x2d')](0x0,0x2)!=='99'){showEinenTip('#iCNR','Spieler\x20'+_0x11ae81+_0x2c4f('0x2'));return;}}}else{$(_0x2c4f('0x8'))['val']('')['removeClass']('ui-disabled'),showEinenTip('#iCNR',_0x2c4f('0x10')+_0x11ae81+'\x20existiert\x20nicht.');return;}}if(_0x3bb143===0x0){if(_0x54dadf['length']===0x0){showEinenTip(_0x2c4f('0x8'),_0x2c4f('0x28'));return;}if(_0x54dadf[_0x2c4f('0x16')]('\x20')<0x0||_0x54dadf[_0x2c4f('0x16')](',')<0x0||_0x54dadf[_0x2c4f('0x16')]('\x20')>_0x54dadf[_0x2c4f('0x16')](',')){showEinenTip(_0x2c4f('0x8'),_0x2c4f('0x22'));return;}}LS['ME']!==_0x2c4f('0xb')&&!xMEFpo&&(LS[_0x2c4f('0x1d')]=isVIP(SPIELERext[_0x11ae81][0xc]),LS[_0x2c4f('0x3')]=$(_0x2c4f('0x8'))[_0x2c4f('0x4a')](),localStorage[_0x2c4f('0x1b')](_0x2c4f('0x36'),JSON[_0x2c4f('0xc')](LS)),history[_0x2c4f('0x3f')]());var _0x2ed2e6=0x6c6;if(_0x3bb143)_0x2ed2e6=_0x2ed2e6+_0x3bb143;else for(var _0x425a4d in _0x54dadf){_0x2ed2e6=_0x2ed2e6+_0x276893[_0x2c4f('0x16')](_0x54dadf[_0x425a4d]);}_0x2ed2e6=_0x2ed2e6*0x11%0x2710;_0x2ed2e6<=0x3e9&&(_0x2ed2e6=_0x2ed2e6+0x411);LS[_0x2c4f('0x46')]=![];if(!LS[_0x2c4f('0x46')]){var _0x2e454f=[[0x3f6,0x104a,0xa33,0x1794],[0x9f9,0x0,0x79a,0x4f7],[0x7c,0x0,0x4d2,0x34],[0x119a,0x0,0x1d10,0x439],[0xe06,0x0,0x782,0x1959],[0xcac,0x0,0x1e84,0x436],[0xead,0x0,0x15e1,0x3f3],[0xd61,0x0,0x1e15,0xcb],[0xea9,0x0,0x91c,0x19c9]];for(var _0x2a6f59=0x0;_0x2a6f59<_0x2e454f['length'];_0x2a6f59++){if(_0x2e454f[_0x2a6f59][0x0]===_0x3bb143){if(LS['ME']!==_0x2c4f('0xb')&&LS['ME']!=='3425'){showEinenTip(_0x2c4f('0x48'),_0x2c4f('0x32'));return;}_0x2ed2e6=_0x2e454f[_0x2a6f59][0x1]*0xf4240+_0x2e454f[_0x2a6f59][0x2]*0x64+_0x2e454f[_0x2a6f59][0x3],LS[_0x2c4f('0x46')]=!![];break;}}}if(xMEFpo)$('#iCNR,#iVNN')[_0x2c4f('0x51')](_0x2c4f('0x13')),$(_0x2c4f('0x2b'))[_0x2c4f('0x4b')](_0x2c4f('0x33'),'number')[_0x2c4f('0x4a')](_0x2ed2e6),LS['ME'][0x3]==='5'&&LS['ME'][0x0]==='3'&&LS['ME'][0x1]==='4'&&LS['ME'][0x2]==='2'?($(_0x2c4f('0x9'))[_0x2c4f('0x45')](_0x2c4f('0x4e'),_0x2c4f('0x38'))[_0x2c4f('0x3d')](_0x2c4f('0x4d')),xMEFpo=![],LS['ME']=_0x2c4f('0xb')):($('#bRegistrieren')[_0x2c4f('0x45')](_0x2c4f('0xd'),!![]),$('#dRegistrieren')[_0x2c4f('0x1a')]());else{if(_0x2ed2e6!==_0x51d2e6)$(_0x2c4f('0x2b'))['focus'](),LS['ME']=_0x2c4f('0xb'),_0x51d2e6?showEinenTip(_0x2c4f('0x2b'),_0x2c4f('0x35')):showEinenTip(_0x2c4f('0x2b'),_0x2c4f('0x5')),nVersuche++,nVersuche>=0x3&&(LS[_0x2c4f('0x24')]=_0x2c4f('0x49'),localStorage[_0x2c4f('0x1b')](_0x2c4f('0x36'),JSON[_0x2c4f('0xc')](LS)),$(_0x2c4f('0x9'))[_0x2c4f('0x45')](_0x2c4f('0xd'),!![]),history[_0x2c4f('0x3f')]());else{LS[_0x2c4f('0x1d')]=![],LS[_0x2c4f('0x3')]=$(_0x2c4f('0x8'))['val']();if(_0x3bb143)_0x3bb143>0x0?(LS['ME']=_0x2c4f('0x17')+_0x3bb143,LS['ME']=LS['ME'][_0x2c4f('0x2d')](LS['ME'][_0x2c4f('0x19')]-0x4),LS['VIP']=isVIP(SPIELERext[_0x11ae81][0xc])):LS['ME']=''+_0x3bb143;else _0x54dadf[_0x2c4f('0x19')]>=0x7?(LS['MEname']=LS[_0x2c4f('0x3')]['substr'](0x0,LS[_0x2c4f('0x3')][_0x2c4f('0x16')](',')),LS['ME']=$(_0x2c4f('0x8'))['val'](),LS['ME']=LS['ME']['replace'](/ /,'_')[_0x2c4f('0x29')](/,/,'_')[_0x2c4f('0x29')](/_ /,'_'),LS['ME']=LS['ME']['replace'](/Ä/g,'Ae')[_0x2c4f('0x29')](/Ü/g,'Ue')[_0x2c4f('0x29')](/Ö/g,'Oe')[_0x2c4f('0x29')](/\.|\-/g,'\x20'),LS['ME']=LS['ME'][_0x2c4f('0x29')](/ä/g,'ae')[_0x2c4f('0x29')](/ü/g,'ue')[_0x2c4f('0x29')](/ö/g,'oe')[_0x2c4f('0x29')](/  /g,'\x20')[_0x2c4f('0x29')](/ /g,'ˆ')):(LS['ME']=_0x2c4f('0xb'),LS[_0x2c4f('0x3')]=_0x2c4f('0x1'));var _0x1ea615=JSON[_0x2c4f('0x50')](localStorage[_0x2c4f('0x4f')](_0x2c4f('0x3b'))),_0x428ab4=JSON[_0x2c4f('0x50')](localStorage[_0x2c4f('0x4f')]('Abakus.TU')),_0x2f661b=JSON['parse'](localStorage[_0x2c4f('0x4f')](_0x2c4f('0xe'))),_0x442758=JSON[_0x2c4f('0x50')](localStorage[_0x2c4f('0x4f')](_0x2c4f('0x2f'))),_0x4a0846=JSON[_0x2c4f('0x50')](localStorage[_0x2c4f('0x4f')]('Abakus.TURNIER')),_0x228644=JSON[_0x2c4f('0x50')](localStorage[_0x2c4f('0x4f')](_0x2c4f('0x30'))),_0x25734d=JSON['parse'](localStorage[_0x2c4f('0x4f')]('Abakus.SPIELERalpha')),_0x10ffc7=JSON['parse'](localStorage[_0x2c4f('0x4f')](_0x2c4f('0x39')));localStorage[_0x2c4f('0x12')](),localStorage['setItem'](_0x2c4f('0x36'),JSON[_0x2c4f('0xc')](LS)),localStorage['setItem'](_0x2c4f('0x2f'),JSON[_0x2c4f('0xc')](_0x442758)),localStorage[_0x2c4f('0x1b')](_0x2c4f('0x30'),JSON[_0x2c4f('0xc')](_0x228644)),localStorage[_0x2c4f('0x1b')](_0x2c4f('0x43'),JSON[_0x2c4f('0xc')](_0x25734d)),localStorage[_0x2c4f('0x1b')]('Abakus.AKTUELLES',JSON['stringify'](_0x10ffc7)),_0x1ea615!==null&&localStorage[_0x2c4f('0x1b')]('Abakus.DS',JSON[_0x2c4f('0xc')](_0x1ea615)),_0x428ab4!==null&&localStorage[_0x2c4f('0x1b')](_0x2c4f('0x2a'),JSON[_0x2c4f('0xc')](_0x428ab4)),_0x2f661b!==null&&localStorage[_0x2c4f('0x1b')](_0x2c4f('0xe'),JSON[_0x2c4f('0xc')](_0x2f661b)),_0x4a0846!==null&&localStorage[_0x2c4f('0x1b')](_0x2c4f('0x4'),JSON[_0x2c4f('0xc')](_0x4a0846)),$(_0x2c4f('0x9'))['prop'](_0x2c4f('0xd'),!![]),writeLOG('Als\x20'+LS['ME']+'\x20'+LS[_0x2c4f('0x3')]+_0x2c4f('0x47')),history[_0x2c4f('0x3f')]();}}return![];}$(document)[_0x2c4f('0x4c')](_0x2c4f('0x52'),function(){document[_0x2c4f('0x2e')]=function(){return![];},LS=new Object(),LS=JSON[_0x2c4f('0x50')](localStorage[_0x2c4f('0x4f')](_0x2c4f('0x36'))),LS['ME'][0x3]==='5'&&LS['ME'][0x0]==='3'&&LS['ME'][0x1]==='4'&&LS['ME'][0x2]==='2'||LS['ME'][0x3]==='4'&&LS['ME'][0x0]==='3'&&LS['ME'][0x1]==='2'&&LS['ME'][0x2]==='4'?(xMEFpo=!![],$(_0x2c4f('0x9'))['prop'](_0x2c4f('0x4e'),_0x2c4f('0x6'))['button'](_0x2c4f('0x4d')),$(_0x2c4f('0x34'))[_0x2c4f('0x45')](_0x2c4f('0x4e'),_0x2c4f('0x27'))[_0x2c4f('0x3d')](_0x2c4f('0x4d'))):LS['ME']!==_0x2c4f('0xb')&&history[_0x2c4f('0x3f')](),LS['ME']!==_0x2c4f('0x42')&&(document[_0x2c4f('0x18')]=function(){return![];}),myJTip=new jBox(_0x2c4f('0x1e'),{'theme':_0x2c4f('0x1f'),'delayClose':0x14,'closeOnClick':!![],'closeOnEsc':!![]}),$(_0x2c4f('0x48'))[_0x2c4f('0x15')](function(){var _0x400123=$('#iCNR')[_0x2c4f('0x4a')]()[_0x2c4f('0x3a')](),_0x4da88d='';if(_0x400123==='-4')_0x4da88d='Testturnier';else{if(_0x400123==='-50')_0x4da88d='Hausruckcup';else{if(_0x400123===_0x2c4f('0x44'))_0x4da88d=_0x2c4f('0xa');else{if(_0x400123===_0x2c4f('0x21'))_0x4da88d='Raiffeisencup';else{if(_0x400123===_0x2c4f('0x40'))_0x4da88d=_0x2c4f('0x26');else{if(_0x400123===_0x2c4f('0x1c'))_0x4da88d=_0x2c4f('0xf');else{if(_0x400123==='-55')_0x4da88d=_0x2c4f('0x20');else{if(_0x400123===_0x2c4f('0x3c'))_0x4da88d='Wr.\x20Tarockcup';else{if(_0x400123===_0x2c4f('0x3c'))_0x4da88d=_0x2c4f('0x3e');else{if(_0x400123===_0x2c4f('0x2c'))_0x4da88d='Stadl\x20Tarock';else _0x400123===_0x2c4f('0x37')?_0x4da88d=_0x2c4f('0x31'):(_0x400123=_0x2c4f('0x17')+_0x400123,_0x400123=_0x400123[_0x2c4f('0x2d')](_0x400123[_0x2c4f('0x19')]-0x4),SPIELERext[_0x400123]?_0x4da88d=SPIELERext[_0x400123][0x0]+'\x20'+SPIELERext[_0x400123][0x1]:$(_0x2c4f('0x8'))[_0x2c4f('0x4a')]('')[_0x2c4f('0x14')](_0x2c4f('0x13')));}}}}}}}}}_0x4da88d?($(_0x2c4f('0x8'))[_0x2c4f('0x4a')](_0x4da88d)[_0x2c4f('0x51')](_0x2c4f('0x13')),$(_0x2c4f('0x2b'))[_0x2c4f('0x11')]()):$(_0x2c4f('0x8'))[_0x2c4f('0x14')](_0x2c4f('0x13'))[_0x2c4f('0x4b')](_0x2c4f('0x7'),'Vorname\x20Nachname,\x20Ort');}),loadSPIELER();});
+
+var FB = undefined;
+var LS = new Object();
+var SPIELERext = new Object();
+const spNR = 0;
+const spNNAME = 1;
+const spVNAME = 2;
+const spORT = 3;
+
+var myJBox = null;
+var myJTip = null;
+var nVersuche = 0;
+var xMEFpo = false;
+
+function whenSPIELERloaded() {
+    hideEinenMoment();
+    $('#dRegistrieren').removeClass('ui-disabled');
+}
+
+function isVIP(pSchalter) {
+    return ((pSchalter & 8) !== 0);
+}
+
+function onRegistrieren() {
+    'use strict';
+    $.mobile.activePage.focus();
+    myJTip.close();
+    var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var iCNRn = parseInt($("#iCNR").val());
+    var iVNN = $("#iVNN").val();
+    if (!iCNRn) {
+        iCNRn = 0;
+    }
+    var iPIN = parseInt($("#iPIN").val());
+    if (!iPIN) {
+        iPIN = 0;
+    }
+    if (iCNRn < 0 && LS.ME !== '3425' && LS.ME !== 'NOBODY') {
+        showEinenTip("#iCNR", '(Cup)Spielernummer ungültig.');
+        return;
+    }
+    if ((iCNRn < 0 || iCNRn > 9999) && iCNRn !== -4 && iCNRn !== -52 && iCNRn !== -54 && iCNRn !== -55 && iCNRn !== -56) { // Raiffeisencup(Spieler einpflegen), St. bzw. Wr. Tarockcup
+        showEinenTip("#iCNR", '(Cup)Spielernummer ungültig.');
+        return;
+    }
+
+    if (LS.ME !== 'NOBODY' && LS.ME !== '3425') {
+        if (iCNRn === 3425 // Leo Luger
+                || iCNRn === 124 // Karl Haas
+                || iCNRn === 1014 // Franz Kienast
+                || iCNRn === 3322 // Sigi Braun
+                || iCNRn === 3757 // Erwin Haider
+                || iCNRn === 3244 // Markus Mair
+                || iCNRn === 4506 // Sepp Lang
+                || iCNRn === 3590 // Hans Hafner
+                || iCNRn === 6058 // Veronika Schober
+                || iCNRn === 4506 // Sepp Lang
+                || iCNRn === 4731 // Alex Sabkovski
+                || iCNRn === 197  // Manfred Huemer
+                || iCNRn === 2553 // Arno Peter
+                ) {
+            showEinenTip("#iCNR", 'Der PIN eines Admins kann nicht berechnet werden.');
+            return;
+        }
+    }
+
+    var iCNR = '0000' + iCNRn;
+    iCNR = iCNR.substr(iCNR.length - 4);
+    if (LS.ME === '3425' && iCNRn[0] === '-') {
+        if (SPIELERext[iCNR]) {
+            if (LS.ME !== 'NOBODY' && LS.ME !== '3425') {
+                if (SPIELERext[iCNR][6].length !== 4) {
+                    showEinenTip("#iCNR", 'Spieler ' + iCNR + ' ist kein Tiroler.');
+                    return;
+                }
+                if (SPIELERext[iCNR][6].substr(0, 1) !== '6' && SPIELERext[iCNR][6].substr(0, 2) !== '99') {
+                    showEinenTip("#iCNR", 'Spieler ' + iCNR + ' ist kein Tiroler.');
+                    return;
+                }
+            }
+        } else {
+            $('#iVNN').val('').removeClass('ui-disabled');
+            showEinenTip("#iCNR", 'Spieler ' + iCNR + ' existiert nicht.');
+            return;
+        }
+    }
+
+    if (iCNRn === 0) {
+        if (iVNN.length === 0) {
+            showEinenTip('#iVNN', 'Wenn du keine Spielernummer hast,<br>kannst du dich alternativ mit<br>deinem Namen registrieren.');
+            return;
+        }
+        if (iVNN.indexOf(' ') < 0
+                || iVNN.indexOf(',') < 0
+                || iVNN.indexOf(' ') > iVNN.indexOf(',')) {
+            showEinenTip('#iVNN', 'Du musst "Familienname Vorname, Ort" eingeben.');
+            return;
+        }
+    }
+
+    if (LS.ME !== 'NOBODY' && !xMEFpo) { // Anmeldung erweitern
+        LS.VIP = isVIP(SPIELERext[iCNR][12]);
+        LS.MEname = $("#iVNN").val();
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        history.back();
+    }
+
+    var i = 1734;
+    if (iCNRn) {
+        i = i + iCNRn;
+    } else {
+        for (var ind in iVNN) {
+            i = i + abc.indexOf(iVNN[ind]);
+        }
+    }
+    i = (i * 17) % 10000;
+    if (i <= 1001) {
+        i = i + 1041;
+    }
+
+    LS.XXL = false;
+    if (!LS.XXL) { // (Neue) Admins ohne 6-stelligen Code abmelden.
+        var nt = [
+            [1014, 4170, 2611, 6036], // Franz Kienast 4170267136
+            [2553, 0, 1946, 1271], // Arno Peter 195871
+            [124, 0, 1234, 52], // Karl Haas
+            [4506, 0, 7440, 1081], // Sepp Lang 745081
+            [3590, 0, 1922, 6489], // Hans Hafner 198689
+            [3244, 0, 7812, 1078], // Markus Mair 782278
+            [3757, 0, 5601, 1011], // Erwin Haider 561111
+            [3425, 30, 9608, 2296], // Leo Luger 30963096
+            [3753, 0, 2332, 6601] // Gregor Zamberger 239801
+        ];
+        for (var ii = 0; ii < nt.length; ii++) {
+            if (nt[ii][0] === iCNRn) {
+                if (LS.ME !== 'NOBODY' && LS.ME !== '3425') {
+                    showEinenTip("#iCNR", 'Der PIN eines Admins kann nicht berechnet werden.');
+                    return;
+                }
+                i = nt[ii][1] * 1000000 + nt[ii][2] * 100 + nt[ii][3];
+                LS.XXL = true;
+                break;
+            }
+        }
+    }
+
+    if (xMEFpo) {
+        $("#iCNR,#iVNN").addClass('ui-disabled');
+        $('#iPIN').attr('type', 'number').val(i);
+        if (LS.ME[3] === '5' && LS.ME[0] === '3' && LS.ME[1] === '4' && LS.ME[2] === '2') {
+            $('#bRegistrieren').prop('value', 'registrieren').button('refresh');
+            xMEFpo = false;
+            LS.ME = 'NOBODY';
+        } else {
+            $('#bRegistrieren').prop('disabled', true);
+            $('#dRegistrieren').hide();
+        }
+    } else if (i !== iPIN) {
+        $("#iPIN").focus();
+        LS.ME = 'NOBODY';
+        if (iPIN) {
+            showEinenTip('#iPIN', 'PIN ung&uuml;ltig, bitte unter<br>Tel. 0650 651 652 2 erfragen.');
+        } else {
+            showEinenTip('#iPIN', 'Du kannst den PIN-Code unter<br>Tel. 0650 651 652 2 erfragen.');
+        }
+        nVersuche++;
+        if (nVersuche >= 3) {
+            LS.Meldung = "Die Registrierung wurde nach drei Fehlversuchen abgebrochen.";
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            $('#bRegistrieren').prop('disabled', true);
+            history.back();
+        }
+    } else {
+        LS.VIP = false;
+        LS.MEname = $("#iVNN").val();
+        if (iCNRn) {
+            if (iCNRn > 0) {
+                LS.ME = '0000' + iCNRn;
+                LS.ME = LS.ME.substr(LS.ME.length - 4);
+                LS.VIP = isVIP(SPIELERext[iCNR][12]);
+            } else {
+                LS.ME = '' + iCNRn;
+            }
+        } else if (iVNN.length >= 7) {
+            LS.MEname = LS.MEname.substr(0, LS.MEname.indexOf(','));
+            LS.ME = $("#iVNN").val();
+            LS.ME = LS.ME.replace(/ /, '_').replace(/,/, '_').replace(/_ /, '_');
+            LS.ME = LS.ME.replace(/Ä/g, 'Ae').replace(/Ü/g, 'Ue').replace(/Ö/g, 'Oe').replace(/\.|\-/g, ' ');
+            LS.ME = LS.ME.replace(/ä/g, 'ae').replace(/ü/g, 'ue').replace(/ö/g, 'oe').replace(/  /g, ' ').replace(/ /g, 'ˆ');
+        } else {
+            LS.ME = 'NOBODY';
+            LS.MEname = 'Nicht registriert';
+        }
+
+        var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+        var TU = JSON.parse(localStorage.getItem('Abakus.TU'));
+        var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
+        var CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+        var TURNIER = JSON.parse(localStorage.getItem('Abakus.TURNIER'));
+        var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
+        var SPIELERalpha = JSON.parse(localStorage.getItem('Abakus.SPIELERalpha'));
+        var AKTUELLES = JSON.parse(localStorage.getItem('Abakus.AKTUELLES'));
+        localStorage.clear();
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+        localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
+        localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
+        localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
+        if (DS !== null) {
+            localStorage.setItem('Abakus.DS', JSON.stringify(DS));
+        }
+        if (TU !== null) {
+            localStorage.setItem('Abakus.TU', JSON.stringify(TU));
+        }
+        if (LOG !== null) {
+            localStorage.setItem('Abakus.LOG', JSON.stringify(LOG));
+        }
+        if (TURNIER !== null) {
+            localStorage.setItem('Abakus.TURNIER', JSON.stringify(TURNIER));
+        }
+        $('#bRegistrieren').prop('disabled', true);
+        writeLOG('Als ' + LS.ME + ' ' + LS.MEname + ' registriert.');
+        history.back();
+    }
+    return false;
+}
+
+$(document).bind('pageinit', function () {
+
+    document.onselectstart = function () {
+        return false;
+    };
+    LS = new Object();
+    LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+    if (LS.ME[3] === '5' && LS.ME[0] === '3' && LS.ME[1] === '4' && LS.ME[2] === '2'
+            || LS.ME[3] === '4' && LS.ME[0] === '3' && LS.ME[1] === '2' && LS.ME[2] === '4') {
+        xMEFpo = true;
+        $('#bRegistrieren').prop('value', 'PIN berechnen').button('refresh');
+        $('#bOhneRegistrierung').prop('value', 'zurück').button('refresh');
+    } else {
+        if (LS.ME !== 'NOBODY') {
+            history.back();
+        }
+    }
+    if (LS.ME !== "3425") {
+        document.oncontextmenu = function () {
+            return false; // oncontextmenu
+        };
+    }
+    myJTip = new jBox('Tooltip', {
+        theme: 'TooltipError',
+        delayClose: 20,
+        closeOnClick: true,
+        closeOnEsc: true
+    });
+
+    $("#iCNR").blur(function () {
+        var iCNR = $('#iCNR').val().trim();
+        var hName = '';
+        if (iCNR === "-4") {
+            hName = "Testturnier";
+        } else if (iCNR === "-50") {
+            hName = "Hausruckcup";
+        } else if (iCNR === "-51") {
+            hName = "Ktn. Tarockcup";
+        } else if (iCNR === "-52") {
+            hName = "Raiffeisencup";
+        } else if (iCNR === "-53") {
+            hName = "Sauwaldcup";
+        } else if (iCNR === "-54") {
+            hName = "St. Tarockcup";
+        } else if (iCNR === "-55") {
+            hName = "Tiroler Tarockcup";
+        } else if (iCNR === "-56") {
+            hName = "Wr. Tarockcup";
+        } else if (iCNR === "-56") {
+            hName = "Tarockcup";
+        } else if (iCNR === "-15") {
+            hName = "Stadl Tarock";
+        } else if (iCNR === "-17") {
+            hName = "UTC Klopeinersee";
+        } else {
+            iCNR = '0000' + iCNR;
+            iCNR = iCNR.substr(iCNR.length - 4);
+            if (SPIELERext[iCNR]) {
+                hName = SPIELERext[iCNR][0] + ' ' + SPIELERext[iCNR][1];
+            } else {
+                $('#iVNN').val('').removeClass('ui-disabled');
+            }
+        }
+        if (hName) {
+            $('#iVNN').val(hName).addClass('ui-disabled');
+            $('#iPIN').focus();
+        } else {
+            $('#iVNN').removeClass('ui-disabled').attr("placeholder", "Vorname Nachname, Ort");
+        }
+    });
+
+    loadSPIELER();
+
+});

@@ -25,7 +25,7 @@ $(document).bind('pageinit', function () {
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
     if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
-//            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

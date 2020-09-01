@@ -192,7 +192,7 @@ function loadCUPS(pTitel, pText, pForce) {
             return;
         }
 
-        var mSchreiber = false;
+        var mSchreiber = false; // Nur wer in einer Runde Admin oder Schreiber ist, darf in CUP's schreiben
         for (var iCup in CUPS.BEREadmin) {
             if (CUPS.BEREadmin[iCup].indexOf(LS.ME) >= 0) {
                 mSchreiber = true;

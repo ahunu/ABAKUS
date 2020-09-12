@@ -1,1 +1,3638 @@
-var _0x52ed=['#tCupName','#bNeuerTisch','#tSpielerPunkte\x20tbody\x20tr','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2008</div>','substring','<span\x20class=\x22cBlau\x20P\x20XL\x22\x20onclick=\x22hrefStatistik(','.hfHeaderIcon,#qfHeaderIcon','src','<div\x20id=\x22bAL\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22><h2>&nbsp;Alle\x20Termine:</h2><ul\x20data-role=\x22listview\x22>','Suche\x20im\x20Play\x20Store\x20nach<br>\x27<b>Die\x20Tarock-App</b>\x27\x20und<br>aktualisiere\x20diese\x20App.','</span>','Anekdoten','\x20cTTC','<li\x20data-icon=false><a\x20id=\x22bXX','<img\x20src=\x27Icons/MeinTisch.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22><span\x20style=\x22color:\x20#dd1111\x22>Zu\x20meinem\x20Tisch</span><div\x20class=\x22S\x20N\x22>Weiterspielen,\x20speichern,\x20etc.</div>','trigger','Wr.\x20Tarockcup','<div\x20class=\x22ui-grid-a\x22>','Das\x20Turnier\x20wurde\x20noch\x20nicht\x20gestartet.','<span\x20class=\x22cBlau\x20P\x20XL\x22\x20onclick=\x22fZuMeinemTisch()\x22><b>Zu\x20meinem\x20Tisch</b></span><br>Es\x20wurden\x20','\x20Spiele\x20gespielt.<br>','TARIF','fGruen','#bSSja,#bSSnein','DATE','<div><i\x20class=\x22i\x20zmdi-info-outline\x20noprint\x22\x20style=\x22color:crimson\x22></i>&nbsp;</div>','Der\x20Tisch\x20wurde\x20gelöscht.','</div></a></li>','VName','\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22\x20onClick=\x22fStartStop(','FotoStyle','prop','Etwas\x20Geduld\x20bitte!','ABAKUS:\x20Update\x20auf\x20Version\x20','Ooe.','domain','<li\x20data-icon=false><a\x20id=bAL','Punkte','4506','#bRundeXbeenden','bLC',',\x27bMR\x27)\x22><div\x20style=\x22display:flex;\x20justify-content:\x20space-between\x22><div>&nbsp;','Abakus.SPIELERalpha','Den\x20Tisch\x20löschen:','undefined',':<b>&nbsp;&nbsp;&nbsp;','Dez.','\x20Spiele','52T','Einzelturnier','text','Die\x20Turnierverwaltung\x20wird\x20gestartet.','Runde\x201\x20beenden\x20?','removeItem','Die\x20Runde\x20','valueOf','matchMedia','XXL','\x20beenden&nbsp;</a>','<span\x20class=\x22cBlau\x20P\x20L\x22\x20onclick=\x22hrefParameterAendern(','49T','</ul></div>','#bTischLoeschen',':\x20TU\x20konnte\x20nicht\x20geladen\x20werden.',')\x20wurde\x20installiert.','close','BEREschreiben','Nur\x20an\x20dem\x20Tag,\x20an\x20dem<br>','<br>Es\x20wurden\x20','Mannschaftsturnier','Raiffeisencup','&nbsp;<img\x20src=\x27Icons/Achtung.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27>&nbsp;<b>','<div\x20class=\x22cRot\x20B\x22>','title','#tZuMeinemTisch,#tCupName','#bLinks,#bAdminTools','\x20wurde\x20beendet.</span><br>','font-size:4.5vw;white-space:nowrap;font-family:Arial;font-style:italic;','/REGELN','#bWeiter','#tsText','replace','SPIELTAGE','Bis','\x20wird\x20beendet.','<div\x20class=\x22S\x20N\x22>Turnier\x20starten\x20und\x20beenden</div>','?VIPS','search','<div\x20id=\x22bCT\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22','VNAME','.png','Warte\x20auf\x20das\x20OK<br>der\x20Turnierleitung.','toISOString','navigator','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2015</div>','ShowFunktion','&nbsp;&nbsp;','#pContent','?Reglen','HTML5\x20und\x20Javascript\x20werden\x20von\x20deinem<br>Browser\x20nicht\x20ausreichend\x20unterstützt.','\x20läuft\x20noch!','\x20Spieler\x20m&uuml;ssen\x20noch\x20','offset','die\x20volle\x20Funktionalität.<br>','AnzSpalten','bAL','Vorhand','cTTC','Spiele','</div></div>','performance','Tarockhandy:&nbsp;&nbsp;0660\x205275150<br>','<img\x20src=\x27Icons/Turnier.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>','noch\x20nicht\x20freigegeben.<br>','/android_asset/www/','<div\x20class=\x22J\x20M\x22\x20style=\x22margin-right:5%\x22>An\x20lauen\x20Septembertagen\x20mit\x20Freunden\x20der\x20Donau\x20entlang\x20radeln,\x20in\x20diversen\x20Gastgärten\x20mit\x20der\x20Seele\x20baumeln\x20und\x20wer\x20will\x20zwischendurch\x20oder\x20am\x20Abend\x20ein\x20Spielchen\x20wagen.\x20Was\x20will\x20das\x20Spielerherz\x20mehr?</div>','Tarocketikette','#hfText','Test-\x20und\x20Übungsturnier','kann&nbsp;es&nbsp;administrieren.','Internet:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x22\x20onclick=\x22window.open(\x27https://tarockrunde-sauwald.jimdo.com\x27)\x22\x20>tarockrunde-sauwald.jimdo.com</span>','0000','\x20data-collapsed=\x22false\x22','ServerValue','\x20cWTC','#dTermine','#pSTARTSTOP','ui-disabled','Icons/Idee.gif','<b>\x20','RUNDEN','CAFEHEINECUP','</tbody>',',\x20\x27?Aktuelles\x27);\x22>','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2017</div>','<div\x20class=\x22ui-btn\x20M2\x20TL\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22onClick=\x22fZuMeinemTisch();\x22>','NAME','Das\x20Turnier\x20wurde\x20bereits\x20beendet.','<div\x20id=\x22tgl','Okt.','Sollte\x20das\x20Problem\x20nach\x20dem\x20drücken\x20von\x20[Initialisiern]\x20weiter\x20bestehen,\x20','Juli','2553','setMilliseconds','create','<img\x20src=\x27Icons/Kalender.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Übernächstes\x20Turnier<div\x20class=\x22S\x20N\x22>','Donnerstag','Statistik\x20wird\x20geladen.','SWC\x20-\x20','1-0-0','html','Mein\x20Tisch','<img\x20src=\x27Icons/Fehler.png\x27\x20width=\x2724\x27\x20height=\x2724\x27>&nbsp;&nbsp;Das\x20System\x20wurde\x20für\x20','#dOrigin',',\x20kann\x20ein<br>','CupName',',\x20\x27?Aktuelles\x27);\x22><b>Aktuelles</b></span><br>','Die\x20neuesten\x20Infos','#dVollversion','Partner','empty','Spieltyp','OK.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=M>&nbsp;&nbsp;<b>Runde\x20','Turnier&nbsp;gestartet&nbsp;hat<br>','.hfHeaderZeile2,#qfHeaderZeile2','\x20gewinnt\x20am\x20','#ssText','</b></div>','\x20cSWC','Ein\x20außergewöhnlicher\x20Event','&nbsp;</td></tr>','PUNKTERx','doppelt','bPR','substr','innerHeight','<span\x20class=\x22M\x20cRot\x20B\x22>Ich\x20bin\x20nicht\x20angemeldet.</span><br>','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Mülleder\x20Josef</b><br>Bad\x20Leonfelden</div></div>','<span\x20id=\x22p360\x22>portrait,\x20max-width:\x20360px<br></span>','Meldung','TippsUndTricks','string','#iTURCODE','NName','remove','CUPPUNKTE','TEXT1','<img\x20src=\x27Icons/News.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Aktuelles<div\x20class=\x22S\x20N\x22>','MT.','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2016</div>','<img\x20src=\x27Icons/Fehler.png\x27\x20width=\x2724\x27\x20height=\x2724\x27>&nbsp;&nbsp;Das\x20Datum\x20ist\x20nicht\x20aktuell.<br>','Schreibzettel','Stadl\x20Tarock',')\x22\x20><b>Ein\x20neuer\x20Tisch</b></span><br>Vivat\x20Valat!<br>','KTC\x20-\x20','PKTGEWONNEN','<b>Berechtigung\x20fehlt!</b>','Cupwertung,\x20Platzierungen,\x20etc.','\x27).toggle();\x22>','ZULETZT','toLocaleDateString','#dRundenCups','Organisation:&nbsp;&nbsp;<b><span\x20class=M2>Karl\x20Haas\x20jun.</span></b><br><br>','April','<span\x20id=\x22p451\x22>portrait,\x20min-width:\x20451px<br></span>','<img\x20src=\x27Icons/Fehler.png\x27\x20width=\x2724\x27\x20height=\x2724\x27>&nbsp;&nbsp;Diese\x20App\x20bietet<br>','#tOnline','Abakus.AKTUELLES','ui-btn-active','Abakus/Statistik.html','TERMINE','Sa.,','#bAdminTools,#bFindSpieler,#bRAMOS','<div\x20class=\x22ui-btn\x20M2\x20TL\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22\x20onClick=\x22hrefParameterAendern(','chrome','indexOf','screen:\x20','NEXTTERMIN','height','</tr>','3590','Lokaler\x20Cup','<span\x20class=\x22cRot\x22>','sort','Runde\x202\x20beenden\x20?','matches','ZULETZTupd','<img\x20src=\x27Icons/Optionen.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Parameter\x20ändern<div\x20class=\x22S\x20N\x22>Tarife,\x20Spieltage,\x20etc.\x20ändern</div>','RundeXbeenden()','cDIV','length','Abakus.SPIELERnr','Spiele\x20löschen<br>und\x20Turnier\x20starten','WR.TAROCKCUP','Mai','<br>oder\x20einen\x20anderen\x20kompatiblen\x20Browser.','ANMELDERF','x3759','Heute','Diesen\x20','bFC','Tarif','<span\x20class=\x22cBlau\x20P\x20XL\x22\x20onclick=\x22fEinNeuerTisch(','object','Spieler','Korrigiere\x20die\x20Zeitzone.<br>','bXX','#hSpeichern','#hMenu','TARIF21T','each','\x20cDIV','<thead>','</div><div\x20class=\x22ui-block-b\x20M\x22\x20style=\x22width:50%;text-align:justify;\x22>','Informiere\x20den\x20Veranstalter.','pixelDepth:\x20','&nbsp;<b>','.hfHeaderZeile2','><h2>&nbsp;Cups:</h2><ul\x20data-role=\x22listview\x22>','Montag','_Turnier/TU_1_Anmeldung.html?init','ACHTUNG:\x20Diese\x20Webseite\x20kann\x20im\x20\x22Private\x20Modus\x22\x20nicht\x20aufgerufen\x20werden.\x20Deaktivieren\x20den\x20\x22Private\x20Modus\x22.','#tTippsUndTricks','<br><img\x20src=\x27','onLine','href','font-size:4.5vw;white-space:nowrap;font-family:\x27Arial\x20Narrow\x27,Arial;font-style:italic;','gespielt','Laut\x20Turnierkalender\x20findet<br>heute\x20kein\x20Turnier\x20statt.','STC\x20-\x20','vendor','focus',',\x27bXX\x27)\x22><div\x20style=\x22display:flex;\x20justify-content:\x20space-between\x22><div>&nbsp;','VIC','REGELN','width','hide','Mittwoch','</div>','<img\x20src=\x27Icons/MeinTisch.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Ein\x20neuer\x20Tisch<div\x20class=\x22S\x20N\x22>Einen\x20neuen\x20Tisch\x20eröffnen</div>','Turnier\x20starten\x20?','ABAKUS:\x20','cSTC','AnzGespeichert','Private\x20Runde','dem\x20','\x20ist\x20noch<br>','Ansage','&nbsp;&nbsp;Welche\x20Vorteile\x20bringt\x20mir<br>&nbsp;&nbsp;eine\x20Installation\x20von\x20Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als\x20App?&nbsp;','TURCODE','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Wimmer\x20Anton</b><br>Puchkirchen</div></div>','#bSpieler','.\x20Runde','pathname','<b>\x20Der\x20Tisch\x20wurde\x20nicht\x20vollst&auml;ndig\x20','Statistik/Statistik.html','Würmler\x20Horst','STAT\x20update','MEname','reload','bTR','\x20Spieler\x20warten','GameI','#dText','Tooltip','\x20cKTC','<b>Technische\x20Details:</b><br>',')</span>','<div\x20class=\x22S\x20N\x22>Administrator:\x20<b>','2624','Jän.','BEGINN','Sep.','pixelDepth','#dTechDetails','Ettikette','toggle','/00/','Sterne','Du\x20hast\x20bereits\x20alle\x20Runden\x20gespielt.','<b>Berechtigung\x20abgelaufen!</b>',',\x27bAL\x27,-1)\x22>&nbsp;&nbsp;<span\x20class=\x22L\x20N\x22>','<li\x20data-icon=false><a\x20id=\x22bMR','#tsDieDen','TurnierBEENDEN()',',\x20\x27?Anmeldungen\x27);\x22>','Das\x20Turnier\x20wird\x20beendet.','Organisationsteam:&nbsp;&nbsp;<b>Bert\x20Greisinger,<br>\x20Franz\x20Emeder,\x20Franz\x20Kienast</b><br><br>','das\x20Turnier\x20gestartet\x20wurde,<br>','#bET',',\x20true);\x22>','ABVERSION','<div\x20id=\x22bPR\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22><h2>&nbsp;Private\x20Runden:</h2><ul\x20data-role=\x22listview\x22>','F4:\x20Datum\x20oder\x20Uhrzeit\x20falsch.','#tsTitel','???','#tEinstellungen','<div\x20style=\x22margin-left:\x2030%;\x22\x20class=M>','_RUNDE','<br><br>','WOCHEN','Pausierer1','Nicht\x20registriert',':input:focus','TurnierSTARTENend()','initDB',':visible','Font','\x22\x20onClick=\x22showCup(','Icons/Achtung.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=\x27L\x20B\x27>&nbsp;Es\x20wurde\x20kein\x20Spiel\x20gespielt.</span><br>','collapsible','cKTC','Achtung','#dFooter','parse','setItem','#bAK,#bMR','</b>&nbsp;speichern.','getItem','Tarif21T','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Doppler\x20Manfred</b><br>Ampflwang</div></div>','Korrigiere\x20die\x20Uhrzeit.','F3:\x20Datum\x20ungültig:','<b>Speichern\x20ist\x20nicht\x20möglich.</b></span>','location.href:\x20','#pFehler','Mannschaftsturniere','<th>&nbsp;Spieler','Tarock-Österreich-Finale','<span\x20class=XL><b>','<br><b>Google\x20Chrome</b>,\x20<b>Opera</b>,\x20<b>Vivaldi</b>','\x20wurde\x20beendet.','.html','CUPS.MELDSTAT\x20update','Sonntag','#qfHeaderZeile1','T\x20class=\x22K\x20','MEZULETZT','ready','navigation','cTOF','<span\x20class=\x22cBlau\x20P\x20L\x22\x20onclick=\x22window.location.href\x20=\x20\x27AdminTools/TurnierImport.html\x27\x22\x20><b>Turnier\x20einspielen</b></span><br>','&nbsp;Bitte&nbsp;zuerst&nbsp;das&nbsp;Turnier&nbsp;&nbsp;&nbsp;<br>','nur\x20in\x20der\x20Zeitzone\x20Wien<br>','Hausruckviertler\x20Tarockcup','Ende\x20der\x20Anmeldung:\x20','<span\x20class=XL>Nächste','Schreiber','Wirtshausrunde','TARIF20T','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2019</div>','TURTISCH','storniert','Tarif20T','Mo.,','54T','TURTIMESTAMP','<div\x20class=\x22ui-block-a\x22\x20style=\x22width:20%\x22></div>','ref','Testcup\x20/-Runde','Aug.','TooltipError','Abakus/Abakus',':\x20CUPS\x20konnte\x20nicht\x20geladen\x20werden.','<b><span\x20class=S3>','INA1','cRTC','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2012</div>','<img\x20src=\x27Icons/Anmeldung.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Zur\x20Anmeldung<div\x20class=\x22S\x20N\x22>Nächstes\x20Turnier:&nbsp;&nbsp;','addClass','TURSPIELER','Internet:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x22\x20onclick=\x22window.open(\x27http://www.tarock.tirol\x27)\x22\x20>www.tarock.tirol</span>','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Ebner\x20Florian</b><br>Linz</div></div>','SPIELEAB','SCHREIBER','TURRUNDE','\x20hat\x20Runde\x20','Abakus/Exit.html','Juni','Turnier&nbsp;noch&nbsp;nicht&nbsp;beendet.','removeClass','Seite','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Huemer\x20Manfred</b><br>Bad\x20Leonfelden</div></div>','CUP','Icons/DieGeschichte.png','Ansagen','Wr.\x20Marathon','Du\x20hast\x20in\x20dieser\x20Runde<br>noch\x20nie\x20gespielt.','</td><td\x20class=TC>','BEREadmin',',\x20\x20Schreiben:\x20','Samstag','\x20cSTC','<br>',':\x20LOG\x20konnte\x20nicht\x20geladen\x20werden.','#dCopyright','3244','0-1-0','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Christian\x20Rieseneder</b><br>Wien</div></div>','AnzSpieler','Der\x20letzte\x20Tisch\x20wurde<br>','<br>wird\x20nicht\x20gespielt.','LoadCups','Diverse','Tisch\x20eingegeben\x20werden.','\x20Spiele\x20gespielt.','\x20Tagen\x20nicht\x20gespielt.','MEANGEMELDET','Bei\x20','\x20ui-disabled','#ssMELD','Korr','000','<li\x20data-icon=false><a\x20id=\x22','Ort',':\x20SPIELERnr\x20konnte\x20nicht\x20geladen\x20werden.',',\x27bAL\x27,-1,)\x22>&nbsp;&nbsp;<span\x20class=\x22L\x20N\x22>','showMeinenTisch','setMinutes','getTime','&nbsp;','toLocaleString','Geschichte','\x27\x20data-transition=\x27pop\x27\x20id=bStartbutton>&nbsp;Turnier\x20starten&nbsp;</a>','#bFC','MAXSPIELE','slice','getDay','FotoAnimieren','und\x20Vorgang\x20wiederholen.','Di.,','<div\x20class=\x22ui-btn\x20M2\x20TL\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22\x20onClick=\x22fEinNeuerTisch(','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2009</div>','#pMEINTISCH','body','Game','Wiener\x20Tarockcup','Mi.,','\x20cHRC','ANZGEWONNEN','0-0-1','performance.navigation.type:\x20','\x20wurde<br>noch\x20nicht\x20freigegeben.','#pSpiele','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Zauner\x20Hubert</b><br>Bad\x20Ischl</div></div>','Tiroler\x20Tarockcup','cSWC',');\x22>','#bLC','<br>Verwende\x20einen\x20der\x20folgenden\x20Browser:','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2018</div>','<span\x20id=bZurStatistik\x20class=\x22cBlau\x20P\x20XL\x22\x20onclick=\x22hrefStatistik(','Nur\x20für\x20Mitspieler...','<div\x20id=\x22bET\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22><h2>&nbsp;Einzelne\x20Turniere:</h2><ul\x20data-role=\x22listview\x22>','Korrigiere\x20das\x20Systemdatum.<br>','0197','Tirolcup','Der\x20Tisch\x20wurde\x20gelöscht!',',\x27bMR\x27)\x22>&nbsp;','#bTR','navigator.standalone:\x20','Test-\x20und\x20Übungsrunde','trim','\x22\x20style=\x22margin-left:4px;margin-right:4px;\x22\x20hidden>','4731','Abakus.NEXT','getHours','#bWeiter,#bSpieler,#bSpeichern','<a\x20onclick=\x27fStartStop(0,\x20true);\x27\x20data-rel=\x27popup\x27\x20data-theme=e\x20data-position-to=\x27window\x27\x20data-role=\x27button\x27\x20data-inline=\x27true\x27\x20data-mini=\x27true\x27\x20class=\x27L','cHRC','Abakus.CUPS','&szlig;','userAgent','#bSpeichern','Mit\x20dem\x20Rad\x20entlang\x20der\x20Donau\x20gemütlich\x20nach\x20Wien','<img\x20src=\x22Icons/LogoWTC.png\x22\x20align=\x22left\x22\x20style=\x22fload:left;width:120px;height:160px;smargin-left:-60px;margin-right:10px\x22>','</th>',':\x20DS\x20konnte\x20nicht\x20geladen\x20werden.','Tarocklinks','navigator.userAgent:\x20','Achtung.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=M>&nbsp;&nbsp;<b>Runde\x201\x20noch\x20nicht\x20beendet.</b></span>','cRot','Von','iOS\x20navigation.type:\x20','<div\x20class=\x22ui-btn\x20M2\x20TL\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22\x20onClick=\x22$(\x27#tglXX','TURADMIN',')\x22\x20><b>Zur\x20Statistik</b></span>','SPJERUNDE','Freitag','Österreichfinale','querformat:\x20','#tgl','<div\x20id=\x22bFC\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22><h2>&nbsp;Wirtshausrunden:</h2><ul\x20data-role=\x22listview\x22>','00:00','\x27\x20data-transition=\x27pop\x27\x20id=bRundeXbeenden>&nbsp;Runde\x20',');\x27\x20data-role=\x27button\x27\x20data-inline=\x27true\x27\x20data-mini=\x27true\x27\x20>&nbsp;Parameter\x20ändern&nbsp;</a>','<div\x20class=\x22ui-block-a\x20L\x22\x20style=\x22width:22%;margin:4px\x200;\x22>','<div\x20style=\x22margin:\x206px\x206px\x200\x206px\x22>','Wr.','53T','_TURNIER','display-mode:\x20standalone<br>','px;\x20background-image:\x20url(\x27Icons/Background.png\x27);\x20background-size:\x2050%;\x20background-position:\x20center\x20center;\x20background-repeat:\x20no-repeat;\x20\x22>','catch','bET',')\x22>&nbsp;&nbsp;<span\x20class=\x22L\x20N\x22>','Eine\x20Veranstaltung\x20des\x20Wiener\x20Tarockcup','F2:\x20Datum\x20oder\x20Uhrzeit\x20falsch.','Es\x20wurden\x20','#tLOG','<tbody>','#dRumpf','TTC\x20-\x20','<div\x20class=\x22M\x20J\x20S2\x22\x20style=\x22margin:6px;\x22>','LastBtn','\x20noch\x20nicht\x20beendet.</b></span>','\x20Uhr\x20gespielt.','match','</div><br>','#tMeinTischName','toDateString','\x20beenden','Ktn.\x20Tarockcup','getDate','-------','<span\x20class=cRot>','location.hash:\x20','<img\x20src=\x27Icons/Optionen.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Parameter\x20ändern<div\x20class=\x22S\x20N\x22>Beschreibung\x20und\x20Berechtigungen\x20ändern</div>','style','Padding','#bAdminTools','TURGESPIELT','Organisation:&nbsp;&nbsp;<b><span\x20class=M2>Sepp\x20Lang</span></b><br><br>','getMonth','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2014</div>','&nbsp&nbsp;','#tVersion,#tVersion2','</span></b><br>','</b>&nbsp;beenden.','Abakus/ParameterAendern.html','Diese\x20App\x20ist\x20veraltet!&nbsp;&nbsp;&nbsp;&nbsp;','show','STAT\x20set','die','Sauwaldcup','\x20wird\x20gespielt.</b></span>','\x20beenden</span>','NNAME','stringify','Du\x20hast\x20Runde\x20','\x20cRTC','Icons/OK.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=\x27L\x20B\x27>&nbsp;Das\x20Turnier\x20wurde\x20gestartet.</span><br>','#tTischWasNunTitel','type','getFullYear','ShowCups','2020-03-03','#dMeldung','LastDate','Das\x20Turnier\x20wird\x20geladen.','Turnier','Dienstag','TIMESTAMP','Turnierserie\x20zum\x20dreifachen\x20Tarif','</b></span><br>','<span\x20style=\x22color:\x20#dd1111\x22>Runde\x20','VIP','popup','Spieler\x20werden\x20geladen.','\x20<span\x20class=\x22S\x20N\x22>(','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Leimhofer\x20Markus</b><br>Neustadl</div></div>','<tr><td\x20class=\x22cRot\x20B\x22>&nbsp;???</td><td\x20class=TR>','position','<table\x20data-role=\x27table\x27\x20id=\x27tSpielerPunkte\x27\x20data-mode=\x27columntoggle\x27\x20class=\x27ui-body-d\x20ui-shadow\x20table-stripe\x20ui-responsive\x27\x20data-column-btn-text=\x27\x27>','_RUNDESTART','#bZurStatistik','#bTurnierBeenden','OK.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=M>&nbsp;&nbsp;<b>Turnier\x20wurde\x20gestartet.</b></span>',':\x20Turnier:\x20','Internet:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x22\x20onclick=\x22window.open(\x27https://hausruckcup1.jimdo.com\x27)\x22\x20>hausruckcup1.jimdo.com</span>','Links','Registriert\x20für\x20','6058','bAK','Nov.','Icons/i55.png','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span\x20class=\x22S\x20cRot\x22>nicht\x20angemeldet<br></span>&nbsp;&nbsp;','open','document.domain:\x20','Kärntner\x20Tarockcup','E-Mail:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x20M2\x22\x20onclick=\x22window.location.href=\x27mailto:f.kienast@eduhi.at\x27;\x22\x20>f.kienast@eduhi.at</span><br>','Keine\x20Datenverbindung:','update','(display-mode:\x20standalone)','Handy','Icons/Farben.png','.<br>','onpageshow','\x20x\x20','clear','#tJJJJ,#tJJJJ2','<br>Der\x20Tisch\x20wurde\x20gelöscht.','Noch\x20nicht\x20registriert.','scrollTop','Hausruckcup','#dOffline','ANMELDUNGEN','database',')\x22\x20><b>Parameter\x20ändern</b></span><br>','#qfHeader','screensize:\x20','Abakus.LS','Icons/i','NOBODY','März','b??','&nbsp;&nbsp;Warum\x20soll\x20ich\x20den/die\x20mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen\x20Cups\x20auswählen?&nbsp;&nbsp;','Du\x20hast\x20seit\x20mindestens<br>','Die\x20Zeitzone\x20ist\x20ungleich\x20Wien.<br>','Icons/Vorrang.png','Turnierserie\x20zum\x20doppelten\x20Tarif','GelesenSTAT','GelesenAKT','PUNKTE','ANZSPIELE','cWTC','Bitte\x20korrigieren.','oncontextmenu','s\x20Turnier','standalone','Organisation:&nbsp;&nbsp;<b><span\x20class=M2>Markus\x20Mair</span></b><br><br>','ShowSpielerNr','Icons/MeinTisch.png','<img\x20src=\x27Icons/Statistik.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Zur\x20Statistik<div\x20class=\x22S\x20N\x22>','<span\x20style=\x22color:\x20#dd1111\x22>Turnier\x20beenden</span>','getTimezoneOffset','E-Mail:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x20M2\x22\x20onclick=\x22window.location.href=\x27mailto:sepp47@gmx.at\x27;\x22\x20>sepp47@gmx.at</span><br>','cAktiv','#bAdminTools,#bRAMOS',':hidden','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Böckl\x20Josef</b><br>Neukirchen/V.</div></div>','F3:\x20Datum\x20oder\x20Uhrzeit\x20falsch.','#tsSpieleSpeichern','Nur&nbsp;derjenige,&nbsp;der&nbsp;das&nbsp;&nbsp;&nbsp;&nbsp;<br>','#bRegistrieren','Achtung.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=M>&nbsp;&nbsp;<b>','<div\x20id=\x22bAK\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22><h2>&nbsp;Aktuelle\x20Termine:</h2><ul\x20data-role=\x22listview\x22>','bMR','Regeln','</a></li>','&nbsp;<br></span>&nbsp;&nbsp;','onclick','<div\x20class=\x22ui-grid-a\x22><div\x20class=\x22ui-block-a\x20S2\x22\x20style=\x22width:47%\x22>',',\x20\x27?Anmeldungen\x27)\x22><b>Zur\x20Anmeldung</b></span><br>An-\x20und\x20abmelden<br>','/Statistik.html','\x20gespielt','Ein\x20Spiel','Tipps\x20&\x20Tricks','9999','MeineCups','.</b>','<tr\x20sclass=\x27ui-bar-d\x27>','Do.,','<div\x20class=\x22ui-btn\x20M2\x20TL','#pTISCHWASNUN','.iMain','3013','STOCKERL','setHours','blur','STA\x20-\x20','\x22\x20class=\x22S\x20TGL\x22\x20style=\x22padding\x200;margin-left:4px;margin-right:4px;\x22\x20hidden>','now','3425','#tsSpieleLoeschen','\x20Die\x20Uhr\x20am\x20Handy\x20geht\x20nach<br>oder\x20die\x20am\x20Turnier-PC\x20vor.','#bRAMOS','50T','ausständig.','&nbsp;&nbsp;Du\x20hast\x20deine\x20dir\x20wichtigen<br>&nbsp;&nbsp;Cups\x20noch\x20nicht\x20ausgewählt.&nbsp;&nbsp;','Internet:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x22\x20onclick=\x22window.open(\x27https://kärntner-tarockcup.at\x27)\x22\x20>kärntner-tarockcup.at</span>','<div\x20style=\x22width:100%;\x20margin-left:\x20auto;\x20margin-right:\x20auto;\x20overflow-y:\x20auto;\x20height:','lastIndexOf','#dMeineRundenCups','#hMix','innerWidth','MSStream','important','/00/CUPS/','HRC\x20-\x20','origin','top','#tGespielt','setProperty','location','<div\x20class=\x22ui-block-b\x20M\x22\x20style=\x22width:78%\x22>','Spiele\x20löschen<br>und\x20neuen\x20Tisch','then','#bZuMeinemTisch','Ein\x20neuer\x20Tisch:','set','Abakus.DS','number','\x20Die\x20Uhr\x20am\x20Handy\x20geht\x20vor<br>oder\x20die\x20am\x20Turnier-PC\x20nach.','ST.TAROCKCUP','#dLegende','<img\x20src=\x27Icons/OK.png\x27\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=cSchwarz>&nbsp;&nbsp;Die\x20App\x20wurde\x20initialisiert.</span><br>','append','tempVIPs','\x20Tische\x20ausst&auml;ndig.','history.length:\x20','Internet:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x22\x20onclick=\x22window.open(\x27https://steirercup.webnode.at\x27)\x22\x20>https://steirercup.webnode.at</span>','<br>Nur\x20für\x20Mitspieler...<br>','Du\x20bist\x20nicht\x20angemeldet.','MELDSTAT','setSeconds','_AKTTURNIER','Icons/OK.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=\x27L\x20B\x27>&nbsp;Das\x20Turnier\x20wurde\x20beendet.</span><br>','<br>&nbsp;&nbsp;Warum\x20soll\x20ich\x20den/die\x20mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen\x20Cups\x20auswählen?&nbsp;&nbsp;','#tTischWasNunName','TurnierBEENDENendEnd()','Verbindung\x20herstellen','<span\x20style=\x22color:crimson\x22>','attr','cBlau','<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2011</div>','css','&nbsp;wird&nbsp;beendet.','<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Manzenreiter\x20Hermann</b><br>Bad\x20Leonfelden</div></div>','<div\x20class=\x22ui-btn\x20M2\x20TL\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22\x20onClick=\x22hrefStatistik(','Es\x20wird\x20erst\x20ab<br>','Wiener\x20Tarockmarathon','#tSpieler','SPIELE','\x20cTOF','DATUM','WTC\x20-\x20','Geber','Das\x20Turnier\x20starten:','Tageswertung,\x20Jahreswertung,\x20etc.','SpieleJeRunde','Test','Turnierserie\x20zum\x20einfachen\x20Tarif','toString','filter','\x22\x20class=\x22','Pausierer2','\x20Runde','<div\x20style=\x22margin-left:\x2010%;\x22>','display','.hfHeaderIcon','Ein\x20Tisch\x20ausst&auml;ndig.','<div\x20style=\x22margin-top:10px;\x22></div>','<div\x20id=\x22bAR\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22><h2>&nbsp;Allgemeine\x20Runden:</h2><ul\x20data-role=\x22listview\x22>','Abakus.STAT',':\x20LS\x20konnte\x20nicht\x20geladen\x20werden.','Das\x20Turnier\x20wird\x20bald\x20beendet.','#qfHeaderIcon','platform','scrollTo','<div\x20class=\x22B\x20cRot\x22>','56T','&nbsp;<img\x20src=\x27','WR.MARATHON','\x20werden.</b>','Chrome','subString','navigator.platform:\x20','#ssTitel','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span\x20class=\x22S\x20cGruen\x22>angemeldet<br></span>&nbsp;&nbsp;','<span\x20class=\x22M\x20cGruen\x20B\x22>Ich\x20bin\x20angemeldet.</span><br>','<div\x20id=\x22bTR\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22><h2>&nbsp;Testrunden\x20-turniere:</h2><ul\x20data-role=\x22listview\x22>','TYP','Turnier\x20starten<div\x20class=\x22S\x20N\x22>Turnier\x20starten\x20und\x20beenden</div>','An\x20einem\x20','Abakus.LOG',':<br>','Abakus.TURNIER','TURNIER','MELDAKT','Abakus.TU','navigator.vendor:\x20','Version','Der\x20Code\x20ist\x20ung&uuml;ltig!','Fr.,','Du\x20hast\x20in\x20dieser\x20Runde<br>noch\x20nie\x20gespielt.<br><b>Berechtigung\x20fehlt!</b>','INA2','#ddRumpf','getMinutes','#tSpielerPunkte\x20>\x20tbody','AktTage','TEXT','E-Mail:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x20M2\x22\x20onclick=\x22window.location.href=\x27mailto:office@tarockcup.at\x27;\x22\x20>office@tarockcup.at</span><br>','<div\x20id=\x22tglXX','2016-01-11T18:02:22.210Z','Runde\x20','&nbsp;Bitte&nbsp;zuerst&nbsp;den&nbsp;Tisch&nbsp;des&nbsp;Turniers&nbsp;<br>','DoppelteRunden','den\x20VIP','#bInitialisieren','Abakus/Anmeldung.html','<span\x20class=\x22cBlau\x20P\x20XL\x22\x20onclick=\x22zumTurnier()\x22\x20><b>Zum\x20Turnier</b></span><br>Vivat\x20Valat!<br>',',\x27bAL\x27,','Quickstart','Datenverbindung\x20ist\x20OK!','</table>','hash','toUpperCase','JeSeite'];(function(_0x47c5db,_0x52edd9){var _0x52e342=function(_0x3f87b7){while(--_0x3f87b7){_0x47c5db['push'](_0x47c5db['shift']());}};_0x52e342(++_0x52edd9);}(_0x52ed,0x191));var _0x52e3=function(_0x47c5db,_0x52edd9){_0x47c5db=_0x47c5db-0x0;var _0x52e342=_0x52ed[_0x47c5db];return _0x52e342;};var PC=![],APP=![],DB=new Object(),FB=undefined,AnmeldungGestartet=![],iTURCODE=0x0,LS=new Object(),CUPS=new Object(),STAT=new Object(),TERMINE=[],I=0x0,hShowCup=0x0,hShowCupText=![],iPfad='Icons/',rPfad='',mTischTurnier='',mHausruckAktiv=![],mRaiffeisenAktiv=![],mTirolAktiv=!![],mSauwaldAktiv=!![],hHeute=myDateString(new Date()),anzVersuche=0x0,myJBox=null,myJTip=null,daysOfWeek=['So.,',_0x52e3('0x34a'),_0x52e3('0x45'),_0x52e3('0x4c'),_0x52e3('0x12d'),_0x52e3('0x1a7'),_0x52e3('0x293')],monthsOfYear=[_0x52e3('0x2f6'),'Feb.',_0x52e3('0xfd'),_0x52e3('0x28b'),_0x52e3('0x2aa'),_0x52e3('0x11'),_0x52e3('0x24d'),_0x52e3('0x350'),_0x52e3('0x2f8'),_0x52e3('0x24b'),_0x52e3('0xdf'),_0x52e3('0x1ee')],stLastZitat=[],meinStellvertreter='3244',stFilter='';const iRufer=0x1,iSolorufer=0x2,iPagatrufer=0x3,iUhurufer=0x4,iKakadurufer=0x5,iQuapilrufer=0x6,iSelberrufer=0x7,i6er=0x8,i3er=0x9,iSolo3er=0xa,iFarben3er=0xb,iFarbensolo=0xc,iTrischaker=0xd,iPiZwiccolo=0xe,iBettler=0xf,iPiZwiccoloOvert=0x10,iBettlerOvert=0x11,iPagat=0x12,iUhu=0x13,iKakadu=0x14,iQuapil=0x15,iV=0x16,iTrull=0x17,i4Koenige=0x18,iUltimo=0x19,iValat=0x1a,iAbsolut=0x1b,iXY=0x1c;function IsInteger(_0x23725e){return parseFloat(_0x23725e)===parseInt(_0x23725e)&&!isNaN(_0x23725e)?!![]:![];}function getNextTermin(_0xdbb626){var _0x287c20=new Date();_0x287c20[_0x52e3('0x133')](0x16),_0x287c20[_0x52e3('0x39')](0x3b),_0x287c20['setSeconds'](0x3b),_0x287c20[_0x52e3('0x24f')](0x3e7),_0x287c20=_0x287c20[_0x52e3('0x1f7')]();var _0x2cc5c1=new Date(0x0);typeof CUPS[_0x52e3('0x339')][_0xdbb626]===_0x52e3('0x155')&&(_0x2cc5c1=new Date(CUPS[_0x52e3('0x339')][_0xdbb626]));_0x2cc5c1[_0x52e3('0x133')](0x16),_0x2cc5c1[_0x52e3('0x39')](0x3b),_0x2cc5c1[_0x52e3('0x162')](0x3b),_0x2cc5c1[_0x52e3('0x24f')](0x3e7),_0x2cc5c1=_0x2cc5c1[_0x52e3('0x1f7')]();if(CUPS[_0x52e3('0x299')][_0xdbb626]>=_0x287c20&&CUPS['NEXTTERMIN'][_0xdbb626]>_0x2cc5c1)return CUPS[_0x52e3('0x299')][_0xdbb626];var _0x2afdf6=_0x287c20,_0x191794=0x0,_0x2c3c08=0x0;for(var _0x43d170=0x1;_0x43d170<0xf423f;_0x43d170++){datNextTermin=new Date(_0x2afdf6),_0x191794=parseInt((datNextTermin[_0x52e3('0xa2')]()-0x1)/0x7),_0x2c3c08=datNextTermin[_0x52e3('0x42')]();if((CUPS[_0x52e3('0x314')][_0xdbb626]==='-----'||CUPS[_0x52e3('0x314')][_0xdbb626][_0x191794]==='J')&&(CUPS[_0x52e3('0x212')][_0xdbb626]===_0x52e3('0xa3')||CUPS[_0x52e3('0x212')][_0xdbb626][_0x2c3c08]==='J'))break;_0x2afdf6+=0x5265c00;}return _0x2afdf6;}function getCupName(_0x55b88b){var _0x4de0eb;return QUERFORMAT()||CUPS[_0x52e3('0x19b')][_0x55b88b]!=='MT'?_0x4de0eb=CUPS[_0x52e3('0x248')][_0x55b88b]:_0x4de0eb=CUPS[_0x52e3('0x248')][_0x55b88b][_0x52e3('0x211')](_0x52e3('0x32e'),_0x52e3('0x27c')),LS['ME']===_0x52e3('0x138')&&QUERFORMAT()&&(_0x4de0eb=_0x4de0eb+_0x52e3('0xd0')+_0x55b88b+_0x52e3('0x2f3')),_0x4de0eb;}function zumTurnier(){if(CUPS[_0x52e3('0x1a1')][I]&&CUPS[_0x52e3('0x1a1')][I]!==_0x52e3('0xe9')&&QUERFORMAT()&&(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||I<=0x3||I===0x37&&LS['ME']===_0x52e3('0x138'))){if(!window[_0x52e3('0x296')]){showEineMeldung(_0x52e3('0x320'),_0x52e3('0x223')+_0x52e3('0x58')+_0x52e3('0x332')+_0x52e3('0x2ab'));return;}LS['ShowCups']=I,localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)),fHref(_0x52e3('0x2c4'));}}function fStartStop(_0x172a1a,_0x249e55){'use strict';_0x172a1a&&(I=_0x172a1a);mTischTurnier=_0x52e3('0xc7');if(LS['I']){if(LS['I']===I){if(LS[_0x52e3('0x7c')]!==LS['ME']){showEineMeldung(CUPS[_0x52e3('0x248')][I]+':',_0x52e3('0x11a')+_0x52e3('0x263')+_0x52e3('0x237'));return;}if(LS[_0x52e3('0x2cb')]){showEineMeldung(CUPS['NAME'][I]+':',_0x52e3('0x27')+'noch\x20nicht\x20gespeichert.');return;}if(LS[_0x52e3('0xe')]<=CUPS[_0x52e3('0x242')][I]){if(!LS[_0x52e3('0xaa')]){showEineMeldung(CUPS[_0x52e3('0x248')][I]+':','Runde\x20'+LS[_0x52e3('0xe')]+_0x52e3('0x2de')+_0x52e3('0x13d'));return;}}}else{if(CUPS[_0x52e3('0x1a1')][LS['I']]){showEineMeldung(CUPS[_0x52e3('0x248')][I]+':',_0x52e3('0x33e')+'&nbsp;<b>'+CUPS[_0x52e3('0x248')][LS['I']]+_0x52e3('0xb1'));return;}else{if(_0x249e55&&LS[_0x52e3('0x2cb')]){$(_0x52e3('0xbf'))[_0x52e3('0x256')](_0x52e3('0x179'));LS['I']!==I?($(_0x52e3('0x30e'))[_0x52e3('0x256')](CUPS['NAME'][LS['I']]+':')['show'](),$('#tsText')[_0x52e3('0x256')](_0x52e3('0x204')+LS[_0x52e3('0x2cb')]+_0x52e3('0x2c'))):$(_0x52e3('0x210'))[_0x52e3('0x256')]('Es\x20wurden\x20'+LS['gespielt']+'\x20Spiele\x20gespielt.');$(_0x52e3('0x139'))[_0x52e3('0x256')](_0x52e3('0x2a8'));LS['gespielt']?$(_0x52e3('0x119'))[_0x52e3('0x13')](_0x52e3('0x23f')):$(_0x52e3('0x119'))[_0x52e3('0x8')]('ui-disabled');$('#pTISCHWASNUN')[_0x52e3('0xce')](_0x52e3('0xe2'))[_0x52e3('0xb4')]();return;}}}}LS['I']!==I&&(LS[_0x52e3('0x2db')]=0x0,LS[_0x52e3('0x26')]=0x0,LS[_0x52e3('0x2cb')]=0x0,LS[_0x52e3('0x2b4')]=['','','','','','',''],LS['NR']=['','','','','','',''],LS['VName']=['','','','','','',''],LS['NName']=['','','','','','',''],LS[_0x52e3('0x2fe')]=['','','','','','',''],LS[_0x52e3('0x35')]=['','','','','','',''],LS[_0x52e3('0x22c')]=[0x0,0x0,0x0,0x0,0x0,0x0,0x0],LS['I']=0x0);$(_0x52e3('0x197'))[_0x52e3('0x256')](_0x52e3('0x3b')+CUPS[_0x52e3('0x248')][I]+_0x52e3('0xae'));if(LS['I']===0x0){if(new Date(CUPS['NEXTTERMIN'][I])['toDateString']()!==new Date()[_0x52e3('0x9f')]()){var _0x2f61af=new Date()['getDay']();if(CUPS[_0x52e3('0x212')][I][_0x2f61af]==='J'&&new Date()[_0x52e3('0x69')]()>=CUPS[_0x52e3('0xc')][I]-0x1){if(CUPS[_0x52e3('0x1a1')][I]){var _0x5bc88e=parseInt((new Date()[_0x52e3('0xa2')]()-0x1)/0x7);if(CUPS[_0x52e3('0x314')][I][_0x5bc88e]!=='J'){var _0xf1836=[_0x52e3('0x336'),'Montag',_0x52e3('0xc8'),_0x52e3('0x2d5'),'Donnerstag',_0x52e3('0x7f'),_0x52e3('0x1e')];showEineMeldung(I,_0x52e3('0x2af')+_0xf1836[_0x2f61af]+_0x52e3('0x28'));return;}}if(CUPS[_0x52e3('0x212')][I][_0x2f61af]!=='J'){var _0xf1836=['Sonntag',_0x52e3('0x2c3'),'Dienstag',_0x52e3('0x2d5'),'Donnerstag','Freitag',_0x52e3('0x1e')];showEineMeldung(I,_0x52e3('0x2af')+_0xf1836[_0x2f61af]+_0x52e3('0x28'));return;}}else{if(CUPS[_0x52e3('0x212')][I][_0x2f61af]==='J')showEineMeldung(I,_0x52e3('0x171')+CUPS[_0x52e3('0xc')][I]+'\x20Uhr\x20gespielt.');else{var _0xf1836=[_0x52e3('0x336'),_0x52e3('0x2c3'),_0x52e3('0xc8'),_0x52e3('0x2d5'),_0x52e3('0x252'),_0x52e3('0x7f'),_0x52e3('0x1e')];showEineMeldung(I,_0x52e3('0x19d')+_0xf1836[_0x2f61af]+_0x52e3('0x28'));}return;}}$(_0x52e3('0x266'))[_0x52e3('0x1f2')](_0x52e3('0x2d8'));}else{if(LS[_0x52e3('0xe')]===CUPS[_0x52e3('0x242')][I])$(_0x52e3('0x266'))[_0x52e3('0x1f2')]('Turnier\x20beenden\x20?');else{if(LS[_0x52e3('0xe')]===0x1)$(_0x52e3('0x266'))[_0x52e3('0x1f2')](_0x52e3('0x1f4'));else LS[_0x52e3('0xe')]===0x2&&$(_0x52e3('0x266'))['text'](_0x52e3('0x2a0'));}}$(_0x52e3('0x31'))[_0x52e3('0x2d4')](),$(_0x52e3('0x1d7'))['removeClass'](_0x52e3('0x290')),setTimeout(function(){$('#pSTARTSTOP')[_0x52e3('0xce')](_0x52e3('0xe2'))[_0x52e3('0xb4')](),$(_0x52e3('0x276'))['val']('')[_0x52e3('0x2cf')](),!FB&&firebase[_0x52e3('0x319')](I,'rw');},0xc8);}function onStartStop(){'use strict';iTURCODE=getINT($(_0x52e3('0x276'))['val']());if(iTURCODE===![])return $('#iTURCODE')[_0x52e3('0x2cf')](),$(_0x52e3('0x31'))[_0x52e3('0xb4')]()[_0x52e3('0x256')](_0x52e3('0x1a6')),![];if(iTURCODE<0x1||iTURCODE>0x270f)return $(_0x52e3('0x276'))[_0x52e3('0x2cf')](),$(_0x52e3('0x31'))[_0x52e3('0xb4')]()[_0x52e3('0x256')](_0x52e3('0x1a6')),![];if(LS['I']===0x0)$('#iTURCODE')[_0x52e3('0x17f')](':input:focus')[_0x52e3('0x134')](),$(_0x52e3('0x23e'))['popup'](_0x52e3('0x201')),loadSTAT(I,'Turnier&nbsp;wird&nbsp;gestartet.',![],TurnierSTARTEN,0x0);else{if(LS['I']===I){if(LS['TURCODE']!==iTURCODE)return $(_0x52e3('0x276'))['focus'](),$(_0x52e3('0x31'))[_0x52e3('0xb4')]()[_0x52e3('0x256')](_0x52e3('0x1a6')),![];$(_0x52e3('0x276'))[_0x52e3('0x17f')](_0x52e3('0x317'))[_0x52e3('0x134')](),$(_0x52e3('0x23e'))['popup'](_0x52e3('0x201')),LS[_0x52e3('0xe')]<CUPS[_0x52e3('0x242')][LS['I']]?(showEinenMoment(CUPS[_0x52e3('0x248')][LS['I']],'Runde&nbsp;'+LS[_0x52e3('0xe')]+_0x52e3('0x16e')),RundeXbeenden(LS[_0x52e3('0x2e1')])):loadSTAT(I,'Turnier&nbsp;wird&nbsp;beendet.',![],TurnierBEENDEN);}else showEinenMoment(CUPS['NAME'][LS['I']],_0x52e3('0x12'));}return![];}function TurnierSTARTEN(_0x414a97){'use strict';typeof _0x414a97===_0x52e3('0x1ec')&&(_0x414a97=0x1);for(;_0x414a97<STAT['S'][_0x52e3('0x2a6')];_0x414a97++){if(STAT['S'][_0x414a97][_0x52e3('0x174')][0x3]>0x0)break;}if(_0x414a97>=STAT['S'][_0x52e3('0x2a6')]){TurnierSTARTENend();return;}STAT['S'][_0x414a97][_0x52e3('0x106')][0x3]=0x0,STAT['S'][_0x414a97]['SPIELE'][0x3]=0x0,STAT['S'][_0x414a97][_0x52e3('0x107')][0x3]=[0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0],STAT['S'][_0x414a97][_0x52e3('0x4e')][0x3]=[0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0],STAT['S'][_0x414a97][_0x52e3('0x283')][0x3]=[0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0],STAT['S'][_0x414a97][_0x52e3('0x132')][0x3]='-',STAT['S'][_0x414a97][_0x52e3('0x26b')]=[],STAT['S'][_0x414a97][_0x52e3('0xd')]=[],firebase[_0x52e3('0xf6')]()[_0x52e3('0x34e')]('/00/'+(_0x52e3('0x33')+I)[_0x52e3('0x41')](-0x3)+'/'+STAT['S'][_0x414a97]['NR'])[_0x52e3('0xe7')]({'PUNKTERx':null,'SCHREIBER':null})[_0x52e3('0x150')](function(){TurnierSTARTEN(_0x414a97+0x1);})[_0x52e3('0x8e')](function(_0x35ac2f){showEineDBWarnung(_0x35ac2f,'TurnierSTARTEN()','update\x20'+'/00/'+(_0x52e3('0x33')+I)[_0x52e3('0x41')](-0x3)+'/'+STAT['S'][_0x414a97]['NR']);});}function TurnierSTARTENend(){'use strict';var _0x1730f3=new Object();_0x1730f3[_0x52e3('0x2a2')]=new Date()[_0x52e3('0x21c')](),STAT[_0x52e3('0x287')]?_0x1730f3[_0x52e3('0x287')]=new Date(new Date(STAT[_0x52e3('0x287')])[_0x52e3('0x3a')]()-0xea60*new Date(STAT[_0x52e3('0x287')])[_0x52e3('0x112')]()+0x1)[_0x52e3('0x21c')]():_0x1730f3[_0x52e3('0x287')]=new Date()['toISOString'](),_0x1730f3[_0x52e3('0x2e1')]=iTURCODE,_0x1730f3[_0x52e3('0x7c')]=LS['ME'],_0x1730f3['TURRUNDE']=0x1,_0x1730f3[_0x52e3('0x34c')]=firebase['database'][_0x52e3('0x23b')][_0x52e3('0xc9')],firebase[_0x52e3('0xf6')]()['ref'](_0x52e3('0x2fd')+(_0x52e3('0x33')+I)[_0x52e3('0x41')](-0x3))['update'](_0x1730f3)['then'](function(){$('#bStartbutton')[_0x52e3('0x8')]('ui-disabled'),$('#dText')[_0x52e3('0x256')](_0x52e3('0x191')+rPfad+_0x52e3('0xbe')),LS['I']=I,LS[_0x52e3('0x2e1')]=iTURCODE,LS[_0x52e3('0x7c')]=LS['ME'],LS[_0x52e3('0x34c')]=new Date(),LS[_0x52e3('0xe')]=0x1,LS[_0x52e3('0x9')]=0x0,LS['TURGESPIELT']=0x0,LS[_0x52e3('0x2db')]=0x0,LS[_0x52e3('0x26')]=0x0,LS[_0x52e3('0xc2')]=I,localStorage['setItem'](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)),STAT[_0x52e3('0x2e1')]=iTURCODE,STAT[_0x52e3('0x7c')]=LS['ME'],STAT[_0x52e3('0xe')]=0x1,STAT[_0x52e3('0x34c')]=new Date(),localStorage[_0x52e3('0x323')](_0x52e3('0x189')+('000'+I)[_0x52e3('0x26e')](-0x3),JSON['stringify'](STAT)),whenSTATloaded();})[_0x52e3('0x8e')](function(_0xeddc40){showEineDBWarnung(_0xeddc40,_0x52e3('0x318'),_0x52e3('0x2e9'));});}function RundeXbeenden(){'use strict';var _0x4b5eb3=new Object();showEinenMoment(LS['I'],_0x52e3('0x1b2')+LS[_0x52e3('0xe')]+_0x52e3('0x214')),_0x4b5eb3['ZULETZTupd']=new Date()[_0x52e3('0x21c')](),_0x4b5eb3[_0x52e3('0xe')]=LS[_0x52e3('0xe')]+0x1,firebase[_0x52e3('0xf6')]()[_0x52e3('0x34e')](_0x52e3('0x2fd')+(_0x52e3('0x33')+I)[_0x52e3('0x41')](-0x3))['update'](_0x4b5eb3)[_0x52e3('0x150')](function(){$(_0x52e3('0x1e7'))['addClass']('ui-disabled'),$(_0x52e3('0x2ef'))[_0x52e3('0x256')]('&nbsp;<img\x20src=\x27'+rPfad+'Icons/OK.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=\x27L\x20B\x27>&nbsp;Runde\x20'+LS[_0x52e3('0xe')]+_0x52e3('0x20c')),LS[_0x52e3('0x273')]=_0x52e3('0x1b2')+LS[_0x52e3('0xe')]+_0x52e3('0x333'),LS[_0x52e3('0xe')]++,LS[_0x52e3('0xaa')]=0x0,localStorage[_0x52e3('0x323')]('Abakus.LS',JSON['stringify'](LS)),localStorage[_0x52e3('0x1f5')]('Abakus.STAT'+(_0x52e3('0x33')+I)['substr'](-0x3)),hideEinenMoment(),window[_0x52e3('0x14d')][_0x52e3('0x2eb')](![]);})[_0x52e3('0x8e')](function(_0x148d8d){showEineDBWarnung(_0x148d8d,_0x52e3('0x2a4'),'STAT\x20update');});}function TurnierBEENDEN(_0x4e7105){'use strict';typeof _0x4e7105===_0x52e3('0x1ec')&&(showEinenMoment(LS['I'],_0x52e3('0x306')),_0x4e7105=0x1);if(STAT['MAXSPIELE'][0x3]===0x0){TurnierBEENDENendEnd();return;}for(;_0x4e7105<STAT['S'][_0x52e3('0x2a6')];_0x4e7105++){if(STAT['S'][_0x4e7105]['NR']!==_0x52e3('0x239')&&STAT['S'][_0x4e7105][_0x52e3('0x174')][0x3]>0x0)break;}if(_0x4e7105>=STAT['S'][_0x52e3('0x2a6')]){TurnierBEENDENend();return;}var _0x4ba59f=-0x270f,_0x4b17a0=-0x270f,_0x377183=-0x270f,_0xd15642=-0x270f,_0x35e642=0x0;for(var _0x59a674=0x1;_0x59a674<STAT['S'][_0x52e3('0x2a6')];_0x59a674++){STAT['S'][_0x59a674][_0x52e3('0x174')][0x3]>0x0&&(_0xd15642=STAT['S'][_0x59a674]['PUNKTE'][0x3],_0xd15642>_0x377183&&(_0x377183=_0xd15642),_0x377183>_0x4b17a0&&(_0x35e642=_0x4b17a0,_0x4b17a0=_0x377183,_0x377183=_0x35e642),_0x4b17a0>_0x4ba59f&&(_0x35e642=_0x4ba59f,_0x4ba59f=_0x4b17a0,_0x4b17a0=_0x35e642,CUPS[_0x52e3('0x161')][I]=STAT['S'][_0x59a674][_0x52e3('0x219')]+'\x20'+STAT['S'][_0x59a674][_0x52e3('0xba')]+_0x52e3('0x265')+getDateString(LS[_0x52e3('0x34c')])+'.'));}function _0x550ef6(_0x34297c,_0x199b04){'use strict';var _0x3d75fb=[0x0,0x0,0x0,0x0];return _0x34297c[_0x52e3('0x2a6')]<0x5&&(_0x34297c='0-0-0'),_0x3d75fb[0x1]=parseInt(_0x34297c[_0x52e3('0x26e')](0x0,_0x34297c[_0x52e3('0x297')]('-'))),_0x34297c=_0x34297c[_0x52e3('0x26e')](_0x34297c[_0x52e3('0x297')]('-')+0x1),_0x3d75fb[0x2]=parseInt(_0x34297c[_0x52e3('0x26e')](0x0,_0x34297c[_0x52e3('0x297')]('-'))),_0x34297c=_0x34297c['substr'](_0x34297c[_0x52e3('0x297')]('-')+0x1),_0x3d75fb[0x3]=parseInt(_0x34297c),_0x3d75fb[_0x199b04]++,_0x3d75fb[0x1]['toString']()+'-'+_0x3d75fb[0x2][_0x52e3('0x17e')]()+'-'+_0x3d75fb[0x3][_0x52e3('0x17e')]();}_0xd15642=STAT['S'][_0x4e7105][_0x52e3('0x106')][0x3];var _0x163122=new Object(),_0x4f2f8f=new Date(LS[_0x52e3('0x79')])[_0x52e3('0xc1')]()-0x7da;if(_0xd15642===_0x4ba59f)STAT['S'][_0x4e7105][_0x52e3('0x132')][0x0]=_0x550ef6(STAT['S'][_0x4e7105][_0x52e3('0x132')][0x0],0x1),STAT['S'][_0x4e7105][_0x52e3('0x132')][0x1]=_0x550ef6(STAT['S'][_0x4e7105][_0x52e3('0x132')][0x1],0x1),STAT['S'][_0x4e7105][_0x52e3('0x132')][0x3]=_0x52e3('0x255'),_0x163122[_0x52e3('0x132')]=STAT['S'][_0x4e7105][_0x52e3('0x132')];else{if(_0xd15642===_0x4b17a0)STAT['S'][_0x4e7105]['STOCKERL'][0x0]=_0x550ef6(STAT['S'][_0x4e7105][_0x52e3('0x132')][0x0],0x2),STAT['S'][_0x4e7105][_0x52e3('0x132')][0x1]=_0x550ef6(STAT['S'][_0x4e7105][_0x52e3('0x132')][0x1],0x2),STAT['S'][_0x4e7105][_0x52e3('0x132')][0x3]=_0x52e3('0x24'),_0x163122[_0x52e3('0x132')]=STAT['S'][_0x4e7105][_0x52e3('0x132')];else _0xd15642===_0x377183&&(STAT['S'][_0x4e7105]['STOCKERL'][0x0]=_0x550ef6(STAT['S'][_0x4e7105][_0x52e3('0x132')][0x0],0x3),STAT['S'][_0x4e7105][_0x52e3('0x132')][0x1]=_0x550ef6(STAT['S'][_0x4e7105][_0x52e3('0x132')][0x1],0x3),STAT['S'][_0x4e7105][_0x52e3('0x132')][0x3]=_0x52e3('0x4f'),_0x163122['STOCKERL']=STAT['S'][_0x4e7105]['STOCKERL']);}STAT['S'][_0x4e7105][_0x52e3('0x132')][_0x4f2f8f]=STAT['S'][_0x4e7105][_0x52e3('0x132')][0x1];typeof STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1]!==_0x52e3('0x2b3')&&(STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1]=[]);if(STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1][_0x52e3('0x2a6')]===0x0)STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1][0x0]=_0xd15642;else{if(STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1][STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1][_0x52e3('0x2a6')]-0x1]>=_0xd15642)STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1][STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1]['length']]=_0xd15642;else for(var _0x59a674=STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1][_0x52e3('0x2a6')];_0x59a674>0x0;_0x59a674--){if(STAT['S'][_0x4e7105][_0x52e3('0x279')][0x1][_0x59a674-0x1]<_0xd15642)STAT['S'][_0x4e7105]['CUPPUNKTE'][0x1][_0x59a674]=STAT['S'][_0x4e7105]['CUPPUNKTE'][0x1][_0x59a674-0x1],STAT['S'][_0x4e7105]['CUPPUNKTE'][0x1][_0x59a674-0x1]=_0xd15642;else break;}}STAT['S'][_0x4e7105][_0x52e3('0x279')][_0x4f2f8f]=STAT['S'][_0x4e7105]['CUPPUNKTE'][0x1],_0x163122[_0x52e3('0x279')]=STAT['S'][_0x4e7105]['CUPPUNKTE'],firebase[_0x52e3('0xf6')]()[_0x52e3('0x34e')](_0x52e3('0x2fd')+(_0x52e3('0x33')+I)['slice'](-0x3)+'/'+STAT['S'][_0x4e7105]['NR'])[_0x52e3('0xe7')](_0x163122)[_0x52e3('0x150')](function(){TurnierBEENDEN(_0x4e7105+0x1);})[_0x52e3('0x8e')](function(_0x4f0a46){showEineDBWarnung(_0x4f0a46,_0x52e3('0x304'),_0x52e3('0x2e9'));});}function TurnierBEENDENend(){'use strict';function _0x581037(_0x693818){'use strict';var _0xd6179d=(_0x52e3('0x33')+_0x693818)['substr'](-0x3)+'\x20'+CUPS['NAME'][_0x693818];return _0xd6179d[_0x52e3('0x211')](/\.|\#|\$|\[|\]/g,'');}STAT['ZULETZTupd']=new Date()['toISOString'](),STAT[_0x52e3('0xf5')]=null,STAT[_0x52e3('0xe')]=0x0,STAT[_0x52e3('0x2e1')]=0x0,STAT['TURTIMESTAMP']=null;var _0x221d75=new Object();_0x221d75[_0x52e3('0x287')]=STAT[_0x52e3('0x287')],_0x221d75[_0x52e3('0x2a2')]=STAT[_0x52e3('0x2a2')],_0x221d75[_0x52e3('0xf5')]=STAT['ANMELDUNGEN'],_0x221d75[_0x52e3('0xe')]=STAT[_0x52e3('0xe')],_0x221d75[_0x52e3('0x2e1')]=STAT[_0x52e3('0x2e1')],_0x221d75['TURTIMESTAMP']=STAT[_0x52e3('0x34c')];for(var _0x425ffc=0x1;_0x425ffc<STAT['S']['length'];_0x425ffc++){STAT['S'][_0x425ffc]&&(_0x221d75[STAT['S'][_0x425ffc]['NR']]=STAT['S'][_0x425ffc],_0x221d75[STAT['S'][_0x425ffc]['NR']][_0x52e3('0xc9')]=new Date(new Date(STAT['S'][_0x425ffc]['TIMESTAMP'])[_0x52e3('0x3a')]()-0xea60*new Date(STAT['S'][_0x425ffc][_0x52e3('0xc9')])[_0x52e3('0x112')]())['toISOString']());}firebase['database']()[_0x52e3('0x34e')]('/'+('00'+(new Date()[_0x52e3('0xac')]()+0x1))[_0x52e3('0x41')](-0x2)+'/'+_0x581037(I))[_0x52e3('0x153')](_0x221d75,function(_0x1c2585){_0x1c2585?showEineDBWarnung(_0x1c2585,'TurnierBEENDENend()',_0x52e3('0xb5')):TurnierBEENDENendEnd();});}function TurnierBEENDENendEnd(){'use strict';var _0x2d8700=new Object();_0x2d8700[_0x52e3('0x2a2')]=new Date()[_0x52e3('0x21c')](),_0x2d8700[_0x52e3('0xf5')]=null,_0x2d8700[_0x52e3('0x2e1')]=0x0,_0x2d8700[_0x52e3('0x7c')]='',_0x2d8700[_0x52e3('0xe')]=0x0,_0x2d8700[_0x52e3('0x34c')]=null,firebase[_0x52e3('0xf6')]()[_0x52e3('0x34e')](_0x52e3('0x2fd')+('000'+I)['slice'](-0x3))['update'](_0x2d8700)[_0x52e3('0x150')](function(){firebase[_0x52e3('0xf6')]()['ref'](_0x52e3('0x147')+(_0x52e3('0x33')+I)[_0x52e3('0x41')](-0x3))[_0x52e3('0xe7')]({'MELDSTAT':CUPS[_0x52e3('0x161')][I]})[_0x52e3('0x150')](function(){$(_0x52e3('0xd7'))[_0x52e3('0x8')](_0x52e3('0x23f')),STAT[_0x52e3('0x40')][0x3]>0x0?$(_0x52e3('0x2ef'))[_0x52e3('0x256')](_0x52e3('0x191')+rPfad+_0x52e3('0x164')):$(_0x52e3('0x2ef'))[_0x52e3('0x256')]('&nbsp;<img\x20src=\x27'+rPfad+_0x52e3('0x31d')+_0x52e3('0x191')+rPfad+_0x52e3('0x164')),LS['I']=0x0,LS[_0x52e3('0x2e1')]=0x0,LS[_0x52e3('0x7c')]='',LS[_0x52e3('0xe')]=0x0,LS['TURSPIELER']=0x0,LS[_0x52e3('0xaa')]=0x0,LS[_0x52e3('0xc2')]=I,LS['Meldung']='Das\x20Turnier\x20wurde\x20beendet.',localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)),localStorage['removeItem'](_0x52e3('0x189')+(_0x52e3('0x33')+I)[_0x52e3('0x26e')](-0x3)),hideEinenMoment(),window['location'][_0x52e3('0x2eb')](![]);})[_0x52e3('0x8e')](function(_0x34f977){showEineDBWarnung(_0x34f977,_0x52e3('0x167'),_0x52e3('0x335'));});})[_0x52e3('0x8e')](function(_0x490b4c){showEineDBWarnung(_0x490b4c,_0x52e3('0x167'),_0x52e3('0x2e9'));});}function fEinNeuerTisch(_0x79a412){'use strict';if(CUPS['ABVERSION']>getVersion()&&navigator[_0x52e3('0x6f')]['match'](/Android/i)&&location[_0x52e3('0x2e5')]['substring'](0x0,0x13)==='/android_asset/www/'){showEinenFehler(_0x52e3('0xb3'),_0x52e3('0x1c9'));return;}_0x79a412&&(I=_0x79a412);if(LS['I']&&LS['I']!==I){if(CUPS[_0x52e3('0x1a1')][I]===_0x52e3('0xe9')&&(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||I<=0x3)&&mTischTurnier===_0x52e3('0xc7')){fStartStop(I,![]);return;}}var _0x2174fe=new Date()[_0x52e3('0x42')](),_0x23f9d7=_0x2174fe-0x1;_0x2174fe===0x0?_0x23f9d7=0x6:_0x23f9d7=_0x2174fe-0x1;if((CUPS[_0x52e3('0x19b')][I]===_0x52e3('0x16')||CUPS[_0x52e3('0x19b')][I]==='ET'||CUPS[_0x52e3('0x19b')][I]==='MT')&&!QUERFORMAT()){if(I>0x4){var _0x2695b1=![];for(var _0x499f57 in CUPS['TERMINE']){if(CUPS[_0x52e3('0x292')][_0x499f57]['CUP']===I&&CUPS[_0x52e3('0x292')][_0x499f57][_0x52e3('0x176')]===hHeute){_0x2695b1=!![];break;}}if(!_0x2695b1){showEineMeldung(I,_0x52e3('0x2cc'));return;}}}else{if(new Date(CUPS['NEXTTERMIN'][I])[_0x52e3('0x9f')]()===new Date()[_0x52e3('0x9f')]()){if(new Date()[_0x52e3('0x69')]()>=CUPS[_0x52e3('0xc')][I]-0x1){}else{showEineMeldung(I,_0x52e3('0x171')+CUPS[_0x52e3('0xc')][I]+_0x52e3('0x9b'));return;}}else{if(CUPS[_0x52e3('0x212')][I][_0x2174fe]==='J'||CUPS[_0x52e3('0x212')][I][_0x23f9d7]==='J'&&new Date()[_0x52e3('0x69')]()<=0x6){if(CUPS[_0x52e3('0x1a1')][I]){var _0x34032d=parseInt((new Date()[_0x52e3('0xa2')]()-0x1)/0x7);if(CUPS[_0x52e3('0x314')][I][_0x34032d]!=='J'){var _0x3d9542=[_0x52e3('0x336'),_0x52e3('0x2c3'),'Dienstag',_0x52e3('0x2d5'),'Donnerstag',_0x52e3('0x7f'),_0x52e3('0x1e')];showEineMeldung(I,'Diesen\x20'+_0x3d9542[_0x2174fe]+_0x52e3('0x28')),$(this)[_0x52e3('0x13')]('ui-disabled');return;}}if(CUPS[_0x52e3('0x212')][I][_0x2174fe]==='J'&&new Date()[_0x52e3('0x69')]()>=CUPS[_0x52e3('0xc')][I]-0x1||CUPS[_0x52e3('0x212')][I][_0x23f9d7]==='J'&&new Date()[_0x52e3('0x69')]()<=0x6){}else{showEineMeldung(I,_0x52e3('0x171')+CUPS[_0x52e3('0xc')][I]+_0x52e3('0x9b'));return;}}else{var _0x3d9542=[_0x52e3('0x336'),_0x52e3('0x2c3'),_0x52e3('0xc8'),_0x52e3('0x2d5'),_0x52e3('0x252'),'Freitag',_0x52e3('0x1e')];showEineMeldung(I,_0x52e3('0x19d')+_0x3d9542[_0x2174fe]+_0x52e3('0x28'));return;}}}if(LS['I']&&LS['I']!==I){if(CUPS[_0x52e3('0x1a1')][LS['I']]){if(CUPS[_0x52e3('0x1a1')][LS['I']]===_0x52e3('0xe9')){showEineMeldung(I,_0x52e3('0x33e')+_0x52e3('0x2c0')+CUPS[_0x52e3('0x248')][LS['I']]+'</b>&nbsp;beenden.');return;}else{var _0x1081be='';for(var _0x499f57 in CUPS['TERMINE']){if(CUPS[_0x52e3('0x292')][_0x499f57][_0x52e3('0x16')]===LS['I']&&CUPS[_0x52e3('0x292')][_0x499f57][_0x52e3('0x176')]===hHeute){_0x1081be=CUPS[_0x52e3('0x292')][_0x499f57][_0x52e3('0x248')];break;}}if(_0x1081be){showEineMeldung(I,_0x52e3('0x1b3')+_0x52e3('0x2c0')+_0x1081be+_0x52e3('0x325'));return;}}}}LS['I']===0x0||LS[_0x52e3('0x2cb')]<0x1&&(LS['I']===I||!CUPS[_0x52e3('0x1a1')][I])?!CUPS['TURNIER'][I]&&(CUPS[_0x52e3('0x19b')][I]==='PR'||I===0x1)&&localStorage[_0x52e3('0x326')](_0x52e3('0x189')+(_0x52e3('0x33')+I)[_0x52e3('0x26e')](-0x3))?(LS[_0x52e3('0x29')]=I*-0x1,localStorage[_0x52e3('0x323')]('Abakus.LS',JSON[_0x52e3('0xbb')](LS)),fHref('Abakus/Anmeldung.html')):CUPS['TYP'][I]===_0x52e3('0x16')||CUPS['TYP'][I]==='ET'||CUPS[_0x52e3('0x19b')][I]==='MT'?loadTURNIER(I,hHeute,_0x52e3('0xc6'),hHeute+',\x20neuer\x20Tisch'):CUPS[_0x52e3('0x1a1')][I]?loadSTAT(I,_0x52e3('0xcf')):loadSTAT(I,'Spieler\x20werden\x20aktualisiert.',I):($(_0x52e3('0x166'))[_0x52e3('0x256')](CUPS[_0x52e3('0x248')][I]+_0x52e3('0xae')),LS['I']!==I?($(_0x52e3('0x30e'))[_0x52e3('0x256')](CUPS[_0x52e3('0x248')][LS['I']]+':')[_0x52e3('0xb4')](),$(_0x52e3('0x210'))['html'](_0x52e3('0x204')+LS[_0x52e3('0x2cb')]+'\x20Spiele\x20gespielt.')):$(_0x52e3('0x210'))['html'](_0x52e3('0x93')+LS[_0x52e3('0x2cb')]+_0x52e3('0x2c')),APP&&(mTischTurnier===_0x52e3('0xc7')?($(_0x52e3('0xbf'))[_0x52e3('0x256')](_0x52e3('0x179')),$('#tsDieDen')[_0x52e3('0x256')](_0x52e3('0xb6')),$(_0x52e3('0x139'))[_0x52e3('0x256')](_0x52e3('0x2a8'))):($(_0x52e3('0xbf'))[_0x52e3('0x256')](_0x52e3('0x152')),$(_0x52e3('0x303'))[_0x52e3('0x256')](_0x52e3('0xb6')),$('#tsSpieleLoeschen')[_0x52e3('0x256')](_0x52e3('0x14f')))),LS[_0x52e3('0x2cb')]?$(_0x52e3('0x119'))[_0x52e3('0x13')](_0x52e3('0x23f')):$(_0x52e3('0x119'))[_0x52e3('0x8')](_0x52e3('0x23f')),$(_0x52e3('0x12f'))[_0x52e3('0xce')]('open')[_0x52e3('0xb4')]());}function fTischLoeschen(_0x3af3d2){if(_0x3af3d2){$(_0x52e3('0x12f'))[_0x52e3('0xce')](_0x52e3('0x201'));var _0x3fcc0c=CUPS['NAME'][LS['I']];_0x3fcc0c+='<br>Es\x20wurden\x20'+LS[_0x52e3('0x2cb')]+_0x52e3('0x2c');if(LS[_0x52e3('0x2cb')]){DS=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x154'))),_0x3fcc0c+=_0x52e3('0xd4')+_0x52e3('0x2bc')+_0x52e3('0x12c')+_0x52e3('0x32f')+_0x52e3('0x73')+'<th\x20class=TC>Punkte&nbsp;'+_0x52e3('0x73')+_0x52e3('0x29b');for(var _0xc6acc4=0x1;_0xc6acc4<=0x6;_0xc6acc4++){if(LS['Spieler'][_0xc6acc4])_0x3fcc0c+='<tr><td>&nbsp;'+LS[_0x52e3('0x277')][_0xc6acc4]+'\x20'+LS[_0x52e3('0x1dc')][_0xc6acc4]+LS[_0x52e3('0x2fe')][_0xc6acc4]+_0x52e3('0x1b')+DS[_0x52e3('0x1e5')][_0xc6acc4][0x0]+'&nbsp;</td></tr>';else LS[_0x52e3('0x22c')][_0xc6acc4]!==0x0&&(_0x3fcc0c+='<tr><td\x20class=\x22cRot\x20B\x22>&nbsp;???</td><td\x20class=TR>'+DS[_0x52e3('0x1e5')][_0xc6acc4][0x0]+_0x52e3('0x26a'));}_0x3fcc0c+=_0x52e3('0x95')+_0x52e3('0x244')+_0x52e3('0x1bc')+_0x52e3('0x1da');}else _0x3fcc0c+=_0x52e3('0xf0');writeLOG(_0x3fcc0c),LS[_0x52e3('0x2db')]=0x0,LS[_0x52e3('0x26')]=0x0,LS['gespielt']=0x0,LS[_0x52e3('0x2b4')]=['','','','','','',''],LS['NR']=['','','','','','',''],LS[_0x52e3('0x1dc')]=['','','','','','',''],LS[_0x52e3('0x277')]=['','','','','','',''],LS[_0x52e3('0x2fe')]=['','','','','','',''],LS[_0x52e3('0x35')]=['','','','','','',''],LS[_0x52e3('0x22c')]=[0x0,0x0,0x0,0x0,0x0,0x0,0x0];_0x52e3('0x347')in LS&&delete LS[_0x52e3('0x347')];LS['Meldung']=_0x52e3('0x60');if(CUPS[_0x52e3('0x1a1')][I]===_0x52e3('0xe9')){}else LS['I']=0x0;localStorage['setItem']('Abakus.LS',JSON[_0x52e3('0xbb')](LS)),setTimeout(function(){initSeite1();},0xc8);}else $('#tTischWasNunName')[_0x52e3('0x256')](CUPS[_0x52e3('0x248')][LS['I']]+_0x52e3('0xae')),LS['I']!==I?($(_0x52e3('0x30e'))[_0x52e3('0x256')](CUPS[_0x52e3('0x248')][LS['I']]+':')[_0x52e3('0xb4')](),$(_0x52e3('0x210'))['html']('<br>Es\x20wurden\x20'+LS[_0x52e3('0x2cb')]+_0x52e3('0x2c'))):$(_0x52e3('0x210'))[_0x52e3('0x256')]('Es\x20wurden\x20'+LS['gespielt']+_0x52e3('0x2c')),$(_0x52e3('0xbf'))['html'](_0x52e3('0x1eb')),(CUPS[_0x52e3('0x19b')][I]===_0x52e3('0x16')||CUPS[_0x52e3('0x19b')][I]==='ET'||CUPS[_0x52e3('0x19b')][I]==='MT')&&$(_0x52e3('0x119'))['addClass']('ui-disabled'),$('#tsDieDen')[_0x52e3('0x256')]('den'),$('#tsSpieleLoeschen')[_0x52e3('0x256')]('Tisch\x20löschen'),LS[_0x52e3('0x2cb')]?$(_0x52e3('0x119'))[_0x52e3('0x13')](_0x52e3('0x23f')):$(_0x52e3('0x119'))[_0x52e3('0x8')](_0x52e3('0x23f')),$(_0x52e3('0x48'))[_0x52e3('0xce')](_0x52e3('0x201')),$(_0x52e3('0x12f'))['popup']('open')[_0x52e3('0xb4')]();}function getCupText(){var _0x571f42='';LS[_0x52e3('0x273')]&&(_0x571f42+=_0x52e3('0x208')+LS[_0x52e3('0x273')]+_0x52e3('0x9d'),!QUERFORMAT()&&showEineNotiz(LS['Meldung']),LS[_0x52e3('0x273')]='',localStorage[_0x52e3('0x323')]('Abakus.LS',JSON[_0x52e3('0xbb')](LS)));(!(I===LS['I']&&LS[_0x52e3('0x26')])||QUERFORMAT())&&(CUPS[_0x52e3('0x27a')][I]&&(_0x571f42+=CUPS[_0x52e3('0x27a')][I]));if(LS['I']===I&&LS[_0x52e3('0xe')]>0x0){if(LS['TURRUNDE']===0x1)LS[_0x52e3('0xaa')]===0x0?_0x571f42+=_0x52e3('0x2c7')+iPfad+_0x52e3('0xd8'):_0x571f42+='<br><img\x20src=\x27'+iPfad+_0x52e3('0x77');else{if(LS[_0x52e3('0xaa')]===0x0)_0x571f42+='<br><img\x20src=\x27'+iPfad+_0x52e3('0x262')+LS[_0x52e3('0xe')]+_0x52e3('0xb8');else{if(LS['TURSPIELER']===LS['TURGESPIELT'])_0x571f42+=_0x52e3('0x2c7')+iPfad+_0x52e3('0x11c')+(LS[_0x52e3('0xe')]===0x3?_0x52e3('0xc7'):_0x52e3('0x1b2')+LS[_0x52e3('0xe')])+_0x52e3('0x9a');else{var _0x3a6ed;LS[_0x52e3('0x9')]-LS[_0x52e3('0xaa')]<0x8?_0x3a6ed=_0x52e3('0x186'):_0x3a6ed=parseInt((LS['TURSPIELER']-LS[_0x52e3('0xaa')])/0x4)+_0x52e3('0x15c'),_0x571f42+=_0x52e3('0x2c7')+iPfad+'Achtung.png\x27\x20\x20width=\x2724\x27\x20height=\x2724\x27><span\x20class=M>&nbsp;&nbsp;<b>Runde\x20'+LS[_0x52e3('0xe')]+':&nbsp;&nbsp;&nbsp;'+_0x3a6ed+'</b></span>';}}}}return _0x571f42;}function getTurnierButtons(){var _0x3082cf='';if(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||I<=0x3){if(CUPS[_0x52e3('0x1a1')][I]===_0x52e3('0xe9')){var _0x55c954=new Date()[_0x52e3('0x42')](),_0x5a6abd=_0x55c954-0x1;_0x55c954===0x0?_0x5a6abd=0x6:_0x5a6abd=_0x55c954-0x1;var _0x13e0ce='';if(LS['I']===I&&LS[_0x52e3('0x7c')]===LS['ME']){}else{if(new Date(CUPS['NEXTTERMIN'][I])[_0x52e3('0x9f')]()!==new Date()[_0x52e3('0x9f')]()){if(CUPS[_0x52e3('0x212')][I][_0x55c954]==='J'||CUPS[_0x52e3('0x212')][I][_0x5a6abd]==='J'&&new Date()['getHours']()<=0x6){var _0x6ca20e=parseInt((new Date()[_0x52e3('0xa2')]()-0x1)/0x7);CUPS['WOCHEN'][I][_0x6ca20e]!=='J'&&(_0x13e0ce=_0x52e3('0x30'));if(CUPS[_0x52e3('0x212')][I][_0x55c954]==='J'&&new Date()[_0x52e3('0x69')]()+0x1>=CUPS[_0x52e3('0xc')][I]||CUPS[_0x52e3('0x212')][I][_0x5a6abd]==='J'&&new Date()['getHours']()<=0x6){}else _0x13e0ce='\x20ui-disabled';}else _0x13e0ce='\x20ui-disabled';}}if(LS['I']===0x0&&!LS[_0x52e3('0xe')]||LS['I']!==0x0&&LS['I']!==I)_0x3082cf+=_0x52e3('0x6b')+_0x13e0ce+_0x52e3('0x3e');else LS['I']===I&&(LS[_0x52e3('0x7c')]===LS['ME']||LS['I']<0x5)&&(LS[_0x52e3('0xe')]<CUPS[_0x52e3('0x242')][I]?_0x3082cf+=_0x52e3('0x6b')+_0x13e0ce+_0x52e3('0x85')+LS['TURRUNDE']+_0x52e3('0x1fa'):_0x3082cf+=_0x52e3('0x6b')+_0x13e0ce+'\x27\x20data-transition=\x27pop\x27\x20id=bTurnierBeenden>&nbsp;Turnier\x20beenden&nbsp;</a>');}}return APP&&(CUPS[_0x52e3('0x19b')][I]!==_0x52e3('0x16')&&CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||LS['ME']===_0x52e3('0x138')||I<=0x2)&&(_0x3082cf+='<a\x20onclick=\x27hrefParameterAendern('+I+_0x52e3('0x86')),_0x3082cf+_0x52e3('0x313');}function hrefParameterAendern(_0x200ffd){'use strict';LS[_0x52e3('0xc2')]=_0x200ffd,localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)),fHref(_0x52e3('0xb2'));}function checkNeuerTisch(){'use strict';var _0x22c5b1=![];if(I!==0x3){for(var _0x3139f0 in CUPS[_0x52e3('0x292')]){if(CUPS[_0x52e3('0x292')][_0x3139f0][_0x52e3('0x16')]===I&&CUPS[_0x52e3('0x292')][_0x3139f0]['DATUM']===hHeute){_0x22c5b1=!![];break;}}if(!_0x22c5b1)return showEineWarnung(I,_0x52e3('0x2cc')),![];}if(!STAT[_0x52e3('0x163')])return STAT[hHeute]?(showEineWarnung(I,_0x52e3('0x249')),![]):(showEineWarnung(I,_0x52e3('0x1d2'),'Hab\x20etwas\x20Geduld.'),![]);if(STAT[_0x52e3('0x163')][_0x52e3('0x312')]>0x3){showEineWarnung(I,_0x52e3('0x249'));return;}if(!STAT['_AKTTURNIER'][LS['ME']])return showEineWarnung(I,'Du\x20bist\x20nich\x20angemeldet.',_0x52e3('0x2be')),![];if(STAT[_0x52e3('0x163')][_0x52e3('0x312')]===0x3&&STAT[_0x52e3('0x163')][LS['ME']][0x3]!=='-')return showEineWarnung(I,_0x52e3('0x2ff')),![];var _0x1d1a41=parseInt((Date[_0x52e3('0x137')]()-STAT[_0x52e3('0x163')][_0x52e3('0xd5')])/0xea60);if(_0x1d1a41<-0x23)return showEineWarnung(I,_0x52e3('0x13a'),_0x52e3('0x329')),![];if(_0x1d1a41>0xf0)return showEineWarnung(I,_0x52e3('0x156'),_0x52e3('0x329')),![];if(STAT[_0x52e3('0x163')][_0x52e3('0x312')]===0x3&&_0x1d1a41>0x4b){showEineWarnung(I,_0x52e3('0x18b'));return;}LS['I']=I,LS[_0x52e3('0x25b')]=CUPS[_0x52e3('0x248')][LS['I']],LS[_0x52e3('0x11f')]=CUPS['REGELN'][LS['I']],LS[_0x52e3('0x261')]=CUPS[_0x52e3('0x19b')][LS['I']],LS[_0x52e3('0x17b')]=CUPS[_0x52e3('0x7e')][LS['I']],LS[_0x52e3('0x1b4')]=![],LS[_0x52e3('0x2b1')]=new Array(0x13),LS['Vorhand']=0x0,LS[_0x52e3('0x178')]=0x0,LS[_0x52e3('0x4')]=0x0,LS[_0x52e3('0x1a9')]=0x0,LS['AnzSpieler']=0x0,LS['Pausierer1']=0x0,LS[_0x52e3('0x181')]=0x0,LS[_0x52e3('0x2cb')]=0x0,LS[_0x52e3('0x2db')]=0x0,LS[_0x52e3('0x26c')]=0x0,LS[_0x52e3('0x1bf')]='',LS['NR']=['','','','','','',''],LS[_0x52e3('0x2b4')]=['','','','','','',''],LS[_0x52e3('0x1dc')]=['','','','','','',''],LS[_0x52e3('0x277')]=['','','','','','',''],LS[_0x52e3('0x2fe')]=['','','','','','',''],LS[_0x52e3('0x35')]=['','','','','','',''],LS[_0x52e3('0x22c')]=[0x0,0x0,0x0,0x0,0x0,0x0,0x0],LS['Von']=new Date(),LS[_0x52e3('0x213')]=new Date(),LS[_0x52e3('0xe')]=STAT[_0x52e3('0x163')][_0x52e3('0x312')],LS[_0x52e3('0x347')]=0x0;var _0x1d725f=STAT['_AKTTURNIER'][_0x52e3('0x8b')],_0x1388d5=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')]('Abakus.SPIELERnr'));_0x1d1a41>0x3c&&LS[_0x52e3('0xe')]++;if(STAT[_0x1d725f][LS['ME']]){if(STAT[_0x1d725f][LS['ME']][LS[_0x52e3('0xe')]]!=='?'&&STAT[_0x1d725f][LS['ME']][LS['TURRUNDE']]!=='-'){if(LS[_0x52e3('0xe')]===0x3){showEineWarnung(I,_0x52e3('0xbc')+LS[_0x52e3('0xe')]+'\x20bereits\x20gespielt.');return;}else LS[_0x52e3('0xe')]++;}}if(STAT[_0x52e3('0x163')][LS['ME']][LS[_0x52e3('0xe')]+0x6]===0x0||STAT[_0x52e3('0x163')][LS['ME']][LS[_0x52e3('0xe')]+0x6]==='-'){showEineWarnung(I,_0x52e3('0x160'),_0x52e3('0x2be'));return;}if(STAT[_0x52e3('0x163')][LS['ME']][LS[_0x52e3('0xe')]+0x6]==='?'){showEineWarnung(I,_0x52e3('0x1f6')+LS[_0x52e3('0xe')]+_0x52e3('0x51'),_0x52e3('0x21b'));return;}LS[_0x52e3('0x347')]=STAT['_AKTTURNIER'][LS['ME']][LS[_0x52e3('0xe')]+0x6];var _0x2b9df6=[];for(var _0x1cda04 in STAT[_0x52e3('0x163')]){_0x1cda04[0x0]!=='_'&&(_0x2b9df6[_0x2b9df6[_0x52e3('0x2a6')]]=STAT['_AKTTURNIER'][_0x1cda04][0x0]+';'+_0x1cda04);}_0x2b9df6[_0x52e3('0x29f')]();var _0x512ef2=0x0;for(var _0x6d70b5=0x0;_0x6d70b5<_0x2b9df6['length'];_0x6d70b5++){_0x1cda04=_0x2b9df6[_0x6d70b5][_0x52e3('0x26e')](_0x2b9df6[_0x6d70b5][_0x52e3('0x141')](';')+0x1);if(_0x1cda04===LS['ME']||_0x512ef2){_0x512ef2++;if(STAT[_0x52e3('0x163')][_0x1cda04][LS[_0x52e3('0xe')]+0x6]===LS[_0x52e3('0x347')]){if(STAT[_0x52e3('0x163')][_0x1cda04][LS[_0x52e3('0xe')]]!=='-'){showEineWarnung(I,_0x1cda04+_0x52e3('0xf')+LS[_0x52e3('0xe')]+'\x20bereits\x20gespielt.');return;}_0x1cda04[_0x52e3('0x2a6')]===0x4?blert(_0x1cda04,_0x1388d5[_0x1cda04][0x1],_0x1388d5[_0x1cda04][0x0],STAT[_0x52e3('0x163')][_0x1cda04][0x6],''):blert(_0x1cda04,null,null,null,'');}}}for(var _0x6d70b5=0x0;_0x6d70b5<_0x2b9df6[_0x52e3('0x2a6')];_0x6d70b5++){_0x1cda04=_0x2b9df6[_0x6d70b5][_0x52e3('0x26e')](_0x2b9df6[_0x6d70b5][_0x52e3('0x141')](';')+0x1);if(_0x1cda04!==LS['ME']){if(STAT[_0x52e3('0x163')][_0x1cda04][LS['TURRUNDE']+0x6]===LS[_0x52e3('0x347')]){if(STAT[_0x52e3('0x163')][_0x1cda04][LS[_0x52e3('0xe')]]!=='-'){showEineWarnung(I,_0x1cda04+_0x52e3('0xf')+LS['TURRUNDE']+'\x20bereits\x20gespielt.');return;}_0x1cda04[_0x52e3('0x2a6')]===0x4?blert(_0x1cda04,_0x1388d5[_0x1cda04][0x1],_0x1388d5[_0x1cda04][0x0],STAT['_AKTTURNIER'][_0x1cda04][0x6],''):blert(_0x1cda04,null,null,null,'');}}else break;}LS[_0x52e3('0x22a')]=Date[_0x52e3('0x137')]()%LS[_0x52e3('0x26')]+0x1,LS[_0x52e3('0x1dc')][0x1]=LS[_0x52e3('0x1dc')][0x1][_0x52e3('0x65')](),LS[_0x52e3('0x1dc')][0x2]=LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x65')](),LS['VName'][0x3]=LS[_0x52e3('0x1dc')][0x3]['trim'](),LS[_0x52e3('0x1dc')][0x4]=LS[_0x52e3('0x1dc')][0x4][_0x52e3('0x65')](),LS[_0x52e3('0x1dc')][0x5]=LS[_0x52e3('0x1dc')][0x5][_0x52e3('0x65')](),LS[_0x52e3('0x1dc')][0x6]=LS[_0x52e3('0x1dc')][0x6][_0x52e3('0x65')](),LS[_0x52e3('0x2b4')][0x1]=LS[_0x52e3('0x1dc')][0x1],LS[_0x52e3('0x2b4')][0x2]=LS[_0x52e3('0x1dc')][0x2],LS['Spieler'][0x3]=LS[_0x52e3('0x1dc')][0x3],LS[_0x52e3('0x2b4')][0x4]=LS[_0x52e3('0x1dc')][0x4],LS['Spieler'][0x5]=LS[_0x52e3('0x1dc')][0x5],LS[_0x52e3('0x2b4')][0x6]=LS[_0x52e3('0x1dc')][0x6];(LS[_0x52e3('0x1dc')][0x1]['substr'](0x0,0x3)===LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)||LS['VName'][0x1]['substr'](0x0,0x3)===LS['VName'][0x3][_0x52e3('0x26e')](0x0,0x3)||LS[_0x52e3('0x1dc')][0x1][_0x52e3('0x26e')](0x0,0x3)===LS['VName'][0x4][_0x52e3('0x26e')](0x0,0x3)||LS['VName'][0x1][_0x52e3('0x26e')](0x0,0x3)===LS['VName'][0x5][_0x52e3('0x26e')](0x0,0x3)||LS[_0x52e3('0x1dc')][0x1][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x6]['substr'](0x0,0x3))&&(LS['VName'][0x1][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x2]=LS[_0x52e3('0x277')][0x2]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x2]),LS['VName'][0x1][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x3]['substr'](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x3]=LS[_0x52e3('0x277')][0x3]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x3]),LS['VName'][0x1][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x4][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x4]=LS[_0x52e3('0x277')][0x4][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x4]),LS[_0x52e3('0x1dc')][0x1][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x5][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x5]=LS[_0x52e3('0x277')][0x5]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x5]),LS[_0x52e3('0x1dc')][0x1][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x6][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x6]=LS[_0x52e3('0x277')][0x6][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x6]),LS[_0x52e3('0x2b4')][0x1]=LS[_0x52e3('0x277')][0x1][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x1]);(LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x3][_0x52e3('0x26e')](0x0,0x3)||LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x4][_0x52e3('0x26e')](0x0,0x3)||LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x5][_0x52e3('0x26e')](0x0,0x3)||LS[_0x52e3('0x1dc')][0x2]['substr'](0x0,0x3)===LS[_0x52e3('0x1dc')][0x6]['substr'](0x0,0x3))&&(LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)===LS['VName'][0x3][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x3]=LS[_0x52e3('0x277')][0x3]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x3]),LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)===LS['VName'][0x4][_0x52e3('0x26e')](0x0,0x3)&&(LS['Spieler'][0x4]=LS['NName'][0x4][_0x52e3('0x26e')](0x0,0x1)+'.'+LS['VName'][0x4]),LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x5]['substr'](0x0,0x3)&&(LS['Spieler'][0x5]=LS['NName'][0x5]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x5]),LS[_0x52e3('0x1dc')][0x2][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x6]['substr'](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x6]=LS[_0x52e3('0x277')][0x6][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x6]),LS[_0x52e3('0x2b4')][0x2]=LS[_0x52e3('0x277')][0x2][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x2]);(LS[_0x52e3('0x1dc')][0x3]['substr'](0x0,0x3)===LS[_0x52e3('0x1dc')][0x4][_0x52e3('0x26e')](0x0,0x3)||LS['VName'][0x3][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x5][_0x52e3('0x26e')](0x0,0x3)||LS[_0x52e3('0x1dc')][0x3]['substr'](0x0,0x3)===LS['VName'][0x6][_0x52e3('0x26e')](0x0,0x3))&&(LS[_0x52e3('0x1dc')][0x3][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x4]['substr'](0x0,0x3)&&(LS['Spieler'][0x4]=LS[_0x52e3('0x277')][0x4][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x4]),LS[_0x52e3('0x1dc')][0x3][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x5][_0x52e3('0x26e')](0x0,0x3)&&(LS['Spieler'][0x5]=LS[_0x52e3('0x277')][0x5]['substr'](0x0,0x1)+'.'+LS['VName'][0x5]),LS[_0x52e3('0x1dc')][0x3][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x6][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x6]=LS[_0x52e3('0x277')][0x6][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x6]),LS[_0x52e3('0x2b4')][0x3]=LS[_0x52e3('0x277')][0x3][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x3]);(LS[_0x52e3('0x1dc')][0x4][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x5][_0x52e3('0x26e')](0x0,0x3)||LS[_0x52e3('0x1dc')][0x4]['substr'](0x0,0x3)===LS[_0x52e3('0x1dc')][0x6][_0x52e3('0x26e')](0x0,0x3))&&(LS[_0x52e3('0x1dc')][0x4][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x5][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x5]=LS['NName'][0x5]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x5]),LS[_0x52e3('0x1dc')][0x4][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x6][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x6]=LS[_0x52e3('0x277')][0x6][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x6]),LS[_0x52e3('0x2b4')][0x4]=LS['NName'][0x4][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x4]);LS['VName'][0x6]&&(LS[_0x52e3('0x1dc')][0x5][_0x52e3('0x26e')](0x0,0x3)===LS[_0x52e3('0x1dc')][0x6][_0x52e3('0x26e')](0x0,0x3)&&(LS[_0x52e3('0x2b4')][0x5]=LS[_0x52e3('0x277')][0x5]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x1dc')][0x5],LS['Spieler'][0x6]=LS[_0x52e3('0x277')][0x6][_0x52e3('0x26e')](0x0,0x1)+'.'+LS['VName'][0x6]));LS[_0x52e3('0x2b4')][0x2]['substr'](0x3,0x1)==='.'&&(LS[_0x52e3('0x2b4')][0x2]=LS['VName'][0x2][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x277')][0x2]);LS[_0x52e3('0x2b4')][0x3][_0x52e3('0x26e')](0x3,0x1)==='.'&&(LS[_0x52e3('0x2b4')][0x3]=LS['VName'][0x3][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x277')][0x3]);LS['Spieler'][0x4][_0x52e3('0x26e')](0x3,0x1)==='.'&&(LS[_0x52e3('0x2b4')][0x4]=LS[_0x52e3('0x1dc')][0x4][_0x52e3('0x26e')](0x0,0x1)+'.'+LS[_0x52e3('0x277')][0x4]);LS[_0x52e3('0x2b4')][0x5][_0x52e3('0x26e')](0x3,0x1)==='.'&&(LS[_0x52e3('0x2b4')][0x5]=LS[_0x52e3('0x1dc')][0x5]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x277')][0x5]);LS[_0x52e3('0x2b4')][0x6][_0x52e3('0x26e')](0x3,0x1)==='.'&&(LS[_0x52e3('0x2b4')][0x6]=LS[_0x52e3('0x1dc')][0x6]['substr'](0x0,0x1)+'.'+LS[_0x52e3('0x277')][0x6]);LS['Spieler'][0x1]=LS[_0x52e3('0x2b4')][0x1]+LS['Sterne'][0x1],LS[_0x52e3('0x2b4')][0x2]=LS['Spieler'][0x2]+LS[_0x52e3('0x2fe')][0x2],LS[_0x52e3('0x2b4')][0x3]=LS[_0x52e3('0x2b4')][0x3]+LS['Sterne'][0x3],LS['Spieler'][0x4]=LS[_0x52e3('0x2b4')][0x4]+LS[_0x52e3('0x2fe')][0x4],LS[_0x52e3('0x2b4')][0x5]=LS[_0x52e3('0x2b4')][0x5]+LS[_0x52e3('0x2fe')][0x5],LS[_0x52e3('0x2b4')][0x6]=LS[_0x52e3('0x2b4')][0x6]+LS[_0x52e3('0x2fe')][0x6];if(LS[_0x52e3('0x2b4')][0x5]==='')LS[_0x52e3('0x1bf')]='1',LS['AnzSpieler']!==0x4&&(LS[_0x52e3('0x26')]=0x4,LS[_0x52e3('0x315')]=0x5,LS[_0x52e3('0x181')]=0x6);else LS[_0x52e3('0x2b4')][0x6]===''?LS['AnzSpieler']!==0x5&&(LS[_0x52e3('0x26')]=0x5,LS['Pausierer1']=0x0,LS[_0x52e3('0x181')]=0x6):LS[_0x52e3('0x26')]!==0x6&&(LS[_0x52e3('0x26')]=0x6,LS[_0x52e3('0x315')]=0x0,LS[_0x52e3('0x181')]=0x0);LS[_0x52e3('0x17b')]=CUPS[_0x52e3('0x7e')][LS['I']];LS[_0x52e3('0x26')]>0x4&&(LS[_0x52e3('0x17b')]=parseInt(CUPS[_0x52e3('0x7e')][LS['I']]/0x4*LS[_0x52e3('0x26')]));SetGeberPausierer(),setTarif(),localStorage['setItem'](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS));var _0x443f35=new Object();_0x443f35[_0x52e3('0x2ee')]=[0x0],_0x443f35[_0x52e3('0x4a')]=[''],_0x443f35[_0x52e3('0x2b4')]=[''],_0x443f35[_0x52e3('0x25f')]=[''],_0x443f35[_0x52e3('0x1e5')]=[[0x0],[0x0],[0x0],[0x0],[0x0],[0x0],[0x0]],_0x443f35[_0x52e3('0x32')]=[![]],_0x443f35['Storno']=[![]],localStorage['setItem'](_0x52e3('0x154'),JSON['stringify'](_0x443f35));var _0x533e0e=new Object();_0x533e0e[_0x52e3('0x14')]='GR',localStorage[_0x52e3('0x323')]('Abakus.NEXT',JSON[_0x52e3('0xbb')](_0x533e0e)),fHref(_0x52e3('0x1')+LS[_0x52e3('0x26')]+LS[_0x52e3('0x1bf')]+'.html');}function blert(_0x4bc327,_0x58d17c,_0x4697ba,_0x22361e,_0x30d0c7){if(_0x4bc327[_0x52e3('0x2a6')]!==0x4){var _0x156032=_0x4bc327;_0x4697ba=_0x4bc327[_0x52e3('0x26e')](0x0,_0x4bc327[_0x52e3('0x297')]('ˆ')),_0x156032=_0x4bc327[_0x52e3('0x26e')](_0x4bc327[_0x52e3('0x297')]('ˆ')+0x1),_0x58d17c=_0x156032[_0x52e3('0x26e')](0x0,_0x156032[_0x52e3('0x297')]('ˆ')),_0x22361e=_0x156032[_0x52e3('0x26e')](_0x156032[_0x52e3('0x141')]('ˆ')+0x1);}LS[_0x52e3('0x26')]++,LS['NR'][LS[_0x52e3('0x26')]]=_0x4bc327,LS[_0x52e3('0x1dc')][LS[_0x52e3('0x26')]]=_0x58d17c[_0x52e3('0x65')](),LS['NName'][LS[_0x52e3('0x26')]]=_0x4697ba[_0x52e3('0x65')](),typeof _0x22361e===_0x52e3('0x275')?LS[_0x52e3('0x35')][LS[_0x52e3('0x26')]]=_0x22361e[_0x52e3('0x65')]():LS[_0x52e3('0x35')][LS[_0x52e3('0x26')]]=_0x22361e,LS[_0x52e3('0x2fe')][LS[_0x52e3('0x26')]]=_0x30d0c7;}function SetGeberPausierer(){LS[_0x52e3('0x178')]=LS[_0x52e3('0x22a')]-0x1;LS[_0x52e3('0x178')]===0x0&&(LS[_0x52e3('0x178')]=LS[_0x52e3('0x26')]);(LS[_0x52e3('0x178')]===LS[_0x52e3('0x315')]||LS[_0x52e3('0x178')]===LS[_0x52e3('0x181')])&&(LS[_0x52e3('0x178')]=LS[_0x52e3('0x178')]-0x1,LS['Geber']===0x0&&(LS[_0x52e3('0x178')]=LS[_0x52e3('0x26')]),(LS[_0x52e3('0x178')]===LS[_0x52e3('0x315')]||LS[_0x52e3('0x178')]===LS[_0x52e3('0x181')])&&(LS[_0x52e3('0x178')]=LS[_0x52e3('0x178')]-0x1,LS[_0x52e3('0x178')]===0x0&&(LS['Geber']=LS[_0x52e3('0x26')])));LS[_0x52e3('0x4')]=0x0,LS['INA2']=0x0;if(LS[_0x52e3('0x26')]===0x4)LS[_0x52e3('0x4')]=0x5,LS[_0x52e3('0x1a9')]=0x6;else{if(LS[_0x52e3('0x26')]===0x5)LS['Pausierer1']>0x0?LS[_0x52e3('0x4')]=LS[_0x52e3('0x315')]:LS[_0x52e3('0x4')]=LS[_0x52e3('0x178')],LS['INA2']=0x6;else{if(LS[_0x52e3('0x26')]===0x6){if(LS[_0x52e3('0x315')]===0x0&&LS[_0x52e3('0x181')]===0x0)LS['INA1']=LS['Geber'],LS[_0x52e3('0x178')]<=0x3?LS[_0x52e3('0x1a9')]=LS[_0x52e3('0x178')]+0x3:LS['INA2']=LS['Geber']-0x3;else LS['Pausierer1']!==0x0&&LS[_0x52e3('0x181')]!==0x0?(LS[_0x52e3('0x4')]=LS[_0x52e3('0x315')],LS[_0x52e3('0x1a9')]=LS[_0x52e3('0x181')],LS[_0x52e3('0x178')]=0x0):(LS['INA1']=LS[_0x52e3('0x315')],LS['INA2']=LS[_0x52e3('0x178')],LS[_0x52e3('0x178')]=0x0);}}}}function setTarif(){'use strict';LS[_0x52e3('0x2b1')]=new Array(0x13);if(CUPS[_0x52e3('0x1d5')][LS['I']][_0x52e3('0x2a6')]>=0x12)LS[_0x52e3('0x2b1')][iRufer]=CUPS[_0x52e3('0x1d5')][LS['I']][0x1],LS[_0x52e3('0x2b1')][iSolorufer]=CUPS[_0x52e3('0x1d5')][LS['I']][0x1]*0x2,LS[_0x52e3('0x2b1')][iPagatrufer]=CUPS[_0x52e3('0x1d5')][LS['I']][0x1],LS[_0x52e3('0x2b1')][iUhurufer]=CUPS[_0x52e3('0x1d5')][LS['I']][0x1],LS[_0x52e3('0x2b1')][iKakadurufer]=CUPS[_0x52e3('0x1d5')][LS['I']][0x1],LS[_0x52e3('0x2b1')][iQuapilrufer]=CUPS[_0x52e3('0x1d5')][LS['I']][0x1],LS[_0x52e3('0x2b1')][i6er]=CUPS[_0x52e3('0x1d5')][LS['I']][0x2],LS[_0x52e3('0x2b1')][i3er]=CUPS[_0x52e3('0x1d5')][LS['I']][0x3],LS[_0x52e3('0x2b1')][iSolo3er]=CUPS['TARIF'][LS['I']][0x3]*0x2,LS[_0x52e3('0x2b1')][iFarben3er]=CUPS[_0x52e3('0x1d5')][LS['I']][0x4],LS[_0x52e3('0x2b1')][iFarbensolo]=CUPS[_0x52e3('0x1d5')][LS['I']][0x5],LS[_0x52e3('0x2b1')][iTrischaker]=CUPS['TARIF'][LS['I']][0x6],LS[_0x52e3('0x2b1')][iPiZwiccolo]=CUPS['TARIF'][LS['I']][0x7],LS[_0x52e3('0x2b1')][iBettler]=CUPS['TARIF'][LS['I']][0x8],LS[_0x52e3('0x2b1')][iPiZwiccoloOvert]=CUPS[_0x52e3('0x1d5')][LS['I']][0x9],LS[_0x52e3('0x2b1')][iBettlerOvert]=CUPS['TARIF'][LS['I']][0xa],LS[_0x52e3('0x2b1')][iPagat]=CUPS[_0x52e3('0x1d5')][LS['I']][0xb],LS['Tarif'][iUhu]=CUPS[_0x52e3('0x1d5')][LS['I']][0xc],LS[_0x52e3('0x2b1')][iKakadu]=CUPS[_0x52e3('0x1d5')][LS['I']][0xd],LS['Tarif'][iQuapil]=CUPS[_0x52e3('0x1d5')][LS['I']][0xe],LS[_0x52e3('0x2b1')][iV]=CUPS[_0x52e3('0x1d5')][LS['I']][0xf],LS[_0x52e3('0x2b1')][iTrull]=CUPS[_0x52e3('0x1d5')][LS['I']][0x10],LS[_0x52e3('0x2b1')][i4Koenige]=CUPS[_0x52e3('0x1d5')][LS['I']][0x11],LS[_0x52e3('0x2b1')][iUltimo]=CUPS[_0x52e3('0x1d5')][LS['I']][0x12],LS[_0x52e3('0x2b1')][iValat]=CUPS[_0x52e3('0x1d5')][LS['I']][0x13],CUPS[_0x52e3('0x1d5')][LS['I']][0x14]?(LS[_0x52e3('0x2b1')][iAbsolut]=CUPS['TARIF'][LS['I']][0x14],LS[_0x52e3('0x349')]=CUPS[_0x52e3('0x345')][LS['I']]):(LS[_0x52e3('0x2b1')][iAbsolut]=0x0,LS[_0x52e3('0x349')]=''),CUPS['TARIF'][LS['I']][0x15]?(LS['Tarif'][iXY]=CUPS[_0x52e3('0x1d5')][LS['I']][0x15],LS[_0x52e3('0x327')]=CUPS[_0x52e3('0x2b9')][LS['I']]):(LS[_0x52e3('0x2b1')][iXY]=0x0,LS[_0x52e3('0x327')]='');else{if(CUPS['REGELN'][LS['I']]===_0x52e3('0x89'))LS[_0x52e3('0x2b1')][iRufer]=0x1,LS[_0x52e3('0x2b1')][iSolorufer]=0x2,LS[_0x52e3('0x2b1')][iPagatrufer]=0x1,LS[_0x52e3('0x2b1')][iUhurufer]=0x1,LS[_0x52e3('0x2b1')][iKakadurufer]=0x1,LS[_0x52e3('0x2b1')][iQuapilrufer]=0x1,LS[_0x52e3('0x2b1')][i6er]=0x4,LS[_0x52e3('0x2b1')][i3er]=0x5,LS[_0x52e3('0x2b1')][iSolo3er]=0xa,LS[_0x52e3('0x2b1')][iFarben3er]=0x5,LS[_0x52e3('0x2b1')][iFarbensolo]=0xa,LS[_0x52e3('0x2b1')][iTrischaker]=0x2,LS[_0x52e3('0x2b1')][iPiZwiccolo]=0x2,LS[_0x52e3('0x2b1')][iBettler]=0x4,LS['Tarif'][iPiZwiccoloOvert]=0x6,LS[_0x52e3('0x2b1')][iBettlerOvert]=0x8,LS[_0x52e3('0x2b1')][iPagat]=0x1,LS['Tarif'][iUhu]=0x2,LS[_0x52e3('0x2b1')][iKakadu]=0x3,LS[_0x52e3('0x2b1')][iQuapil]=0x4,LS[_0x52e3('0x2b1')][iV]=0x0,LS[_0x52e3('0x2b1')][iTrull]=0x1,LS[_0x52e3('0x2b1')][i4Koenige]=0x1,LS[_0x52e3('0x2b1')][iUltimo]=0x1,LS['Tarif'][iValat]=0xa,LS[_0x52e3('0x2b1')][iAbsolut]=0x0,LS[_0x52e3('0x2b1')][iXY]=0x0,LS[_0x52e3('0x349')]='',LS[_0x52e3('0x327')]='';else CUPS[_0x52e3('0x2d2')][LS['I']]===_0x52e3('0x1e2')?(LS[_0x52e3('0x2b1')][iRufer]=0x1,LS[_0x52e3('0x2b1')][iSolorufer]=0x2,LS[_0x52e3('0x2b1')][iPagatrufer]=0x1,LS[_0x52e3('0x2b1')][iUhurufer]=0x1,LS[_0x52e3('0x2b1')][iKakadurufer]=0x1,LS[_0x52e3('0x2b1')][iQuapilrufer]=0x1,LS[_0x52e3('0x2b1')][i6er]=0x4,LS[_0x52e3('0x2b1')][i3er]=0x4,LS[_0x52e3('0x2b1')][iSolo3er]=0x8,LS[_0x52e3('0x2b1')][iFarben3er]=0x0,LS[_0x52e3('0x2b1')][iFarbensolo]=0x5,LS[_0x52e3('0x2b1')][iTrischaker]=0x1,LS[_0x52e3('0x2b1')][iPiZwiccolo]=0x2,LS[_0x52e3('0x2b1')][iBettler]=0x2,LS[_0x52e3('0x2b1')][iPiZwiccoloOvert]=0x6,LS[_0x52e3('0x2b1')][iBettlerOvert]=0x7,LS[_0x52e3('0x2b1')][iPagat]=0x1,LS['Tarif'][iUhu]=0x2,LS[_0x52e3('0x2b1')][iKakadu]=0x3,LS[_0x52e3('0x2b1')][iQuapil]=0x4,LS[_0x52e3('0x2b1')][iV]=0x0,LS[_0x52e3('0x2b1')][iTrull]=0x1,LS[_0x52e3('0x2b1')][i4Koenige]=0x1,LS[_0x52e3('0x2b1')][iUltimo]=0x1,LS['Tarif'][iValat]=0x0,LS[_0x52e3('0x2b1')][iAbsolut]=0x0,LS[_0x52e3('0x2b1')][iXY]=0x0,LS['Tarif20T']='',LS[_0x52e3('0x327')]=''):(LS[_0x52e3('0x2b1')][iRufer]=0x1,LS[_0x52e3('0x2b1')][iSolorufer]=0x2,LS[_0x52e3('0x2b1')][iPagatrufer]=0x1,LS[_0x52e3('0x2b1')][iUhurufer]=0x1,LS[_0x52e3('0x2b1')][iKakadurufer]=0x1,LS[_0x52e3('0x2b1')][iQuapilrufer]=0x1,LS[_0x52e3('0x2b1')][i6er]=0x4,LS[_0x52e3('0x2b1')][i3er]=0x5,LS[_0x52e3('0x2b1')][iSolo3er]=0xa,LS[_0x52e3('0x2b1')][iFarben3er]=0x5,LS[_0x52e3('0x2b1')][iFarbensolo]=0xa,LS['Tarif'][iTrischaker]=0x2,LS[_0x52e3('0x2b1')][iPiZwiccolo]=0x2,LS[_0x52e3('0x2b1')][iBettler]=0x4,LS['Tarif'][iPiZwiccoloOvert]=0x8,LS[_0x52e3('0x2b1')][iBettlerOvert]=0x8,LS[_0x52e3('0x2b1')][iPagat]=0x1,LS[_0x52e3('0x2b1')][iUhu]=0x2,LS[_0x52e3('0x2b1')][iKakadu]=0x3,LS[_0x52e3('0x2b1')][iQuapil]=0x4,LS[_0x52e3('0x2b1')][iV]=0x0,LS[_0x52e3('0x2b1')][iTrull]=0x1,LS['Tarif'][i4Koenige]=0x1,LS[_0x52e3('0x2b1')][iUltimo]=0x1,LS[_0x52e3('0x2b1')][iValat]=0xa,LS['Tarif'][iAbsolut]=0x1,LS[_0x52e3('0x2b1')][iXY]=0x1,LS[_0x52e3('0x349')]='Sack',LS[_0x52e3('0x327')]='XY');}}function whenSTATloaded(){'use strict';if(CUPS[_0x52e3('0x1a1')][I]&&CUPS[_0x52e3('0x1a1')][I]!==_0x52e3('0xe9')){checkNeuerTisch();return;}var _0x5c91e2=new Date()[_0x52e3('0x3a')]();if(STAT&&new Date(STAT[_0x52e3('0x2a2')])['getTime']()>_0x5c91e2+0xea60*0xf)return showEineWarnung('F1:\x20Datum\x20oder\x20Uhrzeit\x20falsch.',_0x52e3('0x109')),![];if(new Date(getVersionsDatum())['getTime']()>_0x5c91e2+0xea60*0xf)return showEineWarnung(_0x52e3('0x92'),'Bitte\x20korrigieren.'),![];if(CUPS['TURNIER'][I]){if(PC&&CUPS[_0x52e3('0x1a1')][I]!=='Handy'){}else{if(STAT[_0x52e3('0xe')]===0x0)return showEineWarnung(I,'Turnier\x20noch\x20nicht\x20gestartet!',_0x52e3('0x2be')),![];}if(CUPS[_0x52e3('0x1a1')][I]===_0x52e3('0xe9')){if(new Date(STAT[_0x52e3('0x34c')])[_0x52e3('0x3a')]()>_0x5c91e2+0xea60*0xf){if(LS['ME']!==_0x52e3('0x138'))return showEineWarnung(_0x52e3('0x118'),_0x52e3('0x109')),![];}if(new Date(STAT[_0x52e3('0x34c')])[_0x52e3('0x9f')]()!==new Date()[_0x52e3('0x9f')]()){if(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')]('*')>=0x0)new Date(STAT[_0x52e3('0x34c')])[_0x52e3('0x3a')]()+0xea60*0x3c*0x18>_0x5c91e2&&showEineWarnung(_0x52e3('0x30d'),'Korrekturen\x20müssen\x20innerhalb\x20von\x2024\x20Stunden\x20nach\x20Turnierstart\x20durchgeführt\x20werden.');else return showEineWarnung(_0x52e3('0x32a'),_0x52e3('0x203')+_0x52e3('0x308')+_0x52e3('0x2dd')+new Date(STAT[_0x52e3('0x34c')])[_0x52e3('0x288')]()+_0x52e3('0x25a')+_0x52e3('0x2b')),![];}if(I>0x3){if(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||STAT['TURGESPIELT']===0x0){}else return showEineWarnung(I,_0x52e3('0x1b2')+STAT[_0x52e3('0xe')]+_0x52e3('0x224'),_0x52e3('0x1e0')),![];}}}hideEinenMoment(),LS[_0x52e3('0x79')]=new Date(),LS['Bis']=new Date(),LS['LoadCups']=I*-0x1,localStorage['setItem']('Abakus.LS',JSON[_0x52e3('0xbb')](LS)),fHref(_0x52e3('0x1b7'));}function Weiterspielen(){'use strict';LS[_0x52e3('0xc2')]=LS['I'];CUPS[_0x52e3('0x19b')][LS['I']]!==_0x52e3('0x16')&&CUPS[_0x52e3('0x19b')][LS['I']]!=='ET'&&CUPS[_0x52e3('0x19b')][LS['I']]!=='MT'&&(LS[_0x52e3('0x17b')]=CUPS[_0x52e3('0x7e')][LS['I']],LS[_0x52e3('0x17b')]&&LS['AnzSpieler']>0x4&&(LS[_0x52e3('0x17b')]=parseInt(CUPS['SPJERUNDE'][LS['I']]/0x4*LS[_0x52e3('0x26')])));localStorage[_0x52e3('0x323')]('Abakus.LS',JSON[_0x52e3('0xbb')](LS));var _0x2c06fb=new Object();_0x2c06fb[_0x52e3('0x14')]='GR',localStorage[_0x52e3('0x323')](_0x52e3('0x68'),JSON[_0x52e3('0xbb')](_0x2c06fb)),fHref(_0x52e3('0x1')+LS[_0x52e3('0x26')]+LS[_0x52e3('0x1bf')]+_0x52e3('0x334'));}function getINT(_0x5ea248){var _0x5236c4=$[_0x52e3('0x65')](_0x5ea248),_0x2a28a1=parseInt(_0x5236c4);if(_0x5236c4==='')return![];if(isNaN(_0x5236c4))return![];if(isNaN(_0x2a28a1))return![];if(_0x5236c4[_0x52e3('0x297')]('-')>=0x0&_0x2a28a1>0x0)return _0x2a28a1*-0x1;return _0x5236c4[_0x52e3('0x17e')]()===_0x2a28a1[_0x52e3('0x17e')]()?_0x2a28a1:![];}function checkVersion(){'use strict';var _0x5b5ae1=new Date(CUPS['TIMESTAMP']),_0x57ad33=new Date();if(new Date(_0x52e3('0x1b1'))['getHours']()!==0x13)$(_0x52e3('0x70'))[_0x52e3('0x8')](_0x52e3('0x23f')),$(_0x52e3('0x2b7'))[_0x52e3('0x256')](_0x52e3('0x29e')+_0x52e3('0x101')+_0x52e3('0x32b'))[_0x52e3('0xb4')]();else{if(_0x5b5ae1[_0x52e3('0xc1')]()>_0x57ad33[_0x52e3('0xc1')]()||_0x5b5ae1['getTime']()>_0x57ad33['getTime']()+0xea60*0x3c)$(_0x52e3('0x70'))[_0x52e3('0x8')](_0x52e3('0x23f')),$(_0x52e3('0x2b7'))[_0x52e3('0x256')](_0x52e3('0xa4')+'Das\x20Systemdatum\x20ist\x20nicht\x20aktuell.<br>'+_0x52e3('0x32b'))[_0x52e3('0xb4')]();else _0x5b5ae1[_0x52e3('0xc1')]()<_0x57ad33[_0x52e3('0xc1')]()&&($('#bSpeichern')[_0x52e3('0x8')]('ui-disabled'),$(_0x52e3('0x2b7'))[_0x52e3('0x256')](_0x52e3('0xa4')+'Das\x20System\x20wurde\x20für\x20'+_0x57ad33[_0x52e3('0xc1')]()+_0x52e3('0x20')+_0x52e3('0x231')+'Informiere\x20einen\x20Administrator.<br>'+_0x52e3('0x32b'))[_0x52e3('0xb4')]());}}function historyBack(){LS[_0x52e3('0xc2')]&&(LS[_0x52e3('0xc2')]=0x0,localStorage[_0x52e3('0x323')]('Abakus.LS',JSON[_0x52e3('0xbb')](LS))),history['back']();}function fHref(_0x895531){window[_0x52e3('0x296')]&&$(_0x52e3('0x49'))[_0x52e3('0x8')](_0x52e3('0x23f')),window[_0x52e3('0x14d')][_0x52e3('0x2c9')]=_0x895531;}function QUERFORMAT(){return $(window)[_0x52e3('0x144')]()>$(window)[_0x52e3('0x26f')]()?!![]:![];}function toggleLegende(){$(_0x52e3('0x158'))['is'](_0x52e3('0x31a'))?$(_0x52e3('0x158'))['hide']():($(_0x52e3('0x158'))['show'](),$('#p')[_0x52e3('0xf2')](0x0));}function hrefStatistik(_0x33335f,_0x2deb2a){_0x33335f&&(I=_0x33335f),!_0x2deb2a&&(_0x2deb2a=''),CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][I][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x19b')][I]!=='PR'||CUPS[_0x52e3('0x19b')][I]==='PR'&&CUPS[_0x52e3('0x339')][I]&&(CUPS[_0x52e3('0x339')][I]+0x64*0x5265c00>Date[_0x52e3('0x137')]()&&CUPS[_0x52e3('0x248')][I][_0x52e3('0x26e')](0x0,0x4)===_0x52e3('0x2f')||CUPS['MEZULETZT'][I]+0x16d*0x5265c00>Date[_0x52e3('0x137')]())?(_0x33335f&&(LS['ShowCups']=_0x33335f),localStorage['setItem'](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)),CUPS[_0x52e3('0x1a1')][I]&&CUPS[_0x52e3('0x1a1')][I]!=='Handy'?fHref(_0x52e3('0x2e7')+_0x2deb2a):fHref(_0x52e3('0x291')+_0x2deb2a)):loadSTAT(I,_0x52e3('0x253'),![],hrefStatistikPR);}function hrefStatistikPR(){function _0x11032b(_0x2f8935){_0x2f8935?QUERFORMAT()?$(_0x52e3('0xd6'))[_0x52e3('0x256')](_0x52e3('0x100')+_0x2f8935+'\x20Tagen\x20nicht\x20gespielt.<br><b>Berechtigung\x20abgelaufen!</b>')[_0x52e3('0x1df')](_0x52e3('0x122'),'')[_0x52e3('0x13')](_0x52e3('0x16b'))[_0x52e3('0x13')]('P')[_0x52e3('0x8')]('cRot'):showEineMeldung(I,_0x52e3('0x100')+_0x2f8935+_0x52e3('0x2d'),_0x52e3('0x300')):QUERFORMAT()?$(_0x52e3('0xd6'))['html'](_0x52e3('0x1a8'))[_0x52e3('0x1df')](_0x52e3('0x122'),'')[_0x52e3('0x13')](_0x52e3('0x16b'))[_0x52e3('0x13')]('P')[_0x52e3('0x8')]('cRot'):showEineMeldung(I,_0x52e3('0x1a'),_0x52e3('0x284'));}hideEinenMoment();if(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS['BEREschreiben'][I][_0x52e3('0x297')](LS['ME'])>=0x0)localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)),fHref(_0x52e3('0x291'));else{if(CUPS[_0x52e3('0x339')][I]===0x0)_0x11032b(0x0);else{if(CUPS[_0x52e3('0x339')][I]+0x64*0x5265c00<Date[_0x52e3('0x137')]()&&CUPS[_0x52e3('0x248')][I][_0x52e3('0x26e')](0x0,0x4)==='Bei\x20')_0x11032b(0x64);else CUPS[_0x52e3('0x339')][I]+0x16d*0x5265c00<Date[_0x52e3('0x137')]()?_0x11032b(0x16d):(localStorage[_0x52e3('0x323')]('Abakus.LS',JSON['stringify'](LS)),fHref(_0x52e3('0x291')));}}}function initSeite1(){LS[_0x52e3('0xc2')]<0x0?(I=LS[_0x52e3('0xc2')]*-0x1,LS[_0x52e3('0xc2')]=0x0,localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS))):I=LS[_0x52e3('0xc2')];var _0x1eceae=new Date(CUPS[_0x52e3('0x1d8')]),_0x1053cd=new Date(),_0x209f30=(_0x1053cd-_0x1eceae)/0x36ee80;if(LS[_0x52e3('0x1a5')]!==getVersion())LS['ME']===_0x52e3('0x138')&&(LS['ME']=_0x52e3('0x129'),LS['MEname']=_0x52e3('0x2e8'),localStorage[_0x52e3('0x323')]('Abakus.LS',JSON[_0x52e3('0xbb')](LS))),LS['LastBtn']&&!$(LS[_0x52e3('0x99')])[_0x52e3('0x2a6')]&&(LS[_0x52e3('0x99')]=''),LS[_0x52e3('0x1a5')]<0x3dd&&(LS['FotoStyle']=0x0,LS[_0x52e3('0x43')]=![],LS[_0x52e3('0x31b')]&&delete LS[_0x52e3('0x31b')]),LS['Version']<0x3de&&(LS['ME']['length']===0x4&&!LS[_0x52e3('0xcd')]&&loadSPIELER()),LS[_0x52e3('0x1a5')]<0x419&&((typeof LS[_0x52e3('0x2d1')]===_0x52e3('0x1ec')||LS[_0x52e3('0x2d1')][_0x52e3('0x2a6')]===0x0)&&(LS[_0x52e3('0x2d1')]=[0x0])),localStorage[_0x52e3('0x323')](_0x52e3('0x19e'),JSON['stringify']('')),LS['Version']===0x0?writeLOG('ABAKUS:\x20Version\x20'+getVersionsDatum()[_0x52e3('0x288')]()+'\x20('+getVersion()+_0x52e3('0x200')):writeLOG(_0x52e3('0x1e1')+getVersionsDatum()['toLocaleDateString']()+'\x20('+getVersion()+').'),initCUPSdelAllSTAT();else LS[_0x52e3('0x29')]>0x0||_0x209f30>0x6||isNaN(_0x209f30)?navigator[_0x52e3('0x2c8')]?loadCUPS(![],![],!![]):whenCUPSloaded():whenCUPSloaded();}function writeCanvas(_0x44503a){var _0x498170='',_0x5a587b=_0x52e3('0x30f');if(!isNaN(_0x44503a)){if(CUPS[_0x52e3('0x19b')][_0x44503a]===_0x52e3('0x16')||CUPS[_0x52e3('0x19b')][_0x44503a]==='TC')_0x5a587b=_0x52e3('0x29d');else{if(CUPS[_0x52e3('0x19b')][_0x44503a]==='ET')_0x5a587b=_0x52e3('0x1f1');else{if(CUPS['TYP'][_0x44503a]==='MT')_0x5a587b=_0x52e3('0x205');else{if(CUPS[_0x52e3('0x19b')][_0x44503a]==='FC')_0x5a587b=_0x52e3('0x344');else{if(CUPS['TYP'][_0x44503a]==='PR')_0x5a587b=_0x52e3('0x2dc');else{if(CUPS[_0x52e3('0x19b')][_0x44503a]==='PR')_0x5a587b='Private\x20Runde';else CUPS[_0x52e3('0x19b')][_0x44503a]==='AR'&&(_0x5a587b='Allgemeine\x20Runde');}}}}}if(_0x44503a===0x1)_0x5a587b=_0x52e3('0x64');else{if(_0x44503a===0x2)_0x5a587b=_0x52e3('0x236');else{if(_0x44503a===0x3)_0x5a587b=_0x52e3('0x236');else{if(_0x44503a===0x4)_0x5a587b=_0x52e3('0x34f');else{if(_0x44503a===0x8)_0x5a587b=_0x52e3('0x17d');else{if(_0x44503a===0x9)_0x5a587b=_0x52e3('0x103');else{if(_0x44503a===0xa)_0x5a587b=_0x52e3('0xca');else{if(_0x44503a===0xb)_0x5a587b='Sküs\x20of\x20the\x20year';else{if(_0x44503a===0x10)_0x5a587b=_0x52e3('0x71');else{if(_0x44503a===0x50)QUERFORMAT()?_0x5a587b=_0x52e3('0x91'):_0x5a587b=_0x52e3('0x269');else _0x44503a===0x11&&(_0x5a587b='<b>U</b>rlaubs-<b>T</b>arock-<b>C</b>up');}}}}}}}}}}_0x498170=CUPS[_0x52e3('0x248')][_0x44503a];if(isNaN(_0x44503a))_0x498170=_0x44503a,$(_0x52e3('0x1c6'))[_0x52e3('0x16a')](_0x52e3('0x1c7'),_0x52e3('0xea'));else{if(_0x44503a===0x0)_0x498170='Vivat\x20Valat!',$('.hfHeaderIcon,#qfHeaderIcon')[_0x52e3('0x16a')](_0x52e3('0x1c7'),_0x52e3('0xea'));else{if(_0x44503a===_0x52e3('0xdb'))_0x498170=_0x52e3('0x75'),$(_0x52e3('0x1c6'))[_0x52e3('0x16a')](_0x52e3('0x1c7'),_0x52e3('0xea'));else{if(_0x44503a===_0x52e3('0x274'))_0x498170=_0x52e3('0x128'),$('.hfHeaderIcon,#qfHeaderIcon')[_0x52e3('0x16a')](_0x52e3('0x1c7'),_0x52e3('0x240'));else{if(_0x44503a===_0x52e3('0x2fb'))_0x498170=_0x52e3('0x234'),$(_0x52e3('0x1c6'))[_0x52e3('0x16a')](_0x52e3('0x1c7'),_0x52e3('0x102'));else{if(_0x44503a==='Anekdoten')_0x498170=_0x52e3('0x1cb'),$(_0x52e3('0x1c6'))[_0x52e3('0x16a')]('src','Icons/Anekdoten.png');else{if(_0x44503a===_0x52e3('0x3d'))$(_0x52e3('0x1c6'))[_0x52e3('0x16a')](_0x52e3('0x1c7'),_0x52e3('0x17'));else{_0x498170=CUPS[_0x52e3('0x248')][_0x44503a];if((CUPS['TYP'][_0x44503a]===_0x52e3('0x16')||CUPS[_0x52e3('0x19b')][_0x44503a]==='ET')&&_0x44503a>0x4)$(_0x52e3('0x1c6'))[_0x52e3('0x16a')]('src',_0x52e3('0xfb')+_0x44503a+_0x52e3('0x21a'));else _0x44503a===0xb||_0x44503a===0x19?$(_0x52e3('0x1c6'))['attr'](_0x52e3('0x1c7'),_0x52e3('0xe0')):$(_0x52e3('0x1c6'))[_0x52e3('0x16a')](_0x52e3('0x1c7'),'Icons/Farben.png');if(QUERFORMAT()){if(_0x44503a===0x31)_0x498170=_0x52e3('0x330'),document['title']=_0x52e3('0x80'),_0x5a587b='Internet:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x22\x20onclick=\x22window.open(\x27https://tarockoesterreich.jimdo.com\x27)\x22\x20>tarockoesterreich.jimdo.com</span>';else{if(_0x44503a===0x32)_0x498170=_0x52e3('0x340'),document[_0x52e3('0x209')]=_0x52e3('0x148')+CUPS[_0x52e3('0x248')][_0x44503a]['replace']('\x20\x20','\x20')['replace']('/','-'),_0x5a587b=_0x52e3('0xda');else{if(_0x44503a===0x33)_0x498170=_0x52e3('0xe4'),document[_0x52e3('0x209')]=_0x52e3('0x282')+CUPS[_0x52e3('0x248')][_0x44503a]['replace']('\x20\x20','\x20')[_0x52e3('0x211')]('/','-'),_0x5a587b=_0x52e3('0x13f');else{if(_0x44503a===0x34)_0x498170='Raiffeisen\x20Tarockcup\x20Austria',document[_0x52e3('0x209')]='RTC\x20-\x20'+CUPS[_0x52e3('0x248')][_0x44503a][_0x52e3('0x211')]('\x20\x20','\x20')[_0x52e3('0x211')]('/','-'),_0x5a587b='Internet:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x22\x20onclick=\x22window.open(\x27http://www.tarockcup.at\x27)\x22\x20>www.tarockcup.at</span>';else{if(_0x44503a===0x35)document[_0x52e3('0x209')]=_0x52e3('0x254')+CUPS['NAME'][_0x44503a][_0x52e3('0x211')]('\x20\x20','\x20')[_0x52e3('0x211')]('/','-'),_0x5a587b=_0x52e3('0x238');else{if(_0x44503a===0x36)document[_0x52e3('0x209')]=_0x52e3('0x2cd')+CUPS['NAME'][_0x44503a][_0x52e3('0x211')]('\x20\x20','\x20')[_0x52e3('0x211')]('/','-'),_0x5a587b=_0x52e3('0x15e');else{if(_0x44503a===0x37)document[_0x52e3('0x209')]=_0x52e3('0x97')+CUPS['NAME'][_0x44503a][_0x52e3('0x211')]('\x20\x20','\x20')[_0x52e3('0x211')]('/','-'),_0x498170=_0x52e3('0x54'),_0x5a587b=_0x52e3('0xa');else{if(_0x44503a===0x38)document[_0x52e3('0x209')]=_0x52e3('0x177')+CUPS[_0x52e3('0x248')][_0x44503a][_0x52e3('0x211')]('\x20\x20','\x20')[_0x52e3('0x211')]('/','-'),_0x498170=_0x52e3('0x4b'),_0x5a587b='Internet:&nbsp;&nbsp;<span>www.tarock.wien</span>';else{if(_0x44503a===0x50)_0x498170=_0x52e3('0x172'),document['title']='Wr.\x20Marathon',_0x5a587b=_0x52e3('0x91');else _0x44503a===0xf?document[_0x52e3('0x209')]=_0x52e3('0x135')+CUPS[_0x52e3('0x248')][_0x44503a][_0x52e3('0x211')]('\x20\x20','\x20')[_0x52e3('0x211')]('/','-'):document[_0x52e3('0x209')]=CUPS[_0x52e3('0x248')][_0x44503a]['replace']('\x20\x20','\x20')[_0x52e3('0x211')]('/','-');}}}}}}}}}_0x498170=_0x498170[_0x52e3('0x211')](/ |_/g,_0x52e3('0x3b'));}}}}}}}$('.hfHeaderZeile1,#qfHeaderZeile1')[_0x52e3('0x256')](_0x498170),$(_0x52e3('0x264'))['html'](_0x5a587b),I===LS['I']&&I!==0x0&&($('.hfHeaderIcon')[_0x52e3('0x16a')](_0x52e3('0x1c7'),_0x52e3('0x10f')),$(_0x52e3('0x2c1'))[_0x52e3('0x256')](_0x52e3('0x257'))),_0x498170['length']>0x19?$('#qfHeaderZeile1')['attr']('style',_0x52e3('0x2ca')):$(_0x52e3('0x337'))[_0x52e3('0x16a')](_0x52e3('0xa7'),_0x52e3('0x20d')),$('.hfHeaderIcon')['css'](_0x52e3('0x29a'),$(_0x52e3('0x143'))[_0x52e3('0x29a')]()-0x8)['show'](),$(_0x52e3('0x18c'))[_0x52e3('0xb4')]();}function myDateString(_0x5d6e54){var _0x41534f=new Date(_0x5d6e54);return _0x41534f['getFullYear']()+'-'+('00'+(_0x41534f[_0x52e3('0xac')]()+0x1))[_0x52e3('0x26e')](-0x2)+'-'+('00'+_0x41534f[_0x52e3('0xa2')]())[_0x52e3('0x26e')](-0x2);}function getDateString(_0xb8d131){if(typeof _0xb8d131===_0x52e3('0x275')&&_0xb8d131[0x4]==='-'){var _0x580876=parseInt(_0xb8d131);if(_0xb8d131[0x5]==='0')var _0x36b85a=parseInt(_0xb8d131[_0x52e3('0x26e')](0x6,0x1))-0x1;else var _0x36b85a=parseInt(_0xb8d131[_0x52e3('0x26e')](0x5,0x2))-0x1;if(_0xb8d131[0x8]==='0')var _0x1048d1=parseInt(_0xb8d131[_0x52e3('0x26e')](0x9,0x1));else var _0x1048d1=parseInt(_0xb8d131[_0x52e3('0x26e')](0x8,0x2));var _0x447712=new Date(_0x580876,_0x36b85a,_0x1048d1);}else var _0x447712=new Date(_0xb8d131);return new Date()[_0x52e3('0xc1')]()===_0x447712['getFullYear']()?daysOfWeek[_0x447712[_0x52e3('0x42')]()]+'\x20'+_0x447712['getDate']()+'.\x20'+monthsOfYear[_0x447712[_0x52e3('0xac')]()]:daysOfWeek[_0x447712[_0x52e3('0x42')]()]+'\x20'+_0x447712[_0x52e3('0xa2')]()+'.\x20'+monthsOfYear[_0x447712['getMonth']()]+'\x20<span\x20style=\x27text-decoration:\x20overline;zoom:\x20.9;\x20-moz-transform:scale(.9)\x27>'+(_0x447712[_0x52e3('0xc1')]()-0x7d0)+_0x52e3('0x1ca');}function initCUPSdelAllSTAT(_0x255159){'use strict';$(_0x52e3('0x221'))[_0x52e3('0xf2')](0x0);var _0x3e74c9=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')]('Abakus.DS')),_0x1f9c0b=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x1a3'))),_0x2681d0=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x19e'))),_0xf11ce2=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x6d'))),_0x10b89d=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')]('Abakus.TURNIER')),_0x407b7c=JSON['parse'](localStorage[_0x52e3('0x326')](_0x52e3('0x28f'))),_0x5057a1=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')]('Abakus.SPIELERnr')),_0x51f586=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x1ea')));localStorage[_0x52e3('0xee')](),LS[_0x52e3('0x1a5')]=getVersion();try{localStorage[_0x52e3('0x323')]('Abakus.LS',JSON['stringify'](LS));}catch(_0x2e4798){LS[_0x52e3('0x273')]='F'+_0x2e4798+_0x52e3('0x18a');}try{localStorage[_0x52e3('0x323')]('Abakus.CUPS',JSON[_0x52e3('0xbb')](_0xf11ce2));}catch(_0x114de5){LS[_0x52e3('0x273')]='F'+_0x114de5+_0x52e3('0x2');}if(_0x3e74c9!==null)try{localStorage[_0x52e3('0x323')](_0x52e3('0x154'),JSON[_0x52e3('0xbb')](_0x3e74c9));}catch(_0x1d52f2){LS[_0x52e3('0x273')]='F'+_0x1d52f2+_0x52e3('0x74');}if(_0x1f9c0b!==null)try{localStorage[_0x52e3('0x323')](_0x52e3('0x1a3'),JSON[_0x52e3('0xbb')](_0x1f9c0b));}catch(_0x2ef1db){LS[_0x52e3('0x273')]='F'+_0x2ef1db+_0x52e3('0x1ff');}if(_0x2681d0!==null)try{localStorage[_0x52e3('0x323')](_0x52e3('0x19e'),JSON[_0x52e3('0xbb')](_0x2681d0));}catch(_0x5316d5){LS[_0x52e3('0x273')]='F'+_0x5316d5+_0x52e3('0x21');}if(_0x10b89d!==null)try{localStorage[_0x52e3('0x323')](_0x52e3('0x1a0'),JSON[_0x52e3('0xbb')](_0x10b89d));}catch(_0x4aca38){LS['Meldung']='F'+_0x4aca38+':\x20TURNIER\x20konnte\x20nicht\x20geladen\x20werden.';}if(_0x407b7c!==null)try{localStorage[_0x52e3('0x323')](_0x52e3('0x28f'),JSON['stringify'](_0x407b7c));}catch(_0x16123e){LS[_0x52e3('0x273')]='F'+_0x16123e+':\x20AKTUELLES\x20konnte\x20nicht\x20geladen\x20werden.';}if(_0x5057a1!==null)try{localStorage[_0x52e3('0x323')](_0x52e3('0x2a7'),JSON[_0x52e3('0xbb')](_0x5057a1));}catch(_0x2a4a7c){LS[_0x52e3('0x273')]='F'+_0x2a4a7c+_0x52e3('0x36');}if(_0x51f586!==null)try{localStorage['setItem'](_0x52e3('0x1ea'),JSON[_0x52e3('0xbb')](_0x51f586));}catch(_0x2c8f84){LS[_0x52e3('0x273')]='F'+_0x2c8f84+':\x20SPIELERalpha\x20konnte\x20nicht\x20geladen\x20werden.';}navigator[_0x52e3('0x2c8')]?(loadCUPS(),_0x255159&&$(_0x52e3('0xc4'))[_0x52e3('0x256')](_0x52e3('0x159'))['show']()):showEinenFehler(_0x52e3('0xe6'),_0x52e3('0x168'),_0x52e3('0x44')),$(_0x52e3('0x324'))[_0x52e3('0x31e')]({'collapsed':![]}),$('#bAL,#bCT,#bLC,#bET,#bFC,#PR,#bTR,#bAR')[_0x52e3('0x31e')]({'collapsed':!![]});}function showLOG(){'use strict';if($(_0x52e3('0x94'))['is'](_0x52e3('0x31a')))$(_0x52e3('0x94'))['hide']();else{var _0x53f7fb=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x19e')));$(_0x52e3('0x94'))['html'](_0x53f7fb)[_0x52e3('0xb4')]();}}function fZuMeinemTisch(){'use strict';$(_0x52e3('0x9e'))[_0x52e3('0x256')](CUPS[_0x52e3('0x248')][LS['I']]+_0x52e3('0xae')),$(_0x52e3('0x6a'))[_0x52e3('0x13')](_0x52e3('0x23f'));var _0x23d7e0=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x154')));CUPS['TURNIER'][LS['I']]&&CUPS[_0x52e3('0x1a1')][LS['I']]!==_0x52e3('0xe9')&&($(_0x52e3('0x2e3'))['addClass'](_0x52e3('0x23f')),LS['SpieleJeRunde']>LS[_0x52e3('0x2cb')]&&$('#bSpeichern')[_0x52e3('0x8')](_0x52e3('0x23f')),LS[_0x52e3('0x2cb')]!==0x0&&$(_0x52e3('0x1c1'))[_0x52e3('0x8')](_0x52e3('0x23f')));LS[_0x52e3('0x26')]&&!LS['AnzGespeichert']?$(_0x52e3('0x1fe'))['removeClass'](_0x52e3('0x23f')):$('#bTischLoeschen')[_0x52e3('0x8')](_0x52e3('0x23f'));if(!LS[_0x52e3('0x2b4')]||LS[_0x52e3('0x2cb')]===-0x1||LS[_0x52e3('0x26')]<0x4)$('#bWeiter')[_0x52e3('0x8')](_0x52e3('0x23f')),$('#bSpieler')[_0x52e3('0x8')](_0x52e3('0x23f')),$('#bSpeichern')[_0x52e3('0x8')](_0x52e3('0x23f')),$(_0x52e3('0x52'))[_0x52e3('0x2d4')]();else{_0x23d7e0=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x154')));var _0x1738c3='';for(var _0x26b107=0x1;_0x26b107<=0x6;_0x26b107++){if(LS[_0x52e3('0x2b4')][_0x26b107])_0x1738c3=_0x1738c3+'<tr><td>&nbsp;'+LS[_0x52e3('0x277')][_0x26b107]+'\x20'+LS['VName'][_0x26b107]+LS[_0x52e3('0x2fe')][_0x26b107]+_0x52e3('0x1b')+_0x23d7e0['Punkte'][_0x26b107][0x0]+_0x52e3('0x26a');else LS[_0x52e3('0x22c')][_0x26b107]!==0x0&&(_0x1738c3=_0x1738c3+_0x52e3('0xd2')+_0x23d7e0[_0x52e3('0x1e5')][_0x26b107][0x0]+_0x52e3('0x26a'));}_0x1738c3&&($(_0x52e3('0x1c2'))[_0x52e3('0x260')](),$(_0x52e3('0x1ac'))[_0x52e3('0x15a')](_0x1738c3));if(LS['AnzGespeichert']===0x0)$(_0x52e3('0x14b'))[_0x52e3('0x1f2')](_0x52e3('0x93')+LS[_0x52e3('0x2cb')]+_0x52e3('0x2c'));else LS[_0x52e3('0x2db')]===LS[_0x52e3('0x26')]?($('#bWeiter')[_0x52e3('0x8')](_0x52e3('0x23f')),$(_0x52e3('0x2e3'))[_0x52e3('0x8')](_0x52e3('0x23f')),$(_0x52e3('0x52'))[_0x52e3('0x2d4')]()):LS['AnzGespeichert']>0x0?$(_0x52e3('0x14b'))[_0x52e3('0x256')](_0x52e3('0x241')+(LS[_0x52e3('0x26')]-LS[_0x52e3('0x2db')])+_0x52e3('0x225')+(LS['gespielt']>0x0?'gespeichert':_0x52e3('0x348'))+_0x52e3('0x193'))[_0x52e3('0x8')](_0x52e3('0x78')):$(_0x52e3('0x14b'))[_0x52e3('0x256')](_0x52e3('0x2e6')+(LS['gespielt']>0x0?'gespeichert':'storniert')+_0x52e3('0x12b'))['addClass']('cRot');(LS[_0x52e3('0x2db')]>0x0&&LS[_0x52e3('0x2db')]!==LS[_0x52e3('0x26')]||LS[_0x52e3('0x2b4')][0x0]===_0x52e3('0x2a'))&&($(_0x52e3('0x20f'))[_0x52e3('0x8')](_0x52e3('0x23f')),$('#bSpieler')[_0x52e3('0x8')](_0x52e3('0x23f'))),(LS[_0x52e3('0x2db')]===LS[_0x52e3('0x26')]||LS[_0x52e3('0x2cb')]===0x0)&&$('#bSpeichern')[_0x52e3('0x8')](_0x52e3('0x23f')),LS[_0x52e3('0x2db')]>0x0&&LS[_0x52e3('0x2db')]!==LS[_0x52e3('0x26')]&&($(_0x52e3('0x6a'))['removeClass'](_0x52e3('0x23f')),$('#bWeiter,#bSpieler')[_0x52e3('0x8')](_0x52e3('0x23f')));}checkVersion(),/iPad|iPhone|iPod/['test'](navigator[_0x52e3('0x6f')])&&!window[_0x52e3('0x145')]?setTimeout(function(){$(_0x52e3('0x48'))['popup'](_0x52e3('0xe2'))[_0x52e3('0xb4')]();},0xc8):$(_0x52e3('0x48'))[_0x52e3('0xce')](_0x52e3('0xe2'))[_0x52e3('0xb4')]();}function resetLastBtn(){if(LS['LastBtn']){$(LS['LastBtn'])['removeClass']('ui-btn-active');if(LS[_0x52e3('0x99')][0x4]==='5'||LS['LastBtn'][_0x52e3('0x26e')](0x4,0x2)==='49'){if(LS[_0x52e3('0x99')][_0x52e3('0x2a6')]>0x6){if(LS[_0x52e3('0x99')][_0x52e3('0x26e')](0x4,0x3)===_0x52e3('0x1fc'))$(LS['LastBtn'])[_0x52e3('0x8')]('cTOF');else{if(LS[_0x52e3('0x99')][_0x52e3('0x26e')](0x4,0x3)===_0x52e3('0x13c'))$(LS['LastBtn'])[_0x52e3('0x8')](_0x52e3('0x6c'));else{if(LS['LastBtn'][_0x52e3('0x26e')](0x4,0x3)==='51T')$(LS[_0x52e3('0x99')])[_0x52e3('0x8')](_0x52e3('0x31f'));else{if(LS['LastBtn']['substr'](0x4,0x3)===_0x52e3('0x1f0'))$(LS[_0x52e3('0x99')])[_0x52e3('0x8')](_0x52e3('0x5'));else{if(LS[_0x52e3('0x99')][_0x52e3('0x26e')](0x4,0x3)===_0x52e3('0x8a'))$(LS[_0x52e3('0x99')])['addClass'](_0x52e3('0x55'));else{if(LS[_0x52e3('0x99')][_0x52e3('0x26e')](0x4,0x3)===_0x52e3('0x34b'))$(LS[_0x52e3('0x99')])[_0x52e3('0x8')](_0x52e3('0x2da'));else{if(LS[_0x52e3('0x99')][_0x52e3('0x26e')](0x4,0x3)==='55T')$(LS[_0x52e3('0x99')])[_0x52e3('0x8')](_0x52e3('0x22b'));else LS['LastBtn'][_0x52e3('0x26e')](0x4,0x3)===_0x52e3('0x190')?$(LS[_0x52e3('0x99')])[_0x52e3('0x8')]('cWTC'):$(LS[_0x52e3('0x99')])[_0x52e3('0x8')]('cDIV');}}}}}}}else(LS[_0x52e3('0x99')]['substr'](0x4,0x2)==='49'||LS[_0x52e3('0x99')]['substr'](0x4,0x2)==='50'||LS[_0x52e3('0x99')]['substr'](0x4,0x2)==='52')&&$(LS[_0x52e3('0x99')])[_0x52e3('0x8')](_0x52e3('0x2a5'));}else{if(LS[_0x52e3('0x99')][LS[_0x52e3('0x99')][_0x52e3('0x2a6')]-0x1]==='T')$(LS[_0x52e3('0x99')])[_0x52e3('0x8')]('cDIV');else{var _0x2038aa=parseInt(LS[_0x52e3('0x99')][_0x52e3('0x26e')](0x4));if(_0x2038aa){var _0x462785=getClass(_0x2038aa);_0x462785&&$(LS[_0x52e3('0x99')])[_0x52e3('0x8')](_0x462785);}}}}}function getMELDAKT(_0x2cf260){return CUPS[_0x52e3('0x1a2')][_0x2cf260]?CUPS[_0x52e3('0x1a2')][_0x2cf260]===LS[_0x52e3('0x105')][_0x2cf260]?CUPS[_0x52e3('0x1a2')][_0x2cf260]:_0x52e3('0x169')+CUPS[_0x52e3('0x1a2')][_0x2cf260]+_0x52e3('0x1ca'):_0x52e3('0x25d');}function getMeldSTAT(_0x187729){if(CUPS[_0x52e3('0x19b')][_0x187729]==='AR')return _0x52e3('0x17a');else{if(CUPS['TYP'][_0x187729]==='PR'&&CUPS['MEZULETZT'][I]+0x16d*0x5265c00<Date[_0x52e3('0x137')]())return _0x52e3('0x5b');}return CUPS[_0x52e3('0x161')][_0x187729]?CUPS[_0x52e3('0x161')][_0x187729]===LS[_0x52e3('0x104')][_0x187729]?CUPS[_0x52e3('0x161')][_0x187729]:_0x52e3('0x169')+CUPS[_0x52e3('0x161')][_0x187729]+_0x52e3('0x1ca'):_0x52e3('0x285');}function showCup(_0x4f098b,_0x1c27ba,_0x49910f){'use strict';LS[_0x52e3('0x21f')]&&hrefStatistik(_0x4f098b);var _0xd71e24='#'+_0x1c27ba+_0x4f098b;if(!QUERFORMAT()){if(LS[_0x52e3('0x99')]){if(_0x1c27ba){var _0x54d89f=LS['LastBtn'];typeof _0x49910f!==_0x52e3('0x1ec')&&(_0x49910f===-0x1?_0xd71e24='#'+_0x1c27ba+_0x4f098b+'T':_0xd71e24='#'+_0x1c27ba+_0x4f098b+'T'+_0x49910f);var _0x334174=$(_0x54d89f)[_0x52e3('0x2a6')];_0x334174&&(_0x334174=parseInt($(_0x54d89f)[_0x52e3('0x226')]()[_0x52e3('0x14a')]));var _0x4f6d3=parseInt($(_0xd71e24)[_0x52e3('0x226')]()[_0x52e3('0x14a')]),_0x5be5f4=parseInt($(_0x52e3('0x221'))['scrollTop']()),_0x2f2638=parseInt($(_0x52e3('0x82')+LS[_0x52e3('0x99')]['substr'](0x1))[_0x52e3('0x29a')]());_0x334174<_0x4f6d3&&_0x334174<0x3c&&$(_0x52e3('0x221'))['scrollTop'](_0x5be5f4+_0x4f6d3-_0x2f2638-0x64);}if($(_0x52e3('0x82')+LS[_0x52e3('0x99')][_0x52e3('0x26e')](0x1))['is'](_0x52e3('0x31a'))){$('#tgl'+LS[_0x52e3('0x99')]['substr'](0x1))[_0x52e3('0x2fc')]('show'),resetLastBtn();if(LS['LastBtn']===_0xd71e24){LS[_0x52e3('0x99')]='';return;}}}}LS['ShowCups']=I=_0x4f098b;if(LS[_0x52e3('0x273')])var _0x15fb6b=LS['Meldung'];_0x1c27ba&&(resetLastBtn(),typeof _0x49910f!==_0x52e3('0x1ec')&&(_0x49910f===-0x1?_0xd71e24='#'+_0x1c27ba+_0x4f098b+'T':_0xd71e24='#'+_0x1c27ba+_0x4f098b+'T'+_0x49910f),LS[_0x52e3('0x99')]=_0xd71e24);if(LS[_0x52e3('0x99')]){var _0x178c2c=LS['LastBtn'][_0x52e3('0x141')]('T');_0x178c2c>0x3?_0x178c2c+0x1===LS[_0x52e3('0x99')]['length']?_0x178c2c=-0x1:_0x178c2c=0x1:_0x178c2c=0x0;if(_0x49910f===-0x1||_0x178c2c===-0x1)$(LS['LastBtn'])[_0x52e3('0x8')](_0x52e3('0x290'))[_0x52e3('0x13')](_0x52e3('0x114'))[_0x52e3('0x13')]('fGruen')[_0x52e3('0x13')](_0x52e3('0x2a5'));else _0x49910f||_0x178c2c?$(LS[_0x52e3('0x99')])[_0x52e3('0x8')](_0x52e3('0x290'))[_0x52e3('0x13')](_0x52e3('0x6c'))['removeClass'](_0x52e3('0x31f'))[_0x52e3('0x13')](_0x52e3('0x5'))[_0x52e3('0x13')]('cSWC')['removeClass'](_0x52e3('0x2da'))[_0x52e3('0x13')]('cTTC')[_0x52e3('0x13')](_0x52e3('0x108'))['removeClass'](_0x52e3('0x33c'))['removeClass'](_0x52e3('0x2a5'))[_0x52e3('0x13')]('fGruen'):((_0x4f098b===0x31||_0x4f098b===0x32||_0x4f098b===0x34)&&$(LS[_0x52e3('0x99')])[_0x52e3('0x13')](_0x52e3('0x2a5')),$(LS[_0x52e3('0x99')])[_0x52e3('0x8')]('ui-btn-active')[_0x52e3('0x13')](_0x52e3('0x114'))[_0x52e3('0x13')](_0x52e3('0x1d6')));$(_0x52e3('0x82')+LS['LastBtn']['substr'](0x1))[_0x52e3('0x2fc')](_0x52e3('0xb4'));}writeCanvas(I);var _0x478d6a=_0x52e3('0x313'),_0x464c6d='',_0x3bd645='';if(CUPS[_0x52e3('0x2ac')][_0x52e3('0x2a6')]>I&&CUPS[_0x52e3('0x2ac')][I])_0x464c6d=_0x52e3('0x342')+(CUPS[_0x52e3('0x1a1')][I]?_0x52e3('0x10b'):_0x52e3('0x182'))+_0x52e3('0x1ed'),myDateString(getNextTermin(I))===hHeute?(_0x464c6d+='<span\x20class=cGruen>Heute',CUPS[_0x52e3('0xc')][I]&&(_0x464c6d+=',\x20'+CUPS[_0x52e3('0xc')][I]+'\x20Uhr'),_0x464c6d+=_0x52e3('0x1ca')):_0x464c6d+=getDateString(getNextTermin(I)),_0x464c6d+=_0x52e3('0xcb'),typeof CUPS[_0x52e3('0x2e')][I]==='number'&&(CUPS[_0x52e3('0x2e')][I]>Date[_0x52e3('0x137')]()?_0x464c6d+=_0x52e3('0x199'):_0x464c6d+=_0x52e3('0x270')),_0x3bd645=_0x52e3('0x313')+_0x464c6d['replace'](/XL/g,'M3'),_0x464c6d+='<br>',_0x478d6a=_0x52e3('0x20');else _0x49910f!==![]&&!isNaN(_0x49910f)&&(_0x49910f>=0x0&&CUPS[_0x52e3('0x292')][_0x49910f][_0x52e3('0x16')]===I&&(_0x464c6d=_0x52e3('0x1d1')+_0x52e3('0x87')+getDateString(CUPS[_0x52e3('0x292')][_0x49910f][_0x52e3('0x176')])+_0x52e3('0x2d6')+_0x52e3('0x14e')+_0x52e3('0x331')+CUPS[_0x52e3('0x292')][_0x49910f][_0x52e3('0x248')]+'</b></span><br>'+getTerminText(_0x49910f)+_0x52e3('0x2d6')+'</div><br>',_0x478d6a=_0x52e3('0x20')));CUPS[_0x52e3('0x19b')][I]==='CUP'&&(_0x478d6a=_0x52e3('0x20'));_0x478d6a=_0x52e3('0x313');var _0x5469ff=parseInt($(window)[_0x52e3('0x26f')]()-$(_0x52e3('0xf8'))[_0x52e3('0x29a')]()-0x1);CUPS['TURNIER'][I]||CUPS['ANMELDERF'][I]?$(_0x52e3('0x96'))['html']('<div\x20id=\x22ddRumpf\x22\x20style=\x22width:100%;\x20margin-left:\x20auto;\x20margin-right:\x20auto;\x20overflow-y:\x20auto;\x20height:'+_0x5469ff+_0x52e3('0x8d')+_0x52e3('0x183')+'<br>'+_0x52e3('0x123')+(I===0x31?_0x478d6a+'<div\x20class=\x22M\x22\x20style=\x22width:92%;text-align:justify;\x22>Seit\x202008\x20findet\x20jedes\x20Jahr\x20im\x20April\x20das\x20Tarock-Österreich-Finale\x20im\x20Königrufen\x20statt.\x20Die\x20besten\x20Tarockspieler\x20aus\x20ganz\x20Österreich\x20treffen\x20sich\x20im\x20Casino\x20Linz\x20zu\x20einem\x20Tarockevent\x20der\x20Extraklasse.</div>':'')+(I===0x32&&!mHausruckAktiv?_0x478d6a+_0x52e3('0x307')+_0x52e3('0xe5')+_0x52e3('0x22f'):'')+(I===0x34&&!mRaiffeisenAktiv?_0x478d6a+_0x52e3('0x28a')+_0x52e3('0x1af'):'')+(I===0x35&&!mSauwaldAktiv?_0x478d6a+_0x52e3('0xab')+_0x52e3('0x113'):'')+(I===0x37&&!mTirolAktiv?_0x478d6a+_0x52e3('0x10d')+'E-Mail:&nbsp;&nbsp;<span\x20class=\x22cBlau\x20P\x20M2\x22\x20onclick=\x22window.location.href=\x27mailto:treff.tarock@chello.at\x27;\x22\x20>treff.tarock@chello.at</span><br>':'')+(I===0x10?_0x478d6a+_0x52e3('0x233'):'')+((I===0x10||I===0x31||I===0x32||I===0x34)&&(CUPS[_0x52e3('0x1a2')][I]||CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0)?_0x478d6a+'<span\x20class=\x22cBlau\x20P\x20XL\x22\x20onClick=\x22hrefStatistik('+I+_0x52e3('0x25c')+getMELDAKT(I)+_0x52e3('0x20'):'')+(I!==0x10&&I!==0x31&&I!==0x32&&I!==0x34&&I!==0x35&&I!==0x37||I===0x32&&mHausruckAktiv||I===0x34&&mRaiffeisenAktiv||I===0x35&&mSauwaldAktiv||I===0x37&&mTirolAktiv||I===0x4d?_0x478d6a+'<span\x20id=bZurStatistik\x20class=\x22cBlau\x20P\x20XL\x22\x20onclick=\x22hrefStatistik('+I+_0x52e3('0x7d')+(CUPS[_0x52e3('0x19b')][I]!=='PR'||CUPS['MEZULETZT'][I]+0x16d*0x5265c00>Date[_0x52e3('0x137')]()?_0x52e3('0x20')+getMeldSTAT(I)+_0x52e3('0x20'):_0x52e3('0x15f'))+(CUPS[_0x52e3('0x1a1')][I]&&(CUPS[_0x52e3('0x1a2')][I]||CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0)&&CUPS[_0x52e3('0x1a1')][I]!==_0x52e3('0xe9')?_0x478d6a+'<span\x20class=\x22cBlau\x20P\x20XL\x22\x20onClick=\x22hrefStatistik('+I+',\x20\x27?Aktuelles\x27);\x22><b>Aktuelles</b></span><br>'+getMELDAKT(I)+'<br>':'')+(APP&&(CUPS['TURNIER'][I]&&CUPS[_0x52e3('0x1a1')][I]!==_0x52e3('0xe9')&&(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS['BEREadmin'][I][_0x52e3('0x297')]('*')>=0x0||I<=0x3))?_0x478d6a+_0x52e3('0x1b8'):'')+(APP&&((!CUPS[_0x52e3('0x1a1')][I]||CUPS[_0x52e3('0x1a1')][I]===_0x52e3('0xe9'))&&(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS['BEREschreiben'][I]['indexOf'](LS['ME'])>=0x0||(CUPS[_0x52e3('0x1c')][I]['indexOf']('*')>=0x0||CUPS[_0x52e3('0x202')][I][_0x52e3('0x297')]('*')>=0x0)&&LS['ME']!=='NOBODY'||I<=0x7)&&I!==0x50)?_0x478d6a+_0x52e3('0x2b2')+I+_0x52e3('0x281'):'')+(APP&&CUPS['ANMELDERF'][I]?_0x478d6a+_0x52e3('0x1c5')+I+_0x52e3('0x124'):''):'')+(APP&&(I!==0x38||LS['ME']===_0x52e3('0x138'))&&(CUPS[_0x52e3('0x1c')][I][_0x52e3('0x297')](LS['ME'])>=0x0||LS['ME']===_0x52e3('0x138')||I<=0x2||(CUPS[_0x52e3('0x19b')][I]===_0x52e3('0x16')||CUPS[_0x52e3('0x19b')][I]==='ET'||CUPS['TYP'][I]==='MT')&&(CUPS['BEREschreiben'][I][_0x52e3('0x297')](LS['ME'])>=0x0||LS['ME']===meinStellvertreter))?_0x478d6a+'<span\x20class=\x22cBlau\x20P\x20L\x22\x20onclick=\x22hrefParameterAendern('+I+')\x22\x20><b>Parameter\x20ändern</b></span><br>':'')+(APP&&PC&&(I===0x3&&LS['ME']===_0x52e3('0x138')||I===0x35&&LS['ME']===_0x52e3('0x1e6')||I===0x36&&(LS['ME']===_0x52e3('0x29c')||LS['ME']===_0x52e3('0xdd'))||I===0x37&&LS['ME']===_0x52e3('0x23')||I===0x4d&&LS['ME']===_0x52e3('0x138')||I===0x7d&&LS['ME']==='3425')?_0x478d6a+_0x52e3('0x33d'):'')+_0x52e3('0x2bd')+_0x478d6a+(I===0x38?_0x52e3('0x72'):'')+getCupText()+'</div></div>'+((I===0x32||I===0x34)&&CUPS[_0x52e3('0x161')][I]?_0x478d6a+_0x52e3('0x3')+CUPS[_0x52e3('0x161')][I]+_0x52e3('0xb0'):'')+_0x478d6a+_0x464c6d+(I===0x50||CUPS[_0x52e3('0x1a1')][I]&&CUPS[_0x52e3('0x1a1')][I]!==_0x52e3('0xe9')&&(isNaN(_0x49910f)||_0x49910f===![])?getTurnierkalender():'')+_0x52e3('0x22d')):$('#dRumpf')[_0x52e3('0x256')](_0x52e3('0x140')+_0x5469ff+_0x52e3('0x8d')+_0x52e3('0x311')+_0x52e3('0x313')+_0x464c6d+_0x52e3('0x5a')+I+')\x22\x20><b>Zur\x20Statistik</b></span>'+(CUPS[_0x52e3('0x19b')][I]!=='PR'||CUPS['MEZULETZT'][I]+0x16d*0x5265c00>Date[_0x52e3('0x137')]()?'<br>'+getMeldSTAT(I)+_0x52e3('0x20'):_0x52e3('0x15f'))+(APP&&(CUPS['BEREadmin'][I][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][I][_0x52e3('0x297')](LS['ME'])>=0x0||(CUPS['BEREadmin'][I][_0x52e3('0x297')]('*')>=0x0||CUPS[_0x52e3('0x202')][I]['indexOf']('*')>=0x0)&&LS['ME']!==_0x52e3('0xfc')||I<=0x7)?_0x478d6a+(LS['I']===I?_0x52e3('0x1d3')+LS['gespielt']+_0x52e3('0x1d4'):_0x52e3('0x2b2')+I+')\x22><b>Ein\x20neuer\x20Tisch</b></span><br>Vivat\x20Valat!<br>'):'')+(APP&&(CUPS[_0x52e3('0x19b')][I]!==_0x52e3('0x16')&&CUPS[_0x52e3('0x1c')][I]['indexOf'](LS['ME'])>=0x0||LS['ME']===_0x52e3('0x138')||I<=0x2)?_0x478d6a+_0x52e3('0x1fb')+I+_0x52e3('0xf7'):'')+_0x478d6a+getCupText()+_0x52e3('0x22d')),$(_0x52e3('0x22'))[_0x52e3('0x2ba')](function(){this[_0x52e3('0xa7')][_0x52e3('0x14c')](_0x52e3('0x184'),'none',_0x52e3('0x146'));}),_0x15fb6b?$('#hfText')[_0x52e3('0x256')](_0x52e3('0x18f')+_0x15fb6b+_0x52e3('0x2d6')+CUPS[_0x52e3('0x27a')][_0x4f098b]+_0x3bd645):$(_0x52e3('0x235'))[_0x52e3('0x256')](CUPS[_0x52e3('0x27a')][_0x4f098b]+_0x3bd645);}function listVersion(){'use strict';var _0x584d58=getVersionsDatum(),_0x4df3a5=_0x584d58[_0x52e3('0xc1')]()+'.'+(_0x584d58[_0x52e3('0xac')]()+0x1)+'.'+_0x584d58['getDate']();$(_0x52e3('0xaf'))[_0x52e3('0x1f2')](_0x4df3a5);LS[_0x52e3('0x273')]&&writeLOG(_0x52e3('0x2d9')+LS[_0x52e3('0x273')]);var _0x5f2981=new Date(CUPS[_0x52e3('0xc9')]),_0x2f83fa=new Date();new Date(_0x52e3('0x1b1'))[_0x52e3('0x69')]()!==0x13&&$(_0x52e3('0xc4'))[_0x52e3('0x15a')](_0x52e3('0x28d')+_0x52e3('0x33f')+_0x52e3('0x227')+_0x52e3('0x2b5'))[_0x52e3('0xb4')](),(_0x5f2981['getFullYear']()>_0x2f83fa[_0x52e3('0xc1')]()||_0x5f2981[_0x52e3('0x3a')]()>_0x2f83fa[_0x52e3('0x3a')]()+0xea60*0x3c)&&$(_0x52e3('0xc4'))[_0x52e3('0x15a')](_0x52e3('0x27e')+_0x52e3('0x5d'))['show'](),_0x5f2981[_0x52e3('0xc1')]()<_0x2f83fa[_0x52e3('0xc1')]()&&$('#dMeldung')[_0x52e3('0x15a')](_0x52e3('0x258')+_0x2f83fa[_0x52e3('0xc1')]()+_0x52e3('0x20')+_0x52e3('0x231')+_0x52e3('0x24c')+'informiere\x20einen\x20Administrator.<br>')['show']();}function toggleTechDetails(){$(_0x52e3('0x2fa'))['is'](_0x52e3('0x116'))?($(_0x52e3('0x2fa'))[_0x52e3('0x256')](_0x52e3('0x2f2')+'Date():\x20'+new Date()[_0x52e3('0x3c')]()+_0x52e3('0x20')+_0x52e3('0x32c')+location[_0x52e3('0x2c9')]+'<br>'+'location.origin:\x20'+location[_0x52e3('0x149')]+_0x52e3('0x20')+'location.path:\x20'+location[_0x52e3('0x2e5')]+_0x52e3('0x20')+(window['matchMedia'](_0x52e3('0xe8'))[_0x52e3('0x2a1')]?_0x52e3('0x8c'):'display-mode:\x20multi<br>')+_0x52e3('0x63')+navigator[_0x52e3('0x10c')]+_0x52e3('0x20')+_0x52e3('0x50')+performance[_0x52e3('0x33b')][_0x52e3('0xc0')]+_0x52e3('0x20')+_0x52e3('0x1a4')+navigator[_0x52e3('0x2ce')]+_0x52e3('0x20')+_0x52e3('0x76')+navigator[_0x52e3('0x6f')]+_0x52e3('0x20')+_0x52e3('0x196')+navigator[_0x52e3('0x18d')]+_0x52e3('0x20')+(/iPad|iPhone|iPod/['test'](navigator[_0x52e3('0x6f')])&&!window[_0x52e3('0x145')]?_0x52e3('0x7a')+window[_0x52e3('0x22e')][_0x52e3('0x33b')]['type']+'<br>':'')+_0x52e3('0x2bf')+screen[_0x52e3('0x2f9')]+_0x52e3('0x20')+_0x52e3('0x28c')+'<span\x20id=\x22p361\x22>portrait:\x20361-450px<br></span>'+_0x52e3('0x272')+_0x52e3('0x81')+QUERFORMAT()+_0x52e3('0x20')+_0x52e3('0xf9')+screen[_0x52e3('0x2d3')]+_0x52e3('0xed')+screen['height']+_0x52e3('0x20')+'innersize:\x20'+$(window)[_0x52e3('0x144')]()+'\x20x\x20'+$(window)[_0x52e3('0x26f')]()+_0x52e3('0x20')+_0x52e3('0x15d')+history[_0x52e3('0x2a6')]+_0x52e3('0x20')+_0x52e3('0xe3')+document[_0x52e3('0x1e3')]+_0x52e3('0x20')+_0x52e3('0x298')+JSON[_0x52e3('0xbb')](screen)+_0x52e3('0x20')+_0x52e3('0xa5')+location[_0x52e3('0x1bd')]+_0x52e3('0x20'))[_0x52e3('0xb4')](),$(_0x52e3('0x221'))[_0x52e3('0xf2')](0x98967f)):$(_0x52e3('0x2fa'))[_0x52e3('0x2d4')]();}function getTIME(_0x4f4916){'use strict';var _0x145396,_0x1a4417,_0x3deaf0;return _0x3deaf0=new Date(_0x4f4916),_0x3deaf0?(_0x145396=_0x3deaf0[_0x52e3('0x69')](),_0x1a4417=_0x3deaf0[_0x52e3('0x1ab')](),_0x145396<0xa&&(_0x145396='0'+_0x145396),_0x1a4417<0xa&&(_0x1a4417='0'+_0x1a4417),_0x145396+':'+_0x1a4417):_0x52e3('0x84');}function windowLocationReplace(){'use strict';setTimeout(function(){window[_0x52e3('0x14d')][_0x52e3('0x211')](_0x52e3('0x10'));},0x14);}function initExtraButtons(){'use strict';APP&&(LS['ME']===_0x52e3('0x138')||LS['ME']===_0x52e3('0x23')||LS['ME']===_0x52e3('0xfc'))?$(_0x52e3('0x11b'))[_0x52e3('0xb4')]():$(_0x52e3('0x11b'))[_0x52e3('0x2d4')](),$(_0x52e3('0x294'))[_0x52e3('0x2d4')](),(LS['ME']===_0x52e3('0x138')||CUPS[_0x52e3('0x1c')][0x32][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][0x32][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS['BEREadmin'][0x33][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][0x33][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x34][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][0x34][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x35]['indexOf'](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][0x35]['indexOf'](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x36][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS['BEREschreiben'][0x36]['indexOf'](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x37]['indexOf'](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][0x37][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x38]['indexOf'](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][0x38][_0x52e3('0x297')](LS['ME'])>=0x0)&&$('#bAdminTools,#bFindSpieler')[_0x52e3('0xb4')](),(LS['ME']===_0x52e3('0x138')||LS['ME']===_0x52e3('0x2ad'))&&$(_0x52e3('0x13b'))[_0x52e3('0xb4')](),(LS['ME']===_0x52e3('0x67')||LS['ME']===_0x52e3('0x5e')||LS['ME']===_0x52e3('0x24e'))&&$(_0x52e3('0xa9'))[_0x52e3('0xb4')](),!QUERFORMAT()&&$(_0x52e3('0x20b'))[_0x52e3('0x2d4')]();}function whenSPIELERloaded(){LS[_0x52e3('0xcd')]=isVIP(SPIELERext[LS['ME']][0xc]),localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS));}function getClass(_0x50e033){if(_0x50e033===LS['I'])return'cAktiv';if(CUPS[_0x52e3('0x19b')][_0x50e033]==='PR'&&LS['ME']===_0x52e3('0xfc'))return _0x52e3('0x23f');var _0x398df4='';return(CUPS[_0x52e3('0x19b')][_0x50e033]==='WR'||CUPS[_0x52e3('0x19b')][_0x50e033]==='FC'||CUPS[_0x52e3('0x19b')][_0x50e033]==='TC'||CUPS['TYP'][_0x50e033]==='PR'&&CUPS[_0x52e3('0x339')][_0x50e033]+0x16d*0x5265c00>Date[_0x52e3('0x137')]())&&(CUPS[_0x52e3('0x212')][_0x50e033][new Date()['getDay']()]==='J'&&(_0x398df4='fGruen',CUPS[_0x52e3('0x1a1')][_0x50e033]&&CUPS[_0x52e3('0x314')][_0x50e033][parseInt((new Date()['getDate']()-0x1)/0x7)]!=='J'&&(_0x398df4='')),CUPS['NEXTTERMIN'][_0x50e033]&&(CUPS[_0x52e3('0x299')][_0x50e033]>new Date()[_0x52e3('0x1f7')]()&&(_0x398df4=''),new Date(CUPS[_0x52e3('0x299')][_0x50e033])['toDateString']()===new Date()[_0x52e3('0x9f')]()&&(_0x398df4='fGruen'))),_0x398df4;}function getClassMeinTermin(_0x40a06f){if(_0x40a06f===LS['I'])return _0x52e3('0x114');var _0x274b9e=_0x52e3('0x2a5');return(CUPS['TYP'][_0x40a06f]==='WR'||CUPS['TYP'][_0x40a06f]==='FC'||CUPS['TYP'][_0x40a06f]==='TC'||CUPS['TYP'][_0x40a06f]==='PR'&&CUPS['MEZULETZT'][_0x40a06f]+0x16d*0x5265c00>Date[_0x52e3('0x137')]())&&(CUPS[_0x52e3('0x212')][_0x40a06f][new Date()[_0x52e3('0x42')]()]==='J'&&(_0x274b9e=_0x52e3('0x1d6'),CUPS[_0x52e3('0x1a1')][_0x40a06f]&&CUPS['WOCHEN'][_0x40a06f][parseInt((new Date()[_0x52e3('0xa2')]()-0x1)/0x7)]!=='J'&&(_0x274b9e=_0x52e3('0x2a5'))),CUPS[_0x52e3('0x299')][_0x40a06f]&&(CUPS[_0x52e3('0x299')][_0x40a06f]>new Date()['valueOf']()&&(_0x274b9e=_0x52e3('0x2a5')),new Date(CUPS[_0x52e3('0x299')][_0x40a06f])[_0x52e3('0x9f')]()===new Date()[_0x52e3('0x9f')]()&&(_0x274b9e=_0x52e3('0x1d6')))),_0x274b9e;}function getCupToggleDiv(_0x3a847b,_0x5b1439,_0x2bb938){_0x5b1439===0x33&&(_0x5b1439=0x33);var _0x28d5ec=_0x3a847b+_0x5b1439;_0x2bb938&&(_0x2bb938===-0x1?_0x28d5ec=_0x3a847b+_0x5b1439+'T':_0x28d5ec=_0x3a847b+_0x5b1439+'T'+TERMINE[_0x2bb938]['I']);var _0x588a85=_0x52e3('0x24a')+_0x28d5ec+_0x52e3('0x136');_0x2bb938&&_0x2bb938!==-0x1&&(_0x588a85+=_0x52e3('0x88')+TERMINE[_0x2bb938][_0x52e3('0x1ae')][_0x52e3('0x211')](/;/g,_0x52e3('0x20'))[_0x52e3('0x211')](/ß/g,_0x52e3('0x6e'))+_0x52e3('0x2d6'));var _0x2043d8=0x0,_0x5576ec=![],_0x1f05c4=![];if(CUPS[_0x52e3('0x1a1')][_0x5b1439]||CUPS[_0x52e3('0x2ac')][_0x5b1439]){for(var _0x710e00 in CUPS['TERMINE']){if(CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x16')]===_0x5b1439){if(CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x176')]>=hHeute){if(CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x176')]===hHeute){_0x1f05c4=!![];if(CUPS['TERMINE'][_0x710e00]['BEGINN']&&CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x2f7')]>new Date()[_0x52e3('0x69')]()||(_0x5b1439===0x36||_0x5b1439===0x38)&&new Date()['getHours']()<0x10||_0x5b1439!==0x36&&_0x5b1439!==0x38&&new Date()[_0x52e3('0x69')]()<0x14){_0x2043d8=CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x176')],_0x5576ec=_0x710e00;break;}}else{_0x2043d8=CUPS['TERMINE'][_0x710e00][_0x52e3('0x176')],_0x5576ec=_0x710e00;break;}}}}if((CUPS[_0x52e3('0x19b')][_0x5b1439]==='CUP'||CUPS[_0x52e3('0x19b')][_0x5b1439]==='ET'||CUPS['TYP'][_0x5b1439]==='MT')&&_0x2043d8){var _0x23d682=0x0,_0x476405=![];for(var _0x710e00 in CUPS[_0x52e3('0x292')]){if(CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x16')]===_0x5b1439&&_0x710e00!==_0x5576ec){if(CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x176')]>=hHeute){if(CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x176')]===hHeute){_0x1f05c4=!![];if(CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x2f7')]&&CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x2f7')]>new Date()['getHours']()||(_0x5b1439===0x36||_0x5b1439===0x38)&&new Date()[_0x52e3('0x69')]()<0x10||_0x5b1439!==0x36&&_0x5b1439!==0x38&&new Date()[_0x52e3('0x69')]()<0x14){_0x23d682=CUPS['TERMINE'][_0x710e00]['DATUM'],_0x476405=_0x710e00;break;}}else{_0x23d682=CUPS[_0x52e3('0x292')][_0x710e00][_0x52e3('0x176')],_0x476405=_0x710e00;break;}}}}}}if(CUPS[_0x52e3('0x19b')][_0x5b1439]===_0x52e3('0x16')||CUPS[_0x52e3('0x19b')][_0x5b1439]==='ET'||CUPS[_0x52e3('0x19b')][_0x5b1439]==='MT')_0x5b1439!==0x31&&_0x5b1439!==0x32&&_0x5b1439!==0x34&&(_0x588a85+=(_0x1f05c4&&_0x5b1439!==0x35&&_0x5b1439!==0x37&&LS['ME'][_0x52e3('0x2a6')]===0x4&&LS[_0x52e3('0x343')]||_0x5b1439<0x8?(APP&&(LS['I']!==_0x5b1439||LS[_0x52e3('0x26')]===0x0)?_0x52e3('0x46')+_0x5b1439+');\x22>'+'<img\x20src=\x27Icons/MeinTisch.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Ein\x20neuer\x20Tisch<div\x20class=\x22S\x20N\x22>Einen\x20neuen\x20Tisch\x20eröffnen</div>':_0x52e3('0x247')+_0x52e3('0x1ce'))+'</div>':'')+_0x52e3('0x170')+_0x5b1439+_0x52e3('0x56')+_0x52e3('0x110')+getMeldSTAT(_0x5b1439)+_0x52e3('0x2d6')+_0x52e3('0x2d6')),_0x2043d8>=hHeute&&(_0x2bb938!==![]&&_0x23d682&&TERMINE[_0x2bb938][_0x52e3('0x16')]===_0x5b1439&&TERMINE[_0x2bb938][_0x52e3('0x176')]===CUPS[_0x52e3('0x292')][_0x5576ec]['DATUM']?_0x588a85+=_0x52e3('0x7b')+_0x28d5ec+_0x52e3('0x286')+_0x52e3('0x251')+(_0x23d682===hHeute?'Heute':getDateString(_0x23d682))+_0x52e3('0x220')+CUPS[_0x52e3('0x292')][_0x476405][_0x52e3('0x248')]+_0x52e3('0x22d')+_0x52e3('0x1b0')+_0x28d5ec+_0x52e3('0x66')+(CUPS['TERMINE'][_0x476405][_0x52e3('0x2f7')]?_0x52e3('0x341')+CUPS[_0x52e3('0x292')][_0x476405][_0x52e3('0x2f7')]+'.<br>':'')+CUPS['TERMINE'][_0x476405][_0x52e3('0x1ae')]+'</div>':_0x588a85+='<div\x20class=\x22ui-btn\x20M2\x20TL\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22\x20onClick=\x22$(\x27#tglXX'+_0x28d5ec+_0x52e3('0x286')+'<img\x20src=\x27Icons/Kalender.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Nächstes\x20Turnier<div\x20class=\x22S\x20N\x22>'+(_0x2043d8===hHeute?_0x52e3('0x2ae'):getDateString(_0x2043d8))+_0x52e3('0x220')+CUPS[_0x52e3('0x292')][_0x5576ec][_0x52e3('0x248')]+_0x52e3('0x22d')+_0x52e3('0x1b0')+_0x28d5ec+_0x52e3('0x66')+(CUPS[_0x52e3('0x292')][_0x5576ec][_0x52e3('0x2f7')]?'Ende\x20der\x20Anmeldung:\x20'+CUPS[_0x52e3('0x292')][_0x5576ec][_0x52e3('0x2f7')]+_0x52e3('0xeb'):'')+CUPS[_0x52e3('0x292')][_0x5576ec][_0x52e3('0x1ae')]+_0x52e3('0x2d6')),CUPS[_0x52e3('0x1a2')][_0x5b1439]&&(_0x588a85+=_0x52e3('0x170')+_0x5b1439+_0x52e3('0x245')+_0x52e3('0x27b')+getMELDAKT(_0x5b1439)+'</div>'+'</div>');else{if(CUPS[_0x52e3('0x1a1')][_0x5b1439]){var _0x116b25='';if((LS['ME']===_0x52e3('0x131')||LS['ME']===_0x52e3('0x2f5')||LS['ME']==='3425')&&_0x5b1439===0x9&&hHeute<_0x52e3('0xc3'))for(var _0x710e00 in TERMINE){TERMINE[_0x710e00][_0x52e3('0x16')]===_0x5b1439&&(_0x116b25+=TERMINE[_0x710e00][_0x52e3('0x176')]+_0x52e3('0x19f'));}var _0x21154b=![];if(LS['I']===_0x5b1439)_0x21154b=!![];else{if(LS['ME'][_0x52e3('0x2a6')]===0x4&&_0x5b1439!==0x35&&_0x5b1439!==0x37)for(var _0x710e00 in TERMINE){if(TERMINE[_0x710e00][_0x52e3('0x16')]===_0x5b1439&&TERMINE[_0x710e00][_0x52e3('0x176')]===hHeute){_0x21154b=!![],_0x116b25+=TERMINE[_0x710e00][_0x52e3('0x176')]+':\x20!!!!!!!!!<br>';break;}}}if(_0x21154b&&CUPS[_0x52e3('0x1c')][_0x5b1439][_0x52e3('0x297')](LS['ME'])>=0x0||_0x5b1439<0x8){var _0x41f8c7='';if(!LS['TURADMIN']||LS[_0x52e3('0x7c')]===LS['ME']||_0x5b1439<0x8)var _0x100d1f='';else var _0x100d1f=_0x52e3('0x30');if(LS['I']!==_0x5b1439||!LS[_0x52e3('0xe')])_0x41f8c7=_0x52e3('0x19c');else{if(LS['I']===_0x5b1439){if(LS[_0x52e3('0xe')]<CUPS[_0x52e3('0x242')][_0x5b1439])LS[_0x52e3('0xaa')]&&LS[_0x52e3('0x26')]===0x0&&LS[_0x52e3('0xe')]===0x1?_0x41f8c7=_0x52e3('0xcc')+LS[_0x52e3('0xe')]+_0x52e3('0xb9'):_0x41f8c7='Runde\x20'+LS[_0x52e3('0xe')]+_0x52e3('0xa0');else LS[_0x52e3('0xaa')]&&LS[_0x52e3('0x26')]===0x0?_0x41f8c7=_0x52e3('0x111'):_0x41f8c7='Turnier\x20beenden';!LS[_0x52e3('0x7c')]||LS[_0x52e3('0x7c')]===LS['ME']||_0x5b1439<0x8?_0x41f8c7+=_0x52e3('0x215'):_0x41f8c7+=_0x52e3('0x2f4')+LS[_0x52e3('0x7c')]+_0x52e3('0x267');}}_0x588a85+=_0x52e3('0x12e')+_0x100d1f+_0x52e3('0x1dd')+_0x5b1439+_0x52e3('0x30a')+_0x52e3('0x230')+_0x41f8c7+_0x52e3('0x2d6');}APP&&LS['ME']!=='NOBODY'&&(CUPS[_0x52e3('0x1c')][_0x5b1439][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][_0x5b1439][_0x52e3('0x297')](LS['ME'])>=0x0||_0x5b1439<0x8)?_0x21154b||_0x5b1439<0x8?LS['I']!==_0x5b1439||LS[_0x52e3('0x26')]===0x0?_0x588a85+=_0x52e3('0x46')+_0x5b1439+_0x52e3('0x56')+_0x52e3('0x2d7')+_0x52e3('0x2d6'):_0x588a85+=_0x52e3('0x247')+_0x52e3('0x1ce')+_0x52e3('0x2d6'):(LS['ME']===_0x52e3('0x131')||LS['ME']===_0x52e3('0x2f5')||LS['ME']===_0x52e3('0x138'))&&_0x5b1439===0x9&&hHeute<_0x52e3('0xc3')&&(_0x116b25+=LS['ME']+_0x52e3('0xd9')+_0x21154b+',\x20\x20Admin:\x20'+CUPS[_0x52e3('0x1c')][_0x5b1439][_0x52e3('0x297')](LS['ME'])+_0x52e3('0x1d')+CUPS[_0x52e3('0x202')][_0x5b1439][_0x52e3('0x297')](LS['ME']),writeLOG(_0x116b25)):(LS['ME']==='3013'||LS['ME']==='2624'||LS['ME']===_0x52e3('0x138'))&&_0x5b1439===0x9&&hHeute<'2020-03-03'&&(_0x116b25=LS['ME']+_0x52e3('0xd9')+_0x21154b+',\x20\x20Admin:\x20'+CUPS[_0x52e3('0x1c')][_0x5b1439][_0x52e3('0x297')](LS['ME'])+_0x52e3('0x1d')+CUPS[_0x52e3('0x202')][_0x5b1439][_0x52e3('0x297')](LS['ME']),writeLOG(_0x116b25)),_0x588a85+=_0x52e3('0x170')+_0x5b1439+_0x52e3('0x56')+_0x52e3('0x110')+getMeldSTAT(_0x5b1439)+_0x52e3('0x2d6')+_0x52e3('0x2d6'),CUPS[_0x52e3('0x2ac')][_0x5b1439]&&LS['ME']!=='NOBODY'&&(_0x588a85+=_0x52e3('0x170')+_0x5b1439+',\x20\x27?Anmeldungen\x27);\x22>'+_0x52e3('0x7')+getDateString(CUPS[_0x52e3('0x299')][_0x5b1439])+'</div>'+_0x52e3('0x2d6')),APP&&(CUPS[_0x52e3('0x1c')][_0x5b1439][_0x52e3('0x297')](LS['ME'])>=0x0||_0x5b1439<0x8)&&(_0x588a85+=_0x52e3('0x295')+_0x5b1439+_0x52e3('0x56')+_0x52e3('0xa6')+'</div>');}else{var _0x19fc23=new Date()[_0x52e3('0x42')](),_0x2a40fe=_0x19fc23-0x1;_0x19fc23===0x0?_0x2a40fe=0x6:_0x2a40fe=_0x19fc23-0x1,_0x5b1439===0x4&&(_0x5b1439=0x4),APP&&(CUPS[_0x52e3('0x1c')][_0x5b1439][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][_0x5b1439]['indexOf'](LS['ME'])>=0x0||_0x5b1439<0x8)&&((LS['I']===_0x5b1439||CUPS[_0x52e3('0x212')][_0x5b1439][_0x19fc23]==='J'||CUPS[_0x52e3('0x212')][_0x5b1439][_0x2a40fe]==='J'&&new Date()[_0x52e3('0x69')]()<=0x4)&&(LS['I']!==_0x5b1439||LS[_0x52e3('0x26')]===0x0?_0x588a85+=_0x52e3('0x46')+_0x5b1439+_0x52e3('0x56')+_0x52e3('0x2d7')+'</div>':_0x588a85+=_0x52e3('0x247')+'<img\x20src=\x27Icons/MeinTisch.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22><span\x20style=\x22color:\x20#dd1111\x22>Zu\x20meinem\x20Tisch</span><div\x20class=\x22S\x20N\x22>Weiterspielen,\x20speichern,\x20etc.</div>'+'</div>')),_0x588a85+='<div\x20class=\x22ui-btn\x20M2\x20TL\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22\x20onClick=\x22hrefStatistik('+_0x5b1439+_0x52e3('0x56')+_0x52e3('0x110')+getMeldSTAT(_0x5b1439)+_0x52e3('0x2d6')+_0x52e3('0x2d6'),APP&&CUPS[_0x52e3('0x2ac')][_0x5b1439]&&(_0x588a85+=_0x52e3('0x170')+_0x5b1439+_0x52e3('0x305')+'<img\x20src=\x27Icons/Anmeldung.png\x27\x20height=\x2248\x22\x20width=\x2248\x22\x20style=\x22float:left;margin:\x203px\x202vw\x200\x202vw\x22>Zur\x20Anmeldung<div\x20class=\x22S\x20N\x22>Nächste\x20Runde:&nbsp;&nbsp;'+getDateString(CUPS[_0x52e3('0x299')][_0x5b1439])+_0x52e3('0x2d6')+_0x52e3('0x2d6')),APP&&(CUPS[_0x52e3('0x1c')][_0x5b1439][_0x52e3('0x297')](LS['ME'])>=0x0||_0x5b1439<0x5)&&(_0x588a85+='<div\x20class=\x22ui-btn\x20M2\x20TL\x22\x20style=\x22margin:10px\x206px\x200\x206px\x22\x20onClick=\x22hrefParameterAendern('+_0x5b1439+_0x52e3('0x56')+_0x52e3('0x2a3')+_0x52e3('0x2d6'));}}return!_0x2bb938&&CUPS[_0x52e3('0x27a')][_0x5b1439]?_0x5b1439!==0x31?_0x588a85+=_0x52e3('0x98')+CUPS['TEXT1'][_0x5b1439]+_0x52e3('0x2d6'):_0x588a85+=_0x52e3('0x98')+_0x52e3('0x1d1')+_0x52e3('0x34d')+'<div\x20class=\x22ui-block-b\x20M\x22\x20style=\x22width:80%\x22>Die\x20Tarockmeister:</div></div>'+'<div\x20class=\x22ui-grid-a\x22>'+_0x52e3('0x346')+_0x52e3('0x15')+_0x52e3('0x1d1')+_0x52e3('0x59')+_0x52e3('0x2e2')+_0x52e3('0x1d1')+_0x52e3('0x246')+_0x52e3('0x25')+_0x52e3('0x1d1')+_0x52e3('0x27d')+_0x52e3('0x271')+_0x52e3('0x1d1')+_0x52e3('0x21e')+_0x52e3('0x53')+_0x52e3('0x1d1')+_0x52e3('0xad')+'<div\x20class=\x22ui-block-b\x22\x20style=\x22width:80%\x22><b>Stürmer\x20Rudi</b><br>Bad\x20Leonfelden</div></div>'+_0x52e3('0x1d1')+'<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2013</div>'+_0x52e3('0xb')+_0x52e3('0x1d1')+_0x52e3('0x6')+_0x52e3('0x117')+_0x52e3('0x1d1')+_0x52e3('0x16c')+_0x52e3('0xd1')+'<div\x20class=\x22ui-grid-a\x22>'+'<div\x20class=\x22ui-block-a\x20C\x20M3\x22\x20style=\x22width:20%\x22>2010</div>'+_0x52e3('0x16f')+_0x52e3('0x1d1')+_0x52e3('0x47')+_0x52e3('0x328')+_0x52e3('0x1d1')+_0x52e3('0x1c3')+_0x52e3('0x15')+_0x52e3('0x2d6'):_0x588a85+=_0x52e3('0x187'),_0x588a85+=_0x52e3('0x2d6'),_0x588a85;}function whenCUPSloaded(){initExtraButtons();if(LS['I']&&LS[_0x52e3('0x26')]){if(LS[_0x52e3('0x2cb')]>0x0)$(_0x52e3('0x1c0'))['html'](CUPS['NAME'][LS['I']]+_0x52e3('0x20')+(LS['gespielt']===0x1?_0x52e3('0x127'):LS[_0x52e3('0x2cb')]+_0x52e3('0x1ef'))+_0x52e3('0x126'));else LS[_0x52e3('0xe')]?$('#tCupName')['html'](CUPS['NAME'][LS['I']]+'<br>'+LS['TURRUNDE']+_0x52e3('0x2e4')):$(_0x52e3('0x1c0'))[_0x52e3('0x256')](CUPS[_0x52e3('0x248')][LS['I']]+_0x52e3('0x20')+LS[_0x52e3('0x26')]+_0x52e3('0x2ed'));$(_0x52e3('0x20a'))[_0x52e3('0x8')]('cRot'),$(_0x52e3('0x151'))['show']();}else $(_0x52e3('0x151'))[_0x52e3('0x2d4')]();LS['ME'][0x0]==='-'&&(LS['ShowCups']=parseInt(LS['ME'])*-0x1,localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)),showEinenMoment(CUPS['NAME'][LS[_0x52e3('0xc2')]]+':',_0x52e3('0x1f3')),setTimeout(function(){window[_0x52e3('0x14d')][_0x52e3('0x211')](_0x52e3('0x2c4'));},0x14));TERMINE=[];for(var _0x52d0e9 in CUPS[_0x52e3('0x292')]){CUPS[_0x52e3('0x292')][_0x52d0e9][_0x52e3('0x176')]>=hHeute&&CUPS['TERMINE'][_0x52d0e9][_0x52e3('0x16')]>-0x4&&(TERMINE[TERMINE[_0x52e3('0x2a6')]]=CUPS[_0x52e3('0x292')][_0x52d0e9],TERMINE[TERMINE[_0x52e3('0x2a6')]-0x1]['I']=_0x52d0e9);}for(var _0x434ffc=0x1;_0x434ffc<CUPS[_0x52e3('0x2ac')][_0x52e3('0x2a6')];_0x434ffc++){CUPS[_0x52e3('0x2ac')][_0x434ffc]&&((CUPS[_0x52e3('0x339')][_0x434ffc]+0xc8*0x5265c00>Date[_0x52e3('0x137')]()||CUPS[_0x52e3('0x1c')][_0x434ffc][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][_0x434ffc][_0x52e3('0x297')](LS['ME'])>=0x0)&&(!CUPS[_0x52e3('0x299')][_0x434ffc]&&(CUPS[_0x52e3('0x299')][_0x434ffc]=0x0),CUPS[_0x52e3('0x299')][_0x434ffc]<Date[_0x52e3('0x137')]()&&(CUPS[_0x52e3('0x299')][_0x434ffc]=getNextTermin(_0x434ffc)),TERMINE[TERMINE[_0x52e3('0x2a6')]]={'DATUM':myDateString(CUPS['NEXTTERMIN'][_0x434ffc]),'CUP':_0x434ffc}));}TERMINE[_0x52e3('0x29f')](function(_0x3f1d8b,_0x183109){return _0x3f1d8b[_0x52e3('0x176')]>_0x183109['DATUM']?0x1:_0x183109[_0x52e3('0x176')]>_0x3f1d8b[_0x52e3('0x176')]?-0x1:0x0;});if(window[_0x52e3('0x14d')]['search']){LS=new Object(),LS=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')]('Abakus.LS'));if(LS){CUPS=new Object(),CUPS=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0x6d')));if(CUPS){var _0x5f524c=window[_0x52e3('0x14d')][_0x52e3('0x217')][_0x52e3('0x211')](/\'|\%20|_| /g,'')[_0x52e3('0x26e')](0x1)['toUpperCase']();_0x5f524c[0x0]==='?'&&(_0x5f524c=_0x5f524c[_0x52e3('0x195')](0x1));var _0x4611f4=0x0;if(_0x5f524c===_0x52e3('0x2a9'))_0x4611f4=0x38;else{if(_0x5f524c===_0x52e3('0x157'))_0x4611f4=0x36;else{if(_0x5f524c===_0x52e3('0x192'))_0x4611f4=0x50;else{if(_0x5f524c===_0x52e3('0x243'))_0x4611f4=0x8;else for(var _0x22c545=CUPS[_0x52e3('0x248')]['length'];_0x22c545>0x0;_0x22c545--){if(CUPS[_0x52e3('0x248')][_0x22c545]){if(CUPS[_0x52e3('0x248')][_0x22c545][_0x52e3('0x1be')]()[_0x52e3('0x211')](/\'|\%20|_| /g,'')[_0x52e3('0x297')](_0x5f524c)>=0x0){_0x4611f4=_0x22c545;break;}}}}}}if(_0x4611f4){if(_0x4611f4<=0x4)LS['LastBtn']=_0x52e3('0x62')+_0x4611f4;else{if(_0x4611f4<=0x7)LS[_0x52e3('0x99')]='#bAR'+_0x4611f4;else{if(CUPS[_0x52e3('0x19b')][_0x4611f4]===_0x52e3('0x16')&&_0x4611f4>=0x32&&_0x4611f4<=0x3b)LS[_0x52e3('0x99')]='#bCT'+_0x4611f4;else{if(CUPS[_0x52e3('0x19b')][_0x4611f4]===_0x52e3('0x16')||CUPS[_0x52e3('0x1a1')][_0x4611f4])LS[_0x52e3('0x99')]=_0x52e3('0x57')+_0x4611f4;else{if(CUPS[_0x52e3('0x19b')][_0x4611f4]==='ET'||CUPS[_0x52e3('0x19b')][_0x4611f4]==='MT')LS[_0x52e3('0x99')]=_0x52e3('0x309')+_0x4611f4;else CUPS[_0x52e3('0x19b')][_0x4611f4]==='PR'?LS[_0x52e3('0x99')]='#bPR'+_0x4611f4:LS[_0x52e3('0x99')]=_0x52e3('0x3f')+_0x4611f4;}}}}LS[_0x52e3('0xc2')]=_0x4611f4,LS[_0x52e3('0x1ba')]=!![],LS[_0x52e3('0x2d1')]=[];(typeof LS[_0x52e3('0x2d1')]===_0x52e3('0x1ec')||LS[_0x52e3('0x2d1')][_0x52e3('0x2a6')]===0x0)&&(LS[_0x52e3('0x2d1')]=[0x0]);if(_0x5f524c[_0x52e3('0x297')](_0x52e3('0x20e'))>0x0)LS['ShowFunktion']=_0x52e3('0x222');else LS[_0x52e3('0x2d1')][0x0]===0x0&&(_0x4611f4>=0x32&&_0x4611f4<=0x3b&&(LS[_0x52e3('0x2d1')][0x0]=_0x4611f4,LS[_0x52e3('0x2d1')][_0x4611f4]=!![]));localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON['stringify'](LS)),window[_0x52e3('0x14d')][_0x52e3('0x211')](window['location'][_0x52e3('0x149')]+window['location'][_0x52e3('0x2e5')]);}}}}var _0x1bd07f=0x0,_0x21aa53=0x0,_0x19d92b=0x0,_0x57b3c0=_0x52e3('0x11d'),_0x129f3f=_0x52e3('0x1c8'),_0x5a2b80='<div\x20id=\x22bMR\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22\x20\x22><h2>&nbsp;Meine\x20Cups/Runden:</h2><ul\x20data-role=\x22listview\x22>',_0x2327f6=_0x52e3('0x218')+(LS[_0x52e3('0x1ba')]?_0x52e3('0x23a'):'')+_0x52e3('0x2c2'),_0x5560b5='<div\x20id=\x22bLC\x22\x20data-role=\x22collapsible\x22\x20data-theme=\x22d\x22\x20data-corners=\x22false\x22\x20data-iconpos=\x22right\x22\x20class=\x22K\x22><h2>&nbsp;Lokale\x20Cups:</h2><ul\x20data-role=\x22listview\x22>',_0x5724e9=_0x52e3('0x5c'),_0x111210=_0x52e3('0x83'),_0x3c0407=_0x52e3('0x30c'),_0x3f7d05=_0x52e3('0x19a'),_0x49fee6=_0x52e3('0x188');LS[_0x52e3('0x1ba')]&&(delete LS[_0x52e3('0x1ba')],localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)));var _0xde9b29='',_0x3bf664=_0x52e3('0xfe'),_0x5b6fef=myDateString(Date[_0x52e3('0x137')]()+0x5265c00*LS[_0x52e3('0x1ad')]);for(var _0x52d0e9 in TERMINE){if(CUPS['NAME'][TERMINE[_0x52d0e9][_0x52e3('0x16')]]['substr'](0x0,0x4)[_0x52e3('0x1be')]()!=='TEST'&&TERMINE[_0x52d0e9][_0x52e3('0x16')]>=0x8){if(TERMINE[_0x52d0e9][_0x52e3('0x176')]>=hHeute&&!TERMINE[_0x52d0e9][_0x52e3('0x248')]||TERMINE[_0x52d0e9][_0x52e3('0x176')]>=hHeute&&TERMINE[_0x52d0e9][_0x52e3('0x248')]&&(TERMINE[_0x52d0e9][_0x52e3('0x248')]['substr'](0x0,0x4)[_0x52e3('0x1be')]()!=='TEST'||LS['ME']===_0x52e3('0x138'))){if(TERMINE[_0x52d0e9][_0x52e3('0x16')]===0x50||CUPS[_0x52e3('0x19b')][TERMINE[_0x52d0e9][_0x52e3('0x16')]]===_0x52e3('0x16')||CUPS[_0x52e3('0x19b')][TERMINE[_0x52d0e9][_0x52e3('0x16')]]==='ET'||CUPS[_0x52e3('0x19b')][TERMINE[_0x52d0e9]['CUP']]==='MT'){var _0x5f524c='',_0x242c07='';if(CUPS[_0x52e3('0x19b')][TERMINE[_0x52d0e9]['CUP']]==='MT')_0x5f524c=_0x52e3('0x1d0');else{if(TERMINE[_0x52d0e9]['CUP']===0x31)_0x5f524c='Österreichfinale',_0x242c07=_0x52e3('0x175');else{if(TERMINE[_0x52d0e9]['CUP']===0x32)_0x5f524c=_0x52e3('0xf3'),_0x242c07=_0x52e3('0x4d');else{if(TERMINE[_0x52d0e9][_0x52e3('0x16')]===0x33)_0x5f524c=_0x52e3('0xa1'),_0x242c07=_0x52e3('0x2f1');else{if(TERMINE[_0x52d0e9][_0x52e3('0x16')]===0x34)_0x5f524c=_0x52e3('0x206'),_0x242c07=_0x52e3('0xbd');else{if(TERMINE[_0x52d0e9]['CUP']===0x35)_0x5f524c=_0x52e3('0xb7'),_0x242c07=_0x52e3('0x268');else{if(TERMINE[_0x52d0e9][_0x52e3('0x16')]===0x36)_0x5f524c='St.\x20Tarockcup',_0x242c07=_0x52e3('0x1f');else{if(TERMINE[_0x52d0e9][_0x52e3('0x16')]===0x37)_0x5f524c=_0x52e3('0x5f'),_0x242c07=_0x52e3('0x1cc');else{if(TERMINE[_0x52d0e9][_0x52e3('0x16')]===0x38)_0x5f524c=_0x52e3('0x1d0'),_0x242c07=_0x52e3('0x23c');else{if(TERMINE[_0x52d0e9][_0x52e3('0x16')]===0x50)_0x5f524c=_0x52e3('0x19'),_0x242c07=_0x52e3('0x2bb');else TERMINE[_0x52d0e9][_0x52e3('0x16')]===0xf?(_0x5f524c=_0x52e3('0x280'),_0x242c07=_0x52e3('0x2bb')):(_0x5f524c=CUPS[_0x52e3('0x248')][TERMINE[_0x52d0e9][_0x52e3('0x16')]],_0x242c07=_0x52e3('0x2bb'));}}}}}}}}}_0x3bf664='bAL'+TERMINE[_0x52d0e9]['CUP']+'T'+TERMINE[_0x52d0e9]['I'],_0xde9b29=_0x52e3('0x34')+_0x3bf664+'\x22\x20class=\x22K'+_0x242c07+_0x52e3('0x31c')+TERMINE[_0x52d0e9][_0x52e3('0x16')]+_0x52e3('0x1b9')+TERMINE[_0x52d0e9]['I']+_0x52e3('0x90')+getDateString(TERMINE[_0x52d0e9]['DATUM'])+_0x52e3('0x220')+(TERMINE[_0x52d0e9][_0x52e3('0x2f7')]?TERMINE[_0x52d0e9][_0x52e3('0x2f7')]:'')+'&nbsp;&nbsp;&nbsp;</span><span\x20class=\x22S\x20N\x22>'+_0x5f524c+_0x52e3('0x121')+TERMINE[_0x52d0e9][_0x52e3('0x248')]+_0x52e3('0x120')+getCupToggleDiv(_0x52e3('0x229'),TERMINE[_0x52d0e9][_0x52e3('0x16')],_0x52d0e9),_0x129f3f+=_0xde9b29,TERMINE[_0x52d0e9][_0x52e3('0x176')]<=_0x5b6fef&&((TERMINE[_0x52d0e9]['CUP']===0x31||LS[_0x52e3('0x2d1')][TERMINE[_0x52d0e9][_0x52e3('0x16')]]||TERMINE[_0x52d0e9][_0x52e3('0x16')]===0x50&&LS[_0x52e3('0x2d1')][0x38])&&(_0x21aa53++,_0x57b3c0+=_0xde9b29['replace'](/bAL/g,_0x52e3('0xde'))));}else{_0xde9b29=_0x4371dd(TERMINE[_0x52d0e9][_0x52e3('0x16')])+getCupToggleDiv(_0x52e3('0x229'),TERMINE[_0x52d0e9][_0x52e3('0x16')],-0x1);function _0x4371dd(_0xee0956){if(typeof CUPS[_0x52e3('0x2e')][_0xee0956]===_0x52e3('0x155'))return CUPS[_0x52e3('0x2e')][_0xee0956]>Date[_0x52e3('0x137')]()?'<li\x20data-icon=false><a\x20id=bAL'+_0xee0956+_0x52e3('0x338')+getClassMeinTermin(_0xee0956)+_0x52e3('0x31c')+_0xee0956+_0x52e3('0x301')+getDateString(CUPS['NEXTTERMIN'][_0xee0956])+_0x52e3('0x198')+getCupName(_0xee0956)+_0x52e3('0x120'):_0x52e3('0x1e4')+_0xee0956+_0x52e3('0x338')+getClassMeinTermin(_0xee0956)+_0x52e3('0x31c')+_0xee0956+_0x52e3('0x301')+getDateString(CUPS['NEXTTERMIN'][_0xee0956])+_0x52e3('0xe1')+getCupName(_0xee0956)+_0x52e3('0x120');return _0x52e3('0x1e4')+_0xee0956+'T\x20class=\x22K\x20'+getClassMeinTermin(_0xee0956)+_0x52e3('0x31c')+_0xee0956+_0x52e3('0x37')+getDateString(CUPS['NEXTTERMIN'][_0xee0956])+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span\x20class=\x22S\x22>???<br></span>&nbsp;&nbsp;'+getCupName(_0xee0956)+_0x52e3('0x120');}_0x129f3f+=_0xde9b29,_0x21aa53++,_0x57b3c0+=_0xde9b29['replace'](/bAL/g,_0x52e3('0xde'));}}}}var _0x36a238=[];for(_0x1bd07f=0x0;_0x1bd07f<CUPS['NAME'][_0x52e3('0x2a6')];_0x1bd07f++){if(CUPS[_0x52e3('0x248')][_0x1bd07f]){if(_0x1bd07f===0x12&&(LS['ME']!==_0x52e3('0x138')&&LS['ME']!==_0x52e3('0x5e'))){}else _0x1bd07f>=0x31&&_0x1bd07f<=0x3b?_0x36a238[_0x36a238['length']]=_0x1bd07f+CUPS[_0x52e3('0x248')][_0x1bd07f]+'\x20\x20;'+_0x1bd07f:_0x36a238[_0x36a238[_0x52e3('0x2a6')]]=CUPS[_0x52e3('0x248')][_0x1bd07f]+'\x20\x20;'+_0x1bd07f;}}_0x36a238[_0x52e3('0x29f')]();var _0x15a6d='';for(var _0x1bd07f=0x32;_0x1bd07f<=0x38;_0x1bd07f++){var _0x15491e=![];_0x15a6d='',(CUPS['BEREadmin'][_0x1bd07f][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x202')][_0x1bd07f][_0x52e3('0x297')](LS['ME'])>=0x0)&&(_0x15491e=!![]),LS[_0x52e3('0x2d1')][_0x1bd07f]&&(_0x15491e=!![],CUPS[_0x52e3('0x19b')][_0x1bd07f]===_0x52e3('0x16')&&_0x1bd07f!==0x31&&(CUPS['MELDSTAT'][_0x1bd07f]&&(!LS[_0x52e3('0x104')][_0x1bd07f]||LS['GelesenSTAT'][_0x1bd07f]!==CUPS[_0x52e3('0x161')][_0x1bd07f])&&_0x1bd07f!==0x32&&_0x1bd07f!==0x34&&(_0x15a6d=_0x52e3('0x1d9')),CUPS[_0x52e3('0x1a2')][_0x1bd07f]&&(!LS[_0x52e3('0x105')][_0x1bd07f]||LS[_0x52e3('0x105')][_0x1bd07f]!==CUPS[_0x52e3('0x1a2')][_0x1bd07f])&&(_0x15a6d=_0x52e3('0x1d9')))),CUPS[_0x52e3('0x339')][_0x1bd07f]&&(CUPS[_0x52e3('0x339')][_0x1bd07f]+0x5a*0x5265c00>Date['now']()&&(_0x15491e=!![])),_0x15491e&&(_0x19d92b++,_0x5a2b80+=_0x52e3('0x302')+_0x1bd07f+'\x22\x20class=\x22'+getClass(_0x1bd07f)+_0x52e3('0x31c')+_0x1bd07f+_0x52e3('0x1e9')+getCupName(_0x1bd07f)+'</div>'+_0x15a6d+_0x52e3('0x1db')+getCupToggleDiv(_0x52e3('0x11e'),_0x1bd07f,![]));}for(var _0x285eeb=0x0;_0x285eeb<_0x36a238[_0x52e3('0x2a6')];_0x285eeb++){_0x1bd07f=parseInt(_0x36a238[_0x285eeb][_0x52e3('0x1c4')](_0x36a238[_0x285eeb][_0x52e3('0x141')](';')+0x1));if(_0x1bd07f>=0x32&&_0x1bd07f<=0x3b){}else{if(CUPS[_0x52e3('0x248')][_0x1bd07f][_0x52e3('0x26e')](0x0,0x4)===_0x52e3('0x17c')||_0x1bd07f<0x5||CUPS[_0x52e3('0x19b')][_0x1bd07f]==='ET'||CUPS[_0x52e3('0x19b')][_0x1bd07f]==='MT'){}else _0x1bd07f>=0x8&&CUPS[_0x52e3('0x1c')][_0x1bd07f][_0x52e3('0x297')](LS['ME'])>=0x0&&(_0x19d92b++,_0x5a2b80+=_0x52e3('0x302')+_0x1bd07f+_0x52e3('0x180')+getClass(_0x1bd07f)+'\x22\x20onClick=\x22showCup('+_0x1bd07f+_0x52e3('0x61')+getCupName(_0x1bd07f)+_0x52e3('0x120')+getCupToggleDiv(_0x52e3('0x11e'),_0x1bd07f,![]));}}for(var _0x285eeb=0x0;_0x285eeb<_0x36a238[_0x52e3('0x2a6')];_0x285eeb++){_0x1bd07f=parseInt(_0x36a238[_0x285eeb]['substring'](_0x36a238[_0x285eeb]['lastIndexOf'](';')+0x1));if(_0x1bd07f>=0x32&&_0x1bd07f<=0x3b){}else{if(CUPS[_0x52e3('0x248')][_0x1bd07f]['substr'](0x0,0x4)===_0x52e3('0x17c')||_0x1bd07f<0x5||CUPS[_0x52e3('0x19b')][_0x1bd07f]==='ET'||CUPS[_0x52e3('0x19b')][_0x1bd07f]==='MT'){}else{if(_0x1bd07f>=0x8&&CUPS[_0x52e3('0x1c')][_0x1bd07f][_0x52e3('0x297')](LS['ME'])>=0x0){}else _0x1bd07f>=0x8&&CUPS[_0x52e3('0x202')][_0x1bd07f][_0x52e3('0x297')](LS['ME'])>=0x0&&(_0x19d92b++,_0x5a2b80+=_0x52e3('0x302')+_0x1bd07f+_0x52e3('0x180')+getClass(_0x1bd07f)+'\x22\x20onClick=\x22showCup('+_0x1bd07f+',\x27bMR\x27)\x22>&nbsp;'+getCupName(_0x1bd07f)+_0x52e3('0x120')+getCupToggleDiv(_0x52e3('0x11e'),_0x1bd07f,![]));}}}for(var _0x285eeb=0x0;_0x285eeb<_0x36a238[_0x52e3('0x2a6')];_0x285eeb++){_0x1bd07f=parseInt(_0x36a238[_0x285eeb][_0x52e3('0x1c4')](_0x36a238[_0x285eeb][_0x52e3('0x141')](';')+0x1));if(_0x1bd07f>=0x32&&_0x1bd07f<=0x3b){}else{if(CUPS[_0x52e3('0x248')][_0x1bd07f][_0x52e3('0x26e')](0x0,0x4)===_0x52e3('0x17c')||_0x1bd07f<0x5||CUPS[_0x52e3('0x19b')][_0x1bd07f]==='ET'||CUPS['TYP'][_0x1bd07f]==='MT'){}else{if(_0x1bd07f>=0x8&&CUPS[_0x52e3('0x1c')][_0x1bd07f]['indexOf'](LS['ME'])>=0x0){}else{if(_0x1bd07f>=0x8&&CUPS[_0x52e3('0x202')][_0x1bd07f][_0x52e3('0x297')](LS['ME'])>=0x0){}else CUPS[_0x52e3('0x339')][_0x1bd07f]&&((_0x1bd07f<0x8&&_0x19d92b>0x0&&CUPS[_0x52e3('0x339')][_0x1bd07f]+0xe*0x5265c00>Date[_0x52e3('0x137')]()||CUPS['TYP'][_0x1bd07f]==='PR'&&CUPS[_0x52e3('0x248')][_0x1bd07f]['substr'](0x0,0x4)===_0x52e3('0x2f')&&CUPS[_0x52e3('0x339')][_0x1bd07f]+0x64*0x5265c00>Date[_0x52e3('0x137')]()||CUPS[_0x52e3('0x19b')][_0x1bd07f]==='PR'&&CUPS['NAME'][_0x1bd07f][_0x52e3('0x26e')](0x0,0x4)!==_0x52e3('0x2f')&&CUPS[_0x52e3('0x339')][_0x1bd07f]+0xc8*0x5265c00>Date[_0x52e3('0x137')]()||CUPS[_0x52e3('0x19b')][_0x1bd07f]!=='PR'&&CUPS['MEZULETZT'][_0x1bd07f]+0x12c*0x5265c00>Date['now']()||_0x1bd07f<0x8&&_0x19d92b===0x0&&CUPS[_0x52e3('0x339')][_0x1bd07f]+0x12c*0x5265c00>Date[_0x52e3('0x137')]())&&(_0x19d92b++,_0x5a2b80+=_0x52e3('0x302')+_0x1bd07f+'\x22\x20class=\x22'+getClass(_0x1bd07f)+_0x52e3('0x31c')+_0x1bd07f+_0x52e3('0x61')+getCupName(_0x1bd07f)+_0x52e3('0x120')+getCupToggleDiv(_0x52e3('0x11e'),_0x1bd07f,![])));}}}}for(var _0x285eeb=0x0;_0x285eeb<_0x36a238[_0x52e3('0x2a6')];_0x285eeb++){_0x1bd07f=parseInt(_0x36a238[_0x285eeb]['substring'](_0x36a238[_0x285eeb][_0x52e3('0x141')](';')+0x1));var _0x15a6d='';LS[_0x52e3('0x2d1')][_0x1bd07f]&&(CUPS['TYP'][_0x1bd07f]===_0x52e3('0x16')&&_0x1bd07f!==0x31&&(CUPS['MELDSTAT'][_0x1bd07f]&&(!LS[_0x52e3('0x104')][_0x1bd07f]||LS['GelesenSTAT'][_0x1bd07f]!==CUPS['MELDSTAT'][_0x1bd07f])&&_0x1bd07f!==0x32&&_0x1bd07f!==0x34&&(_0x15a6d=_0x52e3('0x1d9')),CUPS[_0x52e3('0x1a2')][_0x1bd07f]&&(!LS[_0x52e3('0x105')][_0x1bd07f]||LS[_0x52e3('0x105')][_0x1bd07f]!==CUPS['MELDAKT'][_0x1bd07f])&&(_0x15a6d=_0x52e3('0x1d9'))));html=_0x52e3('0x1cd')+_0x1bd07f+'\x22\x20class=\x22'+getClass(_0x1bd07f)+_0x52e3('0x31c')+_0x1bd07f+_0x52e3('0x2d0')+getCupName(_0x1bd07f)+_0x52e3('0x2d6')+_0x15a6d+_0x52e3('0x1db')+getCupToggleDiv(_0x52e3('0x2b6'),_0x1bd07f,![]);if(CUPS['NAME'][_0x1bd07f]['substr'](0x0,0x4)===_0x52e3('0x17c')||CUPS[_0x52e3('0x19b')][_0x1bd07f]==='TR'||_0x1bd07f<=0x4)_0x3f7d05=_0x3f7d05+html;else{if(CUPS[_0x52e3('0x19b')][_0x1bd07f]===_0x52e3('0x16')&&(_0x1bd07f>=0x31&&_0x1bd07f<=0x39))_0x2327f6=_0x2327f6+html;else{if(CUPS[_0x52e3('0x19b')][_0x1bd07f]===_0x52e3('0x16')||CUPS[_0x52e3('0x19b')][_0x1bd07f]==='TC')_0x5560b5=_0x5560b5+html;else{if(CUPS['TYP'][_0x1bd07f]==='ET'||CUPS['TYP'][_0x1bd07f]==='MT')_0x5724e9=_0x5724e9+html;else{if(CUPS['TYP'][_0x1bd07f]==='FC')_0x111210=_0x111210+html;else{if(CUPS['TYP'][_0x1bd07f]==='PR')_0x3c0407=_0x3c0407+html;else CUPS['TYP'][_0x1bd07f]==='AR'&&(_0x49fee6=_0x49fee6+html);}}}}}}$(_0x52e3('0x23d'))['html']((_0x21aa53?_0x57b3c0+_0x52e3('0x1fd'):'')+_0x129f3f+_0x52e3('0x1fd'))['trigger'](_0x52e3('0x250'));_0x19d92b&&$(_0x52e3('0x142'))[_0x52e3('0x256')](_0x5a2b80+_0x52e3('0x1fd'))['trigger'](_0x52e3('0x250'));$(_0x52e3('0x289'))[_0x52e3('0x256')](_0x2327f6[_0x52e3('0x211')](/bXX/g,'bCT')+'</ul></div>'+_0x5560b5[_0x52e3('0x211')](/bXX/g,_0x52e3('0x1e8'))+'</ul></div>'+_0x5724e9[_0x52e3('0x211')](/bXX/g,_0x52e3('0x8f'))+_0x52e3('0x1fd')+_0x111210['replace'](/bXX/g,_0x52e3('0x2b0'))+_0x52e3('0x1fd')+_0x3c0407[_0x52e3('0x211')](/bXX/g,_0x52e3('0x26d'))+_0x52e3('0x1fd')+(LS['ME']!==_0x52e3('0xfc')?_0x3f7d05[_0x52e3('0x211')](/bXX/g,_0x52e3('0x2ec'))+_0x52e3('0x1fd'):'')+_0x49fee6[_0x52e3('0x211')](/bXX/g,'bAR')+_0x52e3('0x1fd'))[_0x52e3('0x1cf')](_0x52e3('0x250'))[_0x52e3('0xb4')]();LS[_0x52e3('0x273')]&&$(_0x52e3('0xc4'))['append'](_0x52e3('0x207')+LS[_0x52e3('0x273')]+'</b>');hideEinenMoment();CUPS[_0x52e3('0x30b')]>getVersion()&&navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/Android/i)&&location['pathname'][_0x52e3('0x1c4')](0x0,0x13)===_0x52e3('0x232')&&showEinenFehler('Diese\x20App\x20ist\x20veraltet!&nbsp;&nbsp;&nbsp;&nbsp;',_0x52e3('0x1c9'));window[_0x52e3('0x18e')](0x0,0x0);QUERFORMAT()&&(LS[_0x52e3('0x99')]&&$(_0x52e3('0x1b6'))[_0x52e3('0x13')]('ui-btn-active'));LS[_0x52e3('0x99')]?($(LS[_0x52e3('0x99')][_0x52e3('0x26e')](0x0,0x4))['collapsible']({'collapsed':![]}),$(LS[_0x52e3('0x99')])[_0x52e3('0x2a6')]&&(QUERFORMAT()&&$(LS[_0x52e3('0x99')])[_0x52e3('0x8')](_0x52e3('0x290'))[_0x52e3('0x13')](_0x52e3('0x6c'))[_0x52e3('0x13')](_0x52e3('0x31f'))[_0x52e3('0x13')](_0x52e3('0x5'))[_0x52e3('0x13')](_0x52e3('0x55'))['removeClass'](_0x52e3('0x2da'))[_0x52e3('0x13')](_0x52e3('0x22b'))[_0x52e3('0x13')](_0x52e3('0x108'))[_0x52e3('0x13')]('cTOF')['removeClass']('cDIV')[_0x52e3('0x13')](_0x52e3('0x1d6'))[_0x52e3('0x13')]('cAktiv'),$(_0x52e3('0x221'))[_0x52e3('0xd3')]()[_0x52e3('0x14a')]+$(LS[_0x52e3('0x99')])[_0x52e3('0x226')]()[_0x52e3('0x14a')]>$(window)[_0x52e3('0x26f')]()/0x4&&$(_0x52e3('0x221'))['scrollTop'](parseInt($(LS[_0x52e3('0x99')])[_0x52e3('0x226')]()[_0x52e3('0x14a')]-$(window)[_0x52e3('0x26f')]()/0x4)))):($('#bAK')[_0x52e3('0x31e')]({'collapsed':![]}),$('#bMR')[_0x52e3('0x31e')]({'collapsed':![]}));$(_0x52e3('0x321'))[_0x52e3('0xb4')](),delete TERMINE;if(I)showCup(I);else QUERFORMAT()&&showLogo();LS['showMeinenTisch']&&(delete LS[_0x52e3('0x38')],localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS)),fZuMeinemTisch());}$(document)[_0x52e3('0x33a')](function(){'use strict';$(_0x52e3('0x32d'))['hide']();navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/Android/i)||navigator['userAgent'][_0x52e3('0x9c')](/webOS/i)||navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/iPhone/i)||navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/iPad/i)||navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/iPod/i)||navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/BlackBerry/i)||navigator['userAgent'][_0x52e3('0x9c')](/Windows Phone/i)?PC=![]:PC=!![];APP=![];if(location[_0x52e3('0x2c9')]['indexOf'](_0x52e3('0x334'))===-0x1||location[_0x52e3('0x2c9')][_0x52e3('0x297')](_0x52e3('0x125'))>0x0)APP=!![];else{if(navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/Android/i))(window[_0x52e3('0x1f8')]('(display-mode:\x20standalone)')[_0x52e3('0x2a1')]||location['pathname'][_0x52e3('0x1c4')](0x0,0x13)===_0x52e3('0x232'))&&(APP=!![]);else{if(navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/iPhone/i)||navigator[_0x52e3('0x6f')][_0x52e3('0x9c')](/iPad/i))navigator[_0x52e3('0x10c')]&&(APP=!![]);else PC&&(APP=!![]);}}CUPS[_0x52e3('0x30b')]>getVersion()&&(APP=![]);APP?$(_0x52e3('0x25e'))[_0x52e3('0x278')]():($(_0x52e3('0x259'))[_0x52e3('0x1f2')](location[_0x52e3('0x149')]),$(_0x52e3('0x115'))[_0x52e3('0x278')]());try{localStorage['Abakus']='OK';}catch(_0x4c2efa){alert(_0x52e3('0x2c5'));}localStorage[_0x52e3('0x326')](_0x52e3('0xfa'))===null?(LS=new Object(),LS['ME']=_0x52e3('0xfc'),LS['MEname']=_0x52e3('0x316'),LS[_0x52e3('0x27f')]=![],LS['I']=0x0,LS['GelesenAKT']=[],LS[_0x52e3('0x104')]=[],LS[_0x52e3('0x2cb')]=0x0,LS[_0x52e3('0x11f')]=_0x52e3('0x89'),LS[_0x52e3('0x273')]='',LS[_0x52e3('0x2df')]='',LS[_0x52e3('0x1ad')]=0x1e,LS[_0x52e3('0xc2')]=0x0,LS[_0x52e3('0x99')]='',LS[_0x52e3('0xc5')]=new Date()[_0x52e3('0x3a')](),LS[_0x52e3('0x29')]=0x0,LS[_0x52e3('0xa8')]=0x2,LS['Freunde']=[],LS[_0x52e3('0x2fe')]=['','','','','','',''],LS[_0x52e3('0x18')]=!![],LS[_0x52e3('0x2e1')]=0x0,LS[_0x52e3('0x7c')]='',LS[_0x52e3('0xe')]=0x0,LS[_0x52e3('0x9')]=0x0,LS['TURGESPIELT']=0x0,LS['Version']=0x0,LS[_0x52e3('0x2db')]=0x0,LS['Timeout']=0x0,LS[_0x52e3('0x2d1')]=[0x0],LS[_0x52e3('0xcd')]=![],LS[_0x52e3('0x43')]=![],LS[_0x52e3('0x1de')]=0x0,QUERFORMAT()?(LS[_0x52e3('0x10e')]=!![],LS[_0x52e3('0x228')]=0x2):LS['AnzSpalten']=0x1,localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON[_0x52e3('0xbb')](LS))):LS=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0xfa')));LS[_0x52e3('0x1a5')]<0x3a4&&(LS['LastBtn']='');!LS['GelesenAKT']&&(LS[_0x52e3('0x105')]=[]);!LS[_0x52e3('0x104')]&&(LS['GelesenSTAT']=[]);LS[_0x52e3('0x1a5')]<0x3c7&&(LS[_0x52e3('0xcd')]=![]);LS[_0x52e3('0x1a5')]<0x3df&&(LS[_0x52e3('0xc5')]=new Date()[_0x52e3('0x3a')]());!LS[_0x52e3('0x12a')]&&(LS['MeineCups']=[]);!LS['VIC']&&(LS['VIC']=[],LS[_0x52e3('0x12a')][0x1]&&(LS[_0x52e3('0x2d1')][LS['MeineCups'][0x1]]=!![]),LS[_0x52e3('0x12a')][0x2]&&(LS[_0x52e3('0x2d1')][LS[_0x52e3('0x12a')][0x2]]=!![]),LS['MeineCups'][0x3]&&(LS[_0x52e3('0x2d1')][LS[_0x52e3('0x12a')][0x3]]=!![]),LS[_0x52e3('0x12a')][0x4]&&(LS[_0x52e3('0x2d1')][LS[_0x52e3('0x12a')][0x4]]=!![]),LS[_0x52e3('0x12a')][0x5]&&(LS[_0x52e3('0x2d1')][LS[_0x52e3('0x12a')][0x5]]=!![]),LS['MeineCups'][0x6]&&(LS[_0x52e3('0x2d1')][LS['MeineCups'][0x6]]=!![]),delete LS['MeineCups']);PC||navigator[_0x52e3('0x10c')]||window[_0x52e3('0x1f8')](_0x52e3('0xe8'))[_0x52e3('0x2a1')]||location[_0x52e3('0x149')][0x0]!=='h'?(LS[_0x52e3('0x2d1')][_0x52e3('0x2a6')]===0x0||!LS[_0x52e3('0x2d1')][0x0])&&($(_0x52e3('0x310'))[_0x52e3('0x256')](_0x52e3('0x13e')),$(_0x52e3('0x2c6'))[_0x52e3('0x256')](_0x52e3('0xff'))):($(_0x52e3('0x2c6'))[_0x52e3('0x256')]('&nbsp;&nbsp;Welche\x20Vorteile\x20bringt\x20mir<br>&nbsp;&nbsp;eine\x20Installation\x20von\x20Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als\x20App?&nbsp;'),(LS[_0x52e3('0x2d1')][_0x52e3('0x2a6')]===0x0||!LS[_0x52e3('0x2d1')][0x0])&&($(_0x52e3('0x310'))['html'](_0x52e3('0x13e')),$(_0x52e3('0x2c6'))[_0x52e3('0x15a')](_0x52e3('0x165'))));new Date()['getTime']()>LS[_0x52e3('0xc5')]+0xea60*0x3c*0xc&&(IsInteger(LS[_0x52e3('0x2d1')][0x0])&&(LS['ShowCups']=LS[_0x52e3('0x2d1')][0x0]),LS[_0x52e3('0x99')]='');window[_0x52e3('0x14d')]['href']['toUpperCase']()[_0x52e3('0x297')](_0x52e3('0x216'))>0x0&&(LS[_0x52e3('0x15b')]=window[_0x52e3('0x14d')][_0x52e3('0x2c9')][_0x52e3('0x26e')](window[_0x52e3('0x14d')]['href'][_0x52e3('0x1be')]()[_0x52e3('0x297')](_0x52e3('0x216'))));LS['ME']!==_0x52e3('0x138')&&(document[_0x52e3('0x10a')]=function(){return![];});document['onselectstart']=function(){return![];},CUPS=JSON[_0x52e3('0x322')](localStorage['getItem'](_0x52e3('0x6d')));CUPS?!LS[_0x52e3('0x1f9')]&&((LS['ME']===_0x52e3('0x138')||CUPS['BEREadmin'][0x32][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x33][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x34][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x35][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x36][_0x52e3('0x297')](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x37]['indexOf'](LS['ME'])>=0x0||CUPS[_0x52e3('0x1c')][0x38][_0x52e3('0x297')](LS['ME'])>=0x0)&&(LS['ME']='NOBODY',LS[_0x52e3('0x2ea')]='Nicht\x20registriert')):(CUPS=new Object(),CUPS['NAME']=[],CUPS[_0x52e3('0x2e')]=[],CUPS[_0x52e3('0x339')]=[]);LS[_0x52e3('0x2df')]&&(LS[_0x52e3('0x2df')]='');LS[_0x52e3('0xc5')]=new Date()[_0x52e3('0x3a')](),localStorage[_0x52e3('0x323')](_0x52e3('0xfa'),JSON['stringify'](LS)),initSeite1(),listVersion(),$(_0x52e3('0xef'))[_0x52e3('0x1f2')](new Date()[_0x52e3('0xc1')]());LS['ME']===_0x52e3('0xfc')?$(_0x52e3('0x173'))[_0x52e3('0x256')]('Noch\x20nicht\x20registriert.'):$(_0x52e3('0x173'))[_0x52e3('0x256')]('Registriert\x20für\x20'+(LS[_0x52e3('0xcd')]?_0x52e3('0x1b5'):_0x52e3('0x2b4'))+_0x52e3('0x20')+LS[_0x52e3('0x2ea')]+'.');setTimeout(function(){!navigator[_0x52e3('0x2c8')]?$(_0x52e3('0xf4'))[_0x52e3('0xb4')]():$(_0x52e3('0xf4'))[_0x52e3('0x2d4')]();},0xa),setInterval(function(){!navigator[_0x52e3('0x2c8')]?$(_0x52e3('0xf4'))[_0x52e3('0xb4')]():$(_0x52e3('0xf4'))[_0x52e3('0x2d4')]();},0x7d00),$(_0x52e3('0x221'))[_0x52e3('0x2ba')](function(){this[_0x52e3('0xa7')][_0x52e3('0x14c')]('height',$(window)[_0x52e3('0x26f')]()-$(_0x52e3('0x221'))[_0x52e3('0x226')]()[_0x52e3('0x14a')]-0x1+'px','important');}),$(_0x52e3('0x1aa'))[_0x52e3('0x2ba')](function(){this[_0x52e3('0xa7')][_0x52e3('0x14c')](_0x52e3('0x29a'),$(window)['innerHeight']()-$(_0x52e3('0x1aa'))[_0x52e3('0x226')]()[_0x52e3('0x14a')]-0x1+'px',_0x52e3('0x146'));});if($(_0x52e3('0x2b8'))['is'](_0x52e3('0x31a')))$('.iMain')[_0x52e3('0x16d')](_0x52e3('0x29a'),$(_0x52e3('0x2b8'))[_0x52e3('0x29a')]()-0x4);else $(_0x52e3('0x143'))['is'](':visible')&&$('.hfHeaderIcon')['css'](_0x52e3('0x29a'),$(_0x52e3('0x143'))[_0x52e3('0x29a')]()-0x8);QUERFORMAT()&&(myJTip=new jBox(_0x52e3('0x2f0'),{'theme':_0x52e3('0x0'),'delayClose':0x14,'closeOnClick':!![],'closeOnEsc':!![]})),window['onresize']=function(_0x5857c6){if($(_0x52e3('0x2b8'))['is'](_0x52e3('0x31a')))$(_0x52e3('0x130'))[_0x52e3('0x16d')](_0x52e3('0x29a'),$(_0x52e3('0x2b8'))[_0x52e3('0x29a')]()-0x4);else $(_0x52e3('0x143'))['is'](_0x52e3('0x31a'))&&$(_0x52e3('0x185'))[_0x52e3('0x16d')](_0x52e3('0x29a'),$(_0x52e3('0x143'))[_0x52e3('0x29a')]()-0x8);$('#pContent')[_0x52e3('0x2ba')](function(){this['style'][_0x52e3('0x14c')]('height',$(window)[_0x52e3('0x26f')]()-$('#pContent')[_0x52e3('0x226')]()[_0x52e3('0x14a')]-0x1+'px','important');}),$(_0x52e3('0x1aa'))[_0x52e3('0x2ba')](function(){this[_0x52e3('0xa7')][_0x52e3('0x14c')](_0x52e3('0x29a'),$(window)[_0x52e3('0x26f')]()-$(_0x52e3('0x1aa'))['offset']()['top']-0x1+'px',_0x52e3('0x146'));});};});window[_0x52e3('0x21d')]['userAgent'][_0x52e3('0x297')](_0x52e3('0x194'))===-0x1&&(window[_0x52e3('0xec')]=function(_0x1c0a79){window[_0x52e3('0x22e')][_0x52e3('0x33b')][_0x52e3('0xc0')]===0x2&&(LS=JSON[_0x52e3('0x322')](localStorage[_0x52e3('0x326')](_0x52e3('0xfa'))),CUPS=JSON['parse'](localStorage[_0x52e3('0x326')](_0x52e3('0x6d'))),navigator[_0x52e3('0x2c8')]?$(_0x52e3('0x28e'))[_0x52e3('0x256')](_0x52e3('0x1bb')):$(_0x52e3('0x28e'))[_0x52e3('0x256')]('KEINE\x20Datenverbindung!'),LS['ME']===_0x52e3('0xfc')?$(_0x52e3('0x173'))[_0x52e3('0x256')](_0x52e3('0xf1')):$(_0x52e3('0x173'))[_0x52e3('0x256')](_0x52e3('0xdc')+(LS[_0x52e3('0xcd')]?_0x52e3('0x1b5'):_0x52e3('0x2b4'))+_0x52e3('0x20')+LS[_0x52e3('0x2ea')]+'.'),PC||navigator[_0x52e3('0x10c')]||window[_0x52e3('0x1f8')](_0x52e3('0xe8'))[_0x52e3('0x2a1')]||location[_0x52e3('0x149')][0x0]!=='h'?LS[_0x52e3('0x2d1')][_0x52e3('0x2a6')]===0x0||!LS[_0x52e3('0x2d1')][0x0]?($(_0x52e3('0x310'))[_0x52e3('0x256')](_0x52e3('0x13e')),$(_0x52e3('0x2c6'))[_0x52e3('0x256')](_0x52e3('0xff'))):$(_0x52e3('0x310'))['remove']():($(_0x52e3('0x2c6'))[_0x52e3('0x256')](_0x52e3('0x2e0')),LS[_0x52e3('0x2d1')][_0x52e3('0x2a6')]===0x0||!LS['VIC'][0x0]?($(_0x52e3('0x310'))['html']('&nbsp;&nbsp;Du\x20hast\x20deine\x20dir\x20wichtigen<br>&nbsp;&nbsp;Cups\x20noch\x20nicht\x20ausgewählt.&nbsp;&nbsp;'),$(_0x52e3('0x2c6'))[_0x52e3('0x15a')](_0x52e3('0x165'))):$(_0x52e3('0x310'))[_0x52e3('0x278')]()),initSeite1(),$(_0x52e3('0x49'))[_0x52e3('0x13')](_0x52e3('0x23f')));});
+
+/* global getVersionsDatum, firebase, pSeite, pCUP, SPIELERext, stCup, stAnzSpalten, setFont, SORT */
+
+var PC = false;
+var APP = false;
+var DB = new Object();
+var FB = undefined;
+var AnmeldungGestartet = false;
+var iTURCODE = 0;
+var LS = new Object();
+var CUPS = new Object();
+var STAT = new Object();
+var TERMINE = [];
+var I = 0;
+var hShowCup = 0;
+var hShowCupText = false;
+var iPfad = 'Icons/';
+var rPfad = '';
+var mTischTurnier = '';
+var mHausruckAktiv = false;
+var mRaiffeisenAktiv = false;
+var mTirolAktiv = true;
+var mSauwaldAktiv = true;
+var hHeute = myDateString(new Date());
+var anzVersuche = 0;
+var myJBox = null;
+var myJTip = null;
+var daysOfWeek = ["So.,", "Mo.,", "Di.,", "Mi.,", "Do.,", "Fr.,", "Sa.,"];
+var monthsOfYear = ["Jän.", "Feb.", "März", "April", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."];
+var stLastZitat = [];
+var meinStellvertreter = '3244';
+var stFilter = '';
+const iRufer = 1;
+const iSolorufer = 2;
+const iPagatrufer = 3;
+const iUhurufer = 4;
+const iKakadurufer = 5;
+const iQuapilrufer = 6;
+const iSelberrufer = 7;
+const i6er = 8;
+const i3er = 9;
+const iSolo3er = 10;
+const iFarben3er = 11;
+const iFarbensolo = 12;
+const iTrischaker = 13;
+const iPiZwiccolo = 14;
+const iBettler = 15;
+const iPiZwiccoloOvert = 16;
+const iBettlerOvert = 17;
+const iPagat = 18;
+const iUhu = 19;
+const iKakadu = 20;
+const iQuapil = 21;
+const iV = 22;
+const iTrull = 23;
+const i4Koenige = 24;
+const iUltimo = 25;
+const iValat = 26;
+const iAbsolut = 27;
+const iXY = 28;
+
+function IsInteger(value) {
+    if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getNextTermin(pCup) {
+
+    var hHeute = new Date();
+    hHeute.setHours(22); // 22 wegen der Sommenrzeit
+    hHeute.setMinutes(59);
+    hHeute.setSeconds(59);
+    hHeute.setMilliseconds(999);
+    hHeute = hHeute.valueOf();
+
+//  1 sekunde     1 000 ms
+//  1 Minute     60 000 ms
+//  1 Stunde  3 600 000 ms
+//  1 Tag    86 400 000 ms
+//  1 Woche 604 800 000 ms
+
+    var hZuletzt = new Date(0); // Keine Anmeldung wenn Turnier schon eröffnet
+    if (typeof CUPS.MEZULETZT[pCup] === 'number') {
+        hZuletzt = new Date(CUPS.MEZULETZT[pCup]);
+    }
+    hZuletzt.setHours(22); // 22 wegen der Sommenrzeit
+    hZuletzt.setMinutes(59);
+    hZuletzt.setSeconds(59);
+    hZuletzt.setMilliseconds(999);
+    hZuletzt = hZuletzt.valueOf();
+
+    if (CUPS.NEXTTERMIN[pCup] >= hHeute
+            && CUPS.NEXTTERMIN[pCup] > hZuletzt) {
+        return CUPS.NEXTTERMIN[pCup];
+    }
+
+    var nextTermin = hHeute;
+    var iWoche = 0;
+    var iWochentag = 0;
+
+    for (var ii = 1; ii < 999999; ii++) {
+        datNextTermin = new Date(nextTermin);
+        iWoche = parseInt((datNextTermin.getDate() - 1) / 7);
+        iWochentag = datNextTermin.getDay();
+        if ((CUPS.WOCHEN[pCup] === '-----' || CUPS.WOCHEN[pCup][iWoche] === 'J')
+                && (CUPS.SPIELTAGE[pCup] === '-------' || CUPS.SPIELTAGE[pCup][iWochentag] === 'J')) {
+            break;
+        }
+        nextTermin += 86400000;
+    }
+    return nextTermin;
+}
+
+function getCupName(pI) {
+    var hCupName;
+    if (QUERFORMAT() || CUPS.TYP[pI] !== 'MT') {
+        hCupName = CUPS.NAME[pI];
+    } else {
+        hCupName = CUPS.NAME[pI].replace('Mannschaftsturniere', 'MT.');
+    }
+    if (LS.ME === '3425' && QUERFORMAT()) {
+        hCupName = hCupName + ' <span class="S N">(' + pI + ')</span>';
+    }
+    return hCupName;
+}
+
+function zumTurnier() {
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && QUERFORMAT() && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3 || I === 55 && LS.ME === '3425')) {
+        if (!window.chrome) {
+            showEineMeldung('Achtung', 'HTML5 und Javascript werden von deinem<br>Browser nicht ausreichend unterstützt.'
+                    + '<br>Verwende einen der folgenden Browser:'
+                    + '<br><b>Google Chrome</b>, <b>Opera</b>, <b>Vivaldi</b>'
+                    + '<br>oder einen anderen kompatiblen Browser.');
+            return;
+        }
+        LS.ShowCups = I;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        fHref('_Turnier/TU_1_Anmeldung.html?init');
+    }
+}
+
+function fStartStop(pCup, pPruefen) {
+    'use strict';
+    if (pCup) {
+        I = pCup;
+    }
+    mTischTurnier = 'Turnier';
+    if (LS.I) {
+        if (LS.I === I) {
+            if (LS.TURADMIN !== LS.ME) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        'Nur&nbsp;derjenige,&nbsp;der&nbsp;das&nbsp;&nbsp;&nbsp;&nbsp;<br>'
+                        + 'Turnier&nbsp;gestartet&nbsp;hat<br>'
+                        + 'kann&nbsp;es&nbsp;administrieren.');
+                return;
+            }
+            if (LS.gespielt) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        'Der letzte Tisch wurde<br>'
+                        + 'noch nicht gespeichert.');
+                return;
+            }
+            if (LS.TURRUNDE <= CUPS.RUNDEN[I]) {
+                if (!LS.TURGESPIELT) {
+                    showEineMeldung((CUPS.NAME[I] + ':'),
+                            'Runde ' + LS.TURRUNDE + ' ist noch<br>'
+                            + 'ausständig.');
+                    return;
+                }
+            }
+        } else {
+            if (CUPS.TURNIER[LS.I]) {
+                showEineMeldung((CUPS.NAME[I] + ':'),
+                        '&nbsp;Bitte&nbsp;zuerst&nbsp;das&nbsp;Turnier&nbsp;&nbsp;&nbsp;<br>'
+                        + '&nbsp;<b>' + CUPS.NAME[LS.I] + '</b>&nbsp;beenden.');
+                return;
+            } else if (pPruefen && LS.gespielt) {
+                $('#tTischWasNunTitel').html('Das Turnier starten:');
+                if (LS.I !== I) {
+                    $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+                    $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+                } else {
+                    $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+                }
+                $('#tsSpieleLoeschen').html('Spiele löschen<br>und Turnier starten');
+                if (LS.gespielt) {
+                    $('#tsSpieleSpeichern').removeClass('ui-disabled');
+                } else {
+                    $('#tsSpieleSpeichern').addClass('ui-disabled');
+                }
+                $("#pTISCHWASNUN").popup("open").show();
+                return;
+            }
+        }
+    }
+
+    if (LS.I !== I) {
+        LS.AnzGespeichert = 0;
+        LS.AnzSpieler = 0;
+        LS.gespielt = 0;
+        LS.Spieler = ['', '', '', '', '', '', ''];
+        LS.NR = ['', '', '', '', '', '', ''];
+        LS.VName = ['', '', '', '', '', '', ''];
+        LS.NName = ['', '', '', '', '', '', ''];
+        LS.Sterne = ['', '', '', '', '', '', ''];
+        LS.Ort = ['', '', '', '', '', '', ''];
+        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+        LS.I = 0;
+    }
+
+    $("#ssTitel").html('&nbsp;' + CUPS.NAME[I] + '&nbsp&nbsp;');
+    if (LS.I === 0) {
+        if (new Date(CUPS.NEXTTERMIN[I]).toDateString() !== new Date().toDateString()) {
+            var iWochentag = (new Date).getDay();
+            if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date).getHours() >= CUPS.SPIELEAB[I] - 1) {
+                if (CUPS.TURNIER[I]) {
+                    var iWoche = parseInt((new Date().getDate() - 1) / 7);
+                    if (CUPS.WOCHEN[I][iWoche] !== 'J') {
+                        var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+                        showEineMeldung(I, 'Diesen ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+                        return;
+                    }
+                }
+
+                if (CUPS.SPIELTAGE[I][iWochentag] !== 'J') {
+                    var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+                    showEineMeldung(I, 'Diesen ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+                    return;
+                }
+            } else {
+                if (CUPS.SPIELTAGE[I][iWochentag] === 'J') {
+                    showEineMeldung(I, 'Es wird erst ab<br>' + CUPS.SPIELEAB[I] + ' Uhr gespielt.');
+                } else {
+                    var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+                    showEineMeldung(I, 'An einem ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+                }
+                return;
+            }
+        }
+        $("#ssText").text('Turnier starten ?');
+    } else if (LS.TURRUNDE === CUPS.RUNDEN[I]) {
+        $("#ssText").text('Turnier beenden ?');
+    } else if (LS.TURRUNDE === 1) {
+        $("#ssText").text('Runde 1 beenden ?');
+    } else if (LS.TURRUNDE === 2) {
+        $("#ssText").text('Runde 2 beenden ?');
+    }
+
+    $("#ssMELD").hide();
+    $('#bSSja,#bSSnein').removeClass('ui-btn-active');
+    setTimeout(function () { // warten auf close von pTISCHWASNUN
+        $("#pSTARTSTOP").popup("open").show();
+        $("#iTURCODE").val('').focus();
+        if (!FB) {
+            firebase.initDB(I, 'rw');
+        }
+    }, 200);
+}
+
+function onStartStop() {
+    'use strict';
+    iTURCODE = getINT($('#iTURCODE').val());
+    if (iTURCODE === false) {
+        $('#iTURCODE').focus();
+        $('#ssMELD').show().html('Der Code ist ung&uuml;ltig!');
+        return false;
+    }
+    if (iTURCODE < 1 || iTURCODE > 9999) {
+        $('#iTURCODE').focus();
+        $('#ssMELD').show().html('Der Code ist ung&uuml;ltig!');
+        return false;
+    }
+    if (LS.I === 0) {
+        $('#iTURCODE').filter(':input:focus').blur();
+        $("#pSTARTSTOP").popup("close");
+        loadSTAT(I, 'Turnier&nbsp;wird&nbsp;gestartet.', false, TurnierSTARTEN, 0);
+    } else {
+        if (LS.I === I) {
+            if (LS.TURCODE !== iTURCODE) {
+                $('#iTURCODE').focus();
+                $('#ssMELD').show().html('Der Code ist ung&uuml;ltig!');
+                return false;
+            }
+            $('#iTURCODE').filter(':input:focus').blur();
+            $("#pSTARTSTOP").popup("close");
+            if (LS.TURRUNDE < CUPS.RUNDEN[LS.I]) {
+                showEinenMoment(CUPS.NAME[LS.I], 'Runde&nbsp;' + LS.TURRUNDE + '&nbsp;wird&nbsp;beendet.');
+                RundeXbeenden(LS.TURCODE);
+            } else {
+                loadSTAT(I, 'Turnier&nbsp;wird&nbsp;beendet.', false, TurnierBEENDEN);
+            }
+        } else {
+            showEinenMoment(CUPS.NAME[LS.I], 'Turnier&nbsp;noch&nbsp;nicht&nbsp;beendet.');
+        }
+    }
+    return false;
+}
+
+function TurnierSTARTEN(pI) {
+    'use strict';
+    if (typeof pI === 'undefined') { // beim 1. Aufrug (Callback)
+        pI = 1;
+    }
+    for (; pI < STAT.S.length; pI++) {
+        if (STAT.S[pI].SPIELE[3] > 0) {
+            break;
+        }
+    }
+
+    if (pI >= STAT.S.length) {
+        TurnierSTARTENend();
+        return;
+    }
+
+    STAT.S[pI].PUNKTE      [3] = 0;
+    STAT.S[pI].SPIELE      [3] = 0;
+    STAT.S[pI].ANZSPIELE   [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    STAT.S[pI].ANZGEWONNEN [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    STAT.S[pI].PKTGEWONNEN [3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    STAT.S[pI].STOCKERL    [3] = '-';
+    STAT.S[pI].PUNKTERx = [];
+    STAT.S[pI].SCHREIBER = [];
+    firebase.database().ref('/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR)
+            .update({
+                PUNKTERx: null,
+                SCHREIBER: null
+            })
+            .then(function () {
+                TurnierSTARTEN(pI + 1);
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'TurnierSTARTEN()', 'update ' + '/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR);
+            });
+}
+
+function TurnierSTARTENend() {
+    'use strict';
+    var hSTAT = new Object();
+    hSTAT.ZULETZTupd = new Date().toISOString();
+    if (STAT.ZULETZT) {
+        hSTAT.ZULETZT = new Date(new Date(STAT.ZULETZT).getTime() - 60000 * new Date(STAT.ZULETZT).getTimezoneOffset() + 1).toISOString();
+    } else {
+        hSTAT.ZULETZT = new Date().toISOString();
+    }
+    hSTAT.TURCODE = iTURCODE;
+    hSTAT.TURADMIN = LS.ME;
+    hSTAT.TURRUNDE = 1;
+    hSTAT.TURTIMESTAMP = firebase.database.ServerValue.TIMESTAMP;
+    firebase.database().ref('/00/' + ("000" + I).slice(-3))
+            .update(hSTAT)
+            .then(function () {
+                $('#bStartbutton').addClass('ui-disabled'); //.text("Turnier wurde gestartet");
+                $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Das Turnier wurde gestartet.</span><br>");
+                LS.I = I;
+                LS.TURCODE = iTURCODE;
+                LS.TURADMIN = LS.ME;
+                LS.TURTIMESTAMP = new Date();
+                LS.TURRUNDE = 1;
+                LS.TURSPIELER = 0;
+                LS.TURGESPIELT = 0;
+                LS.AnzGespeichert = 0;
+                LS.AnzSpieler = 0;
+                LS.ShowCups = I;
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                // Vorerst muss STAT nicht neu geladen werden
+                STAT.TURCODE = iTURCODE;
+                STAT.TURADMIN = LS.ME;
+                STAT.TURRUNDE = 1;
+                STAT.TURTIMESTAMP = new Date();
+                localStorage.setItem("Abakus.STAT" + ("000" + I).substr(-3), JSON.stringify(STAT));
+                whenSTATloaded(); // neuer Tisch
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'TurnierSTARTENend()', 'STAT update');
+            });
+}
+
+function RundeXbeenden() {
+    'use strict';
+    var hSTAT = new Object();
+    showEinenMoment(LS.I, 'Runde ' + LS.TURRUNDE + ' wird beendet.');
+//    hSTAT.ZULETZT  = new Date(new Date().getTime() - 60000 * new Date().getTimezoneOffset()).toISOString();
+    hSTAT.ZULETZTupd = new Date().toISOString();
+    hSTAT.TURRUNDE = LS.TURRUNDE + 1;
+    firebase.database().ref('/00/' + ("000" + I).slice(-3))
+            .update(hSTAT)
+            .then(function () {
+                $('#bRundeXbeenden').addClass('ui-disabled'); //.text("Turnier wurde gestartet");
+                $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Runde " + LS.TURRUNDE + " wurde beendet.</span><br>");
+                LS.Meldung = 'Runde ' + LS.TURRUNDE + ' wurde beendet.';
+                LS.TURRUNDE++;
+                LS.TURGESPIELT = 0;
+                localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
+                hideEinenMoment();
+                window.location.reload(false); // Da mit initSeite1 das Scroll in diesem Fall nicht funktioniert.
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'RundeXbeenden()', 'STAT update');
+            });
+}
+
+function TurnierBEENDEN(pI) {
+    'use strict';
+    if (typeof pI === 'undefined') { // beim 1. Aufrug (Callback)
+        showEinenMoment(LS.I, 'Das Turnier wird beendet.');
+        pI = 1;
+    }
+    if (STAT.MAXSPIELE[3] === 0) {  // es wurde kein Spiel gespielt
+        TurnierBEENDENendEnd();
+        return;
+    }
+
+    for (; pI < STAT.S.length; pI++) {
+        if (STAT.S[pI].NR !== '0000' && STAT.S[pI].SPIELE[3] > 0) {
+            break;
+        }
+    }
+
+    if (pI >= STAT.S.length) {
+        TurnierBEENDENend();
+        return;
+    }
+
+    var hPunkte1ter = -9999;
+    var hPunkte2ter = -9999;
+    var hPunkte3ter = -9999;
+    var hPunkteAkt = -9999;
+    var hPunkteZwi = 0;
+    for (var ii = 1; ii < STAT.S.length; ii++) { // Punkte der Stockerplätze errechnen
+
+        if (STAT.S[ii].SPIELE[3] > 0) {
+
+            hPunkteAkt = STAT.S[ii].PUNKTE[3];
+            if (hPunkteAkt > hPunkte3ter) {
+                hPunkte3ter = hPunkteAkt;
+            }
+            if (hPunkte3ter > hPunkte2ter) {
+                hPunkteZwi = hPunkte2ter;
+                hPunkte2ter = hPunkte3ter;
+                hPunkte3ter = hPunkteZwi;
+            }
+            if (hPunkte2ter > hPunkte1ter) {
+                hPunkteZwi = hPunkte1ter;
+                hPunkte1ter = hPunkte2ter;
+                hPunkte2ter = hPunkteZwi;
+                CUPS.MELDSTAT[I] = STAT.S[ii].VNAME + ' ' + STAT.S[ii].NNAME + ' gewinnt am ' + getDateString(LS.TURTIMESTAMP) + '.';
+            }
+        }
+    }
+
+    function akkSTOCKERL(pString, pPlatz) {
+        'use strict';
+        var nPlaetze = [0, 0, 0, 0];
+        if (pString.length < 5) {
+            pString = '0-0-0';
+        }
+
+        nPlaetze[1] = parseInt(pString.substr(0, (pString.indexOf('-'))));
+        pString = pString.substr(pString.indexOf('-') + 1);
+        nPlaetze[2] = parseInt(pString.substr(0, (pString.indexOf('-'))));
+        pString = pString.substr(pString.indexOf('-') + 1);
+        nPlaetze[3] = parseInt(pString);
+        nPlaetze[pPlatz]++;
+        return nPlaetze[1].toString() + '-' + nPlaetze[2].toString() + '-' + nPlaetze[3].toString();
+    }
+
+    hPunkteAkt = STAT.S[pI].PUNKTE[3];
+    var hSTAT = new Object();
+    var iJahr = new Date(LS.Von).getFullYear() - 2010;
+    if (hPunkteAkt === hPunkte1ter) {
+        STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 1);
+        STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 1);
+        STAT.S[pI].STOCKERL[3] = '1-0-0';
+        hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
+    } else if (hPunkteAkt === hPunkte2ter) {
+        STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 2);
+        STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 2);
+        STAT.S[pI].STOCKERL[3] = '0-1-0';
+        hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
+    } else if (hPunkteAkt === hPunkte3ter) {
+        STAT.S[pI].STOCKERL[0] = akkSTOCKERL(STAT.S[pI].STOCKERL[0], 3);
+        STAT.S[pI].STOCKERL[1] = akkSTOCKERL(STAT.S[pI].STOCKERL[1], 3);
+        STAT.S[pI].STOCKERL[3] = '0-0-1';
+        hSTAT.STOCKERL = STAT.S[pI].STOCKERL;
+    }
+    STAT.S[pI].STOCKERL[iJahr] = STAT.S[pI].STOCKERL[1];
+    if (typeof STAT.S[pI].CUPPUNKTE[1] !== "object") {
+        STAT.S[pI].CUPPUNKTE[1] = [];
+    }
+    if (STAT.S[pI].CUPPUNKTE[1].length === 0) {
+        STAT.S[pI].CUPPUNKTE[1][0] = hPunkteAkt;
+    } else {
+        if (STAT.S[pI].CUPPUNKTE[1][STAT.S[pI].CUPPUNKTE[1].length - 1] >= hPunkteAkt) {
+            STAT.S[pI].CUPPUNKTE[1][STAT.S[pI].CUPPUNKTE[1].length] = hPunkteAkt;
+        } else {
+            for (var ii = STAT.S[pI].CUPPUNKTE[1].length; ii > 0; ii--) {
+                if (STAT.S[pI].CUPPUNKTE[1][ii - 1] < hPunkteAkt) {
+                    STAT.S[pI].CUPPUNKTE[1][ii] = STAT.S[pI].CUPPUNKTE[1][ii - 1];
+                    STAT.S[pI].CUPPUNKTE[1][ii - 1] = hPunkteAkt;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    STAT.S[pI].CUPPUNKTE[iJahr] = STAT.S[pI].CUPPUNKTE[1];
+    hSTAT.CUPPUNKTE = STAT.S[pI].CUPPUNKTE;
+    firebase.database().ref('/00/' + ("000" + I).slice(-3) + '/' + STAT.S[pI].NR)
+            .update(hSTAT)
+            .then(function () {
+                TurnierBEENDEN(pI + 1);
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'TurnierBEENDEN()', 'STAT update');
+            });
+}
+
+function TurnierBEENDENend() {  // Monatssicherung
+    'use strict';
+    function getCUPname(pI) {
+        'use strict';
+        var ret = ("000" + pI).substr(-3) + ' ' + CUPS.NAME[pI];
+        return ret.replace(/\.|\#|\$|\[|\]/g, "");
+    }
+
+//    STAT.ZULETZT  = new Date(new Date().getTime() - 60000 * new Date().getTimezoneOffset()).toISOString();
+    STAT.ZULETZTupd = new Date().toISOString();
+    STAT.ANMELDUNGEN = null;
+    STAT.TURRUNDE = 0;
+    STAT.TURCODE = 0;
+    STAT.TURTIMESTAMP = null;
+    var hSTAT = new Object();
+    hSTAT.ZULETZT = STAT.ZULETZT;
+    hSTAT.ZULETZTupd = STAT.ZULETZTupd;
+    hSTAT.ANMELDUNGEN = STAT.ANMELDUNGEN;
+    hSTAT.TURRUNDE = STAT.TURRUNDE;
+    hSTAT.TURCODE = STAT.TURCODE;
+    hSTAT.TURTIMESTAMP = STAT.TURTIMESTAMP;
+    for (var ii = 1; ii < STAT.S.length; ii++) { // 0000 nicht kopieren
+        if (STAT.S[ii]) {
+            hSTAT[STAT.S[ii].NR] = STAT.S[ii];
+            hSTAT[STAT.S[ii].NR].TIMESTAMP = new Date(new Date(STAT.S[ii].TIMESTAMP).getTime() - 60000 * new Date(STAT.S[ii].TIMESTAMP).getTimezoneOffset()).toISOString();
+        }
+    }
+    firebase.database().ref('/' + ('00' + (((new Date()).getMonth()) + 1)).slice(-2) + '/' + getCUPname(I))
+            .set(hSTAT, function (error) {   // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+                if (error) {
+                    showEineDBWarnung(error, 'TurnierBEENDENend()', 'STAT set');
+                } else {
+                    TurnierBEENDENendEnd();
+                }
+            });
+}
+
+function TurnierBEENDENendEnd() {
+    'use strict';
+    var hSTAT = new Object();
+    hSTAT.ZULETZTupd = new Date().toISOString();
+    hSTAT.ANMELDUNGEN = null;
+    hSTAT.TURCODE = 0;
+    hSTAT.TURADMIN = '';
+    hSTAT.TURRUNDE = 0;
+    hSTAT.TURTIMESTAMP = null;
+    firebase.database().ref('/00/' + ("000" + I).slice(-3))
+            .update(hSTAT)
+            .then(function () {
+                firebase.database().ref('/00/CUPS/' + ("000" + I).slice(-3))
+                        .update({MELDSTAT: CUPS.MELDSTAT[I]})
+                        .then(function () {
+                            $('#bTurnierBeenden').addClass('ui-disabled'); //.text("Turnier wurde gestartet");
+                            if (STAT.MAXSPIELE[3] > 0) {  // es wurde kein Spiel gespielt
+                                $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Das Turnier wurde beendet.</span><br>");
+                            } else {
+                                $('#dText').html("&nbsp;<img src='" + rPfad + "Icons/Achtung.png'  width='24' height='24'><span class='L B'>&nbsp;Es wurde kein Spiel gespielt.</span><br>"
+                                        + "&nbsp;<img src='" + rPfad + "Icons/OK.png'  width='24' height='24'><span class='L B'>&nbsp;Das Turnier wurde beendet.</span><br>");
+                            }
+                            LS.I = 0;
+                            LS.TURCODE = 0;
+                            LS.TURADMIN = '';
+                            LS.TURRUNDE = 0;
+                            LS.TURSPIELER = 0;
+                            LS.TURGESPIELT = 0;
+                            LS.ShowCups = I;
+                            LS.Meldung = 'Das Turnier wurde beendet.';
+                            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                            localStorage.removeItem('Abakus.STAT' + ('000' + I).substr(-3));
+                            hideEinenMoment();
+                            window.location.reload(false); // Da mit initSeite1 das Scroll in diesem Fall nicht funktioniert.
+                        })
+                        .catch(function (error) {
+                            showEineDBWarnung(error, 'TurnierBEENDENendEnd()', 'CUPS.MELDSTAT update');
+                        });
+            })
+            .catch(function (error) {
+                showEineDBWarnung(error, 'TurnierBEENDENendEnd()', 'STAT update');
+            });
+}
+
+function fEinNeuerTisch(pCup) {
+    'use strict';
+    if (CUPS.ABVERSION > getVersion() && navigator.userAgent.match(/Android/i) && location.pathname.substring(0, 19) === '/android_asset/www/') {
+        showEinenFehler('Diese App ist veraltet!&nbsp;&nbsp;&nbsp;&nbsp;', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
+        return;
+    }
+    if (pCup) {
+        I = pCup;
+    }
+    if (LS.I && LS.I !== I) {
+        if (CUPS.TURNIER[I] === 'Handy'
+                && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3)
+                && mTischTurnier === 'Turnier') {
+            fStartStop(I, false); // der Admin will das Turnier starten
+            return; // very important
+        }
+    }
+
+    var iWochentag = (new Date()).getDay();
+    var iVortag = iWochentag - 1;
+    if (iWochentag === 0) {
+        iVortag = 6;
+    } else {
+        iVortag = iWochentag - 1;
+    }
+
+    if ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'ET' || CUPS.TYP[I] === 'MT') && !QUERFORMAT()) {
+        if (I > 4) {
+            var hOK = false;
+            for (var termin in CUPS.TERMINE) {
+                if (CUPS.TERMINE[termin].CUP === I && CUPS.TERMINE[termin].DATUM === hHeute) {
+                    hOK = true;
+                    break;
+                }
+            }
+            if (!hOK) {
+                showEineMeldung(I, 'Laut Turnierkalender findet<br>heute kein Turnier statt.');
+                return;
+            }
+        }
+    } else if (new Date(CUPS.NEXTTERMIN[I]).toDateString() === new Date().toDateString()) {
+        if (new Date().getHours() >= CUPS.SPIELEAB[I] - 1) {
+        } else {
+            showEineMeldung(I, 'Es wird erst ab<br>' + CUPS.SPIELEAB[I] + ' Uhr gespielt.');
+            return;
+        }
+    } else {
+        if (CUPS.SPIELTAGE[I][iWochentag] === 'J'
+                || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+            if (CUPS.TURNIER[I]) {
+                var iWoche = parseInt((new Date().getDate() - 1) / 7);
+                if (CUPS.WOCHEN[I][iWoche] !== 'J') {
+                    var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+                    showEineMeldung(I, 'Diesen ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+                    $(this).removeClass('ui-disabled');
+                    return;
+                }
+            }
+            if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date()).getHours() >= CUPS.SPIELEAB[I] - 1
+                    || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+            } else {
+                showEineMeldung(I, 'Es wird erst ab<br>' + CUPS.SPIELEAB[I] + ' Uhr gespielt.');
+                return;
+            }
+        } else {
+            var aWochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+            showEineMeldung(I, 'An einem ' + aWochentag[iWochentag] + '<br>wird nicht gespielt.');
+            return;
+        }
+    }
+
+    if (LS.I && LS.I !== I) {
+        if (CUPS.TURNIER[LS.I]) {
+            if (CUPS.TURNIER[LS.I] === 'Handy') {
+                showEineMeldung(I, '&nbsp;Bitte&nbsp;zuerst&nbsp;das&nbsp;Turnier&nbsp;&nbsp;&nbsp;<br>'
+                        + '&nbsp;<b>' + CUPS.NAME[LS.I] + '</b>&nbsp;beenden.');
+                return;
+            } else {
+                var hNAME = '';
+                for (var termin in CUPS.TERMINE) {
+                    if (CUPS.TERMINE[termin].CUP === LS.I && CUPS.TERMINE[termin].DATUM === hHeute) {
+                        hNAME = CUPS.TERMINE[termin].NAME;
+                        break;
+                    }
+                }
+                if (hNAME) {
+                    showEineMeldung(I, '&nbsp;Bitte&nbsp;zuerst&nbsp;den&nbsp;Tisch&nbsp;des&nbsp;Turniers&nbsp;<br>'
+                            + '&nbsp;<b>' + hNAME + '</b>&nbsp;speichern.');
+                    return;
+                }
+            }
+        }
+    }
+
+    if (LS.I === 0
+            || LS.gespielt < 1 && (
+                    LS.I === I
+                    || !CUPS.TURNIER[I])) {
+
+        if (!CUPS.TURNIER[I] && (CUPS.TYP[I] === 'PR' || I === 1) && localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3))) {
+            LS.LoadCups = I * -1; // - = neuer Tisch
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            fHref('Abakus/Anmeldung.html');
+        } else {
+            if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "ET" || CUPS.TYP[I] === "MT") {
+                loadTURNIER(I, hHeute, 'Das Turnier wird geladen.', hHeute + ', neuer Tisch');
+            } else {
+                if (CUPS.TURNIER[I]) {
+                    loadSTAT(I, 'Spieler werden geladen.');
+                } else {
+                    loadSTAT(I, 'Spieler werden aktualisiert.', I);
+                }
+            }
+        }
+    } else {
+        $('#tTischWasNunName').html(CUPS.NAME[I] + '&nbsp&nbsp;');
+        if (LS.I !== I) {
+            $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+            $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        } else {
+            $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        }
+        if (APP) {
+            if (mTischTurnier === 'Turnier') {
+                $('#tTischWasNunTitel').html('Das Turnier starten:');
+                $('#tsDieDen').html('die');
+                $('#tsSpieleLoeschen').html('Spiele löschen<br>und Turnier starten');
+            } else {
+                $('#tTischWasNunTitel').html('Ein neuer Tisch:');
+                $('#tsDieDen').html('die');
+                $('#tsSpieleLoeschen').html('Spiele löschen<br>und neuen Tisch');
+            }
+        }
+        if (LS.gespielt) {
+            $('#tsSpieleSpeichern').removeClass('ui-disabled');
+        } else {
+            $('#tsSpieleSpeichern').addClass('ui-disabled');
+        }
+        $("#pTISCHWASNUN").popup("open").show();
+    }
+}
+
+function fTischLoeschen(pLoeschen) {
+    if (pLoeschen) {
+        $("#pTISCHWASNUN").popup("close");
+        var hLog = CUPS.NAME[LS.I];
+        hLog += '<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.';
+        if (LS.gespielt) {
+            DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+            hLog += "<table data-role='table' id='tSpielerPunkte' data-mode='columntoggle' class='ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text=''>"
+                    + "<thead>"
+                    + "<tr sclass='ui-bar-d'>"
+                    + "<th>&nbsp;Spieler"
+                    + "</th>"
+                    + "<th class=TC>Punkte&nbsp;"
+                    + "</th>"
+                    + "</tr>";
+            for (var i = 1; i <= 6; i++) {
+                if (LS.Spieler[i]) {
+                    hLog += '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TC>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+                } else if (LS.Spiele[i] !== 0) {
+                    hLog += '<tr><td class="cRot B">&nbsp;???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+                }
+            }
+            hLog += "<tbody>"
+                    + "</tbody>"
+                    + "</table>"
+                    + 'Der Tisch wurde gelöscht.';
+        } else {
+            hLog += '<br>Der Tisch wurde gelöscht.';
+        }
+        writeLOG(hLog);
+        LS.AnzGespeichert = 0;
+        LS.AnzSpieler = 0;
+        LS.gespielt = 0;
+        LS.Spieler = ['', '', '', '', '', '', ''];
+        LS.NR = ['', '', '', '', '', '', ''];
+        LS.VName = ['', '', '', '', '', '', ''];
+        LS.NName = ['', '', '', '', '', '', ''];
+        LS.Sterne = ['', '', '', '', '', '', ''];
+        LS.Ort = ['', '', '', '', '', '', ''];
+        LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+//        LS.TURRUNDE = 0; // Bei Spontanturnier nach Tisch löschen nicht erlaupt llll llll
+        if ('TURTISCH' in LS) {
+            delete LS.TURTISCH;
+        }
+        LS.Meldung = "Der Tisch wurde gelöscht!";
+        if (CUPS.TURNIER[I] === 'Handy') {
+// Sonst kann der Admin das Turnier nicht beenden.
+        } else {
+            LS.I = 0;
+        }
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        setTimeout(function () {
+            initSeite1();
+        }, 200);
+    } else {
+        $('#tTischWasNunName').html(CUPS.NAME[LS.I] + '&nbsp&nbsp;');
+        if (LS.I !== I) {
+            $("#tsTitel").html(CUPS.NAME[LS.I] + ':').show();
+            $('#tsText').html('<br>Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        } else {
+            $('#tsText').html('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        }
+        $('#tTischWasNunTitel').html('Den Tisch löschen:');
+        if (CUPS.TYP[I] === "CUP" || CUPS.TYP[I] === "ET" || CUPS.TYP[I] === "MT") {
+            $('#tsSpieleSpeichern').addClass('ui-disabled');
+        }
+        $('#tsDieDen').html('den');
+        $('#tsSpieleLoeschen').html('Tisch löschen');
+        if (LS.gespielt) {
+            $('#tsSpieleSpeichern').removeClass('ui-disabled');
+        } else {
+            $('#tsSpieleSpeichern').addClass('ui-disabled');
+        }
+        $("#pMEINTISCH").popup("close");
+        $("#pTISCHWASNUN").popup("open").show();
+    }
+}
+
+function getCupText() {
+    var html = '';
+    if (LS.Meldung) {
+        html += '<div class="cRot B">' + LS.Meldung + '</div><br>';
+        if (!QUERFORMAT()) {
+            showEineNotiz(LS.Meldung);
+        }
+        LS.Meldung = '';
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
+    if (!(I === LS.I && LS.AnzSpieler) || QUERFORMAT()) {
+        if (CUPS.TEXT1[I]) {
+            html += CUPS.TEXT1[I];
+        }
+    }
+    if (LS.I === I && LS.TURRUNDE > 0) {
+        if (LS.TURRUNDE === 1) {
+            if (LS.TURGESPIELT === 0) {
+                html += "<br><img src='" + iPfad + "OK.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>Turnier wurde gestartet.</b></span>";
+            } else {
+                html += "<br><img src='" + iPfad + "Achtung.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>Runde 1 noch nicht beendet.</b></span>";
+            }
+        } else if (LS.TURGESPIELT === 0) {
+            html += "<br><img src='" + iPfad + "OK.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>Runde " + LS.TURRUNDE + " wird gespielt.</b></span>";
+        } else if (LS.TURSPIELER === LS.TURGESPIELT) {
+            html += "<br><img src='" + iPfad + "Achtung.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>" + ((LS.TURRUNDE === 3) ? "Turnier" : "Runde " + LS.TURRUNDE) + " noch nicht beendet.</b></span>";
+        } else {
+            var hText;
+            if (LS.TURSPIELER - LS.TURGESPIELT < 8) {
+                hText = "Ein Tisch ausst&auml;ndig.";
+            } else {
+                hText = parseInt((LS.TURSPIELER - LS.TURGESPIELT) / 4) + " Tische ausst&auml;ndig.";
+            }
+            html += "<br><img src='" + iPfad + "Achtung.png'  width='24' height='24'><span class=M>&nbsp;&nbsp;<b>Runde " + LS.TURRUNDE + ":&nbsp;&nbsp;&nbsp;" + hText + "</b></span>";
+        }
+    }
+    return html;
+}
+
+function getTurnierButtons() {
+    var html = '';
+    if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || I <= 3) {
+        if (CUPS.TURNIER[I] === 'Handy') {
+
+            var iWochentag = (new Date()).getDay();
+            var iVortag = iWochentag - 1;
+            if (iWochentag === 0) {
+                iVortag = 6;
+            } else {
+                iVortag = iWochentag - 1;
+            }
+
+            var cClass = '';
+            if (LS.I === I && LS.TURADMIN === LS.ME) {
+            } else {
+                if (new Date(CUPS.NEXTTERMIN[I]).toDateString() !== new Date().toDateString()) {
+                    if (CUPS.SPIELTAGE[I][iWochentag] === 'J'
+                            || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+                        var iWoche = parseInt((new Date().getDate() - 1) / 7);
+                        //                  if (I ===  8 && new Date().getDate() >= 15) {
+                        if (CUPS.WOCHEN[I][iWoche] !== 'J') {
+                            cClass = ' ui-disabled'; // nicht in dieser Woche
+                        }
+                        if (CUPS.SPIELTAGE[I][iWochentag] === 'J' && (new Date()).getHours() + 1 >= CUPS.SPIELEAB[I] // 1 Stunde Toleranz
+                                || CUPS.SPIELTAGE[I][iVortag] === 'J' && (new Date()).getHours() <= 6) {
+                        } else {
+                            cClass = ' ui-disabled';
+                            // Es wird erst ab "17" Uhr gespielt.
+                        }
+                    } else {
+                        cClass = ' ui-disabled';
+                        // An einen "Freitag" wird nicht gespielt.
+                    }
+                }
+            }
+
+            if (LS.I === 0 && !LS.TURRUNDE || (LS.I !== 0 && LS.I !== I)) {
+                html += "<a onclick='fStartStop(0, true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bStartbutton>&nbsp;Turnier starten&nbsp;</a>";
+            } else if (LS.I === I && (LS.TURADMIN === LS.ME || LS.I < 5)) {
+                if (LS.TURRUNDE < CUPS.RUNDEN[I]) {
+                    html += "<a onclick='fStartStop(0, true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bRundeXbeenden>&nbsp;Runde " + LS.TURRUNDE + " beenden&nbsp;</a>";
+                } else {
+                    html += "<a onclick='fStartStop(0, true);' data-rel='popup' data-theme=e data-position-to='window' data-role='button' data-inline='true' data-mini='true' class='L" + cClass + "' data-transition='pop' id=bTurnierBeenden>&nbsp;Turnier beenden&nbsp;</a>";
+                }
+            }
+        }
+    }
+    if (APP && ((CUPS.TYP[I] !== 'CUP' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0)
+            || LS.ME === '3425'
+            || I <= 2)) {
+        html += "<a onclick='hrefParameterAendern(" + I + ");' data-role='button' data-inline='true' data-mini='true' >&nbsp;Parameter ändern&nbsp;</a>";
+    }
+    return html + '<br><br>';
+}
+
+function hrefParameterAendern(pCup) {
+    'use strict';
+    LS.ShowCups = pCup;
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    fHref('Abakus/ParameterAendern.html');
+}
+
+function checkNeuerTisch() {
+    'use strict';
+    var hGefunden = false;
+    if (I !== 3) {  // Ein PC-Turnier kann an jeden Tag stattfinden
+        for (var termin in CUPS.TERMINE) {
+            if (CUPS.TERMINE[termin].CUP === I && CUPS.TERMINE[termin].DATUM === hHeute) {
+                hGefunden = true;
+                break;
+            }
+        }
+        if (!hGefunden) {
+            showEineWarnung(I, 'Laut Turnierkalender findet<br>heute kein Turnier statt.');
+            return false;
+        }
+    }
+    if (!STAT._AKTTURNIER) {
+        if (STAT[hHeute]) {
+            showEineWarnung(I, 'Das Turnier wurde bereits beendet.');
+            return false;
+        } else {
+            showEineWarnung(I, 'Das Turnier wurde noch nicht gestartet.', 'Hab etwas Geduld.');
+            return false;
+        }
+    }
+    if (STAT._AKTTURNIER._RUNDE > 3) {
+        showEineWarnung(I, 'Das Turnier wurde bereits beendet.');
+        return;
+    }
+    if (!STAT._AKTTURNIER[LS.ME]) {
+        showEineWarnung(I, 'Du bist nich angemeldet.', 'Informiere den Veranstalter.');
+        return false;
+    }
+    if (STAT._AKTTURNIER._RUNDE === 3 && STAT._AKTTURNIER[LS.ME][3] !== '-') {
+        showEineWarnung(I, 'Du hast bereits alle Runden gespielt.');
+        return false;
+    }
+    var nMinSeitRundeStart = parseInt((Date.now() - STAT._AKTTURNIER._RUNDESTART) / 60000);
+    if (nMinSeitRundeStart < -35) {
+        showEineWarnung(I, ' Die Uhr am Handy geht nach<br>oder die am Turnier-PC vor.', 'Korrigiere die Uhrzeit.');
+        return false;
+    }
+    if (nMinSeitRundeStart > 240) {
+        showEineWarnung(I, ' Die Uhr am Handy geht vor<br>oder die am Turnier-PC nach.', 'Korrigiere die Uhrzeit.');
+        return false;
+    }
+    if (STAT._AKTTURNIER._RUNDE === 3 && nMinSeitRundeStart > 75) {
+        showEineWarnung(I, 'Das Turnier wird bald beendet.');
+        return;
+    }
+
+    LS.I = I;
+    LS.CupName = CUPS.NAME[LS.I];
+    LS.Regeln = CUPS.REGELN[LS.I];
+    LS.Spieltyp = CUPS.TYP[LS.I];
+    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+    LS.DoppelteRunden = false;
+    LS.Tarif = new Array(19);
+    LS.Vorhand = 0;
+    LS.Geber = 0;
+    LS.INA1 = 0;
+    LS.INA2 = 0;
+    LS.AnzSpieler = 0;
+    LS.Pausierer1 = 0;
+    LS.Pausierer2 = 0;
+    LS.gespielt = 0;
+    LS.AnzGespeichert = 0;
+    LS.doppelt = 0;
+    LS.JeSeite = '';
+    LS.NR = ['', '', '', '', '', '', ''];
+    LS.Spieler = ['', '', '', '', '', '', ''];
+    LS.VName = ['', '', '', '', '', '', ''];
+    LS.NName = ['', '', '', '', '', '', ''];
+    LS.Sterne = ['', '', '', '', '', '', ''];
+    LS.Ort = ['', '', '', '', '', '', ''];
+    LS.Spiele = [0, 0, 0, 0, 0, 0, 0];
+    LS.Von = new Date();
+    LS.Bis = new Date();
+    LS.TURRUNDE = STAT._AKTTURNIER._RUNDE;
+    LS.TURTISCH = 0;
+    var hTurnier = STAT._AKTTURNIER._TURNIER;
+    var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
+    if (nMinSeitRundeStart > 60) {
+        LS.TURRUNDE++;
+    }
+
+    if (STAT[hTurnier][LS.ME]) {
+        if (STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '?'
+                && STAT[hTurnier][LS.ME][LS.TURRUNDE] !== '-') {
+            if (LS.TURRUNDE === 3) {
+                showEineWarnung(I, 'Du hast Runde ' + LS.TURRUNDE + ' bereits gespielt.');
+                return;
+            } else {
+                LS.TURRUNDE++;
+            }
+        }
+    }
+
+    if (STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === 0
+            || STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === '-') {
+        showEineWarnung(I, 'Du bist nicht angemeldet.', 'Informiere den Veranstalter.');
+        return;
+    }
+
+    if (STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6] === '?') {
+        showEineWarnung(I, 'Die Runde ' + LS.TURRUNDE + ' wurde<br>noch nicht freigegeben.',
+                'Warte auf das OK<br>der Turnierleitung.');
+        return;
+    }
+
+    LS.TURTISCH = STAT._AKTTURNIER[LS.ME][LS.TURRUNDE + 6];
+    var SORT = [];
+    for (var spieler in STAT._AKTTURNIER) {
+        if (spieler[0] !== '_') {
+            SORT[SORT.length] = STAT._AKTTURNIER[spieler][0] + ';' + spieler;
+        }
+    }
+    SORT.sort();
+    var nAngemeldet = 0;
+    for (var i = 0; i < SORT.length; i++) {
+        spieler = SORT[i].substr(SORT[i].lastIndexOf(';') + 1);
+        if (spieler === LS.ME || nAngemeldet) { // Mich und Spieler nach mir anmelden
+            nAngemeldet++;
+            if (STAT._AKTTURNIER[spieler][LS.TURRUNDE + 6] === LS.TURTISCH) {
+                if (STAT._AKTTURNIER[spieler][LS.TURRUNDE] !== '-') {
+                    showEineWarnung(I, spieler + ' hat Runde ' + LS.TURRUNDE + ' bereits gespielt.');
+                    return;
+                }
+                if (spieler.length === 4) {
+                    blert(spieler, SPIELERnr[spieler][1], SPIELERnr[spieler][0], STAT._AKTTURNIER[spieler][6], '');
+                } else {
+                    blert(spieler, null, null, null, '');
+                }
+            }
+        }
+    }
+
+    for (var i = 0; i < SORT.length; i++) {
+        spieler = SORT[i].substr(SORT[i].lastIndexOf(';') + 1);
+        if (spieler !== LS.ME) { // Die Spieler vor mir anmelden
+            if (STAT._AKTTURNIER[spieler][LS.TURRUNDE + 6] === LS.TURTISCH) {
+                if (STAT._AKTTURNIER[spieler][LS.TURRUNDE] !== '-') {
+                    showEineWarnung(I, spieler + ' hat Runde ' + LS.TURRUNDE + ' bereits gespielt.');
+                    return;
+                }
+                if (spieler.length === 4) {
+                    blert(spieler, SPIELERnr[spieler][1], SPIELERnr[spieler][0], STAT._AKTTURNIER[spieler][6], '');
+                } else {
+                    blert(spieler, null, null, null, '');
+                }
+            }
+        } else {
+            break;
+        }
+    }
+
+    LS.Vorhand = (Date.now() % (LS.AnzSpieler) + 1);
+// onOK aus Anmeldung.js
+
+    LS.VName[1] = LS.VName[1].trim();
+    LS.VName[2] = LS.VName[2].trim();
+    LS.VName[3] = LS.VName[3].trim();
+    LS.VName[4] = LS.VName[4].trim();
+    LS.VName[5] = LS.VName[5].trim();
+    LS.VName[6] = LS.VName[6].trim();
+    LS.Spieler[1] = LS.VName[1];
+    LS.Spieler[2] = LS.VName[2];
+    LS.Spieler[3] = LS.VName[3];
+    LS.Spieler[4] = LS.VName[4];
+    LS.Spieler[5] = LS.VName[5];
+    LS.Spieler[6] = LS.VName[6];
+    if ((LS.VName[1].substr(0, 3) === LS.VName[2].substr(0, 3))
+            || (LS.VName[1].substr(0, 3) === LS.VName[3].substr(0, 3))
+            || (LS.VName[1].substr(0, 3) === LS.VName[4].substr(0, 3))
+            || (LS.VName[1].substr(0, 3) === LS.VName[5].substr(0, 3))
+            || (LS.VName[1].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+        if (LS.VName[1].substr(0, 3) === LS.VName[2].substr(0, 3)) {
+            LS.Spieler[2] = LS.NName[2].substr(0, 1) + '.' + LS.VName[2];
+        }
+        if (LS.VName[1].substr(0, 3) === LS.VName[3].substr(0, 3)) {
+            LS.Spieler[3] = LS.NName[3].substr(0, 1) + '.' + LS.VName[3];
+        }
+        if (LS.VName[1].substr(0, 3) === LS.VName[4].substr(0, 3)) {
+            LS.Spieler[4] = LS.NName[4].substr(0, 1) + '.' + LS.VName[4];
+        }
+        if (LS.VName[1].substr(0, 3) === LS.VName[5].substr(0, 3)) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+        }
+        if (LS.VName[1].substr(0, 3) === LS.VName[6].substr(0, 3)) {
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+        LS.Spieler[1] = LS.NName[1].substr(0, 1) + '.' + LS.VName[1];
+    }
+
+    if ((LS.VName[2].substr(0, 3) === LS.VName[3].substr(0, 3))
+            || (LS.VName[2].substr(0, 3) === LS.VName[4].substr(0, 3))
+            || (LS.VName[2].substr(0, 3) === LS.VName[5].substr(0, 3))
+            || (LS.VName[2].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+        if (LS.VName[2].substr(0, 3) === LS.VName[3].substr(0, 3)) {
+            LS.Spieler[3] = LS.NName[3].substr(0, 1) + '.' + LS.VName[3];
+        }
+        if (LS.VName[2].substr(0, 3) === LS.VName[4].substr(0, 3)) {
+            LS.Spieler[4] = LS.NName[4].substr(0, 1) + '.' + LS.VName[4];
+        }
+        if (LS.VName[2].substr(0, 3) === LS.VName[5].substr(0, 3)) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+        }
+        if (LS.VName[2].substr(0, 3) === LS.VName[6].substr(0, 3)) {
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+        LS.Spieler[2] = LS.NName[2].substr(0, 1) + '.' + LS.VName[2];
+    }
+
+    if ((LS.VName[3].substr(0, 3) === LS.VName[4].substr(0, 3))
+            || (LS.VName[3].substr(0, 3) === LS.VName[5].substr(0, 3))
+            || (LS.VName[3].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+        if (LS.VName[3].substr(0, 3) === LS.VName[4].substr(0, 3)) {
+            LS.Spieler[4] = LS.NName[4].substr(0, 1) + '.' + LS.VName[4];
+        }
+        if (LS.VName[3].substr(0, 3) === LS.VName[5].substr(0, 3)) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+        }
+        if (LS.VName[3].substr(0, 3) === LS.VName[6].substr(0, 3)) {
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+        LS.Spieler[3] = LS.NName[3].substr(0, 1) + '.' + LS.VName[3];
+    }
+
+    if ((LS.VName[4].substr(0, 3) === LS.VName[5].substr(0, 3))
+            || (LS.VName[4].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+        if (LS.VName[4].substr(0, 3) === LS.VName[5].substr(0, 3)) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+        }
+        if (LS.VName[4].substr(0, 3) === LS.VName[6].substr(0, 3)) {
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+        LS.Spieler[4] = LS.NName[4].substr(0, 1) + '.' + LS.VName[4];
+    }
+
+    if (LS.VName[6]) {
+        if ((LS.VName[5].substr(0, 3) === LS.VName[6].substr(0, 3))) {
+            LS.Spieler[5] = LS.NName[5].substr(0, 1) + '.' + LS.VName[5];
+            LS.Spieler[6] = LS.NName[6].substr(0, 1) + '.' + LS.VName[6];
+        }
+    }
+
+    if (LS.Spieler[2].substr(3, 1) === '.') {
+        LS.Spieler[2] = LS.VName[2].substr(0, 1) + '.' + LS.NName[2];
+    }
+    if (LS.Spieler[3].substr(3, 1) === '.') {
+        LS.Spieler[3] = LS.VName[3].substr(0, 1) + '.' + LS.NName[3];
+    }
+    if (LS.Spieler[4].substr(3, 1) === '.') {
+        LS.Spieler[4] = LS.VName[4].substr(0, 1) + '.' + LS.NName[4];
+    }
+    if (LS.Spieler[5].substr(3, 1) === '.') {
+        LS.Spieler[5] = LS.VName[5].substr(0, 1) + '.' + LS.NName[5];
+    }
+    if (LS.Spieler[6].substr(3, 1) === '.') {
+        LS.Spieler[6] = LS.VName[6].substr(0, 1) + '.' + LS.NName[6];
+    }
+
+    LS.Spieler[1] = LS.Spieler[1] + LS.Sterne[1];
+    LS.Spieler[2] = LS.Spieler[2] + LS.Sterne[2];
+    LS.Spieler[3] = LS.Spieler[3] + LS.Sterne[3];
+    LS.Spieler[4] = LS.Spieler[4] + LS.Sterne[4];
+    LS.Spieler[5] = LS.Spieler[5] + LS.Sterne[5];
+    LS.Spieler[6] = LS.Spieler[6] + LS.Sterne[6];
+    if (LS.Spieler[5] === '') {
+        LS.JeSeite = '1';
+        if (LS.AnzSpieler !== 4) {
+            LS.AnzSpieler = 4;
+            LS.Pausierer1 = 5;
+            LS.Pausierer2 = 6;
+        }
+    } else if (LS.Spieler[6] === '') {
+        if (LS.AnzSpieler !== 5) {
+            LS.AnzSpieler = 5;
+            LS.Pausierer1 = 0;
+            LS.Pausierer2 = 6;
+        }
+    } else {
+        if (LS.AnzSpieler !== 6) {
+            LS.AnzSpieler = 6;
+            LS.Pausierer1 = 0;
+            LS.Pausierer2 = 0;
+        }
+    }
+
+    LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+//    if (LS.I === 54 || LS.I === 77) { // Steiermark:   Falls es Fünfertische gibt, spielen 4rer-Tische weniger
+//        if (STAT._AKTTURNIER._TEILNEHMER % 4) {   // Fünfertische
+//            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 5) * LS.AnzSpieler);
+//        }
+//    } else {           // Rest - 5er-Tische spielen mehr
+//        if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
+//            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+//        }
+//    }
+    if (LS.AnzSpieler > 4) {
+        LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+    }
+
+    SetGeberPausierer();
+    setTarif();
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    var DS = new Object();
+    DS.GameI = [0];
+    DS.Game = [''];
+    DS.Spieler = [''];
+    DS.Partner = [''];
+    DS.Punkte = [[0], [0], [0], [0], [0], [0], [0]];
+    DS.Korr = [false];
+    DS.Storno = [false];
+    localStorage.setItem('Abakus.DS', JSON.stringify(DS));
+    var NEXT = new Object();
+    NEXT.Seite = 'GR';
+    localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
+    fHref('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
+}
+
+function blert(pNR, pVNAME, pNNAME, pORT, pSTERNE) {
+    if (pNR.length !== 4) {
+        var hNR = pNR;
+        pNNAME = pNR.substr(0, pNR.indexOf('ˆ'));
+        hNR = pNR.substr(pNR.indexOf('ˆ') + 1);
+        pVNAME = hNR.substr(0, hNR.indexOf('ˆ'));
+        pORT = hNR.substr(hNR.lastIndexOf('ˆ') + 1);
+    }
+    LS.AnzSpieler++;
+    LS.NR    [LS.AnzSpieler] = pNR;
+    LS.VName [LS.AnzSpieler] = pVNAME.trim();
+    LS.NName [LS.AnzSpieler] = pNNAME.trim();
+    if (typeof pORT === "string") {
+        LS.Ort   [LS.AnzSpieler] = pORT.trim();
+    } else {
+        LS.Ort   [LS.AnzSpieler] = pORT;
+    }
+    LS.Sterne[LS.AnzSpieler] = pSTERNE;
+}
+
+function SetGeberPausierer() {
+
+    LS.Geber = LS.Vorhand - 1;
+    if (LS.Geber === 0) {
+        LS.Geber = LS.AnzSpieler;
+    }
+    if (LS.Geber === LS.Pausierer1 || LS.Geber === LS.Pausierer2) {
+        LS.Geber = LS.Geber - 1;
+        if (LS.Geber === 0) {
+            LS.Geber = LS.AnzSpieler;
+        }
+        if (LS.Geber === LS.Pausierer1 || LS.Geber === LS.Pausierer2) {
+            LS.Geber = LS.Geber - 1;
+            if (LS.Geber === 0) {
+                LS.Geber = LS.AnzSpieler;
+            }
+        }
+    }
+
+    LS.INA1 = 0;
+    LS.INA2 = 0;
+    if (LS.AnzSpieler === 4) {
+        LS.INA1 = 5;
+        LS.INA2 = 6;
+    } else if (LS.AnzSpieler === 5) {
+        if (LS.Pausierer1 > 0) {
+            LS.INA1 = LS.Pausierer1;
+        } else {
+            LS.INA1 = LS.Geber;
+        }
+        LS.INA2 = 6;
+    } else if (LS.AnzSpieler === 6) {
+        if (LS.Pausierer1 === 0 && LS.Pausierer2 === 0) {
+            LS.INA1 = LS.Geber;
+            if (LS.Geber <= 3) {
+                LS.INA2 = LS.Geber + 3;
+            } else {
+                LS.INA2 = LS.Geber - 3;
+            }
+        } else if (LS.Pausierer1 !== 0 && LS.Pausierer2 !== 0) {
+            LS.INA1 = LS.Pausierer1;
+            LS.INA2 = LS.Pausierer2;
+            LS.Geber = 0;
+        } else {
+            LS.INA1 = LS.Pausierer1;
+            LS.INA2 = LS.Geber;
+            LS.Geber = 0;
+        }
+    }
+}
+
+function setTarif() {
+    'use strict';
+    LS.Tarif = new Array(19);
+    if (CUPS.TARIF[LS.I].length >= 18) {
+        LS.Tarif[iRufer          ] = CUPS.TARIF[LS.I][1 ]; // Rufer
+        LS.Tarif[iSolorufer      ] = CUPS.TARIF[LS.I][1 ] * 2; // Solorufer
+        LS.Tarif[iPagatrufer     ] = CUPS.TARIF[LS.I][1 ]; // Pagat
+        LS.Tarif[iUhurufer       ] = CUPS.TARIF[LS.I][1 ]; // Uhu
+        LS.Tarif[iKakadurufer    ] = CUPS.TARIF[LS.I][1 ]; // Kakadu
+        LS.Tarif[iQuapilrufer    ] = CUPS.TARIF[LS.I][1 ]; // Quapil
+        LS.Tarif[i6er            ] = CUPS.TARIF[LS.I][2 ]; // 6er
+        LS.Tarif[i3er            ] = CUPS.TARIF[LS.I][3 ]; // 3er
+        LS.Tarif[iSolo3er        ] = CUPS.TARIF[LS.I][3 ] * 2; // Solo3er
+        LS.Tarif[iFarben3er      ] = CUPS.TARIF[LS.I][4 ]; // Farben-3er
+        LS.Tarif[iFarbensolo     ] = CUPS.TARIF[LS.I][5 ]; // Farbensolo
+        LS.Tarif[iTrischaker     ] = CUPS.TARIF[LS.I][6 ]; // Trischaken
+        LS.Tarif[iPiZwiccolo     ] = CUPS.TARIF[LS.I][7 ]; // Pi/Zwiccolo
+        LS.Tarif[iBettler        ] = CUPS.TARIF[LS.I][8 ]; // Bettler
+        LS.Tarif[iPiZwiccoloOvert] = CUPS.TARIF[LS.I][9 ]; // Pi/Zwiccolo overt
+        LS.Tarif[iBettlerOvert   ] = CUPS.TARIF[LS.I][10]; // Bettler overt
+        LS.Tarif[iPagat          ] = CUPS.TARIF[LS.I][11]; // Pagat
+        LS.Tarif[iUhu            ] = CUPS.TARIF[LS.I][12]; // Uhu
+        LS.Tarif[iKakadu         ] = CUPS.TARIF[LS.I][13]; // Kakadu
+        LS.Tarif[iQuapil         ] = CUPS.TARIF[LS.I][14]; // Quapil
+        LS.Tarif[iV              ] = CUPS.TARIF[LS.I][15]; // V
+        LS.Tarif[iTrull          ] = CUPS.TARIF[LS.I][16]; // Trull
+        LS.Tarif[i4Koenige       ] = CUPS.TARIF[LS.I][17]; // Vier Könige
+        LS.Tarif[iUltimo         ] = CUPS.TARIF[LS.I][18]; // König ultimo
+        LS.Tarif[iValat          ] = CUPS.TARIF[LS.I][19]; // Valat
+        if (CUPS.TARIF[LS.I][20]) {
+            LS.Tarif[iAbsolut    ] = CUPS.TARIF[LS.I][20]; // Prämie 20
+            LS.Tarif20T = CUPS.TARIF20T[LS.I];
+        } else {
+            LS.Tarif[iAbsolut    ] = 0;
+            LS.Tarif20T = '';
+        }
+        if (CUPS.TARIF[LS.I][21]) {
+            LS.Tarif[iXY         ] = CUPS.TARIF[LS.I][21]; // Prämie 21
+            LS.Tarif21T = CUPS.TARIF21T[LS.I];
+        } else {
+            LS.Tarif[iXY         ] = 0;
+            LS.Tarif21T = '';
+        }
+    } else if (CUPS.REGELN[LS.I] === 'Wr.') {
+        LS.Tarif[iRufer          ] = 1; // Rufer
+        LS.Tarif[iSolorufer      ] = 2; // Solorufer
+        LS.Tarif[iPagatrufer     ] = 1; // Pagat
+        LS.Tarif[iUhurufer       ] = 1; // Uhu
+        LS.Tarif[iKakadurufer    ] = 1; // Kakadu
+        LS.Tarif[iQuapilrufer    ] = 1; // Quapil
+        LS.Tarif[i6er            ] = 4; // 6er
+        LS.Tarif[i3er            ] = 5; // 3er
+        LS.Tarif[iSolo3er        ] = 10; // Solo3er
+        LS.Tarif[iFarben3er      ] = 5; // Farben-3er
+        LS.Tarif[iFarbensolo     ] = 10; // Farbensolo
+        LS.Tarif[iTrischaker     ] = 2; // Trischaken
+        LS.Tarif[iPiZwiccolo     ] = 2; // Pi/Zwiccolo
+        LS.Tarif[iBettler        ] = 4; // Bettler
+        LS.Tarif[iPiZwiccoloOvert] = 6; // Pi/Zwiccolo overt
+        LS.Tarif[iBettlerOvert   ] = 8; // Bettler overt
+        LS.Tarif[iPagat          ] = 1; // Pagat
+        LS.Tarif[iUhu            ] = 2; // Uhu
+        LS.Tarif[iKakadu         ] = 3; // Kakadu
+        LS.Tarif[iQuapil         ] = 4; // Quapil
+        LS.Tarif[iV              ] = 0; // V
+        LS.Tarif[iTrull          ] = 1; // Trull
+        LS.Tarif[i4Koenige       ] = 1; // Vier Könige
+        LS.Tarif[iUltimo         ] = 1; // König ultimo
+        LS.Tarif[iValat          ] = 10; // Valat
+        LS.Tarif[iAbsolut        ] = 0; // Absolut
+        LS.Tarif[iXY             ] = 0; // Prämie XY
+        LS.Tarif20T = '';
+        LS.Tarif21T = '';
+    } else if (CUPS.REGELN[LS.I] === 'Ooe.') {
+        LS.Tarif[iRufer          ] = 1; // Rufer
+        LS.Tarif[iSolorufer      ] = 2; // Solorufer
+        LS.Tarif[iPagatrufer     ] = 1; // Pagat
+        LS.Tarif[iUhurufer       ] = 1; // Uhu
+        LS.Tarif[iKakadurufer    ] = 1; // Kakadu
+        LS.Tarif[iQuapilrufer    ] = 1; // Quapil
+        LS.Tarif[i6er            ] = 4; // 6er
+        LS.Tarif[i3er            ] = 4; // 3er
+        LS.Tarif[iSolo3er        ] = 8; // Solo3er
+        LS.Tarif[iFarben3er      ] = 0; // Farben-3er
+        LS.Tarif[iFarbensolo     ] = 5; // Farbensolo
+        LS.Tarif[iTrischaker     ] = 1; // Trischaken
+        LS.Tarif[iPiZwiccolo     ] = 2; // Pi/Zwiccolo
+        LS.Tarif[iBettler        ] = 2; // Bettler
+        LS.Tarif[iPiZwiccoloOvert] = 6; // Pi/Zwiccolo overt
+        LS.Tarif[iBettlerOvert   ] = 7; // Bettler overt
+        LS.Tarif[iPagat          ] = 1; // Pagat
+        LS.Tarif[iUhu            ] = 2; // Uhu
+        LS.Tarif[iKakadu         ] = 3; // Kakadu
+        LS.Tarif[iQuapil         ] = 4; // Quapil
+        LS.Tarif[iV              ] = 0; // V
+        LS.Tarif[iTrull          ] = 1; // Trull
+        LS.Tarif[i4Koenige       ] = 1; // Vier Könige
+        LS.Tarif[iUltimo         ] = 1; // König ultimo
+        LS.Tarif[iValat          ] = 0; // Valat
+        LS.Tarif[iAbsolut        ] = 0; // Absolut
+        LS.Tarif[iXY             ] = 0; // Prämie XY
+        LS.Tarif20T = '';
+        LS.Tarif21T = '';
+    } else {
+        LS.Tarif[iRufer          ] = 1; // Rufer
+        LS.Tarif[iSolorufer      ] = 2; // Solorufer
+        LS.Tarif[iPagatrufer     ] = 1; // Pagat
+        LS.Tarif[iUhurufer       ] = 1; // Uhu
+        LS.Tarif[iKakadurufer    ] = 1; // Kakadu
+        LS.Tarif[iQuapilrufer    ] = 1; // Quapil
+        LS.Tarif[i6er            ] = 4; // 6er
+        LS.Tarif[i3er            ] = 5; // 3er
+        LS.Tarif[iSolo3er        ] = 10; // Solo3er
+        LS.Tarif[iFarben3er      ] = 5; // Farben-3er
+        LS.Tarif[iFarbensolo     ] = 10; // Farbensolo
+        LS.Tarif[iTrischaker     ] = 2; // Trischaken
+        LS.Tarif[iPiZwiccolo     ] = 2; // Pi/Zwiccolo
+        LS.Tarif[iBettler        ] = 4; // Bettler
+        LS.Tarif[iPiZwiccoloOvert] = 8; // Pi/Zwiccolo overt
+        LS.Tarif[iBettlerOvert   ] = 8; // Bettler overt
+        LS.Tarif[iPagat          ] = 1; // Pagat
+        LS.Tarif[iUhu            ] = 2; // Uhu
+        LS.Tarif[iKakadu         ] = 3; // Kakadu
+        LS.Tarif[iQuapil         ] = 4; // Quapil
+        LS.Tarif[iV              ] = 0; // V
+        LS.Tarif[iTrull          ] = 1; // Trull
+        LS.Tarif[i4Koenige       ] = 1; // Vier Könige
+        LS.Tarif[iUltimo         ] = 1; // König ultimo
+        LS.Tarif[iValat          ] = 10; // Valat
+        LS.Tarif[iAbsolut        ] = 1; // Absolut
+        LS.Tarif[iXY             ] = 1; // Prämie XY
+        LS.Tarif20T = 'Sack';
+        LS.Tarif21T = 'XY';
+    }
+}
+
+function whenSTATloaded() {
+    'use strict';
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
+        checkNeuerTisch();
+        return;
+    }
+
+    var hJetzt = new Date().getTime();
+    if (STAT && new Date(STAT.ZULETZTupd).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
+        showEineWarnung('F1: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+        return false;
+    }
+
+    if (new Date(getVersionsDatum()).getTime() > hJetzt + 60000 * 15) {  // + 15 Minuten Toleranz
+        showEineWarnung('F2: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+        return false;
+    }
+
+    if (CUPS.TURNIER[I]) {
+
+        if (PC && CUPS.TURNIER[I] !== 'Handy') {
+        } else {
+            if (STAT.TURRUNDE === 0) {
+                showEineWarnung(I, "Turnier noch nicht gestartet!", "Informiere den Veranstalter.");
+                return false;
+            }
+        }
+
+        if (CUPS.TURNIER[I] === 'Handy') {
+
+            if (new Date(STAT.TURTIMESTAMP).getTime() > hJetzt + 60000 * 15) { // + 15 Minuten Toleranz
+                if (LS.ME !== '3425') {
+                    showEineWarnung('F3: Datum oder Uhrzeit falsch.', 'Bitte korrigieren.');
+                    return false;
+                }
+            }
+
+            if (new Date(STAT.TURTIMESTAMP).toDateString() !== new Date().toDateString()) {
+                if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0) {
+                    if (new Date(STAT.TURTIMESTAMP).getTime() + 60000 * 60 * 24 > hJetzt) { // 24 Stunden Toleranz
+                        showEineWarnung('F4: Datum oder Uhrzeit falsch.',
+                                'Korrekturen müssen innerhalb von 24 Stunden nach Turnierstart durchgeführt werden.');
+                    }
+                } else {
+                    showEineWarnung('F3: Datum ungültig:', 'Nur an dem Tag, an dem<br>'
+                            + 'das Turnier gestartet wurde,<br>'
+                            + 'dem ' + new Date(STAT.TURTIMESTAMP).toLocaleDateString() + ', kann ein<br>'
+                            + 'Tisch eingegeben werden.');
+                    return false;
+                }
+            }
+
+            if (I > 3) {
+                if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || STAT.TURGESPIELT === 0) {
+// Administrator muß händische Tische nacherfassen
+                } else {
+                    showEineWarnung(I, "Runde " + STAT.TURRUNDE + " läuft noch!", "Etwas Geduld bitte!");
+                    return false;
+                }
+            }
+
+        }
+    }
+
+    hideEinenMoment(); // iOS ist hier leider ein bisserl langsam.
+    LS.Von = new Date();
+    LS.Bis = new Date();
+    LS.LoadCups = I * -1; // - = neuer Tisch
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    fHref('Abakus/Anmeldung.html');
+}
+
+function Weiterspielen() {
+    'use strict';
+    LS.ShowCups = LS.I;
+    if (CUPS.TYP[LS.I] !== 'CUP' && CUPS.TYP[LS.I] !== 'ET' && CUPS.TYP[LS.I] !== 'MT') {
+        LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+        if (LS.SpieleJeRunde && LS.AnzSpieler > 4) {
+            LS.SpieleJeRunde = parseInt((CUPS.SPJERUNDE[LS.I] / 4) * LS.AnzSpieler);
+        }
+    }
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    var NEXT = new Object();
+    NEXT.Seite = 'GR';
+    localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
+    fHref('Abakus/Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
+}
+
+function getINT(pStr) {
+    var Str = $.trim(pStr);
+    var Int = parseInt(Str);
+    if (Str === "")
+        return false;
+    if (isNaN(Str))
+        return false;
+    if (isNaN(Int))
+        return false;
+    if (Str.indexOf('-') >= 0 & Int > 0) {
+        return (Int * -1);
+    }
+    if (Str.toString() === Int.toString()) {
+        return Int;
+    } else {
+        return false;
+    }
+}
+
+function checkVersion() {
+    'use strict';
+    var sDate = new Date(CUPS.TIMESTAMP);
+    var hDate = new Date();
+    if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
+        $('#bSpeichern').addClass('ui-disabled');
+        $('#hSpeichern').html('<span class="cRot">'
+                + 'Die Zeitzone ist ungleich Wien.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
+    } else if (sDate.getFullYear() > hDate.getFullYear() || sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+        $('#bSpeichern').addClass('ui-disabled');
+        $('#hSpeichern').html('<span class=cRot>'
+                + 'Das Systemdatum ist nicht aktuell.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
+    } else if (sDate.getFullYear() < hDate.getFullYear()) {
+        $('#bSpeichern').addClass('ui-disabled');
+        $('#hSpeichern').html('<span class=cRot>'
+                + 'Das System wurde für ' + hDate.getFullYear() + '<br>'
+                + 'noch nicht freigegeben.<br>'
+                + 'Informiere einen Administrator.<br>'
+                + '<b>Speichern ist nicht möglich.</b></span>').show();
+    }
+}
+
+function historyBack() {
+    if (LS.ShowCups) {
+        LS.ShowCups = 0;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
+    history.back();
+}
+
+function fHref(pHref) {
+    if (window.chrome) {
+        $('body').addClass('ui-disabled');
+    }
+    window.location.href = pHref;
+}
+
+function QUERFORMAT() {
+    if ($(window).innerWidth() > $(window).innerHeight()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function toggleLegende() {
+    if ($('#dLegende').is(":visible")) {
+        $('#dLegende').hide();
+    } else {
+        $('#dLegende').show();
+        $("#p").scrollTop(0);
+    }
+}
+
+function hrefStatistik(pCup, pParameter) {
+    if (pCup) {
+        I = pCup;
+    }
+    if (!pParameter) {
+        pParameter = '';
+    }
+    if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0
+            || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0
+            || CUPS.TYP[I] !== 'PR'
+            || CUPS.TYP[I] === 'PR' && CUPS.MEZULETZT[I] && (
+            (CUPS.MEZULETZT[I] + (100 * 86400000) > Date.now() && CUPS.NAME[I].substr(0, 4) === 'Bei ')
+            || (CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()))) {
+        if (pCup) {
+            LS.ShowCups = pCup;
+        }
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        if (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy') {
+            fHref("Statistik/Statistik.html" + pParameter);
+        } else {
+            fHref("Abakus/Statistik.html" + pParameter);
+        }
+    } else {
+        loadSTAT(I, 'Statistik wird geladen.', false, hrefStatistikPR);
+    }
+}
+
+function hrefStatistikPR() {
+
+    function meldKeineBerechtigung(pSeit) {
+        if (pSeit) {
+            if (QUERFORMAT()) {
+                $('#bZurStatistik').html('Du hast seit mindestens<br>' + pSeit + ' Tagen nicht gespielt.<br><b>Berechtigung abgelaufen!</b>')
+                        .prop('onclick', '')
+                        .removeClass('cBlau')
+                        .removeClass('P')
+                        .addClass('cRot');
+            } else {
+                showEineMeldung(I, 'Du hast seit mindestens<br>' + pSeit + ' Tagen nicht gespielt.', '<b>Berechtigung abgelaufen!</b>');
+            }
+        } else {
+            if (QUERFORMAT()) {
+                $('#bZurStatistik').html('Du hast in dieser Runde<br>noch nie gespielt.<br><b>Berechtigung fehlt!</b>')
+                        .prop('onclick', '')
+                        .removeClass('cBlau')
+                        .removeClass('P')
+                        .addClass('cRot');
+            } else {
+                showEineMeldung(I, 'Du hast in dieser Runde<br>noch nie gespielt.', '<b>Berechtigung fehlt!</b>');
+            }
+        }
+    }
+
+    hideEinenMoment();
+    if (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0) {
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        fHref("Abakus/Statistik.html");
+    } else {
+        if (CUPS.MEZULETZT[I] === 0) {
+            meldKeineBerechtigung(0);
+        } else if (CUPS.MEZULETZT[I] + (100 * 86400000) < Date.now() && CUPS.NAME[I].substr(0, 4) === 'Bei ') {
+            meldKeineBerechtigung(100);
+        } else if (CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()) {
+            meldKeineBerechtigung(365);
+        } else {
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+            fHref("Abakus/Statistik.html");
+        }
+    }
+}
+
+function initSeite1() {
+
+    if (LS.ShowCups < 0) {
+        I = LS.ShowCups * -1;
+        LS.ShowCups = 0;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    } else {
+        I = LS.ShowCups;
+    }
+
+    var sync = new Date(CUPS.DATE);
+    var heute = new Date();
+    var nStunden = (heute - sync) / 3600000;
+    if (LS.Version !== getVersion()) {
+        if (LS.ME === '3425') {
+            LS.ME = '9999';
+            LS.MEname = 'Würmler Horst';
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+        if (LS.LastBtn && !$(LS.LastBtn).length) {
+            LS.LastBtn = '';
+        }
+        if (LS.Version < 989) { // später
+            LS.FotoStyle = 0;
+            LS.FotoAnimieren = false;
+            if (LS.Font) {
+                delete LS.Font;
+            }
+        }
+        if (LS.Version < 990) {
+            if (LS.ME.length === 4 && !LS.VIP) {
+                loadSPIELER(); // VIP-Status holen
+            }
+        }
+        if (LS.Version < 1049) {
+            if (typeof LS.VIC === 'undefined' || LS.VIC.length === 0) {
+                LS.VIC = [0];
+            }
+        }
+        localStorage.setItem('Abakus.LOG', JSON.stringify(''));
+        if (LS.Version === 0) {
+            writeLOG('ABAKUS: Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ') wurde installiert.');
+        } else {
+            writeLOG('ABAKUS: Update auf Version ' + getVersionsDatum().toLocaleDateString() + ' (' + getVersion() + ').');
+        }
+        initCUPSdelAllSTAT();
+    } else if (LS.LoadCups > 0 || nStunden > 6 || isNaN(nStunden)) {
+        if (navigator.onLine) {
+            loadCUPS(false, false, true);
+        } else {
+            whenCUPSloaded();
+        }
+    } else {
+        whenCUPSloaded();
+    }
+}
+
+function writeCanvas(pCup) {
+    var hTitel = '';
+    var hTitel2 = '???';
+    if (!isNaN(pCup)) {
+        if (CUPS.TYP[pCup] === "CUP" || CUPS.TYP[pCup] === "TC") {
+            hTitel2 = 'Lokaler Cup';
+        } else if (CUPS.TYP[pCup] === "ET") {
+            hTitel2 = 'Einzelturnier';
+        } else if (CUPS.TYP[pCup] === "MT") {
+            hTitel2 = 'Mannschaftsturnier';
+        } else if (CUPS.TYP[pCup] === "FC") {
+            hTitel2 = 'Wirtshausrunde';
+        } else if (CUPS.TYP[pCup] === "PR") {
+            hTitel2 = 'Private Runde';
+        } else if (CUPS.TYP[pCup] === "PR") {
+            hTitel2 = 'Private Runde';
+        } else if (CUPS.TYP[pCup] === "AR") {
+            hTitel2 = 'Allgemeine Runde';
+        }
+        if (pCup === 1) {
+            hTitel2 = 'Test- und Übungsrunde';
+        } else if (pCup === 2) {
+            hTitel2 = 'Test- und Übungsturnier';
+        } else if (pCup === 3) {
+            hTitel2 = 'Test- und Übungsturnier';
+        } else if (pCup === 4) {
+            hTitel2 = 'Testcup /-Runde';
+        } else if (pCup === 8) {
+            hTitel2 = 'Turnierserie zum einfachen Tarif';
+        } else if (pCup === 9) {
+            hTitel2 = 'Turnierserie zum doppelten Tarif';
+        } else if (pCup === 10) {
+            hTitel2 = 'Turnierserie zum dreifachen Tarif';
+        } else if (pCup === 11) {
+            hTitel2 = 'Sküs of the year';
+        } else if (pCup === 16) {
+            hTitel2 = 'Mit dem Rad entlang der Donau gemütlich nach Wien';
+        } else if (pCup === 80) {
+            if (QUERFORMAT()) {
+                hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
+            } else {
+                hTitel2 = 'Ein außergewöhnlicher Event';
+            }
+        } else if (pCup === 17) {
+            hTitel2 = '<b>U</b>rlaubs-<b>T</b>arock-<b>C</b>up';
+        }
+    }
+
+    hTitel = CUPS.NAME[pCup];
+    if (isNaN(pCup)) {
+        hTitel = pCup;
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Farben.png");
+    } else if (pCup === 0) {
+        hTitel = 'Vivat Valat!';
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Farben.png");
+    } else if (pCup === 'Links') {
+        hTitel = 'Tarocklinks';
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Farben.png");
+    } else if (pCup === 'TippsUndTricks') {
+        hTitel = 'Tipps & Tricks';
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Idee.gif");
+    } else if (pCup === 'Ettikette') {
+        hTitel = 'Tarocketikette';
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Vorrang.png");
+    } else if (pCup === 'Anekdoten') {
+        hTitel = 'Anekdoten';
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Anekdoten.png");
+    } else if (pCup === 'Geschichte') {
+        $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/DieGeschichte.png");
+    } else {
+        hTitel = CUPS.NAME[pCup];
+        if ((CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'ET') && pCup > 4) {
+            $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i" + pCup + ".png");
+        } else if (pCup === 11 || pCup === 25) {
+            $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/i55.png");
+        } else {
+            $(".hfHeaderIcon,#qfHeaderIcon").attr("src", "Icons/Farben.png");
+        }
+        if (QUERFORMAT()) {
+            if (pCup === 49) {
+                hTitel = 'Tarock-Österreich-Finale';
+                document.title = 'Österreichfinale';
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://tarockoesterreich.jimdo.com\')" >tarockoesterreich.jimdo.com</span>';
+            } else if (pCup === 50) {
+                hTitel = 'Hausruckviertler Tarockcup';
+                document.title = 'HRC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://hausruckcup1.jimdo.com\')" >hausruckcup1.jimdo.com</span>';
+            } else if (pCup === 51) {
+                hTitel = 'Kärntner Tarockcup';
+                document.title = 'KTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://kärntner-tarockcup.at\')" >kärntner-tarockcup.at</span>';
+            } else if (pCup === 52) {
+                hTitel = 'Raiffeisen Tarockcup Austria';
+                document.title = 'RTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'http://www.tarockcup.at\')" >www.tarockcup.at</span>';
+            } else if (pCup === 53) {
+                document.title = 'SWC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://tarockrunde-sauwald.jimdo.com\')" >tarockrunde-sauwald.jimdo.com</span>';
+            } else if (pCup === 54) {
+                document.title = 'STC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'https://steirercup.webnode.at\')" >https://steirercup.webnode.at</span>';
+            } else if (pCup === 55) {
+                document.title = 'TTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel = 'Tiroler Tarockcup';
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span class="cBlau P" onclick="window.open(\'http://www.tarock.tirol\')" >www.tarock.tirol</span>';
+            } else if (pCup === 56) {
+                document.title = 'WTC - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+                hTitel = 'Wiener Tarockcup';
+                hTitel2 = 'Internet:&nbsp;&nbsp;<span>www.tarock.wien</span>';
+            } else if (pCup === 80) {
+                hTitel = 'Wiener Tarockmarathon';
+                document.title = 'Wr. Marathon';
+                hTitel2 = 'Eine Veranstaltung des Wiener Tarockcup';
+            } else if (pCup === 15) {
+                document.title = 'STA - ' + CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+            } else {
+                document.title = CUPS.NAME[pCup].replace('  ', ' ').replace('/', '-');
+            }
+        }
+        hTitel = hTitel.replace(/ |_/g, '&nbsp;');
+    }
+    $('.hfHeaderZeile1,#qfHeaderZeile1').html(hTitel);
+    $('.hfHeaderZeile2,#qfHeaderZeile2').html(hTitel2);
+    if (I === LS.I && I !== 0) {
+        $(".hfHeaderIcon").attr("src", "Icons/MeinTisch.png");
+        $('.hfHeaderZeile2').html('Mein Tisch');
+    }
+    if (hTitel.length > 25) {
+        $('#qfHeaderZeile1').attr("style", "font-size:4.5vw;white-space:nowrap;font-family:'Arial Narrow',Arial;font-style:italic;");
+    } else {
+        $('#qfHeaderZeile1').attr("style", "font-size:4.5vw;white-space:nowrap;font-family:Arial;font-style:italic;");
+    }
+    $('.hfHeaderIcon').css('height', $('#hMix').height() - 8).show();
+    $('#qfHeaderIcon').show();
+}
+
+function myDateString(pDate) {
+    var hDate = new Date(pDate);
+    return hDate.getFullYear() + '-' + ('00' + (hDate.getMonth() + 1)).substr(-2) + '-' + ('00' + (hDate.getDate())).substr(-2);
+}
+
+function getDateString(pDate) {
+    if (typeof pDate === 'string' && pDate[4] === '-') {
+        var hJar = parseInt(pDate);
+        if (pDate[5] === '0') {
+            var hMon = parseInt(pDate.substr(6, 1)) - 1;
+        } else {
+            var hMon = parseInt(pDate.substr(5, 2)) - 1;
+        }
+        if (pDate[8] === '0') {
+            var hTag = parseInt(pDate.substr(9, 1));
+        } else {
+            var hTag = parseInt(pDate.substr(8, 2));
+        }
+        var hDate = new Date(hJar, hMon, hTag);
+    } else {
+        var hDate = new Date(pDate);
+    }
+    if (new Date().getFullYear() === hDate.getFullYear()) {
+        return daysOfWeek[hDate.getDay()] + ' ' + hDate.getDate() + ". " + monthsOfYear[hDate.getMonth()];
+    } else {
+        return daysOfWeek[hDate.getDay()] + ' ' + hDate.getDate() + ". " + monthsOfYear[hDate.getMonth()] + " <span style='text-decoration: overline;zoom: .9; -moz-transform:scale(.9)'>" + (hDate.getFullYear() - 2000) + "</span>";
+    }
+}
+
+function initCUPSdelAllSTAT(pMeldung) {
+    'use strict';
+    $('#pContent').scrollTop(0);
+    var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+    var TU = JSON.parse(localStorage.getItem('Abakus.TU'));
+    var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
+    var CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+    var TURNIER = JSON.parse(localStorage.getItem('Abakus.TURNIER'));
+    var AKTUELLES = JSON.parse(localStorage.getItem('Abakus.AKTUELLES'));
+    var SPIELERnr = JSON.parse(localStorage.getItem('Abakus.SPIELERnr'));
+    var SPIELERalpha = JSON.parse(localStorage.getItem('Abakus.SPIELERalpha'));
+    localStorage.clear();
+    LS.Version = getVersion();
+    try {
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    } catch (err) {
+        LS.Meldung = 'F' + err + ': LS konnte nicht geladen werden.';
+    }
+    try {
+        localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+    } catch (err) {
+        LS.Meldung = 'F' + err + ': CUPS konnte nicht geladen werden.';
+    }
+    if (DS !== null) {
+        try {
+            localStorage.setItem('Abakus.DS', JSON.stringify(DS));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': DS konnte nicht geladen werden.';
+        }
+    }
+    if (TU !== null) {
+        try {
+            localStorage.setItem('Abakus.TU', JSON.stringify(TU));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': TU konnte nicht geladen werden.';
+        }
+    }
+    if (LOG !== null) {
+        try {
+            localStorage.setItem('Abakus.LOG', JSON.stringify(LOG));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': LOG konnte nicht geladen werden.';
+        }
+    }
+    if (TURNIER !== null) {
+        try {
+            localStorage.setItem('Abakus.TURNIER', JSON.stringify(TURNIER));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': TURNIER konnte nicht geladen werden.';
+        }
+    }
+    if (AKTUELLES !== null) {
+        try {
+            localStorage.setItem('Abakus.AKTUELLES', JSON.stringify(AKTUELLES));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': AKTUELLES konnte nicht geladen werden.';
+        }
+    }
+    if (SPIELERnr !== null) {
+        try {
+            localStorage.setItem('Abakus.SPIELERnr', JSON.stringify(SPIELERnr));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': SPIELERnr konnte nicht geladen werden.';
+        }
+    }
+    if (SPIELERalpha !== null) {
+        try {
+            localStorage.setItem('Abakus.SPIELERalpha', JSON.stringify(SPIELERalpha));
+        } catch (err) {
+            LS.Meldung = 'F' + err + ': SPIELERalpha konnte nicht geladen werden.';
+        }
+    }
+    if (navigator.onLine) {
+        loadCUPS();
+        if (pMeldung) {
+            $('#dMeldung').html("<img src='Icons/OK.png' width='24' height='24'><span class=cSchwarz>&nbsp;&nbsp;Die App wurde initialisiert.</span><br>").show();
+        }
+    } else {
+        showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen', 'und Vorgang wiederholen.');
+    }
+    $('#bAK,#bMR').collapsible({collapsed: false});
+    $('#bAL,#bCT,#bLC,#bET,#bFC,#PR,#bTR,#bAR').collapsible({collapsed: true});
+}
+
+function showLOG() {
+    'use strict';
+    if ($('#tLOG').is(':visible')) {
+        $('#tLOG').hide();
+    } else {
+        var LOG = JSON.parse(localStorage.getItem('Abakus.LOG'));
+        $('#tLOG').html(LOG).show();
+    }
+}
+
+function fZuMeinemTisch() {
+    'use strict';
+    $("#tMeinTischName").html(CUPS.NAME[LS.I] + '&nbsp&nbsp;');
+    $('#bWeiter,#bSpieler,#bSpeichern').removeClass('ui-disabled'); // Wegen iOS entfernen
+
+    var DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+    if (CUPS.TURNIER[LS.I] && CUPS.TURNIER[LS.I] !== 'Handy') {
+        $('#bSpieler').addClass('ui-disabled');
+        if (LS.SpieleJeRunde > LS.gespielt) {
+            $('#bSpeichern').addClass('ui-disabled');
+        }
+        if (LS.gespielt !== 0) {
+            $('#bNeuerTisch').addClass('ui-disabled');
+        }
+    }
+    if (LS.AnzSpieler && !LS.AnzGespeichert) {
+        $('#bTischLoeschen').removeClass('ui-disabled');
+    } else {
+        $('#bTischLoeschen').addClass('ui-disabled');
+    }
+    if (!LS.Spieler           // nicht nach dem allerersten Aufruf
+            || LS.gespielt === -1    // nach dem allererster Aufruf
+            || LS.AnzSpieler < 4) {
+        $('#bWeiter').addClass('ui-disabled');
+        $('#bSpieler').addClass('ui-disabled');
+        $('#bSpeichern').addClass('ui-disabled');
+        $('#pSpiele').hide();
+    } else {
+        DS = JSON.parse(localStorage.getItem('Abakus.DS'));
+        var html = '';
+        for (var i = 1; i <= 6; i++) {
+            if (LS.Spieler[i]) {
+                html = html + '<tr><td>&nbsp;' + LS.NName[i] + ' ' + LS.VName[i] + LS.Sterne[i] + '</td><td class=TC>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+            } else if (LS.Spiele[i] !== 0) {
+                html = html + '<tr><td class="cRot B">&nbsp;???</td><td class=TR>' + DS.Punkte[i][0] + '&nbsp;</td></tr>';
+            }
+        }
+        if (html) {
+            $("#tSpielerPunkte tbody tr").empty();
+            $("#tSpielerPunkte > tbody").append(html);
+        }
+
+        if (LS.AnzGespeichert === 0) {
+            $('#tGespielt').text('Es wurden ' + LS.gespielt + ' Spiele gespielt.');
+        } else if (LS.AnzGespeichert === LS.AnzSpieler) {
+            $('#bWeiter').addClass('ui-disabled');
+            $('#bSpieler').addClass('ui-disabled');
+            $('#pSpiele').hide();
+        } else {
+            if (LS.AnzGespeichert > 0) {
+                $('#tGespielt').html('<b> ' + (LS.AnzSpieler - LS.AnzGespeichert) + ' Spieler m&uuml;ssen noch ' + (LS.gespielt > 0 ? 'gespeichert' : 'storniert') + ' werden.</b>').addClass('cRot');
+            } else {
+                $('#tGespielt').html('<b> Der Tisch wurde nicht vollst&auml;ndig ' + (LS.gespielt > 0 ? 'gespeichert' : 'storniert') + '.</b>').addClass('cRot');
+            }
+        }
+
+        if ((LS.AnzGespeichert > 0 && LS.AnzGespeichert !== LS.AnzSpieler)
+                || (LS.Spieler[0] === 'Diverse')) {
+            $('#bWeiter').addClass('ui-disabled');
+            $('#bSpieler').addClass('ui-disabled');
+        }
+        if (LS.AnzGespeichert === LS.AnzSpieler
+                || LS.gespielt === 0
+                ) {
+            $('#bSpeichern').addClass('ui-disabled');
+        }
+        if (LS.AnzGespeichert > 0 && LS.AnzGespeichert !== LS.AnzSpieler) {  // Speichern wurde nicht zu Ende gebracht
+            $('#bWeiter,#bSpieler,#bSpeichern').removeClass('ui-disabled');
+            $('#bWeiter,#bSpieler').addClass('ui-disabled');
+        }
+    }
+    checkVersion();
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        setTimeout(function () {
+            $("#pMEINTISCH").popup("open").show();
+        }, 200);
+    } else {
+        $("#pMEINTISCH").popup("open").show();
+    }
+}
+
+function resetLastBtn() {
+    if (LS.LastBtn) {
+        $(LS.LastBtn).removeClass('ui-btn-active');
+        if (LS.LastBtn[4] === '5' || LS.LastBtn.substr(4, 2) === '49') {
+            if (LS.LastBtn.length > 6) {
+                if (LS.LastBtn.substr(4, 3) === '49T') {
+                    $(LS.LastBtn).addClass('cTOF');
+                } else if (LS.LastBtn.substr(4, 3) === '50T') {
+                    $(LS.LastBtn).addClass('cHRC');
+                } else if (LS.LastBtn.substr(4, 3) === '51T') {
+                    $(LS.LastBtn).addClass('cKTC');
+                } else if (LS.LastBtn.substr(4, 3) === '52T') {
+                    $(LS.LastBtn).addClass('cRTC');
+                } else if (LS.LastBtn.substr(4, 3) === '53T') {
+                    $(LS.LastBtn).addClass('cSWC');
+                } else if (LS.LastBtn.substr(4, 3) === '54T') {
+                    $(LS.LastBtn).addClass('cSTC');
+                } else if (LS.LastBtn.substr(4, 3) === '55T') {
+                    $(LS.LastBtn).addClass('cTTC');
+                } else if (LS.LastBtn.substr(4, 3) === '56T') {
+                    $(LS.LastBtn).addClass('cWTC');
+                } else {
+                    $(LS.LastBtn).addClass('cDIV');
+                }
+            } else if (LS.LastBtn.substr(4, 2) === '49'
+                    || LS.LastBtn.substr(4, 2) === '50'
+                    || LS.LastBtn.substr(4, 2) === '52') {
+                $(LS.LastBtn).addClass('cDIV');
+            }
+        } else {
+            if (LS.LastBtn[LS.LastBtn.length - 1] === 'T') {
+                $(LS.LastBtn).addClass('cDIV');
+            } else {
+                var hCup = parseInt(LS.LastBtn.substr(4));
+                if (hCup) {
+                    var hClass = getClass(hCup);
+                    if (hClass) {
+                        $(LS.LastBtn).addClass(hClass);
+                    }
+                }
+            }
+        }
+    }
+}
+
+function getMELDAKT(pCup) {
+    if (CUPS.MELDAKT[pCup]) {
+        if (CUPS.MELDAKT[pCup] === LS.GelesenAKT[pCup]) {
+            return CUPS.MELDAKT[pCup];
+        } else {
+            return '<span style="color:crimson">' + CUPS.MELDAKT[pCup] + '</span>';
+        }
+    } else {
+        return 'Die neuesten Infos';
+    }
+}
+
+function getMeldSTAT(pCup) {
+    if (CUPS.TYP[pCup] === 'AR') {
+        return 'Tageswertung, Jahreswertung, etc.';
+    } else if (CUPS.TYP[pCup] === 'PR' && CUPS.MEZULETZT[I] + (365 * 86400000) < Date.now()) {
+        return 'Nur für Mitspieler...';
+    }
+    if (CUPS.MELDSTAT[pCup]) {
+        if (CUPS.MELDSTAT[pCup] === LS.GelesenSTAT[pCup]) {
+            return CUPS.MELDSTAT[pCup];
+        } else {
+            return '<span style="color:crimson">' + CUPS.MELDSTAT[pCup] + '</span>';
+        }
+    } else {
+        return 'Cupwertung, Platzierungen, etc.';
+    }
+}
+
+function showCup(i, pBtn, pTermin) {
+    'use strict';
+    if (LS.ShowFunktion) {
+        hrefStatistik(i);
+    }
+
+    var newBtn = '#' + pBtn + i;
+    if (!QUERFORMAT()) {
+        if (LS.LastBtn) {
+            if (pBtn) {
+                var lastBtn = LS.LastBtn;
+                if (typeof pTermin !== "undefined") {
+                    if (pTermin === -1) {
+                        newBtn = '#' + pBtn + i + 'T';
+                    } else {
+                        newBtn = '#' + pBtn + i + 'T' + pTermin;
+                    }
+                }
+                var lastTop = $(lastBtn).length;
+                if (lastTop) {
+                    lastTop = parseInt($(lastBtn).offset().top);
+                }
+                var newTop = parseInt($(newBtn).offset().top);
+                var viewTop = parseInt($('#pContent').scrollTop());
+                var tglHeight = parseInt($('#tgl' + LS.LastBtn.substr(1)).height());
+                if (lastTop < newTop && lastTop < 60) {
+                    $('#pContent').scrollTop(viewTop + newTop - tglHeight - 100); // 100 === Header
+                }
+            }
+            if ($('#tgl' + LS.LastBtn.substr(1)).is(":visible")) {
+                $('#tgl' + LS.LastBtn.substr(1)).toggle('show');
+                resetLastBtn();
+                if (LS.LastBtn === newBtn) {
+                    LS.LastBtn = '';
+                    return;
+                }
+            }
+        }
+    }
+    LS.ShowCups = I = i;
+    if (LS.Meldung) {
+        var hMeldung = LS.Meldung;
+    }
+    if (pBtn) {
+        resetLastBtn();
+        if (typeof pTermin !== "undefined") {
+            if (pTermin === -1) {
+                newBtn = '#' + pBtn + i + 'T';
+            } else {
+                newBtn = '#' + pBtn + i + 'T' + pTermin;
+            }
+        }
+        LS.LastBtn = newBtn;
+    }
+    if (LS.LastBtn) {
+        var resetTermin = LS.LastBtn.lastIndexOf('T');
+        if (resetTermin > 3) {
+            if (resetTermin + 1 === LS.LastBtn.length) {
+                resetTermin = -1;
+            } else {
+                resetTermin = 1;
+            }
+        } else {
+            resetTermin = 0;
+        }
+        if (pTermin === -1 || resetTermin === -1) {
+            $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen').removeClass('cDIV');
+        } else if (pTermin || resetTermin) {
+            $(LS.LastBtn).addClass('ui-btn-active').removeClass('cHRC').removeClass('cKTC').removeClass('cRTC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen');
+        } else {
+            if (i === 49 || i === 50 || i === 52) {
+                $(LS.LastBtn).removeClass('cDIV');
+            }
+            $(LS.LastBtn).addClass('ui-btn-active').removeClass('cAktiv').removeClass('fGruen');
+        }
+        $('#tgl' + LS.LastBtn.substr(1)).toggle('show');
+    }
+
+    writeCanvas(I);
+// QUERFORMAT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    var hVorschub = '<br><br>';
+    var html = '';
+    var htmlNaechstTermin = '';
+    if (CUPS.ANMELDERF.length > I && CUPS.ANMELDERF[I]) {
+        html = '<span class=XL>Nächste' + (CUPS.TURNIER[I] ? 's Turnier' : ' Runde') + ':<b>&nbsp;&nbsp;&nbsp;';
+        if (myDateString(getNextTermin(I)) === hHeute) {
+            html += '<span class=cGruen>Heute';
+            if (CUPS.SPIELEAB[I]) {
+                html += ', ' + CUPS.SPIELEAB[I] + ' Uhr';
+            }
+            html += '</span>';
+        } else {
+            html += getDateString(getNextTermin(I));
+        }
+        html += '</b></span><br>';
+        if (typeof CUPS.MEANGEMELDET[I] === 'number') {
+            if (CUPS.MEANGEMELDET[I] > Date.now()) {
+                html += '<span class="M cGruen B">Ich bin angemeldet.</span><br>';
+            } else {
+                html += '<span class="M cRot B">Ich bin nicht angemeldet.</span><br>';
+            }
+        }
+        htmlNaechstTermin = '<br><br>' + html.replace(/XL/g, 'M3');
+        html += '<br>';
+        hVorschub = '<br>';
+    } else if (pTermin !== false && !isNaN(pTermin)) {
+        if (pTermin >= 0 && CUPS.TERMINE[pTermin].CUP === I) {
+            html = '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a L" style="width:22%;margin:4px 0;">'
+                    + getDateString(CUPS.TERMINE[pTermin].DATUM)
+                    + '</div>'
+                    + '<div class="ui-block-b M" style="width:78%">'
+                    + '<span class=XL><b>' + CUPS.TERMINE[pTermin].NAME + '</b></span><br>'
+                    + getTerminText(pTermin)
+                    + '</div>'
+                    + '</div><br>';
+            hVorschub = '<br>';
+        }
+    }
+    if (CUPS.TYP[I] === 'CUP') {
+        hVorschub = '<br>';
+    }
+    hVorschub = '<br><br>';
+//    var hTest = [I]; // 3824 Roman
+//
+//    if (LS.ME === '3425' || LS.ME === '3824') {
+//        CUPS.TYP[pCup] === 'CUP'
+//        hTest.push();
+//    }
+
+    var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 1);
+    if (CUPS.TURNIER[I] || CUPS.ANMELDERF[I]) {
+        $('#dRumpf').html('<div id="ddRumpf" style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
+                + '<div style="margin-left: 10%;">'
+                + '<br>'
+                + '<div class="ui-grid-a"><div class="ui-block-a S2" style="width:47%">'
+
+                + (I === 49
+                        ? hVorschub + '<div class="M" style="width:92%;text-align:justify;">Seit 2008 findet jedes Jahr im April das Tarock-Österreich-Finale im Königrufen statt. Die besten Tarockspieler aus ganz Österreich treffen sich im Casino Linz zu einem Tarockevent der Extraklasse.</div>'
+                        : ''
+                        )
+
+                + (I === 50 && !mHausruckAktiv
+                        ? hVorschub + 'Organisationsteam:&nbsp;&nbsp;<b>Bert Greisinger,<br> Franz Emeder, Franz Kienast</b><br><br>'
+                        + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:f.kienast@eduhi.at\';" >f.kienast@eduhi.at</span><br>'
+                        + 'Tarockhandy:&nbsp;&nbsp;0660 5275150<br>'
+                        : ''
+                        )
+
+                + (I === 52 && !mRaiffeisenAktiv
+                        ? hVorschub + 'Organisation:&nbsp;&nbsp;<b><span class=M2>Karl Haas jun.</span></b><br><br>'
+                        + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:office@tarockcup.at\';" >office@tarockcup.at</span><br>'
+                        : ''
+                        )
+
+                + (I === 53 && !mSauwaldAktiv
+                        ? hVorschub + 'Organisation:&nbsp;&nbsp;<b><span class=M2>Sepp Lang</span></b><br><br>'
+                        + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:sepp47@gmx.at\';" >sepp47@gmx.at</span><br>'
+                        : ''
+                        )
+
+                + (I === 55 && !mTirolAktiv
+                        ? hVorschub + 'Organisation:&nbsp;&nbsp;<b><span class=M2>Markus Mair</span></b><br><br>'
+                        + 'E-Mail:&nbsp;&nbsp;<span class="cBlau P M2" onclick="window.location.href=\'mailto:treff.tarock@chello.at\';" >treff.tarock@chello.at</span><br>'
+                        : ''
+                        )
+
+                + (I === 16
+                        ? hVorschub + '<div class="J M" style="margin-right:5%">An lauen Septembertagen mit Freunden der Donau entlang radeln, in diversen Gastgärten mit der Seele baumeln und wer will zwischendurch oder am Abend ein Spielchen wagen. Was will das Spielerherz mehr?</div>'
+                        : ''
+                        )
+
+                + ((I === 16 || I === 49 || I === 50 || I === 52)
+                        && (CUPS.MELDAKT[I] || CUPS.BEREadmin[I].indexOf(LS.ME) >= 0)
+                        ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
+                        : ''
+                        )
+
+                + (I !== 16 && I !== 49 && I !== 50 && I !== 52 && I !== 53 && I !== 55 || I === 50 && mHausruckAktiv || I === 52 && mRaiffeisenAktiv || I === 53 && mSauwaldAktiv || I === 55 && mTirolAktiv || I === 77
+                        ? hVorschub + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
+                        + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>' + getMeldSTAT(I) + '<br>' : '<br>Nur für Mitspieler...<br>')
+
+                        + (CUPS.TURNIER[I]
+                                && (CUPS.MELDAKT[I] || CUPS.BEREadmin[I].indexOf(LS.ME) >= 0) && CUPS.TURNIER[I] !== "Handy"
+                                ? hVorschub + '<span class="cBlau P XL" onClick="hrefStatistik(' + I + ', \'?Aktuelles\');"><b>Aktuelles</b></span><br>' + getMELDAKT(I) + '<br>'
+                                : ''
+                                )
+
+                        + (APP && (CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREadmin[I].indexOf('*') >= 0 || I <= 3))
+                                ? hVorschub + '<span class="cBlau P XL" onclick="zumTurnier()" ><b>Zum Turnier</b></span><br>Vivat Valat!<br>'
+                                : ''
+                                )
+                        + (APP && ((((!CUPS.TURNIER[I] || CUPS.TURNIER[I] === 'Handy') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7) && I !== 80)))
+                                ? hVorschub + '<span class="cBlau P XL" onclick="fEinNeuerTisch(' + I + ')" ><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                : ''
+                                )
+                        + (APP && CUPS.ANMELDERF[I]
+                                ? hVorschub + '<span class="cBlau P XL" onclick="hrefStatistik(' + I + ', \'?Anmeldungen\')"><b>Zur Anmeldung</b></span><br>An- und abmelden<br>'
+                                : ''
+                                )
+                        : ''
+                        )
+
+                + (APP && (I !== 56 || LS.ME === '3425') && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0
+                        || LS.ME === '3425'
+                        || I <= 2
+                        || ((CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'ET' || CUPS.TYP[I] === 'MT') && (CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || LS.ME === meinStellvertreter)))
+                        ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern(' + I + ')" ><b>Parameter ändern</b></span><br>'
+                        : ''
+                        )
+
+                + (APP && PC && ((I === 3 && LS.ME === '3425') || (I === 53 && LS.ME === '4506') || (I === 54 && (LS.ME === '3590' || LS.ME === '6058')) || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425'))
+                        ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'AdminTools/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
+                        : ''
+                        )
+
+                + '</div><div class="ui-block-b M" style="width:50%;text-align:justify;">'
+
+                + hVorschub + (I === 56 ? '<img src="Icons/LogoWTC.png" align="left" style="fload:left;width:120px;height:160px;smargin-left:-60px;margin-right:10px">' : '') + getCupText()
+
+                + '</div></div>'
+
+
+                + ((I === 50 || I === 52) && CUPS.MELDSTAT[I]
+                        ? hVorschub + '<b><span class=S3>' + CUPS.MELDSTAT[I] + '</span></b><br>'
+                        : ''
+                        )
+
+                + hVorschub + html
+                + (I === 80 || CUPS.TURNIER[I] && CUPS.TURNIER[I] !== 'Handy' && (isNaN(pTermin) || pTermin === false)
+                        ? getTurnierkalender()
+                        : ''
+                        )
+                + '</div></div>');
+    } else {
+        $('#dRumpf').html('<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px; background-image: url(\'Icons/Background.png\'); background-size: 50%; background-position: center center; background-repeat: no-repeat; ">'
+                + '<div style="margin-left: 30%;" class=M>'
+                + '<br><br>'
+                + html
+                + '<span id=bZurStatistik class="cBlau P XL" onclick="hrefStatistik(' + I + ')" ><b>Zur Statistik</b></span>'
+                + ((CUPS.TYP[I] !== 'PR' || CUPS.MEZULETZT[I] + (365 * 86400000) > Date.now()) ? '<br>' + getMeldSTAT(I) + '<br>' : '<br>Nur für Mitspieler...<br>')
+                + (APP && (CUPS.BEREadmin[I].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[I].indexOf(LS.ME) >= 0 || ((CUPS.BEREadmin[I].indexOf('*') >= 0 || CUPS.BEREschreiben[I].indexOf('*') >= 0) && LS.ME !== "NOBODY") || I <= 7)
+                        ? hVorschub
+                        + (LS.I === I
+                                ? '<span class="cBlau P XL" onclick="fZuMeinemTisch()"><b>Zu meinem Tisch</b></span><br>Es wurden ' + LS.gespielt + ' Spiele gespielt.<br>'
+                                : '<span class="cBlau P XL" onclick="fEinNeuerTisch(' + I + ')"><b>Ein neuer Tisch</b></span><br>Vivat Valat!<br>'
+                                )
+                        : ''
+                        )
+                + ((APP && ((CUPS.TYP[I] !== 'CUP' && CUPS.BEREadmin[I].indexOf(LS.ME) >= 0) || LS.ME === '3425' || I <= 2))
+                        ? hVorschub + '<span class="cBlau P L" onclick="hrefParameterAendern(' + I + ')" ><b>Parameter ändern</b></span><br>'
+                        : ''
+                        )
+                + hVorschub + getCupText()
+                + '</div></div>');
+    }
+    $('#dCopyright').each(function () { // sonst funktioniert important nicht
+        this.style.setProperty('display', 'none', 'important');
+    });
+// HOCHFORMAT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    if (hMeldung) {
+        $('#hfText').html('<div class="B cRot">' + hMeldung + '</div>' + CUPS.TEXT1[i] + htmlNaechstTermin);
+    } else {
+        $('#hfText').html(CUPS.TEXT1[i] + htmlNaechstTermin);
+    }
+}
+
+function listVersion() {
+    'use strict';
+    var vDate = getVersionsDatum();
+    var hVersion = vDate.getFullYear() + '.' + (vDate.getMonth() + 1) + '.' + vDate.getDate();
+    $('#tVersion,#tVersion2').text(hVersion);
+    if (LS.Meldung) {
+        writeLOG('ABAKUS: ' + LS.Meldung);
+    }
+    var sDate = new Date(CUPS.TIMESTAMP);
+    var hDate = new Date();
+    if (new Date('2016-01-11T18:02:22.210Z').getHours() !== 19) {
+        $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Diese App bietet<br>"
+                + 'nur in der Zeitzone Wien<br>'
+                + 'die volle Funktionalität.<br>'
+                + 'Korrigiere die Zeitzone.<br>').show();
+    }
+    if (sDate.getFullYear() > hDate.getFullYear() || sDate.getTime() > hDate.getTime() + 60000 * 60) {  // + 60 Minuten Toleranz
+        $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Das Datum ist nicht aktuell.<br>"
+                + 'Korrigiere das Systemdatum.<br>').show();
+    }
+    if (sDate.getFullYear() < hDate.getFullYear()) {
+        $('#dMeldung').append("<img src='Icons/Fehler.png' width='24' height='24'>&nbsp;&nbsp;Das System wurde für " + hDate.getFullYear() + '<br>'
+                + 'noch nicht freigegeben.<br>'
+                + 'Sollte das Problem nach dem drücken von [Initialisiern] weiter bestehen, '
+                + 'informiere einen Administrator.<br>').show();
+    }
+}
+
+function toggleTechDetails() {
+    if ($('#dTechDetails').is(":hidden")) {
+        $('#dTechDetails').html('<b>Technische Details:</b><br>'
+
+                + 'Date(): ' + new Date().toLocaleString() + '<br>'
+                + 'location.href: ' + location.href + '<br>'
+                + 'location.origin: ' + location.origin + '<br>'
+                + 'location.path: ' + location.pathname + '<br>'
+
+                + ((window.matchMedia('(display-mode: standalone)').matches)
+                        ? 'display-mode: standalone<br>'
+                        : 'display-mode: multi<br>'
+                        )
+
+
+                + 'navigator.standalone: ' + navigator.standalone + '<br>'
+
+
+                + 'performance.navigation.type: ' + performance.navigation.type + '<br>'
+                + 'navigator.vendor: ' + navigator.vendor + '<br>'
+                + 'navigator.userAgent: ' + navigator.userAgent + '<br>'
+                + 'navigator.platform: ' + navigator.platform + '<br>'
+                + (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ? 'iOS navigation.type: ' + window.performance.navigation.type + '<br>' : '')
+                + 'pixelDepth: ' + screen.pixelDepth + '<br>'
+                + '<span id="p451">portrait, min-width: 451px<br></span>'
+                + '<span id="p361">portrait: 361-450px<br></span>'
+                + '<span id="p360">portrait, max-width: 360px<br></span>'
+                + 'querformat: ' + QUERFORMAT() + '<br>'
+                + 'screensize: ' + screen.width + ' x ' + screen.height + '<br>'
+                + 'innersize: ' + $(window).innerWidth() + ' x ' + $(window).innerHeight() + '<br>'
+                + 'history.length: ' + history.length + '<br>'
+                + 'document.domain: ' + document.domain + '<br>'
+                + 'screen: ' + JSON.stringify(screen) + '<br>'
+                + 'location.hash: ' + location.hash + '<br>').show();
+        $('#pContent').scrollTop(9999999);
+    } else {
+        $('#dTechDetails').hide();
+    }
+}
+
+function getTIME(pDAT) {
+    'use strict';
+    var std, min, p;
+    p = new Date(pDAT);
+    if (p) {
+        std = p.getHours();
+        min = p.getMinutes();
+        if (std < 10) {
+            std = '0' + std;
+        }
+        if (min < 10) {
+            min = '0' + min;
+        }
+        return std + ':' + min;
+    } else {
+        return '00:00';
+    }
+}
+
+function windowLocationReplace() {
+    'use strict';
+    setTimeout(function () {
+        window.location.replace('Abakus/Exit.html');
+    }, 20);
+}
+
+function initExtraButtons() {
+    'use strict';
+    var app = false;
+    if (location.href.toUpperCase().indexOf('.HTML') === -1 || location.href.indexOf('tistik.ht') > 0) {
+        app = true;
+    } else if (navigator.userAgent.match(/Android/i)) {
+        if (window.matchMedia('(display-mode: standalone)').matches || location.pathname.substr(3, 9) === 'droid_ass') {
+            app = true;
+        }
+    } else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+        if (navigator.standalone) {
+            app = true;
+        }
+    } else if (location.origin === 'file://' && location.pathname && location.pathname.length > 27 && location.pathname.substr(7, 6) === 'ABAKUS' && location.pathname.substr(21, 4) === 'html'
+            || location.origin === 'https://tarock.web.app'
+            || location.origin === 'https://turnier.web.app'
+            || location.origin === 'https://test-5e6a6.web.app'
+            || location.origin === 'https://tarock.firebaseapp.com'
+            || location.origin === 'https://turnier.firebaseapp.com'
+            || location.origin === 'https://test-5e6a6.firebaseapp.com') {
+        app = true;
+    }
+    if (APP && app && (LS.ME === '3425' || LS.ME === '3244' || LS.ME === 'NOBODY')) {
+        $('#bRegistrieren').show();
+    } else {
+        $('#bRegistrieren').remove();
+    }
+
+    $('#bAdminTools,#bFindSpieler,#bRAMOS').hide();
+    if (LS.ME === '3425'
+            || CUPS.BEREadmin[50].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[50].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[51].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[52].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[53].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[54].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[55].indexOf(LS.ME) >= 0
+            || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[56].indexOf(LS.ME) >= 0
+            ) {
+        $('#bAdminTools,#bFindSpieler').show();
+    }
+    if (LS.ME === '3425' || LS.ME === 'x3759') { // Karl Zeinhofer
+        $('#bRAMOS').show();
+    }
+
+    if (LS.ME === '4731' || LS.ME === '0197' || LS.ME === '2553') { // Alex Sabkovski, Manfred Huemer, Arno Peter --- Turnierkalender
+        $('#bAdminTools').show();
+    }
+
+    if (!QUERFORMAT()) {
+        $('#bLinks,#bAdminTools').hide();
+    }
+}
+
+function whenSPIELERloaded() {
+    LS.VIP = isVIP(SPIELERext[LS.ME][12]); // VIP-Status eintragen
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+}
+
+function getClass(i) {
+
+    if (i === LS.I) {
+        return 'cAktiv';
+    }
+    if (CUPS.TYP[i] === 'PR' && LS.ME === 'NOBODY') {
+        return 'ui-disabled'; // Muss sein, sonst können alle privaten Runden angesehen werden
+    }
+
+    var cReturn = '';
+    if (CUPS.TYP[i] === 'WR'
+            || CUPS.TYP[i] === 'FC'
+            || CUPS.TYP[i] === 'TC'
+            || CUPS.TYP[i] === 'PR' && (CUPS.MEZULETZT[i] + (365 * 86400000) > Date.now())) { // 365 Tage
+        if (CUPS.SPIELTAGE[i][(new Date()).getDay()] === 'J') {
+            cReturn = 'fGruen';
+            if (CUPS.TURNIER[i] && (CUPS.WOCHEN[i][parseInt((new Date().getDate() - 1) / 7)] !== 'J')) {
+                cReturn = '';
+            }
+        }
+        if (CUPS.NEXTTERMIN[i]) {
+            if (CUPS.NEXTTERMIN[i] > new Date().valueOf()) {
+                cReturn = '';
+            }
+            if (new Date(CUPS.NEXTTERMIN[i]).toDateString() === new Date().toDateString()) {
+                cReturn = 'fGruen';
+            }
+        }
+    }
+    return cReturn;
+}
+
+function getClassMeinTermin(i) {
+
+    if (i === LS.I) {
+        return 'cAktiv';
+    }
+    var cReturn = 'cDIV';
+    if (CUPS.TYP[i] === 'WR'
+            || CUPS.TYP[i] === 'FC'
+            || CUPS.TYP[i] === 'TC'
+            || CUPS.TYP[i] === 'PR' && (CUPS.MEZULETZT[i] + (365 * 86400000) > Date.now())) { // 365 Tage
+        if (CUPS.SPIELTAGE[i][(new Date()).getDay()] === 'J') {
+            cReturn = 'fGruen';
+            if (CUPS.TURNIER[i] && (CUPS.WOCHEN[i][parseInt((new Date().getDate() - 1) / 7)] !== 'J')) {
+                cReturn = 'cDIV';
+            }
+        }
+        if (CUPS.NEXTTERMIN[i]) {
+            if (CUPS.NEXTTERMIN[i] > new Date().valueOf()) {
+                cReturn = 'cDIV';
+            }
+            if (new Date(CUPS.NEXTTERMIN[i]).toDateString() === new Date().toDateString()) {
+                cReturn = 'fGruen';
+            }
+        }
+    }
+    return cReturn;
+}
+
+function getCupToggleDiv(pPrefix, pCup, pTermin) {
+
+    if (pCup === 51) {
+        pCup = 51;
+    }
+    var hBtnName = pPrefix + pCup;
+    if (pTermin) {
+        if (pTermin === -1) {
+            hBtnName = pPrefix + pCup + 'T';
+        } else {
+            hBtnName = pPrefix + pCup + 'T' + TERMINE[pTermin].I;
+        }
+    }
+    var hReturn = '<div id="tgl' + hBtnName + '" class="S TGL" style="padding 0;margin-left:4px;margin-right:4px;" hidden>';
+    if (pTermin && pTermin !== -1) {
+        hReturn += '<div style="margin: 6px 6px 0 6px">'
+                + TERMINE[pTermin].TEXT.replace(/;/g, '<br>').replace(/ß/g, '&szlig;')
+                + '</div>';
+    }
+    var nextTurnier = 0;
+    var nextTerminI = false;
+    var heuteTurnier = false;
+    if (CUPS.TURNIER[pCup] || CUPS.ANMELDERF[pCup]) {
+        for (var termin in CUPS.TERMINE) {
+            if (CUPS.TERMINE[termin].CUP === pCup) {
+                if (CUPS.TERMINE[termin].DATUM >= hHeute) {
+                    if (CUPS.TERMINE[termin].DATUM === hHeute) {
+                        heuteTurnier = true;
+                        if ((CUPS.TERMINE[termin].BEGINN && CUPS.TERMINE[termin].BEGINN > new Date().getHours())
+                                || ((pCup === 54 || pCup === 56) && new Date().getHours() < 16)
+                                || ((pCup !== 54 && pCup !== 56) && new Date().getHours() < 20)) {
+                            nextTurnier = CUPS.TERMINE[termin].DATUM;
+                            nextTerminI = termin;
+                            break;
+                        }
+                    } else {
+                        nextTurnier = CUPS.TERMINE[termin].DATUM;
+                        nextTerminI = termin;
+                        break;
+                    }
+                }
+            }
+        }
+        if ((CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'ET' || CUPS.TYP[pCup] === 'MT') && nextTurnier) {
+            var ueNextTurnier = 0;
+            var ueNextTerminI = false;
+            for (var termin in CUPS.TERMINE) {
+                if (CUPS.TERMINE[termin].CUP === pCup && termin !== nextTerminI) {
+                    if (CUPS.TERMINE[termin].DATUM >= hHeute) {
+                        if (CUPS.TERMINE[termin].DATUM === hHeute) {
+                            heuteTurnier = true;
+                            if ((CUPS.TERMINE[termin].BEGINN && CUPS.TERMINE[termin].BEGINN > new Date().getHours())
+                                    || ((pCup === 54 || pCup === 56) && new Date().getHours() < 16)
+                                    || ((pCup !== 54 && pCup !== 56) && new Date().getHours() < 20)) {
+                                ueNextTurnier = CUPS.TERMINE[termin].DATUM;
+                                ueNextTerminI = termin;
+                                break;
+                            }
+                        } else {
+                            ueNextTurnier = CUPS.TERMINE[termin].DATUM;
+                            ueNextTerminI = termin;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (CUPS.TYP[pCup] === 'CUP' || CUPS.TYP[pCup] === 'ET' || CUPS.TYP[pCup] === 'MT') { // Cups ///////////////////////////////////////////////////////////
+// Ein neuer Tisch / Zu meinem Tisch
+// Zur Statistik
+        if (pCup !== 49 && pCup !== 50 && pCup !== 52) {
+            hReturn += (heuteTurnier && pCup !== 53 && pCup !== 55 && LS.ME.length === 4 && LS.Schreiber || pCup < 8 // Schreiber in mindestens einer Runde!
+                    ? (APP && (LS.I !== pCup || LS.AnzSpieler === 0)
+                            ? '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
+                            : '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
+                            )
+                    + '</div>'
+                    : '')
+                    + '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
+                    + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
+                    + '</div>';
+        }
+        if (nextTurnier >= hHeute) {
+            if (pTermin !== false
+                    && ueNextTurnier
+                    && TERMINE[pTermin].CUP === pCup
+                    && TERMINE[pTermin].DATUM === CUPS.TERMINE[nextTerminI].DATUM
+                    ) {
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="$(\'#tglXX' + hBtnName + '\').toggle();">'
+                        + '<img src=\'Icons/Kalender.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Übernächstes Turnier<div class="S N">' + (ueNextTurnier === hHeute ? 'Heute' : getDateString(ueNextTurnier)) + '&nbsp;&nbsp;' + CUPS.TERMINE[ueNextTerminI].NAME + '</div></div>'
+                        + '<div id="tglXX' + hBtnName + '" style="margin-left:4px;margin-right:4px;" hidden>'
+                        + (CUPS.TERMINE[ueNextTerminI].BEGINN ? 'Ende der Anmeldung: ' + CUPS.TERMINE[ueNextTerminI].BEGINN + '.<br>' : '')
+                        + CUPS.TERMINE[ueNextTerminI].TEXT
+                        + '</div>';
+            } else {
+                hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="$(\'#tglXX' + hBtnName + '\').toggle();">'
+                        + '<img src=\'Icons/Kalender.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Nächstes Turnier<div class="S N">' + (nextTurnier === hHeute ? 'Heute' : getDateString(nextTurnier)) + '&nbsp;&nbsp;' + CUPS.TERMINE[nextTerminI].NAME + '</div></div>'
+                        + '<div id="tglXX' + hBtnName + '" style="margin-left:4px;margin-right:4px;" hidden>'
+                        + (CUPS.TERMINE[nextTerminI].BEGINN ? 'Ende der Anmeldung: ' + CUPS.TERMINE[nextTerminI].BEGINN + '.<br>' : '')
+                        + CUPS.TERMINE[nextTerminI].TEXT
+                        + '</div>';
+            }
+        }
+        if (CUPS.MELDAKT[pCup]) {
+            hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Aktuelles\');">'
+                    + '<img src=\'Icons/News.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Aktuelles<div class="S N">' + getMELDAKT(pCup) + '</div>'
+                    + '</div>';
+        }
+
+
+    } else if (CUPS.TURNIER[pCup]) { // Spontanturniere /////////////////////////////////////////////////////////////////////////////////
+// Zur Anmeldung
+// Turnier starten / Runde x beenden / Turnier beenden
+// Ein neuer Tisch / Zu meinem Tisch
+// Zur Statistik
+// Parameter ändern
+        var hMeld = '';
+        if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
+            for (var termin in TERMINE) {  //  llll llll
+                if (TERMINE[termin].CUP === pCup) {
+                    hMeld += TERMINE[termin].DATUM + ':<br>';
+                }
+            }
+        }
+
+        var hHeuteTurnier = false;
+        if (LS.I === pCup) {
+            hHeuteTurnier = true;
+        } else {
+            if (LS.ME.length === 4 && pCup !== 53 && pCup !== 55) {
+                for (var termin in TERMINE) {  //  llll llll
+                    if (TERMINE[termin].CUP === pCup && TERMINE[termin].DATUM === hHeute) {
+                        hHeuteTurnier = true;
+                        hMeld += TERMINE[termin].DATUM + ': !!!!!!!!!<br>';
+                        break;
+                    }
+                }
+            }
+        }
+        if (hHeuteTurnier && CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8) {
+            var hStartStopText = '';
+            if (!LS.TURADMIN || LS.TURADMIN === LS.ME || pCup < 8) {
+                var hStartStopClass = '';
+            } else {
+                var hStartStopClass = ' ui-disabled';
+            }
+
+            if (LS.I !== pCup || !LS.TURRUNDE) {
+                hStartStopText = 'Turnier starten<div class="S N">Turnier starten und beenden</div>';
+            } else if (LS.I === pCup) {
+                if (LS.TURRUNDE < CUPS.RUNDEN[pCup]) {
+                    if (LS.TURGESPIELT && LS.AnzSpieler === 0 && LS.TURRUNDE === 1) {
+                        hStartStopText = '<span style="color: #dd1111">Runde ' + LS.TURRUNDE + ' beenden</span>';
+                    } else {
+                        hStartStopText = 'Runde ' + LS.TURRUNDE + ' beenden';
+                    }
+                } else if (LS.TURGESPIELT && LS.AnzSpieler === 0) {
+                    hStartStopText = '<span style="color: #dd1111">Turnier beenden</span>';
+                } else {
+                    hStartStopText = 'Turnier beenden';
+                }
+                if (!LS.TURADMIN || LS.TURADMIN === LS.ME || pCup < 8) {
+                    hStartStopText += '<div class="S N">Turnier starten und beenden</div>';
+                } else {
+                    hStartStopText += '<div class="S N">Administrator: <b>' + LS.TURADMIN + '</b></div>';
+                }
+            }
+            hReturn += '<div class="ui-btn M2 TL' + hStartStopClass + '" style="margin:10px 6px 0 6px" onClick="fStartStop(' + pCup + ', true);">'
+                    + '<img src=\'Icons/Turnier.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">' + hStartStopText
+                    + '</div>';
+        }
+
+        if (APP && LS.ME !== 'NOBODY'
+                && (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
+                        || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0
+                        || pCup < 8)) {
+            if (hHeuteTurnier || pCup < 8) {
+                if (LS.I !== pCup || LS.AnzSpieler === 0) {
+                    hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
+                            + '</div>';
+                } else {
+                    hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
+                            + '</div>';
+                }
+            } else {
+                if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
+                    hMeld += LS.ME + ': Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
+                    writeLOG(hMeld);
+                }
+            }
+        } else {
+            if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
+                hMeld = LS.ME + ': Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
+                writeLOG(hMeld);
+            }
+        }
+
+        hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
+                + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
+                + '</div>';
+        if (CUPS.ANMELDERF[pCup] && LS.ME !== 'NOBODY') {
+            hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Anmeldungen\');">'
+                    + '<img src=\'Icons/Anmeldung.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Anmeldung<div class="S N">Nächstes Turnier:&nbsp;&nbsp;' + getDateString(CUPS.NEXTTERMIN[pCup]) + '</div>'
+                    + '</div>';
+        }
+
+        if (APP && (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 8)) {
+            hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern(' + pCup + ');">'
+                    + '<img src=\'Icons/Optionen.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Parameter ändern<div class="S N">Beschreibung und Berechtigungen ändern</div>'
+                    + '</div>';
+        }
+
+    } else { //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        var iWochentag = (new Date()).getDay();
+        var iVortag = iWochentag - 1;
+        if (iWochentag === 0) {
+            iVortag = 6;
+        } else {
+            iVortag = iWochentag - 1;
+        }
+        if (pCup === 4) {
+            pCup = 4;
+        }
+        if (APP && (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0
+                || CUPS.BEREschreiben[pCup].indexOf(LS.ME) >= 0
+                || pCup < 8)) {
+            if (LS.I === pCup
+                    || CUPS.SPIELTAGE[pCup][iWochentag] === 'J'
+                    || CUPS.SPIELTAGE[pCup][iVortag] === 'J' && (new Date()).getHours() <= 4) {
+                if (LS.I !== pCup || LS.AnzSpieler === 0) {
+                    hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="fEinNeuerTisch(' + pCup + ');">'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Ein neuer Tisch<div class="S N">Einen neuen Tisch eröffnen</div>'
+                            + '</div>';
+                } else {
+                    hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px"onClick="fZuMeinemTisch();">'
+                            + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
+                            + '</div>';
+                }
+            }
+        }
+        hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
+                + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
+                + '</div>';
+        if (APP && CUPS.ANMELDERF[pCup]) {
+            hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Anmeldungen\');">'
+                    + '<img src=\'Icons/Anmeldung.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Anmeldung<div class="S N">Nächste Runde:&nbsp;&nbsp;' + getDateString(CUPS.NEXTTERMIN[pCup]) + '</div>'
+                    + '</div>';
+        }
+        if (APP && (CUPS.BEREadmin[pCup].indexOf(LS.ME) >= 0 || pCup < 5)) {
+            hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefParameterAendern(' + pCup + ');">'
+                    + '<img src=\'Icons/Optionen.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Parameter ändern<div class="S N">Tarife, Spieltage, etc. ändern</div>'
+                    + '</div>';
+        }
+    }
+
+    if (!pTermin && CUPS.TEXT1[pCup]) {
+        if (pCup !== 49) {
+            hReturn += '<div class="M J S2" style="margin:6px;">' + CUPS.TEXT1[pCup] + '</div>';
+        } else {
+            hReturn += '<div class="M J S2" style="margin:6px;">'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a" style="width:20%"></div>'
+                    + '<div class="ui-block-b M" style="width:80%">Die Tarockmeister:</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2019</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2018</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Wimmer Anton</b><br>Puchkirchen</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2017</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Christian Rieseneder</b><br>Wien</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2016</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Mülleder Josef</b><br>Bad Leonfelden</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2015</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Zauner Hubert</b><br>Bad Ischl</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2014</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Stürmer Rudi</b><br>Bad Leonfelden</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2013</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Ebner Florian</b><br>Linz</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2012</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Böckl Josef</b><br>Neukirchen/V.</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2011</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Leimhofer Markus</b><br>Neustadl</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2010</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Manzenreiter Hermann</b><br>Bad Leonfelden</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2009</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Doppler Manfred</b><br>Ampflwang</div></div>'
+                    + '<div class="ui-grid-a">'
+                    + '<div class="ui-block-a C M3" style="width:20%">2008</div>'
+                    + '<div class="ui-block-b" style="width:80%"><b>Huemer Manfred</b><br>Bad Leonfelden</div></div>'
+                    + '</div>';
+        }
+
+    } else {
+        hReturn += '<div style="margin-top:10px;"></div>';
+    }
+    hReturn += '</div>';
+    return hReturn;
+}
+
+function whenCUPSloaded() {
+
+    initExtraButtons();
+    if (LS.I && LS.AnzSpieler) { // ????
+        if (LS.gespielt > 0) {
+            $('#tCupName').html(CUPS.NAME[LS.I] + '<br>' + (LS.gespielt === 1 ? 'Ein Spiel' : LS.gespielt + ' Spiele') + ' gespielt');
+        } else if (LS.TURRUNDE) {
+            $('#tCupName').html(CUPS.NAME[LS.I] + '<br>' + LS.TURRUNDE + '. Runde');
+        } else {
+            $('#tCupName').html(CUPS.NAME[LS.I] + '<br>' + LS.AnzSpieler + ' Spieler warten');
+        }
+        $('#tZuMeinemTisch,#tCupName').addClass('cRot');
+        $('#bZuMeinemTisch').show();
+    } else {
+        $('#bZuMeinemTisch').hide();
+    }
+
+    if (LS.ME[0] === '-') { // User für Turnier-PC
+        LS.ShowCups = parseInt(LS.ME) * -1;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        showEinenMoment(CUPS.NAME[LS.ShowCups] + ':', "Die Turnierverwaltung wird gestartet.");
+        setTimeout(function () {
+            window.location.replace('_Turnier/TU_1_Anmeldung.html?init');
+        }, 20);
+    }
+
+    TERMINE = [];
+    for (var termin in CUPS.TERMINE) {
+        if (CUPS.TERMINE[termin].DATUM >= hHeute && CUPS.TERMINE[termin].CUP > -4) { // llll
+            TERMINE[TERMINE.length] = CUPS.TERMINE[termin];
+            TERMINE[TERMINE.length - 1].I = termin;
+        }
+    }
+
+    for (var iii = 1; iii < CUPS.ANMELDERF.length; iii++) { // llll
+        if (CUPS.ANMELDERF[iii]) {
+            if (CUPS.MEZULETZT[iii] + (200 * 86400000) > Date.now() // 200 Tage
+                    || CUPS.BEREadmin[iii].indexOf(LS.ME) >= 0
+                    || CUPS.BEREschreiben[iii].indexOf(LS.ME) >= 0) {
+                if (!CUPS.NEXTTERMIN[iii]) {
+                    CUPS.NEXTTERMIN[iii] = 0;
+                }
+                if (CUPS.NEXTTERMIN[iii] < Date.now()) {
+                    CUPS.NEXTTERMIN[iii] = getNextTermin(iii);
+                }
+                TERMINE[TERMINE.length] = {
+                    DATUM: myDateString(CUPS.NEXTTERMIN[iii]),
+                    CUP: iii
+                };
+            }
+        }
+    }
+
+    TERMINE.sort(function (a, b) {
+        return (a.DATUM > b.DATUM) ? 1 : ((b.DATUM > a.DATUM) ? -1 : 0);
+    });
+    if (window.location.search) { // Quickstart
+        LS = new Object();
+        LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+        if (LS) { // nicht beim allerersten Aufruf
+            CUPS = new Object();
+            CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+            if (CUPS) {
+                var hCupName = window.location.search.replace(/\'|\%20|_| /g, '').substr(1).toUpperCase();
+                if (hCupName[0] === '?') {
+                    hCupName = hCupName.subString(1);
+                }
+                var newCup = 0;
+                if (hCupName === 'WR.TAROCKCUP') {
+                    newCup = 56;
+                } else if (hCupName === 'ST.TAROCKCUP') {
+                    newCup = 54;
+                } else if (hCupName === 'WR.MARATHON') {
+                    newCup = 80;
+                } else if (hCupName === 'CAFEHEINECUP') {
+                    newCup = 8;
+                } else {
+                    for (var ii = CUPS.NAME.length; ii > 0; ii--) {
+                        if (CUPS.NAME[ii]) {
+                            if (CUPS.NAME[ii].toUpperCase().replace(/\'|\%20|_| /g, '').indexOf(hCupName) >= 0) {
+                                newCup = ii;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (newCup) {
+                    if (newCup <= 4) {
+                        LS.LastBtn = '#bTR' + newCup;
+                    } else if (newCup <= 7) {
+                        LS.LastBtn = '#bAR' + newCup;
+                    } else if (CUPS.TYP[newCup] === 'CUP' && newCup >= 50 && newCup <= 59) {
+                        LS.LastBtn = '#bCT' + newCup;
+                    } else if (CUPS.TYP[newCup] === 'CUP' || CUPS.TURNIER[newCup]) {
+                        LS.LastBtn = '#bLC' + newCup;
+                    } else if (CUPS.TYP[newCup] === 'ET' || CUPS.TYP[newCup] === 'MT') {
+                        LS.LastBtn = '#bET' + newCup;
+                    } else if (CUPS.TYP[newCup] === 'PR') {
+                        LS.LastBtn = '#bPR' + newCup;
+                    } else {
+                        LS.LastBtn = '#bFC' + newCup;
+                    }
+                    LS.ShowCups = newCup;
+                    LS.Quickstart = true;
+                    // 01.2022 entfernen Beg
+                    LS.VIC = [];
+                    if (typeof LS.VIC === 'undefined' || LS.VIC.length === 0) {
+                        LS.VIC = [0];
+                    }
+// 01.2022 entfernen End
+                    if (hCupName.indexOf('/REGELN') > 0) {
+                        LS.ShowFunktion = '?Reglen';
+                    } else if (LS.VIC[0] === 0) {
+                        if (newCup >= 50 && newCup <= 59) {
+                            LS.VIC[0] = newCup;
+                            LS.VIC[newCup] = true;
+                        }
+                    }
+                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                    window.location.replace(window.location.origin + window.location.pathname);
+                }
+            }
+        }
+    }
+
+    var i = 0;
+    var nAktTermine = 0;
+    var nMeineRundenCups = 0;
+    var htmlAKT = '<div id="bAK" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Aktuelle Termine:</h2><ul data-role="listview">';
+    var htmlALLE = '<div id="bAL" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Alle Termine:</h2><ul data-role="listview">';
+    var htmlMR = '<div id="bMR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class=" "><h2>&nbsp;Meine Cups/Runden:</h2><ul data-role="listview">';
+    var htmlCT = '<div id="bCT" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"' + (LS.Quickstart ? ' data-collapsed="false"' : '') + '><h2>&nbsp;Cups:</h2><ul data-role="listview">';
+    var htmlLC = '<div id="bLC" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Lokale Cups:</h2><ul data-role="listview">';
+    var htmlET = '<div id="bET" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Einzelne Turniere:</h2><ul data-role="listview">';
+    var htmlFC = '<div id="bFC" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Wirtshausrunden:</h2><ul data-role="listview">';
+    var htmlPR = '<div id="bPR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Private Runden:</h2><ul data-role="listview">';
+    var htmlTR = '<div id="bTR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Testrunden -turniere:</h2><ul data-role="listview">';
+    var htmlAR = '<div id="bAR" data-role="collapsible" data-theme="d" data-corners="false" data-iconpos="right" class="K"><h2>&nbsp;Allgemeine Runden:</h2><ul data-role="listview">';
+    if (LS.Quickstart) {
+        delete LS.Quickstart;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
+    var hTemp = '';
+    var hBtnName = 'b??';
+    var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
+    for (var termin in TERMINE) {
+        if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST" && TERMINE[termin].CUP >= 8) {
+            if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
+                    || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4).toUpperCase() !== "TEST" || LS.ME === "3425")) {
+                if (TERMINE[termin].CUP === 80 || CUPS.TYP[TERMINE[termin].CUP] === 'CUP' || CUPS.TYP[TERMINE[termin].CUP] === 'ET' || CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
+                    var hCupName = '';
+                    var hCupFarbe = '';
+                    if (CUPS.TYP[TERMINE[termin].CUP] === 'MT') {
+                        hCupName = 'Wr. Tarockcup';
+                    } else if (TERMINE[termin].CUP === 49) {
+                        hCupName = 'Österreichfinale';
+                        hCupFarbe = ' cTOF';
+                    } else if (TERMINE[termin].CUP === 50) {
+                        hCupName = 'Hausruckcup';
+                        hCupFarbe = ' cHRC';
+                    } else if (TERMINE[termin].CUP === 51) {
+                        hCupName = 'Ktn. Tarockcup';
+                        hCupFarbe = ' cKTC';
+                    } else if (TERMINE[termin].CUP === 52) {
+                        hCupName = 'Raiffeisencup';
+                        hCupFarbe = ' cRTC';
+                    } else if (TERMINE[termin].CUP === 53) {
+                        hCupName = 'Sauwaldcup';
+                        hCupFarbe = ' cSWC';
+                    } else if (TERMINE[termin].CUP === 54) {
+                        hCupName = 'St. Tarockcup';
+                        hCupFarbe = ' cSTC';
+                    } else if (TERMINE[termin].CUP === 55) {
+                        hCupName = 'Tirolcup';
+                        hCupFarbe = ' cTTC';
+                    } else if (TERMINE[termin].CUP === 56) {
+                        hCupName = 'Wr. Tarockcup';
+                        hCupFarbe = ' cWTC';
+                    } else if (TERMINE[termin].CUP === 80) {
+                        hCupName = 'Wr. Marathon';
+                        hCupFarbe = ' cDIV';
+                    } else if (TERMINE[termin].CUP === 15) {
+                        hCupName = 'Stadl Tarock';
+                        hCupFarbe = ' cDIV';
+                    } else {
+                        hCupName = CUPS.NAME[TERMINE[termin].CUP];
+                        hCupFarbe = ' cDIV';
+                    }
+                    hBtnName = 'bAL' + TERMINE[termin].CUP + 'T' + TERMINE[termin].I;
+                    hTemp = '<li data-icon=false><a id="' + hBtnName + '" class="K' + hCupFarbe + '" onClick="showCup(' + TERMINE[termin].CUP + ",\'bAL\'," + TERMINE[termin].I + ')">&nbsp;&nbsp;<span class="L N">' + getDateString(TERMINE[termin].DATUM) + '&nbsp;&nbsp;' + (TERMINE[termin].BEGINN ? TERMINE[termin].BEGINN : '') + '&nbsp;&nbsp;&nbsp;</span><span class="S N">' + hCupName + '&nbsp;<br></span>&nbsp;&nbsp;' + TERMINE[termin].NAME + '</a></li>'
+                            + getCupToggleDiv('bAL', TERMINE[termin].CUP, termin);
+                    htmlALLE += hTemp;
+                    if (TERMINE[termin].DATUM <= hAktuellBis) {
+                        if (TERMINE[termin].CUP === 49 || LS.VIC[TERMINE[termin].CUP] || TERMINE[termin].CUP === 80 && LS.VIC[56]) {
+                            nAktTermine++;
+                            htmlAKT += hTemp.replace(/bAL/g, 'bAK');
+                        }
+                    }
+                } else {
+
+                    hTemp = getMeinTerminBarZeile(TERMINE[termin].CUP)
+                            + getCupToggleDiv('bAL', TERMINE[termin].CUP, -1);
+                    function getMeinTerminBarZeile(pCup) {
+                        if (typeof CUPS.MEANGEMELDET[pCup] === 'number') {
+                            if (CUPS.MEANGEMELDET[pCup] > Date.now()) {
+                                return '<li data-icon=false><a id=bAL' + pCup + 'T class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',\'bAL\',-1)">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cGruen">angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a></li>';
+                            } else {
+                                return '<li data-icon=false><a id=bAL' + pCup + 'T class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',\'bAL\',-1)">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S cRot">nicht angemeldet<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a></li>';
+                            }
+                        }
+                        return '<li data-icon=false><a id=bAL' + pCup + 'T class="K ' + getClassMeinTermin(pCup) + '" onClick="showCup(' + pCup + ',\'bAL\',-1,)">&nbsp;&nbsp;<span class="L N">' + getDateString(CUPS.NEXTTERMIN[pCup]) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S">???<br></span>&nbsp;&nbsp;' + getCupName(pCup) + '</a></li>';
+                    }
+
+                    htmlALLE += hTemp;
+                    nAktTermine++;
+                    htmlAKT += hTemp.replace(/bAL/g, 'bAK');
+                }
+            }
+        }
+    }
+
+    var SORT = [];
+    for (i = 0; i < CUPS.NAME.length; i++) {
+        if (CUPS.NAME[i]) {
+            if (i === 18 && (LS.ME !== '3425' && LS.ME !== '0197')) {           // Wr. Städtische ausblenden
+            } else {
+                if (i >= 49 && i <= 59) {
+                    SORT[SORT.length] = i + CUPS.NAME[i] + '  ;' + i;
+                } else {
+                    SORT[SORT.length] = CUPS.NAME[i] + '  ;' + i;
+                }
+            }
+        }
+    }
+
+    SORT.sort();
+    var xText = '';
+    for (var i = 50; i <= 56; i++) { // Meine Runden/Cups --- Bei Xxxxxx
+        var hShow = false;
+        xText = '';
+        if (CUPS.BEREadmin[i].indexOf(LS.ME) >= 0
+                || CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
+            hShow = true;
+        }
+        if (LS.VIC[i]) {
+            hShow = true;
+            if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
+                if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i]) && i !== 50 && i !== 52) {
+                    xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+                }
+                if (CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i])) {
+                    xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+                }
+            }
+        }
+        if (CUPS.MEZULETZT[i]) {
+            if (CUPS.MEZULETZT[i] + (90 * 86400000) > Date.now()) { // Nur wenn in den letzten 90 Tagen gespielt
+                hShow = true;
+            }
+        }
+        if (hShow) {
+            nMeineRundenCups++;
+            htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')"><div style="display:flex; justify-content: space-between"><div>&nbsp;' + getCupName(i) + '</div>' + xText + '</div></a></li>'
+                    + getCupToggleDiv('bMR', i, false);
+        }
+    }
+    for (var s = 0; s < SORT.length; s++) { // Meine Runden/Cups --- Bei Xxxxxx
+        i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
+        if (i >= 50 && i <= 59) {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'ET' || CUPS.TYP[i] === 'MT') {
+        } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
+            nMeineRundenCups++;
+            htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>'
+                    + getCupToggleDiv('bMR', i, false);
+        }
+    }
+    for (var s = 0; s < SORT.length; s++) { // mit Schreibberechtigung >>>>>>>>>> später eventuell entfernen
+        i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
+        if (i >= 50 && i <= 59) {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'ET' || CUPS.TYP[i] === 'MT') {
+        } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
+        } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
+            nMeineRundenCups++;
+            htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>'
+                    + getCupToggleDiv('bMR', i, false);
+        }
+    }
+    for (var s = 0; s < SORT.length; s++) { // Meine Runden/Cups --- Bei Xxxxxx
+        i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
+        if (i >= 50 && i <= 59) {
+        } else if (CUPS.NAME[i].substr(0, 4) === "Test" || i < 5 || CUPS.TYP[i] === 'ET' || CUPS.TYP[i] === 'MT') {
+        } else if (i >= 8 && CUPS.BEREadmin[i].indexOf(LS.ME) >= 0) {
+        } else if (i >= 8 && CUPS.BEREschreiben[i].indexOf(LS.ME) >= 0) {
+        } else {
+            if (CUPS.MEZULETZT[i]) {
+                if (i < 8 && nMeineRundenCups > 0
+                        && CUPS.MEZULETZT[i] + (14 * 86400000) > Date.now() // Nur wenn in den letzten 14 Tagen gespielt
+                        || CUPS.TYP[i] === 'PR' && CUPS.NAME[i].substr(0, 4) === 'Bei '
+                        && CUPS.MEZULETZT[i] + (100 * 86400000) > Date.now() // Nur wenn in den letzten 100 Tagen gespielt
+                        || CUPS.TYP[i] === 'PR' && CUPS.NAME[i].substr(0, 4) !== 'Bei '
+                        && CUPS.MEZULETZT[i] + (200 * 86400000) > Date.now() // Nur wenn in den letzten 200 Tagen gespielt
+                        || CUPS.TYP[i] !== 'PR'
+                        && CUPS.MEZULETZT[i] + (300 * 86400000) > Date.now() // Nur wenn in den letzten 300 Tagen gespielt
+                        || i < 8 && nMeineRundenCups === 0
+                        && CUPS.MEZULETZT[i] + (300 * 86400000) > Date.now()) { // Nur wenn in den letzten 300 Tagen gespielt
+                    nMeineRundenCups++;
+                    htmlMR += '<li data-icon=false><a id="bMR' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bMR\')">&nbsp;' + getCupName(i) + '</a></li>'
+                            + getCupToggleDiv('bMR', i, false);
+                }
+            }
+        }
+    }
+
+    for (var s = 0; s < SORT.length; s++) {
+        i = parseInt(SORT[s].substring((SORT[s].lastIndexOf(';') + 1)));
+        var xText = '';
+        if (LS.VIC[i]) {
+            if (CUPS.TYP[i] === 'CUP' && i !== 49) { // Nicht für Österreichfinale
+                if (CUPS.MELDSTAT[i] && (!LS.GelesenSTAT[i] || LS.GelesenSTAT[i] !== CUPS.MELDSTAT[i]) && i !== 50 && i !== 52) {
+                    xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+                }
+                if (CUPS.MELDAKT[i] && (!LS.GelesenAKT[i] || LS.GelesenAKT[i] !== CUPS.MELDAKT[i])) {
+                    xText = '<div><i class="i zmdi-info-outline noprint" style="color:crimson"></i>&nbsp;</div>';
+                }
+            }
+        }
+        html = '<li data-icon=false><a id="bXX' + i + '" class="' + getClass(i) + '" onClick="showCup(' + i + ',\'bXX\')"><div style="display:flex; justify-content: space-between"><div>&nbsp;' + getCupName(i) + '</div>' + xText + '</div></a></li>'
+                + getCupToggleDiv('bXX', i, false);
+        if (CUPS.NAME[i].substr(0, 4) === "Test" || CUPS.TYP[i] === 'TR' || i <= 4) { // 4te TestRunde / TestCup
+            htmlTR = htmlTR + html;
+        } else if (CUPS.TYP[i] === 'CUP' && (i >= 49 && i <= 57)) {
+            htmlCT = htmlCT + html;
+        } else if (CUPS.TYP[i] === 'CUP' || CUPS.TYP[i] === 'TC') {
+            htmlLC = htmlLC + html;
+        } else if (CUPS.TYP[i] === 'ET' || CUPS.TYP[i] === 'MT') {
+            htmlET = htmlET + html;
+        } else if (CUPS.TYP[i] === 'FC') {
+            htmlFC = htmlFC + html;
+        } else if (CUPS.TYP[i] === 'PR') {
+            htmlPR = htmlPR + html;
+        } else if (CUPS.TYP[i] === 'AR') {
+            htmlAR = htmlAR + html;
+        }
+    }
+
+    $('#dTermine').html((nAktTermine ? htmlAKT + '</ul></div>' : '')
+            + htmlALLE + '</ul></div>').trigger('create');
+    if (nMeineRundenCups) {
+        $('#dMeineRundenCups').html(htmlMR + '</ul></div>').trigger('create');
+    }
+//    htmlCT += "<li data-icon='false'><a id='bCTHeinepunkte' class='ui-btn' onclick='showText(\"CTHeinepunkte\")'>&nbsp;<span class=\"N M3\">Warum Heinepunkte?</span></a></li>";
+    $('#dRundenCups').html(htmlCT.replace(/bXX/g, 'bCT') + '</ul></div>' + htmlLC.replace(/bXX/g, 'bLC') + '</ul></div>' + htmlET.replace(/bXX/g, 'bET') + '</ul></div>' + htmlFC.replace(/bXX/g, 'bFC') + '</ul></div>' + htmlPR.replace(/bXX/g, 'bPR') + '</ul></div>' + (LS.ME !== 'NOBODY' ? htmlTR.replace(/bXX/g, 'bTR') + '</ul></div>' : '') + htmlAR.replace(/bXX/g, 'bAR') + '</ul></div>').trigger('create').show();
+    if (LS.Meldung) {
+        $('#dMeldung').append("&nbsp;<img src='Icons/Achtung.png'  width='24' height='24'>&nbsp;<b>" + LS.Meldung + "</b>");
+    }
+    hideEinenMoment();
+    if (CUPS.ABVERSION > getVersion() && navigator.userAgent.match(/Android/i) && location.pathname.substring(0, 19) === '/android_asset/www/') {
+        showEinenFehler('Diese App ist veraltet!&nbsp;&nbsp;&nbsp;&nbsp;', "Suche im Play Store nach<br>'<b>Die Tarock-App</b>' und<br>aktualisiere diese App.");
+    }
+
+    window.scrollTo(0, 0);
+    if (QUERFORMAT()) {
+        if (LS.LastBtn) {
+            $('#bInitialisieren').removeClass('ui-btn-active');
+        }
+    }
+    if (LS.LastBtn) {
+        $(LS.LastBtn.substr(0, 4)).collapsible({collapsed: false});
+        if ($(LS.LastBtn).length) {
+            if (QUERFORMAT()) {
+                $(LS.LastBtn).addClass('ui-btn-active').removeClass('cHRC').removeClass('cKTC').removeClass('cRTC').removeClass('cSWC').removeClass('cSTC').removeClass('cTTC').removeClass('cWTC').removeClass('cTOF').removeClass('cDIV').removeClass('fGruen').removeClass('cAktiv');
+            }
+            if ($('#pContent').position().top + $(LS.LastBtn).offset().top > $(window).innerHeight() / 4) {
+                $('#pContent').scrollTop(parseInt($(LS.LastBtn).offset().top - $(window).innerHeight() / 4));
+            }
+        }
+    } else {
+        $('#bAK').collapsible({collapsed: false});
+        $('#bMR').collapsible({collapsed: false});
+    }
+    $('#dFooter').show();
+    delete TERMINE;
+    if (I) {
+        showCup(I);
+    } else if (QUERFORMAT()) {
+        showLogo();
+    }
+    if (LS.showMeinenTisch) {
+        delete LS.showMeinenTisch;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        fZuMeinemTisch();
+    }
+}
+
+$(document).ready(function () {
+    'use strict';
+    $('#pFehler').hide();
+    if (navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+            ) {
+        PC = false;
+    } else {
+        PC = true;
+    }
+
+    APP = false;
+    if (location.href.indexOf('.html') === -1 || location.href.indexOf('/Statistik.html') > 0) {
+        APP = true;
+    } else if (navigator.userAgent.match(/Android/i)) {
+        if (window.matchMedia('(display-mode: standalone)').matches || location.pathname.substring(0, 19) === '/android_asset/www/') {
+            APP = true;
+        }
+    } else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+        if (navigator.standalone) {
+            APP = true;
+        }
+    } else if (PC) {
+        APP = true;
+    }
+    if (CUPS.ABVERSION > getVersion()) {
+        APP = false;
+    }
+
+    if (APP) {
+        $('#dVollversion').remove();
+    } else {
+        $('#dOrigin').text(location.origin);
+        $('#bAdminTools,#bRAMOS').remove();
+    }
+
+    try {
+        localStorage.Abakus = 'OK';
+    } catch (e) {
+// Auf Safari nicht im "Private Modus"
+        alert('ACHTUNG: Diese Webseite kann im "Private Modus" nicht aufgerufen werden. Deaktivieren den "Private Modus".');
+    }
+
+    if (localStorage.getItem("Abakus.LS") === null) {  // allererster Aufruf
+        LS = new Object();
+        LS.ME = "NOBODY";
+        LS.MEname = 'Nicht registriert';
+        LS.Schreibzettel = false;
+        LS.I = 0;
+        LS.GelesenAKT = [];
+        LS.GelesenSTAT = [];
+        LS.gespielt = 0; // -1
+        LS.Regeln = "Wr.";
+        LS.Meldung = '';
+        LS.Ansage = '';
+        LS.AktTage = 30;
+        LS.ShowCups = 0;
+        LS.LastBtn = '';
+        LS.LastDate = new Date().getTime();
+        LS.LoadCups = 0;
+        LS.Padding = 2;
+        LS.Freunde = [];
+        LS.Sterne = ['', '', '', '', '', '', ''];
+        LS.Ansagen = true;
+        LS.TURCODE = 0;
+        LS.TURADMIN = '';
+        LS.TURRUNDE = 0;
+        LS.TURSPIELER = 0;
+        LS.TURGESPIELT = 0;
+        LS.Version = 0;
+        LS.AnzGespeichert = 0;
+        LS.Timeout = 0;
+        LS.VIC = [0];
+        LS.VIP = false;
+        LS.FotoAnimieren = false;
+        LS.FotoStyle = 0;
+        if (QUERFORMAT()) {
+            LS.ShowSpielerNr = true;
+            LS.AnzSpalten = 2;
+        } else {
+            LS.AnzSpalten = 1;
+        }
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    } else {
+        LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+    }
+
+    if (LS.Version < 932) {
+        LS.LastBtn = '';
+    }
+    if (!LS.GelesenAKT) {
+        LS.GelesenAKT = [];
+    }
+    if (!LS.GelesenSTAT) {
+        LS.GelesenSTAT = [];
+    }
+    if (LS.Version < 967) {
+        LS.VIP = false;
+    }
+    if (LS.Version < 991) {
+        LS.LastDate = new Date().getTime();
+    }
+    if (!LS.MeineCups) {
+        LS.MeineCups = [];
+    }
+    if (!LS.VIC) {
+        LS.VIC = [];
+        if (LS.MeineCups[1]) {
+            LS.VIC[LS.MeineCups[1]] = true;
+        }
+        if (LS.MeineCups[2]) {
+            LS.VIC[LS.MeineCups[2]] = true;
+        }
+        if (LS.MeineCups[3]) {
+            LS.VIC[LS.MeineCups[3]] = true;
+        }
+        if (LS.MeineCups[4]) {
+            LS.VIC[LS.MeineCups[4]] = true;
+        }
+        if (LS.MeineCups[5]) {
+            LS.VIC[LS.MeineCups[5]] = true;
+        }
+        if (LS.MeineCups[6]) {
+            LS.VIC[LS.MeineCups[6]] = true;
+        }
+        delete LS.MeineCups;
+    }
+
+    if (PC || navigator.standalone || window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
+//    if (PC || navigator.standalone || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
+        if (LS.VIC.length === 0 || !LS.VIC[0]) {
+            $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+            $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+        }
+    } else {
+        $('#tTippsUndTricks').html('&nbsp;&nbsp;Welche Vorteile bringt mir<br>&nbsp;&nbsp;eine Installation von Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als App?&nbsp;');
+        if (LS.VIC.length === 0 || !LS.VIC[0]) {
+            $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+            $('#tTippsUndTricks').append('<br>&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+        }
+    }
+
+    if (new Date().getTime() > LS.LastDate + 60000 * 60 * 12) { // + 6 Stunden Differenz
+        if (IsInteger(LS.VIC[0])) {
+            LS.ShowCups = LS.VIC[0]; // Auf Standardcup wegen Lesezeichen zurücksetzen
+        }
+        LS.LastBtn = '';
+    }
+
+    if (window.location.href.toUpperCase().indexOf('?VIPS') > 0) {
+        LS.tempVIPs = window.location.href.substr(window.location.href.toUpperCase().indexOf('?VIPS'));
+    }
+
+    if (LS.ME !== "3425") {
+        document.oncontextmenu = function () {
+            return false; // oncontextmenu
+        };
+    }
+    document.onselectstart = function () {
+        return false;
+    };
+    CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+    if (CUPS) {
+        if (!LS.XXL) { // (Neue) Admins ohne 6-stelligen Code abmelden.
+            if (LS.ME === '3425'
+                    || CUPS.BEREadmin[50].indexOf(LS.ME) >= 0
+                    || CUPS.BEREadmin[51].indexOf(LS.ME) >= 0
+                    || CUPS.BEREadmin[52].indexOf(LS.ME) >= 0
+                    || CUPS.BEREadmin[53].indexOf(LS.ME) >= 0
+                    || CUPS.BEREadmin[54].indexOf(LS.ME) >= 0
+                    || CUPS.BEREadmin[55].indexOf(LS.ME) >= 0
+                    || CUPS.BEREadmin[56].indexOf(LS.ME) >= 0) {
+                LS.ME = "NOBODY";
+                LS.MEname = 'Nicht registriert';
+            }
+        }
+    } else {
+        CUPS = new Object();
+        CUPS.NAME = [];
+        CUPS.MEANGEMELDET = [];
+        CUPS.MEZULETZT = [];
+    }
+
+    if (LS.Ansage) {  // verhindert einen mehrfachen Aufruf von Seite2
+        LS.Ansage = '';
+    }
+
+    LS.LastDate = new Date().getTime();
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    initSeite1();
+    listVersion();
+    $('#tJJJJ,#tJJJJ2').text(new Date().getFullYear());
+    if (LS.ME === 'NOBODY') {
+        $('#tSpieler').html('Noch nicht registriert.');
+    } else {
+        $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
+    }
+
+    setTimeout(function () {
+        if (!navigator.onLine) {
+            $('#dOffline').show();
+        } else {
+            $('#dOffline').hide();
+        }
+    }, 10);
+    setInterval(function () {
+        if (!navigator.onLine) {
+            $('#dOffline').show();
+        } else {
+            $('#dOffline').hide();
+        }
+    }, 32000);
+    $('#pContent').each(function () { // sonst funktioniert important nicht
+        this.style.setProperty('height', ($(window).innerHeight() - $('#pContent').offset().top - 1) + 'px', 'important');
+    });
+    $('#ddRumpf').each(function () { // sonst funktioniert important nicht
+        this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
+    });
+    if ($('#hMenu').is(":visible")) {
+        $('.iMain').css('height', $('#hMenu').height() - 4);
+    } else if ($('#hMix').is(":visible")) {
+        $('.hfHeaderIcon').css('height', $('#hMix').height() - 8);
+    }
+
+    if (QUERFORMAT()) {
+        myJTip = new jBox('Tooltip', {
+            theme: 'TooltipError',
+            delayClose: 20,
+            closeOnClick: true,
+            closeOnEsc: true
+        });
+    }
+
+    window.onresize = function (e) {
+        if ($('#hMenu').is(":visible")) {
+            $('.iMain').css('height', $('#hMenu').height() - 4);
+        } else if ($('#hMix').is(":visible")) {
+            $('.hfHeaderIcon').css('height', $('#hMix').height() - 8);
+        }
+        $('#pContent').each(function () { // sonst funktioniert important nicht
+            this.style.setProperty('height', ($(window).innerHeight() - $('#pContent').offset().top - 1) + 'px', 'important');
+        });
+        $('#ddRumpf').each(function () { // sonst funktioniert important nicht
+            this.style.setProperty('height', ($(window).innerHeight() - $('#ddRumpf').offset().top - 1) + 'px', 'important');
+        });
+    };
+}
+);
+// if (/iPad|iPhone|iPod|xFirefox/.test(navigator.userAgent) && !window.MSStream) {
+if (window.navigator.userAgent.indexOf("Chrome") === -1) {
+    window.onpageshow = function (event) {
+        if (window.performance.navigation.type === 2) {
+            LS = JSON.parse(localStorage.getItem('Abakus.LS'));
+            CUPS = JSON.parse(localStorage.getItem('Abakus.CUPS'));
+            if (navigator.onLine) {
+                $('#tOnline').html('Datenverbindung ist OK!');
+            } else {
+                $('#tOnline').html('KEINE Datenverbindung!');
+            }
+            if (LS.ME === 'NOBODY') {
+                $('#tSpieler').html('Noch nicht registriert.');
+            } else {
+                $('#tSpieler').html('Registriert für ' + (LS.VIP ? 'den VIP' : 'Spieler') + '<br>' + LS.MEname + '.');
+            }
+
+            if (PC || navigator.standalone || window.matchMedia('(display-mode: standalone)').matches || location.origin[0] !== 'h') { // als PWA oder PhoneGap-App oder lokal (!http) gestartet.
+                if (LS.VIC.length === 0 || !LS.VIC[0]) {
+                    $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+                    $('#tTippsUndTricks').html('&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+                } else {
+                    $('#tEinstellungen').remove();
+                }
+            } else {
+                $('#tTippsUndTricks').html('&nbsp;&nbsp;Welche Vorteile bringt mir<br>&nbsp;&nbsp;eine Installation von Abakus&nbsp;&nbsp;<br>&nbsp;&nbsp;als App?&nbsp;');
+                if (LS.VIC.length === 0 || !LS.VIC[0]) {
+                    $('#tEinstellungen').html('&nbsp;&nbsp;Du hast deine dir wichtigen<br>&nbsp;&nbsp;Cups noch nicht ausgewählt.&nbsp;&nbsp;');
+                    $('#tTippsUndTricks').append('<br>&nbsp;&nbsp;Warum soll ich den/die mir&nbsp;&nbsp;<br>&nbsp;&nbsp;wichtigen Cups auswählen?&nbsp;&nbsp;');
+                } else {
+                    $('#tEinstellungen').remove();
+                }
+            }
+
+            initSeite1();
+            $('body').removeClass('ui-disabled');
+        }
+    };
+}

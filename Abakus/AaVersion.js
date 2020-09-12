@@ -7,7 +7,7 @@ function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 9, 6);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 9, 12);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
 

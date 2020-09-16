@@ -321,6 +321,11 @@ function onSubmit() {
         return;
     }
 
+    if (!$("#iANMELDERF").is(':checked')) {
+        showEinenTip("#iANMELDERF", 'Spontanturniere sind nur mit Anmeldung möglich!');
+        return;
+    }
+
     if (mCupLoeschen === 1) {
         if (CUPS.NAME[I] !== $("#iCupLoeschen").val()) {
             if ($('#tLoeschen').html() === 'Die Statistik welcher Runde, welches Cups soll gelöscht werden?') {

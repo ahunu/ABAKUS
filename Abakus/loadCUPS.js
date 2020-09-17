@@ -6,7 +6,7 @@ function loadCUPS(pTitel, pText, pForce) {
     if (pTitel) {
         showEinenMoment(pTitel, pText, pForce);
     } else {
-        showEinenMoment('Cup-Übersicht', 'Daten&nbsp;werden&nbsp;geladen.', pForce);
+        showEinenMoment('Cup-Übersicht', 'Daten werden geladen.', pForce);
     }
 
     var cMEANGEMELDET = CUPS.MEANGEMELDET;

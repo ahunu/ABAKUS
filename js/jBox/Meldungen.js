@@ -79,9 +79,9 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
     setTimeout(function () {
         if (!pForce) {
             $('.bUeberspringen').show();
-            showEinenMoment2(hID, pSkip);
         }
-    }, (pSkip ? 6000 : 10000));
+        showEinenMoment2(hID, pSkip);
+    }, (pSkip ? 6000 : 9000));
 }
 
 function skipEinenMoment(pSkip) {

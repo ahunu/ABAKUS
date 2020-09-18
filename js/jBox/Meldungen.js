@@ -77,10 +77,12 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
     }).open();
     var hID = myJBox.id;
     setTimeout(function () {
-        if (!pForce) {
+        if (pForce) {
+            hideEinenMoment();
+        } else {
             $('.bUeberspringen').show();
+            showEinenMoment2(hID, pSkip);
         }
-        showEinenMoment2(hID, pSkip);
     }, (pSkip ? 6000 : 9000));
 }
 

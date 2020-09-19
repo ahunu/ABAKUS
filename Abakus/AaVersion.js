@@ -10,6 +10,7 @@ function getVersionsDatum() {
     return setVersion(2020, 9, 18);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
+// Release 1098 2 für Tabletts === Neuer Code, Alte DB (v4.9.1) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
 //  Tarock Meisterklasse
 //  Die große Kunst des Lizits

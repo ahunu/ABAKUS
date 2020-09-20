@@ -16,6 +16,35 @@
     background: #d00000 !important;
 }
 
+.llllzmdi-hc-stack {
+    position: relative;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.4em;
+    vertical-align: middle;
+}
+.zmdi-innericon {
+    position: absolute;
+    left: 0;
+    top: 0.24em;
+    width: 100%;
+    text-align: center;
+}
+.zmdi-hc-inverse {
+    color: #ffffff;
+}
+.zmdi-bg-circle:before {
+    content: '\f26c';
+    font-size: 1.4em;
+}
+.zmdi-bg-fullcircle:before {
+    content: '\f26d';
+    font-size: 1.4em;
+}
+
+
+
 .zmdi-hc-stack {
     position: relative;
     display: inline-block;
@@ -66,12 +95,6 @@
 }
 .zmdi-minus-or-plus:before {
     content: '\2213';
-}
-.zmdi-wifi-alt:before {
-    content: '\f2e3';
-}
-.zmdi-wifi-off:before {
-    content: '\f2e6';
 }
 
 
@@ -182,7 +205,7 @@ iPad 5. Gen.: 1024 x 748
 
     .iSpinner {
         display: inline-block;
-        font: normal normal normal calc(3vw + 12px) 'Material-Design-Iconic-Font';
+        font: normal normal normal 22px 'Material-Design-Iconic-Font';
         font-size: 8vw;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -335,7 +358,7 @@ iPad 5. Gen.: 1024 x 748
 
     .iSpinner {
         display: inline-block;
-        font: normal normal normal calc(1vw + 22px) 'Material-Design-Iconic-Font';
+        font: normal normal normal 22px 'Material-Design-Iconic-Font';
         font-size: 8vw;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -769,27 +792,13 @@ iPad 5. Gen.: 1024 x 748
 .zmdi-print:before {
     content: '\f1b0';
 }
-.zmdi-1ter:before {
-    content: '\2460';
-    position: relative;
-    top: -0.22em;
-}
-.zmdi-2ter:before {
-    content: '\2461';
-    position: relative;
-    top: -0.22em;
-}
-.zmdi-3ter:before {
-    content: '\2462';
-    position: relative;
-    top: -0.22em;
-}
 .zmdi-wrench:before {
     content: '\f1ed';
 }
 .zmdi-search:before {
     content: '\f1c3';
 }
+
 .header { color:#fff; background-color:#666; padding:.1em; position:fixed; top:0; width:100% }
 .footer { position: fixed; bottom: 0; width: 100%; }
 
@@ -1077,3 +1086,19 @@ li, .K {
     padding: .1em 0 !important;
     margin: 0.4em 0 !important;
 }
+
+.XXL {font-size:54px !important;}
+.XL {font-size:48px !important;}
+.L3 {font-size:34px !important;}
+.L2 {font-size:25px !important;}
+.L, input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size:22px !important;}
+.M3  {font-size:21px !important;}
+.M2, .Sbtn {font-size:20px !important;}
+.M  {font-size:18px !important;}
+.S3 {font-size:17.4px !important;}
+.S2 {font-size:16.75px !important;}
+.S  {font-size:15.5px !important;}
+.XS {font-size:14.5px !important;}
+
+.LL3 {font-size:26px !important;}
+.LL2 {font-size:24px !important;}

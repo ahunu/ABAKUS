@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="../Icons/icon-36-ldpi.png" />
+        <link rel="stylesheet" href="../themes/ThemeABCDE.min.css" />
+        <link rel="stylesheet" href="../themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="../js/jquery.mobile/jquery.mobile.min.css" />
+        <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/firebase/firebase.js"></script>
+        <script src="../js/jquery.mobile/jquery.mobile.min.js"></script>
+        <link  href="../js/jBox/jBox.css"     rel="stylesheet" />
+        <script src="../js/jBox/jBox.min.js"  ></script>
+        <script src="../js/jBox/Meldungen.js" ></script>
+        <!-- Das ist ein Kommentar -->
+        <title>Abakus</title>
+        <link  href="../js/css/Abakus.css"      rel="stylesheet" />
+        <script src="VorjahrImport.js"></script>
+            <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#fff">
+            <script src='../swReg.js'></script>
+        <!-- iOS support -->
+        <link rel="apple-touch-icon" href="/Icons/icon-144.png">
+        <meta name="apple-mobile-web-app-status-bar" content="#fff">
+    </head>
+    <body>
+        <div id=dHeader data-role="header" data-position="fixed" style="padding:0em; margin:0em;">
+            <div class="ui-grid-c" onClick="$('#dLegende').toggle('show');">
+                <div class="ui-block-a" style="width:1vw;"></div>
+                <div class="ui-block-b C" style="width:70px;margin-bottom:-8px">
+                    <img src='../Icons/Tools.png' id=logo height="70" width="70"/>
+                </div>
+                <div class="ui-block-c" style="width:1.5vw;"></div>
+                <div class="ui-block-d" style="width:auto">
+                    <div id=hTitel1 style="width:auto; text-align:left; font-size: 36px; margin-top:-2px; font-style: italic;">ABAKUS die Tarock-App</div>
+                    <div id=hTitel2 style="width:auto; text-align:left; font-size: 28px; margin-top:-8px; font-weight: normal;">Vorjahr aus den Haas-CSV-Dateien importieren</div>
+                </div>
+            </div>
+        </div>
+        <div id='dLegende' onClick="$('#dLegende').toggle('show');" style='margin:1em; text-align: left;' class='M N' hidden>
+            <b>Legende:</b>
+            <hr> Unmittelbar nach dem Speichern werden die zusätzlichen Statistikdaten verwendet.
+        </div>
+        <div id='main'>
+            <br>
+            <div class="ui-field-contain">
+                <label for="fCUPORTE" class="M">&nbsp;&nbsp;&nbsp;&nbsp;CUPORTE: (*.csv) </label>
+                <input type="file" id="fCUPORTE" onchange="handleCUPORTE(this.files)" accept=".csv" placeholder="Text input" value="CUPORTE (*.csv) einlesen">
+            </div>
+            <div class="ui-field-contain">
+                <label for="fCUPWERTUNG" class="M">&nbsp;&nbsp;&nbsp;&nbsp;CUPWERTUNG: (*.csv) </label>
+                <input type="file" id="fCUPWERTUNG" class="ui-disabled" onchange="handleCUPWERTUNG(this.files)" accept=".csv" placeholder="Text input" value="CUPORTE (*.csv) einlesen">
+            </div>
+            <div id=tMeldung class='M' style='margin: 1em 1em 1em 13.5em'>
+                Die Veranstalternummern können im CUPORTE-EXCEL (*.csv) in Spalte H<br>
+                oder hier manuell eingegeben werden.
+            </div>
+            <table data-role="table" id="tSpieler" class="ui-responsive table-stroke M2" xstyle='margin: 1em 5em 1em 5em' hidden>
+                <thead>
+                    <tr>
+                        <th class=TR><br><br>Nr.&nbsp;&nbsp;&nbsp;</th>
+                        <th><br><br>Datum</th>
+                        <th><br><br>Turnier</th>
+                        <th><span class="N"> -1=Präsidium<br>-2=alle Veranstalter<br></span>Veranstalter</th>
+                        <th class="TR"><br><br>Teilnehmer&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div data-role="footer" id="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a data-icon=delete class=iconJQM onClick="history.go(-1);">&nbsp;&nbsp;&nbsp;&nbsp;abbrechen</a>
+                        </li>
+                        <li>
+                            <a class='ui-disabled' id=bPruefen onclick="Speichern(false);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pr&uuml;fen</a>
+                        </li>
+                        <li>
+                            <a data-icon=check   class='iconJQM ui-disabled' id=bSpeichern onclick="Speichern(true);" data-theme="e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speichern</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

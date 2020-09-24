@@ -75,8 +75,8 @@ function showRegeln() {
             + "<tr><th>&nbsp;&nbsp;Valat</th><th class=TR>10 / 20&nbsp;&nbsp;</th></tr>"
             + "</tbody></table>"
             + "<br>Bei Solospielen zählen die Prämien doppelt.<br>"
-            + "<br>Mondfang, Absolut und Hon-neurs wird nicht honoriert.<br>"
-            + "<br>Jedes Spiel muss gespielt werden. Ein Blatt ohne Tarock und ohne Könige wird nicht zusammen-geworfen.<br>"
+            + "<br>Mondfang, Absolut und Honneurs wird nicht honoriert.<br>"
+            + "<br>Jedes Spiel muss gespielt werden. Ein Blatt ohne Tarock und ohne Könige wird nicht zusammengeworfen.<br>"
             + "<br>Kaiserstich: fallen Sküs, Mond und Pagat zusammen (egal in welcher Reihenfolge), so sticht der Pagat. In Negativspielen gibt es keinen Kaiserstich.<br>"
             + '</div></div>'
 

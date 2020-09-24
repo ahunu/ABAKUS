@@ -76,7 +76,7 @@ function showRegeln() {
             + "</tbody></table>"
             + "<br>Bei Solospielen zählen die Prämien doppelt.<br>"
             + "<br>Mondfang, Absolut und Honneurs wird nicht honoriert.<br>"
-            + "<br>Jedes Spiel muss gespielt werden. Ein Blatt ohne Tarock und ohne Könige wird nicht zusammengeworfen.<br>"
+            + "<br>Jedes Spiel muss gespielt werden. Ein Blatt ohne Tarock und ohne Könige wird nicht zusammen&shy;geworfen.<br>"
             + "<br>Kaiserstich: fallen Sküs, Mond und Pagat zusammen (egal in welcher Reihenfolge), so sticht der Pagat. In Negativspielen gibt es keinen Kaiserstich.<br>"
             + '</div></div>'
 
@@ -86,7 +86,7 @@ function showRegeln() {
             + '<ul>'
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Allgemeines:</div>'
             + '<li>Es wird gegen den Uhrzeigersinn gegeben und gespielt. Jeder Spieler erhält zweimal 6 Karten, der Talon (zweimal 3 Karten) wird in die Mitte gegeben.</li>'
-            + '<li>Jedes Spiel muss gespielt werden. Kein Blatt wird zusammen-geworfen.</li>'
+            + '<li>Jedes Spiel muss gespielt werden. Kein Blatt wird zusammen&shy;geworfen.</li>'
             + '<li>Ein Spieler darf ein Vogerl oder König ultimo nur dann ansagen, wenn er die jeweilige Karte im Blatt hat.</li>'
             + '<li>Wenn kein Verstoß gegen Farb-, Stich- oder Prämienzwang vorliegt, darf eine gespielte Karte nicht zurückgenommen werden.</li>'
             + '<li>Bei den Solospielen zählen die Prämien doppelt.</li>'

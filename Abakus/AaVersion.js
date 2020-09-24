@@ -7,7 +7,7 @@ function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 9, 23);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 9, 24);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
 // Release 1098 2 für Tabletts === Neuer Code, Alte DB (v4.9.1) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1

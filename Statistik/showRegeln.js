@@ -1,6 +1,57 @@
 
 /* global CUPS, LS, stCup, jbSpieler, stHeute, QUERFORMAT(), ADMIN */
 
+
+/* global CUPS, LS, stCup, jbSpieler, stHeute, QUERFORMAT(), ADMIN */
+
+function showRegelnALT() {
+
+    if (QUERFORMAT()) {
+        if (lastBtn) {
+            $(lastBtn).removeClass('ui-btn-active');
+        }
+        lastBtn = '#bRegelnAlt';
+        $(lastBtn).addClass('ui-btn-active');
+    }
+
+//    showIcons(['#iPrint']);
+
+    stStat = 'Regeln';
+
+    if (jbSpieler.isOpen) {
+        jbSpieler.close();
+    }
+    $("#dCopyright").hide();
+
+    writeCanvas('Tarife und Regeln');
+
+    if (QUERFORMAT()) {
+        var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 36);
+    } else {
+        var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 66);
+    }
+    html = '<iframe src="../WTC-Regeln-Alt.pdf#toolbar=0" width="100%" height="' + hx + 'px"></iframe>';
+
+    if (QUERFORMAT()) {
+        $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');
+        setFont();
+    } else {
+        $('#dContent').html(html).trigger('create').show();
+        $('#nbUebersicht,#nbSaison,#nbArchiv').removeClass('ui-disabled').removeClass('ui-btn-active');
+        $('#sideTurniere').hide();
+        setFont(4);
+        setTimeout(function () {
+            var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top + 11);
+            $('#sideContent').css('height', hx + 'px');
+        }, 100);
+    }
+
+    window.scrollTo(0, 0);
+
+    $('#tStand').hide();
+
+}
+
 function showRegeln() {
 
     if (QUERFORMAT()) {

@@ -321,9 +321,11 @@ function onSubmit() {
         return;
     }
 
-    if (!$("#iANMELDERF").is(':checked')) {
-        showEinenTip("#iANMELDERF", 'Spontanturniere sind nur mit Anmeldung möglich!');
-        return;
+    if (CUPS.TURNIER[I] && CUPS.TURNIER[I] === "Handy") {
+        if (!$("#iANMELDERF").is(':checked')) {
+            showEinenTip("#iANMELDERF", 'Spontanturniere sind nur mit Anmeldung möglich!');
+            return;
+        }
     }
 
     if (mCupLoeschen === 1) {

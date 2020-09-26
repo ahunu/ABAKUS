@@ -40,7 +40,7 @@ function showInhalt() {
 
                 + '<li data-icon="false"><a id="bTurnierkalender" onClick="showTermine();">&nbsp;Turnierkalender</a></li>'
                 + '<li data-icon="false"><a id="bTarifeUndRegeln" onClick="showRegeln();">&nbsp;Tarife und Regeln</a></li>'
-        + (stCup === 56 ? '<li data-icon="false"><a id="bRegelnALT" onClick="showRegelnALT();">&nbsp;Regeln ALT</a></li>' : '')
+        + (stCup === 56 && QUERFORMAT() ? '<li data-icon="false"><a id="bRegelnALT" onClick="showRegelnALT();">&nbsp;Regeln ALT</a></li>' : '')
                 + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Archiv</li>';
     } else if (CUPS.TYP[stCup] === 'ET' || CUPS.TYP[stCup] === 'MT') {
         html = '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Statistiken</li>'

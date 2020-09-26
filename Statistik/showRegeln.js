@@ -1,9 +1,6 @@
 
 /* global CUPS, LS, stCup, jbSpieler, stHeute, QUERFORMAT(), ADMIN */
 
-
-/* global CUPS, LS, stCup, jbSpieler, stHeute, QUERFORMAT(), ADMIN */
-
 function showRegelnALT() {
 
     if (QUERFORMAT()) {
@@ -26,11 +23,16 @@ function showRegelnALT() {
     writeCanvas('Tarife und Regeln');
 
     if (QUERFORMAT()) {
-        var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 36);
+//        var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 36);
+        var hx = parseInt($(window).innerHeight() - $('#qfHeader').height() - 5);
     } else {
         var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 66);
     }
-    html = '<iframe src="../WTC-Regeln-Alt.pdf#toolbar=0" width="100%" height="' + hx + 'px"></iframe>';
+
+//    html = '<iframe src="../WTC-Regeln-Alt.pdf#toolbar=0" width="100%" height="' + hx + 'px"></iframe>';
+
+    html = '<embed src="../WTC-Regeln-Alt.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="' + hx + 'px"/>';
+
 
     if (QUERFORMAT()) {
         $('#dRumpf').html(html).css('margin-top', $('#qfHeader').height() + 'px');

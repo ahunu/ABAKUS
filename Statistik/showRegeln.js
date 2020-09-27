@@ -135,29 +135,17 @@ function showRegeln() {
 
             + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTextPadding + '">'
 
-            + '<ul>'
-            + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Prämien:</div>'
-
-
-
-
-            + '<li>Im angesagten und stillen Valat zählen alle Vogerln und der König ultimo (egal ob angesagt oder still), werden aber nicht vervielfacht. Im angesagten Valat kann man Trull oder 4 Könige nicht ansagen. Im stillen Valat zählen angesagte Trull und angesagte 4 Könige.</li>'
-            + '<li>In einem angesagten Valat kann das Spiel nicht kontriert werden, der Valat hingegen schon. Wurde ein Spiel kontriert und es kommt zu einem stillen Valat, so zählt das Kontra nicht</li>'
-            + '</ul>'
-
 
             + '<ul>'
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Allgemeines:</div>'
             + '<li>Es wird gegen den Uhrzeigersinn gegeben und gespielt. Jeder Spieler erhält zweimal 6 Karten, der Talon (zweimal 3 Karten) wird in die Mitte gegeben.</li>'
             + '<li>Jedes Spiel muss gespielt werden. Kein Blatt wird zusammen&shy;geworfen.</li>'
-            + '<li>Ein Spieler darf ein Vogerl oder König ultimo nur dann ansagen, wenn er die jeweilige Karte im Blatt hat.</li>'
             + '<li>Wenn kein Verstoß gegen Farb-, Stich- oder Prämienzwang vorliegt, darf eine gespielte Karte nicht zurückgenommen werden.</li>'
-            + '<li>Bei den Solospielen zählen die Prämien doppelt.</li>'
             + '<li>Kontra (doppelt), Retour (vierfach) und Sub (achtfach) haben keine Auswirkung auf die Schrift, sondern werden nach jedem Spiel sofort ausbezahlt.</li>'
             + '<li>Bei positiven Spielen gilt das Kontra für alle Spieler, bei negativen Spielen wird individuell kontriert. Beim Trischaken gibt es kein Kontra.</li>'
             + '<li>Um das Spiel nicht zu stören, haben Zuschauer vom Spieltisch genügend weit entfernt zu stehen. Jegliche Störungen des Spiels durch einen Kiebitz oder durch den 5ten Spieler bei Fünfertischen wie Äußerungen zum Spiel (auch durch Mimik oder Gestik) sind strikt untersagt. Wenn der Verdacht besteht, dass ein Spiel durch den Einfluss eines Kiebitzes gewonnen oder verloren wurde, kann der Schiedsrichter herbeigerufen werden. Dieser kann auf Annullierung des Spieles entscheiden und den Störenfried vom Turnier ausschließen oder auf unbestimmte Zeit sperren. Jeder Spieler hat das Recht, einen Kiebitz wegzuweisen.</li>'
             + '<li>Um ein positives Spiel zu gewinnen benötigt der Spielaufnehmer 35 Punkte und 2 Blatt.</li>'
-            + '<li>Nach jedem Spiel wird das Ergebnis auf dem Schreiberzettel oder per App notiert.</li>'
+            + '<li>Nach jedem Spiel wird das Ergebnis per App oder auf dem Schreiberzettel notiert.</li>'
             + '<li>Am Ende jeder Runde erhalten die Gewinner von den Verlierern jeweils 10 Cent pro Punkt.</li>'
             + '</ul>'
 
@@ -237,13 +225,12 @@ function showRegeln() {
 
             + '<ul>'
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Trischaken:</div>'
-            + '<li>Die sechs Karten des Talons werden einzeln zu den ersten sechs Stichen vor deren Einziehen offen dazugegeben.</li>'
-            + '<li>Die Vorhand ist verantwortlich für die richtige Zugabe der Zuwaage zu den ersten sechs Stichen.</li>'
-            + '<li>Verlierer des Trischaken ist der Spieler mit den meisten Punkten. Sind zwei Verlierer punktegleich, so teilen sie sich die an die anderen Spieler zu verteilenden Punkte. Ist aber die Vorhand punktegleich, so verliert sie allein; punktegleiche Spieler werden so behandelt, als ob sie weniger Punkte hätten.</li>'
-            + '<li>Als „Bürgermeister“ gilt ein Spieler dann, wenn er mindestens 35 Punkte und 2 Blatt erzielt hat.</li>'
-            + '<li>Es werden grundsätzlich sechs Punkte verteilt. Dieser Wert verdoppelt sich bei einem „Bürgermeister“ sowie bei einer „verlierenden Vorhand“ und vervierfacht sich bei einem „Vorhand-Bürgermeister“.</li>'
-            + '<li>Die zu verteilenden Punkte werden in der Regel gleichmäßig an alle ausgeschüttet. Erzielen allerdings ein oder mehrere Spieler keinen Stich („Jungfrau“), so zieht die „Jungfrau“ alle zu verteilenden Punkte zur Gänze ein. Gibt es mehrere „Jungfrauen“, dann werden die zu verteilenden Punkte unter ihnen geteilt.</li>'
-            + '<li>Bei einer Renonce erhalten die drei regulären Spieler je sechs Punkte.</li>'
+            + '<li><span style="font-weight: bold">Zuwaage:&nbsp;&nbsp;</span>Die sechs Karten des Talons werden einzeln zu den ersten sechs Stichen vor deren Einziehen offen dazugegeben. Die Vorhand ist für die richtige Zugabe der Zuwaage zu den ersten sechs Stichen verantwortlich.</li>'
+            + '<li><span style="font-weight: bold">Verlierer:&nbsp;&nbsp;</span>Verloren hat das Trischaken der Spieler mit den meisten Punkten. Gibt es zwei punktegleiche Verlierer, teilen sich diese die zu vergebenden Punkte. Ist jedoch die Vorhand mit einem anderen Spieler punktegleich, ist die Vorhand der alleinige Verlierer.</li>'
+            + '<li><span style="font-weight: bold">Bürgermeister:&nbsp;&nbsp;</span>Als „Bürgermeister“ gilt ein Spieler dann, wenn er mindestens 35 Punkte und 2 Blatt erzielt hat.</li>'
+            + '<li><span style="font-weight: bold">Punkteverteilung:&nbsp;&nbsp;</span>Es werden grundsätzlich sechs Punkte verteilt. Dieser Wert verdoppelt sich bei einem „Bürgermeister“ sowie bei einer „verlierenden Vorhand“ und vervierfacht sich bei einem „Vorhand-Bürgermeister“.</li>'
+            + '<li><span style="font-weight: bold">Jungfrau:&nbsp;&nbsp;</span>Erzielt ein Spieler keinen Stich („Jungfrau“), erhält er alle zu verteilenden Punkte. Gibt es mehrere „Jungfrauen“, werden die zu vergebenden Punkte unter ihnen aufgeteilt.</li>'
+            + '<li><span style="font-weight: bold">Renonce:&nbsp;&nbsp;</span>Bei einem Renonce erhalten die drei regulären Spieler je sechs Punkte, so als hätten sie keinen Stich gemacht („Jungfrau“).</li>'
             + '</ul>'
 
 
@@ -255,7 +242,7 @@ function showRegeln() {
             + '<li><span style="font-weight: bold">Partnerspiele:&nbsp;&nbsp;</span>Stellt sich bei einem Partnerspiel heraus, dass man eine Prämie seines Partner (zum Beispiel die Trull) kontriert hat, gilt das Kontra nicht.</li>'
             + '<li><span style="font-weight: bold">Prämienzwang:&nbsp;&nbsp;</span>Ein angesagter Vogel, ein angesagter Künig ultimo darf nur aufgegeben werden, wenn es der Farbzwang erfordert. Wurden mehrere Vögel angesagt, muss zuerst der höhere Vogel aufgegeben werden.</li>'
             + '<li><span style="font-weight: bold">Stiller Valat:&nbsp;&nbsp;</span>Ein stiller Valat inkludiert die stille Trull und die stillen Könige. Alle anderen Prämie werden gewertet. Wurde das Spiel bei einem stillen Valat kontriert, so zählt das Kontra nicht.</li>'
-            + '<li><span style="font-weight: bold">Angesagter Valat:&nbsp;&nbsp;</span>Da ein Valat die Trull und vier Könige inkludiert, können diese Prämien bei einem angesagten nicht angesagt werden. Vögel und König ultimo können immer angesagt werden. Wurde der Valat kontriert, wird ein gewonnenes Spiel gegengerechnet. Selbst&shy;verständlich kann das Spiel und der Valat kontriert werden.</li>'
+            + '<li><span style="font-weight: bold">Angesagter Valat:&nbsp;&nbsp;</span>Da ein Valat die Trull und vier Könige inkludiert, können diese Prämien bei einem angesagten Valat nicht angesagt werden. Vögel und König ultimo können immer angesagt werden. Wurde der Valat kontriert, wird ein gewonnenes Spiel gegengerechnet. Selbst&shy;verständlich kann das Spiel und der Valat kontriert werden.</li>'
             + '</ul>'
 
 

@@ -472,7 +472,7 @@ function listeDrucken() {
     $('#qfHeaderRechts').attr('style', 'width:88%');
     $('#qfHeaderZeile1').attr('style', 'margin:-4pt 0;font-size:32px;white-space:nowrap;font-style:italic;');
     $('#qfHeaderZeile2').attr('style', 'margin:-6pt 0;font-size:30px;white-space:nowrap;font-weight:normal;');
-    $('#qfHeaderIcon').css('height', 63).show();
+    $('#qfHeaderIcon').css('height', 60).css('width', 60).show();
     javascript:window.print();
 }
 

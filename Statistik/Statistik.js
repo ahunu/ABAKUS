@@ -686,7 +686,9 @@ $(document).ready(function () {
             $('#qfHeaderRechts').attr('style', 'width:92%');
             $('#qfHeaderZeile1').attr("style", "margin:-1pt 0;font-size:2.27vw;white-space:nowrap;font-family:Arial;font-style:italic;");
             $('#qfHeaderZeile2').attr("style", "margin:-5pt 0;font-size:2.08vw;white-space:nowrap;font-family:Arial;font-weight:normal;");
-//            $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.6).show();
+            $('#qfHeaderIcon').css('height', $('#qfHeaderZeile1').height() * 1.33).show();
+            $('#qfHeaderIcon').css('width', $('#qfHeaderZeile1').height() * 1.33).show();
+//            $('#qfHeaderLinks').attr('style', 'height:4vw;width:4vw;');
         }
     });
     $(document).on('keyup', '#iFilter', function () {

@@ -20,7 +20,7 @@ function showRegelnALT() {
     }
     $("#dCopyright").hide();
 
-    writeCanvas('Tarife und Regeln');
+    writeCanvas('Regeln alt');
 
     if (QUERFORMAT()) {
 //        var hx = parseInt($(window).innerHeight() - $('#dContent').offset().top - 36);
@@ -135,6 +135,16 @@ function showRegeln() {
 
             + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTextPadding + '">'
 
+            + '<ul>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Prämien:</div>'
+
+
+
+
+            + '<li>Im angesagten und stillen Valat zählen alle Vogerln und der König ultimo (egal ob angesagt oder still), werden aber nicht vervielfacht. Im angesagten Valat kann man Trull oder 4 Könige nicht ansagen. Im stillen Valat zählen angesagte Trull und angesagte 4 Könige.</li>'
+            + '<li>In einem angesagten Valat kann das Spiel nicht kontriert werden, der Valat hingegen schon. Wurde ein Spiel kontriert und es kommt zu einem stillen Valat, so zählt das Kontra nicht</li>'
+            + '</ul>'
+
 
             + '<ul>'
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Allgemeines:</div>'
@@ -239,20 +249,18 @@ function showRegeln() {
 
             + '<ul>'
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Prämien:</div>'
-            + '<li>Jeder Spieler kann nur einmal Prämien ansagen, und er muss zuvor angesagte Prämien anderer Spieler gleich kontrieren, später kann er nur noch jene Prämien, die nach ihm angesagt wurden, kontrieren.</li>'
-            + '<li>Ein Spieler darf ein Vogerl oder König ultimo nur dann ansagen, wenn er die jeweilige Karte im Blatt hat.</li>'
-            + '<li>Bei Solorufer, Solodreier und Farbensolo gelten die Prämien doppelt.</li>'
-            + '<li>Partner oder Gegner eines Rufer Spielers sagen eine Prämie (z.B. Trull) an, ohne sich zu deklarieren, ob sie Partner oder Gegner sind. Stellt sich am Ende heraus, dass sich Partner kontriert haben, zählt das Kontra nicht für die Schrift und wird auch nicht ausbezahlt.</li>'
-            + '<li>Ein Spieler, der ein Vogerl oder einen König ultimo angesagt hat, muss versuchen, die entsprechende Karte zum vorgeschriebenen Stich zu spielen. Er darf also nicht den Pagat oder den gerufenen König früher spielen, auch wenn es ihm mehr Punkte brächte.</li>'
-            + '<li>Wer ein angesagtes Vogerl nicht zum vorgeschriebenen Stich spielen kann, weil er in diesem Stich eine Farbe bedienen muss, kann anschließend diese Karte jederzeit spielen.</li>'
-            + '<li>Wenn mehrere Vögel, z.B. Kakadu und Uhu, angesagt sind, muss von oben abgebaut werden. Hat ein Spieler zum viertletzten Stich als einziges Tarock nur noch Tarock III und II im Blatt und ein Gegner spielt Tarock aus, muss er Tarock III zugeben. Er darf also nicht im viertletzten Stich Tarock II nehmen, in der Hoffnung mit Tarock III im drittletzten Stich den Kakadu zu gewinnen.</li>'
-            + '<li>Im angesagten und stillen Valat zählen alle Vogerln und der König ultimo (egal ob angesagt oder still), werden aber nicht vervielfacht. Im angesagten Valat kann man Trull oder 4 Könige nicht ansagen. Im stillen Valat zählen angesagte Trull und angesagte 4 Könige.</li>'
-            + '<li>In einem angesagten Valat kann das Spiel nicht kontriert werden, der Valat hingegen schon. Wurde ein Spiel kontriert und es kommt zu einem stillen Valat, so zählt das Kontra nicht</li>'
+            + '<li><span style="font-weight: bold">Sofort ansagen, kontrieren:&nbsp;&nbsp;</span>Prämien müssen sofort, bei der ersten Gelegenheit angesagt werden. Dasselbe gilt für etwaige Kontras.</li>'
+            + '<li><span style="font-weight: bold">Im Blatt:&nbsp;&nbsp;</span>Vögel und König ultimo können nur angesagt werden, wenn man die entsprechende Karte im Blatt hat.</li>'
+            + '<li><span style="font-weight: bold">Solospiele:&nbsp;&nbsp;</span>Bei Solorufer, Solodreier und Farbensolo zählen alle Prämien doppelt.</li>'
+            + '<li><span style="font-weight: bold">Partnerspiele:&nbsp;&nbsp;</span>Stellt sich bei einem Partnerspiel heraus, dass man eine Prämie seines Partner (zum Beispiel die Trull) kontriert hat, gilt das Kontra nicht.</li>'
+            + '<li><span style="font-weight: bold">Prämienzwang:&nbsp;&nbsp;</span>Ein angesagter Vogel, ein angesagter Künig ultimo darf nur aufgegeben werden, wenn es der Farbzwang erfordert. Wurden mehrere Vögel angesagt, muss zuerst der höhere Vogel aufgegeben werden.</li>'
+            + '<li><span style="font-weight: bold">Stiller Valat:&nbsp;&nbsp;</span>Ein stiller Valat inkludiert die stille Trull und die stillen Könige. Alle anderen Prämie werden gewertet. Wurde das Spiel bei einem stillen Valat kontriert, so zählt das Kontra nicht.</li>'
+            + '<li><span style="font-weight: bold">Angesagter Valat:&nbsp;&nbsp;</span>Da ein Valat die Trull und vier Könige inkludiert, können diese Prämien bei einem angesagten nicht angesagt werden. Vögel und König ultimo können immer angesagt werden. Wurde der Valat kontriert, wird ein gewonnenes Spiel gegengerechnet. Selbst&shy;verständlich kann das Spiel und der Valat kontriert werden.</li>'
             + '</ul>'
 
 
             + '<ul>'
-            + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Wie sehen die Regeln für Renonce aus?</div>'
+            + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Renonce:</div>'
             + '<li>Begeht ein Spieler Renonce, erhalten die anderen Spieler so viele Punkte, als hätten sie das Spiel und die angesagten Prämien gewonnen (der renoncierende Rufer Spieler zahlt also auch dem eigenen Partner; der renoncierende Gegner eines Dreierspielers zahlt den anderen 2 Gegnern je 1 Mal, dem Dreierspieler 3 Mal, also in Summe 5 Mal).</li>'
             + '<li>Verstöße gegen Farbzwang oder Stichzwang gelten dann als Renonce, wenn jener Spieler, der den Stich gemacht hat, die Karten schon eingezogen hat. Liegen die Karten noch am Tisch, darf bei Verstößen gegen Farbzwang/Stichzwang korrigiert werden.</li>'
             + '<li>Ein Ausspiel zum nächsten Stich gilt als „eingezogen“, auch wenn der vorige Stich noch offen am Tisch liegt.</li>'

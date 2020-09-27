@@ -63,6 +63,7 @@ th.rotate > div {
 
 @media print {
     #dPrint {width:100% !important;}
+    #dRumpf {background-color: #ffffff !important;}
     #mTable {font-size: 2.4vw !important;}
     .cBlau {color: #111 !important;}
     tbody tr {background: #ffffff !important;} /* Die gelbe Positionszeile neutralisieren */

@@ -78,7 +78,7 @@ function showRegeln() {
     if (QUERFORMAT()) {
         var hTableWidth = 45;
         var hTablePadding = '4vw 6vw 2vw 6vw';
-        var hTextPadding = '1vw 6vw 3vw 3vw';
+        var hTextPadding = '0 6vw 3vw 3vw';
     } else {
         var hTableWidth = 100;
         var hTablePadding = '4vw 4vw 2vw 4vw';
@@ -108,9 +108,7 @@ function showRegeln() {
             + "<tr><th>&nbsp;&nbsp;Quapilrufer</th><th class=TR>9&nbsp;&nbsp;</th></tr>"
             + "<tr><th>&nbsp;&nbsp;Farbensolo</th><th class=TR>10&nbsp;&nbsp;</th></tr>"
             + "<tr><th>&nbsp;&nbsp;Solodreier</th><th class=TR>10&nbsp;&nbsp;</th></tr>"
-            + "</tbody></table>"
-            + "<br>*) Rufer und Trischaken können nur gespielt werden, wenn die anderen Spieler \„weiter\“ gesagt haben.<br>"
-            + "<br>**) Der Sechserdreier muss von der Vorhand sofort lizitiert werden.<br><br>"
+            + "</tbody></table><br><br>"
             + '</div>'
             + '<div class="ui-block-b" style="width:9%;">'
             + '</div>'
@@ -127,10 +125,8 @@ function showRegeln() {
             + "<tr><th>&nbsp;&nbsp;Quapil (IIII)</th><th class=TR>4 / 8&nbsp;&nbsp;</th></tr>"
             + "<tr><th>&nbsp;&nbsp;Valat</th><th class=TR>10 / 20&nbsp;&nbsp;</th></tr>"
             + "</tbody></table>"
-            + "<br>Bei Solospielen zählen die Prämien doppelt.<br>"
-            + "<br>Mondfang, Absolut und Honneurs wird nicht honoriert.<br>"
-            + "<br>Jedes Spiel muss gespielt werden. Ein Blatt ohne Tarock und ohne Könige wird nicht zusammen&shy;geworfen.<br>"
-            + "<br>Kaiserstich: fallen Sküs, Mond und Pagat zusammen (egal in welcher Reihenfolge), so sticht der Pagat. In Negativspielen gibt es keinen Kaiserstich.<br>"
+            + "<br>*) Rufer und Trischaken können nur gespielt werden, wenn die anderen Spieler \„weiter\“ gesagt haben.<br>"
+            + "<br>**) Der Sechserdreier muss von der Vorhand sofort lizitiert werden.<br><br>"
             + '</div></div>'
 
             + '<div class="ui-grid-b ui-responsive S" style="padding: ' + hTextPadding + '">'

@@ -2234,27 +2234,34 @@ function showCup(i, pBtn, pTermin) {
     var html = '';
     var htmlNaechstTermin = '';
     if (CUPS.ANMELDERF.length > I && CUPS.ANMELDERF[I]) {
-        html = '<span class=XL>Nächste' + (CUPS.TURNIER[I] ? 's Turnier' : ' Runde') + ':<b>&nbsp;&nbsp;&nbsp;';
-        if (myDateString(getNextTermin(I)) === hHeute) {
-            html += '<span class=cGruen>Heute';
-            if (CUPS.SPIELEAB[I]) {
-                html += ', ' + CUPS.SPIELEAB[I] + ' Uhr';
-            }
-            html += '</span>';
-        } else {
-            html += getDateString(getNextTermin(I));
-        }
-        html += '</b></span><br>';
-        if (typeof CUPS.MEANGEMELDET[I] === 'number') {
-            if (CUPS.MEANGEMELDET[I] > Date.now()) {
-                html += '<span class="M cGruen B">Ich bin angemeldet.</span><br>';
+        if (myDateString(getNextTermin(I)) < '2100-00-00') {
+            html = '<span class=XL>Nächste' + (CUPS.TURNIER[I] ? 's Turnier' : ' Runde') + ':<b>&nbsp;&nbsp;&nbsp;';
+            if (myDateString(getNextTermin(I)) === hHeute) {
+                html += '<span class=cGruen>Heute';
+                if (CUPS.SPIELEAB[I]) {
+                    html += ', ' + CUPS.SPIELEAB[I] + ' Uhr';
+                }
+                html += '</span>';
             } else {
-                html += '<span class="M cRot B">Ich bin nicht angemeldet.</span><br>';
+                html += getDateString(getNextTermin(I));
             }
+            html += '</b></span><br>';
+            if (typeof CUPS.MEANGEMELDET[I] === 'number') {
+                if (CUPS.MEANGEMELDET[I] > Date.now()) {
+                    html += '<span class="M cGruen B">Ich bin angemeldet.</span><br>';
+                } else {
+                    html += '<span class="M cRot B">Ich bin nicht angemeldet.</span><br>';
+                }
+            }
+            htmlNaechstTermin = '<br><br>' + html.replace(/XL/g, 'M3');
+            html += '<br>';
+            hVorschub = '<br>';
+        } else {
+            html = '<span class=L>In nächster Zeit sind keine Turniere beplant.</span><br>';
+            htmlNaechstTermin = '<br><br>' + html;
+            html += '<br>';
+            hVorschub = '<br>';
         }
-        htmlNaechstTermin = '<br><br>' + html.replace(/XL/g, 'M3');
-        html += '<br>';
-        hVorschub = '<br>';
     } else if (pTermin !== false && !isNaN(pTermin)) {
         if (pTermin >= 0 && CUPS.TERMINE[pTermin].CUP === I) {
             html = '<div class="ui-grid-a">'
@@ -2273,12 +2280,6 @@ function showCup(i, pBtn, pTermin) {
         hVorschub = '<br>';
     }
     hVorschub = '<br><br>';
-//    var hTest = [I]; // 3824 Roman
-//
-//    if (LS.ME === '3425' || LS.ME === '3824') {
-//        CUPS.TYP[pCup] === 'CUP'
-//        hTest.push();
-//    }
 
     var hH = parseInt($(window).innerHeight() - $('#qfHeader').height() - 1);
     if (CUPS.TURNIER[I] || CUPS.ANMELDERF[I]) {
@@ -2757,15 +2758,6 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
 // Parameter ändern
         var hMeld = '';
 
-
-//        if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
-//            for (var termin in TERMINE) {  //  llll llll
-//                if (TERMINE[termin].CUP === pCup) {
-//                    hMeld += TERMINE[termin].DATUM + ':<br>';
-//                }
-//            }
-//        }
-
         var hHeuteTurnier = false;
         if (LS.I === pCup) {
             hHeuteTurnier = true;
@@ -2827,23 +2819,13 @@ function getCupToggleDiv(pPrefix, pCup, pTermin) {
                             + '<img src=\'Icons/MeinTisch.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw"><span style="color: #dd1111">Zu meinem Tisch</span><div class="S N">Weiterspielen, speichern, etc.</div>'
                             + '</div>';
                 }
-            } else {
-                if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
-                    hMeld += LS.ME + ': Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
-                    writeLOG(hMeld);
-                }
-            }
-        } else {
-            if ((LS.ME === '3013' || LS.ME === '2624' || LS.ME === '3425') && pCup === 9 && hHeute < "2020-03-03") {
-                hMeld = LS.ME + ': Turnier: ' + hHeuteTurnier + ',  Admin: ' + CUPS.BEREadmin[pCup].indexOf(LS.ME) + ',  Schreiben: ' + CUPS.BEREschreiben[pCup].indexOf(LS.ME);
-                writeLOG(hMeld);
             }
         }
 
         hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ');">'
                 + '<img src=\'Icons/Statistik.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Statistik<div class="S N">' + getMeldSTAT(pCup) + '</div>'
                 + '</div>';
-        if (CUPS.ANMELDERF[pCup] && LS.ME !== 'NOBODY') {
+        if (CUPS.ANMELDERF[pCup] && LS.ME !== 'NOBODY' && (new Date(CUPS.NEXTTERMIN[pCup])).getFullYear() < 2100) {
             hReturn += '<div class="ui-btn M2 TL" style="margin:10px 6px 0 6px" onClick="hrefStatistik(' + pCup + ', \'?Anmeldungen\');">'
                     + '<img src=\'Icons/Anmeldung.png\' height="48" width="48" style="float:left;margin: 3px 2vw 0 2vw">Zur Anmeldung<div class="S N">Nächstes Turnier:&nbsp;&nbsp;' + getDateString(CUPS.NEXTTERMIN[pCup]) + '</div>'
                     + '</div>';
@@ -3150,7 +3132,7 @@ function whenCUPSloaded() {
                             htmlAKT += hTemp.replace(/bAL/g, 'bAK');
                         }
                     }
-                } else {
+                } else if (TERMINE[termin].DATUM < '2100-00-00') {
 
                     hTemp = getMeinTerminBarZeile(TERMINE[termin].CUP)
                             + getCupToggleDiv('bAL', TERMINE[termin].CUP, -1);
@@ -3507,7 +3489,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
-            return false; // oncontextmenu
+//            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {

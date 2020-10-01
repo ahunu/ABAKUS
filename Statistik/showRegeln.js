@@ -11,7 +11,7 @@ function showRegelnALT() {
         $(lastBtn).addClass('ui-btn-active');
     }
 
-//    showIcons(['#iPrint']);
+    showIcons(['#iPrint']);
 
     stStat = 'Regeln';
 
@@ -31,7 +31,7 @@ function showRegelnALT() {
 
 //    html = '<iframe src="../WTC-Regeln-Alt.pdf#toolbar=0" width="100%" height="' + hx + 'px"></iframe>';
 
-    html = '<embed src="../WTC-Regeln-Alt.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="' + hx + 'px"/>';
+    html = '<embed src="../Icons/WTC-Regeln-Alt.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="' + hx + 'px"/>';
 
 
     if (QUERFORMAT()) {

@@ -294,24 +294,32 @@ function XSBuchen(pGame, pPunkte, pS, pP, pSakt) {
             H.PUNKTE[pP] = H.PUNKTE[pP] * -1;
         }
         if (LS.DoppelteRunden || LS.doppelt) {
+            var hDoppelt = LS.AnzSpieler;
+            if (LS.Pausierer1 && LS.Pausierer1 <= LS.AnzSpieler) {
+                hDoppelt--;
+            }
+            if (LS.Pausierer2 && LS.Pausierer2 <= LS.AnzSpieler) {
+                hDoppelt--;
+            }
             if (pGame === "Trisch.") {
                 if (LS.doppelt > 0) {
-                    LS.Ansage += ' Es folgen ' + (LS.AnzSpieler + LS.doppelt - 1) + ' doppelte Spiele.';
+                    LS.Ansage += ' Es folgen ' + (hDoppelt + LS.doppelt - 1) + ' doppelte Spiele.';
                 } else {
-                    LS.Ansage += ' Ab jetzt folgen ' + LS.AnzSpieler + ' doppelte Spiele.';
+
+                    LS.Ansage += ' Ab jetzt folgen ' + hDoppelt + ' doppelte Spiele.';
                 }
             } else if (pPunkte === 0) {
                 if (LS.doppelt > 0) {
                     if (LS.I === 23) { // Cafe Rathaus
                         LS.Ansage += ' Es folgen ' + (LS.doppelt) + ' doppelte Spiele.';
                     } else {
-                        LS.Ansage += ' Es folgen ' + (LS.doppelt + LS.AnzSpieler - 1) + ' doppelte Spiele.';
+                        LS.Ansage += ' Es folgen ' + (hDoppelt + LS.AnzSpieler - 1) + ' doppelte Spiele.';
                     }
                 } else {
                     if (LS.I === 23) { // Cafe Rathaus
                         LS.Ansage += ' Es folgt ein doppeltes Spiel.';
                     } else {
-                        LS.Ansage += ' Ab jetzt folgen ' + LS.AnzSpieler + ' doppelte Spiele.';
+                        LS.Ansage += ' Ab jetzt folgen ' + hDoppelt + ' doppelte Spiele.';
                     }
                 }
             } else if (LS.doppelt === 1) {

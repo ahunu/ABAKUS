@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.phonegap.ABAKUS" 
-        versionCode = "1111"
-        version     = "1111">     <!-- ABAKUS -->
+        id          = "com.phonegap.ABAKUSst" 
+        versionCode = "11110001"
+        version     = "11110001">     <!-- ABAKUSst -->
 
-    <name>ABAKUS</name>
+    <name>ABAKUS für Tablets</name>
 
     <!-- ACHTUNG Die config.xml muss auf _Standard, _Tablet und _Light geaendert werden. -->
 
@@ -20,13 +20,14 @@
     <platform name="android" />
     <plugin   name="cordova-plugin-whitelist" spec="1.3.0" />
 
-    <preference name="android-minSdkVersion"    value="21" /> <!-- Android Version 5.0 -->  
+    <preference name="android-minSdkVersion"    value="21" /> <!-- Android Version 5.0 -->
     <preference name="android-targetSdkVersion" value="29" /> <!-- Android Version 10.0 -->
 
+    <preference name="pgb-builder-version" value="1"/>
+    
     <preference name="splashscreen"      value="Icons/AbakusSplash.png" />
     <preference name="permissions"       value="none"      />
     <preference name="phonegap-version"  value="cli-9.0.0" />
-    <preference name="orientation"       value="portrait"  />
     <preference name="target-device"     value="universal" />
     <preference name="fullscreen"        value="false"     /> 
 

@@ -77,7 +77,7 @@ function showRegeln() {
 
     if (QUERFORMAT()) {
         var hTableWidth = 45;
-        var hTablePadding = '4vw 6vw 2vw 6vw';
+        var hTablePadding = '4vw 6vw 0 6vw';
         var hTextPadding = '0 6vw 3vw 3vw';
     } else {
         var hTableWidth = 100;
@@ -108,7 +108,7 @@ function showRegeln() {
             + "<tr><th>&nbsp;&nbsp;Quapilrufer</th><th class=TR>9&nbsp;&nbsp;</th></tr>"
             + "<tr><th>&nbsp;&nbsp;Farbensolo</th><th class=TR>10&nbsp;&nbsp;</th></tr>"
             + "<tr><th>&nbsp;&nbsp;Solodreier</th><th class=TR>10&nbsp;&nbsp;</th></tr>"
-            + "</tbody></table><br><br>"
+            + "</tbody></table><br>"
             + '</div>'
             + '<div class="ui-block-b" style="width:9%;">'
             + '</div>'
@@ -166,10 +166,10 @@ function showRegeln() {
 
             + '<ul>'
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Spielablauf:</div>'
-            + '<li><span style="font-weight: bold">Lizitation:&nbsp;&nbsp;</span>Die Vorhand eröffnet mit "Mein Spiel!", mit "Vorhand!" oder mit "Sechserdreier!" die Lizitation. Danach können die Spieler reihum ein Spiel lizitieren oder "Weiter!" sagen. Wer einmal "Weiter!" gesagt hat, darf nicht mehr mitbieten. Ein eigenes Spiel kann nicht überboten werden. Es gibt keinen Besserrufer. Nur Pagat-, Uhu-, Kakadu- und Quapil Rufer. Wird ein Spiel nicht mehr überboten, ist die Lizitation zu Ende.</li>'
+            + '<li><span style="font-weight: bold">Lizitation:&nbsp;&nbsp;</span>Die Vorhand eröffnet mit "Mein Spiel!", mit "Vorhand!" oder mit "Sechserdreier!" die Lizitation. Danach können die Spieler reihum ein Spiel lizitieren oder "Weiter!" sagen. Wer einmal "Weiter!" gesagt hat, darf nicht mehr mitbieten. Ein eigenes Spiel kann nicht überboten werden. Es gibt keinen Besserrufer. Nur Pagat-, Uhu-, Kakadu- und Quapilrufer. Wird ein Spiel nicht mehr überboten, ist die Lizitation zu Ende.</li>'
             + '<li><span style="font-weight: bold">König rufen:&nbsp;&nbsp;</span>Bei Partnerspielen muss nach der Lizitation ein König (Partner) gerufen werden. Wer drei Könige im Blatt hat, kann den "Vierten" rufen. Hat jemand vier Könige im Blatt, muss er eine Dame rufen. Es ist nicht erlaubt sich selbst zu rufen (Renonce).</li>'
-            + '<li><span style="font-weight: bold">Talon Aufnahme:&nbsp;&nbsp;</span>Bei Rufer, Vogerlrufer, Dreier und Farben&shy;dreier wird der Talon aufgedeckt. Der Spieler kann entscheiden welche Hälfte er aufnehmen will. Liegt bei einem Rufer oder bei einem Vogerlrufer der gerufene König, kann das Spiel geschliffen werden. Bei einem Sechserdreier werden alle sechs Karten des Talons verdeckt aufgenommen. Bei den Solospielen bleibt der Talon verdeckt liegen und zählt am Schluss zu den Stichen der Gegner. Liegt bei einem Solorufer der gerufene König im Talon, gehört die Hälfte mit dem König dem Alleinspieler.</li>'
-            + '<li><span style="font-weight: bold">Ablage:&nbsp;&nbsp;</span>Bei Tarockspielen werden zuerst Farbkarten verdeckt abgelegt. Wer keine Farbkarten mehr hat, muss Tarock offen abgelegen. Bei einem Farbendreier werden soweit verfügbar Tarockkarten verdeckt abgelegt. Wenn ein Farbspieler keine Tarockarten mehr hat, muss er Farbkarten offen ablegen. Könige und Trullstücke dürfen weder bei Tarockspielen noch bei einem Farbendreier abgelegt werden.</li>'
+            + '<li><span style="font-weight: bold">Talon Aufnahme:&nbsp;&nbsp;</span>Bei Rufer, Vogerlrufer, Dreier und Farben&shy;dreier wird der Talon aufgedeckt. Der Spieler kann entscheiden, welche Hälfte er aufnehmen will. Liegt bei einem Rufer oder bei einem Vogerlrufer der gerufene König, kann das Spiel geschliffen werden. Bei einem Sechserdreier werden alle sechs Karten des Talons verdeckt aufgenommen. Bei den Solospielen bleibt der Talon verdeckt liegen und zählt am Schluss zu den Stichen der Gegner. Liegt bei einem Solorufer der gerufene König im Talon, gehört die Hälfte mit dem König dem Alleinspieler.</li>'
+            + '<li><span style="font-weight: bold">Ablage:&nbsp;&nbsp;</span>Bei Tarockspielen werden zuerst Farbkarten verdeckt abgelegt. Wer keine Farbkarten mehr hat, muss Tarock offen abgelegen. Bei einem Farbendreier werden, soweit verfügbar, Tarockkarten verdeckt abgelegt. Wenn ein Farbspieler keine Tarockarten mehr hat, muss er Farbkarten offen ablegen. Könige und Trullstücke dürfen weder bei Tarockspielen noch bei einem Farbendreier abgelegt werden.</li>'
             + '<li><span style="font-weight: bold">Ansagen, "Ich liege":&nbsp;&nbsp;</span>Nach der Wiederholung des Spiels, des gerufenen Königs und der Ansage eventueller Prämien wird die Spielansage mit den Worten "Ich liege" beendet.</li>'
             + '<li><span style="font-weight: bold">Kontrarunde:&nbsp;&nbsp;</span>Eventuelle Prämien müssen in der ersten Kontrarunde angesagt werden. Der Spielersteher kann keine Prämien mehr ansagen. Wer keine Prämie ansagen und auch nicht kontrieren will, sagt "Gut". Ein mit "Gut" quittiertes Spiel, eine mit "Gut" quittierte Prämie kann nicht mehr kontriert werden. Nebst Kontra (doppelt) sind Retour (vierfach) und Sub (achtfach) möglich. Sollte sich bei einem Partnerspiel herausstellen, dass man seinen Partner kontriert hat, ist das Kontra nicht gültig.</li>'
             + '</ul>'
@@ -180,15 +180,14 @@ function showRegeln() {
             + '<li><span style="font-weight: bold">Ablage:&nbsp;&nbsp;</span>Zuerst müssen Farbkarten verdeckt verlegt werden. Wenn man keine Farbkarten mehr hat, müssen Tarock offen abgelegt werden. Könige und Trullstücke dürfen nie abgelegt werden.</li>'
             + '<li><span style="font-weight: bold">Ausspiel:&nbsp;&nbsp;</span>Das erste Ausspiel hat immer die Vorhand.</li>'
             + '<li><span style="font-weight: bold">Farbzwang:&nbsp;&nbsp;</span>Kann ein Spieler eine Farbe nicht bedienen, muss er Tarock zugeben/stechen. Erst wenn ein Spieler kein Tarock mehr im Blatt hat, darf er eine beliebige Farbkarte zugeben. Kann er Tarock nicht bedienen, ist ebenfalls eine beliebige Farbkarte zuzugeben.</li>'
-            + '<li><span style="font-weight: bold">Prämienzwang:&nbsp;&nbsp;</span>Nur wenn es der Farbzwang erzwingt darf ein angesagtes Vogerl oder der angesagte König ultimo aufgegeben werden. Wurden mehrere Vögel angesagt, so muss zuerst das höhere Vogerl aufgegeben werden.</li>'
-            + '<li><span style="font-weight: bold">Kaiserstich:&nbsp;&nbsp;</span>Fällt die Trull in einem Stich zusammen (egal in welcher Reihenfolge) sticht der Pagat. </li>'
+            + '<li><span style="font-weight: bold">Kaiserstich:&nbsp;&nbsp;</span>Fällt die Trull in einem Stich zusammen (egal in welcher Reihenfolge), sticht der Pagat. </li>'
             + '</ul>'
 
 
             + '<ul>'
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Ruferspiele:</div>'
-            + '<li><span style="font-weight: bold">Lizitation:&nbsp;&nbsp;</span>Ein Ruferspiel mit Vogerl muss sofort unter Nennung des Vogerls lizitiert werden, also Pagat Rufer, Uhu Rufer, Kakadu Rufer oder Quapil Rufer. Nach dem Verlegen kann der Spieler weitere Vögel ansagen. Hat ein Spieler die Lizitation gewonnen, muss er einen König rufen. Hat jemand drei Könige in der Hand kann er auch den "Vierten" rufen. Wer vier Könige hat muss eine Dame rufen. Selbstrufen ist nicht erlaubt und Renonce.</li>'
-            + '<li><span style="font-weight: bold">Selberrufer:&nbsp;&nbsp;</span>Liegt beim Rufer, Pagatrufer etc. der gerufene König im Talon, kann sich der Spieler frei entscheiden, welche Talonhälfte er aufnimmt. Wer sich selbst ruft, kann "schleifen". In diesem Fall werden die Punkte des normalen Spiels für die Schrift gewertet (z.B. Pagat Rufer 3 Punkte). Entscheidet sich der Spieler zu spielen, kann er kontriert werden. Liegt bei einem Solorufer der gerufene König im Talon, erhält der Alleinspieler die Talonhälfte mit dem König. Kontras zählen in diesem Fall nicht, egal ob das Spiel bzw. allfällige Prämien gewonnen wurden oder nicht.</li>'
+            + '<li><span style="font-weight: bold">Lizitation:&nbsp;&nbsp;</span>Ein Ruferspiel mit Vogerl muss sofort unter Nennung des Vogerls lizitiert werden, also Pagatrufer, Uhurufer, Kakadurufer oder Quapilrufer. Nach dem Verlegen kann der Spieler weitere Vögel ansagen. Hat ein Spieler die Lizitation gewonnen, muss er einen König rufen. Hat jemand drei Könige in der Hand, kann er auch den "Vierten" rufen. Wer vier Könige hat muss eine Dame rufen. Selbstrufen ist nicht erlaubt und Renonce.</li>'
+            + '<li><span style="font-weight: bold">Selberrufer:&nbsp;&nbsp;</span>Liegt beim Rufer, Pagatrufer etc. der gerufene König im Talon, kann sich der Spieler frei entscheiden, welche Talonhälfte er aufnimmt. Wer sich selbst ruft, kann "schleifen". In diesem Fall werden die Punkte des normalen Spiels für die Schrift gewertet (z.B. Pagatrufer 3 Punkte). Entscheidet sich der Spieler zu spielen, kann er kontriert werden. Liegt bei einem Solorufer der gerufene König im Talon, erhält der Alleinspieler die Talonhälfte mit dem König. Kontras zählen in diesem Fall nicht, egal ob das Spiel bzw. allfällige Prämien gewonnen wurden oder nicht.</li>'
             + '</ul>'
 
 
@@ -217,7 +216,7 @@ function showRegeln() {
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Trischaken:</div>'
             + '<li><span style="font-weight: bold">Zuwaage:&nbsp;&nbsp;</span>Die sechs Karten des Talons werden einzeln zu den ersten sechs Stichen vor deren Einziehen offen dazugegeben. Die Vorhand ist für die richtige Zugabe der Zuwaage zu den ersten sechs Stichen verantwortlich.</li>'
             + '<li><span style="font-weight: bold">Verlierer:&nbsp;&nbsp;</span>Verloren hat das Trischaken der Spieler mit den meisten Punkten. Gibt es zwei punktegleiche Verlierer, teilen sich diese die zu vergebenden Punkte. Ist jedoch die Vorhand mit einem anderen Spieler punktegleich, ist die Vorhand der alleinige Verlierer.</li>'
-            + '<li><span style="font-weight: bold">Bürgermeister:&nbsp;&nbsp;</span>Als "Bürgermeister" gilt ein Spieler dann, wenn er mindestens 35 Punkte und 2 Blatt erzielt hat.</li>'
+            + '<li><span style="font-weight: bold">Bürgermeister:&nbsp;&nbsp;</span>Wer 35 Punkte und 2 Blatt oder mehr erreicht hat ist "Bürgermeister".</li>'
             + '<li><span style="font-weight: bold">Punkteverteilung:&nbsp;&nbsp;</span>Es werden grundsätzlich sechs Punkte verteilt. Dieser Wert verdoppelt sich bei einem "Bürgermeister" sowie bei einer "verlierenden Vorhand" und vervierfacht sich bei einem "Vorhand-Bürgermeister".</li>'
             + '<li><span style="font-weight: bold">Jungfrau:&nbsp;&nbsp;</span>Erzielt ein Spieler keinen Stich ("Jungfrau"), erhält er alle zu verteilenden Punkte. Gibt es mehrere "Jungfrauen", werden die zu vergebenden Punkte unter ihnen aufgeteilt.</li>'
             + '<li><span style="font-weight: bold">Renonce:&nbsp;&nbsp;</span>Bei einem Renonce erhalten die drei regulären Spieler je sechs Punkte, so als hätten sie keinen Stich gemacht ("Jungfrau").</li>'
@@ -243,13 +242,13 @@ function showRegeln() {
             + '<li>Bei Ouvertspielen gilt ein Verstoß gegen den Farbzwang oder Stichzwang dann als eingetreten, wenn entweder zum nächsten Stich ausgespielt worden ist (wenn die Karten/Stiche vor jedem Spieler offen liegenbleiben) oder wenn der Stich umgedreht worden ist (wenn die Karten/Stiche eingezogen werden). Bis dahin kann der Fehler korrigiert werden.</li>'
             + '<li>Wenn auf Renonce erkannt wird, ist das jeweilige Spiel zu Ende. Entsteht einem Spieler durch Renonce eines anderen Spielers eine offensichtliche Punkteeinbuße, weil stille Vögerl, ein stiller König ultimo oder ein stiller Valat nachweisbar gelungen wäre, sind diese Punkte dem Spielersteher (nicht den Gegner) zu ersetzen. Die anderen Spieler bekommen vom renoncierenden Spieler nur das Spiel und die angesagten Prämien.</li>'
             + '<li>Wird der angesagte Vogel oder der angesagte König durch Versehen zu früh (oder nicht rechtzeitig) gespielt, sind die anderen am Tisch angehalten, den Spieler darauf hinzuweisen. Sind die Karten bereits eingezogen, gilt das Vogerl/der angesagte König als verloren, das Spiel selbst jedoch nicht als Renonce (sofern sich der renoncierende Spieler nicht dadurch einen Vorteil verschafft hat).</li>'
-            + '<li>Jeder Spieler darf in den zuvor gespielten Stich Einblick nehmen. Er darf jedoch nicht in seine eingezogenen Stiche hineinschauen, das "Nachwassern" ist also verboten.</li>'
+            + '<li>Jeder Spieler darf in den zuvor gespielten Stich Einblick nehmen. Er darf jedoch nicht in seine eingezogenen Stiche hineinschauen. "Nachwassern" ist also verboten.</li>'
             + '<li>Vergeben ist dann nicht Renonce, wenn der Fehler vor Beginn der Lizitation bemerkt wird. Es muss straffrei neu gegeben werden. Stellt sich erst später heraus, dass ein Spieler zu wenig oder zu viele Karten im Blatt hat, müssen die Spieler mit der falschen Anzahl an Karten das Renonce zu gleichen Teilen bezahlen.</li>'
             + '<li>Hat ein Spieler am Ende eine Karte zu wenig oder zu viel, dann hat er mit 11 bzw. 13 Karten das Spiel begonnen. Das ist Renonce. Gleiches gilt für den Fall, dass ein Spieler deswegen am Ende eine Karte zu wenig hat, weil er im Verlauf des Spiels versehentlich zwei Karten auf den Tisch gelegt hat oder weil ihm während des Spiels eine Karte auf den Boden gefallen ist.</li>'
             + '<li>Die Stiche werden getrennt vom Talon und von der Ablage auf den Tisch abgelegt. Jeder Spieler darf nur seine eigenen Stiche einziehen, nicht auch die Stiche seines Partners! Auch die Gegner eines Dreierspielers dürfen ihre Stiche nicht zusammenlegen. Nach dem Spiel ist die Ablage auf Verlangen herzuzeigen.</li>'
-            + '<li>Falsches Ausspiel: Hier ist die Relevanz des Vergehens für das angesagte Spiel zu prüfen. Einigt sich der Tisch nicht, entscheidet der Schiedsrichter bzw. das Schiedsrichter-gremium, ob Renonce vorliegt oder nicht. Nach dem Umdrehen des ersten Stiches gilt ein falsches Ausspiel als "saniert", und das Spiel wird fortgesetzt.</li>'
+            + '<li>Falsches Ausspiel: Hier ist die Relevanz des Vergehens für das angesagte Spiel zu prüfen. Einigt sich der Tisch nicht, entscheidet der Schiedsrichter bzw. das Schiedsrichter&shy;gremium, ob Renonce vorliegt oder nicht. Nach dem Umdrehen des ersten Stiches gilt ein falsches Ausspiel als "saniert", und das Spiel wird fortgesetzt.</li>'
             + '<li>Eine Renonce, die nicht sofort bzw. erst im Nachhinein bemerkt wird, gilt als "überspielt" bzw. als nicht mehr einforderbar, wenn zum nächsten Spiel gemischt und abgehoben wurde.</li>'
-            + '<li>Bei Unklarheiten und Streitfällen, ob eine Renonce vorliegt, ist der für die jeweilige Runde eingeteilte Schiedsrichter herbei-zurufen. Es sind alle Karten geordnet zu halten und noch vorhandene Karten auf der Hand werden nicht hergezeigt, bis der Sachverhalt geklärt ist. Falls ein Spieler sein Blatt herzeigt oder die bereits am Tisch liegenden Karten durchmischt, muss er damit rechnen, dass der Renonce-Fall gegen ihn entschieden wird.</li>'
+            + '<li>Bei Unklarheiten und Streitfällen, ob eine Renonce vorliegt, ist der für die jeweilige Runde eingeteilte Schiedsrichter herbei&shy;zurufen. Es sind alle Karten geordnet zu halten und noch vorhandene Karten auf der Hand werden nicht hergezeigt, bis der Sachverhalt geklärt ist. Falls ein Spieler sein Blatt herzeigt oder die bereits am Tisch liegenden Karten durchmischt, muss er damit rechnen, dass zu seinen ungunsten entschieden wird.</li>'
             + '</ul>'
 
 
@@ -267,7 +266,6 @@ function showRegeln() {
             + '<div class="M B" style="padding: 1vh 0 1vh 0">§&nbsp;&nbsp;Ausschluss des Rechtsweges:</div>'
             + '<li>Der Rechtsweg ist ausgeschlossen. Mit seiner Teilnahme akzeptiert jeder Spieler die Entscheidungen der Cupleitung und der Schiedsrichter. Der Cupleitung und dem Veranstalter steht es frei, ohne Angabe von Gründen Spieler von der Teilnahme auszuschließen. Es besteht kein Rechtsanspruch auf Teilnahme an einzelnen Turnierveranstaltungen.</li>'
             + '</ul>'
-            + '<br>'
             + '</div>';
 
 

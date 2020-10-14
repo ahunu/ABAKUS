@@ -387,7 +387,7 @@ function getTippsUndTricks() {
                             )
                     + 'Bei einer Installation wird die App am PC bzw. am Handy gespeichter und braucht somit nicht jedesmal über das Netz geladen werden. '
                     + 'Das spart Datenvolumen und schneller geht´s ausserdem. '
-                    + 'Wenn die App mal gestartet ist benötigt sie keine Internetverbindung mehr ausser man will etwas ändern oder eine aktuellere Statistik anschauen. '
+                    + 'Die App funktioniert auch ohne einer Internetverbindung. '
 
                     + '<p><b>Am PC Abakus als Vollversion installieren:</b><br>'
                     + 'Rufe mit <b>tarock.web.app</b> die Startseite von Abakus in deinem Lieblingsbrowser auf. '

@@ -1,5 +1,5 @@
 
-/* global getVersionsDatum, firebase, pSeite, pCUP, SPIELERext, stCup, stAnzSpalten, setFont, SORT */
+/* global getVersionsDatum, firebase, pSeite, pCUP, SPIELERext, stCup, stAnzSpalten, setFont, SORT, swVersion */
 
 var PC = false;
 var APP = false;
@@ -1693,9 +1693,23 @@ function initSeite1() {
         I = LS.ShowCups;
     }
 
+    if (swVersion) {
+        console.log('initSeite1: LS.Version: ' + LS.Version + ',  getVersion(): ' + getVersion() + ',  swVersion: ' + swVersion + '.');
+        if (LS.VersionSW !== swVersion) {
+            if (LS.ME === '3425') {
+                writeLOG('ACHTUNG: Das SW-Update von Version ' + LS.VersionSW + ' auf Version ' + swVersion + ' wird demnächst durchgeführt.');
+            } else {
+                writeLOG('Abakus wird demnächst aktualisiert.');
+            }
+            LS.VersionSW = swVersion;
+            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+        }
+    }
+
     var sync = new Date(CUPS.DATE);
     var heute = new Date();
     var nStunden = (heute - sync) / 3600000;
+
     if (LS.Version !== getVersion()) {
         if (LS.LastBtn && !$(LS.LastBtn).length) {
             LS.LastBtn = '';

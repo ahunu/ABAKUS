@@ -1618,6 +1618,9 @@ $(document).ready(function () {
         var LS_tempVIPs = LS.tempVIPs;
         var LS_Timeout = LS.Timeout;
         var LS_Version = LS.Version;
+        if (LS.VersionSW) {
+            LS_VersionSW = LS.VersionSW;
+        }
         var LS_VIC = LS.VIC;
         var LS_VIP = LS.VIP;
 
@@ -1649,6 +1652,9 @@ $(document).ready(function () {
         LS.tempVIPs = LS_tempVIPs;
         LS.Timeout = LS_Timeout;
         LS.Version = LS_Version;
+        if (LS_VersionSW) {
+            LS.VersionSW = LS_VersionSW;
+        }
         LS.VIC = LS_VIC;
         LS.VIP = LS_VIP;
 

@@ -3342,7 +3342,7 @@ function whenCUPSloaded() {
 }
 
 $(document).ready(function () {
-    'use strict';
+//    'use strict';
     $('#pFehler').hide();
     if (navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
@@ -3359,7 +3359,6 @@ $(document).ready(function () {
 
     APP = false;
     if (navigator.userAgent.match(/Android/i)) {
-//      if (window.matchMedia('(display-mode: standalone)').matches || location.pathname.substring(0, 19) === '/android_asset/www/') {
         if (window.matchMedia('(display-mode: standalone)').matches || location.pathname !== '/') {
             APP = true;
         }

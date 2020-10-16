@@ -1692,8 +1692,7 @@ function initSeite1() {
     } else {
         I = LS.ShowCups;
     }
-
-    if (swVersion) {
+    if (typeof swVersion !== "undefined") {
         console.log('initSeite1: LS.Version: ' + LS.Version + ',  getVersion(): ' + getVersion() + ',  swVersion: ' + swVersion + '.');
         if (LS.VersionSW !== swVersion) {
             if (LS.ME === '3425') {

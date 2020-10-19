@@ -92,6 +92,13 @@ function Deactivate(button) {
     }
 }
 
+function EditGame(pGame) {
+    'use strict';
+    LS.NextAktion = pGame;
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    window.location.replace('Edit' + LS.AnzSpieler + LS.JeSeite + '.html');
+}
+
 function QUERFORMAT() {
     if ($(window).innerWidth() > $(window).innerHeight()) {
         return true;

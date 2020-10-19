@@ -726,9 +726,12 @@ function onOK() {
             LS.INA2 = 0;
             LS.JeSeite = '';
         }
+
+        LS.NextAktion = 'DirektEingabe';
+
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 
-        window.location.replace('Edit' + LS.AnzSpieler + LS.JeSeite + '.html?DE');
+        window.location.replace('Edit' + LS.AnzSpieler + LS.JeSeite + '.html');
     }
 
 }

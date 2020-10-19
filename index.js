@@ -922,6 +922,13 @@ function hrefParameterAendern(pCup) {
     fHref('Abakus/ParameterAendern.html');
 }
 
+function hrefTurnierEinspielen(pCup) {
+    'use strict';
+    LS.ShowCups = pCup;
+    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    fHref('AdminTools/TurnierImport.html');
+}
+
 function checkNeuerTisch() {
     'use strict';
     var hGefunden = false;
@@ -2375,8 +2382,8 @@ function showCup(i, pBtn, pTermin) {
                         : ''
                         )
 
-                + (APP && PC && ((I === 3 && LS.ME === '3425') || (I === 53 && LS.ME === '4506') || (I === 54 && (LS.ME === '3590' || LS.ME === '6058')) || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425'))
-                        ? hVorschub + '<span class="cBlau P L" onclick="window.location.href = \'AdminTools/TurnierImport.html\'" ><b>Turnier einspielen</b></span><br>'
+                + (APP && PC && ((I === 3 && LS.ME === '3425') || ((I === 53 || I === 19) && LS.ME === '4506') || (I === 54 && (LS.ME === '3590' || LS.ME === '6058')) || (I === 55 && LS.ME === '3244') || (I === 77 && LS.ME === '3425') || (I === 125 && LS.ME === '3425'))
+                        ? hVorschub + '<span class="cBlau P L" onclick="hrefTurnierEinspielen(' + I + ')"><b>Turnier einspielen</b></span><br>'
                         : ''
                         )
 

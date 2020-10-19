@@ -58,6 +58,8 @@ var hCount = [];
 
 var myJBox = null;
 
+var cNextAktion = '';
+
 function IsInteger(value) {
     if ((parseFloat(value) === parseInt(value)) && !isNaN(value)) {
         return true;
@@ -799,7 +801,7 @@ function showBody() {
     }
 
     $('#DE1,#DE2,#DE3,#DE4,#DE5,#DE6').removeClass("bgVorhand").removeClass("bgInaktiv");
-    I = parseInt(window.location.search.substr(1));
+    I = parseInt(cNextAktion);
     if (isNaN(I)) {
         xNeu = true;
         setFont();
@@ -897,6 +899,12 @@ function fINIT() {
     ST = JSON.parse(localStorage.getItem('Abakus.ST'));
     DS = JSON.parse(localStorage.getItem('Abakus.DS'));
 
+    if (LS.NextAktion) {
+        cNextAktion = LS.NextAktion;
+        delete LS.NextAktion;
+        localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+    }
+
     if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
             return false; // oncontextmenu
@@ -918,7 +926,7 @@ function fINIT() {
 
     $('#OK').text('OK').css("font-size", "36px");
 
-    if (window.location.search === '?DE') {
+    if (cNextAktion === 'DirektEingabe') {
         iSPIEL = iDiverse;
         xManu = true;
         $("#pManu").show();
@@ -927,7 +935,7 @@ function fINIT() {
             $("#iGespielt").val(LS.SpieleJeRunde);
         }
         setFont();
-    } else if (window.location.search === '') {
+    } else if (cNextAktion === '') {
         showBody();
     } else {
         showBody();

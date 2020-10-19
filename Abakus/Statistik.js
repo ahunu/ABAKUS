@@ -91,11 +91,8 @@ function AnmeldenExe() {
     stANMELDUNG.UM = new Date().toISOString();
     stANMELDUNG.FUER = stNextTermin;
     stANMELDUNG.ANGEMELDET = true;
-    if (LS.ME === '2778') {
-        stANMELDUNG.NAME = 'Phan Thomas';
-    } else {
-        stANMELDUNG.NAME = LS.MEname;
-    }
+    stANMELDUNG.NAME = LS.MEname;
+
     if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
         stANMELDUNG.NACHRICHT = STAT.ANMELDUNGEN[LS.ME].NACHRICHT;
     }
@@ -127,11 +124,7 @@ function AbmeldenExe() {
     stANMELDUNG.UM = new Date().toISOString();
     stANMELDUNG.FUER = stNextTermin;
     stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + window.innerWidth + ' ' + stCup;
-    if (LS.ME === '2778') {
-        stANMELDUNG.NAME = 'Phan Thomas';
-    } else {
-        stANMELDUNG.NAME = LS.MEname;
-    }
+    stANMELDUNG.NAME = LS.MEname;
     if (STAT.ANMELDUNGEN && STAT.ANMELDUNGEN[LS.ME] && Date.now() < STAT.ANMELDUNGEN[LS.ME].FUER && STAT.ANMELDUNGEN[LS.ME].NACHRICHT) {
         stANMELDUNG.NACHRICHT = STAT.ANMELDUNGEN[LS.ME].NACHRICHT;
     }
@@ -172,11 +165,7 @@ function NachrichtSenden() {
         stANMELDUNG.ANGEMELDET = stANMELDUNG.UM + ' ' + window.innerWidth + ' ' + stCup;
         stANMELDUNG.UM = new Date().toISOString();
     }
-    if (LS.ME === '2778') {
-        stANMELDUNG.NAME = 'Phan Thomas';
-    } else {
-        stANMELDUNG.NAME = LS.MEname;
-    }
+    stANMELDUNG.NAME = LS.MEname;
     stANMELDUNG.NACHRICHT = $('#iNachricht').val().trim();
     if (!stANMELDUNG.NACHRICHT) {
         stANMELDUNG.NACHRICHT = null;

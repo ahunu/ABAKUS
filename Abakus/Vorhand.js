@@ -230,18 +230,7 @@ function onOK() {
         localStorage.setItem('Abakus.LS', JSON.stringify(LS));
     }
 
-    if (window.location.search === '?Init') {
-        var NEXT = new Object();
-        NEXT.Seite = 'GR';
-        localStorage.setItem('Abakus.NEXT', JSON.stringify(NEXT));
-        window.location.replace('Abakus' + LS.AnzSpieler + LS.JeSeite + '.html');
-    } else if (window.location.search.substr(1)) {
-        window.location.replace(window.location.search.substr(1));
-    } else {
-        window.history.back();
-    }
-
-    return false;
+    window.history.back();
 
 }
 
@@ -250,10 +239,6 @@ window.onload = function () {
     // $(document).ready(function () {
 
     myReferrer = document.referrer;
-
-    if (window.location.search !== '?Init') {
-        $(".cDIS").addClass('ui-disabled');
-    }
 
     LS = new Object();
     LS = JSON.parse(localStorage.getItem('Abakus.LS'));
@@ -292,11 +277,6 @@ window.onload = function () {
 
     if (CUPS.TURNIER[LS.I]) {
         $('#dDoppelt').hide();
-    }
-
-    if (window.location.search === '?Init' && CUPS.TURNIER[LS.I]) {
-//     else if (STAT.TURRUNDE === LS.AktRunde && (STAT.TURGESPIELT === 0 || CUPS.TURNIER[LS.I] !== 'Handy')) {
-        onOK();
     }
 
     $("#bDoppelt").click(function () {

@@ -1621,6 +1621,7 @@ $(document).ready(function () {
         var LS_tempVIPs = LS.tempVIPs;
         var LS_Timeout = LS.Timeout;
         var LS_Version = LS.Version;
+        var LS_VersionSW = false;
         if (LS.VersionSW) {
             LS_VersionSW = LS.VersionSW;
         }

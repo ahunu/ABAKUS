@@ -127,7 +127,7 @@ function showTurnier(pTurnier) {
         if (LS.ShowSpielerNr && QUERFORMAT()) {
             html += '<td class=TC>' + (isNaN(iSpieler) ? '????' : iSpieler) + '&nbsp;</td>';
         }
-        html += '<td sclass=link><span id="sp' + iSpieler + '" sonclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P ' + (iSpieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
+        html += '<td><span id="sp' + iSpieler + '" onclick="event.stopPropagation();popupSpieler(\'' + iSpieler + '\');" class="P ' + (iSpieler === LS.ME ? 'cSchwarz' : 'cBlau') + '">' + (getName(iSpieler).replace(' ', '&nbsp;')) + '</span></td>';
         if (QUERFORMAT()) {
             html += '<td>' + getSpielerOrt(iSpieler, true) + '</td>'
                     + '<td class=TR>' + getCupPunkte(pTurnier, iSpieler) + '&nbsp;</td>';
@@ -154,7 +154,6 @@ function showTurnier(pTurnier) {
                 + "</tr></tbody></table>").css('margin-top', $('#qfHeader').height() + 'px');
         $('#tStand').hide();
     } else {
-//        $('#sideContent').css('height', '2px');
         $('#sideTurniere').hide();
         $("#dContent").html(html + "&nbsp;&nbsp;&nbsp;<span class='XXS'>&copy; 2015-" + new Date().getFullYear() + " by Leo Luger<br><br></span>");
         $('#sideTurniere').hide();
@@ -167,12 +166,10 @@ function showTurnier(pTurnier) {
     hideEinenMoment();
     setFont(4.7, true);
 
-//    if (QUERFORMAT()) {
     window.scrollTo(0, 0);
     if (window.navigator.userAgent.indexOf("MSIE ") === -1) {
         $('#mTable').stickyTableHeaders({cacheHeaderHeight: true, "fixedOffset": $('#qfHeader')});
     }
-//    }
 
     if (QUERFORMAT() && PC) {
         $(".cBlau,.cSchwarz").on("mouseenter", function () {

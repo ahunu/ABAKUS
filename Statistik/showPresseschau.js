@@ -20,7 +20,7 @@ function showPresseschau() {
         hFilter = 'KTC';
     else if (hCup === 52)
         hFilter = 'RTC';
-    else if (hCup === 53)
+    else if (hCup === 53 || hCup === 19 || hCup === 34)
         hFilter = 'SWC';
     else if (hCup === 54)
         hFilter = 'STC';
@@ -286,18 +286,6 @@ function showPresseschau() {
 
     showIcons([]);
 
-//    if (CUPS.MELDAKT[0]) {
-//        if (LS.GelesenAKT[0] !== CUPS.MELDAKT[0]) {
-//            LS.GelesenAKT[0] = CUPS.MELDAKT[0];
-//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-//        }
-//    } else {
-//        if (LS.GelesenAKT[0]) {
-//            LS.GelesenAKT[0] = null;
-//            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-//        }
-//    }
-
     stStat = 'Presseschau';
 
     if (window.location.search === '?Presseschau') {
@@ -311,29 +299,32 @@ function showPresseschau() {
         jbSpieler.close();
     }
 
+
+
+
     $('#sideTurniere').html(
             '<div data-role="navbar">'
             + '<ul>'
-            + (hCup === 50 ? '<li class="nb56"><a id="nbHRC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'HRC\')">Hausruckcup</a></li>' : '')
-            + (hCup === 51 ? '<li class="nb56"><a id="nbKTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'KTC\')">Kärntencup</a></li>' : '')
-            + (hCup === 52 ? '<li class="nb56"><a id="nbRTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'RTC\')">Raiffeisencup</a></li>' : '')
-            + (hCup === 53 ? '<li class="nb56"><a id="nbSWC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'SWC\')">Sauwaldcup</a></li>' : '')
-            + (hCup === 54 ? '<li class="nb56"><a id="nbSTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'STC\')">St. Tarockcup</a></li>' : '')
-            + (hCup === 55 ? '<li class="nb56"><a id="nbTTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'TTC\')">Tirolcup</a></li>' : '')
-            + (hCup === 56 ? '<li class="nb56"><a id="nbWTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'WTC\')">Wr. Tarockcup</a></li>' : '')
+            + (hFilter === 'HRC' ? '<li class="nb56"><a id="nbHRC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'HRC\')">Hausruckcup</a></li>' : '')
+            + (hFilter === 'KTC' ? '<li class="nb56"><a id="nbKTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'KTC\')">Kärntencup</a></li>' : '')
+            + (hFilter === 'RTC' ? '<li class="nb56"><a id="nbRTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'RTC\')">Raiffeisencup</a></li>' : '')
+            + (hFilter === 'SWC' ? '<li class="nb56"><a id="nbSWC" class="prFilter M2 ui-btn-active" onClick="setPresseFilter(\'SWC\')">Sauwaldcup</a></li>' : '')
+            + (hFilter === 'STC' ? '<li class="nb56"><a id="nbSTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'STC\')">St. Tarockcup</a></li>' : '')
+            + (hFilter === 'TTC' ? '<li class="nb56"><a id="nbTTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'TTC\')">Tirolcup</a></li>' : '')
+            + (hFilter === 'WTC' ? '<li class="nb56"><a id="nbWTC" class="prFilter M2 ui-btn-active" onclick="setPresseFilter(\'WTC\')">Wr. Tarockcup</a></li>' : '')
             + '<li class="nb44"><a id="nbÖF" class="prFilter M2" onclick="setPresseFilter(\'ÖF\')">Ö-Finale</a></li>'
             + '</ul>'
             + '</div>'
 
             + '<div data-role="navbar">'
             + '<ul>'
-            + (hCup !== 50 ? '<li class="nb6"><a id="nbHRC" class="prFilter M2" onClick="setPresseFilter(\'HRC\')">HRC</a></li>' : '')
-            + (hCup !== 51 ? '<li class="nb6"><a id="nbKTC" class="prFilter M2" onclick="setPresseFilter(\'KTC\')">KTC</a></li>' : '')
-            + (hCup !== 52 ? '<li class="nb6"><a id="nbRTC" class="prFilter M2" onclick="setPresseFilter(\'RTC\')">RTC</a></li>' : '')
-            + (hCup !== 53 ? '<li class="nb6"><a id="nbSWC" class="prFilter M2" onClick="setPresseFilter(\'SWC\')">SWC</a></li>' : '')
-            + (hCup !== 54 ? '<li class="nb6"><a id="nbSTC" class="prFilter M2" onclick="setPresseFilter(\'STC\')">STC</a></li>' : '')
-            + (hCup !== 55 ? '<li class="nb6"><a id="nbTTC" class="prFilter M2" onclick="setPresseFilter(\'TTC\')">TTC</a></li>' : '')
-            + (hCup !== 56 ? '<li class="nb6"><a id="nbWTC" class="prFilter M2" onclick="setPresseFilter(\'WTC\')">WTC</a></li>' : '')
+            + (hFilter !== 'HRC' ? '<li class="nb6"><a id="nbHRC" class="prFilter M2" onClick="setPresseFilter(\'HRC\')">HRC</a></li>' : '')
+            + (hFilter !== 'KTC' ? '<li class="nb6"><a id="nbKTC" class="prFilter M2" onclick="setPresseFilter(\'KTC\')">KTC</a></li>' : '')
+            + (hFilter !== 'RTC' ? '<li class="nb6"><a id="nbRTC" class="prFilter M2" onclick="setPresseFilter(\'RTC\')">RTC</a></li>' : '')
+            + (hFilter !== 'SWC' ? '<li class="nb6"><a id="nbSWC" class="prFilter M2" onClick="setPresseFilter(\'SWC\')">SWC</a></li>' : '')
+            + (hFilter !== 'STC' ? '<li class="nb6"><a id="nbSTC" class="prFilter M2" onclick="setPresseFilter(\'STC\')">STC</a></li>' : '')
+            + (hFilter !== 'TTC' ? '<li class="nb6"><a id="nbTTC" class="prFilter M2" onclick="setPresseFilter(\'TTC\')">TTC</a></li>' : '')
+            + (hFilter !== 'WTC' ? '<li class="nb6"><a id="nbWTC" class="prFilter M2" onclick="setPresseFilter(\'WTC\')">WTC</a></li>' : '')
             + '</ul>'
             + '</div>'
 
@@ -363,11 +354,6 @@ function showPresseschau() {
             + (hCup === 56 ? 'Wr. Tarockcup' : '')
             + '</span></li>'
             ).listview('refresh').trigger('create').show();
-
-// Wr. Tarockcup Ö-Finale
-// Alle Cups Personen
-// Regeln Tarockkurs Karten
-// Alles Zurücksetzen
 
     html = '';
 

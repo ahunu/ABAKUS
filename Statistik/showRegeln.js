@@ -269,8 +269,10 @@ function showRegeln() {
             + '</div>';
 
 
-    if (stCup === 53 || stCup === 55 || stCup === 34) {
+    if (stCup === 55) {
         html = REGELN(stCup);
+    } else if (stCup === 53 || stCup === 19 || stCup === 34) {
+        html = REGELN(53);
     }
 
     if (QUERFORMAT()) {

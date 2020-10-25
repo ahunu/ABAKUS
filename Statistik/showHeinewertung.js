@@ -42,6 +42,7 @@ function showHeinewertung() {
     } else {
         var nWertungen = SAISON[iSaison][isAnzTurniere];
     }
+
     var tGerundet = '';
     if (nWertungen % 2)
         tGerundet = ' gerundet';
@@ -50,6 +51,11 @@ function showHeinewertung() {
         nWertungen = parseInt(nWertungen / 2);
     } else {
         nWertungen = parseInt((nWertungen + 1) / 2);
+    }
+
+    if (stCup === 19) { // Tarockclub Schärding --- 10 Wertungen
+        nWertungen = Math.min(SAISON[iSaison][isAnzTurniere], 10);
+        tGerundet = '';
     }
 
     var nShowWertungen = nWertungen;
@@ -276,14 +282,13 @@ function showHeinewertung() {
 
     html += "</tbody></table><br>"
             + '<div class="S J" style="margin-left: 1vw; margin-right: 1vw">'
-//            + '<b>Heinepunkte anstatt Fixpunkte:</b><br>'
-//            + 'Um statistischen Verzerrungen wegen unterschiedlich großer Teilnehmerzahlen und unterschiedlich hoher Turniersiege vorzubeugen,&nbsp; '
-//            + 'werden bei der Heinewertung anstatt der vom Rang abhängigen Fixpunkte die von den tatsächlich erzielten Punkten errechneten Heinepunkte verwendet.&nbsp; '
-//            + '<br><br>'
             + '<b>Berechnung der ' + tWertung + 'punkte:</b><br>'
             + 'Bis 100 Punkten werden die tatsächlich erreichten Punkte voll angerechnet.&nbsp; '
             + 'Ab 100 Punkten zählt nur jeder zweite Punkt.&nbsp; Es werden maximal 200 ' + tWertung + 'punkte vergeben.&nbsp; Minuspunkte werden nicht gewertet.&nbsp; '
-            + 'Von ' + (iSaison === 1 ? stAktTurniere : nTurniere) + ' Turnieren ' + (iSaison === 1 ? 'werden' : 'wurden') + ' die ' + nWertungen + ' besten Ergebnisse (50%' + tGerundet + ') gewertet. '
+            + (stCup === 19
+                    ? 'Von 12 Turnieren werden die 10 besten Ergebnisse gewertet. '
+                    : 'Von ' + (iSaison === 1 ? stAktTurniere : nTurniere) + ' Turnieren ' + (iSaison === 1 ? 'werden' : 'wurden') + ' die ' + nWertungen + ' besten Ergebnisse (50%' + tGerundet + ') gewertet. '
+                    )
             + '<br><br></div>';
 
     if (QUERFORMAT()) {

@@ -2190,8 +2190,15 @@ function showCup(i, pBtn, pTermin) {
                 var lastTop = $(lastBtn).length;
                 if (lastTop) {
                     lastTop = parseInt($(lastBtn).offset().top);
+                } else {
+                    writeLOG('LastBtn "' + lastBtn + '" unbekannt.');
                 }
-                var newTop = parseInt($(newBtn).offset().top);
+                var newTop = $(newBtn).length;
+                if (newTop) {
+                    newTop = parseInt($(newBtn).offset().top);
+                } else {
+                    writeLOG('NewBtn "' + newBtn + '" unbekannt.');
+                }
                 var viewTop = parseInt($('#pContent').scrollTop());
                 var tglHeight = parseInt($('#tgl' + LS.LastBtn.substr(1)).height());
                 if (lastTop < newTop && lastTop < 60) {
@@ -3362,6 +3369,8 @@ $(document).ready(function () {
     } else {
         PC = true;
     }
+
+    PC = false;
 
     APP = false;
     if (navigator.userAgent.match(/Android/i)) {

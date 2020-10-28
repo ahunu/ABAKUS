@@ -1,13 +1,13 @@
 
 function getVersion() {
-    return 1119;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
+    return 1120;   // eine neue Versionsnummer erzwingt loadCUPS() und löscht STAT*
 }
 
 function getVersionsDatum() {
     function setVersion(pJahr, pMonat, pTag) {
         return new Date(pJahr, (pMonat - 1), pTag);
     }
-    return setVersion(2020, 10, 26);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
+    return setVersion(2020, 10, 28);   // 01 - 09 !!! Oktale Darstellung ist nicht erlaubt !!!
 }
 
 // Release 1098 2 für Tabletts === Neuer Code, Alte DB (v4.9.1) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1

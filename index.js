@@ -2995,9 +2995,17 @@ function whenCUPSloaded() {
         }
     }
 
+// 01.2022 entfernen Beg
+//   LS.VIC = [];
+    if (typeof LS.VIC === 'undefined' || LS.VIC.length === 0) {
+        LS.VIC = [0];
+    }
+// 01.2022 entfernen End
+
     for (var iii = 1; iii < CUPS.ANMELDERF.length; iii++) { // llll
         if (CUPS.ANMELDERF[iii]) {
-            if (CUPS.MEZULETZT[iii] + (200 * 86400000) > Date.now() // 200 Tage
+            if (LS.VIC[iii]
+                    || CUPS.MEZULETZT[iii] + (200 * 86400000) > Date.now() // 200 Tage
                     || CUPS.BEREadmin[iii].indexOf(LS.ME) >= 0
                     || CUPS.BEREschreiben[iii].indexOf(LS.ME) >= 0) {
                 if (!CUPS.NEXTTERMIN[iii]) {
@@ -3065,12 +3073,6 @@ function whenCUPSloaded() {
                     }
                     LS.ShowCups = newCup;
                     LS.Quickstart = true;
-// 01.2022 entfernen Beg
-                    LS.VIC = [];
-                    if (typeof LS.VIC === 'undefined' || LS.VIC.length === 0) {
-                        LS.VIC = [0];
-                    }
-// 01.2022 entfernen End
                     if (hCupName.indexOf('/REGELN') > 0) {
                         LS.ShowFunktion = '?Reglen';
                     } else if (LS.VIC[0] === 0) {
@@ -3107,6 +3109,9 @@ function whenCUPSloaded() {
     var hBtnName = 'b??';
     var hAktuellBis = myDateString(Date.now() + (86400000 * LS.AktTage));
     for (var termin in TERMINE) {
+        if (TERMINE[termin].CUP == 8) {
+            I = I;
+        }
         if (CUPS.NAME[TERMINE[termin].CUP].substr(0, 4).toUpperCase() !== "TEST" && TERMINE[termin].CUP >= 8) {
             if (TERMINE[termin].DATUM >= hHeute && !TERMINE[termin].NAME
                     || TERMINE[termin].DATUM >= hHeute && TERMINE[termin].NAME && (TERMINE[termin].NAME.substr(0, 4).toUpperCase() !== "TEST" || LS.ME === "3425")) {
@@ -3369,8 +3374,6 @@ $(document).ready(function () {
     } else {
         PC = true;
     }
-
-    PC = false;
 
     APP = false;
     if (navigator.userAgent.match(/Android/i)) {

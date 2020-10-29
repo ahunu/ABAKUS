@@ -28,13 +28,13 @@ function loadSTAT(I, pTitel, pSkip, pCallback) {
                     showEinenMoment(I, pTitel, false, pSkip);
                 }
             } else {
-                showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen.');
+                showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen!');
             }
         } else {
             if (navigator.onLine) {
                 showEinenMoment(I, pTitel);
             } else {
-                showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen.');
+                showEinenFehler('Keine Datenverbindung:', 'Verbindung herstellen!!');
             }
         }
     }

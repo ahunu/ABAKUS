@@ -3592,9 +3592,6 @@ $(document).ready(function () {
     }
 
     if (QUERFORMAT()) {
-
-
-
         myJTip = new jBox('Tooltip', {
             theme: 'TooltipError',
             delayClose: 20,

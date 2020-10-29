@@ -339,35 +339,27 @@ function getUrlaubsplaner() {
 //            + 'Veranstaltungsort: Cafe Heine, Heinestraße 39, 1020 Wien gleich beim Praterstern<br>'
 //            + 'Veranstalter: Leo Luger 0650 6516522<br>'
 //
-//            + '<p><div class="L" style="margin:0 0 1vh 0">21. bis 28. Juni 2020&nbsp;&nbsp; <b>Urlaub am Klopeinersee</b></div>'
-//            + 'Montag Mittwoch und Freitag wird jeweils ein Turnier veranstaltet.<br>'
-//            + 'Näheres erfährt ihr vor Ort.<br>'
-//            + 'Veranstaltungsort: Hotel Marolt, Am See V/2, 9122 St. Kanzian<br>'
-//            + 'Veranstalter: Johann König Tel. 0699 11111665<br>'
+            + '<p><div class="L" style="margin:0 0 1vh 0">20. bis 27. Juni 2021&nbsp;&nbsp; <b>Urlaub am Klopeinersee</b></div>'
+            + 'Montag, Mittwoch und Freitag wird jeweils ein Turnier veranstaltet.<br>'
+            + 'Näheres erfährt ihr vor Ort.<br>'
+            + 'Veranstaltungsort: Hotel Marolt, Am See V/2, 9122 St. Kanzian<br>'
+            + 'Veranstalter: Johann König Tel. 0699 11111665<br>'
 
-            + '<p><div class="L" style="margin:0 0 1vh 0">22. und 23. Aug. 2020&nbsp;&nbsp; <b>Uhudler Marathon</b></div>'
-            + 'Veranstaltungsort: Gasthof&nbsp;Baier, 7400&nbsp;Drumling<br>'
-            + 'Veranstalter: Johann Hafner, Tel.:&nbsp;0650&nbsp;5120838'
-
-            + '<p><div class="L" style="margin:4vh 0 1vh 0">7. - 11. Sep. 2020&nbsp;&nbsp; <b>Passau Wien mit\'n Radl</b></div>'
-            + 'Mo. 7. Sept. Schlögen, Veranstalter: Michael Achleitner 0664 2155381<br>'
-            + 'Di. 8. Sep. Mauthausen, Veranstalter: Alfred Plischnack 0699 88809355<br>'
-            + 'Mi. 9. Sep. Pöchlarn, Veranstalter: Johann Katschtaler<br>'
-            + 'Do. 10. Sep. Mautern, Veranstalter: Gerhard Reis<br>'
-            + 'Fr. 11. Sep. Wien, Veranstalter: Leo Luger 0650 6516522<br>'
-            + 'Organisation: Leo Luger 0650 6516522'
-
-            + '<p><div class="L" style="margin:4vh 0 1vh 0">18. - 20. Sep. 2020&nbsp;&nbsp; <b>Frankenmarkter Marathon</b></div>'
-            + 'Veranstaltungsort: Gasthof&nbsp;Greisinger, 4890&nbsp;Frankenmarkt<br>'
-            + 'Veranstalter: Tarockrunde&nbsp;Frankenmarkt, Bert&nbsp;Greisinger&nbsp;Tel.:&nbsp;0664&nbsp;2863075'
-
-
-//1. Passau Engelhardszell, 31 km, 2:09
-//2. Engelhardszell Linz, 58 km, 4:02
-//3. Linz Ybbs, 81 km, 5:10 Std
-//4. Ybbs Krems, 65 km, 3:59
-//5. Krems Wien, 80 km, 4:35
-
+//            + '<p><div class="L" style="margin:0 0 1vh 0">22. und 23. Aug. 2020&nbsp;&nbsp; <b>Uhudler Marathon</b></div>'
+//            + 'Veranstaltungsort: Gasthof&nbsp;Baier, 7400&nbsp;Drumling<br>'
+//            + 'Veranstalter: Johann Hafner, Tel.:&nbsp;0650&nbsp;5120838'
+//
+//            + '<p><div class="L" style="margin:4vh 0 1vh 0">7. - 11. Sep. 2020&nbsp;&nbsp; <b>Passau Wien mit\'n Radl</b></div>'
+//            + 'Mo. 7. Sept. Schlögen, Veranstalter: Michael Achleitner 0664 2155381<br>'
+//            + 'Di. 8. Sep. Mauthausen, Veranstalter: Alfred Plischnack 0699 88809355<br>'
+//            + 'Mi. 9. Sep. Pöchlarn, Veranstalter: Johann Katschtaler<br>'
+//            + 'Do. 10. Sep. Mautern, Veranstalter: Gerhard Reis<br>'
+//            + 'Fr. 11. Sep. Wien, Veranstalter: Leo Luger 0650 6516522<br>'
+//            + 'Organisation: Leo Luger 0650 6516522'
+//
+//            + '<p><div class="L" style="margin:4vh 0 1vh 0">18. - 20. Sep. 2020&nbsp;&nbsp; <b>Frankenmarkter Marathon</b></div>'
+//            + 'Veranstaltungsort: Gasthof&nbsp;Greisinger, 4890&nbsp;Frankenmarkt<br>'
+//            + 'Veranstalter: Tarockrunde&nbsp;Frankenmarkt, Bert&nbsp;Greisinger&nbsp;Tel.:&nbsp;0664&nbsp;2863075'
 
             + '</span>';
 }

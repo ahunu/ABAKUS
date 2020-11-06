@@ -137,7 +137,7 @@ function showRegeln() {
             + '<li>Es wird gegen den Uhrzeigersinn gegeben und gespielt. Jeder Spieler erhält zweimal 6 Karten, der Talon (zweimal 3 Karten) wird in die Mitte gegeben.</li>'
             + '<li>Jedes Spiel muss gespielt werden. Kein Blatt wird zusammen&shy;geworfen.</li>'
             + '<li>Wenn kein Verstoß gegen Farb-, Stich- oder Prämienzwang vorliegt, darf eine gespielte Karte nicht zurückgenommen werden.</li>'
-            + '<li>Kontra (doppelt), Retour (vierfach) und Sub (achtfach) haben keine Auswirkung auf die Schrift, sondern werden nach jedem Spiel sofort ausbezahlt.</li>'
+            + '<li>Kontra (doppelt), Retour (vierfach) und Sub (achtfach) haben keine Auswirkung auf die Schrift, sondern werden nach dem Spiel sofort ausbezahlt.</li>'
             + '<li>Bei positiven Spielen gilt das Kontra für alle Spieler, bei negativen Spielen wird individuell kontriert. Beim Trischaken gibt es kein Kontra.</li>'
             + '<li>Um das Spiel nicht zu stören, haben Zuschauer vom Spieltisch genügend weit entfernt zu stehen. Jegliche Störungen des Spiels durch einen Kiebitz oder durch den 5ten Spieler bei Fünfertischen wie Äußerungen zum Spiel (auch durch Mimik oder Gestik) sind strikt untersagt. Wenn der Verdacht besteht, dass ein Spiel durch den Einfluss eines Kiebitzes gewonnen oder verloren wurde, kann der Schiedsrichter herbeigerufen werden. Dieser kann auf Annullierung des Spieles entscheiden und den Störenfried vom Turnier ausschließen oder auf unbestimmte Zeit sperren. Jeder Spieler hat das Recht, einen Kiebitz wegzuweisen.</li>'
             + '<li>Um ein positives Spiel zu gewinnen benötigt der Spielaufnehmer 35 Punkte und 2 Blatt.</li>'

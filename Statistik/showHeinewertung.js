@@ -22,7 +22,10 @@ function showHeinewertung() {
     stNamenLen = 0.3;
     if (CUPS.TYP[stCup] === 'CUP') {
         writeCanvas(stStat + '  ' + stSaison);
-        if (stCup === 53) { // Sauwaldcup
+        if (stCup === 19) { // Sauwaldcup
+            tWertung = 'Club';
+            writeCanvas('Clubwertung  ' + stSaison);
+        } else if (stCup === 53) { // Sauwaldcup
             tWertung = 'Heine';
             writeCanvas('Heinewertung  ' + stSaison);
         } else if (stCup < 50 || stCup > 60 || stSaison >= '2020') { // Heinewertung ist Cupwertung

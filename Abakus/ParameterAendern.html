@@ -191,6 +191,37 @@
                         </div>
                     </div>
                     <div id=dABWTARIFE>
+                        <div class="ui-grid-a" id="dZusSpiele">
+                            <div class="L C">Zusätzliche Spiele?</b>
+                            </div>
+                            <div class="ui-block-a hilfe" style="text-align:center;">
+                                <br>
+                                <span class='M'>Werden Einer und Farbeneiner gespielt?
+                                </span>
+                                <br>
+                                <span class='S'>(Dreier puls 2 Punkte.)
+                                </span>
+                                <br>
+                                <span class='M'>Werden Ouver und Semiouverspiele gespielt?
+                                </span>
+                            </div>
+                            <div class="ui-block-b daten">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a" style="width:20%;">
+                                    </div>
+                                    <div class="ui-block-b" style="width:80%;">
+                                        <fieldset data-role=controlgroup data-mini=true data-theme="a">
+                                            <label class=btn>
+                                                <input type='checkbox' id=iEINER onclick="CUPS.EINER[I] = !CUPS.EINER[I];">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Einer&nbsp;und&nbsp;Farbeneiner
+                                            </label>
+                                            <label class=btn>
+                                                <input type='checkbox' id=iSEMIOUVERT onclick="iSEMIOUVERTonClick()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Semiouvert
+                                            </label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="ui-grid-a">
                             <div class="L C">Abweichende Tarife - <b>Spiele:</b>
                             </div>
@@ -263,14 +294,14 @@
                                             </div>
                                         </div>
                                         <div class="ui-grid-b">
-                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Pi/Zwi.&nbsp;overt:
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;" id="tSemiouvert"> Pi/Zwi.&nbsp;overt:
                                             </div>
                                             <div class="ui-block-b"    style="width:25%;text-align:center;">
                                                 <input id="iTARIF9" type="number" pattern="\d*" min=0 max=50 data-role="none">
                                             </div>
                                         </div>
                                         <div class="ui-grid-b">
-                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;"> Bettler&nbsp;overt:
+                                            <div class="ui-block-a L" style="width:55%;margin-top:.2em;" id="tOuvert"> Bettler&nbsp;overt:
                                             </div>
                                             <div class="ui-block-b"    style="width:25%;text-align:center;">
                                                 <input id="iTARIF10" type="number" pattern="\d*" min=0 max=50 data-role="none">

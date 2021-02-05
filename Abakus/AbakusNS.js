@@ -28,8 +28,17 @@ function pruefenNS() {
         var pGame = 'Bettler';
     } else if (aktSpiel === iPiZwiccoloOvert) {
         var pGame = 'PiZwi.ov';
+        if (LS.Semiouvert) {
+            var pGame = 'Semi';
+        } else {
+            var pGame = 'PiZwi.ov';
+        }
     } else if (aktSpiel === iBettlerOvert) {
-        var pGame = 'Bet.ov.';
+        if (LS.Semiouvert) {
+            var pGame = 'Ouvert';
+        } else {
+            var pGame = 'Bet.ov.';
+        }
     }
 
     if (aktSpiel === iTrischaker) {

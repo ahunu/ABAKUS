@@ -733,8 +733,8 @@ function htmlSpielePunkte(pKolonne, pGauge) {
         html = html + '<tr><th>&nbsp;Trisch. </th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][13] + '</td><td class=TR>' + PROZspiele[13] + '</td><td class=TR>' + BTRGcol2[13] + '</td><td class=TR>' + PROZcol2[13] + '</td></tr>';
         html = html + '<tr><th>&nbsp;Pi.Zwi. </th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][14] + '</td><td class=TR>' + PROZspiele[14] + '</td><td class=TR>' + BTRGcol2[14] + '</td><td class=TR>' + PROZcol2[14] + '</td></tr>';
         html = html + '<tr><th>&nbsp;Bettler </th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][15] + '</td><td class=TR>' + PROZspiele[15] + '</td><td class=TR>' + BTRGcol2[15] + '</td><td class=TR>' + PROZcol2[15] + '</td></tr>';
-        html = html + '<tr><th>&nbsp;PiZwi.Ov</th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][16] + '</td><td class=TR>' + PROZspiele[16] + '</td><td class=TR>' + BTRGcol2[16] + '</td><td class=TR>' + PROZcol2[16] + '</td></tr>';
-        html = html + '<tr><th>&nbsp;Bet.Ov. </th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][17] + '</td><td class=TR>' + PROZspiele[17] + '</td><td class=TR>' + BTRGcol2[17] + '</td><td class=TR>' + PROZcol2[17] + '</td></tr>';
+        html = html + '<tr><th>&nbsp;' + (LS.Semiouvert ? 'Semi' : 'PiZwi.Ov.') + '</th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][16] + '</td><td class=TR>' + PROZspiele[16] + '</td><td class=TR>' + BTRGcol2[16] + '</td><td class=TR>' + PROZcol2[16] + '</td></tr>';
+        html = html + '<tr><th>&nbsp;' + (LS.Semiouvert ? 'Overt' : 'Bet.Ov.') + '</th><td class=TR>' + STAT.S[aDET[stDetI[pKolonne]]].ANZSPIELE[stDetTurCupGes[pKolonne]][17] + '</td><td class=TR>' + PROZspiele[17] + '</td><td class=TR>' + BTRGcol2[17] + '</td><td class=TR>' + PROZcol2[17] + '</td></tr>';
 
     }
 

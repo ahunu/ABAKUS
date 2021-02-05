@@ -16,6 +16,7 @@ function FS_Init() {
     if (!LS.Tarif[iFarben3er]) {
         $('#d11').addClass('ui-disabled');
         $('#d11_1').addClass('ui-disabled');
+        $('#d11_2').addClass('ui-disabled');
     }
     if (!LS.Tarif[iFarbensolo]) {
         $('#d12').addClass('ui-disabled');

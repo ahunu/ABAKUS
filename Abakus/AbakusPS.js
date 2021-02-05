@@ -3,7 +3,7 @@
 
 function PS_Init() {
     $('#ss1,#ss2,#ss3,#ss4,#ss5,#ss6').removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
-    $('.cPS,#P1,#P2,#P3,#P4,#P5,#P6,#P7,#P8,#P9,#PValat').buttonMarkup({theme: 'a'});
+    $('.cPS,#P1,#P2,#P3,#P4,#P5,#P6,#P7,#P8,#P9,#PValat').buttonMarkup({ theme: 'a' });
     $('.ui-nobtn').removeClass('ui-btn').removeClass('ui-btn-a').removeClass('ui-corner-all').removeClass('ui-shadow');
     $('#P5,#P6').removeClass('ui-disabled');
     $('#P1e,#P2e,#P3e,#P4e,#P5e,#P6e,#P7e,#P8e,#P9e,#PValate').text('').hide();
@@ -45,7 +45,7 @@ function SetPraemienSolo(pSolo) {
     var cSub = 'bgKontra8';
 
     if (pSolo && soloFaktor !== 2
-            || !pSolo && soloFaktor !== 1) {
+        || !pSolo && soloFaktor !== 1) {
 
         if (LS.I === 37) {  // Eggenberger Runde, Johannes Toppelreiter
             soloFaktor = 1; // Keine Verdoppelung der Prämien
@@ -195,107 +195,117 @@ function pruefenPS() {
     if ($('#P1').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u2780';
     } else if ($('#P1').hasClass(cAngesagt)
-            || $('#P1').hasClass(cKontra)
-            || $('#P1').hasClass(cRetour)
-            || $('#P1').hasClass(cSub)) {
+        || $('#P1').hasClass(cKontra)
+        || $('#P1').hasClass(cRetour)
+        || $('#P1').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u278A';
         hRufer = iPagatrufer;
     }
     if ($('#P2').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u2781';
     } else if ($('#P2').hasClass(cAngesagt)
-            || $('#P2').hasClass(cKontra)
-            || $('#P2').hasClass(cRetour)
-            || $('#P2').hasClass(cSub)) {
+        || $('#P2').hasClass(cKontra)
+        || $('#P2').hasClass(cRetour)
+        || $('#P2').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u278B';
         hRufer = iUhurufer;
     }
     if ($('#P3').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u2782';
     } else if ($('#P3').hasClass(cAngesagt)
-            || $('#P3').hasClass(cKontra)
-            || $('#P3').hasClass(cRetour)
-            || $('#P3').hasClass(cSub)) {
+        || $('#P3').hasClass(cKontra)
+        || $('#P3').hasClass(cRetour)
+        || $('#P3').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u278C';
         hRufer = iKakadurufer;
     }
     if ($('#P4').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u2783';
     } else if ($('#P4').hasClass(cAngesagt)
-            || $('#P4').hasClass(cKontra)
-            || $('#P4').hasClass(cRetour)
-            || $('#P4').hasClass(cSub)) {
+        || $('#P4').hasClass(cKontra)
+        || $('#P4').hasClass(cRetour)
+        || $('#P4').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u278D';
         hRufer = iQuapilrufer;
-    }
-
-    if (aktSpiel === iRufer
-            || aktSpiel === iPagatrufer
-            || aktSpiel === iUhurufer
-            || aktSpiel === iKakadurufer
-            || aktSpiel === iQuapilrufer) {
-        aktSpiel = hRufer;
     }
 
     if ($('#P5').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24E3'; // t
     } else if ($('#P5').hasClass(cAngesagt)
-            || $('#P5').hasClass(cKontra)
-            || $('#P5').hasClass(cRetour)
-            || $('#P5').hasClass(cSub)) {
+        || $('#P5').hasClass(cKontra)
+        || $('#P5').hasClass(cRetour)
+        || $('#P5').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24C9'; // T
     }
     if ($('#P6').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24DA'; // k
     } else if ($('#P6').hasClass(cAngesagt)
-            || $('#P6').hasClass(cKontra)
-            || $('#P6').hasClass(cRetour)
-            || $('#P6').hasClass(cSub)) {
+        || $('#P6').hasClass(cKontra)
+        || $('#P6').hasClass(cRetour)
+        || $('#P6').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24C0'; // K
     }
     if ($('#P7').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24E4'; // u
     } else if ($('#P7').hasClass(cAngesagt)
-            || $('#P7').hasClass(cKontra)
-            || $('#P7').hasClass(cRetour)
-            || $('#P7').hasClass(cSub)) {
+        || $('#P7').hasClass(cKontra)
+        || $('#P7').hasClass(cRetour)
+        || $('#P7').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24CA'; // U
     }
     if (LS.Regeln !== 'Ti.') {
         if ($('#P8').hasClass(cStill)) {
             pPraemie = pPraemie + '\\u24D0'; // a
         } else if ($('#P8').hasClass(cAngesagt)
-                || $('#P8').hasClass(cKontra)
-                || $('#P8').hasClass(cRetour)
-                || $('#P8').hasClass(cSub)) {
-            pPraemie = pPraemie + '\\u24B6'; // A
+            || $('#P8').hasClass(cKontra)
+            || $('#P8').hasClass(cRetour)
+            || $('#P8').hasClass(cSub)) {
+            if (LS.Tarif20T === 'V') {
+                hRufer = iQuapilrufer;
+                var hFuenfer = true;
+            } else {
+                pPraemie = pPraemie + '\\u24B6'; // A (Absolut)
+            }
         }
     } else {
         if ($('#P8').hasClass(cStill)) {
             pPraemie = pPraemie + '\\u24E2'; // s
         } else if ($('#P8').hasClass(cAngesagt)
-                || $('#P8').hasClass(cKontra)
-                || $('#P8').hasClass(cRetour)
-                || $('#P8').hasClass(cSub)) {
+            || $('#P8').hasClass(cKontra)
+            || $('#P8').hasClass(cRetour)
+            || $('#P8').hasClass(cSub)) {
             pPraemie = pPraemie + '\\u24C8'; // S
         }
     }
     if ($('#P9').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24E7'; // x
     } else if ($('#P9').hasClass(cAngesagt)
-            || $('#P9').hasClass(cKontra)
-            || $('#P9').hasClass(cRetour)
-            || $('#P9').hasClass(cSub)) {
-        pPraemie = pPraemie + '\\u24CD'; // X
+        || $('#P9').hasClass(cKontra)
+        || $('#P9').hasClass(cRetour)
+        || $('#P9').hasClass(cSub)) {
+        if (LS.Tarif21T === 'V') {
+            hRufer = iQuapilrufer;
+            var hFuenfer = true;
+        } else {
+            pPraemie = pPraemie + '\\u24CD'; // X
+        }
     }
 
     if ($('#PValat').hasClass(cStill)) {
         pPraemie = pPraemie + '\\u24E5'; // v
     } else if ($('#PValat').hasClass(cAngesagt)
-            || $('#PValat').hasClass(cKontra)
-            || $('#PValat').hasClass(cRetour)
-            || $('#PValat').hasClass(cSub)) {
+        || $('#PValat').hasClass(cKontra)
+        || $('#PValat').hasClass(cRetour)
+        || $('#PValat').hasClass(cSub)) {
         pPraemie = pPraemie + '\\u24CB'; // V
+    }
+
+    if (aktSpiel === iRufer
+        || aktSpiel === iPagatrufer
+        || aktSpiel === iUhurufer
+        || aktSpiel === iKakadurufer
+        || aktSpiel === iQuapilrufer) {
+        aktSpiel = hRufer;
     }
 
     pPraemie = eval('"' + pPraemie + '"');
@@ -311,7 +321,11 @@ function pruefenPS() {
     } else if (aktSpiel === iKakadurufer) {
         pGame = 'III-Ruf. ' + pPraemie;
     } else if (aktSpiel === iQuapilrufer) {
-        pGame = 'IIII-Ruf. ' + pPraemie;
+        if (hFuenfer) {
+            pGame = 'V-Ruf. ' + pPraemie;
+        } else {
+            pGame = 'IIII-Ruf. ' + pPraemie;
+        }
     } else if (aktSpiel === i6er) {
         pGame = '6er ' + pPraemie;
     } else if (aktSpiel === i3er) {

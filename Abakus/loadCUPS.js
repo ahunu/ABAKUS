@@ -1,6 +1,4 @@
 
-/* global firebase, CUPS, LS, FB */
-
 function loadCUPS(pTitel, pText, pForce) {
 
     if (pTitel) {
@@ -26,6 +24,8 @@ function loadCUPS(pTitel, pText, pForce) {
         CUPS.BEREschreiben = [];
         CUPS.DISPAB = [];
         CUPS.DOPPELTERUNDEN = [];
+        CUPS.EINER = [];
+        CUPS.SEMIOUVERT = [];
         CUPS.MEANGEMELDET = cMEANGEMELDET;
         CUPS.MELDAKT = [];
         CUPS.MELDSTAT = [];
@@ -50,6 +50,8 @@ function loadCUPS(pTitel, pText, pForce) {
 
         CUPS.REGELN[0] = 'Wr.';
         CUPS.DOPPELTERUNDEN[0] = false;
+        CUPS.EINER[0] = false;
+        CUPS.SEMIOUVERT[0] = false;
 
         AKTUELLES = [];
 
@@ -63,6 +65,8 @@ function loadCUPS(pTitel, pText, pForce) {
                 SPIELERnr = cup.val();
             } else if (cup.key === 'TIMESTAMP') {
                 CUPS.TIMESTAMP = cup.val();
+            } else if (cup.key === 'INSERATE') {
+                CUPS.INSERATE = cup.val();
             } else {
                 i = cup.key;
                 if (i[0] === '0') {  // Android interpretiert in älteren Versionen
@@ -74,73 +78,83 @@ function loadCUPS(pTitel, pText, pForce) {
                 i = parseInt(i);
                 var cupval = cup.val();
                 if (i > 0) {
-                    CUPS.ANMELDERF     [i] = cupval.ANMELDERF;
-                    CUPS.BEREadmin     [i] = cupval.BEREadmin;
-                    CUPS.BEREschreiben [i] = cupval.BEREschreiben;
-                    CUPS.DISPAB        [i] = cupval.DISPAB;
+                    CUPS.ANMELDERF[i] = cupval.ANMELDERF;
+                    CUPS.BEREadmin[i] = cupval.BEREadmin;
+                    CUPS.BEREschreiben[i] = cupval.BEREschreiben;
+                    CUPS.DISPAB[i] = cupval.DISPAB;
                     if (cupval.DOPPELTERUNDEN) {
                         CUPS.DOPPELTERUNDEN[i] = true;
                     } else {
                         CUPS.DOPPELTERUNDEN[i] = false;
                     }
+                    if (cupval.EINER) {
+                        CUPS.EINER[i] = true;
+                    } else {
+                        CUPS.EINER[i] = false;
+                    }
+                    if (cupval.SEMIOUVERT) {
+                        CUPS.SEMIOUVERT[i] = true;
+                    } else {
+                        CUPS.SEMIOUVERT[i] = false;
+                    }
                     if (cupval.AKTUELLES) {
-                        CUPS.MELDAKT   [i] = cupval.AKTUELLES[0];
-                        AKTUELLES      [i] = cupval.AKTUELLES[1];
+                        CUPS.MELDAKT[i] = cupval.AKTUELLES[0];
+                        AKTUELLES[i] = cupval.AKTUELLES[1];
                     }
                     if (cupval.MELDSTAT) {
-                        CUPS.MELDSTAT  [i] = cupval.MELDSTAT;
+                        CUPS.MELDSTAT[i] = cupval.MELDSTAT;
                     }
-                    CUPS.NAME          [i] = cupval.NAME;
-                    CUPS.NAME2LEN      [i] = cupval.NAME2LEN;
+                    CUPS.NAME[i] = cupval.NAME;
+                    CUPS.NAME2LEN[i] = cupval.NAME2LEN;
                     if (typeof cupval.NEXTTERMIN === "undefined") {
                         CUPS.NEXTTERMIN[i] = 0;
                     } else {
                         CUPS.NEXTTERMIN[i] = cupval.NEXTTERMIN;
                     }
-                    CUPS.REGELN        [i] = cupval.REGELN;
+                    CUPS.REGELN[i] = cupval.REGELN;
                     if (typeof cupval.RUNDEN === "undefined") {
-                        CUPS.RUNDEN    [i] = null;
+                        CUPS.RUNDEN[i] = null;
                     } else {
-                        CUPS.RUNDEN    [i] = cupval.RUNDEN;
+                        CUPS.RUNDEN[i] = cupval.RUNDEN;
                     }
-                    CUPS.SPIELEAB      [i] = cupval.SPIELEAB;
-                    CUPS.SPIELTAGE     [i] = cupval.SPIELTAGE;
+                    CUPS.SPIELEAB[i] = cupval.SPIELEAB;
+                    CUPS.SPIELTAGE[i] = cupval.SPIELTAGE;
                     if (typeof cupval.WOCHEN === "undefined") {
-                        CUPS.WOCHEN    [i] = 'JJJJJ';
+                        CUPS.WOCHEN[i] = 'JJJJJ';
                     } else {
-                        CUPS.WOCHEN    [i] = cupval.WOCHEN;
+                        CUPS.WOCHEN[i] = cupval.WOCHEN;
                     }
-                    CUPS.SPJERUNDE     [i] = cupval.SPJERUNDE;
-                    CUPS.SWNAME        [i] = cupval.SWNAME;
+                    CUPS.SPJERUNDE[i] = cupval.SPJERUNDE;
+                    CUPS.SWNAME[i] = cupval.SWNAME;
                     if (typeof cupval.TARIF === "undefined") {
-                        CUPS.TARIF     [i] = [];
+                        CUPS.TARIF[i] = [];
                     } else {
-                        CUPS.TARIF     [i] = cupval.TARIF;
+                        CUPS.TARIF[i] = cupval.TARIF;
                     }
                     if (typeof cupval.TARIF20T === "undefined") {
-                        CUPS.TARIF20T  [i] = null;
+                        CUPS.TARIF20T[i] = null;
                     } else {
-                        CUPS.TARIF20T  [i] = cupval.TARIF20T;
+                        CUPS.TARIF20T[i] = cupval.TARIF20T;
                     }
                     if (typeof cupval.TARIF21T === "undefined") {
-                        CUPS.TARIF21T  [i] = null;
+                        CUPS.TARIF21T[i] = null;
                     } else {
-                        CUPS.TARIF21T  [i] = cupval.TARIF21T;
+                        CUPS.TARIF21T[i] = cupval.TARIF21T;
                     }
-                    CUPS.TEXT1         [i] = '';
+                    CUPS.TEXT1[i] = '';
                     if (cupval.TEXT3) {
-                        CUPS.TEXT1     [i] = '<br>' + cupval.TEXT3;
+                        CUPS.TEXT1[i] = '<br>' + cupval.TEXT3;
                     }
                     if (cupval.TEXT2) {
-                        CUPS.TEXT1     [i] = '<br>' + cupval.TEXT2 + CUPS.TEXT1[i];
+                        CUPS.TEXT1[i] = '<br>' + cupval.TEXT2 + CUPS.TEXT1[i];
                     }
                     if (cupval.TEXT1) {
-                        CUPS.TEXT1     [i] = cupval.TEXT1 + CUPS.TEXT1[i];
+                        CUPS.TEXT1[i] = cupval.TEXT1 + CUPS.TEXT1[i];
                     }
-                    CUPS.TYP           [i] = cupval.TYP;
-                    CUPS.VOLLAB        [i] = cupval.VOLLAB;
+                    CUPS.TYP[i] = cupval.TYP;
+                    CUPS.VOLLAB[i] = cupval.VOLLAB;
                     if (cupval.TURNIER) {
-                        CUPS.TURNIER   [i] = cupval.TURNIER;
+                        CUPS.TURNIER[i] = cupval.TURNIER;
                     }
                 }
             }
@@ -209,8 +223,8 @@ function loadCUPS(pTitel, pText, pForce) {
         }
 
         if (LS.VIP !== hVIP
-                || LS.LoadCups
-                || LS.Schreiber !== mSchreiber) {
+            || LS.LoadCups
+            || LS.Schreiber !== mSchreiber) {
             LS.VIP = hVIP;
             LS.LoadCups = 0;
             if (mSchreiber) {
@@ -236,8 +250,8 @@ function loadCUPS(pTitel, pText, pForce) {
             return;
         }
 
+        whenCUPSloaded(true);
 
-        whenCUPSloaded();
     }, function (error) {
         showEineDBWarnung(error, 'loadCUPS()', 'CUPS once');
         return false;

@@ -21,6 +21,7 @@ function myJBoxClose() {
 function iABWTARIFEonClick() {
     if ($("#iABWTARIFE").prop("checked")) {
         if ($("#iR_WR").prop("checked")) {
+            $('#dZusSpiele').show();
             $("#iTARIF1").val(1); // Rufer
             $("#iTARIF2").val(4); // 6er
             $("#iTARIF3").val(5); // 3er
@@ -37,6 +38,7 @@ function iABWTARIFEonClick() {
             $("#iTARIF20T").val(''); // Absolut
             $("#iTARIF21T").val(''); // XY
         } else if ($("#iR_OOE").prop("checked")) {
+            $('#dZusSpiele').show();
             $("#iTARIF1").val(1); // Rufer
             $("#iTARIF2").val(4); // 6er
             $("#iTARIF3").val(4); // 3er
@@ -53,6 +55,7 @@ function iABWTARIFEonClick() {
             $("#iTARIF20T").val(''); // Absolut
             $("#iTARIF21T").val(''); // XY
         } else {
+            $('#dZusSpiele').hide();
             $("#iTARIF1").val(1); // Rufer
             $("#iTARIF2").val(4); // 6er
             $("#iTARIF3").val(5); // 3er
@@ -92,6 +95,17 @@ function iANMELDERFonClick() {
     }
 }
 
+function iSEMIOUVERTonClick() {
+
+    if ($("#iSEMIOUVERT").prop("checked")) {
+        $('#tSemiouvert').text(' Semiouvert:');
+        $('#tOuvert').text(' Ouvert:');
+    } else {
+        $('#tSemiouvert').text(' Pi/Zwi. ouvert:');
+        $('#tOuvert').text(' Bettler ouvert:');
+    }
+}
+
 function rundeKopieren() {
     'use strict';
     if (myJBox) {
@@ -101,25 +115,25 @@ function rundeKopieren() {
     myJBox = new jBox('Modal', {
         title: '<div class=M style="background-color:#27a;border:8px solid #27a;color: white;">&nbsp;' + hRundeTurnier + ' kopieren nach:</div>',
         content: '<div class=M>'
-                + '<div class="ui-grid-b">'
-                + '<div class="ui-block-a" style="width:22%;"> Index:</div>'
-                + '<div class="ui-block-b" style="width:15%;text-align:center;"><input id="iKIndex" type="number" min=1 max=999 data-role="none" style="background:silver;text-align:center;font-weight:bold;"></div>'
-                + '<div class="ui-block-c cRot" style="width:63%;margin-top:.8em;text-align:center" id=kFText></div>'
-                + '</div>'
-                + '<div class="ui-grid-a">'
-                + '<div class="ui-block-a" style="width:22%;"> Name:</div>'
-                + '<div class="ui-block-b" style="width:78%;text-align:left;"><input id="iKName" type="text" style="background:silver;font-weight:bold;"></div>'
-                + '</div>'
-                + '<div class="ui-grid-b">'
-                + '<div class="ui-block-a" style="width:22%;"> Admin:</div>'
-                + '<div class="ui-block-b" style="width:27%;text-align:left;"><input id="iAdmin" type="text" style="background:silver;font-weight:bold;"></div>'
-                + '</div>'
-                + '<div class="ui-grid-a">'
-                + '<div class="ui-block-a"><button onClick="myJBoxClose();" data-theme="a">zur&uuml;ck</button></div>'
-                + '<div class="ui-block-b"><button onClick="copyCUPS();" data-theme="e">kopieren</button></div>'
-                + '</div>'
-                + '</div>',
-        position: {x: 'center', y: 111}
+            + '<div class="ui-grid-b">'
+            + '<div class="ui-block-a" style="width:22%;"> Index:</div>'
+            + '<div class="ui-block-b" style="width:15%;text-align:center;"><input id="iKIndex" type="number" min=1 max=999 data-role="none" style="background:silver;text-align:center;font-weight:bold;"></div>'
+            + '<div class="ui-block-c cRot" style="width:63%;margin-top:.8em;text-align:center" id=kFText></div>'
+            + '</div>'
+            + '<div class="ui-grid-a">'
+            + '<div class="ui-block-a" style="width:22%;"> Name:</div>'
+            + '<div class="ui-block-b" style="width:78%;text-align:left;"><input id="iKName" type="text" style="background:silver;font-weight:bold;"></div>'
+            + '</div>'
+            + '<div class="ui-grid-b">'
+            + '<div class="ui-block-a" style="width:22%;"> Admin:</div>'
+            + '<div class="ui-block-b" style="width:27%;text-align:left;"><input id="iAdmin" type="text" style="background:silver;font-weight:bold;"></div>'
+            + '</div>'
+            + '<div class="ui-grid-a">'
+            + '<div class="ui-block-a"><button onClick="myJBoxClose();" data-theme="a">zur&uuml;ck</button></div>'
+            + '<div class="ui-block-b"><button onClick="copyCUPS();" data-theme="e">kopieren</button></div>'
+            + '</div>'
+            + '</div>',
+        position: { x: 'center', y: 111 }
     }).open();
 }
 
@@ -161,36 +175,38 @@ function copyCUPS() {
     }
 
     showEinenMoment(iName + ':', hRundeTurnier + ' wird erstellt.');
-    CUPS.ANMELDERF     [iNeu] = CUPS.ANMELDERF     [I];
-    CUPS.BEREadmin     [iNeu] = iAdmin;
-    CUPS.BEREschreiben [iNeu] = CUPS.BEREschreiben [I];
-    CUPS.DISPAB        [iNeu] = CUPS.DISPAB        [I];
+    CUPS.ANMELDERF[iNeu] = CUPS.ANMELDERF[I];
+    CUPS.BEREadmin[iNeu] = iAdmin;
+    CUPS.BEREschreiben[iNeu] = CUPS.BEREschreiben[I];
+    CUPS.DISPAB[iNeu] = CUPS.DISPAB[I];
     CUPS.DOPPELTERUNDEN[iNeu] = CUPS.DOPPELTERUNDEN[I];
-    CUPS.NAME          [iNeu] = iName;
-    CUPS.NAME2LEN      [iNeu] = CUPS.NAME2LEN      [I];
-    CUPS.NEXTTERMIN    [iNeu] = CUPS.NEXTTERMIN    [I];
-    CUPS.REGELN        [iNeu] = CUPS.REGELN        [I];
-    CUPS.RUNDEN        [iNeu] = CUPS.RUNDEN        [I];
+    CUPS.EINER[iNeu] = CUPS.EINER[I];
+    CUPS.SEMIOUVERT[iNeu] = CUPS.SEMIOUVERT[I];
+    CUPS.NAME[iNeu] = iName;
+    CUPS.NAME2LEN[iNeu] = CUPS.NAME2LEN[I];
+    CUPS.NEXTTERMIN[iNeu] = CUPS.NEXTTERMIN[I];
+    CUPS.REGELN[iNeu] = CUPS.REGELN[I];
+    CUPS.RUNDEN[iNeu] = CUPS.RUNDEN[I];
     CUPS.SPIELEAB[iNeu] = parseInt($("#iSPIELEAB").val()); // die Korrektur übernehmen
     if (isNaN(CUPS.SPIELEAB[iNeu])) {
         CUPS.SPIELEAB[I] = 0;
     }
 
-    CUPS.SPIELTAGE     [iNeu] = CUPS.SPIELTAGE     [I];
-    CUPS.WOCHEN        [iNeu] = CUPS.WOCHEN        [I];
-    CUPS.SPJERUNDE     [iNeu] = CUPS.SPJERUNDE     [I];
-    CUPS.SWNAME        [iNeu] = CUPS.SWNAME        [I];
-    CUPS.TARIF         [iNeu] = CUPS.TARIF         [I];
-    CUPS.TEXT1         [iNeu] = CUPS.TEXT1         [I];
-    CUPS.TYP           [iNeu] = CUPS.TYP           [I];
-    CUPS.VOLLAB        [iNeu] = CUPS.VOLLAB        [I];
+    CUPS.SPIELTAGE[iNeu] = CUPS.SPIELTAGE[I];
+    CUPS.WOCHEN[iNeu] = CUPS.WOCHEN[I];
+    CUPS.SPJERUNDE[iNeu] = CUPS.SPJERUNDE[I];
+    CUPS.SWNAME[iNeu] = CUPS.SWNAME[I];
+    CUPS.TARIF[iNeu] = CUPS.TARIF[I];
+    CUPS.TEXT1[iNeu] = CUPS.TEXT1[I];
+    CUPS.TYP[iNeu] = CUPS.TYP[I];
+    CUPS.VOLLAB[iNeu] = CUPS.VOLLAB[I];
     if (CUPS.TURNIER[I]) {
-        CUPS.TURNIER   [iNeu] = CUPS.TURNIER       [I];
+        CUPS.TURNIER[iNeu] = CUPS.TURNIER[I];
     } else {
-        CUPS.TURNIER   [iNeu] = null;
+        CUPS.TURNIER[iNeu] = null;
     }
     if (iNeu === 4) {
-        CUPS.TEXT1     [iNeu] = iName + '<br>ist eine Kopie von<br><b>' + CUPS.NAME[I] + '</b>.';
+        CUPS.TEXT1[iNeu] = iName + '<br>ist eine Kopie von<br><b>' + CUPS.NAME[I] + '</b>.';
         LS.TURCODE = 0;
         LS.TURADMIN = '';
         LS.TURTIMESTAMP = null;
@@ -203,24 +219,26 @@ function copyCUPS() {
     hCUPS.ANMELDERF = CUPS.ANMELDERF[I];
     hCUPS.BEREadmin = iAdmin;
     hCUPS.BEREschreiben = CUPS.BEREschreiben[I];
-    hCUPS.DISPAB = CUPS.DISPAB      [I];
+    hCUPS.DISPAB = CUPS.DISPAB[I];
     hCUPS.DOPPELTERUNDEN = CUPS.DOPPELTERUNDEN[I];
+    hCUPS.EINER = CUPS.EINER[I];
+    hCUPS.SEMIOUVERT = CUPS.SEMIOUVERT[I];
     hCUPS.NAME = iName;
-    hCUPS.NAME2LEN = CUPS.NAME2LEN  [I];
+    hCUPS.NAME2LEN = CUPS.NAME2LEN[I];
     hCUPS.NEXTTERMIN = CUPS.NEXTTERMIN[I];
-    hCUPS.REGELN = CUPS.REGELN      [I];
-    hCUPS.RUNDEN = CUPS.RUNDEN      [I];
-    hCUPS.SPIELEAB = CUPS.SPIELEAB  [I];
+    hCUPS.REGELN = CUPS.REGELN[I];
+    hCUPS.RUNDEN = CUPS.RUNDEN[I];
+    hCUPS.SPIELEAB = CUPS.SPIELEAB[I];
     hCUPS.SPIELTAGE = CUPS.SPIELTAGE[I];
-    hCUPS.WOCHEN = CUPS.WOCHEN      [I];
+    hCUPS.WOCHEN = CUPS.WOCHEN[I];
     hCUPS.SPJERUNDE = CUPS.SPJERUNDE[I];
-    hCUPS.SWNAME = CUPS.SWNAME      [I];
-    hCUPS.TARIF = CUPS.TARIF        [I];
-    hCUPS.TARIF20T = CUPS.TARIF20T  [I];
-    hCUPS.TARIF21T = CUPS.TARIF21T  [I];
-    hCUPS.TEXT1 = CUPS.TEXT1        [I];
-    hCUPS.TYP = CUPS.TYP            [I];
-    hCUPS.VOLLAB = CUPS.VOLLAB      [I];
+    hCUPS.SWNAME = CUPS.SWNAME[I];
+    hCUPS.TARIF = CUPS.TARIF[I];
+    hCUPS.TARIF20T = CUPS.TARIF20T[I];
+    hCUPS.TARIF21T = CUPS.TARIF21T[I];
+    hCUPS.TEXT1 = CUPS.TEXT1[I];
+    hCUPS.TYP = CUPS.TYP[I];
+    hCUPS.VOLLAB = CUPS.VOLLAB[I];
     if (CUPS.TURNIER[I]) {
         hCUPS.TURNIER = CUPS.TURNIER[I];
     }
@@ -229,32 +247,32 @@ function copyCUPS() {
     }
 
     firebase.database().ref('/00/CUPS/' + ('000' + iNeu).substr(-3))
-            .set(hCUPS)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
-            .then(function () {
-                if (iNeu === 4) {
-//                    loadSTAT(I, '', false, copySTAT);
-                    firebase.database().ref('/00/' + ('000' + iNeu).substr(-3)).once('value')
-                            .then(function (snapshot) {
-                                firebase.database().ref('/00/004')
-                                        .set(snapshot.val())  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
-                                        .then(function () {
-                                            copyEND();
-                                        })
-                                        .catch(function (error) {
-                                            showEineDBWarnung(error, 'copyCUPS()', 'Set /00/004.');
-                                        });
-                            }, function (error) {
-                                showEineDBWarnung(error, 'copyCUPS()', 'Get /00/' + ('000' + iNeu).substr(-3) + '.');
-                                return false;
+        .set(hCUPS)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+        .then(function () {
+            if (iNeu === 4) {
+                //                    loadSTAT(I, '', false, copySTAT);
+                firebase.database().ref('/00/' + ('000' + iNeu).substr(-3)).once('value')
+                    .then(function (snapshot) {
+                        firebase.database().ref('/00/004')
+                            .set(snapshot.val())  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+                            .then(function () {
+                                copyEND();
+                            })
+                            .catch(function (error) {
+                                showEineDBWarnung(error, 'copyCUPS()', 'Set /00/004.');
                             });
-                } else {
-                    copyEND();
-                }
-            })
-            .catch(function (error) {
-                showEinenFehler('Internet Verbindungsfehler.', 'Später noch mal probieren.');
-                console.error("onSubmitCup: Nix is OK !");
-            });
+                    }, function (error) {
+                        showEineDBWarnung(error, 'copyCUPS()', 'Get /00/' + ('000' + iNeu).substr(-3) + '.');
+                        return false;
+                    });
+            } else {
+                copyEND();
+            }
+        })
+        .catch(function (error) {
+            showEinenFehler('Internet Verbindungsfehler.', 'Später noch mal probieren.');
+            console.error("onSubmitCup: Nix is OK !");
+        });
 }
 
 function copySTAT() {
@@ -281,13 +299,13 @@ function copySTAT() {
     }
 
     firebase.database().ref('/00/' + ('000' + iNeu).substr(-3))
-            .set(hSTAT)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
-            .then(function () {
-                copyEND();
-            })
-            .catch(function (error) {
-                showEineDBWarnung(error, 'copySTAT()', 'STAT set');
-            });
+        .set(hSTAT)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+        .then(function () {
+            copyEND();
+        })
+        .catch(function (error) {
+            showEineDBWarnung(error, 'copySTAT()', 'STAT set');
+        });
 }
 
 function copyEND() {
@@ -345,7 +363,7 @@ function onSubmit() {
     }
 
     if (CUPS.TYP[I] === 'CUP' || CUPS.TYP[I] === 'ET' || CUPS.TYP[I] === 'MT'
-            || (LS.ME === '3425' || LS.ME === '3244') && CUPS.BEREadmin[I].indexOf(LS.ME) > 0) {
+        || (LS.ME === '3425' || LS.ME === '3244') && CUPS.BEREadmin[I].indexOf(LS.ME) > 0) {
         $("#iBEREadmin").removeClass('ui-disabled');
         CUPS.BEREadmin[I] = $("#iBEREadmin").val().trim();
         if (CUPS.BEREadmin[I] === '') {
@@ -395,6 +413,21 @@ function onSubmit() {
         CUPS.DOPPELTERUNDEN[I] = true;
     } else {
         CUPS.DOPPELTERUNDEN[I] = false;
+    }
+    if (CUPS.REGELN[I] === 'Ti.') {
+        CUPS.EINER[I] = false;
+        CUPS.SEMIOUVERT[I] = false;
+    } else {
+        if ($("#iEINER").is(':checked')) {
+            CUPS.EINER[I] = true;
+        } else {
+            CUPS.EINER[I] = false;
+        }
+        if ($("#iSEMIOUVERT").is(':checked')) {
+            CUPS.SEMIOUVERT[I] = true;
+        } else {
+            CUPS.SEMIOUVERT[I] = false;
+        }
     }
     CUPS.ANMELDERF[I] = $("#iANMELDERF").is(':checked');
     if ($("#dABWTARIFE").is(":visible")) {
@@ -462,126 +495,138 @@ function onSubmit() {
     hCUPS.ANMELDERF = CUPS.ANMELDERF[I];
     hCUPS.BEREadmin = CUPS.BEREadmin[I];
     hCUPS.BEREschreiben = CUPS.BEREschreiben[I];
-    hCUPS.DISPAB = CUPS.DISPAB      [I];
-    hCUPS.NAME = CUPS.NAME          [I];
-    hCUPS.NAME2LEN = CUPS.NAME2LEN  [I];
+    hCUPS.DISPAB = CUPS.DISPAB[I];
+    hCUPS.NAME = CUPS.NAME[I];
+    hCUPS.NAME2LEN = CUPS.NAME2LEN[I];
     hCUPS.NEXTTERMIN = CUPS.NEXTTERMIN[I];
-    hCUPS.REGELN = CUPS.REGELN      [I];
-    hCUPS.RUNDEN = CUPS.RUNDEN      [I];
-    hCUPS.SPIELEAB = CUPS.SPIELEAB  [I];
+    hCUPS.REGELN = CUPS.REGELN[I];
+    hCUPS.RUNDEN = CUPS.RUNDEN[I];
+    hCUPS.SPIELEAB = CUPS.SPIELEAB[I];
     hCUPS.SPIELTAGE = CUPS.SPIELTAGE[I];
-    hCUPS.WOCHEN = CUPS.WOCHEN      [I];
+    hCUPS.WOCHEN = CUPS.WOCHEN[I];
     hCUPS.SPJERUNDE = CUPS.SPJERUNDE[I];
-    hCUPS.SWNAME = CUPS.SWNAME      [I];
+    hCUPS.SWNAME = CUPS.SWNAME[I];
     hCUPS.DOPPELTERUNDEN = CUPS.DOPPELTERUNDEN[I];
-    hCUPS.TARIF = CUPS.TARIF        [I];
-    hCUPS.TARIF20T = CUPS.TARIF20T  [I];
-    hCUPS.TARIF21T = CUPS.TARIF21T  [I];
-    hCUPS.TEXT1 = CUPS.TEXT1        [I];
-    hCUPS.TYP = CUPS.TYP            [I];
-    hCUPS.VOLLAB = CUPS.VOLLAB      [I];
+    hCUPS.EINER = CUPS.EINER[I];
+    hCUPS.SEMIOUVERT = CUPS.SEMIOUVERT[I];
+    hCUPS.TARIF = CUPS.TARIF[I];
+    hCUPS.TARIF20T = CUPS.TARIF20T[I];
+    hCUPS.TARIF21T = CUPS.TARIF21T[I];
+    hCUPS.TEXT1 = CUPS.TEXT1[I];
+    hCUPS.TYP = CUPS.TYP[I];
+    hCUPS.VOLLAB = CUPS.VOLLAB[I];
     if (CUPS.TURNIER[I]) {
         hCUPS.TURNIER = CUPS.TURNIER[I];
         hCUPS.MELDSTAT = CUPS.MELDSTAT[I];
     }
 
     firebase.database().ref('/00/CUPS/' + ("000" + I).substr(-3))
-            .update(hCUPS)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
-            .then(function () {
-                firebase.database().ref('/00/CUPS')
-                        .update({TIMESTAMP: firebase.database.ServerValue.TIMESTAMP})
-                        .then(function () {
-                            localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
-                            if (LS.I === I) {
-                                LS.CupName = CUPS.NAME[LS.I];
-                                LS.Regeln = CUPS.REGELN[LS.I];
-                                LS.Spieltyp = CUPS.TYP[LS.I];
-                                LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
-                                if (CUPS.DOPPELTERUNDEN[LS.I]) {
-                                    LS.DoppelteRunden = true;
-                                } else {
-                                    LS.DoppelteRunden = false;
-                                }
-                            }
-                            LS.ShowCups = I;
-                            LS.Meldung = 'Die Parameter wurden geändert!';
-                            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-                            if (mCupLoeschen === 1) {
-                                statistikLoeschen();
-                            } else {
-                                if (CUPS.NEXTTERMIN[I] !== oNEXTTERMIN) {
-                                    updNEXTTERMIN();
-                                } else {
-                                    setTimeout(function () {
-                                        window.history.go(-1);
-                                    });
-                                }
-                            }
-                        })
-                        .catch(function (error) {
-                            showEinenDBFehler(error);
-                        });
-            })
-            .catch(function (error) {
-                showEinenFehler('Internet Verbindungsfehler.', 'Sp&auml;ter noch mal probieren.');
-                console.error("onSubmitCup: Nix is OK !");
-            });
+        .update(hCUPS)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+        .then(function () {
+            firebase.database().ref('/00/CUPS')
+                .update({ TIMESTAMP: firebase.database.ServerValue.TIMESTAMP })
+                .then(function () {
+                    localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
+                    if (LS.I === I) {
+                        LS.CupName = CUPS.NAME[LS.I];
+                        LS.Regeln = CUPS.REGELN[LS.I];
+                        LS.Spieltyp = CUPS.TYP[LS.I];
+                        LS.SpieleJeRunde = CUPS.SPJERUNDE[LS.I];
+                        if (CUPS.DOPPELTERUNDEN[LS.I]) {
+                            LS.DoppelteRunden = true;
+                        } else {
+                            LS.DoppelteRunden = false;
+                        }
+                        if (CUPS.EINER[LS.I]) {
+                            LS.Einer = true;
+                        } else {
+                            LS.Einer = false;
+                        }
+                        if (CUPS.SEMIOUVERT[LS.I]) {
+                            LS.Semiouvert = true;
+                        } else {
+                            LS.Semiouvert = false;
+                        }
+                    }
+                    LS.ShowCups = I;
+                    LS.Meldung = 'Die Parameter wurden geändert!';
+                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                    if (mCupLoeschen === 1) {
+                        statistikLoeschen();
+                    } else {
+                        if (CUPS.NEXTTERMIN[I] !== oNEXTTERMIN) {
+                            updNEXTTERMIN();
+                        } else {
+                            setTimeout(function () {
+                                window.history.go(-1);
+                            });
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    showEinenDBFehler(error);
+                });
+        })
+        .catch(function (error) {
+            showEinenFehler('Internet Verbindungsfehler.', 'Später noch mal probieren.');
+            console.error("onSubmitCup: Nix is OK !");
+        });
     return false;
 }
 
 function statistikLoeschen() {
     'use strict';
-//  showEinenFehler('Statistik wird gelöscht.', 'Einen Moment bitte.')
+    //  showEinenFehler('Statistik wird gelöscht.', 'Einen Moment bitte.')
     $('#tLoeschen').html('Die Statistik wird gelöscht!');
     var hCUPname = (("000" + I).substr(-3) + ' ' + CUPS.NAME[I]).replace(/\./g, "").replace(/\#/g, "").replace(/\$/g, "").replace(/\[/g, "").replace(/\]/g, "");
     firebase.database().ref('/00/' + hCUPname)
-            .set(null)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
-            .then(function () {
-                firebase.database().ref('/00/' + ("000" + I).substr(-3))
-                        .set(null)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
-                        .then(function () {
-                            if (localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3)) !== null) {
-                                localStorage.removeItem("Abakus.STAT" + ("000" + I).substr(-3));
-                            }
-                            LS.ShowCups = I;
-                            LS.Meldung = 'Die Statistik wurde gelöscht!';
-                            $('#tLoeschen').html(LS.Meldung);
-                            localStorage.setItem('Abakus.LS', JSON.stringify(LS));
-                            if (CUPS.NEXTTERMIN[I] !== oNEXTTERMIN) {
-                                updNEXTTERMIN();
-                            } else {
-                                setTimeout(function () {
-                                    window.history.go(-1);
-                                });
-                            }
-                        })
-                        .catch(function (error) {
-                            showEinenDBFehler(error);
+        .set(null)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+        .then(function () {
+            firebase.database().ref('/00/' + ("000" + I).substr(-3))
+                .set(null)  // ACHTUNG !!! .set(...) ist gefählich wie sonst nichts
+                .then(function () {
+                    if (localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3)) !== null) {
+                        localStorage.removeItem("Abakus.STAT" + ("000" + I).substr(-3));
+                    }
+                    LS.ShowCups = I;
+                    LS.Meldung = 'Die Statistik wurde gelöscht!';
+                    $('#tLoeschen').html(LS.Meldung);
+                    localStorage.setItem('Abakus.LS', JSON.stringify(LS));
+                    if (CUPS.NEXTTERMIN[I] !== oNEXTTERMIN) {
+                        updNEXTTERMIN();
+                    } else {
+                        setTimeout(function () {
+                            window.history.go(-1);
                         });
-            })
-            .catch(function (error) {
-                showEinenDBFehler(error);
-            });
+                    }
+                })
+                .catch(function (error) {
+                    showEinenDBFehler(error);
+                });
+        })
+        .catch(function (error) {
+            showEinenDBFehler(error);
+        });
 }
 
 function updNEXTTERMIN() {
     'use strict';
     firebase.database().ref('/00/' + ("000" + I).substr(-3))
-            .update({
-                NEXTTERMIN: CUPS.NEXTTERMIN[I],
-                ZULETZTupd: new Date().toISOString()
-            })
-            .then(function () {
-                if (localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3)) !== null) {
-                    localStorage.removeItem("Abakus.STAT" + ("000" + I).substr(-3));
-                }
-                setTimeout(function () {
-                    window.history.go(-1);
-                });
-            })
-            .catch(function (error) {
-                showEinenDBFehler(error);
+        .update({
+            NEXTTERMIN: CUPS.NEXTTERMIN[I],
+            ZULETZTupd: new Date().toISOString()
+        })
+        .then(function () {
+            if (localStorage.getItem("Abakus.STAT" + ("000" + I).substr(-3)) !== null) {
+                localStorage.removeItem("Abakus.STAT" + ("000" + I).substr(-3));
+            }
+            setTimeout(function () {
+                window.history.go(-1);
             });
+        })
+        .catch(function (error) {
+            showEinenDBFehler(error);
+        });
 }
 
 $(document).bind('pageinit', function () {
@@ -648,7 +693,9 @@ $(document).bind('pageinit', function () {
             editor.content.innerHTML = CUPS.TEXT1[I];
         }, 0);
     }
-
+    if (CUPS.REGELN[I] === 'Ti.') {
+        $("#dZusSpiele").hide();
+    }
     $("input:radio[name=iREGELN][value='Wr.']").prop('checked', (CUPS.REGELN[I] === 'Wr.')).checkboxradio("refresh");
     $("input:radio[name=iREGELN][value='Ooe.']").prop('checked', (CUPS.REGELN[I] === 'Ooe.')).checkboxradio("refresh");
     $("input:radio[name=iREGELN][value='Ti.']").prop('checked', (CUPS.REGELN[I] === 'Ti.')).checkboxradio("refresh");
@@ -656,11 +703,20 @@ $(document).bind('pageinit', function () {
         CUPS.DOPPELTERUNDEN[I] = false;
         $("#iDOPRUNDEN").attr("disabled", true);
     }
-
     if (CUPS.DOPPELTERUNDEN[I]) {
         $("#iDOPRUNDEN").prop("checked", true).checkboxradio("refresh");
     } else {
         $("#iDOPRUNDEN").prop("checked", false).checkboxradio("refresh");
+    }
+    if (CUPS.EINER[I]) {
+        $("#iEINER").prop("checked", true).checkboxradio("refresh");
+    } else {
+        $("#iEINER").prop("checked", false).checkboxradio("refresh");
+    }
+    if (CUPS.SEMIOUVERT[I]) {
+        $("#iSEMIOUVERT").prop("checked", true).checkboxradio("refresh");
+    } else {
+        $("#iSEMIOUVERT").prop("checked", false).checkboxradio("refresh");
     }
     if (CUPS.ANMELDERF[I]) {
         $("#iANMELDERF").prop("checked", true).checkboxradio("refresh");
@@ -825,7 +881,7 @@ $(document).bind('pageinit', function () {
     $("#iSWNAME" + CUPS.SWNAME[I]).prop("checked", true).checkboxradio("refresh");
     $("#iNAME2LEN").val(CUPS.NAME2LEN[I]);
     if (new Date(CUPS.NEXTTERMIN[I]).toDateString() === new Date().toDateString()
-            || CUPS.NEXTTERMIN[I] > Date.now()) {
+        || CUPS.NEXTTERMIN[I] > Date.now()) {
         oNEXTTERMIN = CUPS.NEXTTERMIN[I];
         $("#iNEXTTERMIN").val(new Date(CUPS.NEXTTERMIN[I]).toISOString().substr(0, 10));
     }

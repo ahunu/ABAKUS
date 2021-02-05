@@ -7,10 +7,12 @@
     color: #eee !important;
     background: #650000 !important;
 }
+
 .bgKontra4 {
     color: #eee !important;
     background: #a00000 !important;
 }
+
 .bgKontra8 {
     color: #eee !important;
     background: #d00000 !important;
@@ -24,6 +26,7 @@
     line-height: 1em;
     vertical-align: middle;
 }
+
 .zmdi-innericon {
     position: absolute;
     left: 0;
@@ -31,83 +34,146 @@
     width: 100%;
     text-align: center;
 }
+
 .zmdi-hc-inverse {
     color: #ffffff;
 }
+
 .zmdi-bg-circle:before {
     content: '\f26c';
     font-size: 1.4em;
 }
+
 .zmdi-bg-fullcircle:before {
     content: '\f26d';
     font-size: 1.4em;
 }
+
 .zmdi-cross-mark:before {
     content: '\2717';
     stop: -0.11em;
 }
+
 .zmdi-pm-plus:before {
     content: '\f278';
     font-size: 1em;
     wposition: absolute;
     top: -0.11em;
 }
+
 .zmdi-pm:before {
     content: '\2215';
     font-weight: bold;
     top: -0.11em;
 }
+
 .zmdi-pm-minus:before {
     content: '\f273';
     top: -0.11em;
 }
+
 .zmdi-plus-minus:before {
     content: '\pm';
 }
+
 .zmdi-minus-or-plus:before {
     content: '\2213';
 }
+
 .zmdi-wifi-alt:before {
     content: '\f2e3';
 }
+
 .zmdi-wifi-off:before {
     content: '\f2e6';
 }
 
 
 li {
-    padding: 0; margin: 0
+    padding: 0;
+    margin: 0
 }
 
-.ui-radio, .ui-checkbox {
+.ui-radio,
+.ui-checkbox {
     padding: 0
 }
 
 input {
-    padding:0em; 
-    margin:0em;
+    padding: 0em;
+    margin: 0em;
     width: 100%;
-    background:Gainsboro;
-    font-weight:bold;
+    background: Gainsboro;
+    font-weight: bold;
 }
 
 @media print {
-    @page { margin: 0.5cm; } 
-    .noprint, .noprint * { display: none !important;}
-    .page-break	{ display: block; page-break-before: always; }
-    .XXL{font-size: calc(1.45vw + 17px);}
-    .XL {font-size: calc(1.33vw + 15px);}
-    .L3 {font-size: calc(1.25vw + 14px);}
-    .L2 {font-size: calc(1.17vw + 13px);}
-    .L, input, .ui-btn, .ui-radio, .ui-checkbox {font-size: calc(1.1vw + 12px) !important;}
-    .M2 {font-size: calc(0.96vw + 11px);}
-    .M {font-size: calc(0.92vw + 10px);}
-    .S3 {font-size: calc(0.91vw + 9px);}
-    .S2 {font-size: calc(0.90vw + 8px);}
-    .S {font-size: calc(0.89vw + 7px);}
-    .XS {font-size: calc(0.88vw + 6px);}
-    .XXS {font-size: calc(0.88vw + 6px);}
-}       
+    @page {
+        margin: 0.5cm;
+    }
+
+    .noprint,
+    .noprint * {
+        display: none !important;
+    }
+
+    .page-break {
+        display: block;
+        page-break-before: always;
+    }
+
+    .XXL {
+        font-size: calc(1.45vw + 17px);
+    }
+
+    .XL {
+        font-size: calc(1.33vw + 15px);
+    }
+
+    .L3 {
+        font-size: calc(1.25vw + 14px);
+    }
+
+    .L2 {
+        font-size: calc(1.17vw + 13px);
+    }
+
+    .L,
+    input,
+    .ui-btn,
+    .ui-radio,
+    .ui-checkbox {
+        font-size: calc(1.1vw + 12px) !important;
+    }
+
+    .M2 {
+        font-size: calc(0.96vw + 11px);
+    }
+
+    .M {
+        font-size: calc(0.92vw + 10px);
+    }
+
+    .S3 {
+        font-size: calc(0.91vw + 9px);
+    }
+
+    .S2 {
+        font-size: calc(0.90vw + 8px);
+    }
+
+    .S {
+        font-size: calc(0.89vw + 7px);
+    }
+
+    .XS {
+        font-size: calc(0.88vw + 6px);
+    }
+
+    .XXS {
+        font-size: calc(0.88vw + 6px);
+    }
+}
 
 .iconJQM::after {
     background-size: 32px !important;
@@ -131,49 +197,126 @@ iPad 5. Gen.: 1024 x 748
 
 */
 
-@media only screen and (orientation : portrait) and (max-width: 375px) { /* Galaxy A3, Note4 */
+@media only screen and (orientation : portrait) and (max-width: 375px) {
+    /* Galaxy A3, Note4 */
 
-    .cLinks,#dLinks { width: 100% !important }
-    .cSmartphone, #p360 { display: block !important }
-    .cQUER, .cTablet, #dPC, #p361, #p451 { display: none !important }
+    .cLinks,
+    #dLinks {
+        width: 100% !important
+    }
 
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(5.5vw + 4px) !important;} /* index Runden/Cups */
-    .ui-btn {padding: .22em .2em !important;}
+    .cSmartphone,
+    #p360 {
+        display: block !important
+    }
 
-    .XXL {font-size: calc(3.9vw + 35px) !important;} /* Abakus Balken */
-    .XL {font-size: calc(1.38vw + 20px) !important;}
-    .L3 {font-size: 8vw !important;}  /* Vorhand */
-    .L2 {font-size: 7.2vw !important;}  /* Vorhand */
-    .L {font-size: 6.44vw !important;}
-    .M3 {font-size: 5.4vw !important;} /* A3 Navbar Private Runden */
-    .M2 {font-size: 5.4vw !important;}                /* A3 */
-    .M  {font-size: 5.33vw !important;}
-    .S3 {font-size: 5.26vw !important;}
-    .S2 {font-size: 5.2vw !important;}
-    .S  {font-size: 4.9vw !important;}
-    .XS {font-size: 4.8vw !important;}
+    .cQUER,
+    .cTablet,
+    #dPC,
+    #p361,
+    #p451 {
+        display: none !important
+    }
 
-    .LL3 {font-size: 7.8vw !important;}  /* A3 */
-    .LL2 {font-size: 7.1vw !important;}  /* A3 */
+    input,
+    .ui-btn,
+    .ui-radio,
+    .ui-checkbox,
+    .ui-li-divider {
+        font-size: calc(5.5vw + 4px) !important;
+    }
 
-    .i {    /* Edit */
-        display: inline-block;   
-        font: normal normal normal 6.9vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
+    /* index Runden/Cups */
+    .ui-btn {
+        padding: .22em .2em !important;
+    }
+
+    .XXL {
+        font-size: calc(3.9vw + 35px) !important;
+    }
+
+    /* Abakus Balken */
+    .XL {
+        font-size: calc(1.38vw + 20px) !important;
+    }
+
+    .L3 {
+        font-size: 8vw !important;
+    }
+
+    /* Vorhand */
+    .L2 {
+        font-size: 7.2vw !important;
+    }
+
+    /* Vorhand */
+    .L {
+        font-size: 6.44vw !important;
+    }
+
+    .M3 {
+        font-size: 5.4vw !important;
+    }
+
+    /* A3 Navbar Private Runden */
+    .M2 {
+        font-size: 5.4vw !important;
+    }
+
+    /* A3 */
+    .M {
+        font-size: 5.33vw !important;
+    }
+
+    .S3 {
+        font-size: 5.26vw !important;
+    }
+
+    .S2 {
+        font-size: 5.2vw !important;
+    }
+
+    .S {
+        font-size: 4.9vw !important;
+    }
+
+    .XS {
+        font-size: 4.8vw !important;
+    }
+
+    .LL3 {
+        font-size: 7.8vw !important;
+    }
+
+    /* A3 */
+    .LL2 {
+        font-size: 7.1vw !important;
+    }
+
+    /* A3 */
+
+    .i {
+        /* Edit */
+        display: inline-block;
+        font: normal normal normal 6.9vw 'Material-Design-Iconic-Font';
+        /* Statistik Menüicons */
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .iconL {   /* Edit */
-        display: inline-block;   
+    .iconL {
+        /* Edit */
+        display: inline-block;
         font: normal normal normal 10vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .iconXL {   /* Edit */
-        display: inline-block;   
+    .iconXL {
+        /* Edit */
+        display: inline-block;
         font: normal normal normal 12vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -188,69 +331,150 @@ iPad 5. Gen.: 1024 x 748
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-animation: zmdi-spin-reverse 1.5s infinite linear;
-        animation: zmdi-spin-reverse 1.5s infinite linear;  
+        animation: zmdi-spin-reverse 1.5s infinite linear;
     }
+
     .iBtn {
         background-color: rgba(0, 0, 0, 0.07);
         padding: .1em .1em;
         border: solid 0.05em #9e9e9e;
-        border-radius: 5px;  
+        border-radius: 5px;
     }
+
     .iDisk {
         border-radius: 1em;
         background-color: rgba(0, 0, 0, 0.33);
         color: white;
     }
+
     .iOval {
         border-radius: 0.3em;
-        background-color: rgba(0, 0, 0, 0.133);  
+        background-color: rgba(0, 0, 0, 0.133);
     }
 }
 
-@media only screen and (orientation : portrait) and (min-width: 376px) and (max-width: 450px) { /* Galaxy S8+ */
+@media only screen and (orientation : portrait) and (min-width: 376px) and (max-width: 450px) {
+    /* Galaxy S8+ */
 
-    .cLinks, #dLinks { width: 100% !important }
-    .cSmartphone, #p361 { display: block !important }
-    .cQUER, .cTablet, #dPC, #p360, #p451 { display: none !important }
+    .cLinks,
+    #dLinks {
+        width: 100% !important
+    }
 
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(4.9vw + 3px) !important;} /* index Runden/Cups */
-    .ui-btn {padding: .19em .18em !important;}
-    .Sbtn {font-size: 5.04vw !important;}
+    .cSmartphone,
+    #p361 {
+        display: block !important
+    }
 
-    .XXL {font-size: calc(3.43vw + 31.5px) !important;} /* Abakus Balken */
-    .XL {font-size: calc(1.214vw + 18px) !important;}
-    .L3 {font-size: 7.04vw !important;}  /* Vorhand */
-    .L2 {font-size: 6.336vw !important;}  /* Vorhand */
-    .L {font-size: 5.67vw !important;}
-    .M3 {font-size: 5.2vw !important;} /* RundenStatistik Navbar */
-    .M2 {font-size: 4.8vw !important;}  /* 5.04vw */
-    .M  {font-size: 4.7vw !important;}
-    .S3 {font-size: 4.59vw !important;}
-    .S2 {font-size: 4.58vw !important;}
-    .S  {font-size: 4.31vw !important;}
-    .XS {font-size: 4.22vw !important;}
+    .cQUER,
+    .cTablet,
+    #dPC,
+    #p360,
+    #p451 {
+        display: none !important
+    }
 
-    .LL3 {font-size: 7.48vw !important;}  /* Spiele und Punkte */
-    .LL2 {font-size: 7.04vw !important;}
+    input,
+    .ui-btn,
+    .ui-radio,
+    .ui-checkbox,
+    .ui-li-divider {
+        font-size: calc(4.9vw + 3px) !important;
+    }
 
-    .i {    /* Edit */
-        display: inline-block;   
-        font: normal normal normal 6.07vw 'Material-Design-Iconic-Font'; /* Statistik Menüicons */
+    /* index Runden/Cups */
+    .ui-btn {
+        padding: .19em .18em !important;
+    }
+
+    .Sbtn {
+        font-size: 5.04vw !important;
+    }
+
+    .XXL {
+        font-size: calc(3.43vw + 31.5px) !important;
+    }
+
+    /* Abakus Balken */
+    .XL {
+        font-size: calc(1.214vw + 18px) !important;
+    }
+
+    .L3 {
+        font-size: 7.04vw !important;
+    }
+
+    /* Vorhand */
+    .L2 {
+        font-size: 6.336vw !important;
+    }
+
+    /* Vorhand */
+    .L {
+        font-size: 5.67vw !important;
+    }
+
+    .M3 {
+        font-size: 5.2vw !important;
+    }
+
+    /* RundenStatistik Navbar */
+    .M2 {
+        font-size: 4.8vw !important;
+    }
+
+    /* 5.04vw */
+    .M {
+        font-size: 4.7vw !important;
+    }
+
+    .S3 {
+        font-size: 4.59vw !important;
+    }
+
+    .S2 {
+        font-size: 4.58vw !important;
+    }
+
+    .S {
+        font-size: 4.31vw !important;
+    }
+
+    .XS {
+        font-size: 4.22vw !important;
+    }
+
+    .LL3 {
+        font-size: 7.48vw !important;
+    }
+
+    /* Spiele und Punkte */
+    .LL2 {
+        font-size: 7.04vw !important;
+    }
+
+    .i {
+        /* Edit */
+        display: inline-block;
+        font: normal normal normal 6.07vw 'Material-Design-Iconic-Font';
+        /* Statistik Menüicons */
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .iconL {   /* Edit */
-        display: inline-block;   
+    .iconL {
+        /* Edit */
+        display: inline-block;
         font: normal normal normal 8.8vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .iconXL {   /* Edit */
-        display: inline-block;   
+    .iconXL {
+        /* Edit */
+        display: inline-block;
         font: normal normal normal 10.56vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -265,68 +489,144 @@ iPad 5. Gen.: 1024 x 748
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-animation: zmdi-spin-reverse 1.5s infinite linear;
-        animation: zmdi-spin-reverse 1.5s infinite linear;  
+        animation: zmdi-spin-reverse 1.5s infinite linear;
     }
+
     .iBtn {
         background-color: rgba(0, 0, 0, 0.07);
         padding: .1em .1em;
         border: solid 0.05em #9e9e9e;
-        border-radius: 5px;  
+        border-radius: 5px;
     }
+
     .iDisk {
         border-radius: 1em;
         background-color: rgba(0, 0, 0, 0.33);
         color: white;
     }
+
     .iOval {
         border-radius: 0.3em;
-        background-color: rgba(0, 0, 0, 0.133);  
+        background-color: rgba(0, 0, 0, 0.133);
     }
 }
 
 @media screen and (orientation : portrait) and (min-width: 451px) {
 
-    .cLinks, #dLinks { width: 100% !important }
-    .cTablet, #p451 { display: block !important }
-    .cQUER, .cSmartphone, #dPC, #p360, #p361 { display: none !important }
+    .cLinks,
+    #dLinks {
+        width: 100% !important
+    }
 
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: calc(1.25vw + 20px) !important;}
-    .ui-btn {padding: .5vh .2em !important;}
+    .cTablet,
+    #p451 {
+        display: block !important
+    }
 
-    .XXL {font-size: calc(1vw + 50px) !important;} /* Abakus Balken */
-    .XL {font-size: calc(1.38vw + 26px) !important;} /* Zur Statistik, Ein neuer Tisch, Die nächsten Turniere */
-    .L3 {font-size: calc(1.34vw + 24px) !important;}
-    .L2 {font-size: calc(1.30vw + 22px) !important;}
-    .L  {font-size: calc(1.25vw + 20px) !important;}
-    .M3 {font-size: calc(1.15vw + 18px) !important;}
-    .M2, .Sbtn {font-size: calc(1.15vw + 18px) !important;}
-    .M  {font-size: calc(1.10vw + 16px) !important;}
-    .S3 {font-size: calc(1.07vw + 15px) !important;}
-    .S2 {font-size: calc(1.04vw + 14px) !important;}
-    .S  {font-size: calc(1.01vw + 13px) !important;}
-    .XS {font-size: calc(0.98vw + 12px) !important;}
+    .cQUER,
+    .cSmartphone,
+    #dPC,
+    #p360,
+    #p361 {
+        display: none !important
+    }
 
-    .LL3 {font-size: calc(3vw + 19px) !important;}   /* Buttons 4er und 5er Tische */
-    .LL2 {font-size: calc(1.5vw + 22px) !important;} /* Buttons 6er Tische */
+    input,
+    .ui-btn,
+    .ui-radio,
+    .ui-checkbox,
+    .ui-li-divider {
+        font-size: calc(1.25vw + 20px) !important;
+    }
 
-    .i {    /* Edit */
-        display: inline-block;   
-        font: normal normal normal 4.9vw 'Material-Design-Iconic-Font';  /* Statistik Menüicons */
+    .ui-btn {
+        padding: .5vh .2em !important;
+    }
+
+    .XXL {
+        font-size: calc(1vw + 50px) !important;
+    }
+
+    /* Abakus Balken */
+    .XL {
+        font-size: calc(1.38vw + 26px) !important;
+    }
+
+    /* Zur Statistik, Ein neuer Tisch, Die nächsten Turniere */
+    .L3 {
+        font-size: calc(1.34vw + 24px) !important;
+    }
+
+    .L2 {
+        font-size: calc(1.30vw + 22px) !important;
+    }
+
+    .L {
+        font-size: calc(1.25vw + 20px) !important;
+    }
+
+    .M3 {
+        font-size: calc(1.15vw + 18px) !important;
+    }
+
+    .M2,
+    .Sbtn {
+        font-size: calc(1.15vw + 18px) !important;
+    }
+
+    .M {
+        font-size: calc(1.10vw + 16px) !important;
+    }
+
+    .S3 {
+        font-size: calc(1.07vw + 15px) !important;
+    }
+
+    .S2 {
+        font-size: calc(1.04vw + 14px) !important;
+    }
+
+    .S {
+        font-size: calc(1.01vw + 13px) !important;
+    }
+
+    .XS {
+        font-size: calc(0.98vw + 12px) !important;
+    }
+
+    .LL3 {
+        font-size: calc(3vw + 19px) !important;
+    }
+
+    /* Buttons 4er und 5er Tische */
+    .LL2 {
+        font-size: calc(1.5vw + 22px) !important;
+    }
+
+    /* Buttons 6er Tische */
+
+    .i {
+        /* Edit */
+        display: inline-block;
+        font: normal normal normal 4.9vw 'Material-Design-Iconic-Font';
+        /* Statistik Menüicons */
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .iconL {   /* Edit */
-        display: inline-block;   
+    .iconL {
+        /* Edit */
+        display: inline-block;
         font: normal normal normal 7vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .iconXL {   /* Edit */
-        display: inline-block;   
+    .iconXL {
+        /* Edit */
+        display: inline-block;
         font: normal normal normal 9vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -341,40 +641,72 @@ iPad 5. Gen.: 1024 x 748
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-animation: zmdi-spin-reverse 1.5s infinite linear;
-        animation: zmdi-spin-reverse 1.5s infinite linear;  
+        animation: zmdi-spin-reverse 1.5s infinite linear;
     }
+
     .iBtn {
         background-color: rgba(0, 0, 0, 0.07);
         padding: .1em .1em;
         border: solid 0.05em #9e9e9e;
-        border-radius: 5px;  
+        border-radius: 5px;
     }
+
     .iDisk {
         border-radius: 1em;
         background-color: rgba(0, 0, 0, 0.33);
         color: white;
     }
+
     .iOval {
         border-radius: 0.3em;
-        background-color: rgba(0, 0, 0, 0.133);  
+        background-color: rgba(0, 0, 0, 0.133);
     }
 }
 
-@media screen and (orientation : landscape)  {
+@media screen and (orientation : landscape) {
 
-    .cLinks,#dLinks { width: 28% !important}
+    .cLinks,
+    #dLinks {
+        width: 28% !important
+    }
 
-    .TGL { display: none !important }
+    .TGL {
+        display: none !important
+    }
 
-    #dPC { display: block !important }
-    .cSmartphone, .cTablet, #p360, #p361, #p451 { display: none !important }
+    #dPC {
+        display: block !important
+    }
 
-    #pMenu, #hMenu { display: block !important }
-    hMix { display: none !important }
+    .cSmartphone,
+    .cTablet,
+    #p360,
+    #p361,
+    #p451 {
+        display: none !important
+    }
 
-    input, .ui-btn, .ui-radio, .ui-checkbox, .ui-li-divider {font-size: 1.85vw !important;}
+    #pMenu,
+    #hMenu {
+        display: block !important
+    }
 
-    .ui-btn {padding: .1em !important;}
+    hMix {
+        display: none !important
+    }
+
+    input,
+    .ui-btn,
+    .ui-radio,
+    .ui-checkbox,
+    .ui-li-divider {
+        font-size: 1.85vw !important;
+    }
+
+    .ui-btn {
+        padding: .1em !important;
+    }
+
     /*
         .XXL {font-size: 4.35vw !important;}   Abakus Balken 
         .XL {font-size: 2.22vw !important;}    Zur Statistik, Zur Anmeldung, Nächstes Turnier 
@@ -390,41 +722,94 @@ iPad 5. Gen.: 1024 x 748
         .XS {font-size: 1.39vw !important;}
         .XXS{font-size: 1.31vw !important;}*/
 
-    .XXL {font-size: 4.35vw !important;}  /* Abakus Balken */
-    .XL {font-size: 2.22vw !important;}   /* Zur Statistik, Zur Anmeldung, Nächstes Turnier */
-    .L3 {font-size: 1.9vw !important;}
-    .L2 {font-size: 1.83vw !important;}
-    .L  {font-size: 1.76vw !important;}
-    .M3 {font-size: 1.69vw !important;}
-    .M2, .Sbtn {font-size: 1.62vw !important;}
-    .M  {font-size: 1.55vw !important;}
-    .S3 {font-size: 1.50vw !important;}
-    .S2 {font-size: 1.45vw !important;}
-    .S  {font-size: 1.40vw !important;}
-    .XS {font-size: 1.35vw !important;}
-    .XXS{font-size: 1.30vw !important;}
+    .XXL {
+        font-size: 4.35vw !important;
+    }
 
-    .LL3 {font-size: 1.1vw !important;}  /* Buttons 4er und 5er Tische */
-    .LL2 {font-size: 1vw !important;}    /* Buttons 6er Tische */
+    /* Abakus Balken */
+    .XL {
+        font-size: 2.22vw !important;
+    }
 
-    .i {    /* Edit */
-        display: inline-block;   
-        font: normal normal normal 1.95vw 'Material-Design-Iconic-Font';  /* Statistik Menüicons */
+    /* Zur Statistik, Zur Anmeldung, Nächstes Turnier */
+    .L3 {
+        font-size: 1.9vw !important;
+    }
+
+    .L2 {
+        font-size: 1.83vw !important;
+    }
+
+    .L {
+        font-size: 1.76vw !important;
+    }
+
+    .M3 {
+        font-size: 1.69vw !important;
+    }
+
+    .M2,
+    .Sbtn {
+        font-size: 1.62vw !important;
+    }
+
+    .M {
+        font-size: 1.55vw !important;
+    }
+
+    .S3 {
+        font-size: 1.50vw !important;
+    }
+
+    .S2 {
+        font-size: 1.45vw !important;
+    }
+
+    .S {
+        font-size: 1.40vw !important;
+    }
+
+    .XS {
+        font-size: 1.35vw !important;
+    }
+
+    .XXS {
+        font-size: 1.30vw !important;
+    }
+
+    .LL3 {
+        font-size: 1.1vw !important;
+    }
+
+    /* Buttons 4er und 5er Tische */
+    .LL2 {
+        font-size: 1vw !important;
+    }
+
+    /* Buttons 6er Tische */
+
+    .i {
+        /* Edit */
+        display: inline-block;
+        font: normal normal normal 1.95vw 'Material-Design-Iconic-Font';
+        /* Statistik Menüicons */
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .iconL {   /* Edit */
-        display: inline-block;   
+    .iconL {
+        /* Edit */
+        display: inline-block;
         font: normal normal normal 2.3vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .iconXL {   /* Edit */
-        display: inline-block;   
+    .iconXL {
+        /* Edit */
+        display: inline-block;
         font: normal normal normal 3.8vw 'Material-Design-Iconic-Font';
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
@@ -439,27 +824,31 @@ iPad 5. Gen.: 1024 x 748
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-animation: zmdi-spin-reverse 1.5s infinite linear;
-        animation: zmdi-spin-reverse 1.5s infinite linear;  
+        animation: zmdi-spin-reverse 1.5s infinite linear;
     }
+
     .iBtn {
         background-color: rgba(0, 0, 0, 0.07);
         padding: .1em .1em;
         border: solid 0.05em #9e9e9e;
-        border-radius: 5px;  
+        border-radius: 5px;
     }
+
     .iDisk {
         border-radius: 1em;
         background-color: rgba(0, 0, 0, 0.33);
         color: white;
     }
+
     .iOval {
         border-radius: 0.3em;
-        background-color: rgba(0, 0, 0, 0.133);  
+        background-color: rgba(0, 0, 0, 0.133);
     }
 }
 
 /* stack all grids below 40em (640px) */
 @media all and (max-width: 100em) {
+
     .st-breakpoint .ui-block-a,
     .st-breakpoint .ui-block-b,
     .st-breakpoint .ui-block-c {
@@ -471,65 +860,83 @@ iPad 5. Gen.: 1024 x 748
 .zmdi-help:before {
     content: '\f1f6';
 }
+
 .zmdi-hc-rotate-270 {
     -webkit-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
     transform: rotate(270deg);
-} 
+}
+
 .zmdi-hc-rotate-180 {
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
-} 
+}
+
 .zmdi-hc-rotate-90 {
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-} 
+}
+
 .zmdi-hc-rotate-45 {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-} 
+}
+
 .zmdi-toll:before {
     content: '\f1e0';
 }
+
 .zmdi-gamepad:before {
     content: '\f298';
 }
+
 .zmdi-comment-text:before {
     content: '\f263';
 }
+
 .zmdi-graphic-eq:before {
     content: '\f387';
 }
+
 .zmdi-home:before {
     content: '\f175';
 }
+
 .zmdi-caret-up-circle:before {
     content: '\f2f7';
 }
+
 .zmdi-dot-circle:before {
     content: '\f26f';
 }
+
 .zmdi-close-circle-o:before {
     content: '\f134';
 }
+
 .zmdi-blocks:before {
     content: '\f316';
 }
+
 .zmdi-list:before {
     content: '\f23a';
 }
+
 .zmdi-minus-circle:before {
     content: '\f271';
 }
+
 .zmdi-plus-circle:before {
     content: '\f276';
 }
+
 .zmdi-sun:before {
     content: '\f1d6';
 }
+
 .zmdi-black-nib:before {
     content: '\2712';
 }
@@ -541,96 +948,129 @@ iPad 5. Gen.: 1024 x 748
 .zmdi-dot-circle:before {
     content: '\f26f';
 }
+
 .zmdi-minus-circle-outline:before {
     content: '\f270';
 }
+
 .zmdi-plus-circle-o:before {
     content: '\f275';
 }
+
 .zmdi-view-module:before {
     content: '\f321';
 }
+
 .zmdi-shild-check:before {
     content: '\f1c7';
 }
+
 .zmdi-smartphone:before {
     content: '\f2fc';
 }
+
 .zmdi-play:before {
     content: '\f3aa';
 }
+
 .zmdi-globe-alt:before {
     content: '\f171';
 }
+
 .zmdi-format-list-numbered:before {
     content: '\f248';
 }
+
 .zmdi-collection-item:before {
     content: '\f14b';
 }
+
 .zmdi-collection-item-1:before {
     content: '\f141';
 }
+
 .zmdi-collection-item-2:before {
     content: '\f142';
 }
+
 .zmdi-collection-item-3:before {
     content: '\f143';
 }
+
 .zmdi-collection-item-4:before {
     content: '\f144';
 }
+
 .zmdi-collection-item-5:before {
     content: '\f145';
 }
+
 .zmdi-collection-item-6:before {
     content: '\f146';
 }
+
 .zmdi-collection-item-7:before {
     content: '\f147';
 }
+
 .zmdi-collection-item-8:before {
     content: '\f148';
 }
+
 .zmdi-collection-item-9:before {
     content: '\f14a';
 }
+
 .zmdi-collection-item-99:before {
     content: '\f149';
 }
+
 .zmdi-collection-text:before {
     content: '\f150';
 }
+
 .zmdi-smartphone:before {
     content: '\f2d4';
 }
+
 .zmdi-mood:before {
     content: '\f214';
 }
+
+.zmdi-phone:before {
+    content: '\f2be';
+}
+
 .zmdi-receipt:before {
     content: '\f1b4';
 }
+
 .zmdi-thumb-up:before {
     content: '\f1de';
 }
+
 .zmdi-view-list:before {
     content: '\f320';
 }
+
 .zmdi-tab-unselected:before {
     content: '\f1d7';
 }
+
 .zmdi-close:before {
     content: '\f136';
     font-weight: bold;
     position: relative;
     top: 0.13em;
 }
+
 .zmdi-plus-1:before {
     content: '\f3c5';
     font-weight: bold;
     position: relative;
     top: 0.13em;
 }
+
 .zmdi-neg-1:before {
     content: '\f3c3';
     font-weight: bold;
@@ -638,6 +1078,7 @@ iPad 5. Gen.: 1024 x 748
     top: 0.13em;
 
 }
+
 .BG {
     background-color: #888;
     background-image: linear-gradient(transparent 0%, #ddd 100%),
@@ -663,16 +1104,19 @@ iPad 5. Gen.: 1024 x 748
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(-359deg);
         transform: rotate(-359deg);
     }
 }
+
 @keyframes zmdi-spin-reverse {
     0% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(-359deg);
         transform: rotate(-359deg);
@@ -686,112 +1130,157 @@ iPad 5. Gen.: 1024 x 748
 }
 
 .zmdi-cards:before {
-    content: '\f188'; 
+    content: '\f188';
 }
+
 .zmdi-spinner:before {
     content: '\f3ec';
 }
+
 .zmdi-delete:before {
     content: '\f154';
 }
+
 .zmdi-download:before {
     content: '\f220';
 }
+
 .zmdi-help:before {
     content: '\f1f6';
 }
+
 .zmdi-info-outline:before {
     content: '\f1f7';
 }
+
 .zmdi-info:before {
     content: '\f1f8';
 }
+
 .zmdi-settings:before {
     content: '\f1c6';
 }
+
 .zmdi-circle:before {
     content: '\f26d';
 }
+
 .zmdi-volume-off:before {
     content: '\f3bb';
 }
+
 .zmdi-volume-up:before {
     content: '\f3bc';
 }
+
 .zmdi-format-list-bulleted:before {
     content: '\f247';
 }
+
 .zmdi-calendar-note:before {
     content: '\f331';
 }
+
 .zmdi-account:before {
     content: '\f207';
 }
+
 .zmdi-view-headline:before {
     content: '\f31e';
 }
+
 .zmdi-star:before {
     content: '\f27d';
 }
+
 .zmdi-equalizer:before {
     content: '\f39e';
 }
-.zmdi-edit:before { 
+
+.zmdi-edit:before {
     content: '\f158';
 }
+
 .zmdi-plus:before {
     content: '\f278';
 }
+
 .zmdi-invert-colors:before {
     content: '\f182';
 }
+
 .zmdi-minus:before {
     content: '\f273';
 }
+
 .zmdi-Tisch:before {
     content: '\f366';
 }
+
 .zmdi-swap-vertical-circle:before {
     content: '\f30b';
 }
+
 .zmdi-alert-circle-o:before {
     content: '\f1f0';
 }
+
 .zmdi-minus-circle-outline:before {
     content: '\f270';
 }
+
 .zmdi-menu:before {
     content: '\f197';
 }
+
 .zmdi-format-align-justify:before {
     content: '\f23a';
 }
+
 .zmdi-print:before {
     content: '\f1b0';
 }
+
 .zmdi-1ter:before {
     content: '\2460';
     position: relative;
     top: -0.22em;
 }
+
 .zmdi-2ter:before {
     content: '\2461';
     position: relative;
     top: -0.22em;
 }
+
 .zmdi-3ter:before {
     content: '\2462';
     position: relative;
     top: -0.22em;
 }
+
 .zmdi-wrench:before {
     content: '\f1ed';
 }
+
 .zmdi-search:before {
     content: '\f1c3';
 }
-.header { color:#fff; background-color:#666; padding:.1em; position:fixed; top:0; width:100% }
-.footer { position: fixed; bottom: 0; width: 100%; }
+
+.header {
+    color: #fff;
+    background-color: #666;
+    padding: .1em;
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
 .Link {
     text-decoration: underline;
@@ -803,218 +1292,310 @@ iPad 5. Gen.: 1024 x 748
     width: 16.666666% !important;
     clear: none !important;
 }
+
 .nb0 {
     width: 0% !important;
     clear: none !important;
 }
+
 .nb04 {
     width: 4% !important;
     clear: none !important;
 }
+
 .nb08 {
     width: 8% !important;
     clear: none !important;
 }
+
 .nb11 {
     width: 11% !important;
     clear: none !important;
 }
+
 .nb12 {
     width: 12% !important;
     clear: none !important;
 }
+
 .nb13 {
     width: 13% !important;
     clear: none !important;
 }
+
 .nb16 {
     width: 16% !important;
     clear: none !important;
 }
+
 .nb18 {
     width: 18% !important;
     clear: none !important;
 }
+
 .nb19 {
     width: 19% !important;
     clear: none !important;
 }
+
 .nb20 {
     width: 20% !important;
     clear: none !important;
 }
+
 .nb23 {
     width: 23% !important;
     clear: none !important;
 }
+
 .nb24 {
     width: 24% !important;
     clear: none !important;
 }
+
 .nb25 {
     width: 25% !important;
     clear: none !important;
 }
+
 .nb26 {
     width: 26% !important;
     clear: none !important;
 }
+
 .nb27 {
     width: 27% !important;
     clear: none !important;
 }
+
 .nb28 {
     width: 28% !important;
     clear: none !important;
 }
+
 .nb29 {
     width: 29% !important;
     clear: none !important;
 }
+
 .nb31 {
     width: 31% !important;
     clear: none !important;
 }
+
 .nb38 {
     width: 38% !important;
     clear: none !important;
 }
+
 .nb39 {
     width: 39% !important;
     clear: none !important;
 }
+
 .nb44 {
     width: 44% !important;
     clear: none !important;
 }
+
 .nb48 {
     width: 48% !important;
     clear: none !important;
 }
+
 .nb50 {
     width: 50% !important;
     clear: none !important;
 }
+
 .nb52 {
     width: 52% !important;
     clear: none !important;
 }
+
 .nb56 {
     width: 56% !important;
     clear: none !important;
 }
+
 .nb74 {
     width: 74% !important;
     clear: none !important;
 }
+
 .nb75 {
     width: 75% !important;
     clear: none !important;
 }
+
 .nb76 {
     width: 76% !important;
     clear: none !important;
 }
+
 .nb88 {
     width: 88% !important;
     clear: none !important;
 }
+
 .cInaktiv {
     color: #D3D3D3;
 }
+
 .cGrau {
     color: #707070;
 }
+
 .cGruen {
     color: #008000;
 }
+
 .cBlau {
     color: #0000bb;
 }
+
 .cHellrot {
     color: #dd6666;
 }
+
 .cRot {
     color: #dd1111;
 }
+
 .cBraun {
     color: #A52A2A;
 }
+
 .cDunkelgrau {
     color: #555555;
 }
+
 .cSchwarz {
     color: #111111;
 }
-.fGruen {color: #228822 !important}
-.fBlau {color: #222288 !important}
 
-.cTOF {color: #d21502 !important}
-.cHRC {color: rgb(0,102,0) !important}
-.cKTC {color: rgb(153,102,51) !important}
-.cRTC {color: rgb(0,0,204) !important}
-.cSWC {color: rgb(153,0,153) !important}
-.cSTC {color: rgb(204,102,0) !important}
-.cTTC {color: rgb(0,51,0) !important}
-.cWTC {color: rgb(180,0,0) !important}
+.fGruen {
+    color: #228822 !important
+}
 
-.cSST {color: #8b7355 !important}
-.cDIV {color: #777777 !important}
-.cPassiv {color: #222 !important}
-.cAktiv {color: #dd1111 !important}
+.fBlau {
+    color: #222288 !important
+}
+
+.cTOF {
+    color: #d21502 !important
+}
+
+.cHRC {
+    color: rgb(0, 102, 0) !important
+}
+
+.cKTC {
+    color: rgb(153, 102, 51) !important
+}
+
+.cRTC {
+    color: rgb(0, 0, 204) !important
+}
+
+.cSWC {
+    color: rgb(153, 0, 153) !important
+}
+
+.cSTC {
+    color: rgb(204, 102, 0) !important
+}
+
+.cTTC {
+    color: rgb(0, 51, 0) !important
+}
+
+.cWTC {
+    color: rgb(180, 0, 0) !important
+}
+
+.cSST {
+    color: #8b7355 !important
+}
+
+.cDIV {
+    color: #777777 !important
+}
+
+.cPassiv {
+    color: #222 !important
+}
+
+.cAktiv {
+    color: #dd1111 !important
+}
+
 .bBeige {
     background: #ffa;
 }
+
 .bBeige2 {
     background: #eeb;
 }
+
 .bVorhand {
     background: #efdf99;
 }
+
 .bHell {
     background: #dfdfdf;
 }
+
 .bSehrHell {
     background: #efefef;
 }
+
 .bGrau {
     background: #c0c0c0;
 }
+
 .B {
     font-weight: bold;
 }
+
 .N {
     font-weight: normal;
 }
+
 .C {
     text-align: center;
 }
+
 .R {
     text-align: right;
 }
+
 .J {
     text-align: justify;
 }
 
-@media only screen and (orientation : landscape)  {
+@media only screen and (orientation : landscape) {
     i.noprint:hover {
         cursor: pointer;
         color: #1066aa;
         font-weight: bold;
     }
+
     .P:hover {
         cursor: pointer;
         color: #0000bb;
         text-decoration: underline;
         /*      zoom: 102%; */
-        font-weight: bold; 
+        font-weight: bold;
     }
+
     .PT:hover {
         cursor: pointer;
         color: #0000bb;
         text-decoration: underline;
-        font-weight: 800; 
+        font-weight: 800;
     }
+
     i.P:hover {
         cursor: pointer;
         color: #1066aa;
@@ -1027,26 +1608,31 @@ iPad 5. Gen.: 1024 x 748
     white-space: nowrap;
 }
 
-th,td {
-    padding:.03em !important;
+th,
+td {
+    padding: .03em !important;
     margin: 0em !important;
 }
+
 .TL {
     text-align: left !important;
-    padding:.03em !important;
+    padding: .03em !important;
 }
+
 .TC {
     text-align: center !important;
-    padding:.03em !important;
+    padding: .03em !important;
 }
+
 .TR {
     text-align: right !important;
-    padding:.03em !important;
+    padding: .03em !important;
 }
 
 .U {
     text-decoration: underline;
 }
+
 .LT {
     text-decoration: line-through;
 }
@@ -1060,7 +1646,7 @@ input[type="number"] {
 }
 
 textarea {
-    background:Gainsboro;
+    background: Gainsboro;
 }
 
 .Sbtn {
@@ -1068,12 +1654,20 @@ textarea {
     margin: 1vh !important;
 }
 
-li, .K {
+li,
+.K {
     padding: 0 !important;
     margin: 0 !important;
 }
 
-.k { /* button Geschichte, Anekdoten, Zidate */
+.k {
+    /* button Geschichte, Anekdoten, Zidate */
     padding: .1em 0 !important;
     margin: 0.4em 0 !important;
+}
+
+@supports (-webkit-touch-callout: none) { /* iOS only !!! */
+    input[type="number"] {                /* zeigt angeblich auf iOS die numerische Tastatur */
+        inputmode: numeric !important;
+    }
 }

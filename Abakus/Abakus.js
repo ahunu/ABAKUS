@@ -123,6 +123,13 @@ function initGames() {
 
     $('#d1').text(LS.Tarif[1]);
 
+    if (!LS.Einer) {
+        $('.cEINER').remove();
+    }
+    if (LS.Semiouvert) {
+        $('#tSemiouvert').text('Semiouvert');
+        $('#tOuvert').text('Ouvert');
+    }
     if (LS.Regeln !== 'Ti.') {
         $('.cTIROL').remove();
     } else {
@@ -144,10 +151,12 @@ function initGames() {
     $('#d8').text(LS.Tarif[8]);
     $('#d9').text(LS.Tarif[9]);
     $('#d9_1').text(LS.Tarif[9] + 1);
+    $('#d9_2').text(LS.Tarif[9] + 2);
     $('#d10').text(LS.Tarif[10]);
 
     $('#d11').text(LS.Tarif[11]);
     $('#d11_1').text(LS.Tarif[11] + 1);
+    $('#d11_2').text(LS.Tarif[11] + 2);
     $('#d12').text(LS.Tarif[12]);
 
     $('#d13').text(LS.Tarif[13]);
@@ -247,7 +256,7 @@ function setGame(pName, pGame, pPlus) {
                 $('#tNegativ').html('*\) Beim Trischaken müssen anstatt des Spielers die Verlierer ausgewählt werden.');
             } else {
                 $('#tNegativ').html('*\) Beim Trischaken muss anstatt des Spielers der Verlierer ausgewählt werden. '
-                        + 'Gibt es zwei punktegleiche Verlierer, müssen beide markiert werden.');
+                    + 'Gibt es zwei punktegleiche Verlierer, müssen beide markiert werden.');
             }
         } else {
             $('#nbKontra').show();
@@ -308,7 +317,7 @@ function setGame(pName, pGame, pPlus) {
         SetPraemienSolo(false);
     }
 
-    $('#gName').addClass('ui-btn').css('font-weight', 'bold').css('color', 'white').buttonMarkup({theme: 'c'}).text(pName);
+    $('#gName').addClass('ui-btn').css('font-weight', 'bold').css('color', 'white').buttonMarkup({ theme: 'c' }).text(pName);
 
     $('#nbSpiele').hide();
     $('#nbWerte').show();
@@ -430,10 +439,18 @@ function showCanvas(pShow) {
         sortTarifZeile('zt1', 'Dreier', i3er);
         sortTarifZeile('zt1', 'Solodreier', iSolo3er);
         sortTarifZeile('zf1', 'Farbendreier', iFarben3er);
+        if (LS.Einer) {
+            sortTarifZeile('zt1', 'Einer', i3er, 2);
+            sortTarifZeile('zf1', 'Farbeneiner', iFarben3er, 2);
+        }
         sortTarifZeile('zf1', 'Farbensolo', iFarbensolo);
         sortTarifZeile('na1', 'Trischaken', iTrischaker);
         sortTarifZeile('ne2', 'Bettler', iBettler);
-        sortTarifZeile('ne3', 'Bettler ouvert', iBettlerOvert);
+        if (LS.Semiouvert) {
+            sortTarifZeile('ne3', 'Ouvert', iBettlerOvert);
+        } else {
+            sortTarifZeile('ne3', 'Bettler ouvert', iBettlerOvert);
+        }
         if (LS.Regeln === 'Wr.') {
             sortTarifZeile('pa1', 'Pagatrufer (I)', iRufer, pPagat, pPagat);
             sortTarifZeile('pa1', 'Uhurufer (II)', iRufer, pUhu, pUhu);
@@ -455,6 +472,8 @@ function showCanvas(pShow) {
             if (LS.I === 37) {                     // Eggenberger Runde
                 sortTarifZeile('zz1', 'Piccolo ouvert', iPiZwiccoloOvert);
                 sortTarifZeile('ne3', 'Bettelplauderer', iBettlerOvert, -11);
+            } else if (LS.Semiouvert) {
+                sortTarifZeile('ne1', 'Semiouvert', iPiZwiccoloOvert);
             } else {
                 sortTarifZeile('ne1', 'Pi./Zwiccolo ouvert', iPiZwiccoloOvert);
             }
@@ -658,18 +677,18 @@ function ResetSpieler(btn) {
     var iBtn = parseInt(btn.substring(btn.length - 1));
     if (btn !== '#ss0') {
         if (iBtn === LS.Vorhand) {
-            $(btn).buttonMarkup({theme: 'f'});
+            $(btn).buttonMarkup({ theme: 'f' });
         } else if (iBtn === LS.INA1 || iBtn === LS.INA2) {
-            $(btn).buttonMarkup({theme: 'd'});
+            $(btn).buttonMarkup({ theme: 'd' });
         } else {
-            $(btn).buttonMarkup({theme: 'a'});
+            $(btn).buttonMarkup({ theme: 'a' });
         }
     }
     if (pI !== 0 && false) { // llll
         sI = pI;
         pI = 0;
-//        ResetSpieler(sI);
-//        Set(sI);
+        //        ResetSpieler(sI);
+        //        Set(sI);
         setEnter();
     }
 }
@@ -687,13 +706,13 @@ function Set(btn) {
     if (!isNaN(btn)) {
         btn = '#ss' + btn;
     }
-    $(btn).buttonMarkup({theme: 'c'});
+    $(btn).buttonMarkup({ theme: 'c' });
 }
 function SetPartner(btn) {
     if (!isNaN(btn)) {
         btn = '#ss' + btn;
     }
-    $(btn).buttonMarkup({theme: 'b'});
+    $(btn).buttonMarkup({ theme: 'b' });
 }
 
 function ErgChange(btn) {
@@ -726,14 +745,14 @@ function ErgChange(btn) {
 function Summieren() {
     if (Seite === 'PS') {
         aktPunkte = Text2Int('#gWert')
-                + Text2Int('#P1e')
-                + Text2Int('#P2e')
-                + Text2Int('#P3e')
-                + Text2Int('#P4e')
-                + Text2Int('#P7e')
-                + Text2Int('#P8e')
-                + Text2Int('#P9e')
-                + Text2Int('#PValate');
+            + Text2Int('#P1e')
+            + Text2Int('#P2e')
+            + Text2Int('#P3e')
+            + Text2Int('#P4e')
+            + Text2Int('#P7e')
+            + Text2Int('#P8e')
+            + Text2Int('#P9e')
+            + Text2Int('#PValate');
         if ($('#P5e').is(":visible")) {
             aktPunkte += Text2Int('#P5e');
         }
@@ -742,9 +761,9 @@ function Summieren() {
         }
     } else if (Seite === 'FS') {
         aktPunkte = Text2Int('#gWert')
-                + Text2Int('#F2e')
-                + Text2Int('#F3e')
-                + Text2Int('#FValate');
+            + Text2Int('#F2e')
+            + Text2Int('#F3e')
+            + Text2Int('#FValate');
         if ($('#F1e').is(":visible")) {
             aktPunkte += Text2Int('#F1e');
         }
@@ -762,7 +781,7 @@ function showSeite(pSeite) {
     Deactivate("#nbTarife,#nbHelp");
 
     if (pSeite === Seite
-            && (pSeite === 'PS' || pSeite === 'FS' || pSeite === 'NS')) {
+        && (pSeite === 'PS' || pSeite === 'FS' || pSeite === 'NS')) {
         return;
     }
 
@@ -867,7 +886,7 @@ function showDetails(pInit) {
         } else {
             sI = 1;
         }
-        $('#ss' + sI).buttonMarkup({theme: 'e'});
+        $('#ss' + sI).buttonMarkup({ theme: 'e' });
         $('#nbLI').removeClass('ui-btn-active');
         Deactivate('#nbLI');
     }
@@ -1017,20 +1036,20 @@ function showDetails(pInit) {
         var hHoehe = $(window).innerWidth() / 3;
     }
     var html = "<div style='height:" + ($('#SPIELER').height() + 2) + "px'></div>"
-            + "<div class=L>&nbsp;Details: <b>" + LS.VName[sI] + " " + LS.NName[sI] + "</b></div>"
-            + "<div id='container-ges' style='width: 50%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
-            + "<div id='container-gew' style='width: 50%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
-            + "<div id='container-pyramid' style='width:100%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
-            + "<div data-role=navbar>"
-            + "<ul>"
-            + "<li><a onclick='changeToGru(true);' id=bGruppiert class='S ui-btn-active'>gruppiert</a></li>"
-            + "<li><a onclick='changeToGru(false);' id=bDetailiert class='S'>detailliert</a></li>"
-            + "</ul>"
-            + "</div>"
-            + "<table data-role='table' id='tLI' data-mode='cxolumntoggle' class='M ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >"
-            + "<thead><tr class='bGrau th-groups'>"
-            + "<th>Spiele</th><th colspan='2' class=TC>gespielt</th><th colspan='2' class=TC>gewonnen</th>"
-            + "</tr><tbody>";
+        + "<div class=L>&nbsp;Details: <b>" + LS.VName[sI] + " " + LS.NName[sI] + "</b></div>"
+        + "<div id='container-ges' style='width: 50%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
+        + "<div id='container-gew' style='width: 50%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
+        + "<div id='container-pyramid' style='width:100%; height: " + (hHoehe * 1.1) + "px; float: left'></div>"
+        + "<div data-role=navbar>"
+        + "<ul>"
+        + "<li><a onclick='changeToGru(true);' id=bGruppiert class='S ui-btn-active'>gruppiert</a></li>"
+        + "<li><a onclick='changeToGru(false);' id=bDetailiert class='S'>detailliert</a></li>"
+        + "</ul>"
+        + "</div>"
+        + "<table data-role='table' id='tLI' data-mode='cxolumntoggle' class='M ui-body-d ui-shadow table-stripe ui-responsive' data-column-btn-text='' >"
+        + "<thead><tr class='bGrau th-groups'>"
+        + "<th>Spiele</th><th colspan='2' class=TC>gespielt</th><th colspan='2' class=TC>gewonnen</th>"
+        + "</tr><tbody>";
 
     var anzSpPyr = [0, 0, 0, 0, 0];
 
@@ -1059,7 +1078,7 @@ function showDetails(pInit) {
         BTRGcol2[27] = ANZgewonnen[27];
     }
 
-//  if (stGruppiert) {
+    //  if (stGruppiert) {
 
     sumGruppe([1, 2, 3, 4, 5, 6]);
     anzSpPyr[2] = ANZspiele[27];
@@ -1069,10 +1088,10 @@ function showDetails(pInit) {
         PROZcol2[7] = Math.round(ANZgewonnen[7] / (ANZspiele[7] / 100)) + '%';
     } else {
         PROZspiele[7] = '-';
-        PROZcol2  [7] = '-';
+        PROZcol2[7] = '-';
     }
     BTRGcol2[27] = ANZgewonnen[27];
-    html += '<tr class="trGruppiert"><td>&nbsp;davon SR</td><td class=TR>' + ANZspiele[ 7] + '</td><td class=TR>' + PROZspiele[ 7] + '</td><td class=TR>' + BTRGcol2[7] + '</td><td class=TR>' + PROZcol2[7] + '</td></tr>';
+    html += '<tr class="trGruppiert"><td>&nbsp;davon SR</td><td class=TR>' + ANZspiele[7] + '</td><td class=TR>' + PROZspiele[7] + '</td><td class=TR>' + BTRGcol2[7] + '</td><td class=TR>' + PROZcol2[7] + '</td></tr>';
     sumGruppe([8, 9, 10]);
     anzSpPyr[1] = ANZspiele[27];
     html += '<tr class="trGruppiert"><th>&nbsp;6,3,S3er</th><td class=TR>' + ANZspiele[27] + '</td><td class=TR>' + PROZspiele[27] + '</td><td class=TR>' + BTRGcol2[27] + '</td><td class=TR>' + PROZcol2[27] + '</td></tr>';
@@ -1084,7 +1103,7 @@ function showDetails(pInit) {
     anzSpPyr[0] = anzSpPyr[1] + anzSpPyr[2] + anzSpPyr[3] + anzSpPyr[4];
     html += '<tr class="trGruppiert"><th>&nbsp;Neg.Sp. </th><td class=TR>' + ANZspiele[27] + '</td><td class=TR>' + PROZspiele[27] + '</td><td class=TR>' + BTRGcol2[27] + '</td><td class=TR>' + PROZcol2[27] + '</td></tr>';
 
-//  } else {
+    //  } else {
     sumGruppe([1, 2, 3, 4, 5, 6]);
     anzSpPyr[2] = ANZspiele[27];
     sumGruppe([8, 9, 10]);
@@ -1111,31 +1130,31 @@ function showDetails(pInit) {
     html = html + '<tr class="trDetailiert"><th>Trisch.  </th><td class=TR>' + ANZspiele[13] + '</td><td class=TR>' + PROZspiele[13] + '</td><td class=TR>' + BTRGcol2[13] + '</td><td class=TR>' + PROZcol2[13] + '</td></tr>';
     html = html + '<tr class="trDetailiert"><th>Pi.Zwi.  </th><td class=TR>' + ANZspiele[14] + '</td><td class=TR>' + PROZspiele[14] + '</td><td class=TR>' + BTRGcol2[14] + '</td><td class=TR>' + PROZcol2[14] + '</td></tr>';
     html = html + '<tr class="trDetailiert"><th>Bettler  </th><td class=TR>' + ANZspiele[15] + '</td><td class=TR>' + PROZspiele[15] + '</td><td class=TR>' + BTRGcol2[15] + '</td><td class=TR>' + PROZcol2[15] + '</td></tr>';
-    html = html + '<tr class="trDetailiert"><th>PiZw.Ov  </th><td class=TR>' + ANZspiele[16] + '</td><td class=TR>' + PROZspiele[16] + '</td><td class=TR>' + BTRGcol2[16] + '</td><td class=TR>' + PROZcol2[16] + '</td></tr>';
-    html = html + '<tr class="trDetailiert"><th>Bet.Ov.  </th><td class=TR>' + ANZspiele[17] + '</td><td class=TR>' + PROZspiele[17] + '</td><td class=TR>' + BTRGcol2[17] + '</td><td class=TR>' + PROZcol2[17] + '</td></tr>';
+    html = html + '<tr class="trDetailiert"><th>' + (LS.Semiouvert ? 'Semi' : 'PiZw.Ov') + '</th><td class=TR>' + ANZspiele[16] + '</td><td class=TR>' + PROZspiele[16] + '</td><td class=TR>' + BTRGcol2[16] + '</td><td class=TR>' + PROZcol2[16] + '</td></tr>';
+    html = html + '<tr class="trDetailiert"><th>' + (LS.Semiouvert ? 'Overt' : 'Bet.Ov.') + '</th><td class=TR>' + ANZspiele[17] + '</td><td class=TR>' + PROZspiele[17] + '</td><td class=TR>' + BTRGcol2[17] + '</td><td class=TR>' + PROZcol2[17] + '</td></tr>';
     if (ANZspiele[18] > 0) {
         html = html + '<tr><th>Diverse  </th><td class=TR>' + ANZspiele[18] + '</td><td class=TR>' + PROZspiele[18] + '</td><td class=TR>' + BTRGcol2[18] + '</td><td class=TR>' + PROZcol2[18] + '</td></tr>';
     }
-//  }
+    //  }
     if (sI > 0) {
         html = html + '<tr class=ui-bar-c><th>'
-                + LS.VName[sI] + '</th><th class=TR>' + ANZspiele[19] + '</th><th class=TR>' + PROZspiele[19] + '</th><th class=TR>' + BTRGcol2[19] + '</th><th class=TR>' + PROZcol2[19] + '</th></tr>';
+            + LS.VName[sI] + '</th><th class=TR>' + ANZspiele[19] + '</th><th class=TR>' + PROZspiele[19] + '</th><th class=TR>' + BTRGcol2[19] + '</th><th class=TR>' + PROZcol2[19] + '</th></tr>';
         html = html + '<tr class=ui-bar-c><th>'
-                + '&nbsp&nbsp;passiv</th><th class=TR>' + ANZspiele[20] + '</th><th class=TR>' + PROZspiele[20] + '</th><th class=TR>' + BTRGcol2[20] + '</th><th class=TR>' + PROZcol2[20] + '</th></tr>';
+            + '&nbsp&nbsp;passiv</th><th class=TR>' + ANZspiele[20] + '</th><th class=TR>' + PROZspiele[20] + '</th><th class=TR>' + BTRGcol2[20] + '</th><th class=TR>' + PROZcol2[20] + '</th></tr>';
     } else {
         html = html + '<tr class=ui-bar-b><th>'
-                + 'Gesamt</th><th class=TR>' + ANZspiele[0] + '</th><th class=TR>' + PROZspiele[0] + '</th><th class=TR>' + BTRGcol2[0] + '</th><th class=TR>' + PROZcol2[0] + '</th></tr>';
+            + 'Gesamt</th><th class=TR>' + ANZspiele[0] + '</th><th class=TR>' + PROZspiele[0] + '</th><th class=TR>' + BTRGcol2[0] + '</th><th class=TR>' + PROZcol2[0] + '</th></tr>';
     }
     for (var i2 = 1; i2 <= LS.AnzSpieler; i2++) {
         if (sI !== i2) {
             ii = i2 + 20;
             html = html + '<tr class=ui-bar-d><th>'
-                    + LS.VName[i2] + '</th><th class=TR>' + ANZspiele[ii] + '</th><th class=TR>' + PROZspiele[ii] + '</th><th class=TR>' + BTRGcol2[ii] + '</th><th class=TR>' + PROZcol2[ii] + '</th></tr>';
+                + LS.VName[i2] + '</th><th class=TR>' + ANZspiele[ii] + '</th><th class=TR>' + PROZspiele[ii] + '</th><th class=TR>' + BTRGcol2[ii] + '</th><th class=TR>' + PROZcol2[ii] + '</th></tr>';
         }
     }
     if (sI > 0) {
         html = html + '<tr class=ui-bar-b><th>'
-                + 'Gesamt</th><th class=TR>' + ANZspiele[0] + '</th><th class=TR>' + PROZspiele[0] + '</th><th class=TR>' + BTRGcol2[0] + '</th><th class=TR>' + PROZcol2[0] + '</th></tr>';
+            + 'Gesamt</th><th class=TR>' + ANZspiele[0] + '</th><th class=TR>' + PROZspiele[0] + '</th><th class=TR>' + BTRGcol2[0] + '</th><th class=TR>' + PROZcol2[0] + '</th></tr>';
     }
 
     $('#LIste').html(html + "</tbody></table>").trigger('create').show();
@@ -1144,19 +1163,19 @@ function showDetails(pInit) {
 
     setFont();
 
-    $('html, body').animate({scrollTop: ($('#LIste').offset().top - $('#SPIELER').height() - 12)});
+    $('html, body').animate({ scrollTop: ($('#LIste').offset().top - $('#SPIELER').height() - 12) });
 }
 
 function changeToGru(pGruppiert) {
     Deactivate(this);
     if (pGruppiert) {
-        $('#bGruppiert').buttonMarkup({theme: 'c'});
-        $('#bDetailiert').buttonMarkup({theme: 'a'}).removeClass('ui-btn-active');
+        $('#bGruppiert').buttonMarkup({ theme: 'c' });
+        $('#bDetailiert').buttonMarkup({ theme: 'a' }).removeClass('ui-btn-active');
         $('.trGruppiert').show();
         $('.trDetailiert').hide();
     } else {
-        $('#bGruppiert').buttonMarkup({theme: 'a'}).removeClass('ui-btn-active');
-        $('#bDetailiert').buttonMarkup({theme: 'c'});
+        $('#bGruppiert').buttonMarkup({ theme: 'a' }).removeClass('ui-btn-active');
+        $('#bDetailiert').buttonMarkup({ theme: 'c' });
         $('.trGruppiert').hide();
         $('.trDetailiert').show();
     }
@@ -1191,16 +1210,16 @@ function showSchreibzettel() {
     Seite = 'LI0';
     Deactivate('#nbLI');
     var html = "<div class=L>&nbsp;<b>Schreibzettel:</b></div>"
-            + "<table data-role='table' id='tLI' data-mode='columntoggle' class='L ui-body-d ui-shadow ui-responsive' data-column-btn-text='' >"
-            + "<thead>"
-            + "<tr class='bGrau'>"
-            + "<th class=TR>#</th>";
+        + "<table data-role='table' id='tLI' data-mode='columntoggle' class='L ui-body-d ui-shadow ui-responsive' data-column-btn-text='' >"
+        + "<thead>"
+        + "<tr class='bGrau'>"
+        + "<th class=TR>#</th>";
     for (var ii = 1; ii <= LS.AnzSpieler; ii++) {
         html = html + "<th class=TR>" + getVNkurz1(ii) + "</th>";
     }
     html = html + "</tr>"
-            + "<tr class='bGrau'>"
-            + "<th class=TR></th>";
+        + "<tr class='bGrau'>"
+        + "<th class=TR></th>";
     for (var ii = 1; ii <= LS.AnzSpieler; ii++) {
         html = html + "<th class=TR>" + getVNkurz2(ii) + "</th>";
     }
@@ -1225,11 +1244,11 @@ function showSchreibzettel() {
         if (e > 0) {
             if ((nSpiel > 1) && (nSpiel % LS.AnzSpieler === 0)) {
                 html += '<tr style="background-color:#cfe0f0">'
-                        + '<th class=TR>&sum;</th>'
-                        + '<th class=TR>' + hSum1 + '</th>'
-                        + '<th class=TR>' + hSum2 + '</th>'
-                        + '<th class=TR>' + hSum3 + '</th>'
-                        + '<th class=TR>' + hSum4 + '</th>';
+                    + '<th class=TR>&sum;</th>'
+                    + '<th class=TR>' + hSum1 + '</th>'
+                    + '<th class=TR>' + hSum2 + '</th>'
+                    + '<th class=TR>' + hSum3 + '</th>'
+                    + '<th class=TR>' + hSum4 + '</th>';
                 if (LS.AnzSpieler >= 5) {
                     html += '<th class=TR>' + hSum5 + '</th>';
                 }
@@ -1283,10 +1302,10 @@ function showSchreibzettel() {
             }
 
             html = html + '<tr style="' + hStyle + '"><td class=TR><span' + hLink + '>' + hSpiel + '</span></td>'
-                    + '<td class=TR>' + (DS.Spieler[e] === 1 ? '<b>' : '') + DS.Punkte[1][e] + (DS.Spieler[e] === 1 ? '</b>' : '') + '</td>'
-                    + '<td class=TR>' + (DS.Spieler[e] === 2 ? '<b>' : '') + DS.Punkte[2][e] + (DS.Spieler[e] === 2 ? '</b>' : '') + '</td>'
-                    + '<td class=TR>' + (DS.Spieler[e] === 3 ? '<b>' : '') + DS.Punkte[3][e] + (DS.Spieler[e] === 3 ? '</b>' : '') + '</td>'
-                    + '<td class=TR>' + (DS.Spieler[e] === 4 ? '<b>' : '') + DS.Punkte[4][e] + (DS.Spieler[e] === 4 ? '</b>' : '') + '</td>';
+                + '<td class=TR>' + (DS.Spieler[e] === 1 ? '<b>' : '') + DS.Punkte[1][e] + (DS.Spieler[e] === 1 ? '</b>' : '') + '</td>'
+                + '<td class=TR>' + (DS.Spieler[e] === 2 ? '<b>' : '') + DS.Punkte[2][e] + (DS.Spieler[e] === 2 ? '</b>' : '') + '</td>'
+                + '<td class=TR>' + (DS.Spieler[e] === 3 ? '<b>' : '') + DS.Punkte[3][e] + (DS.Spieler[e] === 3 ? '</b>' : '') + '</td>'
+                + '<td class=TR>' + (DS.Spieler[e] === 4 ? '<b>' : '') + DS.Punkte[4][e] + (DS.Spieler[e] === 4 ? '</b>' : '') + '</td>';
             if (LS.AnzSpieler >= 5) {
                 html = html + '<td class=TR>' + (DS.Spieler[e] === 5 ? '<b>' : '') + DS.Punkte[5][e] + (DS.Spieler[e] === 5 ? '</b>' : '') + '</td>';
             }
@@ -1298,10 +1317,10 @@ function showSchreibzettel() {
     });
     hStyle = 'background-color:#cfe0f0;';
     html = html + '<tr style="' + hStyle + '"><th class=TR>&sum;</th>'
-            + '<th class=TR>' + hSum1 + '</th>'
-            + '<th class=TR>' + hSum2 + '</th>'
-            + '<th class=TR>' + hSum3 + '</th>'
-            + '<th class=TR>' + hSum4 + '</th>';
+        + '<th class=TR>' + hSum1 + '</th>'
+        + '<th class=TR>' + hSum2 + '</th>'
+        + '<th class=TR>' + hSum3 + '</th>'
+        + '<th class=TR>' + hSum4 + '</th>';
     if (LS.AnzSpieler >= 5) {
         html = html + '<th class=TR>' + hSum5 + '</th>';
     }
@@ -1328,21 +1347,21 @@ function showChronik(pInit) {
         } else {
             sI = 1;
         }
-        $('#ss' + sI).buttonMarkup({theme: 'c'});
+        $('#ss' + sI).buttonMarkup({ theme: 'c' });
         $('#nbLI').removeClass('ui-btn-active');
         Deactivate('#nbLI');
     }
     Seite = 'LI1';
     var html = "<div style='height:" + ($('#SPIELER').height() + 2) + "px'></div>"
-            + "<div class=L>&nbsp;Chronik: <b>" + LS.VName[sI] + " " + LS.NName[sI] + "</b></div>"
-            + "<div data-role='navbar'><ul>"
-            + "<li><a onclick='" + '$(".fremdSpiel").show();' + "' class=ui-btn-active>alle</a></li>"
-            + "<li><a onclick='" + '$(".fremdSpiel").hide();' + "'>" + LS.VName[sI] + "'s</a></li>"
-            + "</ul></div>"
-            + "<table data-role='table' id='tLI' data-mode='columntoggle' class='L ui-body-d ui-shadow ui-responsive' data-column-btn-text='' >"
-            + "<thead><tr class='bGrau'>"
-            + "<th data-priority='2'>#</th><th>Spieler</th><th>Spiel</th><th class=TR>•••</th><th class=TR>&Sum;</th>"
-            + "</tr><tbody>";
+        + "<div class=L>&nbsp;Chronik: <b>" + LS.VName[sI] + " " + LS.NName[sI] + "</b></div>"
+        + "<div data-role='navbar'><ul>"
+        + "<li><a onclick='" + '$(".fremdSpiel").show();' + "' class=ui-btn-active>alle</a></li>"
+        + "<li><a onclick='" + '$(".fremdSpiel").hide();' + "'>" + LS.VName[sI] + "'s</a></li>"
+        + "</ul></div>"
+        + "<table data-role='table' id='tLI' data-mode='columntoggle' class='L ui-body-d ui-shadow ui-responsive' data-column-btn-text='' >"
+        + "<thead><tr class='bGrau'>"
+        + "<th data-priority='2'>#</th><th>Spieler</th><th>Spiel</th><th class=TR>•••</th><th class=TR>&Sum;</th>"
+        + "</tr><tbody>";
     var sPunkte = 0;
     var sPunkteP = 0;
     var hPunkte = 0;
@@ -1447,7 +1466,7 @@ function showChronik(pInit) {
     }
     setFont();
     $(".TR").attr('style', 'padding:.2em;text-align:right;');
-    $('html, body').animate({scrollTop: ($('#LIste').offset().top - $('#SPIELER').height() - 5)});
+    $('html, body').animate({ scrollTop: ($('#LIste').offset().top - $('#SPIELER').height() - 5) });
 }
 
 function Text2Int(btn) {
@@ -1481,14 +1500,14 @@ function BtnSet(btn, v1) {
 function BtnSet2(btn, v1, v2) {
     Deactivate(btn);               //  !!! Ein Muss !!!
     if ($(btn).hasClass('ui-btn-c')) {
-        $(btn).buttonMarkup({theme: 'a'});
+        $(btn).buttonMarkup({ theme: 'a' });
         if (v2) {
             $(btn + 'e').text(v2).show();
         } else {
             $(btn + 'e').text('').hide();
         }
     } else {
-        $(btn).buttonMarkup({theme: 'c'});
+        $(btn).buttonMarkup({ theme: 'c' });
         if (v1) {
             $(btn + 'e').text(v1).show();
         } else {
@@ -1505,10 +1524,10 @@ function BtnSet3(btn, pWert) {
     if (kontra === 1) {
         if ($(btn).hasClass('bgKontra2') || $(btn).hasClass('bgKontra4') || $(btn).hasClass('bgKontra8')) {
             $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
-            $(btn).buttonMarkup({theme: 'a'});
+            $(btn).buttonMarkup({ theme: 'a' });
             $(btnE).text(0).hide();
         } else if ($(btn).hasClass('ui-btn-a')) {
-            $(btn).buttonMarkup({theme: 'c'});
+            $(btn).buttonMarkup({ theme: 'c' });
             if ($(btnE).text().substr(0, 1) === '-') {
                 $(btnE).css("color", "red").text('-' + pWert).show();
             } else {
@@ -1516,19 +1535,19 @@ function BtnSet3(btn, pWert) {
             }
         } else if ($(btn).hasClass('ui-btn-c')) {
             pWert = pWert * 2;
-            $(btn).buttonMarkup({theme: 'e'});
+            $(btn).buttonMarkup({ theme: 'e' });
             if ($(btnE).text().substr(0, 1) === '-') {
                 $(btnE).css("color", "red").text('-' + pWert).show();
             } else {
                 $(btnE).css("color", "black").text(pWert).show();
             }
         } else {
-            $(btn).buttonMarkup({theme: 'a'});
+            $(btn).buttonMarkup({ theme: 'a' });
             $(btnE).text(0).hide();
         }
     } else {
         $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
-        $(btn).buttonMarkup({theme: 'a'});
+        $(btn).buttonMarkup({ theme: 'a' });
         pWert = pWert * 2 * kontra;
         $(btn).addClass('bgKontra' + kontra);
         if (LS.Tarif21T && $("#PS").is(":visible")) {
@@ -1564,11 +1583,11 @@ function BtnSetValat(btn) {
         if (kontra === 1) {
             if ($(btn).hasClass('ui-btn-c')) {
                 hPunkte *= 8;
-                $(btn).buttonMarkup({theme: 'e'});
+                $(btn).buttonMarkup({ theme: 'e' });
                 $(btnE).text('x 8').show();
             } else {
                 hPunkte *= 4;
-                $(btn).buttonMarkup({theme: 'c'});
+                $(btn).buttonMarkup({ theme: 'c' });
                 $(btnE).text('x 4').show();
             }
         } else {
@@ -1598,22 +1617,22 @@ function BtnSetValat(btn) {
 }
 
 function Spieler_Init() {
-    $("#ss1,#ss2,#ss3,#ss4,#ss5,#ss6").removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').buttonMarkup({theme: 'a'});
+    $("#ss1,#ss2,#ss3,#ss4,#ss5,#ss6").removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8').buttonMarkup({ theme: 'a' });
     if (LS.Spieler[5]) {
         if (LS.Pausierer1 === 0) {
-            $('#ss' + LS.INA1).buttonMarkup({theme: 'd'});
+            $('#ss' + LS.INA1).buttonMarkup({ theme: 'd' });
         } else {
-            $('#ss' + LS.Pausierer1).buttonMarkup({theme: 'd'});
+            $('#ss' + LS.Pausierer1).buttonMarkup({ theme: 'd' });
         }
     }
     if (LS.Spieler[6]) {
         if (LS.Pausierer2 === 0) {
-            $('#ss' + LS.INA2).buttonMarkup({theme: 'd'});
+            $('#ss' + LS.INA2).buttonMarkup({ theme: 'd' });
         } else {
-            $('#ss' + LS.Pausierer2).buttonMarkup({theme: 'd'});
+            $('#ss' + LS.Pausierer2).buttonMarkup({ theme: 'd' });
         }
     }
-    $('#ss' + LS.Vorhand).buttonMarkup({theme: 'f'});
+    $('#ss' + LS.Vorhand).buttonMarkup({ theme: 'f' });
 }
 
 window.onbeforeunload = function (event) {
@@ -1622,13 +1641,13 @@ window.onbeforeunload = function (event) {
 
 window.onload = function () {
     if (navigator.userAgent.match(/Android/i)
-            || navigator.userAgent.match(/webOS/i)
-            || navigator.userAgent.match(/iPhone/i)
-            || navigator.userAgent.match(/iPad/i)
-            || navigator.userAgent.match(/iPod/i)
-            || navigator.userAgent.match(/BlackBerry/i)
-            || navigator.userAgent.match(/Windows Phone/i)
-            ) {
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+    ) {
         PC = false;
     } else {
         PC = true;
@@ -1671,7 +1690,7 @@ window.onload = function () {
     }
 
     initGames();
-// #Positivspiele
+    // #Positivspiele
 
     $('#ss1').text(LS.Spieler[1]);
     $('#ss2').text(LS.Spieler[2]);
@@ -1757,12 +1776,12 @@ window.onload = function () {
             if (sI === 0 || (sI === hI && Seite === 'LI2') || (sI !== hI && Seite === 'LI1')) {
                 sI = hI;
                 Seite = 'LI1';
-                $(this).buttonMarkup({theme: 'c'});
+                $(this).buttonMarkup({ theme: 'c' });
                 showChronik();
             } else {
                 sI = hI;
                 Seite = 'LI2';
-                $(this).buttonMarkup({theme: 'e'}); // b
+                $(this).buttonMarkup({ theme: 'e' }); // b
                 showDetails();
             }
         } else {
@@ -1828,9 +1847,9 @@ window.onload = function () {
         }
     });
 
-// Click Positivspiele
-// Click Positivspiele
-// Click Positivspiele
+    // Click Positivspiele
+    // Click Positivspiele
+    // Click Positivspiele
 
     $("#P1").click(function () {
         BtnSet3('#P1', LS.Tarif[pPagat] * soloFaktor);
@@ -1945,9 +1964,9 @@ window.onload = function () {
         }
     });
 
-// Click Farbspiele
-// Click Farbspiele
-// Click Farbspiele
+    // Click Farbspiele
+    // Click Farbspiele
+    // Click Farbspiele
 
     $("#F1").click(function () {
         BtnSet3('#F1', LS.Tarif[p4Koenige] * soloFaktor);
@@ -2001,18 +2020,18 @@ window.onload = function () {
         ErgChange(this);
     });
 
-// Click Negativspiele
-// Click Negativspiele
-// Click Negativspiele
+    // Click Negativspiele
+    // Click Negativspiele
+    // Click Negativspiele
 
     $("#Nx2").click(function () {
         Deactivate(this);
         if ($(this).hasClass('ui-btn-c')) {
-            $(this).buttonMarkup({theme: 'a'});
+            $(this).buttonMarkup({ theme: 'a' });
             $('#gWert').text(aktSpielWert * -1);
         } else {
-            $(this).buttonMarkup({theme: 'c'});
-            $("#Nx4").buttonMarkup({theme: 'a'});
+            $(this).buttonMarkup({ theme: 'c' });
+            $("#Nx4").buttonMarkup({ theme: 'a' });
             $('#gWert').text(aktSpielWert * -2);
         }
         Summieren();
@@ -2020,11 +2039,11 @@ window.onload = function () {
     $("#Nx4").click(function () {
         Deactivate(this);
         if ($(this).hasClass('ui-btn-c')) {
-            $(this).buttonMarkup({theme: 'a'});
+            $(this).buttonMarkup({ theme: 'a' });
             $('#gWert').text(aktSpielWert * -1);
         } else {
-            $(this).buttonMarkup({theme: 'c'});
-            $("#Nx2").buttonMarkup({theme: 'a'});
+            $(this).buttonMarkup({ theme: 'c' });
+            $("#Nx2").buttonMarkup({ theme: 'a' });
             $('#gWert').text(aktSpielWert * -4);
         }
         Summieren();
@@ -2044,14 +2063,14 @@ window.onload = function () {
     jbSelberrufer = new jBox('Modal', {
         title: '<div class=L3 style="background-color:#27a;border:8px solid #27a;color: white;">&nbsp;Selberrufer!</div>',
         content: '<div class=L3 style="text-align:left">&nbsp;Speichern?</div>'
-                + '<div class="ui-grid-a">'
-                + '<div class="ui-block-a" style="padding:8px">'
-                + '<button class="L3 ui-corner-all" onClick="jbSelberrufer.close();" style="width:100%;white-space:nowrap;" data-theme="a">&nbsp;nein&nbsp;</button>'
-                + '</div>'
-                + '<div class="ui-block-b" style="padding:8px;">'
-                + '<button class="L3 ui-corner-all" onClick="selberruferSpeichern();" style="width:100%;background-color:#efcc44;font-weight:bold;white-space:nowrap;" data-theme="e">&nbsp;&nbsp;&nbsp;ja&nbsp;&nbsp;&nbsp;</button>'
-                + '</div>'
-                + '</div>',
+            + '<div class="ui-grid-a">'
+            + '<div class="ui-block-a" style="padding:8px">'
+            + '<button class="L3 ui-corner-all" onClick="jbSelberrufer.close();" style="width:100%;white-space:nowrap;" data-theme="a">&nbsp;nein&nbsp;</button>'
+            + '</div>'
+            + '<div class="ui-block-b" style="padding:8px;">'
+            + '<button class="L3 ui-corner-all" onClick="selberruferSpeichern();" style="width:100%;background-color:#efcc44;font-weight:bold;white-space:nowrap;" data-theme="e">&nbsp;&nbsp;&nbsp;ja&nbsp;&nbsp;&nbsp;</button>'
+            + '</div>'
+            + '</div>',
         closeButton: false
     });
 };

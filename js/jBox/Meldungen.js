@@ -79,6 +79,7 @@ function showEinenMoment(pCup, pText, pForce, pSkip) {
     setTimeout(function () {
         if (pForce) {
             hideEinenMoment();
+            whenCUPSloaded();
         } else {
             $('.bUeberspringen').show();
             showEinenMoment2(hID, pSkip);

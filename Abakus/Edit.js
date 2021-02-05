@@ -138,8 +138,8 @@ function showNegativSpiel() {
         content: (LS.Tarif[13] ? ' <a class="ui-btn ui-btn-a K" onclick="setSpiel(13)">Trischaken    </a>' : '')
                 + (LS.Tarif[14] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(14)">Piccolo/Zwi.  </a>' : '')
                 + (LS.Tarif[15] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(15)">Bettler       </a>' : '')
-                + (LS.Tarif[16] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(16)">Pic./Zwi.overt</a>' : '')
-                + (LS.Tarif[17] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(17)">Bettler overt </a>' : '')
+                + (LS.Tarif[16] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(16)">' + (LS.Semiouvert ? 'Semi' : 'Pic./Zwi.overt') + '</a>' : '')
+                + (LS.Tarif[17] ? '<a class="ui-btn ui-btn-a K" onclick="setSpiel(17)">' + (LS.Semiouvert ? 'Ouvert' : 'Bettler overt') + '</a>' : '')
                 + '<a class="ui-btn ui-btn-a K N" onclick="setSpiel(0)">zurück</a>',
         closeOnClick: false,
         closeButton: 'box',
@@ -188,11 +188,19 @@ function setSpiel(pSPIEL, pKorrektur) {
     } else if (iSPIEL === i6er) {
         $('#tSPIEL').text('6er     ');
     } else if (iSPIEL === i3er) {
-        $('#tSPIEL').text('3er     ');
+        if (LS.Semiouvert) {
+            $('#tSPIEL').text('3er, 1er');
+        } else {
+            $('#tSPIEL').text('3er     ');
+        }
     } else if (iSPIEL === iSolo3er) {
         $('#tSPIEL').html('Solo&nbsp;3er');
     } else if (iSPIEL === iFarben3er) {
-        $('#tSPIEL').text('Farb.3er');
+        if (LS.Semiouvert) {
+            $('#tSPIEL').text('Farb.3er');
+        } else {
+            $('#tSPIEL').text('Farb.3er');
+        }
     } else if (iSPIEL === iFarbensolo) {
         $('#tSPIEL').text('FaSo.3er');
     } else if (iSPIEL === iTrischaker) {
@@ -202,9 +210,17 @@ function setSpiel(pSPIEL, pKorrektur) {
     } else if (iSPIEL === iBettler) {
         $('#tSPIEL').text('Bettler ');
     } else if (iSPIEL === iPiZwiccoloOvert) {
-        $('#tSPIEL').text('PiZwi.ov');
+        if (LS.Semiouvert) {
+            $('#tSPIEL').text('Semi    ');
+        } else {
+            $('#tSPIEL').text('PiZwi.ov');
+        }
     } else if (iSPIEL === iBettlerOvert) {
-        $('#tSPIEL').text('Bet.ov. ');
+        if (LS.Semiouvert) {
+            $('#tSPIEL').text('Ouvert  ');
+        } else {
+            $('#tSPIEL').text('Bet.ov. ');
+        }
     }
 
     if (iSPIEL === iTrischaker && xNeu) {

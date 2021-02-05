@@ -1605,6 +1605,9 @@ $(document).ready(function () {
         var LS_Freunde = LS.Freunde;
         var LS_GelesenAKT = LS.GelesenAKT;
         var LS_GelesenSTAT = LS.GelesenSTAT;
+        var LS_INSERATEanz = LS.INSERATEanz;
+        var LS_INSERATEbis = LS.INSERATEbis;
+        var LS_INSERATEneu = LS.INSERATEneu;
         var LS_I = LS.LoadCups * -1; // - ist Kennung für neuen Tisch
         var LS_LastBtn = LS.LastBtn;
         var LS_LastDate = LS.LastDate;
@@ -1639,6 +1642,9 @@ $(document).ready(function () {
         LS.Freunde = LS_Freunde;
         LS.GelesenAKT = LS_GelesenAKT;
         LS.GelesenSTAT = LS_GelesenSTAT;
+        LS.INSERATEanz = LS_INSERATEanz;
+        LS.INSERATEbis = LS_INSERATEbis;
+        LS.INSERATEneu = LS_INSERATEneu;
         LS.I = LS_I;
         LS.LastBtn = LS_LastBtn;
         LS.LastDate = LS_LastDate;
@@ -1693,6 +1699,16 @@ $(document).ready(function () {
             LS.DoppelteRunden = true;
         } else {
             LS.DoppelteRunden = false;
+        }
+        if (CUPS.EINER[LS.I]) {
+            LS.Einer = true;
+        } else {
+            LS.Einer = false;
+        }
+        if (CUPS.SEMIOUVERT[LS.I]) {
+            LS.Semiouvert = true;
+        } else {
+            LS.Semiouvert = false;
         }
         LS.Tarif = new Array(19);
         LS.Vorhand = 0;

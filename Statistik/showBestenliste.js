@@ -102,10 +102,10 @@ function showBestenliste(pSort) {
     var anz = 0;
 
     if (pSort) {
-        showEinenMoment(CUPS.NAME[stCup], 'Statistik&nbsp;wird&nbsp;sortiert.');
+        showEinenMoment(CUPS.NAME[stCup], 'Die&nbsp;Ewige&nbsp;Bestenliste&nbsp;wird&nbsp;sortiert.');
     } else {
         pSort = 'TURNIER';
-        showEinenMoment(CUPS.NAME[stCup], 'Statistik&nbsp;wird&nbsp;erstellt.');
+        showEinenMoment(CUPS.NAME[stCup], 'Die&nbsp;Ewige&nbsp;Bestenliste&nbsp;wird&nbsp;erstellt.');
     }
 
     setTimeout(function () {

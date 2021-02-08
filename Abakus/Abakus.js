@@ -245,6 +245,13 @@ function setNegKontra() {
 function setGame(pName, pGame, pPlus) {
     if (pGame) { // nicht bei Kontra
         $('#nbTrischaken,#nbKontra').hide();
+        if (LS.Semiouvert) {
+            if (pGame === iPiZwiccoloOvert) {
+                pName = 'Semiouvert';
+            } else if (pGame === iBettlerOvert) {
+                pName = 'Ouvert';
+            }
+        }
         if (pGame < 13) { // Positivspiele
             $('#tNegativ').html('');
         } else if (pGame === 13) { // Trischaken

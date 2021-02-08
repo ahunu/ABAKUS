@@ -25,7 +25,7 @@ function showInhalt() {
                 + '<li data-icon="false"><a id="bCupsieger" onClick="showCupsieger();" ' + (LS.ME !== 'NOBODY' ? '' : 'class="ui-disabled"') + '>&nbsp;Cupsieger</a></li>'
                 + '<li data-icon="false"><a id="bTeilnehmerzahlen" onClick="showTeilnehmerzahlen();" ' + (LS.ME !== 'NOBODY' ? '' : 'class="ui-disabled"') + '>&nbsp;Teilnehmerzahlen</a></li>'
                 + '<li data-icon="false"><a id="bBestenliste" onClick="showBestenliste();" ' + (LS.ME !== 'NOBODY' ? '' : 'class="ui-disabled"') + '>&nbsp;Ewige Bestenliste</a></li>'
-                + '<li data-icon="false" class="cQUER"><a id="bBestenliste" onClick="showQuer();" ' + (LS.ME !== 'NOBODY' ? '' : 'class="ui-disabled"') + '>&nbsp;Gesamtübersicht</a></li>'
+                + '<li data-icon="false" class="cQUER"><a id="bBestenliste" onClick="showGesamt();" ' + (LS.ME !== 'NOBODY' ? '' : 'class="ui-disabled"') + '>&nbsp;Gesamtübersicht</a></li>'
                 + '<li data-role="list-divider">&nbsp;&nbsp;&nbsp;&nbsp;Allgemeines</li>'
                 + (CUPS.MELDAKT[stCup] || CUPS.BEREadmin[stCup].indexOf(LS.ME) >= 0 || CUPS.BEREschreiben[stCup].indexOf(LS.ME) >= 0
                         ? '<li data-icon="false"><a id="bAktuelles" onClick="showAktuelles();">&nbsp;Aktuelles</a></li>'

@@ -110,7 +110,12 @@ function QUERFORMAT() {
 function initGames() {
 
     if (LS.Tarif20T) {
-        $('#P8,#F2').text(LS.Tarif20T);
+        if (LS.Tarif20T === 'V') {
+            $('#P8').text(LS.Tarif20T);
+            $('#F2').text('.').addClass('ui-disabled');
+        } else {
+            $('#P8,#F2').text(LS.Tarif20T);
+        }
     } else {
         $('.cTARIF20').remove();
     }
@@ -343,8 +348,8 @@ function showSpiele() {
     Deactivate('#gName');
     if (Seite === 'NS') {
         if (kontra > 1) {
-            $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra *');
-            kontra = 1;
+            showEinenTip('#gName', 'Bei Negativspielen muss<br>bei einem Kontra anstatt<br>dem Spiel<br>der kontrierende Spieler<br>markiert werden.');
+            return
         }
         $('#nbSpiel,#gWert,#nbWerte').hide();
         $('#nbSpiele').show();
@@ -1946,28 +1951,114 @@ window.onload = function () {
     });
 
     $("#gWert").click(function () {
-        if (Seite === 'NS' && kontra !== 1) {
-            if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] > 6) {
-                $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra **');
-                $('#tNegativ').html('**) Die Kontrapunkte scheinen hier nicht auf, werden jedoch korrekt geschrieben.');
+        if (Seite === 'NS') {
+            if (kontra === 1) {
+                if (negKontra[1] + negKontra[2] + negKontra[3] + negKontra[4] + negKontra[5] + negKontra[6] > 6) {
+                    $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra **');
+                    $('#tNegativ').html('**) Die Kontrapunkte scheinen hier nicht auf, werden jedoch korrekt geschrieben.');
+                } else {
+                    $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra');
+                    $('#tNegativ').html('');
+                }
+                kontra = 1;
+                ErgChange('#gWert');
             } else {
-                $('#bNegKontra').removeClass('bgKontra' + kontra).text('Kontra');
-                $('#tNegativ').html('');
+                showEinenTip('#gWert', 'Bei Negativspielen muss<br>bei einem Kontra anstatt<br>dem Spiel<br>der kontrierende Spieler<br>markiert werden.');
             }
-            kontra = 1;
+        } else {
+            if (kontra === 1) {
+                ErgChange('#gWert');
+            } else {
+                showSpiele();
+            }
         }
-        ErgChange('#gWert');
     });
 
     $("#P1e,#P2e,#P3e,#P4e,#P5e,#P6e,#P7e,#P8e,#P9e").click(function () {
-        ErgChange(this);
+        if (kontra > 1) {
+            var btn =  '#' + $(this).attr("id");
+            btn =  btn.substr(0, btn.length -1);
+            $(btn).click();
+        } else {
+            ErgChange(this);            
+        }
+return;
+        if (kontra > 1) {
+
+            var btnE =  '#' + $(this).attr("id");
+            var btn =  btnE.substr(0, btnE.length -1);
+            var pWert = LS.Tarif[parseInt(parseInt(btn.substr(2)) + 17)]  * soloFaktor;
+
+            
+            if (btn === '#P1') {
+                pWert = LS.Tarif[pPagat];
+            } else             if (btn === '#P2') {
+                pWert = LS.Tarif[pUhu];
+            } else             if (btn === '#P3') {
+                pWert = LS.Tarif[pKakadu];
+            } else             if (btn === '#P4') {
+                pWert = LS.Tarif[pQuapil];
+            } else             if (btn === '#P5') {
+                pWert = LS.Tarif[pTrull];
+            } else             if (btn === '#P6') {
+                pWert = LS.Tarif[p4Koenige];
+            } else             if (btn === '#P7') {
+                pWert = LS.Tarif[pUltimo];
+            } else             if (btn === '#P8') {
+                pWert = LS.Tarif[pV];
+            } else             if (btn === '#F1') {
+                pWert = LS.Tarif[p4Koenige];
+            } else             if (btn === '#F2') {
+                pWert = LS.Tarif[pTrull];
+            } else             if (btn === '#F3') {
+                pWert = LS.Tarif[pTrull];
+            } else {
+                pWert = 1;
+            }
+
+
+
+
+
+
+
+
+
+
+            $(btn).removeClass('bgKontra2').removeClass('bgKontra4').removeClass('bgKontra8');
+            $(btn).buttonMarkup({ theme: 'a' });
+            pWert = pWert * 2 * kontra;
+            $(btn).addClass('bgKontra' + kontra);
+            if (LS.Tarif21T && $("#PS").is(":visible")) {
+                $('.cKontra').removeClass('bgKontra' + kontra).text('Kont.');
+            } else {
+                $('.cKontra').removeClass('bgKontra' + kontra).text('Kontra');
+            }
+            kontra = 1;
+            if ($(btnE).text().substr(0, 1) === '-') {
+                $(btnE).css("color", "red").text('-' + pWert).show();
+            } else {
+                $(btnE).css("color", "black").text(pWert).show();
+            }
+
+            Summieren();
+
+        } else {
+            ErgChange(this);
+        }
     });
 
     $("#PValate,#FValate").click(function () {
-        if (LS.Tarif[pValat]) {
-            ErgChange(this);
+        if (kontra > 1) {
+            var btn =  '#' + $(this).attr("id");
+            btn =  btn.substr(0, btn.length -1);
+            $(btn).click();
         } else {
-            ErgChange('#gWert');
+            if (LS.Tarif[pValat]) {
+                ErgChange(this);
+            } else {
+                ErgChange('#gWert');
+            }
         }
     });
 
@@ -2024,7 +2115,13 @@ window.onload = function () {
     });
 
     $("#F1e,#F2e,#F3e").click(function () {
-        ErgChange(this);
+        if (kontra > 1) {
+            var btn =  '#' + $(this).attr("id");
+            btn =  btn.substr(0, btn.length -1);
+            $(btn).click();
+        } else {
+            ErgChange(this);            
+        }
     });
 
     // Click Negativspiele

@@ -3413,9 +3413,9 @@ $(document).ready(function () {
         PC = true;
     }
 
-
-    $('#bInserat').remove();
-
+    if (!PC) {
+        $('#bInserat').remove();
+    }
 
     APP = false;
     if (navigator.userAgent.match(/Android/i)) {
@@ -3459,7 +3459,7 @@ $(document).ready(function () {
         LS.GelesenSTAT = [];
         LS.I = 0;
         LS.INSERATEanz = 0;
-        LS.INSERATEbis = '2020-01-01T00:00.000Z';
+        LS.INSERATEab = '2020-01-01T00:00.000Z';
         LS.INSERATEneu = 0;
         LS.gespielt = 0; // -1
         LS.Regeln = "Wr.";
@@ -3506,11 +3506,12 @@ $(document).ready(function () {
     if (!LS.GelesenSTAT) {
         LS.GelesenSTAT = [];
     }
-    if (!LS.INSERATEbis) {
+    if (!LS.INSERATEab) {
         LS.INSERATEanz = 0;
-        LS.INSERATEbis = '2020-01-01T00:00.000Z';
+        LS.INSERATEab = '2020-01-01T00:00.000Z';
         LS.INSERATEneu = 0;
     }
+
     if (LS.Version < 967) {
         LS.VIP = false;
     }
@@ -3570,7 +3571,7 @@ $(document).ready(function () {
 
     if (LS.ME !== "3425") {
         document.oncontextmenu = function () {
-            //            return false; // oncontextmenu
+            return false; // oncontextmenu
         };
     }
     document.onselectstart = function () {
@@ -3605,6 +3606,18 @@ $(document).ready(function () {
     if (LS.Ansage) {  // verhindert einen mehrfachen Aufruf von Seite2
         LS.Ansage = '';
     }
+
+    
+LS.INSERATEab = new Date(Date.now() - (86400000 * 91)); // - 91 Tage
+LS.INSERATEab = LS.INSERATEab.toISOString();
+LS.INSERATEanz = 0;
+if (CUPS.INSERATE) {
+    for (var inserat in CUPS.INSERATE) {
+        if (inserat > LS.INSERATEab) {
+            LS.INSERATEanz++;
+        }
+    }    
+}
 
     LS.LastDate = new Date().getTime();
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));

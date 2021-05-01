@@ -6,7 +6,7 @@ function getZitat() {
     var iZitat = 9999;
     do {
         NOK = false;
-        iZitat = Date.now() % 58;
+        iZitat = Date.now() % 59;
         for (var i = 0; i < stLastZitat.length; i++) {
             if (stLastZitat[i] === iZitat) {
                 NOK = true;
@@ -265,9 +265,8 @@ function getZitat() {
                     + '<br>muß der Biene Summen erleiden.',
             'Dale Carnegie, 1888-1955, amerik. Bestsellerautor'];
     } else if (iZitat === 58) {
-        return [''
-                    + '<br>',
-            ''];
+        return ['Wer schreit, hat Unrecht.',
+            'Deutsches Sprichwort'];
     } else if (iZitat === 59) {
         return [''
                     + '<br>',

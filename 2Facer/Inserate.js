@@ -75,9 +75,9 @@ function showInserateHF() {
             + (CUPS.INSERATE[inserat].SPIELER === LS.ME
                 ? '<i class="iconL zmdi-edit   noprint" onclick="jbInseratOpen(\'' + inserat + '\')" title="Das Inserat ändern."></i>' + '&nbsp;&nbsp;&nbsp;'
                 + '<i class="iconL zmdi-delete noprint" onclick="jbInseratDeleteOpen(\'' + inserat + '\')" title="Das Inserat löschen."></i>'
-                : (inserat > LS.INSERATEbis
+                : (inserat > LS.INSERATEab
                     ? '<img src="../Icons/neu.png" style="transform: rotate(' + ((Math.random() * (30 + 10)) - 10) + 'deg);" alt="neu"/>'
-                    : (CUPS.INSERATE[inserat].GEAENDERT && CUPS.INSERATE[inserat].GEAENDERT > LS.INSERATEbis
+                    : (CUPS.INSERATE[inserat].GEAENDERT && CUPS.INSERATE[inserat].GEAENDERT > LS.INSERATEab
                         ? '<img src="../Icons/geaendert.png" style="transform: rotate(' + ((Math.random() * (30 + 10)) - 10) + 'deg);" alt="geändert"/>'
                         : ''
                     )
@@ -107,21 +107,21 @@ function showInserateHF() {
         }
     }
 
-    
+
     var hH = parseInt($(window).innerHeight() - $('#dHeader').height() - $('#footer').height() - 1);
     var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px;">'
         + '<div  style="padding: 1em;">';
-        
+
     var hH = parseInt($(window).innerHeight() - $('#dHeader').height() - $('#footer').height() - 3);
     var html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + hH + 'px;">'
-            + '<div  style="padding: 1em;">';
+        + '<div  style="padding: 1em;">';
 
     html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + parseInt($(window).innerHeight() - $('#qfHeader').height() - $('#footer').height() - 3) + 'px;">'
         + '<div style="swidth: 80%; padding: 1em; margin: 3em auto;">'
         + '&nbsp;&nbsp;<button id=bInserat  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all" onclick="jbInseratOpen();">&nbsp;Ein Inserat erstellen</button><br>';
 
-        html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + parseInt($(window).innerHeight() - $('#qfHeader').height() + $('#footer').height() - 4) + 'px;">'
-//        + '<div style="swidth: 80%; padding: 1em; margin: 3em auto;">'
+    html = '<div style="width:100%; margin-left: auto; margin-right: auto; overflow-y: auto; height:' + parseInt($(window).innerHeight() - $('#qfHeader').height() + $('#footer').height() - 4) + 'px;">'
+        //        + '<div style="swidth: 80%; padding: 1em; margin: 3em auto;">'
         + '&nbsp;&nbsp;<button id=bInserat  class="ui-btn ui-btn-e ui-btn-inline ui-corner-all" onclick="jbInseratOpen();">&nbsp;Ein Inserat erstellen</button><br>';
 
     if (nRubrik[0]) html += html0;
@@ -134,7 +134,7 @@ function showInserateHF() {
 
     html += '</div>'
 
-    LS.INSERATEbis = new Date().toISOString();
+    LS.INSERATEab = new Date().toISOString();
     LS.INSERATEneu = 0;
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 
@@ -212,57 +212,61 @@ function showInserateQF() {
         + '</div></div></div><br><br>';
 
     for (var inserat in CUPS.INSERATE) {
-        iRubrik = hRubrik.indexOf(CUPS.INSERATE[inserat].RUBRIK);
 
-        if (CUPS.INSERATE[inserat].TELEFON) {
-            hTelefonEmail = 'Telefon: ' + CUPS.INSERATE[inserat].TELEFON;
-            if (CUPS.INSERATE[inserat].EMAIL) {
-                hTelefonEmail += '<br>eMail: ' + CUPS.INSERATE[inserat].EMAIL;
+        if (inserat > LS.INSERATEab) {
+
+            iRubrik = hRubrik.indexOf(CUPS.INSERATE[inserat].RUBRIK);
+
+            if (CUPS.INSERATE[inserat].TELEFON) {
+                hTelefonEmail = 'Telefon: ' + CUPS.INSERATE[inserat].TELEFON;
+                if (CUPS.INSERATE[inserat].EMAIL) {
+                    hTelefonEmail += '<br>eMail: ' + CUPS.INSERATE[inserat].EMAIL;
+                }
+            } else {
+                hTelefonEmail = 'eMail: ' + CUPS.INSERATE[inserat].EMAIL;
             }
-        } else {
-            hTelefonEmail = 'eMail: ' + CUPS.INSERATE[inserat].EMAIL;
-        }
 
-        html = '<div id="d' + inserat.replace(/-|:/g, "") + '" class=M style="background-color:white; padding:2vw; border: 2px solid silver; border-radius:0.7vw; box-shadow: 6px 6px 6px rgba(0,0,0,0.6);">'
-            + '<div class="ui-grid-b">'
-            + '<div class="ui-block-a" style="width:50%;">'
-            + CUPS.INSERATE[inserat].NAMEORT + '<br>Datum: ' + inserat.substr(0, 10)
-            + '</div>'
-            + '<div class="ui-block-b" id="t' + inserat.replace(/-|:/g, "") + '"" style="width:37%;">' + hTelefonEmail
-            + '</div>'
-            + '<div class="ui-block-c R" style="width:13%;">'
-            + (CUPS.INSERATE[inserat].SPIELER === LS.ME
-                ? '<i class="iconL zmdi-edit   noprint" onclick="jbInseratOpen(\'' + inserat + '\')" title="Das Inserat ändern."></i>' + '&nbsp;&nbsp;&nbsp;'
-                + '<i class="iconL zmdi-delete noprint" onclick="jbInseratDeleteOpen(\'' + inserat + '\')" title="Das Inserat löschen."></i>'
-                : (inserat > LS.INSERATEbis
-                    ? '<img src="Icons/neu.png" style="transform: rotate(' + ((Math.random() * (30 + 10)) - 10) + 'deg);" alt="neu"/>'
-                    : (CUPS.INSERATE[inserat].GEAENDERT && CUPS.INSERATE[inserat].GEAENDERT > LS.INSERATEbis
-                        ? '<img src="Icons/geaendert.png" style="transform: rotate(' + ((Math.random() * (30 + 10)) - 10) + 'deg);" alt="geändert"/>'
-                        : ''
+            html = '<div id="d' + inserat.replace(/-|:/g, "") + '" class=M style="background-color:white; padding:2vw; border: 2px solid silver; border-radius:0.7vw; box-shadow: 6px 6px 6px rgba(0,0,0,0.6);">'
+                + '<div class="ui-grid-b">'
+                + '<div class="ui-block-a" style="width:50%;">'
+                + CUPS.INSERATE[inserat].NAMEORT + '<br>Datum: ' + inserat.substr(0, 10)
+                + '</div>'
+                + '<div class="ui-block-b" id="t' + inserat.replace(/-|:/g, "") + '"" style="width:37%;">' + hTelefonEmail
+                + '</div>'
+                + '<div class="ui-block-c R" style="width:13%;">'
+                + (CUPS.INSERATE[inserat].SPIELER === LS.ME
+                    ? '<i class="iconL zmdi-edit   noprint" onclick="jbInseratOpen(\'' + inserat + '\')" title="Das Inserat ändern."></i>' + '&nbsp;&nbsp;&nbsp;'
+                    + '<i class="iconL zmdi-delete noprint" onclick="jbInseratDeleteOpen(\'' + inserat + '\')" title="Das Inserat löschen."></i>'
+                    : (inserat > LS.INSERATEab
+                        ? '<img src="Icons/neu.png" style="transform: rotate(' + ((Math.random() * (30 + 10)) - 10) + 'deg);" alt="neu"/>'
+                        : (CUPS.INSERATE[inserat].GEAENDERT && CUPS.INSERATE[inserat].GEAENDERT > LS.INSERATEab
+                            ? '<img src="Icons/geaendert.png" style="transform: rotate(' + ((Math.random() * (30 + 10)) - 10) + 'deg);" alt="geändert"/>'
+                            : ''
+                        )
                     )
+
                 )
+                + '</div>'
+                + '</div><br>'
+                + '<div style="text-align: justify;">' + CUPS.INSERATE[inserat].INSERAT + '</div>'
+                + '</div><br><br>';
 
-            )
-            + '</div>'
-            + '</div><br>'
-            + '<div style="text-align: justify;">' + CUPS.INSERATE[inserat].INSERAT + '</div>'
-            + '</div><br><br>';
-
-        nRubrik[iRubrik]++;
-        if (iRubrik === 0) {
-            html0 += html;
-        } else if (iRubrik === 1) {
-            html1 += html;
-        } else if (iRubrik === 2) {
-            html2 += html;
-        } else if (iRubrik === 3) {
-            html3 += html;
-        } else if (iRubrik === 4) {
-            html4 += html;
-        } else if (iRubrik === 5) {
-            html5 += html;
-        } else if (iRubrik === 6) {
-            html6 += html;
+            nRubrik[iRubrik]++;
+            if (iRubrik === 0) {
+                html0 += html;
+            } else if (iRubrik === 1) {
+                html1 += html;
+            } else if (iRubrik === 2) {
+                html2 += html;
+            } else if (iRubrik === 3) {
+                html3 += html;
+            } else if (iRubrik === 4) {
+                html4 += html;
+            } else if (iRubrik === 5) {
+                html5 += html;
+            } else if (iRubrik === 6) {
+                html6 += html;
+            }
         }
     }
 
@@ -278,7 +282,7 @@ function showInserateQF() {
     if (nRubrik[5]) html += html5;
     if (nRubrik[6]) html += html6;
 
-    LS.INSERATEbis = new Date().toISOString();
+    LS.INSERATEab = new Date().toISOString();
     LS.INSERATEneu = 0;
     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
 
@@ -327,6 +331,7 @@ function deleteInserat(pKey) {
                     localStorage.setItem('Abakus.LS', JSON.stringify(LS));
                     setTInserate();
                     delete CUPS.INSERATE[pKey];
+                    localStorage.setItem('Abakus.CUPS', JSON.stringify(CUPS));
                     hideEinenMoment();
                 })
                 .catch(function (error) {

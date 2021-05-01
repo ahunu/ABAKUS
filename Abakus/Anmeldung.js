@@ -1606,7 +1606,7 @@ $(document).ready(function () {
         var LS_GelesenAKT = LS.GelesenAKT;
         var LS_GelesenSTAT = LS.GelesenSTAT;
         var LS_INSERATEanz = LS.INSERATEanz;
-        var LS_INSERATEbis = LS.INSERATEbis;
+        var LS_INSERATEbis = LS.INSERATEab;
         var LS_INSERATEneu = LS.INSERATEneu;
         var LS_I = LS.LoadCups * -1; // - ist Kennung für neuen Tisch
         var LS_LastBtn = LS.LastBtn;
@@ -1643,7 +1643,7 @@ $(document).ready(function () {
         LS.GelesenAKT = LS_GelesenAKT;
         LS.GelesenSTAT = LS_GelesenSTAT;
         LS.INSERATEanz = LS_INSERATEanz;
-        LS.INSERATEbis = LS_INSERATEbis;
+        LS.INSERATEab = LS_INSERATEbis;
         LS.INSERATEneu = LS_INSERATEneu;
         LS.I = LS_I;
         LS.LastBtn = LS_LastBtn;
